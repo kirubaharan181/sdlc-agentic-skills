@@ -7,7 +7,6 @@ A vendor-neutral, evidence-driven operating system for AI-assisted software deli
 ```powershell
 python scripts/validate.py
 python scripts/generate_reports.py
-python scripts/run_tests.py
 ```
 
 Read [getting started](docs/getting-started/GETTING_STARTED.md), the [execution model](docs/architecture/EXECUTION_MODEL.md), and [security model](docs/security/SECURITY_MODEL.md). Production and other irreversible actions always require explicit human approval.

@@ -12,7 +12,7 @@ if ids!=list(range(1,191)):errors.append('stage IDs must be exactly 1..190 in or
 if len(set(ids))!=190:errors.append('duplicate/missing stage IDs')
 skillids={x['skill_id'] for x in skills}; agentids={x['agent_id'] for x in agents}; wids={x['workflow_id'] for x in wfs}
 for x in st:
-    for k in ['stage_name','category_id','primary_role','skills','agents','workflow_ids','inputs','outputs','quality_gate','validation_method','handoff_requirements']:
+    for k in ['stage_name','category_id','primary_role','skills','agents','workflow_ids','purpose','execution_instructions','deliverable_artifacts','quality_criteria','dependencies','inputs','outputs','quality_gate','validation_method','handoff_requirements']:
         if not x.get(k):errors.append(f"stage {x.get('stage_id')}: missing {k}")
     for k in x.get('skills',[]):
         if k not in skillids:errors.append(f"stage {x['stage_id']}: unknown skill {k}")
