@@ -16,6 +16,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - run: python scripts/validate.py
       - run: python scripts/generate_reports.py
       - run: python scripts/validate.py
+      - name: Generate Atelier dashboard snapshot
+        run: python scripts/generate_dashboard_data.py
+      - name: Validate dashboard snapshot JSON
+        run: python -m json.tool dashboard/data/library.json > /dev/null
+      - name: Validate dashboard JavaScript syntax
+        run: node --check dashboard/assets/app.js
