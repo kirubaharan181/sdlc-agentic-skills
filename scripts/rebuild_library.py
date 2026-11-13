@@ -201,7 +201,7 @@ Transfer the artifact path/revision, validation evidence, limitations, residual 
   matched=[s for s in stages if sid in s['skills']]
   skill_profile=SKILL_PROFILES[sid]
   nm=skill_profile[0]; focus=skill_profile[1]
-  procedure='\\n'.join(f"{i+1}. {x}" for i,x in enumerate(skill_profile[2]))
+  procedure='\n'.join(f"{i+1}. {x}" for i,x in enumerate(skill_profile[2]))
   write(f"skills/{'cross-cutting' if sid in ['master-orchestration','evidence-quality-gates','secure-change-control','definition-of-done','incident-command'] else next('x' for x in [])}/{sid}/SKILL.md",'') if False else None
   paths=[p for p in (ROOT/'skills').rglob('SKILL.md') if f"skill_id: {sid}" in p.read_text(encoding='utf-8')]
   if not paths: raise RuntimeError(f'missing skill path {sid}')
