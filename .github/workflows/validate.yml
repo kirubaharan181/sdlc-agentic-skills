@@ -2,6 +2,7 @@ name: Validate library
 
 on:
   pull_request:
+  workflow_dispatch:
   push:
     branches: [main]
 
@@ -19,9 +20,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: python -m py_compile scripts/bootstrap_library.py scripts/validate.py
+      - run: python -m py_compile scripts/execution_profiles.py scripts/rebuild_library.py scripts/bootstrap_library.py scripts/semantic_quality.py scripts/validate.py scripts/run_tests.py
       - name: Verify deterministic generated content
         run: python scripts/bootstrap_library.py --check
+      - run: python scripts/run_tests.py
       - run: python scripts/validate.py
       - run: python scripts/generate_reports.py
       - run: python scripts/validate.py
