@@ -19,48 +19,48 @@
 
 ## 99. SAST
 
-**Purpose:** assess and remediate a defined security attack surface
+**Purpose:** identify exploitable source-code weaknesses before runtime
 
 **Procedure:**
-- Confirm asset ownership, scope, exclusions and written authorization before active testing.
-- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
-- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
-- Assign remediation, retest the exact fix and record residual risk or approved exception.
+- Run configured static analysis on the exact source revision and include generated/critical code according to policy.
+- Trace high-impact findings from source to sink and assess reachability and sanitization.
+- Triage false positives with evidence and assign remediation owners and SLAs.
+- Retest the fixed revision and add regression coverage for the vulnerable path.
 
-**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
-**Artifact:** scan/test report
-**Verification:** Security owner and system owner disposition.
-**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** source revision and language coverage, scanner configuration and severity policy, threat model and reachable entry points
+**Artifact:** SAST report
+**Verification:** Trace a high-severity taint finding to the trust boundary and verify the fix with a regression test.
+**Handoff:** Transfer SAST report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 100. DAST
 
-**Purpose:** assess and remediate a defined security attack surface
+**Purpose:** validate runtime attack surface within explicit authorization
 
 **Procedure:**
-- Confirm asset ownership, scope, exclusions and written authorization before active testing.
-- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
-- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
-- Assign remediation, retest the exact fix and record residual risk or approved exception.
+- Confirm ownership, target list, exclusions, rate limits and stop conditions before scanning.
+- Exercise approved runtime paths for injection, authentication/session and security-header weaknesses.
+- Manually validate high-severity results without destructive payloads or unnecessary data access.
+- Record exact build/environment, reproduction and remediation; retest the fixed build.
 
-**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
-**Artifact:** scan/test report
-**Verification:** Security owner and system owner disposition.
-**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** written target scope and time window, test account and safe data, running build and rules of engagement
+**Artifact:** DAST scan report
+**Verification:** Run only the approved test paths and manually confirm the highest-risk finding before assigning severity.
+**Handoff:** Transfer DAST scan report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 101. SCA
 
-**Purpose:** assess and remediate a defined security attack surface
+**Purpose:** assess dependency vulnerabilities and license obligations
 
 **Procedure:**
-- Confirm asset ownership, scope, exclusions and written authorization before active testing.
-- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
-- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
-- Assign remediation, retest the exact fix and record residual risk or approved exception.
+- Generate inventory from resolved direct and transitive dependencies.
+- Match versions to advisories and assess reachability, exploitability and vendor support.
+- Review license compatibility, provenance and required notices.
+- Upgrade or replace affected components, rerun regression/security checks and compare SBOM.
 
-**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
-**Artifact:** scan/test report
-**Verification:** Security owner and system owner disposition.
-**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** resolved lockfiles and packaged artifact, SBOM and advisory feeds, license policy and runtime exposure
+**Artifact:** SBOM
+**Verification:** Compare lockfile and packaged SBOM, then verify the resolved version and notices.
+**Handoff:** Transfer SBOM with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 102. Container Security
 
@@ -94,18 +94,18 @@
 
 ## 104. Penetration Testing
 
-**Purpose:** assess and remediate a defined security attack surface
+**Purpose:** perform authorized adversarial testing with controlled evidence
 
 **Procedure:**
-- Confirm asset ownership, scope, exclusions and written authorization before active testing.
-- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
-- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
-- Assign remediation, retest the exact fix and record residual risk or approved exception.
+- Verify authorization, scope, exclusions and escalation contacts before any active test.
+- Test agreed attack paths with bounded techniques and avoid destructive actions or persistence.
+- Capture minimal reproduction, impact and evidence while protecting customer data.
+- Report remediation and independently retest the agreed fixes.
 
-**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
-**Artifact:** scan/test report
-**Verification:** Security owner and system owner disposition.
-**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** written authorization and target inventory, rules of engagement, time window and emergency contact, data handling and stop conditions
+**Artifact:** rules of engagement
+**Verification:** Validate one approved attack path and stop immediately if the test reaches out-of-scope data.
+**Handoff:** Transfer rules of engagement with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 105. Authentication Security
 
@@ -169,30 +169,30 @@
 
 ## 109. Vulnerability Remediation
 
-**Purpose:** assess and remediate a defined security attack surface
+**Purpose:** remove a validated vulnerability and prove the exposure is closed
 
 **Procedure:**
-- Confirm asset ownership, scope, exclusions and written authorization before active testing.
-- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
-- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
-- Assign remediation, retest the exact fix and record residual risk or approved exception.
+- Confirm affected runtime component/version and reachability before selecting a fix.
+- Prioritize using exploit maturity, exposure, privileges and data impact.
+- Apply a supported upgrade/configuration/code correction and add regression protection.
+- Rescan and independently retest the exact released artifact; record residual risk.
 
-**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
-**Artifact:** scan/test report
-**Verification:** Security owner and system owner disposition.
-**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** validated finding and affected component/version, exploitability, exposure and remediation SLA, fix owner and release constraints
+**Artifact:** vulnerability remediation ticket
+**Verification:** Verify the patched component in the packaged runtime artifact, not only the source manifest.
+**Handoff:** Transfer vulnerability remediation ticket with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 110. Security Sign-off
 
-**Purpose:** prepare a controlled decision with sufficient evidence and independent authority
+**Purpose:** make an independent security release decision from verified evidence
 
 **Procedure:**
-- Check the decision request is complete, in scope and owned by an authorized requester.
-- Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
-- Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
-- Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
+- Review threat coverage, SAST/SCA/DAST/IaC results and the exact candidate revision.
+- Verify high-severity findings have independent retest evidence or authorized exception.
+- Assess residual risk, compensating controls, exposure and release conditions.
+- Record approve, conditional approve or block with named security authority.
 
-**Inputs:** decision request and accountable sponsor, impact/risk assessment, supporting evidence and alternatives
-**Artifact:** decision record
-**Verification:** Independent approval record and audit trail.
-**Handoff:** Transfer decision record with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** threat model and asset scope, scan findings and remediation evidence, risk acceptance authority and exception expiry
+**Artifact:** security gate report
+**Verification:** Re-fetch the candidate revision and verify every critical finding disposition before issuing the security decision.
+**Handoff:** Transfer security gate report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

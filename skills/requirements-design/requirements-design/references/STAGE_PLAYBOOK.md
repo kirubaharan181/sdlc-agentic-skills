@@ -49,18 +49,18 @@
 
 ## 14. Non-Functional Requirements
 
-**Purpose:** specify observable system behavior and business rules
+**Purpose:** quantify reliability, performance, security and operability expectations
 
 **Procedure:**
-- Write behavior using actor, trigger, precondition, main flow, alternate flow and postcondition.
-- Define validation, state transitions, error responses and idempotency where applicable.
-- Derive positive, negative, boundary and authorization acceptance cases.
-- Trace each behavior to a requirement ID and owner.
+- Select relevant quality attributes such as latency, throughput, availability, recovery, scalability, privacy and accessibility.
+- Set thresholds with percentile, workload, duration, measurement point and acceptable error rate.
+- Define telemetry and test conditions needed to verify each target.
+- Resolve trade-offs among quality attributes and obtain product/operations owner acceptance.
 
-**Inputs:** user and system scenarios, business rules and data definitions, external interface constraints
-**Artifact:** functional requirement catalogue
-**Verification:** Scenario walkthrough with developer and tester.
-**Handoff:** Transfer functional requirement catalogue with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** workload profile and business criticality, service objectives and compliance constraints, measurement and verification environment
+**Artifact:** quality attribute scenarios
+**Verification:** Review each NFR for measurable thresholds and verify test plans can produce the required evidence.
+**Handoff:** Transfer quality attribute scenarios with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 15. User Research
 

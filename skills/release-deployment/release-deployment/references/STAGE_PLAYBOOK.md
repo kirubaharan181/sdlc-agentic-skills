@@ -19,33 +19,33 @@
 
 ## 127. Release Notes
 
-**Purpose:** prepare and execute a controlled release or migration
+**Purpose:** communicate the exact behavior and operational impact of a release
 
 **Procedure:**
-- Confirm immutable candidate, included changes, compatibility and outstanding risk.
-- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
-- Obtain change authority and communicate schedule, impact, owners and stop conditions.
-- Deploy progressively, verify health and business signals, then confirm or execute recovery.
+- Group changes by user-visible capability, fixes, security and operational impact.
+- Describe behavior changes, compatibility/deprecation and required customer actions accurately.
+- Include known issues, upgrade notes and links to support guidance.
+- Verify every statement against the approved candidate and obtain product/support review.
 
-**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
-**Artifact:** release manifest
-**Verification:** Change authority approval and post-deploy verification.
-**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** approved change list and issue links, target audience and supported version, known issues and rollout schedule
+**Artifact:** versioned release notes
+**Verification:** Compare release notes with the merged change list and candidate digest.
+**Handoff:** Transfer versioned release notes with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 128. Release Readiness
 
-**Purpose:** prepare and execute a controlled release or migration
+**Purpose:** decide whether an immutable candidate is safe to promote
 
 **Procedure:**
-- Confirm immutable candidate, included changes, compatibility and outstanding risk.
-- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
-- Obtain change authority and communicate schedule, impact, owners and stop conditions.
-- Deploy progressively, verify health and business signals, then confirm or execute recovery.
+- Verify artifact provenance, required checks, open defects and change scope.
+- Review migration compatibility, backup freshness, monitoring, runbooks and support readiness.
+- Check approvals, operator coverage, communication and stop/rollback thresholds.
+- Record go/no-go with conditions and named authority.
 
-**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
-**Artifact:** release manifest
-**Verification:** Change authority approval and post-deploy verification.
-**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** candidate digest and scope, test/security/operations evidence, migration, backup and rollback plan
+**Artifact:** release readiness checklist
+**Verification:** Re-fetch candidate digest and verify readiness evidence before requesting change approval.
+**Handoff:** Transfer release readiness checklist with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 129. Change Approval
 
@@ -94,18 +94,18 @@
 
 ## 132. Database Migration
 
-**Purpose:** prepare and execute a controlled release or migration
+**Purpose:** change schema and data with rehearsed recovery and integrity controls
 
 **Procedure:**
-- Confirm immutable candidate, included changes, compatibility and outstanding risk.
-- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
-- Obtain change authority and communicate schedule, impact, owners and stop conditions.
-- Deploy progressively, verify health and business signals, then confirm or execute recovery.
+- Inventory schema consumers, write paths, locks, data volume and rolling-version compatibility.
+- Design expand/backfill/contract or equivalent safe sequence with pre/post integrity checks.
+- Rehearse backup and isolated restore; measure RPO/RTO and migration duration.
+- Execute only after approval, reconcile counts/checksums and monitor application behavior.
 
-**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
-**Artifact:** release manifest
-**Verification:** Change authority approval and post-deploy verification.
-**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** schema consumers and compatibility matrix, representative data volume and backup policy, approved migration window and recovery objectives
+**Artifact:** migration plan and scripts
+**Verification:** Rehearse on representative data and reconcile row counts/checksums before approving the production window.
+**Handoff:** Transfer migration plan and scripts with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 133. Production Deployment
 
@@ -169,18 +169,18 @@
 
 ## 137. Rollback Planning
 
-**Purpose:** prepare and execute a controlled release or migration
+**Purpose:** select a safe recovery path before a release changes production state
 
 **Procedure:**
-- Confirm immutable candidate, included changes, compatibility and outstanding risk.
-- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
-- Obtain change authority and communicate schedule, impact, owners and stop conditions.
-- Deploy progressively, verify health and business signals, then confirm or execute recovery.
+- Define measurable rollback triggers from customer-facing health and business signals.
+- Assess schema compatibility, writes after release, queued events and irreversible side effects.
+- Choose rollback, forward-fix or compensation path and identify operator/approver.
+- Rehearse the recovery sequence and verify data reconciliation and communication.
 
-**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
-**Artifact:** release manifest
-**Verification:** Change authority approval and post-deploy verification.
-**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** release and migration design, data compatibility and irreversible side-effect inventory, rollback authority and recovery window
+**Artifact:** rollback decision tree
+**Verification:** Walk through a failed release including schema changes and demonstrate the chosen recovery path.
+**Handoff:** Transfer rollback decision tree with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 138. Production Smoke Test
 

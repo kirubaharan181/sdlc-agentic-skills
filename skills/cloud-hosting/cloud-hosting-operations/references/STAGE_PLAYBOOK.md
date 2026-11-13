@@ -124,18 +124,18 @@
 
 ## 148. Disaster Recovery
 
-**Purpose:** assess and remediate a defined security attack surface
+**Purpose:** restore critical services within approved recovery objectives
 
 **Procedure:**
-- Confirm asset ownership, scope, exclusions and written authorization before active testing.
-- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
-- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
-- Assign remediation, retest the exact fix and record residual risk or approved exception.
+- Confirm business-approved RTO/RPO for each critical service and data set.
+- Prepare an isolated recovery environment with scoped credentials and network boundaries.
+- Restore or fail over in dependency order and capture actual recovery time and replication position.
+- Validate data integrity and user-facing journeys before reopening traffic; record gaps.
 
-**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
-**Artifact:** scan/test report
-**Verification:** Security owner and system owner disposition.
-**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** business impact analysis and service dependencies, approved RTO/RPO and recovery runbooks, isolated recovery credentials and backup inventory
+**Artifact:** recovery plan
+**Verification:** Run a timed recovery exercise and compare measured RTO/RPO with approved objectives.
+**Handoff:** Transfer recovery plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 149. High Availability
 
@@ -154,18 +154,18 @@
 
 ## 150. Auto Scaling
 
-**Purpose:** assess and remediate a defined security attack surface
+**Purpose:** assess dependency vulnerabilities and license obligations
 
 **Procedure:**
-- Confirm asset ownership, scope, exclusions and written authorization before active testing.
-- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
-- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
-- Assign remediation, retest the exact fix and record residual risk or approved exception.
+- Generate inventory from resolved direct and transitive dependencies.
+- Match versions to advisories and assess reachability, exploitability and vendor support.
+- Review license compatibility, provenance and required notices.
+- Upgrade or replace affected components, rerun regression/security checks and compare SBOM.
 
-**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
-**Artifact:** scan/test report
-**Verification:** Security owner and system owner disposition.
-**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
+**Inputs:** resolved lockfiles and packaged artifact, SBOM and advisory feeds, license policy and runtime exposure
+**Artifact:** SBOM
+**Verification:** Compare lockfile and packaged SBOM, then verify the resolved version and notices.
+**Handoff:** Transfer SBOM with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 151. Cost Optimization
 
