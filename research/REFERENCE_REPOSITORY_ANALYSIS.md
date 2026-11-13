@@ -1,0 +1,20 @@
+# Reference Repository Analysis
+
+Research date: 2026-11-13. This report records transferable ideas, not copied implementation. Repository availability and license must be rechecked immediately before reuse. Web research was used for publicly indexed documentation; inaccessible pages are explicitly not represented as inspected source.
+
+| Repository | URL | Research date | Purpose / architecture | Reusable ideas | Rejected ideas | Adaptation |
+|---|---|---|---|---|---|---|
+| anthropics/skills | https://github.com/anthropics/skills | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+| obra/superpowers | https://github.com/obra/superpowers | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+| FootprintAI/open-sdlc-skills | https://github.com/FootprintAI/open-sdlc-skills | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+| mattpocock/skills | https://github.com/mattpocock/skills | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+| addyosmani/agent-skills | https://github.com/addyosmani/agent-skills | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+| affaan-m/everything-claude-code | https://github.com/affaan-m/everything-claude-code | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+| wshobson/agents | https://github.com/wshobson/agents | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+| github/spec-kit | https://github.com/github/spec-kit | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+| cloudflare/security-audit-skill | https://github.com/cloudflare/security-audit-skill | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+| google/sre-book | https://github.com/google/sre-book | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+| GoogleCloudPlatform/terraformer | https://github.com/GoogleCloudPlatform/terraformer | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+| actions/starter-workflows | https://github.com/actions/starter-workflows | 2026-11-13 | Inspected public metadata/documentation; see limitations | Modular workflow/skill patterns | Avoid copying implementation; adapt concepts independently | Verify license and revision before any reuse |
+
+Observed patterns include filesystem `SKILL.md` discovery, progressive disclosure, explicit workflow gates, portable Markdown, test-first execution, and platform-specific adapters. This project independently implements those general practices.

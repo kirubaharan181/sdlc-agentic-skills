@@ -1,0 +1,12 @@
+{
+  "stage_id": 167,
+  "status": "PASS",
+  "commit_sha": "<real-sha-required>",
+  "evidence": [
+    {
+      "type": "reviewed-artifact",
+      "path": "<actual-path>",
+      "result": "passed"
+    }
+  ]
+}

@@ -1,0 +1,3114 @@
+{
+  "schema_version": "1.0.0",
+  "agents": [
+    {
+      "agent_id": "business-strategist",
+      "name": "Business Strategist",
+      "purpose": "Accountable role definition for Business Strategist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "business-product-management"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "market-research-analyst",
+      "name": "Market Research Analyst",
+      "purpose": "Accountable role definition for Market Research Analyst.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "client-engagement-specialist",
+      "name": "Client Engagement Specialist",
+      "purpose": "Accountable role definition for Client Engagement Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "product-manager",
+      "name": "Product Manager",
+      "purpose": "Accountable role definition for Product Manager.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "business-analyst",
+      "name": "Business Analyst",
+      "purpose": "Accountable role definition for Business Analyst.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "product-owner",
+      "name": "Product Owner",
+      "purpose": "Accountable role definition for Product Owner.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "requirements-engineer",
+      "name": "Requirements Engineer",
+      "purpose": "Accountable role definition for Requirements Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "requirements-design"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "ux-researcher",
+      "name": "UX Researcher",
+      "purpose": "Accountable role definition for UX Researcher.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "ui-ux-designer",
+      "name": "UI/UX Designer",
+      "purpose": "Accountable role definition for UI/UX Designer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "solution-architect",
+      "name": "Solution Architect",
+      "purpose": "Accountable role definition for Solution Architect.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "software-architect",
+      "name": "Software Architect",
+      "purpose": "Accountable role definition for Software Architect.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "technical-architecture"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "enterprise-architect",
+      "name": "Enterprise Architect",
+      "purpose": "Accountable role definition for Enterprise Architect.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "database-architect",
+      "name": "Database Architect",
+      "purpose": "Accountable role definition for Database Architect.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "api-architect",
+      "name": "API Architect",
+      "purpose": "Accountable role definition for API Architect.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "cloud-architect",
+      "name": "Cloud Architect",
+      "purpose": "Accountable role definition for Cloud Architect.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "security-architect",
+      "name": "Security Architect",
+      "purpose": "Accountable role definition for Security Architect.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "data-architect",
+      "name": "Data Architect",
+      "purpose": "Accountable role definition for Data Architect.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "integration-architect",
+      "name": "Integration Architect",
+      "purpose": "Accountable role definition for Integration Architect.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "project-manager",
+      "name": "Project Manager",
+      "purpose": "Accountable role definition for Project Manager.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "project-agile-management"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "program-manager",
+      "name": "Program Manager",
+      "purpose": "Accountable role definition for Program Manager.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "scrum-master",
+      "name": "Scrum Master",
+      "purpose": "Accountable role definition for Scrum Master.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "agile-delivery-manager",
+      "name": "Agile Delivery Manager",
+      "purpose": "Accountable role definition for Agile Delivery Manager.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "frontend-engineer",
+      "name": "Frontend Engineer",
+      "purpose": "Accountable role definition for Frontend Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "backend-engineer",
+      "name": "Backend Engineer",
+      "purpose": "Accountable role definition for Backend Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "full-stack-engineer",
+      "name": "Full Stack Engineer",
+      "purpose": "Accountable role definition for Full Stack Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "software-implementation"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "mobile-engineer",
+      "name": "Mobile Engineer",
+      "purpose": "Accountable role definition for Mobile Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "api-engineer",
+      "name": "API Engineer",
+      "purpose": "Accountable role definition for API Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "database-engineer",
+      "name": "Database Engineer",
+      "purpose": "Accountable role definition for Database Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "authentication-and-authorization-engineer",
+      "name": "Authentication and Authorization Engineer",
+      "purpose": "Accountable role definition for Authentication and Authorization Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "integration-engineer",
+      "name": "Integration Engineer",
+      "purpose": "Accountable role definition for Integration Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "data-engineer",
+      "name": "Data Engineer",
+      "purpose": "Accountable role definition for Data Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "ai-ml-engineer",
+      "name": "AI/ML Engineer",
+      "purpose": "Accountable role definition for AI/ML Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "performance-engineer",
+      "name": "Performance Engineer",
+      "purpose": "Accountable role definition for Performance Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "qa-lead",
+      "name": "QA Lead",
+      "purpose": "Accountable role definition for QA Lead.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "quality-assurance"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "manual-qa-engineer",
+      "name": "Manual QA Engineer",
+      "purpose": "Accountable role definition for Manual QA Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "automation-qa-engineer",
+      "name": "Automation QA Engineer",
+      "purpose": "Accountable role definition for Automation QA Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "unit-testing-specialist",
+      "name": "Unit Testing Specialist",
+      "purpose": "Accountable role definition for Unit Testing Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "integration-testing-specialist",
+      "name": "Integration Testing Specialist",
+      "purpose": "Accountable role definition for Integration Testing Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "api-testing-specialist",
+      "name": "API Testing Specialist",
+      "purpose": "Accountable role definition for API Testing Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "e2e-testing-specialist",
+      "name": "E2E Testing Specialist",
+      "purpose": "Accountable role definition for E2E Testing Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "performance-testing-specialist",
+      "name": "Performance Testing Specialist",
+      "purpose": "Accountable role definition for Performance Testing Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "accessibility-testing-specialist",
+      "name": "Accessibility Testing Specialist",
+      "purpose": "Accountable role definition for Accessibility Testing Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "code-reviewer",
+      "name": "Code Reviewer",
+      "purpose": "Accountable role definition for Code Reviewer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "code-review-quality"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "architecture-reviewer",
+      "name": "Architecture Reviewer",
+      "purpose": "Accountable role definition for Architecture Reviewer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "merge-steward",
+      "name": "Merge Steward",
+      "purpose": "Accountable role definition for Merge Steward.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "application-security-engineer",
+      "name": "Application Security Engineer",
+      "purpose": "Accountable role definition for Application Security Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "application-security"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "devsecops-engineer",
+      "name": "DevSecOps Engineer",
+      "purpose": "Accountable role definition for DevSecOps Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "penetration-testing-specialist",
+      "name": "Penetration Testing Specialist",
+      "purpose": "Accountable role definition for Penetration Testing Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "vulnerability-analyst",
+      "name": "Vulnerability Analyst",
+      "purpose": "Accountable role definition for Vulnerability Analyst.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "compliance-specialist",
+      "name": "Compliance Specialist",
+      "purpose": "Accountable role definition for Compliance Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "security-auditor",
+      "name": "Security Auditor",
+      "purpose": "Accountable role definition for Security Auditor.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "license-compliance-specialist",
+      "name": "License Compliance Specialist",
+      "purpose": "Accountable role definition for License Compliance Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "devops-engineer",
+      "name": "DevOps Engineer",
+      "purpose": "Accountable role definition for DevOps Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "devops-platform"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "platform-engineer",
+      "name": "Platform Engineer",
+      "purpose": "Accountable role definition for Platform Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "cloud-engineer",
+      "name": "Cloud Engineer",
+      "purpose": "Accountable role definition for Cloud Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "cloud-hosting-operations"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "infrastructure-engineer",
+      "name": "Infrastructure Engineer",
+      "purpose": "Accountable role definition for Infrastructure Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "kubernetes-engineer",
+      "name": "Kubernetes Engineer",
+      "purpose": "Accountable role definition for Kubernetes Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "network-engineer",
+      "name": "Network Engineer",
+      "purpose": "Accountable role definition for Network Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "database-administrator",
+      "name": "Database Administrator",
+      "purpose": "Accountable role definition for Database Administrator.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "release-manager",
+      "name": "Release Manager",
+      "purpose": "Accountable role definition for Release Manager.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "release-deployment"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "deployment-engineer",
+      "name": "Deployment Engineer",
+      "purpose": "Accountable role definition for Deployment Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "sre",
+      "name": "SRE",
+      "purpose": "Accountable role definition for SRE.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "sre-observability"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "observability-engineer",
+      "name": "Observability Engineer",
+      "purpose": "Accountable role definition for Observability Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "incident-manager",
+      "name": "Incident Manager",
+      "purpose": "Accountable role definition for Incident Manager.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "production-support-engineer",
+      "name": "Production Support Engineer",
+      "purpose": "Accountable role definition for Production Support Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "maintenance-support"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "technical-support-engineer",
+      "name": "Technical Support Engineer",
+      "purpose": "Accountable role definition for Technical Support Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "technical-writer",
+      "name": "Technical Writer",
+      "purpose": "Accountable role definition for Technical Writer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "documentation-engineer",
+      "name": "Documentation Engineer",
+      "purpose": "Accountable role definition for Documentation Engineer.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "engineering-governance-specialist",
+      "name": "Engineering Governance Specialist",
+      "purpose": "Accountable role definition for Engineering Governance Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "engineering-governance",
+        "enterprise-governance"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "quality-governance-specialist",
+      "name": "Quality Governance Specialist",
+      "purpose": "Accountable role definition for Quality Governance Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "finops-specialist",
+      "name": "FinOps Specialist",
+      "purpose": "Accountable role definition for FinOps Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "vendor-management-specialist",
+      "name": "Vendor Management Specialist",
+      "purpose": "Accountable role definition for Vendor Management Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "process-improvement-specialist",
+      "name": "Process Improvement Specialist",
+      "purpose": "Accountable role definition for Process Improvement Specialist.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    },
+    {
+      "agent_id": "engineering-coordinator",
+      "name": "Engineering Coordinator",
+      "purpose": "Accountable role definition for Engineering Coordinator.",
+      "scope": "Perform assigned workflow stages with documented evidence.",
+      "responsibilities": [
+        "execute assigned stages",
+        "produce verifiable artifacts",
+        "handoff unresolved risk"
+      ],
+      "non_responsibilities": [
+        "self-approve independent high-risk gates",
+        "perform unapproved production changes"
+      ],
+      "required_skills": [
+        "master-orchestration"
+      ],
+      "inputs": [
+        "approved work item",
+        "stage contract"
+      ],
+      "outputs": [
+        "stage artifact",
+        "evidence record"
+      ],
+      "tools": [
+        "project-approved tools"
+      ],
+      "permissions": "least privilege; read-only by default; scoped write only when assigned",
+      "dependencies": [
+        "valid workflow",
+        "handoff inputs"
+      ],
+      "handoff_rules": "standard-handoff",
+      "escalation_conditions": [
+        "missing inputs",
+        "failed control",
+        "approval required"
+      ],
+      "approval_requirements": "role does not self-approve sensitive actions",
+      "definition_of_done": "output validated, evidence recorded, and receiver identified."
+    }
+  ]
+}

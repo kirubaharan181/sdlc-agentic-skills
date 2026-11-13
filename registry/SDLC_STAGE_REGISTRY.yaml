@@ -1,0 +1,6276 @@
+{
+  "schema_version": "1.0.0",
+  "generated_on": "2026-11-13",
+  "stages": [
+    {
+      "stage_id": 1,
+      "stage_name": "Business Strategy",
+      "category_id": 1,
+      "category_name": "Business, Strategy and Product Management",
+      "primary_role": "Business Strategist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "business-product-management"
+      ],
+      "agents": [
+        "business-strategist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "business-strategy-record"
+      ],
+      "quality_gate": "01-001",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 2,
+      "stage_name": "Market Research",
+      "category_id": 1,
+      "category_name": "Business, Strategy and Product Management",
+      "primary_role": "Business Strategist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "business-product-management"
+      ],
+      "agents": [
+        "business-strategist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "market-research-record"
+      ],
+      "quality_gate": "01-002",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 3,
+      "stage_name": "Client Engagement",
+      "category_id": 1,
+      "category_name": "Business, Strategy and Product Management",
+      "primary_role": "Business Strategist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "business-product-management"
+      ],
+      "agents": [
+        "business-strategist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "client-engagement-record"
+      ],
+      "quality_gate": "01-003",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 4,
+      "stage_name": "Product Discovery",
+      "category_id": 1,
+      "category_name": "Business, Strategy and Product Management",
+      "primary_role": "Business Strategist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "business-product-management"
+      ],
+      "agents": [
+        "business-strategist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "product-discovery-record"
+      ],
+      "quality_gate": "01-004",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 5,
+      "stage_name": "Business Analysis",
+      "category_id": 1,
+      "category_name": "Business, Strategy and Product Management",
+      "primary_role": "Business Strategist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "business-product-management"
+      ],
+      "agents": [
+        "business-strategist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "business-analysis-record"
+      ],
+      "quality_gate": "01-005",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 6,
+      "stage_name": "Product Planning",
+      "category_id": 1,
+      "category_name": "Business, Strategy and Product Management",
+      "primary_role": "Business Strategist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "business-product-management"
+      ],
+      "agents": [
+        "business-strategist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "product-planning-record"
+      ],
+      "quality_gate": "01-006",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 7,
+      "stage_name": "Feasibility Analysis",
+      "category_id": 1,
+      "category_name": "Business, Strategy and Product Management",
+      "primary_role": "Business Strategist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "business-product-management"
+      ],
+      "agents": [
+        "business-strategist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "feasibility-analysis-record"
+      ],
+      "quality_gate": "01-007",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 8,
+      "stage_name": "Budget & Estimation",
+      "category_id": 1,
+      "category_name": "Business, Strategy and Product Management",
+      "primary_role": "Business Strategist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "business-product-management"
+      ],
+      "agents": [
+        "business-strategist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "budget--estimation-record"
+      ],
+      "quality_gate": "01-008",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 9,
+      "stage_name": "Project Approval",
+      "category_id": 1,
+      "category_name": "Business, Strategy and Product Management",
+      "primary_role": "Business Strategist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "business-product-management"
+      ],
+      "agents": [
+        "business-strategist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "project-approval-record"
+      ],
+      "quality_gate": "01-009",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 10,
+      "stage_name": "Contract & Compliance",
+      "category_id": 1,
+      "category_name": "Business, Strategy and Product Management",
+      "primary_role": "Business Strategist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "business-product-management"
+      ],
+      "agents": [
+        "business-strategist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "contract--compliance-record"
+      ],
+      "quality_gate": "01-010",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 11,
+      "stage_name": "Requirement Elicitation",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "requirement-elicitation-record"
+      ],
+      "quality_gate": "02-011",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 12,
+      "stage_name": "Requirement Documentation",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "requirement-documentation-record"
+      ],
+      "quality_gate": "02-012",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 13,
+      "stage_name": "Functional Requirements",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "functional-requirements-record"
+      ],
+      "quality_gate": "02-013",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 14,
+      "stage_name": "Non-Functional Requirements",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "non-functional-requirements-record"
+      ],
+      "quality_gate": "02-014",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 15,
+      "stage_name": "User Research",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "user-research-record"
+      ],
+      "quality_gate": "02-015",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 16,
+      "stage_name": "User Journey Mapping",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "user-journey-mapping-record"
+      ],
+      "quality_gate": "02-016",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 17,
+      "stage_name": "Wireframing",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "wireframing-record"
+      ],
+      "quality_gate": "02-017",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 18,
+      "stage_name": "UI Design",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "ui-design-record"
+      ],
+      "quality_gate": "02-018",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 19,
+      "stage_name": "UX Design",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "ux-design-record"
+      ],
+      "quality_gate": "02-019",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 20,
+      "stage_name": "Prototype Development",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "prototype-development-record"
+      ],
+      "quality_gate": "02-020",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 21,
+      "stage_name": "Accessibility Review",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "accessibility-review-record"
+      ],
+      "quality_gate": "02-021",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 22,
+      "stage_name": "Requirement Validation",
+      "category_id": 2,
+      "category_name": "Requirements Engineering and UI/UX Design",
+      "primary_role": "Requirements Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "requirements-design"
+      ],
+      "agents": [
+        "requirements-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "requirement-validation-record"
+      ],
+      "quality_gate": "02-022",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 23,
+      "stage_name": "Solution Architecture",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "solution-architecture-record"
+      ],
+      "quality_gate": "03-023",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 24,
+      "stage_name": "System Architecture",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "system-architecture-record"
+      ],
+      "quality_gate": "03-024",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 25,
+      "stage_name": "Application Architecture",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "application-architecture-record"
+      ],
+      "quality_gate": "03-025",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 26,
+      "stage_name": "Database Architecture",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "database-architecture-record"
+      ],
+      "quality_gate": "03-026",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 27,
+      "stage_name": "API Architecture",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "api-architecture-record"
+      ],
+      "quality_gate": "03-027",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 28,
+      "stage_name": "Cloud Architecture",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "cloud-architecture-record"
+      ],
+      "quality_gate": "03-028",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 29,
+      "stage_name": "Security Architecture",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "security-architecture-record"
+      ],
+      "quality_gate": "03-029",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 30,
+      "stage_name": "Data Architecture",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "data-architecture-record"
+      ],
+      "quality_gate": "03-030",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 31,
+      "stage_name": "Integration Architecture",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "integration-architecture-record"
+      ],
+      "quality_gate": "03-031",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 32,
+      "stage_name": "Technology Selection",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "technology-selection-record"
+      ],
+      "quality_gate": "03-032",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 33,
+      "stage_name": "Architecture Documentation",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "architecture-documentation-record"
+      ],
+      "quality_gate": "03-033",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 34,
+      "stage_name": "Architecture Review",
+      "category_id": 3,
+      "category_name": "Software, Solution and Technical Architecture",
+      "primary_role": "Software Architect",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "technical-architecture"
+      ],
+      "agents": [
+        "software-architect"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "architecture-review-record"
+      ],
+      "quality_gate": "03-034",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 35,
+      "stage_name": "Project Initiation",
+      "category_id": 4,
+      "category_name": "Project, Program and Agile Management",
+      "primary_role": "Project Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "project-agile-management"
+      ],
+      "agents": [
+        "project-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "project-initiation-record"
+      ],
+      "quality_gate": "04-035",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 36,
+      "stage_name": "Resource Planning",
+      "category_id": 4,
+      "category_name": "Project, Program and Agile Management",
+      "primary_role": "Project Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "project-agile-management"
+      ],
+      "agents": [
+        "project-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "resource-planning-record"
+      ],
+      "quality_gate": "04-036",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 37,
+      "stage_name": "Work Breakdown",
+      "category_id": 4,
+      "category_name": "Project, Program and Agile Management",
+      "primary_role": "Project Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "project-agile-management"
+      ],
+      "agents": [
+        "project-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "work-breakdown-record"
+      ],
+      "quality_gate": "04-037",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 38,
+      "stage_name": "Effort Estimation",
+      "category_id": 4,
+      "category_name": "Project, Program and Agile Management",
+      "primary_role": "Project Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "project-agile-management"
+      ],
+      "agents": [
+        "project-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "effort-estimation-record"
+      ],
+      "quality_gate": "04-038",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 39,
+      "stage_name": "Sprint Planning",
+      "category_id": 4,
+      "category_name": "Project, Program and Agile Management",
+      "primary_role": "Project Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "project-agile-management"
+      ],
+      "agents": [
+        "project-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "sprint-planning-record"
+      ],
+      "quality_gate": "04-039",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 40,
+      "stage_name": "Agile Management",
+      "category_id": 4,
+      "category_name": "Project, Program and Agile Management",
+      "primary_role": "Project Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "project-agile-management"
+      ],
+      "agents": [
+        "project-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "agile-management-record"
+      ],
+      "quality_gate": "04-040",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 41,
+      "stage_name": "Progress Tracking",
+      "category_id": 4,
+      "category_name": "Project, Program and Agile Management",
+      "primary_role": "Project Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "project-agile-management"
+      ],
+      "agents": [
+        "project-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "progress-tracking-record"
+      ],
+      "quality_gate": "04-041",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 42,
+      "stage_name": "Risk Management",
+      "category_id": 4,
+      "category_name": "Project, Program and Agile Management",
+      "primary_role": "Project Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "project-agile-management"
+      ],
+      "agents": [
+        "project-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "risk-management-record"
+      ],
+      "quality_gate": "04-042",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 43,
+      "stage_name": "Stakeholder Management",
+      "category_id": 4,
+      "category_name": "Project, Program and Agile Management",
+      "primary_role": "Project Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "project-agile-management"
+      ],
+      "agents": [
+        "project-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "stakeholder-management-record"
+      ],
+      "quality_gate": "04-043",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 44,
+      "stage_name": "Change Management",
+      "category_id": 4,
+      "category_name": "Project, Program and Agile Management",
+      "primary_role": "Project Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "project-agile-management"
+      ],
+      "agents": [
+        "project-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "change-management-record"
+      ],
+      "quality_gate": "04-044",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 45,
+      "stage_name": "Repository Setup",
+      "category_id": 5,
+      "category_name": "Development Environment and Engineering Governance",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "engineering-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "repository-setup-record"
+      ],
+      "quality_gate": "05-045",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 46,
+      "stage_name": "Branching Strategy",
+      "category_id": 5,
+      "category_name": "Development Environment and Engineering Governance",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "engineering-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "branching-strategy-record"
+      ],
+      "quality_gate": "05-046",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 47,
+      "stage_name": "Development Environment",
+      "category_id": 5,
+      "category_name": "Development Environment and Engineering Governance",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "engineering-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "development-environment-record"
+      ],
+      "quality_gate": "05-047",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 48,
+      "stage_name": "Coding Standards",
+      "category_id": 5,
+      "category_name": "Development Environment and Engineering Governance",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "engineering-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "coding-standards-record"
+      ],
+      "quality_gate": "05-048",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 49,
+      "stage_name": "Environment Configuration",
+      "category_id": 5,
+      "category_name": "Development Environment and Engineering Governance",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "engineering-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "environment-configuration-record"
+      ],
+      "quality_gate": "05-049",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 50,
+      "stage_name": "Secrets Management",
+      "category_id": 5,
+      "category_name": "Development Environment and Engineering Governance",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "engineering-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "secrets-management-record"
+      ],
+      "quality_gate": "05-050",
+      "approval_required": true,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 51,
+      "stage_name": "Developer Documentation",
+      "category_id": 5,
+      "category_name": "Development Environment and Engineering Governance",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "engineering-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "developer-documentation-record"
+      ],
+      "quality_gate": "05-051",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 52,
+      "stage_name": "Engineering Governance",
+      "category_id": 5,
+      "category_name": "Development Environment and Engineering Governance",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "engineering-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "engineering-governance-record"
+      ],
+      "quality_gate": "05-052",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 53,
+      "stage_name": "Frontend Development",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "frontend-development-record"
+      ],
+      "quality_gate": "06-053",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 54,
+      "stage_name": "Backend Development",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "backend-development-record"
+      ],
+      "quality_gate": "06-054",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 55,
+      "stage_name": "Full Stack Development",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "full-stack-development-record"
+      ],
+      "quality_gate": "06-055",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 56,
+      "stage_name": "Mobile Development",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "mobile-development-record"
+      ],
+      "quality_gate": "06-056",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 57,
+      "stage_name": "API Development",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "api-development-record"
+      ],
+      "quality_gate": "06-057",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 58,
+      "stage_name": "Database Development",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "database-development-record"
+      ],
+      "quality_gate": "06-058",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 59,
+      "stage_name": "Authentication Development",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "authentication-development-record"
+      ],
+      "quality_gate": "06-059",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 60,
+      "stage_name": "Authorization Development",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "authorization-development-record"
+      ],
+      "quality_gate": "06-060",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 61,
+      "stage_name": "Third-party Integration",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "third-party-integration-record"
+      ],
+      "quality_gate": "06-061",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 62,
+      "stage_name": "Real-time Development",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "real-time-development-record"
+      ],
+      "quality_gate": "06-062",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 63,
+      "stage_name": "Data Engineering",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "data-engineering-record"
+      ],
+      "quality_gate": "06-063",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 64,
+      "stage_name": "AI/ML Development",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "ai-ml-development-record"
+      ],
+      "quality_gate": "06-064",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 65,
+      "stage_name": "Caching & Optimization",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "caching--optimization-record"
+      ],
+      "quality_gate": "06-065",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 66,
+      "stage_name": "Error Handling",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "error-handling-record"
+      ],
+      "quality_gate": "06-066",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 67,
+      "stage_name": "Developer Testing",
+      "category_id": 6,
+      "category_name": "Software Development and Implementation",
+      "primary_role": "Full Stack Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "software-implementation"
+      ],
+      "agents": [
+        "full-stack-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "developer-testing-record"
+      ],
+      "quality_gate": "06-067",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 68,
+      "stage_name": "Pull Request Creation",
+      "category_id": 7,
+      "category_name": "Code Review, Static Analysis and Quality Engineering",
+      "primary_role": "Code Reviewer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "code-review-quality"
+      ],
+      "agents": [
+        "code-reviewer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "pull-request-creation-record"
+      ],
+      "quality_gate": "07-068",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 69,
+      "stage_name": "Peer Code Review",
+      "category_id": 7,
+      "category_name": "Code Review, Static Analysis and Quality Engineering",
+      "primary_role": "Code Reviewer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "code-review-quality"
+      ],
+      "agents": [
+        "code-reviewer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "peer-code-review-record"
+      ],
+      "quality_gate": "07-069",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 70,
+      "stage_name": "Architecture Review",
+      "category_id": 7,
+      "category_name": "Code Review, Static Analysis and Quality Engineering",
+      "primary_role": "Code Reviewer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "code-review-quality"
+      ],
+      "agents": [
+        "code-reviewer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "architecture-review-record"
+      ],
+      "quality_gate": "07-070",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 71,
+      "stage_name": "Static Code Analysis",
+      "category_id": 7,
+      "category_name": "Code Review, Static Analysis and Quality Engineering",
+      "primary_role": "Code Reviewer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "code-review-quality"
+      ],
+      "agents": [
+        "code-reviewer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "static-code-analysis-record"
+      ],
+      "quality_gate": "07-071",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 72,
+      "stage_name": "Dependency Review",
+      "category_id": 7,
+      "category_name": "Code Review, Static Analysis and Quality Engineering",
+      "primary_role": "Code Reviewer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "code-review-quality"
+      ],
+      "agents": [
+        "code-reviewer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "dependency-review-record"
+      ],
+      "quality_gate": "07-072",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 73,
+      "stage_name": "Code Coverage Review",
+      "category_id": 7,
+      "category_name": "Code Review, Static Analysis and Quality Engineering",
+      "primary_role": "Code Reviewer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "code-review-quality"
+      ],
+      "agents": [
+        "code-reviewer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "code-coverage-review-record"
+      ],
+      "quality_gate": "07-073",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 74,
+      "stage_name": "Coding Standards Validation",
+      "category_id": 7,
+      "category_name": "Code Review, Static Analysis and Quality Engineering",
+      "primary_role": "Code Reviewer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "code-review-quality"
+      ],
+      "agents": [
+        "code-reviewer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "coding-standards-validation-record"
+      ],
+      "quality_gate": "07-074",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 75,
+      "stage_name": "Merge Approval",
+      "category_id": 7,
+      "category_name": "Code Review, Static Analysis and Quality Engineering",
+      "primary_role": "Code Reviewer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "code-review-quality"
+      ],
+      "agents": [
+        "code-reviewer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "merge-approval-record"
+      ],
+      "quality_gate": "07-075",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 76,
+      "stage_name": "Technical Debt Review",
+      "category_id": 7,
+      "category_name": "Code Review, Static Analysis and Quality Engineering",
+      "primary_role": "Code Reviewer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "code-review-quality"
+      ],
+      "agents": [
+        "code-reviewer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "technical-debt-review-record"
+      ],
+      "quality_gate": "07-076",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 77,
+      "stage_name": "Test Strategy",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "test-strategy-record"
+      ],
+      "quality_gate": "08-077",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 78,
+      "stage_name": "Test Planning",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "test-planning-record"
+      ],
+      "quality_gate": "08-078",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 79,
+      "stage_name": "Unit Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "unit-testing-record"
+      ],
+      "quality_gate": "08-079",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 80,
+      "stage_name": "Integration Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "integration-testing-record"
+      ],
+      "quality_gate": "08-080",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 81,
+      "stage_name": "API Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "api-testing-record"
+      ],
+      "quality_gate": "08-081",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 82,
+      "stage_name": "UI Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "ui-testing-record"
+      ],
+      "quality_gate": "08-082",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 83,
+      "stage_name": "Functional Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "functional-testing-record"
+      ],
+      "quality_gate": "08-083",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 84,
+      "stage_name": "End-to-End Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "end-to-end-testing-record"
+      ],
+      "quality_gate": "08-084",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 85,
+      "stage_name": "Regression Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "regression-testing-record"
+      ],
+      "quality_gate": "08-085",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 86,
+      "stage_name": "Smoke Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "smoke-testing-record"
+      ],
+      "quality_gate": "08-086",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 87,
+      "stage_name": "Sanity Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "sanity-testing-record"
+      ],
+      "quality_gate": "08-087",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 88,
+      "stage_name": "Cross-browser Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "cross-browser-testing-record"
+      ],
+      "quality_gate": "08-088",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 89,
+      "stage_name": "Mobile Compatibility Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "mobile-compatibility-testing-record"
+      ],
+      "quality_gate": "08-089",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 90,
+      "stage_name": "Accessibility Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "accessibility-testing-record"
+      ],
+      "quality_gate": "08-090",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 91,
+      "stage_name": "Performance Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "performance-testing-record"
+      ],
+      "quality_gate": "08-091",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 92,
+      "stage_name": "Load Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "load-testing-record"
+      ],
+      "quality_gate": "08-092",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 93,
+      "stage_name": "Stress Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "stress-testing-record"
+      ],
+      "quality_gate": "08-093",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 94,
+      "stage_name": "Soak Testing",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "soak-testing-record"
+      ],
+      "quality_gate": "08-094",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 95,
+      "stage_name": "UAT",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "uat-record"
+      ],
+      "quality_gate": "08-095",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 96,
+      "stage_name": "Defect Management",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "defect-management-record"
+      ],
+      "quality_gate": "08-096",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 97,
+      "stage_name": "Test Sign-off",
+      "category_id": 8,
+      "category_name": "Software Testing and Quality Assurance",
+      "primary_role": "QA Lead",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "quality-assurance"
+      ],
+      "agents": [
+        "qa-lead"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "test-sign-off-record"
+      ],
+      "quality_gate": "08-097",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 98,
+      "stage_name": "Threat Modeling",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "threat-modeling-record"
+      ],
+      "quality_gate": "09-098",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 99,
+      "stage_name": "SAST",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "sast-record"
+      ],
+      "quality_gate": "09-099",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 100,
+      "stage_name": "DAST",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "dast-record"
+      ],
+      "quality_gate": "09-100",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 101,
+      "stage_name": "SCA",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "sca-record"
+      ],
+      "quality_gate": "09-101",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 102,
+      "stage_name": "Container Security",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "container-security-record"
+      ],
+      "quality_gate": "09-102",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 103,
+      "stage_name": "Infrastructure Security",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "infrastructure-security-record"
+      ],
+      "quality_gate": "09-103",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 104,
+      "stage_name": "Penetration Testing",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "penetration-testing-record"
+      ],
+      "quality_gate": "09-104",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 105,
+      "stage_name": "Authentication Security",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "authentication-security-record"
+      ],
+      "quality_gate": "09-105",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 106,
+      "stage_name": "Data Protection",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "data-protection-record"
+      ],
+      "quality_gate": "09-106",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 107,
+      "stage_name": "Compliance Review",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "compliance-review-record"
+      ],
+      "quality_gate": "09-107",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 108,
+      "stage_name": "License Compliance",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "license-compliance-record"
+      ],
+      "quality_gate": "09-108",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 109,
+      "stage_name": "Vulnerability Remediation",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "vulnerability-remediation-record"
+      ],
+      "quality_gate": "09-109",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 110,
+      "stage_name": "Security Sign-off",
+      "category_id": 9,
+      "category_name": "Cybersecurity, Application Security and Compliance",
+      "primary_role": "Application Security Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "application-security"
+      ],
+      "agents": [
+        "application-security-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "security-sign-off-record"
+      ],
+      "quality_gate": "09-110",
+      "approval_required": true,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 111,
+      "stage_name": "CI Pipeline",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "ci-pipeline-record"
+      ],
+      "quality_gate": "10-111",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 112,
+      "stage_name": "Automated Test Pipeline",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "automated-test-pipeline-record"
+      ],
+      "quality_gate": "10-112",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 113,
+      "stage_name": "Build Management",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "build-management-record"
+      ],
+      "quality_gate": "10-113",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 114,
+      "stage_name": "Artifact Management",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "artifact-management-record"
+      ],
+      "quality_gate": "10-114",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 115,
+      "stage_name": "Containerization",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "containerization-record"
+      ],
+      "quality_gate": "10-115",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 116,
+      "stage_name": "Container Orchestration",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "container-orchestration-record"
+      ],
+      "quality_gate": "10-116",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 117,
+      "stage_name": "Infrastructure as Code",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "infrastructure-as-code-record"
+      ],
+      "quality_gate": "10-117",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 118,
+      "stage_name": "Configuration Management",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "configuration-management-record"
+      ],
+      "quality_gate": "10-118",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 119,
+      "stage_name": "CD Pipeline",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "cd-pipeline-record"
+      ],
+      "quality_gate": "10-119",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 120,
+      "stage_name": "Environment Provisioning",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "environment-provisioning-record"
+      ],
+      "quality_gate": "10-120",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 121,
+      "stage_name": "Network Engineering",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "network-engineering-record"
+      ],
+      "quality_gate": "10-121",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 122,
+      "stage_name": "Database Operations",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "database-operations-record"
+      ],
+      "quality_gate": "10-122",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 123,
+      "stage_name": "CDN & Edge Configuration",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "cdn--edge-configuration-record"
+      ],
+      "quality_gate": "10-123",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 124,
+      "stage_name": "Deployment Automation",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "deployment-automation-record"
+      ],
+      "quality_gate": "10-124",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 125,
+      "stage_name": "Pipeline Security",
+      "category_id": 10,
+      "category_name": "DevOps, CI/CD and Platform Engineering",
+      "primary_role": "DevOps Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "devops-platform"
+      ],
+      "agents": [
+        "devops-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "pipeline-security-record"
+      ],
+      "quality_gate": "10-125",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 126,
+      "stage_name": "Release Planning",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "release-planning-record"
+      ],
+      "quality_gate": "11-126",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 127,
+      "stage_name": "Release Notes",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "release-notes-record"
+      ],
+      "quality_gate": "11-127",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 128,
+      "stage_name": "Release Readiness",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "release-readiness-record"
+      ],
+      "quality_gate": "11-128",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 129,
+      "stage_name": "Change Approval",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "change-approval-record"
+      ],
+      "quality_gate": "11-129",
+      "approval_required": true,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 130,
+      "stage_name": "Staging Deployment",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "staging-deployment-record"
+      ],
+      "quality_gate": "11-130",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 131,
+      "stage_name": "Staging Validation",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "staging-validation-record"
+      ],
+      "quality_gate": "11-131",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 132,
+      "stage_name": "Database Migration",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "database-migration-record"
+      ],
+      "quality_gate": "11-132",
+      "approval_required": true,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 133,
+      "stage_name": "Production Deployment",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "production-deployment-record"
+      ],
+      "quality_gate": "11-133",
+      "approval_required": true,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 134,
+      "stage_name": "Domain & DNS",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "domain--dns-record"
+      ],
+      "quality_gate": "11-134",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 135,
+      "stage_name": "SSL/TLS Setup",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "ssl-tls-setup-record"
+      ],
+      "quality_gate": "11-135",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 136,
+      "stage_name": "Load Balancer Setup",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "load-balancer-setup-record"
+      ],
+      "quality_gate": "11-136",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 137,
+      "stage_name": "Rollback Planning",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "rollback-planning-record"
+      ],
+      "quality_gate": "11-137",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 138,
+      "stage_name": "Production Smoke Test",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "production-smoke-test-record"
+      ],
+      "quality_gate": "11-138",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 139,
+      "stage_name": "Deployment Sign-off",
+      "category_id": 11,
+      "category_name": "Release Engineering and Deployment Management",
+      "primary_role": "Release Manager",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "release-deployment"
+      ],
+      "agents": [
+        "release-manager"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "deployment-sign-off-record"
+      ],
+      "quality_gate": "11-139",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 140,
+      "stage_name": "Cloud Hosting",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "cloud-hosting-record"
+      ],
+      "quality_gate": "12-140",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 141,
+      "stage_name": "Compute Management",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "compute-management-record"
+      ],
+      "quality_gate": "12-141",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 142,
+      "stage_name": "Database Hosting",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "database-hosting-record"
+      ],
+      "quality_gate": "12-142",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 143,
+      "stage_name": "Storage Management",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "storage-management-record"
+      ],
+      "quality_gate": "12-143",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 144,
+      "stage_name": "DNS Management",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "dns-management-record"
+      ],
+      "quality_gate": "12-144",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 145,
+      "stage_name": "SSL Certificate Management",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "ssl-certificate-management-record"
+      ],
+      "quality_gate": "12-145",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 146,
+      "stage_name": "Network Operations",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "network-operations-record"
+      ],
+      "quality_gate": "12-146",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 147,
+      "stage_name": "Backup Management",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "backup-management-record"
+      ],
+      "quality_gate": "12-147",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 148,
+      "stage_name": "Disaster Recovery",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "disaster-recovery-record"
+      ],
+      "quality_gate": "12-148",
+      "approval_required": true,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 149,
+      "stage_name": "High Availability",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "high-availability-record"
+      ],
+      "quality_gate": "12-149",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 150,
+      "stage_name": "Auto Scaling",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "auto-scaling-record"
+      ],
+      "quality_gate": "12-150",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 151,
+      "stage_name": "Cost Optimization",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "cost-optimization-record"
+      ],
+      "quality_gate": "12-151",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 152,
+      "stage_name": "Infrastructure Maintenance",
+      "category_id": 12,
+      "category_name": "Cloud Infrastructure and Hosting Operations",
+      "primary_role": "Cloud Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "cloud-hosting-operations"
+      ],
+      "agents": [
+        "cloud-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "infrastructure-maintenance-record"
+      ],
+      "quality_gate": "12-152",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 153,
+      "stage_name": "Application Monitoring",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "application-monitoring-record"
+      ],
+      "quality_gate": "13-153",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 154,
+      "stage_name": "Infrastructure Monitoring",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "infrastructure-monitoring-record"
+      ],
+      "quality_gate": "13-154",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 155,
+      "stage_name": "Centralized Logging",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "centralized-logging-record"
+      ],
+      "quality_gate": "13-155",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 156,
+      "stage_name": "Metrics Monitoring",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "metrics-monitoring-record"
+      ],
+      "quality_gate": "13-156",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 157,
+      "stage_name": "Distributed Tracing",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "distributed-tracing-record"
+      ],
+      "quality_gate": "13-157",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 158,
+      "stage_name": "Alert Management",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "alert-management-record"
+      ],
+      "quality_gate": "13-158",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 159,
+      "stage_name": "Uptime Monitoring",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "uptime-monitoring-record"
+      ],
+      "quality_gate": "13-159",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 160,
+      "stage_name": "SLA/SLO Management",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "sla-slo-management-record"
+      ],
+      "quality_gate": "13-160",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 161,
+      "stage_name": "Capacity Planning",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "capacity-planning-record"
+      ],
+      "quality_gate": "13-161",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 162,
+      "stage_name": "Incident Detection",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "incident-detection-record"
+      ],
+      "quality_gate": "13-162",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 163,
+      "stage_name": "Incident Response",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "incident-response-record"
+      ],
+      "quality_gate": "13-163",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 164,
+      "stage_name": "Root Cause Analysis",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "root-cause-analysis-record"
+      ],
+      "quality_gate": "13-164",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 165,
+      "stage_name": "Postmortem",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "postmortem-record"
+      ],
+      "quality_gate": "13-165",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 166,
+      "stage_name": "Reliability Improvement",
+      "category_id": 13,
+      "category_name": "Production Monitoring, Observability and SRE",
+      "primary_role": "SRE",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "sre-observability"
+      ],
+      "agents": [
+        "sre"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "reliability-improvement-record"
+      ],
+      "quality_gate": "13-166",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 167,
+      "stage_name": "L1 Support",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "l1-support-record"
+      ],
+      "quality_gate": "14-167",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 168,
+      "stage_name": "L2 Support",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "l2-support-record"
+      ],
+      "quality_gate": "14-168",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 169,
+      "stage_name": "L3 Support",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "l3-support-record"
+      ],
+      "quality_gate": "14-169",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 170,
+      "stage_name": "Bug Fixing",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "bug-fixing-record"
+      ],
+      "quality_gate": "14-170",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 171,
+      "stage_name": "Patch Management",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "patch-management-record"
+      ],
+      "quality_gate": "14-171",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 172,
+      "stage_name": "Dependency Updates",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "dependency-updates-record"
+      ],
+      "quality_gate": "14-172",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 173,
+      "stage_name": "Database Maintenance",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "database-maintenance-record"
+      ],
+      "quality_gate": "14-173",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 174,
+      "stage_name": "Performance Optimization",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "performance-optimization-record"
+      ],
+      "quality_gate": "14-174",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 175,
+      "stage_name": "Technical Debt Reduction",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "technical-debt-reduction-record"
+      ],
+      "quality_gate": "14-175",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 176,
+      "stage_name": "Feature Enhancement",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "feature-enhancement-record"
+      ],
+      "quality_gate": "14-176",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 177,
+      "stage_name": "Customer Feedback",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "customer-feedback-record"
+      ],
+      "quality_gate": "14-177",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 178,
+      "stage_name": "Knowledge Base",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "knowledge-base-record"
+      ],
+      "quality_gate": "14-178",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 179,
+      "stage_name": "Maintenance Release",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "maintenance-release-record"
+      ],
+      "quality_gate": "14-179",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 180,
+      "stage_name": "Product Lifecycle Management",
+      "category_id": 14,
+      "category_name": "Application Maintenance, Technical Support and Customer Success",
+      "primary_role": "Production Support Engineer",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "maintenance-support"
+      ],
+      "agents": [
+        "production-support-engineer"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "product-lifecycle-management-record"
+      ],
+      "quality_gate": "14-180",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 181,
+      "stage_name": "Engineering Governance",
+      "category_id": 15,
+      "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "enterprise-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "engineering-governance-record"
+      ],
+      "quality_gate": "15-181",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 182,
+      "stage_name": "Quality Governance",
+      "category_id": 15,
+      "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "enterprise-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "quality-governance-record"
+      ],
+      "quality_gate": "15-182",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 183,
+      "stage_name": "Security Governance",
+      "category_id": 15,
+      "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "enterprise-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "security-governance-record"
+      ],
+      "quality_gate": "15-183",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 184,
+      "stage_name": "Access Governance",
+      "category_id": 15,
+      "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "enterprise-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "access-governance-record"
+      ],
+      "quality_gate": "15-184",
+      "approval_required": true,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 185,
+      "stage_name": "Compliance Auditing",
+      "category_id": 15,
+      "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "enterprise-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "compliance-auditing-record"
+      ],
+      "quality_gate": "15-185",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 186,
+      "stage_name": "Documentation Governance",
+      "category_id": 15,
+      "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "enterprise-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "documentation-governance-record"
+      ],
+      "quality_gate": "15-186",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 187,
+      "stage_name": "Change Governance",
+      "category_id": 15,
+      "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "enterprise-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "change-governance-record"
+      ],
+      "quality_gate": "15-187",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 188,
+      "stage_name": "Vendor Management",
+      "category_id": 15,
+      "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "enterprise-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "vendor-management-record"
+      ],
+      "quality_gate": "15-188",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 189,
+      "stage_name": "FinOps Governance",
+      "category_id": 15,
+      "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "enterprise-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "finops-governance-record"
+      ],
+      "quality_gate": "15-189",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    },
+    {
+      "stage_id": 190,
+      "stage_name": "Process Improvement",
+      "category_id": 15,
+      "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
+      "primary_role": "Engineering Governance Specialist",
+      "supporting_roles": [
+        "Quality Governance Specialist",
+        "Technical Writer"
+      ],
+      "skills": [
+        "enterprise-governance"
+      ],
+      "agents": [
+        "engineering-governance-specialist"
+      ],
+      "workflow_ids": [
+        "new-product-development",
+        "feature-development",
+        "maintenance"
+      ],
+      "inputs": [
+        "approved upstream artifact",
+        "scope and constraints"
+      ],
+      "outputs": [
+        "process-improvement-record"
+      ],
+      "quality_gate": "15-190",
+      "approval_required": false,
+      "handoff_requirements": "Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.",
+      "validation_method": "Deterministic registry validation plus reviewed evidence artifact."
+    }
+  ]
+}

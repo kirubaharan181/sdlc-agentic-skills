@@ -1,0 +1,17 @@
+{
+  "gate_id": "<gate-id>",
+  "stage_id": "<integer>",
+  "status": "NOT_STARTED",
+  "commit_sha": "<exact-sha-or-artifact-digest>",
+  "executed_by": "<agent-or-human>",
+  "evidence": [
+    {
+      "type": "<test-report|review|scan|approval>",
+      "path": "<relative-path-or-url>",
+      "result": "<actual-result>"
+    }
+  ],
+  "timestamp": "<ISO-8601>",
+  "limitations": [],
+  "approved_by": null
+}

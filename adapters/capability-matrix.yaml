@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "platforms": [
+    {
+      "platform": "Claude Code",
+      "skill_discovery": "adapter-specific; validate against current official docs before activation",
+      "agent_definitions": "canonical registry projected where supported",
+      "command_support": "platform-dependent",
+      "hook_support": "platform-dependent",
+      "mcp_support": "platform-dependent",
+      "tool_permissions": "explicit least-privilege configuration required",
+      "model_configuration": "user/runtime controlled",
+      "context_limitations": "runtime-dependent",
+      "status": "documented; not asserted fully tested"
+    },
+    {
+      "platform": "OpenAI Codex",
+      "skill_discovery": "adapter-specific; validate against current official docs before activation",
+      "agent_definitions": "canonical registry projected where supported",
+      "command_support": "platform-dependent",
+      "hook_support": "platform-dependent",
+      "mcp_support": "platform-dependent",
+      "tool_permissions": "explicit least-privilege configuration required",
+      "model_configuration": "user/runtime controlled",
+      "context_limitations": "runtime-dependent",
+      "status": "documented; not asserted fully tested"
+    },
+    {
+      "platform": "Cursor",
+      "skill_discovery": "adapter-specific; validate against current official docs before activation",
+      "agent_definitions": "canonical registry projected where supported",
+      "command_support": "platform-dependent",
+      "hook_support": "platform-dependent",
+      "mcp_support": "platform-dependent",
+      "tool_permissions": "explicit least-privilege configuration required",
+      "model_configuration": "user/runtime controlled",
+      "context_limitations": "runtime-dependent",
+      "status": "documented; not asserted fully tested"
+    },
+    {
+      "platform": "GitHub Copilot",
+      "skill_discovery": "adapter-specific; validate against current official docs before activation",
+      "agent_definitions": "canonical registry projected where supported",
+      "command_support": "platform-dependent",
+      "hook_support": "platform-dependent",
+      "mcp_support": "platform-dependent",
+      "tool_permissions": "explicit least-privilege configuration required",
+      "model_configuration": "user/runtime controlled",
+      "context_limitations": "runtime-dependent",
+      "status": "documented; not asserted fully tested"
+    },
+    {
+      "platform": "Gemini CLI",
+      "skill_discovery": "adapter-specific; validate against current official docs before activation",
+      "agent_definitions": "canonical registry projected where supported",
+      "command_support": "platform-dependent",
+      "hook_support": "platform-dependent",
+      "mcp_support": "platform-dependent",
+      "tool_permissions": "explicit least-privilege configuration required",
+      "model_configuration": "user/runtime controlled",
+      "context_limitations": "runtime-dependent",
+      "status": "documented; not asserted fully tested"
+    },
+    {
+      "platform": "OpenCode",
+      "skill_discovery": "adapter-specific; validate against current official docs before activation",
+      "agent_definitions": "canonical registry projected where supported",
+      "command_support": "platform-dependent",
+      "hook_support": "platform-dependent",
+      "mcp_support": "platform-dependent",
+      "tool_permissions": "explicit least-privilege configuration required",
+      "model_configuration": "user/runtime controlled",
+      "context_limitations": "runtime-dependent",
+      "status": "documented; not asserted fully tested"
+    },
+    {
+      "platform": "Compatible Markdown Runtime",
+      "skill_discovery": "adapter-specific; validate against current official docs before activation",
+      "agent_definitions": "canonical registry projected where supported",
+      "command_support": "platform-dependent",
+      "hook_support": "platform-dependent",
+      "mcp_support": "platform-dependent",
+      "tool_permissions": "explicit least-privilege configuration required",
+      "model_configuration": "user/runtime controlled",
+      "context_limitations": "runtime-dependent",
+      "status": "documented; not asserted fully tested"
+    }
+  ]
+}
