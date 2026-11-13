@@ -135,6 +135,19 @@ for item in st:
     if expected and set(item.get("workflow_ids", [])) != expected:
         errors.append(f"stage {item.get('stage_id')}: incorrect semantic workflow assignment for {item.get('stage_name')}")
 
+stage_by_id = {item["stage_id"]: item for item in st}
+workflow_by_id = {item["workflow_id"]: item for item in wfs}
+for item in st:
+    for workflow_id in item.get("workflow_ids", []):
+        if item["stage_id"] not in workflow_by_id[workflow_id].get("stages", []):
+            errors.append(f"stage {item['stage_id']}: workflow membership is not reciprocal for {workflow_id}")
+for workflow in wfs:
+    if not workflow.get("stages"):
+        errors.append(f"workflow {workflow['workflow_id']}: no semantically assigned stages")
+    for stage_id in workflow.get("stages", []):
+        if workflow["workflow_id"] not in stage_by_id[stage_id].get("workflow_ids", []):
+            errors.append(f"workflow {workflow['workflow_id']}: stage membership is not reciprocal for {stage_id}")
+
 role_procedures = {}
 for item in agents:
     path = R / "agents" / f"{item['agent_id']}.md"
