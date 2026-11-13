@@ -3,8 +3,8 @@
     "name": "Atelier Engineering Command Center",
     "repository": "kirubaharan181/sdlc-agentic-skills",
     "sourceBranch": "fix/semantic-specialist-execution-depth-v2",
-    "sourceCommit": "7c668a40444a5e6c185d97ec08a278f8136be6d6",
-    "generatedAt": "2026-11-13T20:27:17.094711+00:00",
+    "sourceCommit": "427b9a020d78d6ab67edb2f277056d7ca9884f77",
+    "generatedAt": "2026-11-13T20:27:36.161246+00:00",
     "dataMode": "repository snapshot",
     "audit": {
       "unresolvedStageWorkflowReferences": [],
