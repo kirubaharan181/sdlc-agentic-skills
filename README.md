@@ -156,6 +156,8 @@ Explore the library visually through **Atelier**, its responsive, static web das
 
 The dashboard is a generated **repository snapshot**, not a live agent execution console. It does not claim that agents are running, gates have passed or external systems are connected.
 
+**First-time publication:** a repository owner must enable GitHub Pages once in **Settings → Pages → Build and deployment → Source → GitHub Actions**. The committed Pages workflow then publishes the dashboard from `dashboard/` on qualifying updates to `main`.
+
 ### Run the dashboard locally
 
 ```bash
