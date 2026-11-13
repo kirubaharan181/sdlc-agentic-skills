@@ -108,8 +108,8 @@ allowed_by_category = {
     "Release Engineering and Deployment Management": {"staging-release","production-release","rollback","database-migration","environment-configuration"},
     "Cloud Infrastructure and Hosting Operations": {"infrastructure-provisioning","disaster-recovery","incident-response","application-maintenance"},
     "Production Monitoring, Observability and SRE": {"incident-response","root-cause-analysis","disaster-recovery","production-release"},
-    "Application Maintenance, Technical Support and Customer Success": {"application-maintenance","bug-fix","emergency-hotfix","dependency-update","performance-optimization","incident-response"},
-    "Enterprise Governance, Audit, Risk and Continuous Improvement": {"new-product-development","production-release","security-vulnerability-remediation","application-maintenance","product-retirement","documentation-update"},
+    "Application Maintenance, Technical Support and Customer Success": {"application-maintenance","bug-fix","emergency-hotfix","dependency-update","performance-optimization","incident-response","product-retirement"},
+    "Enterprise Governance, Audit, Risk and Continuous Improvement": {"new-product-development","production-release","security-vulnerability-remediation","application-maintenance","product-retirement","documentation-update","root-cause-analysis","technical-debt-reduction","performance-optimization","infrastructure-provisioning","ci-cd-pipeline-creation","environment-configuration","emergency-hotfix"},
 }
 for item in st:
     allowed = allowed_by_category.get(item.get("category_name"), wids)
@@ -118,6 +118,22 @@ for item in st:
         errors.append(f"stage {item.get('stage_id')}: semantically invalid workflow mapping {sorted(invalid)}")
     if item.get("stage_name") == "Client Engagement" and "application-maintenance" in item.get("workflow_ids", []):
         errors.append("Client Engagement must not map to application-maintenance")
+    semantic_stage_workflows = {
+        "Process Improvement": {"root-cause-analysis","technical-debt-reduction"},
+        "Quality Governance": {"production-release","application-maintenance"},
+        "Security Governance": {"security-vulnerability-remediation","ci-cd-pipeline-creation"},
+        "Access Governance": {"security-vulnerability-remediation","application-maintenance"},
+        "Documentation Governance": {"documentation-update","application-maintenance"},
+        "Change Governance": {"production-release","emergency-hotfix","application-maintenance"},
+        "FinOps Governance": {"infrastructure-provisioning","performance-optimization","application-maintenance"},
+        "Vendor Management": {"product-retirement","new-product-development"},
+        "Product Lifecycle Management": {"product-retirement","application-maintenance"},
+    }
+    expected = semantic_stage_workflows.get(item.get("stage_name"))
+    if item.get("stage_name") == "Engineering Governance":
+        expected = {"ci-cd-pipeline-creation","environment-configuration","application-maintenance"}
+    if expected and set(item.get("workflow_ids", [])) != expected:
+        errors.append(f"stage {item.get('stage_id')}: incorrect semantic workflow assignment for {item.get('stage_name')}")
 
 role_procedures = {}
 for item in agents:
