@@ -241,15 +241,15 @@ def stage_profile(stage):
     if name == "License Compliance":
         rule=next(x for x in STAGE_RULES if x[0] == r"license compliance")
         _,purpose,inputs,steps,artifacts,criteria,validation=rule
-        return {"purpose":purpose,"inputs":inputs,"steps":steps,"artifacts":artifacts,"criteria":criteria,"validation":validation}
+        return _stage_result(stage,purpose,inputs,steps,artifacts,criteria,validation)
     for pattern,purpose,inputs,steps,artifacts,criteria,validation in STAGE_SPECIAL_CASES:
         if pattern == r"engineering governance" and "Enterprise Governance" not in category:
             continue
         if re.search(pattern,name,re.I):
-            return {"purpose":purpose,"inputs":inputs,"steps":steps,"artifacts":artifacts,"criteria":criteria,"validation":validation}
+            return _stage_result(stage,purpose,inputs,steps,artifacts,criteria,validation)
     for pattern,purpose,inputs,steps,artifacts,criteria,validation in STAGE_RULES:
         if re.search(pattern,name,re.I):
-            return {"purpose":purpose,"inputs":inputs,"steps":steps,"artifacts":artifacts,"criteria":criteria,"validation":validation}
+            return _stage_result(stage,purpose,inputs,steps,artifacts,criteria,validation)
     raise ValueError(f"No domain-specific execution profile for stage {stage['stage_id']}: {name}")
 
 ROLE_RULES = [
