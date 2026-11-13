@@ -114,6 +114,10 @@ Open **http://localhost:8000/dashboard/**.
 
 The dashboard is static: no database, API key or backend service is required. Google Fonts are progressive enhancement; system font fallbacks remain available.
 
+## Registry integrity note
+
+The current stage registry includes the workflow reference **maintenance**, while the workflow registry contains **application-maintenance**. The dashboard surfaces this unresolved reference (including the affected stage count) instead of silently treating the two identifiers as equivalent. The canonical source registries remain unchanged; reconcile the mapping in a dedicated source-data change when its intended meaning is confirmed.
+
 ## Trust & operating principles
 
 - **Evidence over assertion:** a gate is not PASS without traceable evidence tied to an exact revision and verification method.
