@@ -82,7 +82,7 @@ A request requires the controlled lifecycle to return service to a known-safe ve
 
 
 ## Stage set and accountable roles
-Stage IDs: 42, 137, 133, 132, 138, 147, 163, 165
+Stage IDs: 132, 133, 137, 138
 Accountable roles: incident-manager, deployment-engineer, database-administrator, sre
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

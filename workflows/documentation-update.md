@@ -73,7 +73,7 @@ A request requires the controlled lifecycle to correct and publish controlled do
 
 
 ## Stage set and accountable roles
-Stage IDs: 51, 178, 186, 67, 69, 85
+Stage IDs: 186
 Accountable roles: technical-writer, documentation-engineer, quality-governance-specialist
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

@@ -81,7 +81,7 @@ A request requires the controlled lifecycle to retire a product with consumer an
 
 
 ## Stage set and accountable roles
-Stage IDs: 9, 10, 134, 144, 147, 148, 167, 177, 180, 185, 187
+Stage IDs: 9, 10, 180, 185, 188
 Accountable roles: product-manager, vendor-management-specialist, compliance-specialist, technical-support-engineer
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

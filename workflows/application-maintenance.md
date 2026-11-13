@@ -76,7 +76,7 @@ A request requires the controlled lifecycle to operate and improve a live applic
 
 
 ## Stage set and accountable roles
-Stage IDs: 167, 168, 169, 170, 171, 172, 173, 174, 176, 178, 179, 180
+Stage IDs: 47, 48, 51, 52, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 184, 186, 187, 189
 Accountable roles: production-support-engineer, technical-support-engineer, backend-engineer, release-manager
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

@@ -76,7 +76,7 @@ A request requires the controlled lifecycle to deliver one bounded customer capa
 
 
 ## Stage set and accountable roles
-Stage IDs: 4, 11, 13, 14, 17, 18, 23, 27, 37, 39, 53, 54, 57, 67, 68, 69, 79, 80, 84, 85, 95, 109, 119, 131, 176
+Stage IDs: 3, 4, 5, 6, 7, 8, 11, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 25, 27, 30, 31, 32, 33, 36, 37, 38, 39, 40, 41, 42, 43, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 84, 85, 87, 88, 89, 90, 91, 92, 93, 94, 95, 97
 Accountable roles: product-owner, api-architect, full-stack-engineer, automation-qa-engineer
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

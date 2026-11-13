@@ -81,7 +81,7 @@ A request requires the controlled lifecycle to prove recoverability against RTO/
 
 
 ## Stage set and accountable roles
-Stage IDs: 147, 148, 149, 159, 160, 163, 165, 166
+Stage IDs: 141, 142, 143, 144, 145, 147, 148, 149, 151, 153, 154, 155, 156, 157, 159, 160, 161, 163, 165, 166
 Accountable roles: cloud-engineer, database-administrator, sre, incident-manager
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

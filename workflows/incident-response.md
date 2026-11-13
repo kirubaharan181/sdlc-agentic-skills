@@ -81,7 +81,7 @@ A request requires the controlled lifecycle to contain and recover from an opera
 
 
 ## Stage set and accountable roles
-Stage IDs: 158, 162, 163, 164, 165, 167, 168, 169, 138
+Stage IDs: 141, 142, 143, 144, 145, 151, 153, 154, 155, 156, 157, 158, 161, 162, 163, 164, 165, 167, 168, 169
 Accountable roles: incident-manager, sre, observability-engineer, production-support-engineer
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

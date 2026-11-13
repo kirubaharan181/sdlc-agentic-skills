@@ -82,7 +82,7 @@ A request requires the controlled lifecycle to provision reviewed infrastructure
 
 
 ## Stage set and accountable roles
-Stage IDs: 28, 103, 117, 120, 121, 140, 146, 149, 150, 152, 67, 69, 99, 110
+Stage IDs: 28, 47, 48, 51, 99, 103, 110, 116, 117, 120, 121, 122, 123, 140, 141, 142, 143, 144, 145, 146, 149, 150, 151, 152, 189
 Accountable roles: cloud-architect, infrastructure-engineer, network-engineer, cloud-engineer
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

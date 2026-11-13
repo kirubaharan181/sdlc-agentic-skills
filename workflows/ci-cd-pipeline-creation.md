@@ -82,7 +82,7 @@ A request requires the controlled lifecycle to create a trusted source-to-artifa
 
 
 ## Stage set and accountable roles
-Stage IDs: 45, 46, 50, 71, 99, 101, 111, 112, 113, 114, 115, 119, 124, 125, 79, 80
+Stage IDs: 45, 46, 47, 48, 50, 51, 52, 99, 100, 101, 102, 105, 106, 107, 111, 112, 113, 114, 115, 116, 119, 122, 123, 124, 125, 181, 183
 Accountable roles: devops-engineer, platform-engineer, devsecops-engineer, automation-qa-engineer
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

@@ -76,7 +76,7 @@ A request requires the controlled lifecycle to safely extend an existing product
 
 
 ## Stage set and accountable roles
-Stage IDs: 4, 11, 13, 14, 23, 34, 37, 39, 44, 53, 54, 67, 68, 69, 79, 80, 85, 95, 109, 119, 131, 176
+Stage IDs: 3, 4, 5, 6, 7, 8, 11, 13, 14, 15, 19, 20, 21, 22, 23, 25, 30, 31, 32, 33, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 53, 54, 55, 56, 58, 59, 60, 61, 62, 63, 64, 65, 67
 Accountable roles: product-owner, software-architect, full-stack-engineer, qa-lead
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

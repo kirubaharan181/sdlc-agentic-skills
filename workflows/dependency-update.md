@@ -80,7 +80,7 @@ A request requires the controlled lifecycle to update a dependency without compa
 
 
 ## Stage set and accountable roles
-Stage IDs: 72, 101, 108, 171, 172, 67, 69, 79, 80, 85, 110, 119, 131, 179
+Stage IDs: 69, 72, 100, 101, 102, 105, 106, 107, 108, 110, 171, 172, 179
 Accountable roles: devsecops-engineer, backend-engineer, license-compliance-specialist, automation-qa-engineer
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

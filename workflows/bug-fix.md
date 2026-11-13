@@ -77,7 +77,7 @@ A request requires the controlled lifecycle to restore a defective behavior with
 
 
 ## Stage set and accountable roles
-Stage IDs: 42, 96, 162, 163, 164, 170, 66, 67, 68, 69, 79, 85, 86, 124, 133, 138, 179
+Stage IDs: 55, 56, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 73, 74, 75, 76, 78, 79, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 96, 97, 170, 175, 177, 179
 Accountable roles: production-support-engineer, backend-engineer, code-reviewer, qa-lead
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

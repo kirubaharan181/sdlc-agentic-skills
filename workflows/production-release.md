@@ -82,7 +82,7 @@ A request requires the controlled lifecycle to release an exact approved artifac
 
 
 ## Stage set and accountable roles
-Stage IDs: 126, 127, 128, 129, 132, 133, 134, 135, 136, 137, 138, 139, 86, 109
+Stage IDs: 78, 81, 82, 83, 86, 87, 88, 89, 90, 91, 92, 93, 94, 97, 109, 126, 127, 128, 129, 132, 133, 134, 135, 136, 137, 138, 139, 182, 187
 Accountable roles: release-manager, deployment-engineer, sre, product-owner
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

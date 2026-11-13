@@ -76,7 +76,7 @@ A request requires the controlled lifecycle to reduce a documented debt hotspot 
 
 
 ## Stage set and accountable roles
-Stage IDs: 70, 76, 175, 37, 67, 69, 79, 85, 190
+Stage IDs: 37, 190
 Accountable roles: software-architect, full-stack-engineer, code-reviewer, qa-lead
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

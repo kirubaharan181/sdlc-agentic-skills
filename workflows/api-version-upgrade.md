@@ -82,7 +82,7 @@ A request requires the controlled lifecycle to evolve an API while protecting co
 
 
 ## Stage set and accountable roles
-Stage IDs: 27, 57, 81, 105, 132, 13, 14, 67, 69, 80, 81, 109, 126, 127, 131, 176
+Stage IDs: 27
 Accountable roles: api-architect, api-engineer, integration-engineer, api-testing-specialist
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

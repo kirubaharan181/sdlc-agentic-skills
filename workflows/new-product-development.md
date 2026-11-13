@@ -75,7 +75,7 @@ A request requires the controlled lifecycle to discover to operate a new product
 
 
 ## Stage set and accountable roles
-Stage IDs: 1, 2, 4, 11, 12, 13, 14, 16, 18, 23, 24, 27, 29, 35, 37, 39, 45, 47, 53, 54, 57, 58, 67, 68, 69, 71, 77, 79, 80, 81, 84, 85, 90, 95, 98, 99, 101, 107, 110, 111, 119, 126, 128, 130, 131, 133, 138, 153, 160, 166, 177, 190
+Stage IDs: 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 27, 29, 30, 31, 32, 33, 35, 36, 37, 38, 39, 40, 41, 42, 43, 188
 Accountable roles: product-manager, software-architect, full-stack-engineer, qa-lead, release-manager
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

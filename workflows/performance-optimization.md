@@ -77,7 +77,7 @@ A request requires the controlled lifecycle to improve measured system performan
 
 
 ## Stage set and accountable roles
-Stage IDs: 65, 91, 92, 93, 94, 161, 174, 166
+Stage IDs: 174, 189
 Accountable roles: performance-engineer, backend-engineer, database-engineer, sre
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

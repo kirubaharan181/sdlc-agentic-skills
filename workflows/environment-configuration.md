@@ -75,7 +75,7 @@ A request requires the controlled lifecycle to apply configuration safely across
 
 
 ## Stage set and accountable roles
-Stage IDs: 49, 50, 118, 120, 103, 107, 121, 67, 79, 99, 110, 131
+Stage IDs: 49, 50, 52, 118, 120, 121, 131, 181
 Accountable roles: devops-engineer, application-security-engineer, deployment-engineer
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

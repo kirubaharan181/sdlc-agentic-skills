@@ -83,7 +83,7 @@ A request requires the controlled lifecycle to change schema/data safely with re
 
 
 ## Stage set and accountable roles
-Stage IDs: 26, 58, 91, 122, 132, 137, 147, 148, 67, 79, 80, 91, 129, 130, 131, 133, 138
+Stage IDs: 26, 129, 130, 131, 132, 133, 137, 138
 Accountable roles: database-architect, database-administrator, database-engineer, release-manager
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

@@ -76,7 +76,7 @@ A request requires the controlled lifecycle to promote a release candidate throu
 
 
 ## Stage set and accountable roles
-Stage IDs: 126, 127, 128, 129, 130, 131, 138, 139, 77, 86, 95, 109
+Stage IDs: 77, 86, 95, 116, 122, 123, 126, 127, 128, 129, 130, 131, 138, 139
 Accountable roles: release-manager, deployment-engineer, qa-lead, application-security-engineer
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

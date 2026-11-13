@@ -74,7 +74,7 @@ A request requires the controlled lifecycle to establish causal learning after a
 
 
 ## Stage set and accountable roles
-Stage IDs: 42, 163, 164, 165, 166, 175, 190
+Stage IDs: 153, 154, 155, 156, 157, 161, 163, 164, 165, 166, 190
 Accountable roles: incident-manager, sre, software-architect, process-improvement-specialist
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 

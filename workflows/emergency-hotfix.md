@@ -82,7 +82,7 @@ A request requires the controlled lifecycle to mitigate active customer impact u
 
 
 ## Stage set and accountable roles
-Stage IDs: 42, 162, 163, 66, 67, 69, 79, 86, 124, 129, 133, 138, 165
+Stage IDs: 66, 67, 69, 70, 71, 73, 74, 75, 76, 175, 177, 187
 Accountable roles: incident-manager, backend-engineer, release-manager, sre
 Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 
