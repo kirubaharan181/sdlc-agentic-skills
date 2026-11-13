@@ -6,7 +6,7 @@
 
 **From first business question to reliable production operations — with clear ownership, guardrails, and proof at every meaningful decision.**
 
-[![Validate library](https://github.com/kirubaharan181/enterprise-engineering-skills/actions/workflows/validate.yml/badge.svg)](../../actions/workflows/validate.yml)
+[![Validate library](https://github.com/kirubaharan181/sdlc-agentic-skills/actions/workflows/validate.yml/badge.svg)](../../actions/workflows/validate.yml)
 ![SDLC coverage](https://img.shields.io/badge/SDLC%20coverage-190%2F190-22c55e?style=flat-square)
 ![Skills](https://img.shields.io/badge/skills-20-8b5cf6?style=flat-square)
 ![Specialist roles](https://img.shields.io/badge/specialist%20roles-74-0ea5e9?style=flat-square)
@@ -140,8 +140,8 @@ Use the [evidence record](templates/evidence-record.json), [handoff contract](or
 ## Quick start
 
 ```powershell
-git clone https://github.com/kirubaharan181/enterprise-engineering-skills.git
-cd enterprise-engineering-skills
+git clone https://github.com/kirubaharan181/sdlc-agentic-skills.git
+cd sdlc-agentic-skills
 python scripts/validate.py
 python scripts/run_tests.py
 ```
