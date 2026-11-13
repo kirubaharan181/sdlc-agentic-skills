@@ -1,63 +1,25 @@
 # New Product Development
 
-> **Outcome:** Every included stage has PASS evidence or an approved, non-expired waiver.
+> **Purpose:** discover to operate a new product
 
-## Trigger
-Approved request for new product development.
+## Trigger and required inputs
+Trigger: A request requires the controlled lifecycle to discover to operate a new product. Inputs: named request and owner, risk/impact classification, relevant artifact or environment reference.
 
-## Inputs
-- request
-- risk classification
-- applicable artifacts
+## Lifecycle phases
+1. **Frame opportunity** — complete the relevant mapped stages and retain evidence.
+2. **Validate requirements** — complete the relevant mapped stages and retain evidence.
+3. **Design architecture** — complete the relevant mapped stages and retain evidence.
+4. **Build and verify** — complete the relevant mapped stages and retain evidence.
+5. **Release and operate** — complete the relevant mapped stages and retain evidence.
 
-## Flow
+## Stage set and accountable roles
+Stage IDs: 1, 2, 4, 11, 12, 13, 14, 16, 18, 23, 24, 27, 29, 35, 37, 39, 45, 47, 53, 54, 57, 58, 67, 68, 69, 71, 77, 79, 80, 81, 84, 85, 90, 95, 98, 99, 101, 107, 110, 111, 119, 126, 128, 130, 131, 133, 138, 153, 160, 166, 177, 190. Accountable roles: product-manager, software-architect, full-stack-engineer, qa-lead, release-manager. Required skills: master-orchestration, evidence-quality-gates, secure-change-control.
 
-```mermaid
-flowchart LR
-    A[Validate inputs] --> B[Execute assigned stages]
-    B --> C[Collect evidence]
-    C --> D{Evaluate gates}
-    D -->|PASS| E[Handoff]
-    D -->|FAIL / BLOCKED| F[Remediate or escalate]
-    F --> B
-```
+## Gates, rollback and communication
+Gates: scope-and-risk, quality-evidence, security-disposition. Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state. Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.
 
-## Stages and dependencies
+## Failure path and completion
+Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence. Complete only when: All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted.
 
-**Included stage IDs:** 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190.
-
-Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.
-
-## Roles and skills
-
-| Accountable roles | Control skills |
-|---|---|
-| project-manager, full-stack-engineer, qa-lead, application-security-engineer, release-manager | master-orchestration, evidence-quality-gates, secure-change-control |
-
-## Parallel tasks
-- documentation and test planning after requirements approval
-
-## Approval gates
-- business
-- requirements
-- architecture
-- qa
-- security
-
-## Outputs and evidence
-
-Outputs: versioned artifacts, evidence bundle, final workflow report. Include immutable revision/digest, validation reports, gate statuses, limitations, and handoff receiver.
-
-## Failure handling
-
-Stop unsafe work; mark failed gate; create remediation/rollback path. Never report a completed workflow while a required gate is failing, blocked, or inconclusive.
-
-## Completion criteria
-
-Every included stage has PASS evidence or an approved, non-expired waiver.
-
-## Related controls
-
-- [Master orchestrator](../orchestrator/MASTER_ORCHESTRATOR.md)
-- [Evidence gate policy](../orchestrator/policies/GATE_POLICY.md)
-- [Standard handoff](../orchestrator/handoff-contracts/STANDARD_HANDOFF.md)
+## Example
+For this workflow, create the evidence bundle before asking for a gate decision; if a prerequisite fails, communicate the impact and execute the documented remediation/compensation route rather than advancing on assumption.

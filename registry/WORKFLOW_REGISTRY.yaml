@@ -1,146 +1,900 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "workflows": [
     {
       "workflow_id": "new-product-development",
-      "trigger": "Approved request for new product development.",
+      "trigger": "A request requires the controlled lifecycle to discover to operate a new product.",
+      "purpose": "discover to operate a new product",
+      "phases": [
+        "Frame opportunity",
+        "Validate requirements",
+        "Design architecture",
+        "Build and verify",
+        "Release and operate"
+      ],
       "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
       ],
       "stages": [
         1,
         2,
-        3,
         4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
         11,
         12,
         13,
         14,
-        15,
         16,
-        17,
         18,
-        19,
-        20,
-        21,
-        22,
         23,
         24,
-        25,
-        26,
         27,
-        28,
         29,
-        30,
-        31,
-        32,
-        33,
-        34,
         35,
-        36,
         37,
-        38,
         39,
-        40,
-        41,
-        42,
-        43,
-        44,
         45,
-        46,
         47,
-        48,
-        49,
-        50,
-        51,
-        52,
         53,
         54,
-        55,
-        56,
         57,
         58,
-        59,
-        60,
-        61,
-        62,
-        63,
-        64,
-        65,
+        67,
+        68,
+        69,
+        71,
+        77,
+        79,
+        80,
+        81,
+        84,
+        85,
+        90,
+        95,
+        98,
+        99,
+        101,
+        107,
+        110,
+        111,
+        119,
+        126,
+        128,
+        130,
+        131,
+        133,
+        138,
+        153,
+        160,
+        166,
+        177,
+        190
+      ],
+      "responsible_agents": [
+        "product-manager",
+        "software-architect",
+        "full-stack-engineer",
+        "qa-lead",
+        "release-manager"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "existing-application-enhancement",
+      "trigger": "A request requires the controlled lifecycle to safely extend an existing product.",
+      "purpose": "safely extend an existing product",
+      "phases": [
+        "Assess current behavior",
+        "Refine compatibility scope",
+        "Implement bounded enhancement",
+        "Regression/security review",
+        "Measure outcome"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        4,
+        11,
+        13,
+        14,
+        23,
+        34,
+        37,
+        39,
+        44,
+        53,
+        54,
+        67,
+        68,
+        69,
+        79,
+        80,
+        85,
+        95,
+        109,
+        119,
+        131,
+        176
+      ],
+      "responsible_agents": [
+        "product-owner",
+        "software-architect",
+        "full-stack-engineer",
+        "qa-lead"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "feature-development",
+      "trigger": "A request requires the controlled lifecycle to deliver one bounded customer capability.",
+      "purpose": "deliver one bounded customer capability",
+      "phases": [
+        "Define acceptance",
+        "Design contracts",
+        "Implement vertical slice",
+        "Review and verify",
+        "Release and learn"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        4,
+        11,
+        13,
+        14,
+        17,
+        18,
+        23,
+        27,
+        37,
+        39,
+        53,
+        54,
+        57,
+        67,
+        68,
+        69,
+        79,
+        80,
+        84,
+        85,
+        95,
+        109,
+        119,
+        131,
+        176
+      ],
+      "responsible_agents": [
+        "product-owner",
+        "api-architect",
+        "full-stack-engineer",
+        "automation-qa-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "bug-fix",
+      "trigger": "A request requires the controlled lifecycle to restore a defective behavior with minimal change.",
+      "purpose": "restore a defective behavior with minimal change",
+      "phases": [
+        "Triage severity and impact",
+        "Reproduce and isolate root cause",
+        "Implement minimal correction",
+        "Run regression and review",
+        "Deploy and verify"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        42,
+        96,
+        162,
+        163,
+        164,
+        170,
         66,
         67,
         68,
         69,
-        70,
-        71,
-        72,
-        73,
-        74,
-        75,
-        76,
-        77,
-        78,
         79,
-        80,
-        81,
-        82,
-        83,
-        84,
         85,
         86,
-        87,
-        88,
-        89,
-        90,
-        91,
-        92,
-        93,
-        94,
-        95,
-        96,
-        97,
+        124,
+        133,
+        138,
+        179
+      ],
+      "responsible_agents": [
+        "production-support-engineer",
+        "backend-engineer",
+        "code-reviewer",
+        "qa-lead"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "emergency-hotfix",
+      "trigger": "A request requires the controlled lifecycle to mitigate active customer impact under emergency control.",
+      "purpose": "mitigate active customer impact under emergency control",
+      "phases": [
+        "Establish incident command",
+        "Apply safe mitigation",
+        "Constrain minimal patch",
+        "Authorize and deploy expedited fix",
+        "Verify recovery and retrospective"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        42,
+        162,
+        163,
+        66,
+        67,
+        69,
+        79,
+        86,
+        124,
+        129,
+        133,
+        138,
+        165
+      ],
+      "responsible_agents": [
+        "incident-manager",
+        "backend-engineer",
+        "release-manager",
+        "sre"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "security-vulnerability-remediation",
+      "trigger": "A request requires the controlled lifecycle to remove a validated security exposure.",
+      "purpose": "remove a validated security exposure",
+      "phases": [
+        "Validate finding",
+        "Assess exploitability and SLA",
+        "Remediate",
+        "Independently retest",
+        "Release and accept residual risk"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
         98,
         99,
-        100,
         101,
-        102,
-        103,
         104,
-        105,
-        106,
-        107,
-        108,
         109,
         110,
+        42,
+        67,
+        69,
+        79,
+        85,
+        109,
+        119,
+        128,
+        133,
+        165
+      ],
+      "responsible_agents": [
+        "vulnerability-analyst",
+        "application-security-engineer",
+        "backend-engineer",
+        "security-auditor"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "dependency-update",
+      "trigger": "A request requires the controlled lifecycle to update a dependency without compatibility regression.",
+      "purpose": "update a dependency without compatibility regression",
+      "phases": [
+        "Inventory advisories",
+        "Assess compatibility/license",
+        "Update provenance",
+        "Regression/security test",
+        "Release and monitor"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        72,
+        101,
+        108,
+        171,
+        172,
+        67,
+        69,
+        79,
+        80,
+        85,
+        110,
+        119,
+        131,
+        179
+      ],
+      "responsible_agents": [
+        "devsecops-engineer",
+        "backend-engineer",
+        "license-compliance-specialist",
+        "automation-qa-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "database-migration",
+      "trigger": "A request requires the controlled lifecycle to change schema/data safely with reconciled state.",
+      "purpose": "change schema/data safely with reconciled state",
+      "phases": [
+        "Assess schema/data impact",
+        "Rehearse backup and restore",
+        "Test compatibility and integrity",
+        "Execute approved window",
+        "Reconcile and monitor"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        26,
+        58,
+        91,
+        122,
+        132,
+        137,
+        147,
+        148,
+        67,
+        79,
+        80,
+        91,
+        129,
+        130,
+        131,
+        133,
+        138
+      ],
+      "responsible_agents": [
+        "database-architect",
+        "database-administrator",
+        "database-engineer",
+        "release-manager"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "api-version-upgrade",
+      "trigger": "A request requires the controlled lifecycle to evolve an API while protecting consumers.",
+      "purpose": "evolve an API while protecting consumers",
+      "phases": [
+        "Inventory consumers",
+        "Design version and migration",
+        "Implement compatibility",
+        "Run contract/security tests",
+        "Publish and deprecate"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        27,
+        57,
+        81,
+        105,
+        132,
+        13,
+        14,
+        67,
+        69,
+        80,
+        81,
+        109,
+        126,
+        127,
+        131,
+        176
+      ],
+      "responsible_agents": [
+        "api-architect",
+        "api-engineer",
+        "integration-engineer",
+        "api-testing-specialist"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "infrastructure-provisioning",
+      "trigger": "A request requires the controlled lifecycle to provision reviewed infrastructure from desired state.",
+      "purpose": "provision reviewed infrastructure from desired state",
+      "phases": [
+        "Design desired state",
+        "Review IaC/network/security",
+        "Plan approved change",
+        "Provision and verify drift",
+        "Handoff operations"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        28,
+        103,
+        117,
+        120,
+        121,
+        140,
+        146,
+        149,
+        150,
+        152,
+        67,
+        69,
+        99,
+        110
+      ],
+      "responsible_agents": [
+        "cloud-architect",
+        "infrastructure-engineer",
+        "network-engineer",
+        "cloud-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "environment-configuration",
+      "trigger": "A request requires the controlled lifecycle to apply configuration safely across environments.",
+      "purpose": "apply configuration safely across environments",
+      "phases": [
+        "Classify sensitivity",
+        "Prepare scoped delta",
+        "Validate resolution",
+        "Apply protected change",
+        "Verify/document"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        49,
+        50,
+        118,
+        120,
+        103,
+        107,
+        121,
+        67,
+        79,
+        99,
+        110,
+        131
+      ],
+      "responsible_agents": [
+        "devops-engineer",
+        "application-security-engineer",
+        "deployment-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "ci-cd-pipeline-creation",
+      "trigger": "A request requires the controlled lifecycle to create a trusted source-to-artifact delivery path.",
+      "purpose": "create a trusted source-to-artifact delivery path",
+      "phases": [
+        "Map trust boundaries",
+        "Build/test/scan/provenance",
+        "Protect immutable artifacts",
+        "Exercise recovery",
+        "Document ownership"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        45,
+        46,
+        50,
+        71,
+        99,
+        101,
         111,
         112,
         113,
         114,
         115,
-        116,
-        117,
-        118,
         119,
-        120,
-        121,
-        122,
-        123,
         124,
         125,
+        79,
+        80
+      ],
+      "responsible_agents": [
+        "devops-engineer",
+        "platform-engineer",
+        "devsecops-engineer",
+        "automation-qa-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "staging-release",
+      "trigger": "A request requires the controlled lifecycle to promote a release candidate through staging evidence.",
+      "purpose": "promote a release candidate through staging evidence",
+      "phases": [
+        "Select immutable candidate",
+        "Deploy staging",
+        "Run validation suite",
+        "Record readiness",
+        "Promote/reject"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
         126,
         127,
         128,
         129,
         130,
         131,
+        138,
+        139,
+        77,
+        86,
+        95,
+        109
+      ],
+      "responsible_agents": [
+        "release-manager",
+        "deployment-engineer",
+        "qa-lead",
+        "application-security-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "production-release",
+      "trigger": "A request requires the controlled lifecycle to release an exact approved artifact progressively.",
+      "purpose": "release an exact approved artifact progressively",
+      "phases": [
+        "Confirm artifact/readiness",
+        "Obtain change approval",
+        "Progressively roll out",
+        "Validate health/business outcomes",
+        "Confirm or roll back"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        126,
+        127,
+        128,
+        129,
         132,
         133,
         134,
@@ -149,33 +903,509 @@
         137,
         138,
         139,
-        140,
-        141,
-        142,
-        143,
-        144,
-        145,
-        146,
+        86,
+        109
+      ],
+      "responsible_agents": [
+        "release-manager",
+        "deployment-engineer",
+        "sre",
+        "product-owner"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "rollback",
+      "trigger": "A request requires the controlled lifecycle to return service to a known-safe version or forward fix.",
+      "purpose": "return service to a known-safe version or forward fix",
+      "phases": [
+        "Confirm trigger",
+        "Assess data-state safety",
+        "Authorize rollback/forward fix",
+        "Execute recovery",
+        "Verify and communicate"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        42,
+        137,
+        133,
+        132,
+        138,
         147,
-        148,
-        149,
-        150,
-        151,
-        152,
-        153,
-        154,
-        155,
-        156,
-        157,
+        163,
+        165
+      ],
+      "responsible_agents": [
+        "incident-manager",
+        "deployment-engineer",
+        "database-administrator",
+        "sre"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "incident-response",
+      "trigger": "A request requires the controlled lifecycle to contain and recover from an operational incident.",
+      "purpose": "contain and recover from an operational incident",
+      "phases": [
+        "Assign commander/severity",
+        "Assess impact/timeline",
+        "Contain and investigate",
+        "Recover and verify",
+        "Handoff and postmortem"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
         158,
-        159,
-        160,
-        161,
         162,
         163,
         164,
         165,
+        167,
+        168,
+        169,
+        138
+      ],
+      "responsible_agents": [
+        "incident-manager",
+        "sre",
+        "observability-engineer",
+        "production-support-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "root-cause-analysis",
+      "trigger": "A request requires the controlled lifecycle to establish causal learning after an incident.",
+      "purpose": "establish causal learning after an incident",
+      "phases": [
+        "Collect timeline",
+        "Test causal hypotheses",
+        "Identify contributors",
+        "Assign corrective actions",
+        "Verify follow-through"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        42,
+        163,
+        164,
+        165,
         166,
+        175,
+        190
+      ],
+      "responsible_agents": [
+        "incident-manager",
+        "sre",
+        "software-architect",
+        "process-improvement-specialist"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "disaster-recovery",
+      "trigger": "A request requires the controlled lifecycle to prove recoverability against RTO/RPO objectives.",
+      "purpose": "prove recoverability against RTO/RPO objectives",
+      "phases": [
+        "Confirm RTO/RPO",
+        "Prepare isolated recovery",
+        "Restore/fail over",
+        "Validate integrity",
+        "Measure gaps"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        147,
+        148,
+        149,
+        159,
+        160,
+        163,
+        165,
+        166
+      ],
+      "responsible_agents": [
+        "cloud-engineer",
+        "database-administrator",
+        "sre",
+        "incident-manager"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "performance-optimization",
+      "trigger": "A request requires the controlled lifecycle to improve measured system performance.",
+      "purpose": "improve measured system performance",
+      "phases": [
+        "Baseline workload",
+        "Profile bottleneck",
+        "Implement measured improvement",
+        "Load/regression verify",
+        "Monitor capacity"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        65,
+        91,
+        92,
+        93,
+        94,
+        161,
+        174,
+        166
+      ],
+      "responsible_agents": [
+        "performance-engineer",
+        "backend-engineer",
+        "database-engineer",
+        "sre"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "technical-debt-reduction",
+      "trigger": "A request requires the controlled lifecycle to reduce a documented debt hotspot without behavior loss.",
+      "purpose": "reduce a documented debt hotspot without behavior loss",
+      "phases": [
+        "Identify debt hotspot",
+        "Plan safe refactor",
+        "Add characterization tests",
+        "Review regression",
+        "Track remaining debt"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        70,
+        76,
+        175,
+        37,
+        67,
+        69,
+        79,
+        85,
+        190
+      ],
+      "responsible_agents": [
+        "software-architect",
+        "full-stack-engineer",
+        "code-reviewer",
+        "qa-lead"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "documentation-update",
+      "trigger": "A request requires the controlled lifecycle to correct and publish controlled documentation.",
+      "purpose": "correct and publish controlled documentation",
+      "phases": [
+        "Identify audience/source",
+        "Draft accurate content",
+        "Review links/examples",
+        "Publish",
+        "Set review date"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        51,
+        178,
+        186,
+        67,
+        69,
+        85
+      ],
+      "responsible_agents": [
+        "technical-writer",
+        "documentation-engineer",
+        "quality-governance-specialist"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "product-retirement",
+      "trigger": "A request requires the controlled lifecycle to retire a product with consumer and data obligations closed.",
+      "purpose": "retire a product with consumer and data obligations closed",
+      "phases": [
+        "Approve EOL",
+        "Inventory consumers/data/vendors",
+        "Migrate and communicate",
+        "Stage shutdown",
+        "Close audit and support"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
+        9,
+        10,
+        134,
+        144,
+        147,
+        148,
+        167,
+        177,
+        180,
+        185,
+        187
+      ],
+      "responsible_agents": [
+        "product-manager",
+        "vendor-management-specialist",
+        "compliance-specialist",
+        "technical-support-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
+      "parallel_tasks": [
+        "independent test/security analysis against the same immutable revision"
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
+    },
+    {
+      "workflow_id": "application-maintenance",
+      "trigger": "A request requires the controlled lifecycle to operate and improve a live application.",
+      "purpose": "operate and improve a live application",
+      "phases": [
+        "Triage maintenance demand",
+        "Diagnose impact",
+        "Patch/update safely",
+        "Verify and publish knowledge",
+        "Plan maintenance release"
+      ],
+      "required_inputs": [
+        "named request and owner",
+        "risk/impact classification",
+        "relevant artifact or environment reference"
+      ],
+      "stages": [
         167,
         168,
         169,
@@ -184,28 +1414,15 @@
         172,
         173,
         174,
-        175,
         176,
-        177,
         178,
         179,
-        180,
-        181,
-        182,
-        183,
-        184,
-        185,
-        186,
-        187,
-        188,
-        189,
-        190
+        180
       ],
       "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
+        "production-support-engineer",
+        "technical-support-engineer",
+        "backend-engineer",
         "release-manager"
       ],
       "required_skills": [
@@ -213,1262 +1430,24 @@
         "evidence-quality-gates",
         "secure-change-control"
       ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
+      "dependencies": "Each phase requires stable inputs and evidence from predecessor stages; independent read-only analysis may run in parallel.",
       "parallel_tasks": [
-        "documentation and test planning after requirements approval"
+        "independent test/security analysis against the same immutable revision"
       ],
       "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
       ],
       "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "existing-application-enhancement",
-      "trigger": "Approved request for existing application enhancement.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "feature-development",
-      "trigger": "Approved request for feature development.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "bug-fix",
-      "trigger": "Approved request for bug fix.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "emergency-hotfix",
-      "trigger": "Approved request for emergency hotfix.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "security-vulnerability-remediation",
-      "trigger": "Approved request for security vulnerability remediation.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "dependency-update",
-      "trigger": "Approved request for dependency update.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "database-migration",
-      "trigger": "Approved request for database migration.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "api-version-upgrade",
-      "trigger": "Approved request for api version upgrade.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "infrastructure-provisioning",
-      "trigger": "Approved request for infrastructure provisioning.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "environment-configuration",
-      "trigger": "Approved request for environment configuration.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "ci-cd-pipeline-creation",
-      "trigger": "Approved request for ci cd pipeline creation.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "staging-release",
-      "trigger": "Approved request for staging release.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "production-release",
-      "trigger": "Approved request for production release.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "rollback",
-      "trigger": "Approved request for rollback.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "incident-response",
-      "trigger": "Approved request for incident response.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "root-cause-analysis",
-      "trigger": "Approved request for root cause analysis.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "disaster-recovery",
-      "trigger": "Approved request for disaster recovery.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "performance-optimization",
-      "trigger": "Approved request for performance optimization.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "technical-debt-reduction",
-      "trigger": "Approved request for technical debt reduction.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "documentation-update",
-      "trigger": "Approved request for documentation update.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "product-retirement",
-      "trigger": "Approved request for product retirement.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "application-maintenance",
-      "trigger": "Approved request for application maintenance.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
+        "workflow evidence bundle",
+        "decision log",
+        "accepted operational handoff"
+      ],
+      "failure_handling": "Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state.",
+      "communication_plan": "Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.",
+      "completion_criteria": "All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted."
     }
   ]
 }

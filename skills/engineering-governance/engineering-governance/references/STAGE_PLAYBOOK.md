@@ -1,123 +1,123 @@
-# Development Environment and Engineering Governance — Stage Playbook
+# Engineering Governance — Stage Playbook
 
-Use this reference after loading the category skill. Each entry is a bounded execution contract; tailor tooling to the project without weakening the control.
+> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 45. Repository Setup
 
-**Purpose:** Establish a decision-ready, auditable result for Repository Setup without bypassing upstream controls.
+**Purpose:** Make a decision-ready Repository Setup result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the engineering-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Repository Setup; record assumptions rather than silently choosing them.
+- Produce the Repository Setup artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** repository-setup-record, structured-evidence-record, handoff-note
-**Quality gate:** `05-045` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Repository Setup, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** repository-setup-artifact
+**Verification:** Review Repository Setup against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 46. Branching Strategy
 
-**Purpose:** Establish a decision-ready, auditable result for Branching Strategy without bypassing upstream controls.
+**Purpose:** Make a decision-ready Branching Strategy result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the engineering-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Branching Strategy; record assumptions rather than silently choosing them.
+- Produce the Branching Strategy artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** branching-strategy-record, structured-evidence-record, handoff-note
-**Quality gate:** `05-046` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Branching Strategy, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** branching-strategy-artifact
+**Verification:** Review Branching Strategy against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 47. Development Environment
 
-**Purpose:** Establish a decision-ready, auditable result for Development Environment without bypassing upstream controls.
+**Purpose:** Make a decision-ready Development Environment result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the engineering-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Development Environment; record assumptions rather than silently choosing them.
+- Produce the Development Environment artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** development-environment-record, structured-evidence-record, handoff-note
-**Quality gate:** `05-047` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Development Environment, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** development-environment-artifact
+**Verification:** Review Development Environment against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 48. Coding Standards
 
-**Purpose:** Establish a decision-ready, auditable result for Coding Standards without bypassing upstream controls.
+**Purpose:** Make a decision-ready Coding Standards result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the engineering-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Coding Standards; record assumptions rather than silently choosing them.
+- Produce the Coding Standards artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** coding-standards-record, structured-evidence-record, handoff-note
-**Quality gate:** `05-048` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Coding Standards, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** coding-standards-artifact
+**Verification:** Review Coding Standards against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 49. Environment Configuration
 
-**Purpose:** Establish a decision-ready, auditable result for Environment Configuration without bypassing upstream controls.
+**Purpose:** Make a decision-ready Environment Configuration result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the engineering-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Environment Configuration; record assumptions rather than silently choosing them.
+- Produce the Environment Configuration artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** environment-configuration-record, structured-evidence-record, handoff-note
-**Quality gate:** `05-049` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Environment Configuration, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** environment-configuration-artifact
+**Verification:** Review Environment Configuration against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 50. Secrets Management
 
-**Purpose:** Establish a decision-ready, auditable result for Secrets Management without bypassing upstream controls.
+**Purpose:** Make a decision-ready Secrets Management result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the engineering-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Secrets Management; record assumptions rather than silently choosing them.
+- Produce the Secrets Management artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** secrets-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `05-050` — human approval required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Secrets Management, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** secrets-management-artifact
+**Verification:** Review Secrets Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 51. Developer Documentation
 
-**Purpose:** Establish a decision-ready, auditable result for Developer Documentation without bypassing upstream controls.
+**Purpose:** Make a decision-ready Developer Documentation result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the engineering-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Developer Documentation; record assumptions rather than silently choosing them.
+- Produce the Developer Documentation artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** developer-documentation-record, structured-evidence-record, handoff-note
-**Quality gate:** `05-051` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Developer Documentation, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** developer-documentation-artifact
+**Verification:** Review Developer Documentation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 52. Engineering Governance
 
-**Purpose:** Establish a decision-ready, auditable result for Engineering Governance without bypassing upstream controls.
+**Purpose:** Make a decision-ready Engineering Governance result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the engineering-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Engineering Governance; record assumptions rather than silently choosing them.
+- Produce the Engineering Governance artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** engineering-governance-record, structured-evidence-record, handoff-note
-**Quality gate:** `05-052` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Engineering Governance, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** engineering-governance-artifact
+**Verification:** Review Engineering Governance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.

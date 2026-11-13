@@ -1,198 +1,198 @@
-# Cybersecurity, Application Security and Compliance — Stage Playbook
+# Application Security — Stage Playbook
 
-Use this reference after loading the category skill. Each entry is a bounded execution contract; tailor tooling to the project without weakening the control.
+> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 98. Threat Modeling
 
-**Purpose:** Establish a decision-ready, auditable result for Threat Modeling without bypassing upstream controls.
+**Purpose:** Make a decision-ready Threat Modeling result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Threat Modeling; record assumptions rather than silently choosing them.
+- Produce the Threat Modeling artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** threat-modeling-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-098` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Threat Modeling, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** threat-modeling-artifact
+**Verification:** Review Threat Modeling against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 99. SAST
 
-**Purpose:** Establish a decision-ready, auditable result for SAST without bypassing upstream controls.
+**Purpose:** Make a decision-ready SAST result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect SAST; record assumptions rather than silently choosing them.
+- Produce the SAST artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** sast-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-099` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to SAST, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** sast-artifact
+**Verification:** Review SAST against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 100. DAST
 
-**Purpose:** Establish a decision-ready, auditable result for DAST without bypassing upstream controls.
+**Purpose:** Make a decision-ready DAST result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect DAST; record assumptions rather than silently choosing them.
+- Produce the DAST artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** dast-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-100` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to DAST, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** dast-artifact
+**Verification:** Review DAST against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 101. SCA
 
-**Purpose:** Establish a decision-ready, auditable result for SCA without bypassing upstream controls.
+**Purpose:** Make a decision-ready SCA result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect SCA; record assumptions rather than silently choosing them.
+- Produce the SCA artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** sca-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-101` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to SCA, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** sca-artifact
+**Verification:** Review SCA against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 102. Container Security
 
-**Purpose:** Establish a decision-ready, auditable result for Container Security without bypassing upstream controls.
+**Purpose:** Make a decision-ready Container Security result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Container Security; record assumptions rather than silently choosing them.
+- Produce the Container Security artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** container-security-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-102` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Container Security, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** container-security-artifact
+**Verification:** Review Container Security against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 103. Infrastructure Security
 
-**Purpose:** Establish a decision-ready, auditable result for Infrastructure Security without bypassing upstream controls.
+**Purpose:** Make a decision-ready Infrastructure Security result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Infrastructure Security; record assumptions rather than silently choosing them.
+- Produce the Infrastructure Security artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** infrastructure-security-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-103` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Infrastructure Security, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** infrastructure-security-artifact
+**Verification:** Review Infrastructure Security against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 104. Penetration Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Penetration Testing without bypassing upstream controls.
+**Purpose:** Make a decision-ready Penetration Testing result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Penetration Testing; record assumptions rather than silently choosing them.
+- Produce the Penetration Testing artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** penetration-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-104` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Penetration Testing, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** penetration-testing-artifact
+**Verification:** Review Penetration Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 105. Authentication Security
 
-**Purpose:** Establish a decision-ready, auditable result for Authentication Security without bypassing upstream controls.
+**Purpose:** Make a decision-ready Authentication Security result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Authentication Security; record assumptions rather than silently choosing them.
+- Produce the Authentication Security artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** authentication-security-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-105` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Authentication Security, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** authentication-security-artifact
+**Verification:** Review Authentication Security against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 106. Data Protection
 
-**Purpose:** Establish a decision-ready, auditable result for Data Protection without bypassing upstream controls.
+**Purpose:** Make a decision-ready Data Protection result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Data Protection; record assumptions rather than silently choosing them.
+- Produce the Data Protection artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** data-protection-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-106` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Data Protection, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** data-protection-artifact
+**Verification:** Review Data Protection against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 107. Compliance Review
 
-**Purpose:** Establish a decision-ready, auditable result for Compliance Review without bypassing upstream controls.
+**Purpose:** Make a decision-ready Compliance Review result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Compliance Review; record assumptions rather than silently choosing them.
+- Produce the Compliance Review artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** compliance-review-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-107` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Compliance Review, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** compliance-review-artifact
+**Verification:** Review Compliance Review against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 108. License Compliance
 
-**Purpose:** Establish a decision-ready, auditable result for License Compliance without bypassing upstream controls.
+**Purpose:** Make a decision-ready License Compliance result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect License Compliance; record assumptions rather than silently choosing them.
+- Produce the License Compliance artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** license-compliance-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-108` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to License Compliance, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** license-compliance-artifact
+**Verification:** Review License Compliance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 109. Vulnerability Remediation
 
-**Purpose:** Establish a decision-ready, auditable result for Vulnerability Remediation without bypassing upstream controls.
+**Purpose:** Make a decision-ready Vulnerability Remediation result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Vulnerability Remediation; record assumptions rather than silently choosing them.
+- Produce the Vulnerability Remediation artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** vulnerability-remediation-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-109` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Vulnerability Remediation, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** vulnerability-remediation-artifact
+**Verification:** Review Vulnerability Remediation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 110. Security Sign-off
 
-**Purpose:** Establish a decision-ready, auditable result for Security Sign-off without bypassing upstream controls.
+**Purpose:** Make a decision-ready Security Sign-off result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Security Sign-off; record assumptions rather than silently choosing them.
+- Produce the Security Sign-off artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** security-sign-off-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-110` — human approval required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Security Sign-off, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** security-sign-off-artifact
+**Verification:** Review Security Sign-off against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.

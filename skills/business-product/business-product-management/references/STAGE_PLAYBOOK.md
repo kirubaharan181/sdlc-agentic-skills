@@ -1,153 +1,153 @@
-# Business, Strategy and Product Management — Stage Playbook
+# Business Product Management — Stage Playbook
 
-Use this reference after loading the category skill. Each entry is a bounded execution contract; tailor tooling to the project without weakening the control.
+> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 1. Business Strategy
 
-**Purpose:** Establish a decision-ready, auditable result for Business Strategy without bypassing upstream controls.
+**Purpose:** Make a decision-ready Business Strategy result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the business-product-management procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Business Strategy; record assumptions rather than silently choosing them.
+- Produce the Business Strategy artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** business-strategy-record, structured-evidence-record, handoff-note
-**Quality gate:** `01-001` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Business Strategy, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** business-strategy-artifact
+**Verification:** Review Business Strategy against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 2. Market Research
 
-**Purpose:** Establish a decision-ready, auditable result for Market Research without bypassing upstream controls.
+**Purpose:** Make a decision-ready Market Research result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the business-product-management procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Market Research; record assumptions rather than silently choosing them.
+- Produce the Market Research artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** market-research-record, structured-evidence-record, handoff-note
-**Quality gate:** `01-002` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Market Research, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** market-research-artifact
+**Verification:** Review Market Research against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 3. Client Engagement
 
-**Purpose:** Establish a decision-ready, auditable result for Client Engagement without bypassing upstream controls.
+**Purpose:** Make a decision-ready Client Engagement result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the business-product-management procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Client Engagement; record assumptions rather than silently choosing them.
+- Produce the Client Engagement artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** client-engagement-record, structured-evidence-record, handoff-note
-**Quality gate:** `01-003` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Client Engagement, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** client-engagement-artifact
+**Verification:** Review Client Engagement against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 4. Product Discovery
 
-**Purpose:** Establish a decision-ready, auditable result for Product Discovery without bypassing upstream controls.
+**Purpose:** Make a decision-ready Product Discovery result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the business-product-management procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Product Discovery; record assumptions rather than silently choosing them.
+- Produce the Product Discovery artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** product-discovery-record, structured-evidence-record, handoff-note
-**Quality gate:** `01-004` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Product Discovery, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** product-discovery-artifact
+**Verification:** Review Product Discovery against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 5. Business Analysis
 
-**Purpose:** Establish a decision-ready, auditable result for Business Analysis without bypassing upstream controls.
+**Purpose:** Make a decision-ready Business Analysis result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the business-product-management procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Business Analysis; record assumptions rather than silently choosing them.
+- Produce the Business Analysis artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** business-analysis-record, structured-evidence-record, handoff-note
-**Quality gate:** `01-005` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Business Analysis, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** business-analysis-artifact
+**Verification:** Review Business Analysis against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 6. Product Planning
 
-**Purpose:** Establish a decision-ready, auditable result for Product Planning without bypassing upstream controls.
+**Purpose:** Make a decision-ready Product Planning result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the business-product-management procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Product Planning; record assumptions rather than silently choosing them.
+- Produce the Product Planning artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** product-planning-record, structured-evidence-record, handoff-note
-**Quality gate:** `01-006` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Product Planning, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** product-planning-artifact
+**Verification:** Review Product Planning against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 7. Feasibility Analysis
 
-**Purpose:** Establish a decision-ready, auditable result for Feasibility Analysis without bypassing upstream controls.
+**Purpose:** Make a decision-ready Feasibility Analysis result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the business-product-management procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Feasibility Analysis; record assumptions rather than silently choosing them.
+- Produce the Feasibility Analysis artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** feasibility-analysis-record, structured-evidence-record, handoff-note
-**Quality gate:** `01-007` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Feasibility Analysis, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** feasibility-analysis-artifact
+**Verification:** Review Feasibility Analysis against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 8. Budget & Estimation
 
-**Purpose:** Establish a decision-ready, auditable result for Budget & Estimation without bypassing upstream controls.
+**Purpose:** Make a decision-ready Budget & Estimation result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the business-product-management procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Budget & Estimation; record assumptions rather than silently choosing them.
+- Produce the Budget & Estimation artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** budget--estimation-record, structured-evidence-record, handoff-note
-**Quality gate:** `01-008` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Budget & Estimation, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** budget-estimation-artifact
+**Verification:** Review Budget & Estimation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 9. Project Approval
 
-**Purpose:** Establish a decision-ready, auditable result for Project Approval without bypassing upstream controls.
+**Purpose:** Make a decision-ready Project Approval result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the business-product-management procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Project Approval; record assumptions rather than silently choosing them.
+- Produce the Project Approval artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** project-approval-record, structured-evidence-record, handoff-note
-**Quality gate:** `01-009` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Project Approval, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** project-approval-artifact
+**Verification:** Review Project Approval against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
 
 ## 10. Contract & Compliance
 
-**Purpose:** Establish a decision-ready, auditable result for Contract & Compliance without bypassing upstream controls.
+**Purpose:** Make a decision-ready Contract & Compliance result that is traceable to its scope, constraints, and downstream consumers.
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the business-product-management procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect current artifacts and unresolved decisions that affect Contract & Compliance; record assumptions rather than silently choosing them.
+- Produce the Contract & Compliance artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
+- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
+- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** contract--compliance-record, structured-evidence-record, handoff-note
-**Quality gate:** `01-010` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved scope relevant to Contract & Compliance, current repository/product evidence, identified owner and acceptance criteria
+**Artifact:** contract-compliance-artifact
+**Verification:** Review Contract & Compliance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
+**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
