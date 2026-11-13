@@ -3,8 +3,8 @@
     "name": "Atelier Engineering Command Center",
     "repository": "kirubaharan181/sdlc-agentic-skills",
     "sourceBranch": "fix/semantic-specialist-execution-depth-v2",
-    "sourceCommit": "cf15d334c0b52d20482dccc81c264ae926244974",
-    "generatedAt": "2026-11-13T20:27:00.465014+00:00",
+    "sourceCommit": "7c668a40444a5e6c185d97ec08a278f8136be6d6",
+    "generatedAt": "2026-11-13T20:27:17.094711+00:00",
     "dataMode": "repository snapshot",
     "audit": {
       "unresolvedStageWorkflowReferences": [],
@@ -2979,7 +2979,7 @@
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation",
-        "infrastructure-provisioning",
+        "environment-configuration",
         "application-maintenance"
       ],
       "inputs": [
@@ -10472,6 +10472,7 @@
         "production-support-engineer"
       ],
       "workflow_ids": [
+        "product-retirement",
         "application-maintenance"
       ],
       "inputs": [
@@ -10529,9 +10530,9 @@
         "engineering-governance-specialist"
       ],
       "workflow_ids": [
-        "new-product-development",
-        "production-release",
-        "security-vulnerability-remediation"
+        "ci-cd-pipeline-creation",
+        "environment-configuration",
+        "application-maintenance"
       ],
       "inputs": [
         "repository inventory and ownership",
@@ -10588,9 +10589,8 @@
         "engineering-governance-specialist"
       ],
       "workflow_ids": [
-        "new-product-development",
         "production-release",
-        "security-vulnerability-remediation"
+        "application-maintenance"
       ],
       "inputs": [
         "quality policy and objectives",
@@ -10647,9 +10647,8 @@
         "engineering-governance-specialist"
       ],
       "workflow_ids": [
-        "new-product-development",
-        "production-release",
-        "security-vulnerability-remediation"
+        "security-vulnerability-remediation",
+        "ci-cd-pipeline-creation"
       ],
       "inputs": [
         "security policy and risk appetite",
@@ -10705,9 +10704,8 @@
         "engineering-governance-specialist"
       ],
       "workflow_ids": [
-        "new-product-development",
-        "production-release",
-        "security-vulnerability-remediation"
+        "security-vulnerability-remediation",
+        "application-maintenance"
       ],
       "inputs": [
         "identity inventory and role model",
@@ -10820,7 +10818,8 @@
         "engineering-governance-specialist"
       ],
       "workflow_ids": [
-        "documentation-update"
+        "documentation-update",
+        "application-maintenance"
       ],
       "inputs": [
         "document inventory and classification",
@@ -10876,7 +10875,9 @@
         "engineering-governance-specialist"
       ],
       "workflow_ids": [
-        "product-retirement"
+        "production-release",
+        "emergency-hotfix",
+        "application-maintenance"
       ],
       "inputs": [
         "change policy and decision authority",
@@ -10933,9 +10934,8 @@
         "engineering-governance-specialist"
       ],
       "workflow_ids": [
-        "new-product-development",
-        "production-release",
-        "security-vulnerability-remediation"
+        "product-retirement",
+        "new-product-development"
       ],
       "inputs": [
         "supplier contract and service inventory",
@@ -10991,9 +10991,9 @@
         "engineering-governance-specialist"
       ],
       "workflow_ids": [
-        "new-product-development",
-        "production-release",
-        "security-vulnerability-remediation"
+        "infrastructure-provisioning",
+        "performance-optimization",
+        "application-maintenance"
       ],
       "inputs": [
         "tagged spend and usage data",
@@ -11050,7 +11050,8 @@
         "engineering-governance-specialist"
       ],
       "workflow_ids": [
-        "new-product-development"
+        "root-cause-analysis",
+        "technical-debt-reduction"
       ],
       "inputs": [
         "process baseline and outcome metric",

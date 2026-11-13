@@ -85,4 +85,4 @@ master-orchestration, evidence-quality-gates, secure-change-control.
 Resolve accountable and supporting agents from the canonical stage registry.
 
 ## References
-Stages: 181, 182, 183, 184, 185, 186, 187, 188, 189, 190. Workflows: documentation-update, new-product-development, product-retirement, production-release, security-vulnerability-remediation. See `registry/SDLC_STAGE_REGISTRY.yaml` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.
+Stages: 181, 182, 183, 184, 185, 186, 187, 188, 189, 190. Workflows: application-maintenance, ci-cd-pipeline-creation, documentation-update, emergency-hotfix, environment-configuration, infrastructure-provisioning, new-product-development, performance-optimization, product-retirement, production-release, root-cause-analysis, security-vulnerability-remediation, technical-debt-reduction. See `registry/SDLC_STAGE_REGISTRY.yaml` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.
