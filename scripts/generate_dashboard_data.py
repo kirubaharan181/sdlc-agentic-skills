@@ -8,7 +8,12 @@ SOURCES = {"stages":"registry/SDLC_STAGE_REGISTRY.yaml","agents":"registry/AGENT
 def load(path): return json.loads((ROOT / path).read_text(encoding="utf-8"))
 def main():
     s = {k: load(p) for k,p in SOURCES.items()}
-    d = {"meta":{"name":"Atelier Engineering Command Center","repository":"kirubaharan181/sdlc-agentic-skills","sourceBranch":"main","generatedAt":datetime.now(timezone.utc).isoformat(),"dataMode":"repository snapshot"},"stages":s["stages"]["stages"],"agents":s["agents"]["agents"],"skills":s["skills"]["skills"],"workflows":s["workflows"]["workflows"],"platforms":s["platforms"]["platforms"]}
+    stages=s["stages"]["stages"]; workflows=s["workflows"]["workflows"]; workflow_ids={x["workflow_id"] for x in workflows}; missing={}
+    for stage in stages:
+        for workflow_id in stage.get("workflow_ids",[]):
+            if workflow_id not in workflow_ids: missing.setdefault(workflow_id,[]).append(stage["stage_id"])
+    audit={"unresolvedStageWorkflowReferences":[{"workflow_id":k,"stage_ids":v,"count":len(v)} for k,v in sorted(missing.items())],"unresolvedStageSkillReferences":[],"unresolvedStageAgentReferences":[]}
+    d = {"meta":{"name":"Atelier Engineering Command Center","repository":"kirubaharan181/sdlc-agentic-skills","sourceBranch":"main","generatedAt":datetime.now(timezone.utc).isoformat(),"dataMode":"repository snapshot","audit":audit},"stages":stages,"agents":s["agents"]["agents"],"skills":s["skills"]["skills"],"workflows":workflows,"platforms":s["platforms"]["platforms"]}
     out=ROOT/"dashboard"/"data"/"library.json";out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("Generated dashboard/data/library.json")
