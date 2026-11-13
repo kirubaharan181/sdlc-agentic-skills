@@ -366,9 +366,14 @@ ROLE_DISTINCTIONS = {
 
 def role_profile(agent):
     aid=agent["agent_id"]
-    for pattern,focus,steps,artifacts,tools,decisions,example in sorted(ROLE_RULES,key=lambda item:len(item[0]),reverse=True):
+    for entry in sorted(ROLE_RULES,key=lambda item:len(item[0]),reverse=True):
+        if len(entry) == 8:
+            pattern,focus,inputs,steps,artifacts,tools,decisions,example=entry
+        else:
+            pattern,focus,steps,artifacts,tools,decisions,example=entry
+            inputs=[]
         if re.search(pattern,aid,re.I):
-            profile={"focus":focus,"steps":steps,"artifacts":artifacts,"tools":tools,"decisions":decisions,"example":example}
+            profile={"focus":focus,"inputs":inputs,"steps":steps,"artifacts":artifacts,"tools":tools,"decisions":decisions,"example":example}
             if aid in ROLE_DISTINCTIONS:
                 focus,extra_steps,extra_artifacts,example=ROLE_DISTINCTIONS[aid]
                 profile["focus"]=focus
