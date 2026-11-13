@@ -19,6 +19,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: python -m py_compile scripts/bootstrap_library.py scripts/validate.py
       - run: python scripts/validate.py
       - run: python scripts/generate_reports.py
       - run: python scripts/validate.py
