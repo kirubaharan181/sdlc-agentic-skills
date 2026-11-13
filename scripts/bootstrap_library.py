@@ -25,7 +25,11 @@ CATEGORIES = [
 REQUIRED_SECTIONS = ['Purpose','When to use','When not to use','Required inputs','Preconditions','Responsibilities','Step-by-step execution procedure','Decision rules','Engineering principles','Tool requirements','Security constraints','Expected outputs','Output format','Quality checklist','Failure handling','Escalation conditions','Handoff instructions','Examples','Related skills','Related agents','References']
 
 def write(path, content):
-    path = ROOT / path; path.parent.mkdir(parents=True, exist_ok=True); path.write_text(textwrap.dedent(content).lstrip(), encoding='utf-8')
+    protected = {'README.md', 'docs/getting-started/GETTING_STARTED.md', 'orchestrator/MASTER_ORCHESTRATOR.md'}
+    path = ROOT / path
+    if str(path.relative_to(ROOT)).replace('\\', '/') in protected and path.exists():
+        return
+    path.parent.mkdir(parents=True, exist_ok=True); path.write_text(textwrap.dedent(content).lstrip(), encoding='utf-8')
 
 def slug(s): return ''.join(c.lower() if c.isalnum() else '-' for c in s).strip('-').replace('--','-')
 
@@ -190,7 +194,9 @@ Dependencies: {', '.join(agent['dependencies'])}. Handoff: {agent['handoff_rules
     wf.append({'workflow_id':w,'trigger':f'Approved request for {w.replace("-"," ")}.','required_inputs':['request','risk classification','applicable artifacts'],'stages':[s['stage_id'] for s in stages] if w=='new-product-development' else [45,53,67,68,69,79,85,110,130,131,133,138,163,164,165],'responsible_agents':['project-manager','full-stack-engineer','qa-lead','application-security-engineer','release-manager'],'required_skills':['master-orchestration','evidence-quality-gates','secure-change-control'],'dependencies':'Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.','parallel_tasks':['documentation and test planning after requirements approval'],'approval_gates':['business','requirements','architecture','qa','security']+(['production-human-approval'] if risk else []),'outputs':['versioned artifacts','evidence bundle','final workflow report'],'failure_handling':'Stop unsafe work; mark failed gate; create remediation/rollback path.','completion_criteria':'Every included stage has PASS evidence or an approved, non-expired waiver.'})
   write('registry/WORKFLOW_REGISTRY.yaml',json.dumps({'schema_version':'1.0.0','workflows':wf},indent=2)+'\n')
   for flow in wf:
-    write(f"workflows/{flow['workflow_id']}.md",f'''# Workflow: {flow['workflow_id'].replace('-', ' ').title()}
+    write(f"workflows/{flow['workflow_id']}.md",f'''# {flow['workflow_id'].replace('-', ' ').title()}
+
+> **Outcome:** {flow['completion_criteria']}
 
 ## Trigger
 {flow['trigger']}
@@ -198,11 +204,29 @@ Dependencies: {', '.join(agent['dependencies'])}. Handoff: {agent['handoff_rules
 ## Inputs
 {chr(10).join('- '+x for x in flow['required_inputs'])}
 
+## Flow
+
+```mermaid
+flowchart LR
+    A[Validate inputs] --> B[Execute assigned stages]
+    B --> C[Collect evidence]
+    C --> D{{Evaluate gates}}
+    D -->|PASS| E[Handoff]
+    D -->|FAIL / BLOCKED| F[Remediate or escalate]
+    F --> B
+```
+
 ## Stages and dependencies
-Stage IDs: {', '.join(map(str,flow['stages']))}. {flow['dependencies']}
+
+**Included stage IDs:** {', '.join(map(str,flow['stages']))}.
+
+{flow['dependencies']}
 
 ## Roles and skills
-Agents: {', '.join(flow['responsible_agents'])}. Skills: {', '.join(flow['required_skills'])}.
+
+| Accountable roles | Control skills |
+|---|---|
+| {', '.join(flow['responsible_agents'])} | {', '.join(flow['required_skills'])} |
 
 ## Parallel tasks
 {chr(10).join('- '+x for x in flow['parallel_tasks'])}
@@ -210,8 +234,23 @@ Agents: {', '.join(flow['responsible_agents'])}. Skills: {', '.join(flow['requir
 ## Approval gates
 {chr(10).join('- '+x for x in flow['approval_gates'])}
 
-## Outputs, failure handling, completion
-Outputs: {', '.join(flow['outputs'])}. {flow['failure_handling']} Completion: {flow['completion_criteria']}
+## Outputs and evidence
+
+Outputs: {', '.join(flow['outputs'])}. Include immutable revision/digest, validation reports, gate statuses, limitations, and handoff receiver.
+
+## Failure handling
+
+{flow['failure_handling']} Never report a completed workflow while a required gate is failing, blocked, or inconclusive.
+
+## Completion criteria
+
+{flow['completion_criteria']}
+
+## Related controls
+
+- [Master orchestrator](../orchestrator/MASTER_ORCHESTRATOR.md)
+- [Evidence gate policy](../orchestrator/policies/GATE_POLICY.md)
+- [Standard handoff](../orchestrator/handoff-contracts/STANDARD_HANDOFF.md)
 ''')
   write('registry/SKILL_REGISTRY.yaml',json.dumps({'schema_version':'1.0.0','skills':[{'skill_id':c[4],'path':f'skills/{c[3]}/{c[4]}/SKILL.md','stage_ids':[s['stage_id'] for s in stages if s['skills'][0]==c[4]]} for c in CATEGORIES]+[{'skill_id':x,'path':f'skills/cross-cutting/{x}/SKILL.md','stage_ids':[]} for x in ['master-orchestration','evidence-quality-gates','secure-change-control','definition-of-done','incident-command']]},indent=2)+'\n')
   write('registry/COVERAGE_REPORT.md','# Coverage Report\n\nGenerated by `python scripts/validate.py`. Run the validator to refresh results.\n')
