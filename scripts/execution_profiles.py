@@ -96,13 +96,148 @@ STAGE_SPECIAL_CASES = [
 (r"engineering governance", "govern repository controls, engineering standards and exception lifecycle", ["repository inventory and ownership","engineering policy and required checks","team onboarding and exception records"], ["Map branch protections, code owners, required checks and contribution policy to each repository.", "Sample actual repository settings and verify enforcement rather than relying on documentation.", "Review onboarding, toolchain support, secrets and change exceptions.", "Track drift and verify corrective actions across repositories."], ["repository control inventory","policy compliance report","exception register","onboarding standard"], ["Repository controls are verified in the platform.","Exceptions have owner, expiry and compensating control.","Clean-checkout onboarding is reproducible."], "Repository policy sample audit."),
 ];
 
+
+STAGE_FOCUS = {
+  "Unit Testing": [
+    "Isolate pure logic with deterministic fixtures and cover boundaries, invariants and failure results.",
+    "unit test suite and boundary assertions",
+    "Tests fail when behavior breaks and do not depend on external services.",
+    "Run focused unit suite and inspect assertion quality."
+  ],
+  "Integration Testing": [
+    "Verify service, database, queue and adapter contracts with isolated dependencies.",
+    "integration contract report and environment setup",
+    "Partial failures, retries, transaction boundaries and schema compatibility are exercised.",
+    "Run integration suite with dependency health and cleanup evidence."
+  ],
+  "API Testing": [
+    "Exercise OpenAPI success, validation, authorization, pagination, idempotency and error cases.",
+    "API request collection and contract report",
+    "Response schemas and status behavior match the published contract.",
+    "Run contract and negative-case suite against the exact build."
+  ],
+  "UI Testing": [
+    "Verify component states, keyboard interaction, validation feedback and responsive layout.",
+    "UI interaction report and screenshots",
+    "Critical controls work at supported viewports without console or accessibility blockers.",
+    "Run browser tests and inspect captured screenshots/traces."
+  ],
+  "Functional Testing": [
+    "Trace each business requirement to positive, negative, alternate and exception scenarios.",
+    "functional test matrix and results",
+    "Every in-scope business rule has an observed expected result.",
+    "Review traceability and execute critical business paths."
+  ],
+  "End-to-End Testing": [
+    "Exercise complete user journeys across UI, APIs, persistence and external side effects with synthetic data.",
+    "E2E journey report and trace bundle",
+    "Journey state is correct across boundaries and recovery works.",
+    "Run critical journeys and reconcile resulting state across services."
+  ],
+  "Regression Testing": [
+    "Select impacted behavior using code dependencies, API/data changes and historical defect evidence.",
+    "regression scope and comparison report",
+    "Previously accepted critical behavior remains stable on the candidate build.",
+    "Compare targeted suite results with the baseline candidate."
+  ],
+  "Smoke Testing": [
+    "Check release-blocking startup, health, authentication and critical transaction paths after deployment.",
+    "smoke report and health snapshot",
+    "Critical paths meet thresholds before broader testing proceeds.",
+    "Run smoke suite against the deployed artifact."
+  ],
+  "Sanity Testing": [
+    "Verify the narrow changed area and immediate dependencies after a small patch.",
+    "sanity checklist and focused test result",
+    "The targeted fix works and adjacent behavior remains stable.",
+    "Execute the bounded checklist on the exact patch."
+  ],
+  "Cross-browser Testing": [
+    "Run identical critical journeys across the supported browser/OS matrix and compare rendering and interaction.",
+    "browser compatibility matrix and screenshots",
+    "No supported browser has a critical functional or layout regression.",
+    "Run matrix tests and attach browser/version evidence."
+  ],
+  "Mobile Compatibility Testing": [
+    "Verify responsive layout, touch targets, orientation, OS permissions and network transitions on supported devices.",
+    "device compatibility matrix and recordings",
+    "Critical flows work on the supported device/OS matrix.",
+    "Run emulator and representative physical-device tests."
+  ],
+  "Accessibility Testing": [
+    "Check semantic names, keyboard-only operation, focus management, contrast, zoom and screen-reader announcements.",
+    "WCAG criterion-level audit and manual test evidence",
+    "Critical journeys pass manual assistive-technology checks.",
+    "Run automated scans plus keyboard and screen-reader verification."
+  ],
+  "Performance Testing": [
+    "Measure representative workload latency, throughput, saturation and error rate against service objectives.",
+    "performance baseline and profile report",
+    "p50/p95/p99 and resource use meet agreed thresholds under representative load.",
+    "Compare equivalent before/after runs with workload pinned."
+  ],
+  "Load Testing": [
+    "Ramp concurrency and request mix to expected peak and observe throughput, queue depth and latency percentiles.",
+    "load profile and capacity result",
+    "System sustains forecast peak plus agreed headroom without SLO breach.",
+    "Run controlled load ramp and retain telemetry."
+  ],
+  "Stress Testing": [
+    "Increase load beyond expected capacity to identify saturation point and failure mode.",
+    "stress curve and degradation report",
+    "Overload is bounded, shedding is graceful and recovery occurs after load drops.",
+    "Run approved stress profile in an isolated environment."
+  ],
+  "Soak Testing": [
+    "Sustain representative load long enough to expose leaks, queue growth and resource drift.",
+    "soak run and resource trend report",
+    "Memory, handles, queues and latency remain stable through the agreed duration.",
+    "Review time-series trends and post-run resource recovery."
+  ],
+  "UAT": [
+    "Validate real business workflows with authorized users against agreed acceptance examples.",
+    "UAT scripts and business acceptance record",
+    "Business owner accepts outcomes or records named defects and conditions.",
+    "Capture user execution evidence and explicit acceptance decision."
+  ],
+  "Test Strategy": [
+    "Select risk-based test levels and map each critical product risk to an oracle and accountable test owner.",
+    "risk-to-test coverage matrix",
+    "Every high-impact risk has an explicit test level and measurable exit condition.",
+    "Review coverage against top user and failure scenarios."
+  ],
+  "Test Planning": [
+    "Sequence test cases by dependency, environment readiness and risk; define fixtures, entry criteria and execution windows.",
+    "test execution plan and environment matrix",
+    "Test data, environment, owners and exit criteria are ready before execution.",
+    "Review plan completeness and fixture reproducibility."
+  ],
+  "Developer Testing": [
+    "Run focused unit, lint, type, build and local integration checks before requesting review.",
+    "developer verification transcript",
+    "All required local checks pass on the exact working-tree revision.",
+    "Capture command, exit status and output for each required check."
+  ]
+}
+
+def _stage_result(stage,purpose,inputs,steps,artifacts,criteria,validation):
+    extra=STAGE_FOCUS.get(stage["stage_name"])
+    if extra:
+        focus_step,artifact,criterion,verification=extra
+        steps=list(steps)+[focus_step]
+        artifacts=list(artifacts)+[artifact]
+        criteria=list(criteria)+[criterion]
+        validation=validation+" "+verification
+    return {"purpose":purpose,"inputs":inputs,"steps":steps,"artifacts":artifacts,"criteria":criteria,"validation":validation}
+
+
 def stage_profile(stage):
     name=stage["stage_name"]
     category=stage.get("category_name","")
     if name == "Engineering Governance" and "Enterprise Governance" in category:
         rule=next(x for x in STAGE_SPECIAL_CASES if x[0] == r"engineering governance")
         _,purpose,inputs,steps,artifacts,criteria,validation=rule
-        return {"purpose":purpose,"inputs":inputs,"steps":steps,"artifacts":artifacts,"criteria":criteria,"validation":validation}
+        return _stage_result(stage,purpose,inputs,steps,artifacts,criteria,validation)
     if name == "License Compliance":
         rule=next(x for x in STAGE_RULES if x[0] == r"license compliance")
         _,purpose,inputs,steps,artifacts,criteria,validation=rule
