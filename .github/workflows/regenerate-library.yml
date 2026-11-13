@@ -1,0 +1,52 @@
+name: Regenerate canonical specialist library
+
+on:
+  push:
+    branches:
+      - fix/semantic-specialist-execution-depth-v2
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile generator and validators
+        run: python -m py_compile scripts/execution_profiles.py scripts/rebuild_library.py scripts/bootstrap_library.py scripts/semantic_quality.py scripts/validate.py scripts/run_tests.py
+      - name: Regenerate canonical Markdown and registries
+        run: python scripts/bootstrap_library.py
+      - name: Regenerate dashboard snapshot
+        run: python scripts/generate_dashboard_data.py
+      - name: Validate generated JSON and JavaScript
+        run: |
+          python -m json.tool dashboard/data/library.json > /dev/null
+          node --check dashboard/assets/app.js
+      - name: Check whitespace
+        run: git diff --check
+      - name: Commit generated artifacts
+        run: |
+          if git diff --quiet; then
+            echo "No generated changes."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add registry agents workflows skills dashboard/data/library.json
+            git commit -m "chore: regenerate specialist library artifacts"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+      - name: Dispatch validation for the regenerated branch head
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run validate.yml --ref "${GITHUB_REF_NAME}" --repo "${GITHUB_REPOSITORY}"

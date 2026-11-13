@@ -1,198 +1,198 @@
-# Cloud Infrastructure and Hosting Operations — Stage Playbook
+# Cloud and infrastructure operations — Stage Playbook
 
-Use this reference after loading the category skill. Each entry is a bounded execution contract; tailor tooling to the project without weakening the control.
+> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 140. Cloud Hosting
 
-**Purpose:** Establish a decision-ready, auditable result for Cloud Hosting without bypassing upstream controls.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** cloud-hosting-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-140` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 141. Compute Management
 
-**Purpose:** Establish a decision-ready, auditable result for Compute Management without bypassing upstream controls.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** compute-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-141` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 142. Database Hosting
 
-**Purpose:** Establish a decision-ready, auditable result for Database Hosting without bypassing upstream controls.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** database-hosting-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-142` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 143. Storage Management
 
-**Purpose:** Establish a decision-ready, auditable result for Storage Management without bypassing upstream controls.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** storage-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-143` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 144. DNS Management
 
-**Purpose:** Establish a decision-ready, auditable result for DNS Management without bypassing upstream controls.
+**Purpose:** configure secure and resilient network edge routing
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Verify domain/account ownership and change window.
+- Configure records, certificates, ciphers, health checks, routing and origin restrictions.
+- Validate propagation, certificate chain/expiry, redirects and failover behavior.
+- Document TTL, renewal, rollback and monitoring.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** dns-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-144` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** domain ownership and target topology, certificate and trust requirements, traffic and health-check profile
+**Artifact:** DNS/TLS/routing configuration
+**Verification:** Network/security review.
+**Handoff:** Transfer DNS/TLS/routing configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 145. SSL Certificate Management
 
-**Purpose:** Establish a decision-ready, auditable result for SSL Certificate Management without bypassing upstream controls.
+**Purpose:** configure secure and resilient network edge routing
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Verify domain/account ownership and change window.
+- Configure records, certificates, ciphers, health checks, routing and origin restrictions.
+- Validate propagation, certificate chain/expiry, redirects and failover behavior.
+- Document TTL, renewal, rollback and monitoring.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** ssl-certificate-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-145` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** domain ownership and target topology, certificate and trust requirements, traffic and health-check profile
+**Artifact:** DNS/TLS/routing configuration
+**Verification:** Network/security review.
+**Handoff:** Transfer DNS/TLS/routing configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 146. Network Operations
 
-**Purpose:** Establish a decision-ready, auditable result for Network Operations without bypassing upstream controls.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** network-operations-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-146` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 147. Backup Management
 
-**Purpose:** Establish a decision-ready, auditable result for Backup Management without bypassing upstream controls.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** backup-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-147` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 148. Disaster Recovery
 
-**Purpose:** Establish a decision-ready, auditable result for Disaster Recovery without bypassing upstream controls.
+**Purpose:** restore critical services within approved recovery objectives
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Confirm business-approved RTO/RPO for each critical service and data set.
+- Prepare an isolated recovery environment with scoped credentials and network boundaries.
+- Restore or fail over in dependency order and capture actual recovery time and replication position.
+- Validate data integrity and user-facing journeys before reopening traffic; record gaps.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** disaster-recovery-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-148` — human approval required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** business impact analysis and service dependencies, approved RTO/RPO and recovery runbooks, isolated recovery credentials and backup inventory
+**Artifact:** recovery plan
+**Verification:** Run a timed recovery exercise and compare measured RTO/RPO with approved objectives.
+**Handoff:** Transfer recovery plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 149. High Availability
 
-**Purpose:** Establish a decision-ready, auditable result for High Availability without bypassing upstream controls.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** high-availability-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-149` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 150. Auto Scaling
 
-**Purpose:** Establish a decision-ready, auditable result for Auto Scaling without bypassing upstream controls.
+**Purpose:** assess dependency vulnerabilities and license obligations
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Generate inventory from resolved direct and transitive dependencies.
+- Match versions to advisories and assess reachability, exploitability and vendor support.
+- Review license compatibility, provenance and required notices.
+- Upgrade or replace affected components, rerun regression/security checks and compare SBOM.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** auto-scaling-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-150` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** resolved lockfiles and packaged artifact, SBOM and advisory feeds, license policy and runtime exposure
+**Artifact:** SBOM
+**Verification:** Compare lockfile and packaged SBOM, then verify the resolved version and notices.
+**Handoff:** Transfer SBOM with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 151. Cost Optimization
 
-**Purpose:** Establish a decision-ready, auditable result for Cost Optimization without bypassing upstream controls.
+**Purpose:** improve measured performance without violating correctness
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Profile before changing code; identify dominant cost and reproducible baseline.
+- Choose cache key, TTL, invalidation and consistency behavior based on data semantics.
+- Bound memory, stampede, stale data and eviction behavior.
+- Compare before/after p50/p95/p99, throughput, error rate and cost under equivalent load.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** cost-optimization-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-151` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** baseline workload and latency profile, consistency/freshness requirements, resource and cost limits
+**Artifact:** profile report
+**Verification:** Performance and correctness regression review.
+**Handoff:** Transfer profile report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 152. Infrastructure Maintenance
 
-**Purpose:** Establish a decision-ready, auditable result for Infrastructure Maintenance without bypassing upstream controls.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the cloud-hosting-operations procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** infrastructure-maintenance-record, structured-evidence-record, handoff-note
-**Quality gate:** `12-152` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

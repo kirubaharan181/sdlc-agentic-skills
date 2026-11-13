@@ -1,153 +1,153 @@
-# Enterprise Governance, Audit, Risk and Continuous Improvement — Stage Playbook
+# Enterprise engineering governance — Stage Playbook
 
-Use this reference after loading the category skill. Each entry is a bounded execution contract; tailor tooling to the project without weakening the control.
+> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 181. Engineering Governance
 
-**Purpose:** Establish a decision-ready, auditable result for Engineering Governance without bypassing upstream controls.
+**Purpose:** govern repository controls, engineering standards and exception lifecycle
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the enterprise-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map branch protections, code owners, required checks and contribution policy to each repository.
+- Sample actual repository settings and verify enforcement rather than relying on documentation.
+- Review onboarding, toolchain support, secrets and change exceptions.
+- Track drift and verify corrective actions across repositories.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** engineering-governance-record, structured-evidence-record, handoff-note
-**Quality gate:** `15-181` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository inventory and ownership, engineering policy and required checks, team onboarding and exception records
+**Artifact:** repository control inventory
+**Verification:** Repository policy sample audit.
+**Handoff:** Transfer repository control inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 182. Quality Governance
 
-**Purpose:** Establish a decision-ready, auditable result for Quality Governance without bypassing upstream controls.
+**Purpose:** govern quality policy, evidence and corrective action across teams
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the enterprise-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Define measurable quality objectives, required evidence and ownership.
+- Sample delivery records and verify controls operate as documented.
+- Analyze defects, escaped issues, test gaps and corrective-action trends.
+- Assign systemic improvements and verify effectiveness over a review period.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** quality-governance-record, structured-evidence-record, handoff-note
-**Quality gate:** `15-182` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** quality policy and objectives, process/product quality data, control owners and audit period
+**Artifact:** quality policy and control map
+**Verification:** Quality governance review and sample audit.
+**Handoff:** Transfer quality policy and control map with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 183. Security Governance
 
-**Purpose:** Establish a decision-ready, auditable result for Security Governance without bypassing upstream controls.
+**Purpose:** govern security policy, risk acceptance and control effectiveness
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the enterprise-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map security obligations to preventive, detective and recovery controls.
+- Review control operation, access, vulnerabilities and incident trends.
+- Approve or route exceptions with compensating controls, owner and expiry.
+- Report material risk and verify remediation closure.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** security-governance-record, structured-evidence-record, handoff-note
-**Quality gate:** `15-183` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** security policy and risk appetite, asset/control ownership, risk and exception register
+**Artifact:** security control matrix
+**Verification:** Security governance council review.
+**Handoff:** Transfer security control matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 184. Access Governance
 
-**Purpose:** Establish a decision-ready, auditable result for Access Governance without bypassing upstream controls.
+**Purpose:** govern identity lifecycle and privileged access
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the enterprise-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Review role definitions, segregation conflicts and least-privilege mappings.
+- Sample access grants, changes, recertifications and removals against approvals.
+- Identify dormant, orphaned, excessive and shared privileged accounts.
+- Track remediation and verify timely revocation and periodic recertification.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** access-governance-record, structured-evidence-record, handoff-note
-**Quality gate:** `15-184` — human approval required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** identity inventory and role model, joiner/mover/leaver events, privileged access policy
+**Artifact:** role/access matrix
+**Verification:** Independent access recertification audit.
+**Handoff:** Transfer role/access matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 185. Compliance Auditing
 
-**Purpose:** Establish a decision-ready, auditable result for Compliance Auditing without bypassing upstream controls.
+**Purpose:** review contractual and regulatory obligations before commitment
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the enterprise-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Identify service, data, security, availability, audit, retention, subcontracting and exit obligations.
+- Map each obligation to an internal control owner and evidence source.
+- Flag ambiguous liability, data processing, IP, jurisdiction, renewal and termination terms.
+- Record legal review questions and do not provide legal approval outside delegated authority.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** compliance-auditing-record, structured-evidence-record, handoff-note
-**Quality gate:** `15-185` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** contract version and counterparties, applicable policy/control obligations, legal/compliance owner
+**Artifact:** obligation matrix
+**Verification:** Legal and compliance owner sign-off.
+**Handoff:** Transfer obligation matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 186. Documentation Governance
 
-**Purpose:** Establish a decision-ready, auditable result for Documentation Governance without bypassing upstream controls.
+**Purpose:** control documentation accuracy, ownership and lifecycle
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the enterprise-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inventory authoritative documents, audience, version and source of truth.
+- Check accuracy against current implementation, policy and approved decisions.
+- Review access, retention, link integrity and stale/duplicate content.
+- Assign owner and review date; archive superseded material according to policy.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** documentation-governance-record, structured-evidence-record, handoff-note
-**Quality gate:** `15-186` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** document inventory and classification, owners and review cadence, retention and publication policy
+**Artifact:** document register
+**Verification:** Documentation governance sample review.
+**Handoff:** Transfer document register with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 187. Change Governance
 
-**Purpose:** Establish a decision-ready, auditable result for Change Governance without bypassing upstream controls.
+**Purpose:** govern the portfolio of material engineering changes
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the enterprise-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Classify normal, standard and emergency changes under policy.
+- Review impact, approvals, segregation, schedule and recovery readiness.
+- Sample completed changes for evidence, unauthorized drift and failed outcomes.
+- Analyze change failure rate and assign systemic control improvements.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** change-governance-record, structured-evidence-record, handoff-note
-**Quality gate:** `15-187` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** change policy and decision authority, change requests and risk classifications, release and incident history
+**Artifact:** change control matrix
+**Verification:** Change advisory or governance review.
+**Handoff:** Transfer change control matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 188. Vendor Management
 
-**Purpose:** Establish a decision-ready, auditable result for Vendor Management without bypassing upstream controls.
+**Purpose:** govern supplier performance, obligations and exit readiness
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the enterprise-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map supplier service, data access, subprocessors, criticality and business dependency.
+- Review SLA performance, incidents, security attestations, financial/operational health and open obligations.
+- Track corrective actions, renewal decisions, concentration risk and exit/portability plan.
+- Escalate material breaches and record authorized risk acceptance.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** vendor-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `15-188` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** supplier contract and service inventory, performance/security evidence, renewal and exit dates
+**Artifact:** supplier scorecard
+**Verification:** Procurement, legal, security and service-owner review.
+**Handoff:** Transfer supplier scorecard with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 189. FinOps Governance
 
-**Purpose:** Establish a decision-ready, auditable result for FinOps Governance without bypassing upstream controls.
+**Purpose:** optimize cloud and platform economics without degrading service outcomes
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the enterprise-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Allocate spend to accountable services and normalize by meaningful workload/unit.
+- Identify idle, oversized, uncommitted and architecture-driven cost drivers.
+- Model savings, engineering effort, risk and commitment trade-offs.
+- Implement controlled optimization and compare realized savings with baseline and SLO impact.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** finops-governance-record, structured-evidence-record, handoff-note
-**Quality gate:** `15-189` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** tagged spend and usage data, service ownership and unit metrics, budget and SLO constraints
+**Artifact:** cost allocation report
+**Verification:** Finance and service-owner review.
+**Handoff:** Transfer cost allocation report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 190. Process Improvement
 
-**Purpose:** Establish a decision-ready, auditable result for Process Improvement without bypassing upstream controls.
+**Purpose:** improve a measured process through controlled experimentation
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the enterprise-governance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map current flow, queues, handoffs, rework and failure demand using observed data.
+- Identify root causes and distinguish symptoms from constraints.
+- Design a small experiment with hypothesis, guardrail metric and rollback.
+- Compare results with baseline, retain or revert the change and assign ongoing ownership.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** process-improvement-record, structured-evidence-record, handoff-note
-**Quality gate:** `15-190` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** process baseline and outcome metric, stakeholder pain points, change constraints
+**Artifact:** process map
+**Verification:** Process owner and affected team review.
+**Handoff:** Transfer process map with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

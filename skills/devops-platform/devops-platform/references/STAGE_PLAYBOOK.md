@@ -1,228 +1,228 @@
-# DevOps, CI/CD and Platform Engineering — Stage Playbook
+# Secure delivery platform — Stage Playbook
 
-Use this reference after loading the category skill. Each entry is a bounded execution contract; tailor tooling to the project without weakening the control.
+> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 111. CI Pipeline
 
-**Purpose:** Establish a decision-ready, auditable result for CI Pipeline without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** ci-pipeline-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-111` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 112. Automated Test Pipeline
 
-**Purpose:** Establish a decision-ready, auditable result for Automated Test Pipeline without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** automated-test-pipeline-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-112` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 113. Build Management
 
-**Purpose:** Establish a decision-ready, auditable result for Build Management without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** build-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-113` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 114. Artifact Management
 
-**Purpose:** Establish a decision-ready, auditable result for Artifact Management without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** artifact-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-114` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 115. Containerization
 
-**Purpose:** Establish a decision-ready, auditable result for Containerization without bypassing upstream controls.
+**Purpose:** package applications as reproducible least-privilege container images
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Use a minimal pinned base image and deterministic build context.
+- Exclude secrets, development tools and unnecessary files from final layers.
+- Run as non-root with explicit ports, health checks and resource expectations.
+- Scan the exact image digest and run startup/shutdown smoke tests.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** containerization-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-115` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** build context and runtime dependencies, base image and vulnerability policy, runtime user, ports and health expectations
+**Artifact:** Dockerfile/image build
+**Verification:** Inspect final image layers for secrets and run the image with restricted capabilities.
+**Handoff:** Transfer Dockerfile/image build with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 116. Container Orchestration
 
-**Purpose:** Establish a decision-ready, auditable result for Container Orchestration without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** container-orchestration-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-116` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 117. Infrastructure as Code
 
-**Purpose:** Establish a decision-ready, auditable result for Infrastructure as Code without bypassing upstream controls.
+**Purpose:** provision infrastructure through reviewed and policy-checked desired state
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Model resources in reusable versioned modules with explicit inputs and outputs.
+- Run formatting, validation, security/policy checks and plan against the target workspace.
+- Review destructive changes, IAM, network exposure, state locking, quotas and cost.
+- Apply only after approval, then detect drift and verify actual state.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** infrastructure-as-code-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-117` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** resource requirements and ownership, state backend and environment, security and cost policy
+**Artifact:** IaC module and plan
+**Verification:** Review plan output for destructive actions and prove policy checks fail on an intentionally unsafe fixture.
+**Handoff:** Transfer IaC module and plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 118. Configuration Management
 
-**Purpose:** Establish a decision-ready, auditable result for Configuration Management without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** configuration-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-118` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 119. CD Pipeline
 
-**Purpose:** Establish a decision-ready, auditable result for CD Pipeline without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** cd-pipeline-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-119` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 120. Environment Provisioning
 
-**Purpose:** Establish a decision-ready, auditable result for Environment Provisioning without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** environment-provisioning-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-120` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 121. Network Engineering
 
-**Purpose:** Establish a decision-ready, auditable result for Network Engineering without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** network-engineering-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-121` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 122. Database Operations
 
-**Purpose:** Establish a decision-ready, auditable result for Database Operations without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** database-operations-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-122` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 123. CDN & Edge Configuration
 
-**Purpose:** Establish a decision-ready, auditable result for CDN & Edge Configuration without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** cdn--edge-configuration-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-123` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 124. Deployment Automation
 
-**Purpose:** Establish a decision-ready, auditable result for Deployment Automation without bypassing upstream controls.
+**Purpose:** build a secure and reproducible delivery platform
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
+- Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
+- Protect credentials, runners, deployment environments and immutable artifact promotion.
+- Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** deployment-automation-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-124` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** repository and build graph, deployment targets and environment protections, artifact trust and supply-chain policy
+**Artifact:** pipeline/IaC configuration
+**Verification:** Platform/security review and clean pipeline run.
+**Handoff:** Transfer pipeline/IaC configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 125. Pipeline Security
 
-**Purpose:** Establish a decision-ready, auditable result for Pipeline Security without bypassing upstream controls.
+**Purpose:** protect CI trust boundaries, credentials and artifact integrity
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the devops-platform procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Map untrusted pull-request events, privileged release events, runners and reusable workflows.
+- Scope GITHUB_TOKEN and third-party action permissions; pin actions to immutable references where policy requires.
+- Keep secrets unavailable to untrusted code and isolate caches/artifacts by trust level.
+- Verify provenance, required gates and deployment environment protection with negative fixtures.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** pipeline-security-record, structured-evidence-record, handoff-note
-**Quality gate:** `10-125` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** workflow triggers and runner inventory, token permissions and secret inventory, artifact promotion and deployment policy
+**Artifact:** pipeline threat model
+**Verification:** Test a fork pull request and prove it cannot read release secrets or alter trusted artifacts.
+**Handoff:** Transfer pipeline threat model with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

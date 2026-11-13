@@ -1,13 +1,82 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "workflows": [
     {
       "workflow_id": "new-product-development",
-      "trigger": "Approved request for new product development.",
+      "trigger": "A request requires the controlled lifecycle to discover to operate a new product.",
+      "purpose": "discover to operate a new product",
+      "phases": [
+        "Frame opportunity",
+        "Validate requirements",
+        "Design architecture",
+        "Build and verify",
+        "Release and operate"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Frame opportunity",
+          "sequence": 1,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "product-manager"
+        },
+        {
+          "phase": "Validate requirements",
+          "sequence": 2,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "software-architect"
+        },
+        {
+          "phase": "Design architecture",
+          "sequence": 3,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "full-stack-engineer"
+        },
+        {
+          "phase": "Build and verify",
+          "sequence": 4,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "qa-lead"
+        },
+        {
+          "phase": "Release and operate",
+          "sequence": 5,
+          "instruction": "Complete the release and operate phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.",
+          "evidence": [
+            "phase work product",
+            "verification evidence",
+            "handoff record"
+          ],
+          "exit_criteria": "The accountable owner accepts the output and all blocking issues have an owner.",
+          "owner": "release-manager"
+        }
+      ],
       "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
       ],
       "stages": [
         1,
@@ -18,15 +87,12 @@
         6,
         7,
         8,
-        9,
-        10,
         11,
         12,
         13,
         14,
         15,
         16,
-        17,
         18,
         19,
         20,
@@ -35,15 +101,12 @@
         23,
         24,
         25,
-        26,
         27,
-        28,
         29,
         30,
         31,
         32,
         33,
-        34,
         35,
         36,
         37,
@@ -53,20 +116,455 @@
         41,
         42,
         43,
+        188
+      ],
+      "responsible_agents": [
+        "product-manager",
+        "software-architect",
+        "full-stack-engineer",
+        "qa-lead",
+        "release-manager"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "new-product-development-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "existing-application-enhancement",
+      "trigger": "A request requires the controlled lifecycle to safely extend an existing product.",
+      "purpose": "safely extend an existing product",
+      "phases": [
+        "Assess current behavior",
+        "Refine compatibility scope",
+        "Implement bounded enhancement",
+        "Regression/security review",
+        "Measure outcome"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Assess current behavior",
+          "sequence": 1,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "product-owner"
+        },
+        {
+          "phase": "Refine compatibility scope",
+          "sequence": 2,
+          "instruction": "Complete the refine compatibility scope phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.",
+          "evidence": [
+            "phase work product",
+            "verification evidence",
+            "handoff record"
+          ],
+          "exit_criteria": "The accountable owner accepts the output and all blocking issues have an owner.",
+          "owner": "software-architect"
+        },
+        {
+          "phase": "Implement bounded enhancement",
+          "sequence": 3,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "full-stack-engineer"
+        },
+        {
+          "phase": "Regression/security review",
+          "sequence": 4,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "qa-lead"
+        },
+        {
+          "phase": "Measure outcome",
+          "sequence": 5,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "qa-lead"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11,
+        13,
+        14,
+        15,
+        19,
+        20,
+        21,
+        22,
+        23,
+        25,
+        30,
+        31,
+        32,
+        33,
+        34,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
         44,
-        45,
-        46,
-        47,
-        48,
-        49,
-        50,
-        51,
-        52,
+        53,
+        54,
+        55,
+        56,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        67
+      ],
+      "responsible_agents": [
+        "product-owner",
+        "software-architect",
+        "full-stack-engineer",
+        "qa-lead"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "existing-application-enhancement-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "feature-development",
+      "trigger": "A request requires the controlled lifecycle to deliver one bounded customer capability.",
+      "purpose": "deliver one bounded customer capability",
+      "phases": [
+        "Define acceptance",
+        "Design contracts",
+        "Implement vertical slice",
+        "Review and verify",
+        "Release and learn"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Define acceptance",
+          "sequence": 1,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "product-owner"
+        },
+        {
+          "phase": "Design contracts",
+          "sequence": 2,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "api-architect"
+        },
+        {
+          "phase": "Implement vertical slice",
+          "sequence": 3,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "full-stack-engineer"
+        },
+        {
+          "phase": "Review and verify",
+          "sequence": 4,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "automation-qa-engineer"
+        },
+        {
+          "phase": "Release and learn",
+          "sequence": 5,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "automation-qa-engineer"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        25,
+        27,
+        30,
+        31,
+        32,
+        33,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
         53,
         54,
         55,
         56,
         57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        67,
+        68,
+        69,
+        70,
+        71,
+        73,
+        74,
+        75,
+        76,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        97
+      ],
+      "responsible_agents": [
+        "product-owner",
+        "api-architect",
+        "full-stack-engineer",
+        "automation-qa-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "feature-development-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "bug-fix",
+      "trigger": "A request requires the controlled lifecycle to restore a defective behavior with minimal change.",
+      "purpose": "restore a defective behavior with minimal change",
+      "phases": [
+        "Triage severity and impact",
+        "Reproduce and isolate root cause",
+        "Implement minimal correction",
+        "Run regression and review",
+        "Deploy and verify"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Triage severity and impact",
+          "sequence": 1,
+          "instruction": "Classify urgency using customer impact, blast radius, data integrity and security exposure; assign incident/request owner, severity, response SLA and stop conditions.",
+          "evidence": [
+            "severity rationale",
+            "affected-version/cohort list",
+            "owner and response timeline"
+          ],
+          "exit_criteria": "Severity and escalation owner are accepted; unsafe changes are prohibited until impact is understood.",
+          "owner": "production-support-engineer"
+        },
+        {
+          "phase": "Reproduce and isolate root cause",
+          "sequence": 2,
+          "instruction": "Reproduce on the affected revision/environment, correlate logs and recent changes, and isolate the smallest failing condition without modifying production state.",
+          "evidence": [
+            "minimal reproduction",
+            "correlated diagnostics",
+            "hypothesis log"
+          ],
+          "exit_criteria": "A root-cause hypothesis is supported by reproducible evidence or explicitly marked inconclusive.",
+          "owner": "backend-engineer"
+        },
+        {
+          "phase": "Implement minimal correction",
+          "sequence": 3,
+          "instruction": "Change only the failing behavior, preserve existing contracts, add a regression assertion and avoid unrelated refactoring.",
+          "evidence": [
+            "minimal patch",
+            "regression test",
+            "diff risk note"
+          ],
+          "exit_criteria": "The regression test fails before the fix and passes after it; unrelated behavior remains unchanged.",
+          "owner": "code-reviewer"
+        },
+        {
+          "phase": "Run regression and review",
+          "sequence": 4,
+          "instruction": "Run focused and impacted regression suites, inspect the exact diff, and obtain independent review for correctness, security and compatibility.",
+          "evidence": [
+            "test report",
+            "review findings",
+            "unresolved-risk list"
+          ],
+          "exit_criteria": "Critical regression and review findings are closed or explicitly block release.",
+          "owner": "qa-lead"
+        },
+        {
+          "phase": "Deploy and verify",
+          "sequence": 5,
+          "instruction": "Promote the approved artifact, deploy using the authorized change path, and verify health and user-facing behavior against stop thresholds.",
+          "evidence": [
+            "deployment record",
+            "health metrics",
+            "customer verification"
+          ],
+          "exit_criteria": "Service behavior and health remain within thresholds for the agreed observation window.",
+          "owner": "qa-lead"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        55,
+        56,
         58,
         59,
         60,
@@ -81,19 +579,15 @@
         69,
         70,
         71,
-        72,
         73,
         74,
         75,
         76,
-        77,
         78,
         79,
-        80,
         81,
         82,
         83,
-        84,
         85,
         86,
         87,
@@ -104,43 +598,1301 @@
         92,
         93,
         94,
-        95,
         96,
         97,
+        170,
+        175,
+        177,
+        179
+      ],
+      "responsible_agents": [
+        "production-support-engineer",
+        "backend-engineer",
+        "code-reviewer",
+        "qa-lead"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "bug-fix-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "emergency-hotfix",
+      "trigger": "A request requires the controlled lifecycle to mitigate active customer impact under emergency control.",
+      "purpose": "mitigate active customer impact under emergency control",
+      "phases": [
+        "Establish incident command",
+        "Apply safe mitigation",
+        "Constrain minimal patch",
+        "Authorize and deploy expedited fix",
+        "Verify recovery and retrospective"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Establish incident command",
+          "sequence": 1,
+          "instruction": "Declare incident severity, appoint commander/operations/comms/scribe roles, open a timestamped timeline and define a single source of truth. Workflow-specific control: Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.",
+          "evidence": [
+            "incident declaration",
+            "role assignments",
+            "timeline and comms channel",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Command roles and communication cadence are active before mitigation work.",
+          "owner": "incident-manager"
+        },
+        {
+          "phase": "Apply safe mitigation",
+          "sequence": 2,
+          "instruction": "Choose the least risky action that reduces customer impact, preserve evidence, document expected side effects and define an immediate reversal trigger. Workflow-specific control: Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.",
+          "evidence": [
+            "mitigation decision",
+            "before/after state",
+            "reversal trigger",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Impact is reduced without violating data integrity or access controls.",
+          "owner": "backend-engineer"
+        },
+        {
+          "phase": "Constrain minimal patch",
+          "sequence": 3,
+          "instruction": "Limit the hotfix to the incident-causing path, avoid broad dependency or schema changes, and add a targeted regression test. Workflow-specific control: Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.",
+          "evidence": [
+            "hotfix diff",
+            "targeted regression",
+            "risk assessment",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Patch scope is bounded and independently reviewed.",
+          "owner": "release-manager"
+        },
+        {
+          "phase": "Authorize and deploy expedited fix",
+          "sequence": 4,
+          "instruction": "Obtain named emergency authorization, verify artifact identity and required tests, deploy to the smallest safe cohort and monitor stop signals. Workflow-specific control: Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.",
+          "evidence": [
+            "emergency approval",
+            "artifact digest",
+            "rollout and monitoring log",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Authorized approver and rollback owner are recorded; rollout meets canary thresholds.",
+          "owner": "sre"
+        },
+        {
+          "phase": "Verify recovery and retrospective",
+          "sequence": 5,
+          "instruction": "Verify customer-facing recovery, monitor recurrence, close incident communications and schedule a blameless review with action owners. Workflow-specific control: Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.",
+          "evidence": [
+            "recovery evidence",
+            "final incident update",
+            "retrospective/action register",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Recovery is verified and every corrective action has an owner and due date.",
+          "owner": "sre"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        66,
+        67,
+        69,
+        70,
+        71,
+        73,
+        74,
+        75,
+        76,
+        175,
+        177,
+        187
+      ],
+      "responsible_agents": [
+        "incident-manager",
+        "backend-engineer",
+        "release-manager",
+        "sre"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "emergency-hotfix-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.",
+      "rollback_compensation": "Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "security-vulnerability-remediation",
+      "trigger": "A request requires the controlled lifecycle to remove a validated security exposure.",
+      "purpose": "remove a validated security exposure",
+      "phases": [
+        "Validate finding",
+        "Assess exploitability and SLA",
+        "Remediate",
+        "Independently retest",
+        "Release and accept residual risk"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Validate finding",
+          "sequence": 1,
+          "instruction": "Confirm affected asset, component/version, exposure path and scanner evidence; remove duplicates only with documented rationale. Workflow-specific control: Confirm affected asset/version and exploitability; keep active testing within written scope; prioritize exposure and exploit maturity; independently retest the fix and record any time-bound exception.",
+          "evidence": [
+            "validated finding",
+            "affected asset/version",
+            "reproduction evidence",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Finding is reproducible or formally dispositioned as false positive/not affected.",
+          "owner": "vulnerability-analyst"
+        },
+        {
+          "phase": "Assess exploitability and SLA",
+          "sequence": 2,
+          "instruction": "Evaluate reachability, exploit maturity, privileges, data impact and compensating controls; assign remediation deadline from policy. Workflow-specific control: Confirm affected asset/version and exploitability; keep active testing within written scope; prioritize exposure and exploit maturity; independently retest the fix and record any time-bound exception.",
+          "evidence": [
+            "exploitability assessment",
+            "severity/SLA rationale",
+            "remediation owner",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Severity and deadline are accepted by the vulnerability owner.",
+          "owner": "application-security-engineer"
+        },
+        {
+          "phase": "Remediate",
+          "sequence": 3,
+          "instruction": "Apply the smallest supported upgrade/configuration/code fix, preserve compatibility and add a regression guard for the vulnerable behavior. Workflow-specific control: Confirm affected asset/version and exploitability; keep active testing within written scope; prioritize exposure and exploit maturity; independently retest the fix and record any time-bound exception.",
+          "evidence": [
+            "fix commit",
+            "version/config evidence",
+            "regression control",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Affected exposure is removed without introducing an unreviewed breaking change.",
+          "owner": "backend-engineer"
+        },
+        {
+          "phase": "Independently retest",
+          "sequence": 4,
+          "instruction": "Retest the exact fixed revision with the original detection method and a negative regression case; verify adjacent attack paths. Workflow-specific control: Confirm affected asset/version and exploitability; keep active testing within written scope; prioritize exposure and exploit maturity; independently retest the fix and record any time-bound exception.",
+          "evidence": [
+            "retest report",
+            "fixed revision",
+            "residual-risk disposition",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Independent retest demonstrates closure or keeps the finding open.",
+          "owner": "security-auditor"
+        },
+        {
+          "phase": "Release and accept residual risk",
+          "sequence": 5,
+          "instruction": "Complete the release and accept residual risk phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome. Workflow-specific control: Confirm affected asset/version and exploitability; keep active testing within written scope; prioritize exposure and exploit maturity; independently retest the fix and record any time-bound exception.",
+          "evidence": [
+            "phase work product",
+            "verification evidence",
+            "handoff record",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "The accountable owner accepts the output and all blocking issues have an owner.",
+          "owner": "security-auditor"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        69,
         98,
         99,
         100,
         101,
         102,
-        103,
         104,
         105,
         106,
         107,
-        108,
         109,
         110,
+        183,
+        184
+      ],
+      "responsible_agents": [
+        "vulnerability-analyst",
+        "application-security-engineer",
+        "backend-engineer",
+        "security-auditor"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "security-vulnerability-remediation-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Confirm affected asset/version and exploitability; keep active testing within written scope; prioritize exposure and exploit maturity; independently retest the fix and record any time-bound exception.",
+      "rollback_compensation": "Confirm affected asset/version and exploitability; keep active testing within written scope; prioritize exposure and exploit maturity; independently retest the fix and record any time-bound exception.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "dependency-update",
+      "trigger": "A request requires the controlled lifecycle to update a dependency without compatibility regression.",
+      "purpose": "update a dependency without compatibility regression",
+      "phases": [
+        "Inventory advisories",
+        "Assess compatibility/license",
+        "Update provenance",
+        "Regression/security test",
+        "Release and monitor"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Inventory advisories",
+          "sequence": 1,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action. Workflow-specific control: Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "devsecops-engineer"
+        },
+        {
+          "phase": "Assess compatibility/license",
+          "sequence": 2,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action. Workflow-specific control: Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "backend-engineer"
+        },
+        {
+          "phase": "Update provenance",
+          "sequence": 3,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible. Workflow-specific control: Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "license-compliance-specialist"
+        },
+        {
+          "phase": "Regression/security test",
+          "sequence": 4,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "automation-qa-engineer"
+        },
+        {
+          "phase": "Release and monitor",
+          "sequence": 5,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "automation-qa-engineer"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        69,
+        72,
+        100,
+        101,
+        102,
+        105,
+        106,
+        107,
+        108,
+        110,
+        171,
+        172,
+        179
+      ],
+      "responsible_agents": [
+        "devsecops-engineer",
+        "backend-engineer",
+        "license-compliance-specialist",
+        "automation-qa-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "dependency-update-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.",
+      "rollback_compensation": "Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "database-migration",
+      "trigger": "A request requires the controlled lifecycle to change schema/data safely with reconciled state.",
+      "purpose": "change schema/data safely with reconciled state",
+      "phases": [
+        "Assess schema/data impact",
+        "Rehearse backup and restore",
+        "Test compatibility and integrity",
+        "Execute approved window",
+        "Reconcile and monitor"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Assess schema/data impact",
+          "sequence": 1,
+          "instruction": "Inventory schema consumers, data volume, locks, write patterns, retention and compatibility across old/new application versions. Workflow-specific control: Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.",
+          "evidence": [
+            "schema impact map",
+            "data volume and lock estimate",
+            "compatibility matrix",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Application and data owners accept the impact and migration sequence.",
+          "owner": "database-architect"
+        },
+        {
+          "phase": "Rehearse backup and restore",
+          "sequence": 2,
+          "instruction": "Take a representative backup, restore it into an isolated environment and measure integrity, duration, permissions and RPO/RTO. Workflow-specific control: Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.",
+          "evidence": [
+            "backup artifact identity",
+            "restore log",
+            "integrity reconciliation",
+            "RPO/RTO result",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Restore succeeds and reconciled data meets recovery objectives before production migration.",
+          "owner": "database-administrator"
+        },
+        {
+          "phase": "Test compatibility and integrity",
+          "sequence": 3,
+          "instruction": "Run old/new application compatibility tests, migration dry-run, constraint checks and representative read/write reconciliation. Workflow-specific control: Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.",
+          "evidence": [
+            "compatibility test report",
+            "dry-run output",
+            "row/count/checksum reconciliation",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "No unexplained data loss, duplicate key or incompatible consumer behavior remains.",
+          "owner": "database-engineer"
+        },
+        {
+          "phase": "Execute approved window",
+          "sequence": 4,
+          "instruction": "Verify change ticket, approver, backup freshness, operator roles and stop conditions; execute one observable migration step at a time. Workflow-specific control: Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.",
+          "evidence": [
+            "approval and window record",
+            "operator execution log",
+            "pre/post migration checks",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Execution remains within the approved window and every step has a recorded outcome.",
+          "owner": "release-manager"
+        },
+        {
+          "phase": "Reconcile and monitor",
+          "sequence": 5,
+          "instruction": "Compare source/target counts, checksums, constraints and application behavior; monitor latency, errors and replication lag through the observation window. Workflow-specific control: Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.",
+          "evidence": [
+            "reconciliation report",
+            "monitoring snapshot",
+            "residual discrepancy log",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Discrepancies are resolved or explicitly accepted by the data owner; service health is stable.",
+          "owner": "release-manager"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        26,
+        129,
+        130,
+        131,
+        132,
+        133,
+        137,
+        138
+      ],
+      "responsible_agents": [
+        "database-architect",
+        "database-administrator",
+        "database-engineer",
+        "release-manager"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "database-migration-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.",
+      "rollback_compensation": "Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "api-version-upgrade",
+      "trigger": "A request requires the controlled lifecycle to evolve an API while protecting consumers.",
+      "purpose": "evolve an API while protecting consumers",
+      "phases": [
+        "Inventory consumers",
+        "Design version and migration",
+        "Implement compatibility",
+        "Run contract/security tests",
+        "Publish and deprecate"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Inventory consumers",
+          "sequence": 1,
+          "instruction": "Find active clients, integrations, SDKs and usage patterns from gateway logs, repositories and owner records; classify migration criticality. Workflow-specific control: Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.",
+          "evidence": [
+            "consumer inventory",
+            "usage evidence",
+            "owner and contact list",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "No known active consumer is omitted without documented uncertainty.",
+          "owner": "api-architect"
+        },
+        {
+          "phase": "Design version and migration",
+          "sequence": 2,
+          "instruction": "Define version boundary, compatibility guarantees, migration examples, dual-support window and deprecation criteria. Workflow-specific control: Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.",
+          "evidence": [
+            "versioning decision",
+            "migration guide",
+            "deprecation timeline",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Consumers have a documented migration path and support window.",
+          "owner": "api-engineer"
+        },
+        {
+          "phase": "Implement compatibility",
+          "sequence": 3,
+          "instruction": "Implement the new contract while preserving the agreed old behavior; add adapters or version routing where necessary. Workflow-specific control: Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.",
+          "evidence": [
+            "versioned implementation",
+            "compatibility tests",
+            "migration examples",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Old and new consumers behave as specified during transition.",
+          "owner": "integration-engineer"
+        },
+        {
+          "phase": "Run contract/security tests",
+          "sequence": 4,
+          "instruction": "Validate schema compatibility, auth scopes, error handling, rate limits and representative consumer contract suites. Workflow-specific control: Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.",
+          "evidence": [
+            "contract report",
+            "security test evidence",
+            "consumer compatibility result",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "All critical consumer contracts and security controls pass.",
+          "owner": "api-testing-specialist"
+        },
+        {
+          "phase": "Publish and deprecate",
+          "sequence": 5,
+          "instruction": "Publish the version, migration notice, support dates and usage telemetry; deprecate only after consumer readiness criteria are met. Workflow-specific control: Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.",
+          "evidence": [
+            "release notes",
+            "migration notice",
+            "usage/retirement evidence",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Deprecation decision is based on verified usage and approved notice period.",
+          "owner": "api-testing-specialist"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        27
+      ],
+      "responsible_agents": [
+        "api-architect",
+        "api-engineer",
+        "integration-engineer",
+        "api-testing-specialist"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "api-version-upgrade-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.",
+      "rollback_compensation": "Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "infrastructure-provisioning",
+      "trigger": "A request requires the controlled lifecycle to provision reviewed infrastructure from desired state.",
+      "purpose": "provision reviewed infrastructure from desired state",
+      "phases": [
+        "Design desired state",
+        "Review IaC/network/security",
+        "Plan approved change",
+        "Provision and verify drift",
+        "Handoff operations"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Design desired state",
+          "sequence": 1,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "cloud-architect"
+        },
+        {
+          "phase": "Review IaC/network/security",
+          "sequence": 2,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "infrastructure-engineer"
+        },
+        {
+          "phase": "Plan approved change",
+          "sequence": 3,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "network-engineer"
+        },
+        {
+          "phase": "Provision and verify drift",
+          "sequence": 4,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "cloud-engineer"
+        },
+        {
+          "phase": "Handoff operations",
+          "sequence": 5,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "cloud-engineer"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        28,
+        47,
+        48,
+        51,
+        99,
+        103,
+        110,
+        116,
+        117,
+        120,
+        121,
+        122,
+        123,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        149,
+        150,
+        151,
+        152,
+        189
+      ],
+      "responsible_agents": [
+        "cloud-architect",
+        "infrastructure-engineer",
+        "network-engineer",
+        "cloud-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "infrastructure-provisioning-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.",
+      "rollback_compensation": "Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "environment-configuration",
+      "trigger": "A request requires the controlled lifecycle to apply configuration safely across environments.",
+      "purpose": "apply configuration safely across environments",
+      "phases": [
+        "Classify sensitivity",
+        "Prepare scoped delta",
+        "Validate resolution",
+        "Apply protected change",
+        "Verify/document"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Classify sensitivity",
+          "sequence": 1,
+          "instruction": "Complete the classify sensitivity phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.",
+          "evidence": [
+            "phase work product",
+            "verification evidence",
+            "handoff record"
+          ],
+          "exit_criteria": "The accountable owner accepts the output and all blocking issues have an owner.",
+          "owner": "devops-engineer"
+        },
+        {
+          "phase": "Prepare scoped delta",
+          "sequence": 2,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "application-security-engineer"
+        },
+        {
+          "phase": "Validate resolution",
+          "sequence": 3,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "deployment-engineer"
+        },
+        {
+          "phase": "Apply protected change",
+          "sequence": 4,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "deployment-engineer"
+        },
+        {
+          "phase": "Verify/document",
+          "sequence": 5,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "deployment-engineer"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        49,
+        50,
+        52,
+        118,
+        120,
+        121,
+        131,
+        181
+      ],
+      "responsible_agents": [
+        "devops-engineer",
+        "application-security-engineer",
+        "deployment-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "environment-configuration-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "ci-cd-pipeline-creation",
+      "trigger": "A request requires the controlled lifecycle to create a trusted source-to-artifact delivery path.",
+      "purpose": "create a trusted source-to-artifact delivery path",
+      "phases": [
+        "Map trust boundaries",
+        "Build/test/scan/provenance",
+        "Protect immutable artifacts",
+        "Exercise recovery",
+        "Document ownership"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Map trust boundaries",
+          "sequence": 1,
+          "instruction": "Identify workflow actors, runner trust, event sources, tokens, secrets, artifacts and deployment environments. Workflow-specific control: Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.",
+          "evidence": [
+            "pipeline threat model",
+            "permission matrix",
+            "untrusted-event map",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Every trust boundary has a control owner and least-privilege policy.",
+          "owner": "devops-engineer"
+        },
+        {
+          "phase": "Build/test/scan/provenance",
+          "sequence": 2,
+          "instruction": "Build reproducibly, run unit/integration/security checks and produce provenance tied to source revision and artifact digest. Workflow-specific control: Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.",
+          "evidence": [
+            "build/test/scan reports",
+            "artifact digest",
+            "provenance attestation",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Only the expected source revision produces a verified artifact.",
+          "owner": "platform-engineer"
+        },
+        {
+          "phase": "Protect immutable artifacts",
+          "sequence": 3,
+          "instruction": "Promote the same digest between environments, enforce retention/signing policy and prevent untrusted jobs from overwriting release artifacts. Workflow-specific control: Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.",
+          "evidence": [
+            "artifact promotion policy",
+            "signature/digest verification",
+            "retention controls",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Artifact identity is unchanged and verifiable across promotion.",
+          "owner": "devsecops-engineer"
+        },
+        {
+          "phase": "Exercise recovery",
+          "sequence": 4,
+          "instruction": "Simulate pipeline/deployment failure and verify rollback, runner isolation, secret revocation and recovery from partial promotion. Workflow-specific control: Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.",
+          "evidence": [
+            "failure-injection log",
+            "recovery result",
+            "secret/access review",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Recovery restores a known-good state without exposing credentials.",
+          "owner": "automation-qa-engineer"
+        },
+        {
+          "phase": "Document ownership",
+          "sequence": 5,
+          "instruction": "Assign pipeline owner, support SLA, permission steward, runbook, dependency update cadence and deprecation path. Workflow-specific control: Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.",
+          "evidence": [
+            "ownership record",
+            "runbook",
+            "maintenance schedule",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Every production workflow has an accountable maintainer and escalation path.",
+          "owner": "automation-qa-engineer"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        45,
+        46,
+        47,
+        48,
+        50,
+        51,
+        52,
+        99,
+        100,
+        101,
+        102,
+        105,
+        106,
+        107,
         111,
         112,
         113,
         114,
         115,
         116,
-        117,
-        118,
         119,
-        120,
-        121,
         122,
         123,
         124,
         125,
+        181,
+        183
+      ],
+      "responsible_agents": [
+        "devops-engineer",
+        "platform-engineer",
+        "devsecops-engineer",
+        "automation-qa-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "ci-cd-pipeline-creation-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.",
+      "rollback_compensation": "Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "staging-release",
+      "trigger": "A request requires the controlled lifecycle to promote a release candidate through staging evidence.",
+      "purpose": "promote a release candidate through staging evidence",
+      "phases": [
+        "Select immutable candidate",
+        "Deploy staging",
+        "Run validation suite",
+        "Record readiness",
+        "Promote/reject"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Select immutable candidate",
+          "sequence": 1,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "release-manager"
+        },
+        {
+          "phase": "Deploy staging",
+          "sequence": 2,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "deployment-engineer"
+        },
+        {
+          "phase": "Run validation suite",
+          "sequence": 3,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "qa-lead"
+        },
+        {
+          "phase": "Record readiness",
+          "sequence": 4,
+          "instruction": "Complete the record readiness phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.",
+          "evidence": [
+            "phase work product",
+            "verification evidence",
+            "handoff record"
+          ],
+          "exit_criteria": "The accountable owner accepts the output and all blocking issues have an owner.",
+          "owner": "application-security-engineer"
+        },
+        {
+          "phase": "Promote/reject",
+          "sequence": 5,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "application-security-engineer"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        77,
+        86,
+        95,
+        116,
+        122,
+        123,
         126,
         127,
         128,
         129,
         130,
         131,
+        138,
+        139
+      ],
+      "responsible_agents": [
+        "release-manager",
+        "deployment-engineer",
+        "qa-lead",
+        "application-security-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "staging-release-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "production-release",
+      "trigger": "A request requires the controlled lifecycle to release an exact approved artifact progressively.",
+      "purpose": "release an exact approved artifact progressively",
+      "phases": [
+        "Confirm artifact/readiness",
+        "Obtain change approval",
+        "Progressively roll out",
+        "Validate health/business outcomes",
+        "Confirm or roll back"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Confirm artifact/readiness",
+          "sequence": 1,
+          "instruction": "Verify candidate digest, change list, test/security evidence, migrations, observability, release notes and rollback readiness. Workflow-specific control: Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.",
+          "evidence": [
+            "release manifest",
+            "readiness checklist",
+            "open-risk disposition",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "All mandatory readiness checks are complete against the exact candidate.",
+          "owner": "release-manager"
+        },
+        {
+          "phase": "Obtain change approval",
+          "sequence": 2,
+          "instruction": "Present impact, schedule, approver, operator, communication, stop criteria and recovery plan to the designated authority. Workflow-specific control: Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.",
+          "evidence": [
+            "change ticket",
+            "approval record",
+            "communication plan",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Approval is explicit, scoped and valid for the planned window.",
+          "owner": "deployment-engineer"
+        },
+        {
+          "phase": "Progressively roll out",
+          "sequence": 3,
+          "instruction": "Deploy to a canary or smallest supported cohort, observe health/business metrics and expand only when thresholds remain healthy. Workflow-specific control: Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.",
+          "evidence": [
+            "cohort rollout log",
+            "canary metrics",
+            "go/no-go decision",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Each expansion has evidence and stop thresholds are not breached.",
+          "owner": "sre"
+        },
+        {
+          "phase": "Validate health/business outcomes",
+          "sequence": 4,
+          "instruction": "Check service SLIs, key user journeys, transaction integrity and business metrics against pre-release baseline. Workflow-specific control: Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.",
+          "evidence": [
+            "post-release SLI report",
+            "journey verification",
+            "business outcome check",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "No material regression is hidden by infrastructure-only health checks.",
+          "owner": "product-owner"
+        },
+        {
+          "phase": "Confirm or roll back",
+          "sequence": 5,
+          "instruction": "Compare observed signals with stop thresholds; record go/no-go decision and execute authorized recovery if breached. Workflow-specific control: Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.",
+          "evidence": [
+            "release disposition",
+            "rollback/forward-fix evidence",
+            "stakeholder update",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Decision is recorded with authority and final system state verified.",
+          "owner": "product-owner"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        78,
+        81,
+        82,
+        83,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        97,
+        109,
+        126,
+        127,
+        128,
+        129,
         132,
         133,
         134,
@@ -149,33 +1901,1087 @@
         137,
         138,
         139,
-        140,
+        182,
+        187
+      ],
+      "responsible_agents": [
+        "release-manager",
+        "deployment-engineer",
+        "sre",
+        "product-owner"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "production-release-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.",
+      "rollback_compensation": "Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "rollback",
+      "trigger": "A request requires the controlled lifecycle to return service to a known-safe version or forward fix.",
+      "purpose": "return service to a known-safe version or forward fix",
+      "phases": [
+        "Confirm trigger",
+        "Assess data-state safety",
+        "Authorize rollback/forward fix",
+        "Execute recovery",
+        "Verify and communicate"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Confirm trigger",
+          "sequence": 1,
+          "instruction": "Validate the rollback trigger against telemetry, customer impact and release timeline; distinguish transient noise from sustained failure. Workflow-specific control: Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.",
+          "evidence": [
+            "trigger evidence",
+            "impact statement",
+            "decision owner",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Rollback is justified by a defined threshold and authorized decision.",
+          "owner": "incident-manager"
+        },
+        {
+          "phase": "Assess data-state safety",
+          "sequence": 2,
+          "instruction": "Check schema compatibility, writes after release, irreversible side effects, external messages and backup/restore state before reverting. Workflow-specific control: Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.",
+          "evidence": [
+            "data compatibility assessment",
+            "side-effect inventory",
+            "recovery options",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Chosen recovery will not corrupt or silently discard committed data.",
+          "owner": "deployment-engineer"
+        },
+        {
+          "phase": "Authorize rollback/forward fix",
+          "sequence": 3,
+          "instruction": "Present blast radius, data risk, recovery time and options to the incident/change authority; record the selected path. Workflow-specific control: Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.",
+          "evidence": [
+            "recovery decision",
+            "approval record",
+            "operator assignments",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Named authority accepts the selected rollback or forward-fix path.",
+          "owner": "database-administrator"
+        },
+        {
+          "phase": "Execute recovery",
+          "sequence": 4,
+          "instruction": "Restore the last known-good version or apply a bounded forward fix, then reconcile data and dependencies. Workflow-specific control: Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.",
+          "evidence": [
+            "recovery execution log",
+            "artifact/version identity",
+            "data reconciliation",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "System returns to a known-good state with integrity verified.",
+          "owner": "sre"
+        },
+        {
+          "phase": "Verify and communicate",
+          "sequence": 5,
+          "instruction": "Validate customer journeys, service health and data integrity; issue factual status and document residual risk. Workflow-specific control: Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.",
+          "evidence": [
+            "recovery verification",
+            "final status update",
+            "follow-up actions",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Service owner confirms recovery and accepts remaining risk.",
+          "owner": "sre"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        132,
+        133,
+        137,
+        138
+      ],
+      "responsible_agents": [
+        "incident-manager",
+        "deployment-engineer",
+        "database-administrator",
+        "sre"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "rollback-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.",
+      "rollback_compensation": "Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "incident-response",
+      "trigger": "A request requires the controlled lifecycle to contain and recover from an operational incident.",
+      "purpose": "contain and recover from an operational incident",
+      "phases": [
+        "Assign commander/severity",
+        "Assess impact/timeline",
+        "Contain and investigate",
+        "Recover and verify",
+        "Handoff and postmortem"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Assign commander/severity",
+          "sequence": 1,
+          "instruction": "Complete the assign commander/severity phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome. Workflow-specific control: Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.",
+          "evidence": [
+            "phase work product",
+            "verification evidence",
+            "handoff record",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "The accountable owner accepts the output and all blocking issues have an owner.",
+          "owner": "incident-manager"
+        },
+        {
+          "phase": "Assess impact/timeline",
+          "sequence": 2,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action. Workflow-specific control: Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "sre"
+        },
+        {
+          "phase": "Contain and investigate",
+          "sequence": 3,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible. Workflow-specific control: Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "observability-engineer"
+        },
+        {
+          "phase": "Recover and verify",
+          "sequence": 4,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "production-support-engineer"
+        },
+        {
+          "phase": "Handoff and postmortem",
+          "sequence": 5,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "production-support-engineer"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
         141,
         142,
         143,
         144,
         145,
-        146,
-        147,
-        148,
-        149,
-        150,
         151,
-        152,
         153,
         154,
         155,
         156,
         157,
         158,
-        159,
-        160,
         161,
         162,
         163,
         164,
         165,
+        167,
+        168,
+        169
+      ],
+      "responsible_agents": [
+        "incident-manager",
+        "sre",
+        "observability-engineer",
+        "production-support-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "incident-response-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.",
+      "rollback_compensation": "Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "root-cause-analysis",
+      "trigger": "A request requires the controlled lifecycle to establish causal learning after an incident.",
+      "purpose": "establish causal learning after an incident",
+      "phases": [
+        "Collect timeline",
+        "Test causal hypotheses",
+        "Identify contributors",
+        "Assign corrective actions",
+        "Verify follow-through"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Collect timeline",
+          "sequence": 1,
+          "instruction": "Collect alerts, deploys, traces, logs and operator decisions into a UTC timeline with source references.",
+          "evidence": [
+            "timestamped event timeline",
+            "evidence source index"
+          ],
+          "exit_criteria": "Timeline is traceable and separates observed facts from interpretation.",
+          "owner": "incident-manager"
+        },
+        {
+          "phase": "Test causal hypotheses",
+          "sequence": 2,
+          "instruction": "Construct causal hypotheses, test them against independent evidence and identify contributing conditions rather than a single blame target.",
+          "evidence": [
+            "hypothesis/evidence matrix",
+            "causal analysis",
+            "uncertainty notes"
+          ],
+          "exit_criteria": "Root cause claims have supporting evidence and alternatives are addressed.",
+          "owner": "sre"
+        },
+        {
+          "phase": "Identify contributors",
+          "sequence": 3,
+          "instruction": "Examine technical, process, organizational and external contributors that allowed the event or increased impact.",
+          "evidence": [
+            "contributing-factor map",
+            "control gap analysis"
+          ],
+          "exit_criteria": "Analysis explains both occurrence and impact amplification.",
+          "owner": "software-architect"
+        },
+        {
+          "phase": "Assign corrective actions",
+          "sequence": 4,
+          "instruction": "Create preventive, detective and recovery actions with measurable outcomes, accountable owners and due dates.",
+          "evidence": [
+            "corrective action register",
+            "priority and owner"
+          ],
+          "exit_criteria": "Actions address verified contributors and are trackable.",
+          "owner": "process-improvement-specialist"
+        },
+        {
+          "phase": "Verify follow-through",
+          "sequence": 5,
+          "instruction": "Review action completion evidence and measure recurrence or control effectiveness after an agreed period.",
+          "evidence": [
+            "closure evidence",
+            "effectiveness measure",
+            "residual-risk review"
+          ],
+          "exit_criteria": "Actions are not closed on status alone; effectiveness is demonstrated.",
+          "owner": "process-improvement-specialist"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        153,
+        154,
+        155,
+        156,
+        157,
+        161,
+        163,
+        164,
+        165,
         166,
+        190
+      ],
+      "responsible_agents": [
+        "incident-manager",
+        "sre",
+        "software-architect",
+        "process-improvement-specialist"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "root-cause-analysis-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "disaster-recovery",
+      "trigger": "A request requires the controlled lifecycle to prove recoverability against RTO/RPO objectives.",
+      "purpose": "prove recoverability against RTO/RPO objectives",
+      "phases": [
+        "Confirm RTO/RPO",
+        "Prepare isolated recovery",
+        "Restore/fail over",
+        "Validate integrity",
+        "Measure gaps"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Confirm RTO/RPO",
+          "sequence": 1,
+          "instruction": "Set business-approved recovery time and point objectives for each critical service/data set. Workflow-specific control: Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.",
+          "evidence": [
+            "RTO/RPO matrix",
+            "business impact rationale",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Objectives are measurable, owned and aligned to business impact.",
+          "owner": "cloud-engineer"
+        },
+        {
+          "phase": "Prepare isolated recovery",
+          "sequence": 2,
+          "instruction": "Provision clean recovery identities, network and compute isolated from the compromised/failed environment. Workflow-specific control: Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.",
+          "evidence": [
+            "recovery environment plan",
+            "identity/network controls",
+            "access audit",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Recovery environment is isolated and access is verified.",
+          "owner": "database-administrator"
+        },
+        {
+          "phase": "Restore/fail over",
+          "sequence": 3,
+          "instruction": "Restore from selected backup or fail over using documented sequence; capture elapsed time and replication position. Workflow-specific control: Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.",
+          "evidence": [
+            "restore/failover log",
+            "backup identity",
+            "elapsed time",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Recovery completes within target or gap is formally recorded.",
+          "owner": "sre"
+        },
+        {
+          "phase": "Validate integrity",
+          "sequence": 4,
+          "instruction": "Run database checks, application smoke tests and business reconciliation before reopening traffic. Workflow-specific control: Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.",
+          "evidence": [
+            "integrity report",
+            "application validation",
+            "business reconciliation",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Data and application state are accepted by owners.",
+          "owner": "incident-manager"
+        },
+        {
+          "phase": "Measure gaps",
+          "sequence": 5,
+          "instruction": "Compare actual recovery time/data loss with objectives and prioritize resilience improvements. Workflow-specific control: Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.",
+          "evidence": [
+            "RTO/RPO result",
+            "gap register",
+            "improvement actions",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Each gap has owner, target date and next exercise.",
+          "owner": "incident-manager"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        141,
+        142,
+        143,
+        144,
+        145,
+        147,
+        148,
+        149,
+        151,
+        153,
+        154,
+        155,
+        156,
+        157,
+        159,
+        160,
+        161,
+        163,
+        165,
+        166
+      ],
+      "responsible_agents": [
+        "cloud-engineer",
+        "database-administrator",
+        "sre",
+        "incident-manager"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "disaster-recovery-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.",
+      "rollback_compensation": "Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "performance-optimization",
+      "trigger": "A request requires the controlled lifecycle to improve measured system performance.",
+      "purpose": "improve measured system performance",
+      "phases": [
+        "Baseline workload",
+        "Profile bottleneck",
+        "Implement measured improvement",
+        "Load/regression verify",
+        "Monitor capacity"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Baseline workload",
+          "sequence": 1,
+          "instruction": "Complete the baseline workload phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.",
+          "evidence": [
+            "phase work product",
+            "verification evidence",
+            "handoff record"
+          ],
+          "exit_criteria": "The accountable owner accepts the output and all blocking issues have an owner.",
+          "owner": "performance-engineer"
+        },
+        {
+          "phase": "Profile bottleneck",
+          "sequence": 2,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "backend-engineer"
+        },
+        {
+          "phase": "Implement measured improvement",
+          "sequence": 3,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "database-engineer"
+        },
+        {
+          "phase": "Load/regression verify",
+          "sequence": 4,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "sre"
+        },
+        {
+          "phase": "Monitor capacity",
+          "sequence": 5,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "sre"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        174,
+        189
+      ],
+      "responsible_agents": [
+        "performance-engineer",
+        "backend-engineer",
+        "database-engineer",
+        "sre"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "performance-optimization-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "technical-debt-reduction",
+      "trigger": "A request requires the controlled lifecycle to reduce a documented debt hotspot without behavior loss.",
+      "purpose": "reduce a documented debt hotspot without behavior loss",
+      "phases": [
+        "Identify debt hotspot",
+        "Plan safe refactor",
+        "Add characterization tests",
+        "Review regression",
+        "Track remaining debt"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Identify debt hotspot",
+          "sequence": 1,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "software-architect"
+        },
+        {
+          "phase": "Plan safe refactor",
+          "sequence": 2,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "full-stack-engineer"
+        },
+        {
+          "phase": "Add characterization tests",
+          "sequence": 3,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "code-reviewer"
+        },
+        {
+          "phase": "Review regression",
+          "sequence": 4,
+          "instruction": "Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.",
+          "evidence": [
+            "verification report",
+            "residual risk and decision log",
+            "handoff record"
+          ],
+          "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
+          "owner": "qa-lead"
+        },
+        {
+          "phase": "Track remaining debt",
+          "sequence": 5,
+          "instruction": "Complete the track remaining debt phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.",
+          "evidence": [
+            "phase work product",
+            "verification evidence",
+            "handoff record"
+          ],
+          "exit_criteria": "The accountable owner accepts the output and all blocking issues have an owner.",
+          "owner": "qa-lead"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        37,
+        190
+      ],
+      "responsible_agents": [
+        "software-architect",
+        "full-stack-engineer",
+        "code-reviewer",
+        "qa-lead"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "technical-debt-reduction-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "documentation-update",
+      "trigger": "A request requires the controlled lifecycle to correct and publish controlled documentation.",
+      "purpose": "correct and publish controlled documentation",
+      "phases": [
+        "Identify audience/source",
+        "Draft accurate content",
+        "Review links/examples",
+        "Publish",
+        "Set review date"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Identify audience/source",
+          "sequence": 1,
+          "instruction": "Identify the reader task, authoritative source, product version and content owner before drafting.",
+          "evidence": [
+            "audience/task brief",
+            "source and version inventory"
+          ],
+          "exit_criteria": "Every statement can be traced to an implementation or policy owner.",
+          "owner": "technical-writer"
+        },
+        {
+          "phase": "Draft accurate content",
+          "sequence": 2,
+          "instruction": "Write prerequisites, steps, expected output, examples and recovery guidance from verified source behavior.",
+          "evidence": [
+            "draft guide",
+            "validated code examples"
+          ],
+          "exit_criteria": "Instructions are executable and do not invent product behavior.",
+          "owner": "documentation-engineer"
+        },
+        {
+          "phase": "Review links/examples",
+          "sequence": 3,
+          "instruction": "Run code examples, validate links, check version references and obtain subject-matter review.",
+          "evidence": [
+            "link/code validation report",
+            "SME review"
+          ],
+          "exit_criteria": "Broken links, stale commands and unsupported claims are resolved.",
+          "owner": "quality-governance-specialist"
+        },
+        {
+          "phase": "Publish",
+          "sequence": 4,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "quality-governance-specialist"
+        },
+        {
+          "phase": "Set review date",
+          "sequence": 5,
+          "instruction": "Assign content owner, review cadence and change triggers linked to releases or policy changes.",
+          "evidence": [
+            "owner and review date",
+            "freshness trigger"
+          ],
+          "exit_criteria": "Published content has an accountable owner and review trigger.",
+          "owner": "quality-governance-specialist"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        186
+      ],
+      "responsible_agents": [
+        "technical-writer",
+        "documentation-engineer",
+        "quality-governance-specialist"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
+      ],
+      "outputs": [
+        "documentation-update-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "product-retirement",
+      "trigger": "A request requires the controlled lifecycle to retire a product with consumer and data obligations closed.",
+      "purpose": "retire a product with consumer and data obligations closed",
+      "phases": [
+        "Approve EOL",
+        "Inventory consumers/data/vendors",
+        "Migrate and communicate",
+        "Stage shutdown",
+        "Close audit and support"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Approve EOL",
+          "sequence": 1,
+          "instruction": "Confirm product retirement rationale, support end date, legal retention and accountable sponsor approval. Workflow-specific control: Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.",
+          "evidence": [
+            "EOL decision",
+            "notice and retention requirements",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Retirement authority and affected-party notice are approved.",
+          "owner": "product-manager"
+        },
+        {
+          "phase": "Inventory consumers/data/vendors",
+          "sequence": 2,
+          "instruction": "Find active clients, integrations, SDKs and usage patterns from gateway logs, repositories and owner records; classify migration criticality. Workflow-specific control: Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.",
+          "evidence": [
+            "consumer inventory",
+            "usage evidence",
+            "owner and contact list",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "No known active consumer is omitted without documented uncertainty.",
+          "owner": "vendor-management-specialist"
+        },
+        {
+          "phase": "Migrate and communicate",
+          "sequence": 3,
+          "instruction": "Move users and data to an approved successor, reconcile completeness and communicate cutover/support dates. Workflow-specific control: Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.",
+          "evidence": [
+            "migration and reconciliation report",
+            "customer notices",
+            "cutover plan",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Consumers confirm readiness or receive a supported exception path.",
+          "owner": "compliance-specialist"
+        },
+        {
+          "phase": "Stage shutdown",
+          "sequence": 4,
+          "instruction": "Disable access and traffic in controlled steps while monitoring residual usage and preserving required records. Workflow-specific control: Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.",
+          "evidence": [
+            "shutdown checklist",
+            "residual access scan",
+            "traffic/usage evidence",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "No active critical consumer remains and rollback window is understood.",
+          "owner": "technical-support-engineer"
+        },
+        {
+          "phase": "Close audit and support",
+          "sequence": 5,
+          "instruction": "Remove residual credentials/infrastructure, complete retention/deletion evidence and transfer remaining support obligations. Workflow-specific control: Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.",
+          "evidence": [
+            "decommission evidence",
+            "deletion/retention record",
+            "support closure",
+            "workflow-specific safety/control evidence"
+          ],
+          "exit_criteria": "Security, legal and service owners accept closure.",
+          "owner": "technical-support-engineer"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        9,
+        10,
+        180,
+        185,
+        188
+      ],
+      "responsible_agents": [
+        "product-manager",
+        "vendor-management-specialist",
+        "compliance-specialist",
+        "technical-support-engineer"
+      ],
+      "required_skills": [
+        "master-orchestration",
+        "evidence-quality-gates",
+        "secure-change-control"
+      ],
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+      "parallel_tasks": [
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+      ],
+      "approval_gates": [
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition",
+        "explicit-human-authorization"
+      ],
+      "outputs": [
+        "product-retirement-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.",
+      "rollback_compensation": "Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+    },
+    {
+      "workflow_id": "application-maintenance",
+      "trigger": "A request requires the controlled lifecycle to operate and improve a live application.",
+      "purpose": "operate and improve a live application",
+      "phases": [
+        "Triage maintenance demand",
+        "Diagnose impact",
+        "Patch/update safely",
+        "Verify and publish knowledge",
+        "Plan maintenance release"
+      ],
+      "phase_contracts": [
+        {
+          "phase": "Triage maintenance demand",
+          "sequence": 1,
+          "instruction": "Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.",
+          "evidence": [
+            "baseline and scope record",
+            "assumptions and risk log"
+          ],
+          "exit_criteria": "Owner confirms the baseline and all blocking unknowns have an owner.",
+          "owner": "production-support-engineer"
+        },
+        {
+          "phase": "Diagnose impact",
+          "sequence": 2,
+          "instruction": "Complete the diagnose impact phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.",
+          "evidence": [
+            "phase work product",
+            "verification evidence",
+            "handoff record"
+          ],
+          "exit_criteria": "The accountable owner accepts the output and all blocking issues have an owner.",
+          "owner": "technical-support-engineer"
+        },
+        {
+          "phase": "Patch/update safely",
+          "sequence": 3,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "backend-engineer"
+        },
+        {
+          "phase": "Verify and publish knowledge",
+          "sequence": 4,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "release-manager"
+        },
+        {
+          "phase": "Plan maintenance release",
+          "sequence": 5,
+          "instruction": "Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.",
+          "evidence": [
+            "change/design artifact",
+            "execution log",
+            "review evidence"
+          ],
+          "exit_criteria": "The intended change is complete and independently checked against its approved scope.",
+          "owner": "release-manager"
+        }
+      ],
+      "required_inputs": [
+        "named request and accountable owner",
+        "risk/impact classification and authority",
+        "relevant artifact, immutable revision or environment reference",
+        "acceptance criteria and recovery constraints"
+      ],
+      "stages": [
+        47,
+        48,
+        51,
+        52,
         167,
         168,
         169,
@@ -192,20 +2998,15 @@
         180,
         181,
         182,
-        183,
         184,
-        185,
         186,
         187,
-        188,
-        189,
-        190
+        189
       ],
       "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
+        "production-support-engineer",
+        "technical-support-engineer",
+        "backend-engineer",
         "release-manager"
       ],
       "required_skills": [
@@ -213,1262 +3014,24 @@
         "evidence-quality-gates",
         "secure-change-control"
       ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
+      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
       "parallel_tasks": [
-        "documentation and test planning after requirements approval"
+        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
       ],
       "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
+        "scope-and-risk",
+        "quality-evidence",
+        "security-disposition"
       ],
       "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "existing-application-enhancement",
-      "trigger": "Approved request for existing application enhancement.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "feature-development",
-      "trigger": "Approved request for feature development.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "bug-fix",
-      "trigger": "Approved request for bug fix.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "emergency-hotfix",
-      "trigger": "Approved request for emergency hotfix.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "security-vulnerability-remediation",
-      "trigger": "Approved request for security vulnerability remediation.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "dependency-update",
-      "trigger": "Approved request for dependency update.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "database-migration",
-      "trigger": "Approved request for database migration.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "api-version-upgrade",
-      "trigger": "Approved request for api version upgrade.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "infrastructure-provisioning",
-      "trigger": "Approved request for infrastructure provisioning.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "environment-configuration",
-      "trigger": "Approved request for environment configuration.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "ci-cd-pipeline-creation",
-      "trigger": "Approved request for ci cd pipeline creation.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "staging-release",
-      "trigger": "Approved request for staging release.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "production-release",
-      "trigger": "Approved request for production release.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "rollback",
-      "trigger": "Approved request for rollback.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "incident-response",
-      "trigger": "Approved request for incident response.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "root-cause-analysis",
-      "trigger": "Approved request for root cause analysis.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "disaster-recovery",
-      "trigger": "Approved request for disaster recovery.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "performance-optimization",
-      "trigger": "Approved request for performance optimization.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "technical-debt-reduction",
-      "trigger": "Approved request for technical debt reduction.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "documentation-update",
-      "trigger": "Approved request for documentation update.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "product-retirement",
-      "trigger": "Approved request for product retirement.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security",
-        "production-human-approval"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
-    },
-    {
-      "workflow_id": "application-maintenance",
-      "trigger": "Approved request for application maintenance.",
-      "required_inputs": [
-        "request",
-        "risk classification",
-        "applicable artifacts"
-      ],
-      "stages": [
-        45,
-        53,
-        67,
-        68,
-        69,
-        79,
-        85,
-        110,
-        130,
-        131,
-        133,
-        138,
-        163,
-        164,
-        165
-      ],
-      "responsible_agents": [
-        "project-manager",
-        "full-stack-engineer",
-        "qa-lead",
-        "application-security-engineer",
-        "release-manager"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.",
-      "parallel_tasks": [
-        "documentation and test planning after requirements approval"
-      ],
-      "approval_gates": [
-        "business",
-        "requirements",
-        "architecture",
-        "qa",
-        "security"
-      ],
-      "outputs": [
-        "versioned artifacts",
-        "evidence bundle",
-        "final workflow report"
-      ],
-      "failure_handling": "Stop unsafe work; mark failed gate; create remediation/rollback path.",
-      "completion_criteria": "Every included stage has PASS evidence or an approved, non-expired waiver."
+        "application-maintenance-phase-evidence-bundle",
+        "decision and exception log",
+        "verified operational handoff"
+      ],
+      "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
+      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
     }
   ]
 }

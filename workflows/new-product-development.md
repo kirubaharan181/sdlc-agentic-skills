@@ -1,63 +1,95 @@
 # New Product Development
 
-> **Outcome:** Every included stage has PASS evidence or an approved, non-expired waiver.
+> **Purpose:** discover to operate a new product
 
-## Trigger
-Approved request for new product development.
+## Trigger and required inputs
+A request requires the controlled lifecycle to discover to operate a new product.
+- named request and accountable owner
+- risk/impact classification and authority
+- relevant artifact, immutable revision or environment reference
+- acceptance criteria and recovery constraints
 
-## Inputs
-- request
-- risk classification
-- applicable artifacts
+## Lifecycle phases
+### 1. Frame opportunity
 
-## Flow
+**Accountable role:** product-manager
 
-```mermaid
-flowchart LR
-    A[Validate inputs] --> B[Execute assigned stages]
-    B --> C[Collect evidence]
-    C --> D{Evaluate gates}
-    D -->|PASS| E[Handoff]
-    D -->|FAIL / BLOCKED| F[Remediate or escalate]
-    F --> B
-```
+**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.
 
-## Stages and dependencies
+**Required evidence:**
+- baseline and scope record
+- assumptions and risk log
 
-**Included stage IDs:** 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190.
+**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
 
-Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.
+### 2. Validate requirements
 
-## Roles and skills
+**Accountable role:** software-architect
 
-| Accountable roles | Control skills |
-|---|---|
-| project-manager, full-stack-engineer, qa-lead, application-security-engineer, release-manager | master-orchestration, evidence-quality-gates, secure-change-control |
+**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.
 
-## Parallel tasks
-- documentation and test planning after requirements approval
+**Required evidence:**
+- baseline and scope record
+- assumptions and risk log
+
+**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
+
+### 3. Design architecture
+
+**Accountable role:** full-stack-engineer
+
+**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
+
+**Required evidence:**
+- change/design artifact
+- execution log
+- review evidence
+
+**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+
+### 4. Build and verify
+
+**Accountable role:** qa-lead
+
+**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
+
+**Required evidence:**
+- change/design artifact
+- execution log
+- review evidence
+
+**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+
+### 5. Release and operate
+
+**Accountable role:** release-manager
+
+**Execution:** Complete the release and operate phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.
+
+**Required evidence:**
+- phase work product
+- verification evidence
+- handoff record
+
+**Exit criteria:** The accountable owner accepts the output and all blocking issues have an owner.
+
+
+## Stage set and accountable roles
+Stage IDs: 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 27, 29, 30, 31, 32, 33, 35, 36, 37, 38, 39, 40, 41, 42, 43, 188
+Accountable roles: product-manager, software-architect, full-stack-engineer, qa-lead, release-manager
+Required skills: master-orchestration, evidence-quality-gates, secure-change-control
+
+## Dependencies and parallel work
+A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
+- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
 
 ## Approval gates
-- business
-- requirements
-- architecture
-- qa
-- security
+scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
 
-## Outputs and evidence
-
-Outputs: versioned artifacts, evidence bundle, final workflow report. Include immutable revision/digest, validation reports, gate statuses, limitations, and handoff receiver.
-
-## Failure handling
-
-Stop unsafe work; mark failed gate; create remediation/rollback path. Never report a completed workflow while a required gate is failing, blocked, or inconclusive.
+## Failure, rollback and communication
+Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
+**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
+**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
 
 ## Completion criteria
-
-Every included stage has PASS evidence or an approved, non-expired waiver.
-
-## Related controls
-
-- [Master orchestrator](../orchestrator/MASTER_ORCHESTRATOR.md)
-- [Evidence gate policy](../orchestrator/policies/GATE_POLICY.md)
-- [Standard handoff](../orchestrator/handoff-contracts/STANDARD_HANDOFF.md)
+Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.

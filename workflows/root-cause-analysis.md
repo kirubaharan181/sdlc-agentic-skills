@@ -1,63 +1,94 @@
 # Root Cause Analysis
 
-> **Outcome:** Every included stage has PASS evidence or an approved, non-expired waiver.
+> **Purpose:** establish causal learning after an incident
 
-## Trigger
-Approved request for root cause analysis.
+## Trigger and required inputs
+A request requires the controlled lifecycle to establish causal learning after an incident.
+- named request and accountable owner
+- risk/impact classification and authority
+- relevant artifact, immutable revision or environment reference
+- acceptance criteria and recovery constraints
 
-## Inputs
-- request
-- risk classification
-- applicable artifacts
+## Lifecycle phases
+### 1. Collect timeline
 
-## Flow
+**Accountable role:** incident-manager
 
-```mermaid
-flowchart LR
-    A[Validate inputs] --> B[Execute assigned stages]
-    B --> C[Collect evidence]
-    C --> D{Evaluate gates}
-    D -->|PASS| E[Handoff]
-    D -->|FAIL / BLOCKED| F[Remediate or escalate]
-    F --> B
-```
+**Execution:** Collect alerts, deploys, traces, logs and operator decisions into a UTC timeline with source references.
 
-## Stages and dependencies
+**Required evidence:**
+- timestamped event timeline
+- evidence source index
 
-**Included stage IDs:** 45, 53, 67, 68, 69, 79, 85, 110, 130, 131, 133, 138, 163, 164, 165.
+**Exit criteria:** Timeline is traceable and separates observed facts from interpretation.
 
-Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.
+### 2. Test causal hypotheses
 
-## Roles and skills
+**Accountable role:** sre
 
-| Accountable roles | Control skills |
-|---|---|
-| project-manager, full-stack-engineer, qa-lead, application-security-engineer, release-manager | master-orchestration, evidence-quality-gates, secure-change-control |
+**Execution:** Construct causal hypotheses, test them against independent evidence and identify contributing conditions rather than a single blame target.
 
-## Parallel tasks
-- documentation and test planning after requirements approval
+**Required evidence:**
+- hypothesis/evidence matrix
+- causal analysis
+- uncertainty notes
+
+**Exit criteria:** Root cause claims have supporting evidence and alternatives are addressed.
+
+### 3. Identify contributors
+
+**Accountable role:** software-architect
+
+**Execution:** Examine technical, process, organizational and external contributors that allowed the event or increased impact.
+
+**Required evidence:**
+- contributing-factor map
+- control gap analysis
+
+**Exit criteria:** Analysis explains both occurrence and impact amplification.
+
+### 4. Assign corrective actions
+
+**Accountable role:** process-improvement-specialist
+
+**Execution:** Create preventive, detective and recovery actions with measurable outcomes, accountable owners and due dates.
+
+**Required evidence:**
+- corrective action register
+- priority and owner
+
+**Exit criteria:** Actions address verified contributors and are trackable.
+
+### 5. Verify follow-through
+
+**Accountable role:** process-improvement-specialist
+
+**Execution:** Review action completion evidence and measure recurrence or control effectiveness after an agreed period.
+
+**Required evidence:**
+- closure evidence
+- effectiveness measure
+- residual-risk review
+
+**Exit criteria:** Actions are not closed on status alone; effectiveness is demonstrated.
+
+
+## Stage set and accountable roles
+Stage IDs: 153, 154, 155, 156, 157, 161, 163, 164, 165, 166, 190
+Accountable roles: incident-manager, sre, software-architect, process-improvement-specialist
+Required skills: master-orchestration, evidence-quality-gates, secure-change-control
+
+## Dependencies and parallel work
+A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
+- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
 
 ## Approval gates
-- business
-- requirements
-- architecture
-- qa
-- security
+scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
 
-## Outputs and evidence
-
-Outputs: versioned artifacts, evidence bundle, final workflow report. Include immutable revision/digest, validation reports, gate statuses, limitations, and handoff receiver.
-
-## Failure handling
-
-Stop unsafe work; mark failed gate; create remediation/rollback path. Never report a completed workflow while a required gate is failing, blocked, or inconclusive.
+## Failure, rollback and communication
+Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
+**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
+**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
 
 ## Completion criteria
-
-Every included stage has PASS evidence or an approved, non-expired waiver.
-
-## Related controls
-
-- [Master orchestrator](../orchestrator/MASTER_ORCHESTRATOR.md)
-- [Evidence gate policy](../orchestrator/policies/GATE_POLICY.md)
-- [Standard handoff](../orchestrator/handoff-contracts/STANDARD_HANDOFF.md)
+Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.

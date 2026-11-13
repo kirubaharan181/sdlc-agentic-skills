@@ -1,63 +1,97 @@
 # Bug Fix
 
-> **Outcome:** Every included stage has PASS evidence or an approved, non-expired waiver.
+> **Purpose:** restore a defective behavior with minimal change
 
-## Trigger
-Approved request for bug fix.
+## Trigger and required inputs
+A request requires the controlled lifecycle to restore a defective behavior with minimal change.
+- named request and accountable owner
+- risk/impact classification and authority
+- relevant artifact, immutable revision or environment reference
+- acceptance criteria and recovery constraints
 
-## Inputs
-- request
-- risk classification
-- applicable artifacts
+## Lifecycle phases
+### 1. Triage severity and impact
 
-## Flow
+**Accountable role:** production-support-engineer
 
-```mermaid
-flowchart LR
-    A[Validate inputs] --> B[Execute assigned stages]
-    B --> C[Collect evidence]
-    C --> D{Evaluate gates}
-    D -->|PASS| E[Handoff]
-    D -->|FAIL / BLOCKED| F[Remediate or escalate]
-    F --> B
-```
+**Execution:** Classify urgency using customer impact, blast radius, data integrity and security exposure; assign incident/request owner, severity, response SLA and stop conditions.
 
-## Stages and dependencies
+**Required evidence:**
+- severity rationale
+- affected-version/cohort list
+- owner and response timeline
 
-**Included stage IDs:** 45, 53, 67, 68, 69, 79, 85, 110, 130, 131, 133, 138, 163, 164, 165.
+**Exit criteria:** Severity and escalation owner are accepted; unsafe changes are prohibited until impact is understood.
 
-Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.
+### 2. Reproduce and isolate root cause
 
-## Roles and skills
+**Accountable role:** backend-engineer
 
-| Accountable roles | Control skills |
-|---|---|
-| project-manager, full-stack-engineer, qa-lead, application-security-engineer, release-manager | master-orchestration, evidence-quality-gates, secure-change-control |
+**Execution:** Reproduce on the affected revision/environment, correlate logs and recent changes, and isolate the smallest failing condition without modifying production state.
 
-## Parallel tasks
-- documentation and test planning after requirements approval
+**Required evidence:**
+- minimal reproduction
+- correlated diagnostics
+- hypothesis log
+
+**Exit criteria:** A root-cause hypothesis is supported by reproducible evidence or explicitly marked inconclusive.
+
+### 3. Implement minimal correction
+
+**Accountable role:** code-reviewer
+
+**Execution:** Change only the failing behavior, preserve existing contracts, add a regression assertion and avoid unrelated refactoring.
+
+**Required evidence:**
+- minimal patch
+- regression test
+- diff risk note
+
+**Exit criteria:** The regression test fails before the fix and passes after it; unrelated behavior remains unchanged.
+
+### 4. Run regression and review
+
+**Accountable role:** qa-lead
+
+**Execution:** Run focused and impacted regression suites, inspect the exact diff, and obtain independent review for correctness, security and compatibility.
+
+**Required evidence:**
+- test report
+- review findings
+- unresolved-risk list
+
+**Exit criteria:** Critical regression and review findings are closed or explicitly block release.
+
+### 5. Deploy and verify
+
+**Accountable role:** qa-lead
+
+**Execution:** Promote the approved artifact, deploy using the authorized change path, and verify health and user-facing behavior against stop thresholds.
+
+**Required evidence:**
+- deployment record
+- health metrics
+- customer verification
+
+**Exit criteria:** Service behavior and health remain within thresholds for the agreed observation window.
+
+
+## Stage set and accountable roles
+Stage IDs: 55, 56, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 73, 74, 75, 76, 78, 79, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 96, 97, 170, 175, 177, 179
+Accountable roles: production-support-engineer, backend-engineer, code-reviewer, qa-lead
+Required skills: master-orchestration, evidence-quality-gates, secure-change-control
+
+## Dependencies and parallel work
+A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
+- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
 
 ## Approval gates
-- business
-- requirements
-- architecture
-- qa
-- security
+scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
 
-## Outputs and evidence
-
-Outputs: versioned artifacts, evidence bundle, final workflow report. Include immutable revision/digest, validation reports, gate statuses, limitations, and handoff receiver.
-
-## Failure handling
-
-Stop unsafe work; mark failed gate; create remediation/rollback path. Never report a completed workflow while a required gate is failing, blocked, or inconclusive.
+## Failure, rollback and communication
+Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
+**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
+**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
 
 ## Completion criteria
-
-Every included stage has PASS evidence or an approved, non-expired waiver.
-
-## Related controls
-
-- [Master orchestrator](../orchestrator/MASTER_ORCHESTRATOR.md)
-- [Evidence gate policy](../orchestrator/policies/GATE_POLICY.md)
-- [Standard handoff](../orchestrator/handoff-contracts/STANDARD_HANDOFF.md)
+Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.

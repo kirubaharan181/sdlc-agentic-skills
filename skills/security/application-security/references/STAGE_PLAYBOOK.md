@@ -1,198 +1,198 @@
-# Cybersecurity, Application Security and Compliance — Stage Playbook
+# Application security engineering — Stage Playbook
 
-Use this reference after loading the category skill. Each entry is a bounded execution contract; tailor tooling to the project without weakening the control.
+> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 98. Threat Modeling
 
-**Purpose:** Establish a decision-ready, auditable result for Threat Modeling without bypassing upstream controls.
+**Purpose:** identify abuse paths and prioritize security treatment
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inventory entry points, identities, privileged operations and sensitive data.
+- Enumerate threats/abuse cases using a repeatable taxonomy and attacker capability.
+- Rate likelihood/impact and map mitigations to design controls and tests.
+- Track accepted residual risks with owner, expiry and monitoring trigger.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** threat-modeling-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-098` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** system/data-flow diagrams, assets, actors and trust boundaries, security assumptions
+**Artifact:** threat model
+**Verification:** Independent security design review.
+**Handoff:** Transfer threat model with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 99. SAST
 
-**Purpose:** Establish a decision-ready, auditable result for SAST without bypassing upstream controls.
+**Purpose:** identify exploitable source-code weaknesses before runtime
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Run configured static analysis on the exact source revision and include generated/critical code according to policy.
+- Trace high-impact findings from source to sink and assess reachability and sanitization.
+- Triage false positives with evidence and assign remediation owners and SLAs.
+- Retest the fixed revision and add regression coverage for the vulnerable path.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** sast-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-099` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** source revision and language coverage, scanner configuration and severity policy, threat model and reachable entry points
+**Artifact:** SAST report
+**Verification:** Trace a high-severity taint finding to the trust boundary and verify the fix with a regression test.
+**Handoff:** Transfer SAST report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 100. DAST
 
-**Purpose:** Establish a decision-ready, auditable result for DAST without bypassing upstream controls.
+**Purpose:** validate runtime attack surface within explicit authorization
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Confirm ownership, target list, exclusions, rate limits and stop conditions before scanning.
+- Exercise approved runtime paths for injection, authentication/session and security-header weaknesses.
+- Manually validate high-severity results without destructive payloads or unnecessary data access.
+- Record exact build/environment, reproduction and remediation; retest the fixed build.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** dast-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-100` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** written target scope and time window, test account and safe data, running build and rules of engagement
+**Artifact:** DAST scan report
+**Verification:** Run only the approved test paths and manually confirm the highest-risk finding before assigning severity.
+**Handoff:** Transfer DAST scan report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 101. SCA
 
-**Purpose:** Establish a decision-ready, auditable result for SCA without bypassing upstream controls.
+**Purpose:** assess dependency vulnerabilities and license obligations
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Generate inventory from resolved direct and transitive dependencies.
+- Match versions to advisories and assess reachability, exploitability and vendor support.
+- Review license compatibility, provenance and required notices.
+- Upgrade or replace affected components, rerun regression/security checks and compare SBOM.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** sca-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-101` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** resolved lockfiles and packaged artifact, SBOM and advisory feeds, license policy and runtime exposure
+**Artifact:** SBOM
+**Verification:** Compare lockfile and packaged SBOM, then verify the resolved version and notices.
+**Handoff:** Transfer SBOM with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 102. Container Security
 
-**Purpose:** Establish a decision-ready, auditable result for Container Security without bypassing upstream controls.
+**Purpose:** assess and remediate a defined security attack surface
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** container-security-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-102` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 103. Infrastructure Security
 
-**Purpose:** Establish a decision-ready, auditable result for Infrastructure Security without bypassing upstream controls.
+**Purpose:** assess and remediate a defined security attack surface
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** infrastructure-security-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-103` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 104. Penetration Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Penetration Testing without bypassing upstream controls.
+**Purpose:** perform authorized adversarial testing with controlled evidence
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Verify authorization, scope, exclusions and escalation contacts before any active test.
+- Test agreed attack paths with bounded techniques and avoid destructive actions or persistence.
+- Capture minimal reproduction, impact and evidence while protecting customer data.
+- Report remediation and independently retest the agreed fixes.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** penetration-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-104` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** written authorization and target inventory, rules of engagement, time window and emergency contact, data handling and stop conditions
+**Artifact:** rules of engagement
+**Verification:** Validate one approved attack path and stop immediately if the test reaches out-of-scope data.
+**Handoff:** Transfer rules of engagement with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 105. Authentication Security
 
-**Purpose:** Establish a decision-ready, auditable result for Authentication Security without bypassing upstream controls.
+**Purpose:** assess and remediate a defined security attack surface
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** authentication-security-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-105` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 106. Data Protection
 
-**Purpose:** Establish a decision-ready, auditable result for Data Protection without bypassing upstream controls.
+**Purpose:** assess and remediate a defined security attack surface
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** data-protection-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-106` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 107. Compliance Review
 
-**Purpose:** Establish a decision-ready, auditable result for Compliance Review without bypassing upstream controls.
+**Purpose:** review contractual and regulatory obligations before commitment
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Identify service, data, security, availability, audit, retention, subcontracting and exit obligations.
+- Map each obligation to an internal control owner and evidence source.
+- Flag ambiguous liability, data processing, IP, jurisdiction, renewal and termination terms.
+- Record legal review questions and do not provide legal approval outside delegated authority.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** compliance-review-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-107` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** contract version and counterparties, applicable policy/control obligations, legal/compliance owner
+**Artifact:** obligation matrix
+**Verification:** Legal and compliance owner sign-off.
+**Handoff:** Transfer obligation matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 108. License Compliance
 
-**Purpose:** Establish a decision-ready, auditable result for License Compliance without bypassing upstream controls.
+**Purpose:** identify software license obligations and distribution risk
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Generate an SBOM or equivalent inventory from resolved dependencies.
+- Identify direct/transitive licenses, copyleft triggers, attribution and source-disclosure obligations.
+- Compare obligations with product distribution and company policy; escalate ambiguous licenses.
+- Record approved substitutions, notices and exception expiry.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** license-compliance-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-108` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** dependency inventory and lockfiles, license policy and distribution model, notice/attribution requirements
+**Artifact:** SBOM
+**Verification:** Legal/compliance review.
+**Handoff:** Transfer SBOM with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 109. Vulnerability Remediation
 
-**Purpose:** Establish a decision-ready, auditable result for Vulnerability Remediation without bypassing upstream controls.
+**Purpose:** remove a validated vulnerability and prove the exposure is closed
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Confirm affected runtime component/version and reachability before selecting a fix.
+- Prioritize using exploit maturity, exposure, privileges and data impact.
+- Apply a supported upgrade/configuration/code correction and add regression protection.
+- Rescan and independently retest the exact released artifact; record residual risk.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** vulnerability-remediation-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-109` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** validated finding and affected component/version, exploitability, exposure and remediation SLA, fix owner and release constraints
+**Artifact:** vulnerability remediation ticket
+**Verification:** Verify the patched component in the packaged runtime artifact, not only the source manifest.
+**Handoff:** Transfer vulnerability remediation ticket with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 110. Security Sign-off
 
-**Purpose:** Establish a decision-ready, auditable result for Security Sign-off without bypassing upstream controls.
+**Purpose:** make an independent security release decision from verified evidence
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the application-security procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Review threat coverage, SAST/SCA/DAST/IaC results and the exact candidate revision.
+- Verify high-severity findings have independent retest evidence or authorized exception.
+- Assess residual risk, compensating controls, exposure and release conditions.
+- Record approve, conditional approve or block with named security authority.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** security-sign-off-record, structured-evidence-record, handoff-note
-**Quality gate:** `09-110` — human approval required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** threat model and asset scope, scan findings and remediation evidence, risk acceptance authority and exception expiry
+**Artifact:** security gate report
+**Verification:** Re-fetch the candidate revision and verify every critical finding disposition before issuing the security decision.
+**Handoff:** Transfer security gate report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

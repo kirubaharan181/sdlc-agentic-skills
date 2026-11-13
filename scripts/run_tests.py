@@ -9,6 +9,9 @@ def main():
     result = subprocess.run([sys.executable, "scripts/validate.py"], cwd=ROOT, text=True)
     if result.returncode:
         return result.returncode
+    semantic = subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"], cwd=ROOT, text=True)
+    if semantic.returncode:
+        return semantic.returncode
     required = [
         "tests/fixtures/scenarios/new-inventory-web-app.md",
         "tests/fixtures/scenarios/production-bug-fix.md",
@@ -18,7 +21,7 @@ def main():
     if missing:
         print("TEST FAILED: missing scenario fixtures: " + ", ".join(missing))
         return 1
-    print("TESTS PASSED: deterministic registry checks and 3 controlled scenario fixtures.")
+    print("TESTS PASSED: semantic clone fixtures, deterministic registry checks and 3 controlled scenario fixtures.")
     return 0
 
 

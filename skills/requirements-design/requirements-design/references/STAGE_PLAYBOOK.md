@@ -1,183 +1,183 @@
-# Requirements Engineering and UI/UX Design — Stage Playbook
+# Requirements and experience design — Stage Playbook
 
-Use this reference after loading the category skill. Each entry is a bounded execution contract; tailor tooling to the project without weakening the control.
+> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 11. Requirement Elicitation
 
-**Purpose:** Establish a decision-ready, auditable result for Requirement Elicitation without bypassing upstream controls.
+**Purpose:** discover complete and testable stakeholder needs
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Select interviews, workshops, observation or document analysis appropriate to each stakeholder.
+- Ask for goals, tasks, exceptions, pain points, constraints and examples of successful outcomes.
+- Resolve conflicting statements by recording source, authority and decision owner.
+- Convert findings into candidate requirements and confirm them with the source stakeholder.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** requirement-elicitation-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-011` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** stakeholder map and interview plan, business goals and known constraints, elicitation sources
+**Artifact:** elicitation notes
+**Verification:** Stakeholder playback and confirmation.
+**Handoff:** Transfer elicitation notes with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 12. Requirement Documentation
 
-**Purpose:** Establish a decision-ready, auditable result for Requirement Documentation without bypassing upstream controls.
+**Purpose:** create a navigable, versioned and traceable specification
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Organize scope, actors, terminology, requirements, constraints, dependencies and exclusions.
+- Assign stable IDs and link each requirement to source, owner and downstream tests.
+- Document diagrams, examples, exceptions and unresolved decisions in the repository convention.
+- Review clarity, consistency, links, version and change history.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** requirement-documentation-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-012` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** validated needs and decisions, document template and audience, source-of-truth repository
+**Artifact:** versioned specification
+**Verification:** Peer review by product, engineering and QA.
+**Handoff:** Transfer versioned specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 13. Functional Requirements
 
-**Purpose:** Establish a decision-ready, auditable result for Functional Requirements without bypassing upstream controls.
+**Purpose:** specify observable system behavior and business rules
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Write behavior using actor, trigger, precondition, main flow, alternate flow and postcondition.
+- Define validation, state transitions, error responses and idempotency where applicable.
+- Derive positive, negative, boundary and authorization acceptance cases.
+- Trace each behavior to a requirement ID and owner.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** functional-requirements-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-013` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** user and system scenarios, business rules and data definitions, external interface constraints
+**Artifact:** functional requirement catalogue
+**Verification:** Scenario walkthrough with developer and tester.
+**Handoff:** Transfer functional requirement catalogue with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 14. Non-Functional Requirements
 
-**Purpose:** Establish a decision-ready, auditable result for Non-Functional Requirements without bypassing upstream controls.
+**Purpose:** quantify reliability, performance, security and operability expectations
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Select relevant quality attributes such as latency, throughput, availability, recovery, scalability, privacy and accessibility.
+- Set thresholds with percentile, workload, duration, measurement point and acceptable error rate.
+- Define telemetry and test conditions needed to verify each target.
+- Resolve trade-offs among quality attributes and obtain product/operations owner acceptance.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** non-functional-requirements-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-014` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** workload profile and business criticality, service objectives and compliance constraints, measurement and verification environment
+**Artifact:** quality attribute scenarios
+**Verification:** Review each NFR for measurable thresholds and verify test plans can produce the required evidence.
+**Handoff:** Transfer quality attribute scenarios with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 15. User Research
 
-**Purpose:** Establish a decision-ready, auditable result for User Research without bypassing upstream controls.
+**Purpose:** collect ethical and representative evidence about user behavior
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Recruit participants against explicit inclusion criteria and record sampling limitations.
+- Obtain consent; avoid collecting unnecessary personal or sensitive data.
+- Run neutral interviews or observations with consistent prompts and session notes.
+- Code findings into themes, counterexamples and confidence levels; distinguish participant statements from researcher inference.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** user-research-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-015` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** research question and participant criteria, consent/privacy plan, interview or usability protocol
+**Artifact:** research protocol
+**Verification:** Research peer review and stakeholder playback.
+**Handoff:** Transfer research protocol with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 16. User Journey Mapping
 
-**Purpose:** Establish a decision-ready, auditable result for User Journey Mapping without bypassing upstream controls.
+**Purpose:** map user goals, touchpoints, decisions and friction across a complete journey
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Define journey boundary, user goal and success event.
+- Map stages, actions, touchpoints, emotions, questions, failures and backstage dependencies.
+- Annotate evidence source and pain-point severity at each step.
+- Prioritize opportunities and define measurable experience improvements.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** user-journey-mapping-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-016` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** validated personas or user segments, research observations, journey scope and start/end events
+**Artifact:** journey map
+**Verification:** Walkthrough with users and service owners.
+**Handoff:** Transfer journey map with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 17. Wireframing
 
-**Purpose:** Establish a decision-ready, auditable result for Wireframing without bypassing upstream controls.
+**Purpose:** explore information hierarchy and interaction structure before visual polish
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Identify primary tasks and content hierarchy for each screen.
+- Create low-fidelity layouts with navigation, states, responsive behavior and annotations.
+- Review task completion paths, empty/error/loading states and keyboard flow.
+- Record design decisions and unresolved usability questions.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** wireframing-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-017` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** validated task flows, content requirements, target viewport/device constraints
+**Artifact:** annotated wireframes
+**Verification:** Product/design review and quick usability walkthrough.
+**Handoff:** Transfer annotated wireframes with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 18. UI Design
 
-**Purpose:** Establish a decision-ready, auditable result for UI Design without bypassing upstream controls.
+**Purpose:** define a consistent and accessible visual interface
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Apply typography, color, spacing, hierarchy and component states using the design system.
+- Specify responsive behavior, focus/hover/disabled/error states and asset usage.
+- Check color contrast, text scaling and semantic component intent.
+- Document deviations and reusable component decisions.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** ui-design-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-018` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** approved wireframes and design tokens, brand and component standards, accessibility requirements
+**Artifact:** high-fidelity screens
+**Verification:** Design-system review and accessibility check.
+**Handoff:** Transfer high-fidelity screens with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 19. UX Design
 
-**Purpose:** Establish a decision-ready, auditable result for UX Design without bypassing upstream controls.
+**Purpose:** optimize task completion, comprehension and error recovery
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Design navigation, information scent, feedback, affordances and error recovery around user tasks.
+- Cover first-use, repeat-use, empty, loading, failure and recovery states.
+- Prototype critical paths and observe representative users.
+- Revise based on task success, time, error and qualitative feedback.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** ux-design-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-019` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** user goals and journey evidence, wireframes and interaction constraints, usability criteria
+**Artifact:** interaction specification
+**Verification:** Moderated usability review.
+**Handoff:** Transfer interaction specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 20. Prototype Development
 
-**Purpose:** Establish a decision-ready, auditable result for Prototype Development without bypassing upstream controls.
+**Purpose:** validate a risky interaction or concept before production implementation
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Choose fidelity that answers the question without implying production readiness.
+- Build only the critical path and realistic states needed for the experiment.
+- Run task-based sessions and capture observations, failures and time-on-task.
+- Decide iterate, validate further or discard; label simulated behavior and data.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** prototype-development-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-020` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** hypothesis and target user task, prototype fidelity decision, success and failure thresholds
+**Artifact:** prototype artifact
+**Verification:** Product/design decision review.
+**Handoff:** Transfer prototype artifact with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 21. Accessibility Review
 
-**Purpose:** Establish a decision-ready, auditable result for Accessibility Review without bypassing upstream controls.
+**Purpose:** verify inclusive access against applicable WCAG criteria
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect semantic structure, accessible names, headings, landmarks, labels and error associations.
+- Test keyboard-only operation, focus order/visibility, dialogs and escape behavior.
+- Check contrast, zoom/reflow, reduced motion and screen-reader announcements.
+- Combine automated scans with manual assistive-technology testing; log criterion-level failures.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** accessibility-review-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-021` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** target standard and conformance level, supported browsers/devices and assistive tech, critical user journeys
+**Artifact:** accessibility audit
+**Verification:** Independent accessibility specialist review.
+**Handoff:** Transfer accessibility audit with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 22. Requirement Validation
 
-**Purpose:** Establish a decision-ready, auditable result for Requirement Validation without bypassing upstream controls.
+**Purpose:** prove requirements are complete, consistent, feasible and testable
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the requirements-design procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Check each requirement for atomicity, necessity, clarity, feasibility and verifiability.
+- Trace business goals to requirements, design elements and test cases.
+- Run ambiguity, conflict, duplication and orphan checks.
+- Resolve or explicitly defer findings with owners before baseline approval.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** requirement-validation-record, structured-evidence-record, handoff-note
-**Quality gate:** `02-022` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** draft requirements and traceability, stakeholder authority, acceptance and quality criteria
+**Artifact:** validated baseline
+**Verification:** Cross-functional requirements review.
+**Handoff:** Transfer validated baseline with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

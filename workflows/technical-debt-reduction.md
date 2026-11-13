@@ -1,63 +1,96 @@
 # Technical Debt Reduction
 
-> **Outcome:** Every included stage has PASS evidence or an approved, non-expired waiver.
+> **Purpose:** reduce a documented debt hotspot without behavior loss
 
-## Trigger
-Approved request for technical debt reduction.
+## Trigger and required inputs
+A request requires the controlled lifecycle to reduce a documented debt hotspot without behavior loss.
+- named request and accountable owner
+- risk/impact classification and authority
+- relevant artifact, immutable revision or environment reference
+- acceptance criteria and recovery constraints
 
-## Inputs
-- request
-- risk classification
-- applicable artifacts
+## Lifecycle phases
+### 1. Identify debt hotspot
 
-## Flow
+**Accountable role:** software-architect
 
-```mermaid
-flowchart LR
-    A[Validate inputs] --> B[Execute assigned stages]
-    B --> C[Collect evidence]
-    C --> D{Evaluate gates}
-    D -->|PASS| E[Handoff]
-    D -->|FAIL / BLOCKED| F[Remediate or escalate]
-    F --> B
-```
+**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.
 
-## Stages and dependencies
+**Required evidence:**
+- baseline and scope record
+- assumptions and risk log
 
-**Included stage IDs:** 45, 53, 67, 68, 69, 79, 85, 110, 130, 131, 133, 138, 163, 164, 165.
+**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
 
-Stage order and gates are enforced by registry; independent work may run in parallel after prerequisites.
+### 2. Plan safe refactor
 
-## Roles and skills
+**Accountable role:** full-stack-engineer
 
-| Accountable roles | Control skills |
-|---|---|
-| project-manager, full-stack-engineer, qa-lead, application-security-engineer, release-manager | master-orchestration, evidence-quality-gates, secure-change-control |
+**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
 
-## Parallel tasks
-- documentation and test planning after requirements approval
+**Required evidence:**
+- change/design artifact
+- execution log
+- review evidence
+
+**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+
+### 3. Add characterization tests
+
+**Accountable role:** code-reviewer
+
+**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.
+
+**Required evidence:**
+- verification report
+- residual risk and decision log
+- handoff record
+
+**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
+
+### 4. Review regression
+
+**Accountable role:** qa-lead
+
+**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.
+
+**Required evidence:**
+- verification report
+- residual risk and decision log
+- handoff record
+
+**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
+
+### 5. Track remaining debt
+
+**Accountable role:** qa-lead
+
+**Execution:** Complete the track remaining debt phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.
+
+**Required evidence:**
+- phase work product
+- verification evidence
+- handoff record
+
+**Exit criteria:** The accountable owner accepts the output and all blocking issues have an owner.
+
+
+## Stage set and accountable roles
+Stage IDs: 37, 190
+Accountable roles: software-architect, full-stack-engineer, code-reviewer, qa-lead
+Required skills: master-orchestration, evidence-quality-gates, secure-change-control
+
+## Dependencies and parallel work
+A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
+- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
 
 ## Approval gates
-- business
-- requirements
-- architecture
-- qa
-- security
+scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
 
-## Outputs and evidence
-
-Outputs: versioned artifacts, evidence bundle, final workflow report. Include immutable revision/digest, validation reports, gate statuses, limitations, and handoff receiver.
-
-## Failure handling
-
-Stop unsafe work; mark failed gate; create remediation/rollback path. Never report a completed workflow while a required gate is failing, blocked, or inconclusive.
+## Failure, rollback and communication
+Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
+**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
+**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
 
 ## Completion criteria
-
-Every included stage has PASS evidence or an approved, non-expired waiver.
-
-## Related controls
-
-- [Master orchestrator](../orchestrator/MASTER_ORCHESTRATOR.md)
-- [Evidence gate policy](../orchestrator/policies/GATE_POLICY.md)
-- [Standard handoff](../orchestrator/handoff-contracts/STANDARD_HANDOFF.md)
+Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.

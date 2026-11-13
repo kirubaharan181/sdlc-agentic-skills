@@ -1,318 +1,337 @@
-# Software Testing and Quality Assurance — Stage Playbook
+# Risk-based verification — Stage Playbook
 
-Use this reference after loading the category skill. Each entry is a bounded execution contract; tailor tooling to the project without weakening the control.
+> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 77. Test Strategy
 
-**Purpose:** Establish a decision-ready, auditable result for Test Strategy without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Select risk-based test levels and map each critical product risk to an oracle and accountable test owner.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** test-strategy-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-077` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Review coverage against top user and failure scenarios.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 78. Test Planning
 
-**Purpose:** Establish a decision-ready, auditable result for Test Planning without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Sequence test cases by dependency, environment readiness and risk; define fixtures, entry criteria and execution windows.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** test-planning-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-078` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Review plan completeness and fixture reproducibility.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 79. Unit Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Unit Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Isolate pure logic with deterministic fixtures and cover boundaries, invariants and failure results.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** unit-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-079` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run focused unit suite and inspect assertion quality.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 80. Integration Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Integration Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Verify service, database, queue and adapter contracts with isolated dependencies.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** integration-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-080` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run integration suite with dependency health and cleanup evidence.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 81. API Testing
 
-**Purpose:** Establish a decision-ready, auditable result for API Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Exercise OpenAPI success, validation, authorization, pagination, idempotency and error cases.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** api-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-081` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run contract and negative-case suite against the exact build.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 82. UI Testing
 
-**Purpose:** Establish a decision-ready, auditable result for UI Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Verify component states, keyboard interaction, validation feedback and responsive layout.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** ui-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-082` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run browser tests and inspect captured screenshots/traces.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 83. Functional Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Functional Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Trace each business requirement to positive, negative, alternate and exception scenarios.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** functional-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-083` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Review traceability and execute critical business paths.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 84. End-to-End Testing
 
-**Purpose:** Establish a decision-ready, auditable result for End-to-End Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Exercise complete user journeys across UI, APIs, persistence and external side effects with synthetic data.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** end-to-end-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-084` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run critical journeys and reconcile resulting state across services.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 85. Regression Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Regression Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Select impacted behavior using code dependencies, API/data changes and historical defect evidence.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** regression-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-085` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Compare targeted suite results with the baseline candidate.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 86. Smoke Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Smoke Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Check release-blocking startup, health, authentication and critical transaction paths after deployment.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** smoke-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-086` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run smoke suite against the deployed artifact.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 87. Sanity Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Sanity Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Verify the narrow changed area and immediate dependencies after a small patch.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** sanity-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-087` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Execute the bounded checklist on the exact patch.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 88. Cross-browser Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Cross-browser Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Run identical critical journeys across the supported browser/OS matrix and compare rendering and interaction.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** cross-browser-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-088` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run matrix tests and attach browser/version evidence.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 89. Mobile Compatibility Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Mobile Compatibility Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Verify responsive layout, touch targets, orientation, OS permissions and network transitions on supported devices.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** mobile-compatibility-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-089` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run emulator and representative physical-device tests.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 90. Accessibility Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Accessibility Testing without bypassing upstream controls.
+**Purpose:** verify inclusive access against applicable WCAG criteria
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Inspect semantic structure, accessible names, headings, landmarks, labels and error associations.
+- Test keyboard-only operation, focus order/visibility, dialogs and escape behavior.
+- Check contrast, zoom/reflow, reduced motion and screen-reader announcements.
+- Combine automated scans with manual assistive-technology testing; log criterion-level failures.
+- Check semantic names, keyboard-only operation, focus management, contrast, zoom and screen-reader announcements.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** accessibility-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-090` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** target standard and conformance level, supported browsers/devices and assistive tech, critical user journeys
+**Artifact:** accessibility audit
+**Verification:** Independent accessibility specialist review. Run automated scans plus keyboard and screen-reader verification.
+**Handoff:** Transfer accessibility audit with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 91. Performance Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Performance Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Measure representative workload latency, throughput, saturation and error rate against service objectives.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** performance-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-091` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Compare equivalent before/after runs with workload pinned.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 92. Load Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Load Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Ramp concurrency and request mix to expected peak and observe throughput, queue depth and latency percentiles.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** load-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-092` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run controlled load ramp and retain telemetry.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 93. Stress Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Stress Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Increase load beyond expected capacity to identify saturation point and failure mode.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** stress-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-093` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run approved stress profile in an isolated environment.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 94. Soak Testing
 
-**Purpose:** Establish a decision-ready, auditable result for Soak Testing without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Sustain representative load long enough to expose leaks, queue growth and resource drift.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** soak-testing-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-094` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Review time-series trends and post-run resource recovery.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 95. UAT
 
-**Purpose:** Establish a decision-ready, auditable result for UAT without bypassing upstream controls.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Validate real business workflows with authorized users against agreed acceptance examples.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** uat-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-095` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Capture user execution evidence and explicit acceptance decision.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 96. Defect Management
 
-**Purpose:** Establish a decision-ready, auditable result for Defect Management without bypassing upstream controls.
+**Purpose:** control defects from reproduction through verified closure
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Reproduce on a named build and capture minimal steps, expected/actual behavior and logs.
+- Assess impact, exploitability, affected users and workaround; assign severity separately from priority.
+- Link root cause and fix commit to regression coverage.
+- Verify fix on the target build and close only with reproducible evidence.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** defect-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-096` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** defect report and affected build, severity/priority policy, reproduction environment
+**Artifact:** defect ticket
+**Verification:** QA owner verifies closure.
+**Handoff:** Transfer defect ticket with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 97. Test Sign-off
 
-**Purpose:** Establish a decision-ready, auditable result for Test Sign-off without bypassing upstream controls.
+**Purpose:** prepare a controlled decision with sufficient evidence and independent authority
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the quality-assurance procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Check the decision request is complete, in scope and owned by an authorized requester.
+- Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
+- Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
+- Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** test-sign-off-record, structured-evidence-record, handoff-note
-**Quality gate:** `08-097` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** decision request and accountable sponsor, impact/risk assessment, supporting evidence and alternatives
+**Artifact:** decision record
+**Verification:** Independent approval record and audit trail.
+**Handoff:** Transfer decision record with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

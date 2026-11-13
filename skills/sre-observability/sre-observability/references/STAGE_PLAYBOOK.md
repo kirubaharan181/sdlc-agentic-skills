@@ -1,213 +1,213 @@
-# Production Monitoring, Observability and SRE — Stage Playbook
+# Reliability and observability — Stage Playbook
 
-Use this reference after loading the category skill. Each entry is a bounded execution contract; tailor tooling to the project without weakening the control.
+> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 153. Application Monitoring
 
-**Purpose:** Establish a decision-ready, auditable result for Application Monitoring without bypassing upstream controls.
+**Purpose:** provide actionable observability and service-level control
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Instrument golden signals and key business transactions with stable service/environment labels.
+- Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
+- Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
+- Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** application-monitoring-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-153` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service map and critical user journeys, SLO and alert thresholds, telemetry and privacy requirements
+**Artifact:** telemetry specification
+**Verification:** SRE review and alert simulation.
+**Handoff:** Transfer telemetry specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 154. Infrastructure Monitoring
 
-**Purpose:** Establish a decision-ready, auditable result for Infrastructure Monitoring without bypassing upstream controls.
+**Purpose:** provide actionable observability and service-level control
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Instrument golden signals and key business transactions with stable service/environment labels.
+- Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
+- Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
+- Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** infrastructure-monitoring-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-154` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service map and critical user journeys, SLO and alert thresholds, telemetry and privacy requirements
+**Artifact:** telemetry specification
+**Verification:** SRE review and alert simulation.
+**Handoff:** Transfer telemetry specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 155. Centralized Logging
 
-**Purpose:** Establish a decision-ready, auditable result for Centralized Logging without bypassing upstream controls.
+**Purpose:** provide actionable observability and service-level control
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Instrument golden signals and key business transactions with stable service/environment labels.
+- Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
+- Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
+- Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** centralized-logging-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-155` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service map and critical user journeys, SLO and alert thresholds, telemetry and privacy requirements
+**Artifact:** telemetry specification
+**Verification:** SRE review and alert simulation.
+**Handoff:** Transfer telemetry specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 156. Metrics Monitoring
 
-**Purpose:** Establish a decision-ready, auditable result for Metrics Monitoring without bypassing upstream controls.
+**Purpose:** provide actionable observability and service-level control
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Instrument golden signals and key business transactions with stable service/environment labels.
+- Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
+- Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
+- Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** metrics-monitoring-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-156` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service map and critical user journeys, SLO and alert thresholds, telemetry and privacy requirements
+**Artifact:** telemetry specification
+**Verification:** SRE review and alert simulation.
+**Handoff:** Transfer telemetry specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 157. Distributed Tracing
 
-**Purpose:** Establish a decision-ready, auditable result for Distributed Tracing without bypassing upstream controls.
+**Purpose:** provide actionable observability and service-level control
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Instrument golden signals and key business transactions with stable service/environment labels.
+- Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
+- Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
+- Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** distributed-tracing-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-157` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service map and critical user journeys, SLO and alert thresholds, telemetry and privacy requirements
+**Artifact:** telemetry specification
+**Verification:** SRE review and alert simulation.
+**Handoff:** Transfer telemetry specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 158. Alert Management
 
-**Purpose:** Establish a decision-ready, auditable result for Alert Management without bypassing upstream controls.
+**Purpose:** provide actionable observability and service-level control
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Instrument golden signals and key business transactions with stable service/environment labels.
+- Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
+- Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
+- Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** alert-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-158` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service map and critical user journeys, SLO and alert thresholds, telemetry and privacy requirements
+**Artifact:** telemetry specification
+**Verification:** SRE review and alert simulation.
+**Handoff:** Transfer telemetry specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 159. Uptime Monitoring
 
-**Purpose:** Establish a decision-ready, auditable result for Uptime Monitoring without bypassing upstream controls.
+**Purpose:** provide actionable observability and service-level control
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Instrument golden signals and key business transactions with stable service/environment labels.
+- Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
+- Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
+- Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** uptime-monitoring-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-159` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service map and critical user journeys, SLO and alert thresholds, telemetry and privacy requirements
+**Artifact:** telemetry specification
+**Verification:** SRE review and alert simulation.
+**Handoff:** Transfer telemetry specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 160. SLA/SLO Management
 
-**Purpose:** Establish a decision-ready, auditable result for SLA/SLO Management without bypassing upstream controls.
+**Purpose:** provide actionable observability and service-level control
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Instrument golden signals and key business transactions with stable service/environment labels.
+- Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
+- Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
+- Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** sla-slo-management-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-160` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service map and critical user journeys, SLO and alert thresholds, telemetry and privacy requirements
+**Artifact:** telemetry specification
+**Verification:** SRE review and alert simulation.
+**Handoff:** Transfer telemetry specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 161. Capacity Planning
 
-**Purpose:** Establish a decision-ready, auditable result for Capacity Planning without bypassing upstream controls.
+**Purpose:** provide actionable observability and service-level control
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Instrument golden signals and key business transactions with stable service/environment labels.
+- Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
+- Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
+- Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** capacity-planning-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-161` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** service map and critical user journeys, SLO and alert thresholds, telemetry and privacy requirements
+**Artifact:** telemetry specification
+**Verification:** SRE review and alert simulation.
+**Handoff:** Transfer telemetry specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 162. Incident Detection
 
-**Purpose:** Establish a decision-ready, auditable result for Incident Detection without bypassing upstream controls.
+**Purpose:** restore service and convert failure evidence into prevention
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.
+- Assess customer impact and contain safely before attempting speculative fixes.
+- Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.
+- Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** incident-detection-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-162` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** incident signals and timeline, severity and command policy, service dependency and recovery data
+**Artifact:** incident timeline
+**Verification:** Incident commander and service owner review.
+**Handoff:** Transfer incident timeline with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 163. Incident Response
 
-**Purpose:** Establish a decision-ready, auditable result for Incident Response without bypassing upstream controls.
+**Purpose:** restore service and convert failure evidence into prevention
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.
+- Assess customer impact and contain safely before attempting speculative fixes.
+- Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.
+- Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** incident-response-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-163` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** incident signals and timeline, severity and command policy, service dependency and recovery data
+**Artifact:** incident timeline
+**Verification:** Incident commander and service owner review.
+**Handoff:** Transfer incident timeline with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 164. Root Cause Analysis
 
-**Purpose:** Establish a decision-ready, auditable result for Root Cause Analysis without bypassing upstream controls.
+**Purpose:** restore service and convert failure evidence into prevention
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.
+- Assess customer impact and contain safely before attempting speculative fixes.
+- Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.
+- Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** root-cause-analysis-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-164` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** incident signals and timeline, severity and command policy, service dependency and recovery data
+**Artifact:** incident timeline
+**Verification:** Incident commander and service owner review.
+**Handoff:** Transfer incident timeline with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 165. Postmortem
 
-**Purpose:** Establish a decision-ready, auditable result for Postmortem without bypassing upstream controls.
+**Purpose:** restore service and convert failure evidence into prevention
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.
+- Assess customer impact and contain safely before attempting speculative fixes.
+- Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.
+- Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** postmortem-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-165` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** incident signals and timeline, severity and command policy, service dependency and recovery data
+**Artifact:** incident timeline
+**Verification:** Incident commander and service owner review.
+**Handoff:** Transfer incident timeline with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 166. Reliability Improvement
 
-**Purpose:** Establish a decision-ready, auditable result for Reliability Improvement without bypassing upstream controls.
+**Purpose:** restore service and convert failure evidence into prevention
 
-**Execution:**
-- Confirm the approved scope, owner, assumptions, and upstream evidence before starting.
-- Apply the sre-observability procedure using project-approved tooling and record exact versions/commands.
-- Validate the produced artifact against acceptance criteria; attach raw reports or immutable links.
-- Record limitations, risks, decisions, and the accountable receiver in the handoff contract.
+**Procedure:**
+- Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.
+- Assess customer impact and contain safely before attempting speculative fixes.
+- Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.
+- Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates.
 
-**Inputs:** approved upstream artifact, scope and constraints
-**Deliverables:** reliability-improvement-record, structured-evidence-record, handoff-note
-**Quality gate:** `13-166` — evidence review required.
-**Handoff:** Publish evidence record, immutable artifact reference, accountable owner, and unresolved risks.
+**Inputs:** incident signals and timeline, severity and command policy, service dependency and recovery data
+**Artifact:** incident timeline
+**Verification:** Incident commander and service owner review.
+**Handoff:** Transfer incident timeline with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
