@@ -1,5 +1,6 @@
 from pathlib import Path
 import json, re, sys
+from semantic_quality import find_near_duplicates
 R=Path(__file__).resolve().parents[1]
 errors=[]
 def load(p):
@@ -74,6 +75,87 @@ for p in (R/'skills').rglob('SKILL.md'):
     text=p.read_text(encoding='utf-8')
     if len(text.split()) < 280: errors.append(f'{p.relative_to(R)}: skill is not substantive')
     if 'execute assigned stages' in text.lower() or 'project-approved tools' in text.lower(): errors.append(f'{p.relative_to(R)}: generic filler detected')
+# Semantic execution-depth checks: counts alone do not prove specialist uniqueness.
+def extract_section(document, heading):
+    match = re.search(rf"(?ms)^## {re.escape(heading)}\s*$\n(.*?)(?=^## |\Z)", document)
+    return match.group(1).strip() if match else ""
+
+stage_signatures = {
+    tuple(re.sub(r"\W+", " ", step.lower()).strip() for step in item.get("execution_instructions", []))
+    for item in st
+}
+if len(stage_signatures) < 60:
+    errors.append(f"stage procedures lack sufficient domain variation: {len(stage_signatures)} unique profiles for 190 stages (minimum 60)")
+for item in st:
+    if len(item.get("execution_instructions", [])) < 3:
+        errors.append(f"stage {item.get('stage_id')}: fewer than three executable steps")
+    if "decision-ready" in item.get("purpose", "").lower():
+        errors.append(f"stage {item.get('stage_id')}: generic purpose template remains")
+    if any("inspect current artifacts" in step.lower() for step in item.get("execution_instructions", [])):
+        errors.append(f"stage {item.get('stage_id')}: generic execution template remains")
+
+allowed_by_category = {
+    "Business, Strategy and Product Management": {"new-product-development","existing-application-enhancement","feature-development","product-retirement","documentation-update"},
+    "Requirements Engineering and UI/UX Design": {"new-product-development","existing-application-enhancement","feature-development"},
+    "Software, Solution and Technical Architecture": {"new-product-development","existing-application-enhancement","feature-development","infrastructure-provisioning","database-migration","api-version-upgrade","ci-cd-pipeline-creation"},
+    "Project, Program and Agile Management": {"new-product-development","existing-application-enhancement","feature-development","technical-debt-reduction","application-maintenance"},
+    "Development Environment and Engineering Governance": {"ci-cd-pipeline-creation","infrastructure-provisioning","application-maintenance","dependency-update","environment-configuration"},
+    "Software Development and Implementation": {"feature-development","existing-application-enhancement","bug-fix","application-maintenance","emergency-hotfix"},
+    "Code Review, Static Analysis and Quality Engineering": {"feature-development","bug-fix","emergency-hotfix","security-vulnerability-remediation","dependency-update","production-release"},
+    "Software Testing and Quality Assurance": {"feature-development","bug-fix","production-release","staging-release","application-maintenance"},
+    "Cybersecurity, Application Security and Compliance": {"security-vulnerability-remediation","dependency-update","ci-cd-pipeline-creation","infrastructure-provisioning","production-release"},
+    "DevOps, CI/CD and Platform Engineering": {"ci-cd-pipeline-creation","infrastructure-provisioning","staging-release","production-release","environment-configuration"},
+    "Release Engineering and Deployment Management": {"staging-release","production-release","rollback","database-migration","environment-configuration"},
+    "Cloud Infrastructure and Hosting Operations": {"infrastructure-provisioning","disaster-recovery","incident-response","application-maintenance"},
+    "Production Monitoring, Observability and SRE": {"incident-response","root-cause-analysis","disaster-recovery","production-release"},
+    "Application Maintenance, Technical Support and Customer Success": {"application-maintenance","bug-fix","emergency-hotfix","dependency-update","performance-optimization","incident-response"},
+    "Enterprise Governance, Audit, Risk and Continuous Improvement": {"new-product-development","production-release","security-vulnerability-remediation","application-maintenance","product-retirement","documentation-update"},
+}
+for item in st:
+    allowed = allowed_by_category.get(item.get("category_name"), wids)
+    invalid = set(item.get("workflow_ids", [])) - allowed
+    if invalid:
+        errors.append(f"stage {item.get('stage_id')}: semantically invalid workflow mapping {sorted(invalid)}")
+    if item.get("stage_name") == "Client Engagement" and "application-maintenance" in item.get("workflow_ids", []):
+        errors.append("Client Engagement must not map to application-maintenance")
+
+role_procedures = {}
+for item in agents:
+    path = R / "agents" / f"{item['agent_id']}.md"
+    if path.exists():
+        doc = path.read_text(encoding="utf-8")
+        procedure = extract_section(doc, "Codex / Claude execution procedure")
+        if not procedure or len(procedure.split()) < 45:
+            errors.append(f"{item['agent_id']}: role-specific execution procedure is missing or too shallow")
+        role_procedures[item["agent_id"]] = procedure
+        if "perform assigned workflow stages" in doc.lower():
+            errors.append(f"{item['agent_id']}: generic role filler remains")
+near_role_duplicates = find_near_duplicates(role_procedures, threshold=0.94)
+for left, right, score in near_role_duplicates:
+    errors.append(f"near-duplicate specialist procedures: {left} and {right} ({score:.2f})")
+if len({re.sub(r"\W+", " ", p.lower()).strip() for p in role_procedures.values()}) < 60:
+    errors.append("fewer than 60 distinct specialist execution procedures")
+
+phase_instructions = []
+for workflow in wfs:
+    contracts = workflow.get("phase_contracts", [])
+    if len(contracts) != len(workflow.get("phases", [])) or not contracts:
+        errors.append(f"workflow {workflow['workflow_id']}: phase contracts do not match lifecycle phases")
+    for phase in contracts:
+        for field in ["phase","instruction","evidence","exit_criteria","owner"]:
+            if not phase.get(field):
+                errors.append(f"workflow {workflow['workflow_id']}: phase contract missing {field}")
+        phase_instructions.append(phase.get("instruction", ""))
+    path = R / "workflows" / f"{workflow['workflow_id']}.md"
+    if path.exists():
+        doc = path.read_text(encoding="utf-8").lower()
+        if "complete the relevant mapped stages" in doc:
+            errors.append(f"workflow {workflow['workflow_id']}: generic phase filler remains")
+        if doc.count("**execution:**") != len(contracts):
+            errors.append(f"workflow {workflow['workflow_id']}: Markdown phase execution count mismatch")
+if len(set(phase_instructions)) < 40:
+    errors.append(f"workflow phase guidance lacks variation: {len(set(phase_instructions))} unique instructions")
+
 # credential heuristic
 for p in R.rglob('*'):
     if p.is_file() and '.git' not in p.parts and p.suffix in {'.md','.yaml','.json','.py','.csv'}:
