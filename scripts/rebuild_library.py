@@ -108,13 +108,28 @@ def main(check=False):
    'Cloud Infrastructure and Hosting Operations':['infrastructure-provisioning','disaster-recovery','incident-response','application-maintenance'],
    'Production Monitoring, Observability and SRE':['incident-response','root-cause-analysis','disaster-recovery','production-release'],
    'Application Maintenance, Technical Support and Customer Success':['application-maintenance','bug-fix','emergency-hotfix','dependency-update','performance-optimization','incident-response'],
-   'Enterprise Governance, Audit, Risk and Continuous Improvement':['new-product-development','production-release','security-vulnerability-remediation','application-maintenance','product-retirement','documentation-update']
+   'Enterprise Governance, Audit, Risk and Continuous Improvement':['new-product-development','production-release','security-vulnerability-remediation','application-maintenance','product-retirement','documentation-update','root-cause-analysis','technical-debt-reduction','performance-optimization','infrastructure-provisioning','ci-cd-pipeline-creation','environment-configuration','emergency-hotfix']
   }
   existing=[w for w,p in workflows.items() if sid in p['stages']]
   permitted=allowed.get(st['category_name'],list(workflows))
   st['workflow_ids']=[w for w in existing if w in permitted]
   if not st['workflow_ids']:
    st['workflow_ids']=[w for w in permitted if w in workflows][:3]
+  semantic_overrides={
+   'Process Improvement':['root-cause-analysis','technical-debt-reduction'],
+   'Quality Governance':['production-release','application-maintenance'],
+   'Security Governance':['security-vulnerability-remediation','ci-cd-pipeline-creation'],
+   'Access Governance':['security-vulnerability-remediation','application-maintenance'],
+   'Documentation Governance':['documentation-update','application-maintenance'],
+   'Change Governance':['production-release','emergency-hotfix','application-maintenance'],
+   'FinOps Governance':['infrastructure-provisioning','performance-optimization','application-maintenance'],
+   'Vendor Management':['product-retirement','new-product-development'],
+   'Product Lifecycle Management':['product-retirement','application-maintenance']
+  }
+  if name == 'Engineering Governance':
+   st['workflow_ids']=['ci-cd-pipeline-creation','environment-configuration','application-maintenance']
+  elif name in semantic_overrides:
+   st['workflow_ids']=[wid for wid in semantic_overrides[name] if wid in workflows]
   st['purpose']=profile['purpose']
   st['inputs']=profile['inputs']
   st['outputs']=[re.sub('[^a-z0-9]+','-',name.lower()).strip('-')+'-deliverable',*profile['artifacts'][:2]]
