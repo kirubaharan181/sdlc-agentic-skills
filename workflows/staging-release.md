@@ -3,23 +3,94 @@
 > **Purpose:** promote a release candidate through staging evidence
 
 ## Trigger and required inputs
-Trigger: A request requires the controlled lifecycle to promote a release candidate through staging evidence. Inputs: named request and owner, risk/impact classification, relevant artifact or environment reference.
+A request requires the controlled lifecycle to promote a release candidate through staging evidence.
+- named request and accountable owner
+- risk/impact classification and authority
+- relevant artifact, immutable revision or environment reference
+- acceptance criteria and recovery constraints
 
 ## Lifecycle phases
-1. **Select immutable candidate** — complete the relevant mapped stages and retain evidence.
-2. **Deploy staging** — complete the relevant mapped stages and retain evidence.
-3. **Run validation suite** — complete the relevant mapped stages and retain evidence.
-4. **Record readiness** — complete the relevant mapped stages and retain evidence.
-5. **Promote/reject** — complete the relevant mapped stages and retain evidence.
+### 1. Select immutable candidate
+
+**Accountable role:** release-manager
+
+**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.
+
+**Required evidence:**
+- baseline and scope record
+- assumptions and risk log
+
+**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
+
+### 2. Deploy staging
+
+**Accountable role:** deployment-engineer
+
+**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
+
+**Required evidence:**
+- change/design artifact
+- execution log
+- review evidence
+
+**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+
+### 3. Run validation suite
+
+**Accountable role:** qa-lead
+
+**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
+
+**Required evidence:**
+- change/design artifact
+- execution log
+- review evidence
+
+**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+
+### 4. Record readiness
+
+**Accountable role:** application-security-engineer
+
+**Execution:** Complete the record readiness phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.
+
+**Required evidence:**
+- phase work product
+- verification evidence
+- handoff record
+
+**Exit criteria:** The accountable owner accepts the output and all blocking issues have an owner.
+
+### 5. Promote/reject
+
+**Accountable role:** application-security-engineer
+
+**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
+
+**Required evidence:**
+- change/design artifact
+- execution log
+- review evidence
+
+**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+
 
 ## Stage set and accountable roles
-Stage IDs: 126, 127, 128, 129, 130, 131, 138, 139, 77, 86, 95, 109. Accountable roles: release-manager, deployment-engineer, qa-lead, application-security-engineer. Required skills: master-orchestration, evidence-quality-gates, secure-change-control.
+Stage IDs: 126, 127, 128, 129, 130, 131, 138, 139, 77, 86, 95, 109
+Accountable roles: release-manager, deployment-engineer, qa-lead, application-security-engineer
+Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 
-## Gates, rollback and communication
-Gates: scope-and-risk, quality-evidence, security-disposition. Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state. Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.
+## Dependencies and parallel work
+A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
+- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
 
-## Failure path and completion
-Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence. Complete only when: All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted.
+## Approval gates
+scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
 
-## Example
-For this workflow, create the evidence bundle before asking for a gate decision; if a prerequisite fails, communicate the impact and execute the documented remediation/compensation route rather than advancing on assumption.
+## Failure, rollback and communication
+Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
+**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
+**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
+
+## Completion criteria
+Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.

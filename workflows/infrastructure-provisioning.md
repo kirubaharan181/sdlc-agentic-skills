@@ -3,23 +3,100 @@
 > **Purpose:** provision reviewed infrastructure from desired state
 
 ## Trigger and required inputs
-Trigger: A request requires the controlled lifecycle to provision reviewed infrastructure from desired state. Inputs: named request and owner, risk/impact classification, relevant artifact or environment reference.
+A request requires the controlled lifecycle to provision reviewed infrastructure from desired state.
+- named request and accountable owner
+- risk/impact classification and authority
+- relevant artifact, immutable revision or environment reference
+- acceptance criteria and recovery constraints
 
 ## Lifecycle phases
-1. **Design desired state** — complete the relevant mapped stages and retain evidence.
-2. **Review IaC/network/security** — complete the relevant mapped stages and retain evidence.
-3. **Plan approved change** — complete the relevant mapped stages and retain evidence.
-4. **Provision and verify drift** — complete the relevant mapped stages and retain evidence.
-5. **Handoff operations** — complete the relevant mapped stages and retain evidence.
+### 1. Design desired state
+
+**Accountable role:** cloud-architect
+
+**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
+
+**Required evidence:**
+- change/design artifact
+- execution log
+- review evidence
+- workflow-specific safety/control evidence
+
+**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+
+### 2. Review IaC/network/security
+
+**Accountable role:** infrastructure-engineer
+
+**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
+
+**Required evidence:**
+- verification report
+- residual risk and decision log
+- handoff record
+- workflow-specific safety/control evidence
+
+**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
+
+### 3. Plan approved change
+
+**Accountable role:** network-engineer
+
+**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
+
+**Required evidence:**
+- change/design artifact
+- execution log
+- review evidence
+- workflow-specific safety/control evidence
+
+**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+
+### 4. Provision and verify drift
+
+**Accountable role:** cloud-engineer
+
+**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
+
+**Required evidence:**
+- verification report
+- residual risk and decision log
+- handoff record
+- workflow-specific safety/control evidence
+
+**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
+
+### 5. Handoff operations
+
+**Accountable role:** cloud-engineer
+
+**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
+
+**Required evidence:**
+- verification report
+- residual risk and decision log
+- handoff record
+- workflow-specific safety/control evidence
+
+**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
+
 
 ## Stage set and accountable roles
-Stage IDs: 28, 103, 117, 120, 121, 140, 146, 149, 150, 152, 67, 69, 99, 110. Accountable roles: cloud-architect, infrastructure-engineer, network-engineer, cloud-engineer. Required skills: master-orchestration, evidence-quality-gates, secure-change-control.
+Stage IDs: 28, 103, 117, 120, 121, 140, 146, 149, 150, 152, 67, 69, 99, 110
+Accountable roles: cloud-architect, infrastructure-engineer, network-engineer, cloud-engineer
+Required skills: master-orchestration, evidence-quality-gates, secure-change-control
 
-## Gates, rollback and communication
-Gates: scope-and-risk, quality-evidence, security-disposition, explicit-human-authorization. Use the documented rollback, forward-fix, recovery, or compensation plan appropriate to the changed state. Keep request owner, affected operators and approval authority informed at phase boundaries and immediately on material risk.
+## Dependencies and parallel work
+A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
+- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
 
-## Failure path and completion
-Stop unsafe progression, preserve diagnostics, communicate impact, create remediation or compensation work, and re-evaluate with new evidence. Complete only when: All required stages have PASS evidence or a valid, time-bound approved waiver; ownership and residual risk are accepted.
+## Approval gates
+scope-and-risk, quality-evidence, security-disposition, explicit-human-authorization. Sensitive operations require explicit human authorization.
 
-## Example
-For this workflow, create the evidence bundle before asking for a gate decision; if a prerequisite fails, communicate the impact and execute the documented remediation/compensation route rather than advancing on assumption.
+## Failure, rollback and communication
+Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
+**Recovery:** Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
+**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
+
+## Completion criteria
+Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.

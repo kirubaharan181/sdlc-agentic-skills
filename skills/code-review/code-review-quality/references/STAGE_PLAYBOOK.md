@@ -1,138 +1,138 @@
-# Code Review and Quality — Stage Playbook
+# Independent engineering review — Stage Playbook
 
 > Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 68. Pull Request Creation
 
-**Purpose:** Make a decision-ready Pull Request Creation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare a reviewable and reproducible change proposal
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Pull Request Creation; record assumptions rather than silently choosing them.
-- Produce the Pull Request Creation artifact using the mapped code-review-quality procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Check branch base and working-tree scope; separate unrelated changes.
+- Write a PR summary linking issue, behavior change, risk and migration impact.
+- Attach exact test commands/results, screenshots or reports and known limitations.
+- Request required code owners and reviewers; ensure the PR is small enough to review.
 
-**Inputs:** approved scope relevant to Pull Request Creation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** pull-request-creation-artifact
-**Verification:** Review Pull Request Creation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** approved issue and acceptance criteria, working branch and target base, local test and review policy
+**Artifact:** pull request description
+**Verification:** PR checklist and diff review.
+**Handoff:** Transfer pull request description with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 69. Peer Code Review
 
-**Purpose:** Make a decision-ready Peer Code Review result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** independently inspect code quality and maintainability risks
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Peer Code Review; record assumptions rather than silently choosing them.
-- Produce the Peer Code Review artifact using the mapped code-review-quality procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
+- Inspect static findings and dependency provenance, severity, reachability and license obligations.
+- Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
+- Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
 
-**Inputs:** approved scope relevant to Peer Code Review, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** peer-code-review-artifact
-**Verification:** Review Peer Code Review against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** diff and target branch, coding/architecture standards, test, dependency and static-analysis evidence
+**Artifact:** review report
+**Verification:** Independent reviewer confirms findings and disposition.
+**Handoff:** Transfer review report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 70. Architecture Review
 
-**Purpose:** Make a decision-ready Architecture Review result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** independently evaluate architecture against quality attributes and constraints
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Architecture Review; record assumptions rather than silently choosing them.
-- Produce the Architecture Review artifact using the mapped code-review-quality procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Check component boundaries, coupling, data ownership, failure domains and dependency direction.
+- Evaluate security, resilience, scalability, operability, accessibility and cost against scenarios.
+- Record evidence, deviations, trade-offs and remediation priority.
+- Issue accept, conditional accept or reject recommendation without implementing the reviewed change.
 
-**Inputs:** approved scope relevant to Architecture Review, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** architecture-review-artifact
-**Verification:** Review Architecture Review against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** architecture baseline and ADRs, quality attribute scenarios, risk and change context
+**Artifact:** architecture review report
+**Verification:** Independent architecture board decision.
+**Handoff:** Transfer architecture review report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 71. Static Code Analysis
 
-**Purpose:** Make a decision-ready Static Code Analysis result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** independently inspect code quality and maintainability risks
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Static Code Analysis; record assumptions rather than silently choosing them.
-- Produce the Static Code Analysis artifact using the mapped code-review-quality procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
+- Inspect static findings and dependency provenance, severity, reachability and license obligations.
+- Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
+- Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
 
-**Inputs:** approved scope relevant to Static Code Analysis, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** static-code-analysis-artifact
-**Verification:** Review Static Code Analysis against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** diff and target branch, coding/architecture standards, test, dependency and static-analysis evidence
+**Artifact:** review report
+**Verification:** Independent reviewer confirms findings and disposition.
+**Handoff:** Transfer review report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 72. Dependency Review
 
-**Purpose:** Make a decision-ready Dependency Review result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** independently inspect code quality and maintainability risks
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Dependency Review; record assumptions rather than silently choosing them.
-- Produce the Dependency Review artifact using the mapped code-review-quality procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
+- Inspect static findings and dependency provenance, severity, reachability and license obligations.
+- Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
+- Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
 
-**Inputs:** approved scope relevant to Dependency Review, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** dependency-review-artifact
-**Verification:** Review Dependency Review against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** diff and target branch, coding/architecture standards, test, dependency and static-analysis evidence
+**Artifact:** review report
+**Verification:** Independent reviewer confirms findings and disposition.
+**Handoff:** Transfer review report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 73. Code Coverage Review
 
-**Purpose:** Make a decision-ready Code Coverage Review result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** independently inspect code quality and maintainability risks
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Code Coverage Review; record assumptions rather than silently choosing them.
-- Produce the Code Coverage Review artifact using the mapped code-review-quality procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
+- Inspect static findings and dependency provenance, severity, reachability and license obligations.
+- Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
+- Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
 
-**Inputs:** approved scope relevant to Code Coverage Review, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** code-coverage-review-artifact
-**Verification:** Review Code Coverage Review against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** diff and target branch, coding/architecture standards, test, dependency and static-analysis evidence
+**Artifact:** review report
+**Verification:** Independent reviewer confirms findings and disposition.
+**Handoff:** Transfer review report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 74. Coding Standards Validation
 
-**Purpose:** Make a decision-ready Coding Standards Validation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** independently inspect code quality and maintainability risks
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Coding Standards Validation; record assumptions rather than silently choosing them.
-- Produce the Coding Standards Validation artifact using the mapped code-review-quality procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
+- Inspect static findings and dependency provenance, severity, reachability and license obligations.
+- Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
+- Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
 
-**Inputs:** approved scope relevant to Coding Standards Validation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** coding-standards-validation-artifact
-**Verification:** Review Coding Standards Validation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** diff and target branch, coding/architecture standards, test, dependency and static-analysis evidence
+**Artifact:** review report
+**Verification:** Independent reviewer confirms findings and disposition.
+**Handoff:** Transfer review report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 75. Merge Approval
 
-**Purpose:** Make a decision-ready Merge Approval result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare a controlled decision with sufficient evidence and independent authority
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Merge Approval; record assumptions rather than silently choosing them.
-- Produce the Merge Approval artifact using the mapped code-review-quality procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Check the decision request is complete, in scope and owned by an authorized requester.
+- Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
+- Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
+- Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
 
-**Inputs:** approved scope relevant to Merge Approval, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** merge-approval-artifact
-**Verification:** Review Merge Approval against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** decision request and accountable sponsor, impact/risk assessment, supporting evidence and alternatives
+**Artifact:** decision record
+**Verification:** Independent approval record and audit trail.
+**Handoff:** Transfer decision record with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 76. Technical Debt Review
 
-**Purpose:** Make a decision-ready Technical Debt Review result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** independently inspect code quality and maintainability risks
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Technical Debt Review; record assumptions rather than silently choosing them.
-- Produce the Technical Debt Review artifact using the mapped code-review-quality procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
+- Inspect static findings and dependency provenance, severity, reachability and license obligations.
+- Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
+- Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
 
-**Inputs:** approved scope relevant to Technical Debt Review, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** technical-debt-review-artifact
-**Verification:** Review Technical Debt Review against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** diff and target branch, coding/architecture standards, test, dependency and static-analysis evidence
+**Artifact:** review report
+**Verification:** Independent reviewer confirms findings and disposition.
+**Handoff:** Transfer review report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

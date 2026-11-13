@@ -1,198 +1,198 @@
-# Cloud Hosting Operations — Stage Playbook
+# Cloud and infrastructure operations — Stage Playbook
 
 > Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 140. Cloud Hosting
 
-**Purpose:** Make a decision-ready Cloud Hosting result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Cloud Hosting; record assumptions rather than silently choosing them.
-- Produce the Cloud Hosting artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved scope relevant to Cloud Hosting, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** cloud-hosting-artifact
-**Verification:** Review Cloud Hosting against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 141. Compute Management
 
-**Purpose:** Make a decision-ready Compute Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Compute Management; record assumptions rather than silently choosing them.
-- Produce the Compute Management artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved scope relevant to Compute Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** compute-management-artifact
-**Verification:** Review Compute Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 142. Database Hosting
 
-**Purpose:** Make a decision-ready Database Hosting result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Database Hosting; record assumptions rather than silently choosing them.
-- Produce the Database Hosting artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved scope relevant to Database Hosting, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** database-hosting-artifact
-**Verification:** Review Database Hosting against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 143. Storage Management
 
-**Purpose:** Make a decision-ready Storage Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Storage Management; record assumptions rather than silently choosing them.
-- Produce the Storage Management artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved scope relevant to Storage Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** storage-management-artifact
-**Verification:** Review Storage Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 144. DNS Management
 
-**Purpose:** Make a decision-ready DNS Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** configure secure and resilient network edge routing
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect DNS Management; record assumptions rather than silently choosing them.
-- Produce the DNS Management artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Verify domain/account ownership and change window.
+- Configure records, certificates, ciphers, health checks, routing and origin restrictions.
+- Validate propagation, certificate chain/expiry, redirects and failover behavior.
+- Document TTL, renewal, rollback and monitoring.
 
-**Inputs:** approved scope relevant to DNS Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** dns-management-artifact
-**Verification:** Review DNS Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** domain ownership and target topology, certificate and trust requirements, traffic and health-check profile
+**Artifact:** DNS/TLS/routing configuration
+**Verification:** Network/security review.
+**Handoff:** Transfer DNS/TLS/routing configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 145. SSL Certificate Management
 
-**Purpose:** Make a decision-ready SSL Certificate Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** configure secure and resilient network edge routing
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect SSL Certificate Management; record assumptions rather than silently choosing them.
-- Produce the SSL Certificate Management artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Verify domain/account ownership and change window.
+- Configure records, certificates, ciphers, health checks, routing and origin restrictions.
+- Validate propagation, certificate chain/expiry, redirects and failover behavior.
+- Document TTL, renewal, rollback and monitoring.
 
-**Inputs:** approved scope relevant to SSL Certificate Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** ssl-certificate-management-artifact
-**Verification:** Review SSL Certificate Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** domain ownership and target topology, certificate and trust requirements, traffic and health-check profile
+**Artifact:** DNS/TLS/routing configuration
+**Verification:** Network/security review.
+**Handoff:** Transfer DNS/TLS/routing configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 146. Network Operations
 
-**Purpose:** Make a decision-ready Network Operations result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Network Operations; record assumptions rather than silently choosing them.
-- Produce the Network Operations artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved scope relevant to Network Operations, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** network-operations-artifact
-**Verification:** Review Network Operations against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 147. Backup Management
 
-**Purpose:** Make a decision-ready Backup Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Backup Management; record assumptions rather than silently choosing them.
-- Produce the Backup Management artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved scope relevant to Backup Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** backup-management-artifact
-**Verification:** Review Backup Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 148. Disaster Recovery
 
-**Purpose:** Make a decision-ready Disaster Recovery result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** assess and remediate a defined security attack surface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Disaster Recovery; record assumptions rather than silently choosing them.
-- Produce the Disaster Recovery artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved scope relevant to Disaster Recovery, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** disaster-recovery-artifact
-**Verification:** Review Disaster Recovery against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 149. High Availability
 
-**Purpose:** Make a decision-ready High Availability result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect High Availability; record assumptions rather than silently choosing them.
-- Produce the High Availability artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved scope relevant to High Availability, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** high-availability-artifact
-**Verification:** Review High Availability against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 150. Auto Scaling
 
-**Purpose:** Make a decision-ready Auto Scaling result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** assess and remediate a defined security attack surface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Auto Scaling; record assumptions rather than silently choosing them.
-- Produce the Auto Scaling artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved scope relevant to Auto Scaling, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** auto-scaling-artifact
-**Verification:** Review Auto Scaling against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 151. Cost Optimization
 
-**Purpose:** Make a decision-ready Cost Optimization result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** improve measured performance without violating correctness
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Cost Optimization; record assumptions rather than silently choosing them.
-- Produce the Cost Optimization artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Profile before changing code; identify dominant cost and reproducible baseline.
+- Choose cache key, TTL, invalidation and consistency behavior based on data semantics.
+- Bound memory, stampede, stale data and eviction behavior.
+- Compare before/after p50/p95/p99, throughput, error rate and cost under equivalent load.
 
-**Inputs:** approved scope relevant to Cost Optimization, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** cost-optimization-artifact
-**Verification:** Review Cost Optimization against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** baseline workload and latency profile, consistency/freshness requirements, resource and cost limits
+**Artifact:** profile report
+**Verification:** Performance and correctness regression review.
+**Handoff:** Transfer profile report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 152. Infrastructure Maintenance
 
-**Purpose:** Make a decision-ready Infrastructure Maintenance result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** operate cloud infrastructure within reliability and cost objectives
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Infrastructure Maintenance; record assumptions rather than silently choosing them.
-- Produce the Infrastructure Maintenance artifact using the mapped cloud-hosting-operations procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
+- Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
+- Measure health, capacity, utilization, recovery readiness and cost allocation.
+- Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
 
-**Inputs:** approved scope relevant to Infrastructure Maintenance, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** infrastructure-maintenance-artifact
-**Verification:** Review Infrastructure Maintenance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** service inventory and ownership, SLO/RTO/RPO and capacity profile, access, backup and cost policies
+**Artifact:** infrastructure inventory
+**Verification:** Cloud operations and security review.
+**Handoff:** Transfer infrastructure inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

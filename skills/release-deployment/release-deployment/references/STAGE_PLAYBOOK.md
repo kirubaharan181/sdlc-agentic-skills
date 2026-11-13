@@ -1,213 +1,213 @@
-# Release and Deployment — Stage Playbook
+# Release and deployment control — Stage Playbook
 
 > Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 126. Release Planning
 
-**Purpose:** Make a decision-ready Release Planning result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare and execute a controlled release or migration
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Release Planning; record assumptions rather than silently choosing them.
-- Produce the Release Planning artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm immutable candidate, included changes, compatibility and outstanding risk.
+- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
+- Obtain change authority and communicate schedule, impact, owners and stop conditions.
+- Deploy progressively, verify health and business signals, then confirm or execute recovery.
 
-**Inputs:** approved scope relevant to Release Planning, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** release-planning-artifact
-**Verification:** Review Release Planning against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
+**Artifact:** release manifest
+**Verification:** Change authority approval and post-deploy verification.
+**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 127. Release Notes
 
-**Purpose:** Make a decision-ready Release Notes result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare and execute a controlled release or migration
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Release Notes; record assumptions rather than silently choosing them.
-- Produce the Release Notes artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm immutable candidate, included changes, compatibility and outstanding risk.
+- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
+- Obtain change authority and communicate schedule, impact, owners and stop conditions.
+- Deploy progressively, verify health and business signals, then confirm or execute recovery.
 
-**Inputs:** approved scope relevant to Release Notes, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** release-notes-artifact
-**Verification:** Review Release Notes against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
+**Artifact:** release manifest
+**Verification:** Change authority approval and post-deploy verification.
+**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 128. Release Readiness
 
-**Purpose:** Make a decision-ready Release Readiness result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare and execute a controlled release or migration
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Release Readiness; record assumptions rather than silently choosing them.
-- Produce the Release Readiness artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm immutable candidate, included changes, compatibility and outstanding risk.
+- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
+- Obtain change authority and communicate schedule, impact, owners and stop conditions.
+- Deploy progressively, verify health and business signals, then confirm or execute recovery.
 
-**Inputs:** approved scope relevant to Release Readiness, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** release-readiness-artifact
-**Verification:** Review Release Readiness against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
+**Artifact:** release manifest
+**Verification:** Change authority approval and post-deploy verification.
+**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 129. Change Approval
 
-**Purpose:** Make a decision-ready Change Approval result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare a controlled decision with sufficient evidence and independent authority
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Change Approval; record assumptions rather than silently choosing them.
-- Produce the Change Approval artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Check the decision request is complete, in scope and owned by an authorized requester.
+- Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
+- Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
+- Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
 
-**Inputs:** approved scope relevant to Change Approval, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** change-approval-artifact
-**Verification:** Review Change Approval against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** decision request and accountable sponsor, impact/risk assessment, supporting evidence and alternatives
+**Artifact:** decision record
+**Verification:** Independent approval record and audit trail.
+**Handoff:** Transfer decision record with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 130. Staging Deployment
 
-**Purpose:** Make a decision-ready Staging Deployment result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare and execute a controlled release or migration
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Staging Deployment; record assumptions rather than silently choosing them.
-- Produce the Staging Deployment artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm immutable candidate, included changes, compatibility and outstanding risk.
+- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
+- Obtain change authority and communicate schedule, impact, owners and stop conditions.
+- Deploy progressively, verify health and business signals, then confirm or execute recovery.
 
-**Inputs:** approved scope relevant to Staging Deployment, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** staging-deployment-artifact
-**Verification:** Review Staging Deployment against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
+**Artifact:** release manifest
+**Verification:** Change authority approval and post-deploy verification.
+**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 131. Staging Validation
 
-**Purpose:** Make a decision-ready Staging Validation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare and execute a controlled release or migration
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Staging Validation; record assumptions rather than silently choosing them.
-- Produce the Staging Validation artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm immutable candidate, included changes, compatibility and outstanding risk.
+- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
+- Obtain change authority and communicate schedule, impact, owners and stop conditions.
+- Deploy progressively, verify health and business signals, then confirm or execute recovery.
 
-**Inputs:** approved scope relevant to Staging Validation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** staging-validation-artifact
-**Verification:** Review Staging Validation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
+**Artifact:** release manifest
+**Verification:** Change authority approval and post-deploy verification.
+**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 132. Database Migration
 
-**Purpose:** Make a decision-ready Database Migration result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare and execute a controlled release or migration
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Database Migration; record assumptions rather than silently choosing them.
-- Produce the Database Migration artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm immutable candidate, included changes, compatibility and outstanding risk.
+- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
+- Obtain change authority and communicate schedule, impact, owners and stop conditions.
+- Deploy progressively, verify health and business signals, then confirm or execute recovery.
 
-**Inputs:** approved scope relevant to Database Migration, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** database-migration-artifact
-**Verification:** Review Database Migration against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
+**Artifact:** release manifest
+**Verification:** Change authority approval and post-deploy verification.
+**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 133. Production Deployment
 
-**Purpose:** Make a decision-ready Production Deployment result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare and execute a controlled release or migration
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Production Deployment; record assumptions rather than silently choosing them.
-- Produce the Production Deployment artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm immutable candidate, included changes, compatibility and outstanding risk.
+- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
+- Obtain change authority and communicate schedule, impact, owners and stop conditions.
+- Deploy progressively, verify health and business signals, then confirm or execute recovery.
 
-**Inputs:** approved scope relevant to Production Deployment, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** production-deployment-artifact
-**Verification:** Review Production Deployment against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
+**Artifact:** release manifest
+**Verification:** Change authority approval and post-deploy verification.
+**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 134. Domain & DNS
 
-**Purpose:** Make a decision-ready Domain & DNS result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** configure secure and resilient network edge routing
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Domain & DNS; record assumptions rather than silently choosing them.
-- Produce the Domain & DNS artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Verify domain/account ownership and change window.
+- Configure records, certificates, ciphers, health checks, routing and origin restrictions.
+- Validate propagation, certificate chain/expiry, redirects and failover behavior.
+- Document TTL, renewal, rollback and monitoring.
 
-**Inputs:** approved scope relevant to Domain & DNS, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** domain-dns-artifact
-**Verification:** Review Domain & DNS against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** domain ownership and target topology, certificate and trust requirements, traffic and health-check profile
+**Artifact:** DNS/TLS/routing configuration
+**Verification:** Network/security review.
+**Handoff:** Transfer DNS/TLS/routing configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 135. SSL/TLS Setup
 
-**Purpose:** Make a decision-ready SSL/TLS Setup result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** configure secure and resilient network edge routing
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect SSL/TLS Setup; record assumptions rather than silently choosing them.
-- Produce the SSL/TLS Setup artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Verify domain/account ownership and change window.
+- Configure records, certificates, ciphers, health checks, routing and origin restrictions.
+- Validate propagation, certificate chain/expiry, redirects and failover behavior.
+- Document TTL, renewal, rollback and monitoring.
 
-**Inputs:** approved scope relevant to SSL/TLS Setup, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** ssl-tls-setup-artifact
-**Verification:** Review SSL/TLS Setup against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** domain ownership and target topology, certificate and trust requirements, traffic and health-check profile
+**Artifact:** DNS/TLS/routing configuration
+**Verification:** Network/security review.
+**Handoff:** Transfer DNS/TLS/routing configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 136. Load Balancer Setup
 
-**Purpose:** Make a decision-ready Load Balancer Setup result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** configure secure and resilient network edge routing
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Load Balancer Setup; record assumptions rather than silently choosing them.
-- Produce the Load Balancer Setup artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Verify domain/account ownership and change window.
+- Configure records, certificates, ciphers, health checks, routing and origin restrictions.
+- Validate propagation, certificate chain/expiry, redirects and failover behavior.
+- Document TTL, renewal, rollback and monitoring.
 
-**Inputs:** approved scope relevant to Load Balancer Setup, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** load-balancer-setup-artifact
-**Verification:** Review Load Balancer Setup against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** domain ownership and target topology, certificate and trust requirements, traffic and health-check profile
+**Artifact:** DNS/TLS/routing configuration
+**Verification:** Network/security review.
+**Handoff:** Transfer DNS/TLS/routing configuration with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 137. Rollback Planning
 
-**Purpose:** Make a decision-ready Rollback Planning result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare and execute a controlled release or migration
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Rollback Planning; record assumptions rather than silently choosing them.
-- Produce the Rollback Planning artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm immutable candidate, included changes, compatibility and outstanding risk.
+- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
+- Obtain change authority and communicate schedule, impact, owners and stop conditions.
+- Deploy progressively, verify health and business signals, then confirm or execute recovery.
 
-**Inputs:** approved scope relevant to Rollback Planning, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** rollback-planning-artifact
-**Verification:** Review Rollback Planning against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
+**Artifact:** release manifest
+**Verification:** Change authority approval and post-deploy verification.
+**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 138. Production Smoke Test
 
-**Purpose:** Make a decision-ready Production Smoke Test result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare and execute a controlled release or migration
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Production Smoke Test; record assumptions rather than silently choosing them.
-- Produce the Production Smoke Test artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm immutable candidate, included changes, compatibility and outstanding risk.
+- Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
+- Obtain change authority and communicate schedule, impact, owners and stop conditions.
+- Deploy progressively, verify health and business signals, then confirm or execute recovery.
 
-**Inputs:** approved scope relevant to Production Smoke Test, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** production-smoke-test-artifact
-**Verification:** Review Production Smoke Test against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** release candidate digest and scope, change approvals and readiness evidence, rollback/recovery and communication plan
+**Artifact:** release manifest
+**Verification:** Change authority approval and post-deploy verification.
+**Handoff:** Transfer release manifest with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 139. Deployment Sign-off
 
-**Purpose:** Make a decision-ready Deployment Sign-off result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare a controlled decision with sufficient evidence and independent authority
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Deployment Sign-off; record assumptions rather than silently choosing them.
-- Produce the Deployment Sign-off artifact using the mapped release-deployment procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Check the decision request is complete, in scope and owned by an authorized requester.
+- Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
+- Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
+- Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
 
-**Inputs:** approved scope relevant to Deployment Sign-off, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** deployment-sign-off-artifact
-**Verification:** Review Deployment Sign-off against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** decision request and accountable sponsor, impact/risk assessment, supporting evidence and alternatives
+**Artifact:** decision record
+**Verification:** Independent approval record and audit trail.
+**Handoff:** Transfer decision record with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

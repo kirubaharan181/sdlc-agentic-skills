@@ -1,153 +1,153 @@
-# Enterprise Governance — Stage Playbook
+# Enterprise engineering governance — Stage Playbook
 
 > Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 181. Engineering Governance
 
-**Purpose:** Make a decision-ready Engineering Governance result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** govern repository controls, engineering standards and exception lifecycle
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Engineering Governance; record assumptions rather than silently choosing them.
-- Produce the Engineering Governance artifact using the mapped enterprise-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Map branch protections, code owners, required checks and contribution policy to each repository.
+- Sample actual repository settings and verify enforcement rather than relying on documentation.
+- Review onboarding, toolchain support, secrets and change exceptions.
+- Track drift and verify corrective actions across repositories.
 
-**Inputs:** approved scope relevant to Engineering Governance, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** engineering-governance-artifact
-**Verification:** Review Engineering Governance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** repository inventory and ownership, engineering policy and required checks, team onboarding and exception records
+**Artifact:** repository control inventory
+**Verification:** Repository policy sample audit.
+**Handoff:** Transfer repository control inventory with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 182. Quality Governance
 
-**Purpose:** Make a decision-ready Quality Governance result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** govern quality policy, evidence and corrective action across teams
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Quality Governance; record assumptions rather than silently choosing them.
-- Produce the Quality Governance artifact using the mapped enterprise-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Define measurable quality objectives, required evidence and ownership.
+- Sample delivery records and verify controls operate as documented.
+- Analyze defects, escaped issues, test gaps and corrective-action trends.
+- Assign systemic improvements and verify effectiveness over a review period.
 
-**Inputs:** approved scope relevant to Quality Governance, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** quality-governance-artifact
-**Verification:** Review Quality Governance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** quality policy and objectives, process/product quality data, control owners and audit period
+**Artifact:** quality policy and control map
+**Verification:** Quality governance review and sample audit.
+**Handoff:** Transfer quality policy and control map with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 183. Security Governance
 
-**Purpose:** Make a decision-ready Security Governance result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** govern security policy, risk acceptance and control effectiveness
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Security Governance; record assumptions rather than silently choosing them.
-- Produce the Security Governance artifact using the mapped enterprise-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Map security obligations to preventive, detective and recovery controls.
+- Review control operation, access, vulnerabilities and incident trends.
+- Approve or route exceptions with compensating controls, owner and expiry.
+- Report material risk and verify remediation closure.
 
-**Inputs:** approved scope relevant to Security Governance, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** security-governance-artifact
-**Verification:** Review Security Governance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** security policy and risk appetite, asset/control ownership, risk and exception register
+**Artifact:** security control matrix
+**Verification:** Security governance council review.
+**Handoff:** Transfer security control matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 184. Access Governance
 
-**Purpose:** Make a decision-ready Access Governance result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** govern identity lifecycle and privileged access
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Access Governance; record assumptions rather than silently choosing them.
-- Produce the Access Governance artifact using the mapped enterprise-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Review role definitions, segregation conflicts and least-privilege mappings.
+- Sample access grants, changes, recertifications and removals against approvals.
+- Identify dormant, orphaned, excessive and shared privileged accounts.
+- Track remediation and verify timely revocation and periodic recertification.
 
-**Inputs:** approved scope relevant to Access Governance, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** access-governance-artifact
-**Verification:** Review Access Governance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** identity inventory and role model, joiner/mover/leaver events, privileged access policy
+**Artifact:** role/access matrix
+**Verification:** Independent access recertification audit.
+**Handoff:** Transfer role/access matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 185. Compliance Auditing
 
-**Purpose:** Make a decision-ready Compliance Auditing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** review contractual and regulatory obligations before commitment
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Compliance Auditing; record assumptions rather than silently choosing them.
-- Produce the Compliance Auditing artifact using the mapped enterprise-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Identify service, data, security, availability, audit, retention, subcontracting and exit obligations.
+- Map each obligation to an internal control owner and evidence source.
+- Flag ambiguous liability, data processing, IP, jurisdiction, renewal and termination terms.
+- Record legal review questions and do not provide legal approval outside delegated authority.
 
-**Inputs:** approved scope relevant to Compliance Auditing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** compliance-auditing-artifact
-**Verification:** Review Compliance Auditing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** contract version and counterparties, applicable policy/control obligations, legal/compliance owner
+**Artifact:** obligation matrix
+**Verification:** Legal and compliance owner sign-off.
+**Handoff:** Transfer obligation matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 186. Documentation Governance
 
-**Purpose:** Make a decision-ready Documentation Governance result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** control documentation accuracy, ownership and lifecycle
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Documentation Governance; record assumptions rather than silently choosing them.
-- Produce the Documentation Governance artifact using the mapped enterprise-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inventory authoritative documents, audience, version and source of truth.
+- Check accuracy against current implementation, policy and approved decisions.
+- Review access, retention, link integrity and stale/duplicate content.
+- Assign owner and review date; archive superseded material according to policy.
 
-**Inputs:** approved scope relevant to Documentation Governance, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** documentation-governance-artifact
-**Verification:** Review Documentation Governance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** document inventory and classification, owners and review cadence, retention and publication policy
+**Artifact:** document register
+**Verification:** Documentation governance sample review.
+**Handoff:** Transfer document register with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 187. Change Governance
 
-**Purpose:** Make a decision-ready Change Governance result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** govern the portfolio of material engineering changes
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Change Governance; record assumptions rather than silently choosing them.
-- Produce the Change Governance artifact using the mapped enterprise-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Classify normal, standard and emergency changes under policy.
+- Review impact, approvals, segregation, schedule and recovery readiness.
+- Sample completed changes for evidence, unauthorized drift and failed outcomes.
+- Analyze change failure rate and assign systemic control improvements.
 
-**Inputs:** approved scope relevant to Change Governance, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** change-governance-artifact
-**Verification:** Review Change Governance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** change policy and decision authority, change requests and risk classifications, release and incident history
+**Artifact:** change control matrix
+**Verification:** Change advisory or governance review.
+**Handoff:** Transfer change control matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 188. Vendor Management
 
-**Purpose:** Make a decision-ready Vendor Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** govern supplier performance, obligations and exit readiness
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Vendor Management; record assumptions rather than silently choosing them.
-- Produce the Vendor Management artifact using the mapped enterprise-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Map supplier service, data access, subprocessors, criticality and business dependency.
+- Review SLA performance, incidents, security attestations, financial/operational health and open obligations.
+- Track corrective actions, renewal decisions, concentration risk and exit/portability plan.
+- Escalate material breaches and record authorized risk acceptance.
 
-**Inputs:** approved scope relevant to Vendor Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** vendor-management-artifact
-**Verification:** Review Vendor Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** supplier contract and service inventory, performance/security evidence, renewal and exit dates
+**Artifact:** supplier scorecard
+**Verification:** Procurement, legal, security and service-owner review.
+**Handoff:** Transfer supplier scorecard with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 189. FinOps Governance
 
-**Purpose:** Make a decision-ready FinOps Governance result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** optimize cloud and platform economics without degrading service outcomes
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect FinOps Governance; record assumptions rather than silently choosing them.
-- Produce the FinOps Governance artifact using the mapped enterprise-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Allocate spend to accountable services and normalize by meaningful workload/unit.
+- Identify idle, oversized, uncommitted and architecture-driven cost drivers.
+- Model savings, engineering effort, risk and commitment trade-offs.
+- Implement controlled optimization and compare realized savings with baseline and SLO impact.
 
-**Inputs:** approved scope relevant to FinOps Governance, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** finops-governance-artifact
-**Verification:** Review FinOps Governance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** tagged spend and usage data, service ownership and unit metrics, budget and SLO constraints
+**Artifact:** cost allocation report
+**Verification:** Finance and service-owner review.
+**Handoff:** Transfer cost allocation report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 190. Process Improvement
 
-**Purpose:** Make a decision-ready Process Improvement result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** improve a measured process through controlled experimentation
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Process Improvement; record assumptions rather than silently choosing them.
-- Produce the Process Improvement artifact using the mapped enterprise-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Map current flow, queues, handoffs, rework and failure demand using observed data.
+- Identify root causes and distinguish symptoms from constraints.
+- Design a small experiment with hypothesis, guardrail metric and rollback.
+- Compare results with baseline, retain or revert the change and assign ongoing ownership.
 
-**Inputs:** approved scope relevant to Process Improvement, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** process-improvement-artifact
-**Verification:** Review Process Improvement against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** process baseline and outcome metric, stakeholder pain points, change constraints
+**Artifact:** process map
+**Verification:** Process owner and affected team review.
+**Handoff:** Transfer process map with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

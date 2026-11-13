@@ -1,198 +1,198 @@
-# Application Security — Stage Playbook
+# Application security engineering — Stage Playbook
 
 > Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 98. Threat Modeling
 
-**Purpose:** Make a decision-ready Threat Modeling result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** identify abuse paths and prioritize security treatment
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Threat Modeling; record assumptions rather than silently choosing them.
-- Produce the Threat Modeling artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inventory entry points, identities, privileged operations and sensitive data.
+- Enumerate threats/abuse cases using a repeatable taxonomy and attacker capability.
+- Rate likelihood/impact and map mitigations to design controls and tests.
+- Track accepted residual risks with owner, expiry and monitoring trigger.
 
-**Inputs:** approved scope relevant to Threat Modeling, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** threat-modeling-artifact
-**Verification:** Review Threat Modeling against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** system/data-flow diagrams, assets, actors and trust boundaries, security assumptions
+**Artifact:** threat model
+**Verification:** Independent security design review.
+**Handoff:** Transfer threat model with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 99. SAST
 
-**Purpose:** Make a decision-ready SAST result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** assess and remediate a defined security attack surface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect SAST; record assumptions rather than silently choosing them.
-- Produce the SAST artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved scope relevant to SAST, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** sast-artifact
-**Verification:** Review SAST against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 100. DAST
 
-**Purpose:** Make a decision-ready DAST result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** assess and remediate a defined security attack surface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect DAST; record assumptions rather than silently choosing them.
-- Produce the DAST artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved scope relevant to DAST, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** dast-artifact
-**Verification:** Review DAST against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 101. SCA
 
-**Purpose:** Make a decision-ready SCA result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** assess and remediate a defined security attack surface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect SCA; record assumptions rather than silently choosing them.
-- Produce the SCA artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved scope relevant to SCA, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** sca-artifact
-**Verification:** Review SCA against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 102. Container Security
 
-**Purpose:** Make a decision-ready Container Security result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** assess and remediate a defined security attack surface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Container Security; record assumptions rather than silently choosing them.
-- Produce the Container Security artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved scope relevant to Container Security, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** container-security-artifact
-**Verification:** Review Container Security against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 103. Infrastructure Security
 
-**Purpose:** Make a decision-ready Infrastructure Security result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** assess and remediate a defined security attack surface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Infrastructure Security; record assumptions rather than silently choosing them.
-- Produce the Infrastructure Security artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved scope relevant to Infrastructure Security, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** infrastructure-security-artifact
-**Verification:** Review Infrastructure Security against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 104. Penetration Testing
 
-**Purpose:** Make a decision-ready Penetration Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** assess and remediate a defined security attack surface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Penetration Testing; record assumptions rather than silently choosing them.
-- Produce the Penetration Testing artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved scope relevant to Penetration Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** penetration-testing-artifact
-**Verification:** Review Penetration Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 105. Authentication Security
 
-**Purpose:** Make a decision-ready Authentication Security result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** assess and remediate a defined security attack surface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Authentication Security; record assumptions rather than silently choosing them.
-- Produce the Authentication Security artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved scope relevant to Authentication Security, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** authentication-security-artifact
-**Verification:** Review Authentication Security against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 106. Data Protection
 
-**Purpose:** Make a decision-ready Data Protection result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** assess and remediate a defined security attack surface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Data Protection; record assumptions rather than silently choosing them.
-- Produce the Data Protection artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved scope relevant to Data Protection, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** data-protection-artifact
-**Verification:** Review Data Protection against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 107. Compliance Review
 
-**Purpose:** Make a decision-ready Compliance Review result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** review contractual and regulatory obligations before commitment
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Compliance Review; record assumptions rather than silently choosing them.
-- Produce the Compliance Review artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Identify service, data, security, availability, audit, retention, subcontracting and exit obligations.
+- Map each obligation to an internal control owner and evidence source.
+- Flag ambiguous liability, data processing, IP, jurisdiction, renewal and termination terms.
+- Record legal review questions and do not provide legal approval outside delegated authority.
 
-**Inputs:** approved scope relevant to Compliance Review, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** compliance-review-artifact
-**Verification:** Review Compliance Review against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** contract version and counterparties, applicable policy/control obligations, legal/compliance owner
+**Artifact:** obligation matrix
+**Verification:** Legal and compliance owner sign-off.
+**Handoff:** Transfer obligation matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 108. License Compliance
 
-**Purpose:** Make a decision-ready License Compliance result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** identify software license obligations and distribution risk
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect License Compliance; record assumptions rather than silently choosing them.
-- Produce the License Compliance artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Generate an SBOM or equivalent inventory from resolved dependencies.
+- Identify direct/transitive licenses, copyleft triggers, attribution and source-disclosure obligations.
+- Compare obligations with product distribution and company policy; escalate ambiguous licenses.
+- Record approved substitutions, notices and exception expiry.
 
-**Inputs:** approved scope relevant to License Compliance, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** license-compliance-artifact
-**Verification:** Review License Compliance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** dependency inventory and lockfiles, license policy and distribution model, notice/attribution requirements
+**Artifact:** SBOM
+**Verification:** Legal/compliance review.
+**Handoff:** Transfer SBOM with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 109. Vulnerability Remediation
 
-**Purpose:** Make a decision-ready Vulnerability Remediation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** assess and remediate a defined security attack surface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Vulnerability Remediation; record assumptions rather than silently choosing them.
-- Produce the Vulnerability Remediation artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm asset ownership, scope, exclusions and written authorization before active testing.
+- Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
+- Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
+- Assign remediation, retest the exact fix and record residual risk or approved exception.
 
-**Inputs:** approved scope relevant to Vulnerability Remediation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** vulnerability-remediation-artifact
-**Verification:** Review Vulnerability Remediation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** authorized scope and asset inventory, scanner/tool configuration and version, severity policy and remediation SLA
+**Artifact:** scan/test report
+**Verification:** Security owner and system owner disposition.
+**Handoff:** Transfer scan/test report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 110. Security Sign-off
 
-**Purpose:** Make a decision-ready Security Sign-off result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare a controlled decision with sufficient evidence and independent authority
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Security Sign-off; record assumptions rather than silently choosing them.
-- Produce the Security Sign-off artifact using the mapped application-security procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Check the decision request is complete, in scope and owned by an authorized requester.
+- Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
+- Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
+- Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
 
-**Inputs:** approved scope relevant to Security Sign-off, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** security-sign-off-artifact
-**Verification:** Review Security Sign-off against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** decision request and accountable sponsor, impact/risk assessment, supporting evidence and alternatives
+**Artifact:** decision record
+**Verification:** Independent approval record and audit trail.
+**Handoff:** Transfer decision record with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

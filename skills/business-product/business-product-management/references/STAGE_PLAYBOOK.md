@@ -1,153 +1,153 @@
-# Business Product Management — Stage Playbook
+# Product strategy and discovery — Stage Playbook
 
 > Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 1. Business Strategy
 
-**Purpose:** Make a decision-ready Business Strategy result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** turn business intent into measurable strategic choices
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Business Strategy; record assumptions rather than silently choosing them.
-- Produce the Business Strategy artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- State the business problem, affected customer groups and strategic time horizon.
+- Assess market forces, internal capabilities, dependencies and external constraints using cited evidence.
+- Compare at least two strategic options, including a no-change baseline, with assumptions and trade-offs.
+- Define outcome metrics, leading indicators, investment hypotheses and review triggers.
 
-**Inputs:** approved scope relevant to Business Strategy, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** business-strategy-artifact
-**Verification:** Review Business Strategy against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** business context and strategic horizon, customer and market evidence, constraints and investment boundaries
+**Artifact:** strategy brief
+**Verification:** Executive challenge session and traceability from strategy choices to measurable outcomes.
+**Handoff:** Transfer strategy brief with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 2. Market Research
 
-**Purpose:** Make a decision-ready Market Research result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** validate a market opportunity with traceable external evidence
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Market Research; record assumptions rather than silently choosing them.
-- Produce the Market Research artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Define research questions, target geography, customer segment, time horizon and decision the research must support.
+- Collect primary and secondary evidence; record source URL, publication date, sample, methodology and conflicts of interest.
+- Compare competitors, substitutes, pricing and market signals; separate observed facts from estimates and assumptions.
+- Synthesize opportunity, risks, confidence limits and unanswered questions into a decision brief.
 
-**Inputs:** approved scope relevant to Market Research, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** market-research-artifact
-**Verification:** Review Market Research against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** research objective and target segment, source inclusion/exclusion criteria, competitor and market evidence
+**Artifact:** source register with quality notes
+**Verification:** Independent source sampling, arithmetic reconciliation and stakeholder challenge of assumptions.
+**Handoff:** Transfer source register with quality notes with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 3. Client Engagement
 
-**Purpose:** Make a decision-ready Client Engagement result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** establish an agreed client outcome and a controlled decision trail
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Client Engagement; record assumptions rather than silently choosing them.
-- Produce the Client Engagement artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Map sponsor, users, approvers and operational contacts; identify who can accept scope, cost and risk.
+- Run a structured discovery conversation and capture needs, constraints, success measures and unresolved questions.
+- Record commitments, decision owners, dates and changes in a client decision log; do not treat informal discussion as approval.
+- Confirm the agreed next action, accountable owner and acceptance route with the client.
 
-**Inputs:** approved scope relevant to Client Engagement, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** client-engagement-artifact
-**Verification:** Review Client Engagement against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** client stakeholders and decision authority, statement of need and current commitments, communication constraints
+**Artifact:** stakeholder map
+**Verification:** Client confirmation of decisions and review by the accountable engagement owner.
+**Handoff:** Transfer stakeholder map with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 4. Product Discovery
 
-**Purpose:** Make a decision-ready Product Discovery result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** reduce product uncertainty before committing delivery capacity
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Product Discovery; record assumptions rather than silently choosing them.
-- Produce the Product Discovery artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Frame the user problem without prescribing a solution; identify affected segments and frequency/severity.
+- Gather interview, support, analytics and workflow evidence; document sample limitations and contradictory signals.
+- Generate solution hypotheses and design low-cost experiments that can falsify them.
+- Rank opportunities by user value, confidence, effort and strategic fit; recommend proceed, pivot or stop.
 
-**Inputs:** approved scope relevant to Product Discovery, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** product-discovery-artifact
-**Verification:** Review Product Discovery against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** problem statement and target users, customer evidence and product analytics, discovery constraints
+**Artifact:** discovery brief
+**Verification:** Product owner review of evidence and explicit decision record.
+**Handoff:** Transfer discovery brief with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 5. Business Analysis
 
-**Purpose:** Make a decision-ready Business Analysis result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** translate business needs into process and decision requirements
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Business Analysis; record assumptions rather than silently choosing them.
-- Produce the Business Analysis artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Map current actors, events, inputs, decisions, exceptions and downstream outcomes.
+- Identify process pain points, business rules, data ownership and control points.
+- Model the proposed state and compare impacts, dependencies and exception paths.
+- Trace each requirement to a business objective and a measurable acceptance condition.
 
-**Inputs:** approved scope relevant to Business Analysis, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** business-analysis-artifact
-**Verification:** Review Business Analysis against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** business objectives and stakeholders, current-state process evidence, policy and data constraints
+**Artifact:** current/future process model
+**Verification:** Walkthrough with process owners and affected users.
+**Handoff:** Transfer current/future process model with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 6. Product Planning
 
-**Purpose:** Make a decision-ready Product Planning result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** convert product outcomes into a sequenced and measurable roadmap
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Product Planning; record assumptions rather than silently choosing them.
-- Produce the Product Planning artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Define roadmap themes around outcomes rather than feature lists.
+- Sequence initiatives by value, confidence, dependency, risk and capacity.
+- Set measurable success metrics and explicit assumptions for each horizon.
+- Identify decision checkpoints and conditions that change priority.
 
-**Inputs:** approved scope relevant to Product Planning, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** product-planning-artifact
-**Verification:** Review Product Planning against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** approved product objectives, prioritized opportunities and dependencies, capacity and release constraints
+**Artifact:** outcome roadmap
+**Verification:** Product and delivery leadership review.
+**Handoff:** Transfer outcome roadmap with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 7. Feasibility Analysis
 
-**Purpose:** Make a decision-ready Feasibility Analysis result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** test whether a proposed initiative is viable within real constraints
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Feasibility Analysis; record assumptions rather than silently choosing them.
-- Produce the Feasibility Analysis artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Assess technical fit, skills, integration, data availability and operational supportability.
+- Estimate delivery, migration, licensing, hosting and ongoing support costs with ranges.
+- Identify legal, privacy, security, accessibility and supplier constraints.
+- Run a bounded proof or research spike for high-risk unknowns; record proceed/conditional/stop recommendation.
 
-**Inputs:** approved scope relevant to Feasibility Analysis, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** feasibility-analysis-artifact
-**Verification:** Review Feasibility Analysis against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** solution hypothesis and requirements, technical, operational and legal constraints, cost and capacity assumptions
+**Artifact:** feasibility matrix
+**Verification:** Independent architecture, security and finance challenge.
+**Handoff:** Transfer feasibility matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 8. Budget & Estimation
 
-**Purpose:** Make a decision-ready Budget & Estimation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** produce a transparent estimate and funding baseline
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Budget & Estimation; record assumptions rather than silently choosing them.
-- Produce the Budget & Estimation artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Break work into measurable cost drivers and separate one-time from recurring spend.
+- Estimate effort, infrastructure, licensing, vendor, migration and support costs using ranges.
+- Document confidence, exclusions, currency, tax treatment and contingency basis.
+- Reconcile the estimate against available funding and define variance thresholds.
 
-**Inputs:** approved scope relevant to Budget & Estimation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** budget-estimation-artifact
-**Verification:** Review Budget & Estimation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** scope breakdown and assumptions, rates, capacity and supplier estimates, contingency policy
+**Artifact:** estimate workbook
+**Verification:** Finance review and independent arithmetic check.
+**Handoff:** Transfer estimate workbook with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 9. Project Approval
 
-**Purpose:** Make a decision-ready Project Approval result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare a controlled decision with sufficient evidence and independent authority
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Project Approval; record assumptions rather than silently choosing them.
-- Produce the Project Approval artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Check the decision request is complete, in scope and owned by an authorized requester.
+- Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
+- Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
+- Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
 
-**Inputs:** approved scope relevant to Project Approval, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** project-approval-artifact
-**Verification:** Review Project Approval against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** decision request and accountable sponsor, impact/risk assessment, supporting evidence and alternatives
+**Artifact:** decision record
+**Verification:** Independent approval record and audit trail.
+**Handoff:** Transfer decision record with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 10. Contract & Compliance
 
-**Purpose:** Make a decision-ready Contract & Compliance result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** review contractual and regulatory obligations before commitment
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Contract & Compliance; record assumptions rather than silently choosing them.
-- Produce the Contract & Compliance artifact using the mapped business-product-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Identify service, data, security, availability, audit, retention, subcontracting and exit obligations.
+- Map each obligation to an internal control owner and evidence source.
+- Flag ambiguous liability, data processing, IP, jurisdiction, renewal and termination terms.
+- Record legal review questions and do not provide legal approval outside delegated authority.
 
-**Inputs:** approved scope relevant to Contract & Compliance, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** contract-compliance-artifact
-**Verification:** Review Contract & Compliance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** contract version and counterparties, applicable policy/control obligations, legal/compliance owner
+**Artifact:** obligation matrix
+**Verification:** Legal and compliance owner sign-off.
+**Handoff:** Transfer obligation matrix with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

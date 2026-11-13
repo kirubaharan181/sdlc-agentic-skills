@@ -1,318 +1,337 @@
-# Quality Assurance — Stage Playbook
+# Risk-based verification — Stage Playbook
 
 > Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 77. Test Strategy
 
-**Purpose:** Make a decision-ready Test Strategy result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Test Strategy; record assumptions rather than silently choosing them.
-- Produce the Test Strategy artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Select risk-based test levels and map each critical product risk to an oracle and accountable test owner.
 
-**Inputs:** approved scope relevant to Test Strategy, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** test-strategy-artifact
-**Verification:** Review Test Strategy against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Review coverage against top user and failure scenarios.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 78. Test Planning
 
-**Purpose:** Make a decision-ready Test Planning result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Test Planning; record assumptions rather than silently choosing them.
-- Produce the Test Planning artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Sequence test cases by dependency, environment readiness and risk; define fixtures, entry criteria and execution windows.
 
-**Inputs:** approved scope relevant to Test Planning, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** test-planning-artifact
-**Verification:** Review Test Planning against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Review plan completeness and fixture reproducibility.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 79. Unit Testing
 
-**Purpose:** Make a decision-ready Unit Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Unit Testing; record assumptions rather than silently choosing them.
-- Produce the Unit Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Isolate pure logic with deterministic fixtures and cover boundaries, invariants and failure results.
 
-**Inputs:** approved scope relevant to Unit Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** unit-testing-artifact
-**Verification:** Review Unit Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run focused unit suite and inspect assertion quality.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 80. Integration Testing
 
-**Purpose:** Make a decision-ready Integration Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Integration Testing; record assumptions rather than silently choosing them.
-- Produce the Integration Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Verify service, database, queue and adapter contracts with isolated dependencies.
 
-**Inputs:** approved scope relevant to Integration Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** integration-testing-artifact
-**Verification:** Review Integration Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run integration suite with dependency health and cleanup evidence.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 81. API Testing
 
-**Purpose:** Make a decision-ready API Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect API Testing; record assumptions rather than silently choosing them.
-- Produce the API Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Exercise OpenAPI success, validation, authorization, pagination, idempotency and error cases.
 
-**Inputs:** approved scope relevant to API Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** api-testing-artifact
-**Verification:** Review API Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run contract and negative-case suite against the exact build.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 82. UI Testing
 
-**Purpose:** Make a decision-ready UI Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect UI Testing; record assumptions rather than silently choosing them.
-- Produce the UI Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Verify component states, keyboard interaction, validation feedback and responsive layout.
 
-**Inputs:** approved scope relevant to UI Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** ui-testing-artifact
-**Verification:** Review UI Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run browser tests and inspect captured screenshots/traces.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 83. Functional Testing
 
-**Purpose:** Make a decision-ready Functional Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Functional Testing; record assumptions rather than silently choosing them.
-- Produce the Functional Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Trace each business requirement to positive, negative, alternate and exception scenarios.
 
-**Inputs:** approved scope relevant to Functional Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** functional-testing-artifact
-**Verification:** Review Functional Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Review traceability and execute critical business paths.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 84. End-to-End Testing
 
-**Purpose:** Make a decision-ready End-to-End Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect End-to-End Testing; record assumptions rather than silently choosing them.
-- Produce the End-to-End Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Exercise complete user journeys across UI, APIs, persistence and external side effects with synthetic data.
 
-**Inputs:** approved scope relevant to End-to-End Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** end-to-end-testing-artifact
-**Verification:** Review End-to-End Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run critical journeys and reconcile resulting state across services.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 85. Regression Testing
 
-**Purpose:** Make a decision-ready Regression Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Regression Testing; record assumptions rather than silently choosing them.
-- Produce the Regression Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Select impacted behavior using code dependencies, API/data changes and historical defect evidence.
 
-**Inputs:** approved scope relevant to Regression Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** regression-testing-artifact
-**Verification:** Review Regression Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Compare targeted suite results with the baseline candidate.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 86. Smoke Testing
 
-**Purpose:** Make a decision-ready Smoke Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Smoke Testing; record assumptions rather than silently choosing them.
-- Produce the Smoke Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Check release-blocking startup, health, authentication and critical transaction paths after deployment.
 
-**Inputs:** approved scope relevant to Smoke Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** smoke-testing-artifact
-**Verification:** Review Smoke Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run smoke suite against the deployed artifact.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 87. Sanity Testing
 
-**Purpose:** Make a decision-ready Sanity Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Sanity Testing; record assumptions rather than silently choosing them.
-- Produce the Sanity Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Verify the narrow changed area and immediate dependencies after a small patch.
 
-**Inputs:** approved scope relevant to Sanity Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** sanity-testing-artifact
-**Verification:** Review Sanity Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Execute the bounded checklist on the exact patch.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 88. Cross-browser Testing
 
-**Purpose:** Make a decision-ready Cross-browser Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Cross-browser Testing; record assumptions rather than silently choosing them.
-- Produce the Cross-browser Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Run identical critical journeys across the supported browser/OS matrix and compare rendering and interaction.
 
-**Inputs:** approved scope relevant to Cross-browser Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** cross-browser-testing-artifact
-**Verification:** Review Cross-browser Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run matrix tests and attach browser/version evidence.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 89. Mobile Compatibility Testing
 
-**Purpose:** Make a decision-ready Mobile Compatibility Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Mobile Compatibility Testing; record assumptions rather than silently choosing them.
-- Produce the Mobile Compatibility Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Verify responsive layout, touch targets, orientation, OS permissions and network transitions on supported devices.
 
-**Inputs:** approved scope relevant to Mobile Compatibility Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** mobile-compatibility-testing-artifact
-**Verification:** Review Mobile Compatibility Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run emulator and representative physical-device tests.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 90. Accessibility Testing
 
-**Purpose:** Make a decision-ready Accessibility Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify inclusive access against applicable WCAG criteria
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Accessibility Testing; record assumptions rather than silently choosing them.
-- Produce the Accessibility Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect semantic structure, accessible names, headings, landmarks, labels and error associations.
+- Test keyboard-only operation, focus order/visibility, dialogs and escape behavior.
+- Check contrast, zoom/reflow, reduced motion and screen-reader announcements.
+- Combine automated scans with manual assistive-technology testing; log criterion-level failures.
+- Check semantic names, keyboard-only operation, focus management, contrast, zoom and screen-reader announcements.
 
-**Inputs:** approved scope relevant to Accessibility Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** accessibility-testing-artifact
-**Verification:** Review Accessibility Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** target standard and conformance level, supported browsers/devices and assistive tech, critical user journeys
+**Artifact:** accessibility audit
+**Verification:** Independent accessibility specialist review. Run automated scans plus keyboard and screen-reader verification.
+**Handoff:** Transfer accessibility audit with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 91. Performance Testing
 
-**Purpose:** Make a decision-ready Performance Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Performance Testing; record assumptions rather than silently choosing them.
-- Produce the Performance Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Measure representative workload latency, throughput, saturation and error rate against service objectives.
 
-**Inputs:** approved scope relevant to Performance Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** performance-testing-artifact
-**Verification:** Review Performance Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Compare equivalent before/after runs with workload pinned.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 92. Load Testing
 
-**Purpose:** Make a decision-ready Load Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Load Testing; record assumptions rather than silently choosing them.
-- Produce the Load Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Ramp concurrency and request mix to expected peak and observe throughput, queue depth and latency percentiles.
 
-**Inputs:** approved scope relevant to Load Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** load-testing-artifact
-**Verification:** Review Load Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run controlled load ramp and retain telemetry.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 93. Stress Testing
 
-**Purpose:** Make a decision-ready Stress Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Stress Testing; record assumptions rather than silently choosing them.
-- Produce the Stress Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Increase load beyond expected capacity to identify saturation point and failure mode.
 
-**Inputs:** approved scope relevant to Stress Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** stress-testing-artifact
-**Verification:** Review Stress Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Run approved stress profile in an isolated environment.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 94. Soak Testing
 
-**Purpose:** Make a decision-ready Soak Testing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Soak Testing; record assumptions rather than silently choosing them.
-- Produce the Soak Testing artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Sustain representative load long enough to expose leaks, queue growth and resource drift.
 
-**Inputs:** approved scope relevant to Soak Testing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** soak-testing-artifact
-**Verification:** Review Soak Testing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Review time-series trends and post-run resource recovery.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 95. UAT
 
-**Purpose:** Make a decision-ready UAT result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify software behavior using risk-based and reproducible tests
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect UAT; record assumptions rather than silently choosing them.
-- Produce the UAT artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
+- Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
+- Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
+- Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
+- Validate real business workflows with authorized users against agreed acceptance examples.
 
-**Inputs:** approved scope relevant to UAT, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** uat-artifact
-**Verification:** Review UAT against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** testable acceptance criteria and risk profile, test environment and data, supported platform/workload matrix
+**Artifact:** test strategy or plan
+**Verification:** Independent QA review and acceptance decision. Capture user execution evidence and explicit acceptance decision.
+**Handoff:** Transfer test strategy or plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 96. Defect Management
 
-**Purpose:** Make a decision-ready Defect Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** control defects from reproduction through verified closure
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Defect Management; record assumptions rather than silently choosing them.
-- Produce the Defect Management artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Reproduce on a named build and capture minimal steps, expected/actual behavior and logs.
+- Assess impact, exploitability, affected users and workaround; assign severity separately from priority.
+- Link root cause and fix commit to regression coverage.
+- Verify fix on the target build and close only with reproducible evidence.
 
-**Inputs:** approved scope relevant to Defect Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** defect-management-artifact
-**Verification:** Review Defect Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** defect report and affected build, severity/priority policy, reproduction environment
+**Artifact:** defect ticket
+**Verification:** QA owner verifies closure.
+**Handoff:** Transfer defect ticket with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 97. Test Sign-off
 
-**Purpose:** Make a decision-ready Test Sign-off result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prepare a controlled decision with sufficient evidence and independent authority
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Test Sign-off; record assumptions rather than silently choosing them.
-- Produce the Test Sign-off artifact using the mapped quality-assurance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Check the decision request is complete, in scope and owned by an authorized requester.
+- Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
+- Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
+- Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
 
-**Inputs:** approved scope relevant to Test Sign-off, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** test-sign-off-artifact
-**Verification:** Review Test Sign-off against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** decision request and accountable sponsor, impact/risk assessment, supporting evidence and alternatives
+**Artifact:** decision record
+**Verification:** Independent approval record and audit trail.
+**Handoff:** Transfer decision record with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

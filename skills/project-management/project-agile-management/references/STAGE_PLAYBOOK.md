@@ -1,153 +1,153 @@
-# Project and Agile Management — Stage Playbook
+# Delivery planning and flow management — Stage Playbook
 
 > Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 35. Project Initiation
 
-**Purpose:** Make a decision-ready Project Initiation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** establish project authority, outcomes and operating cadence
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Project Initiation; record assumptions rather than silently choosing them.
-- Produce the Project Initiation artifact using the mapped project-agile-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm sponsor, project manager, decision rights and escalation path.
+- Define objectives, measurable outcomes, scope, exclusions and success criteria.
+- Set governance cadence, reporting, change control and initial RAID ownership.
+- Baseline charter and mobilization actions.
 
-**Inputs:** approved scope relevant to Project Initiation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** project-initiation-artifact
-**Verification:** Review Project Initiation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** business case and sponsor, scope boundaries and constraints, delivery and governance stakeholders
+**Artifact:** project charter
+**Verification:** Sponsor approval.
+**Handoff:** Transfer project charter with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 36. Resource Planning
 
-**Purpose:** Make a decision-ready Resource Planning result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** match capacity and specialist skills to the delivery demand
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Resource Planning; record assumptions rather than silently choosing them.
-- Produce the Resource Planning artifact using the mapped project-agile-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Build role-based capacity by iteration and critical skill.
+- Identify bottlenecks, single points of failure and onboarding lead time.
+- Compare demand with available capacity and propose sequencing or sourcing options.
+- Track actual allocation and reforecast when assumptions change.
 
-**Inputs:** approved scope relevant to Resource Planning, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** resource-planning-artifact
-**Verification:** Review Resource Planning against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** work estimates and skill requirements, availability and leave calendar, budget and supplier constraints
+**Artifact:** capacity plan
+**Verification:** Delivery manager and functional owner review.
+**Handoff:** Transfer capacity plan with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 37. Work Breakdown
 
-**Purpose:** Make a decision-ready Work Breakdown result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** decompose approved scope into estimable and verifiable work
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Work Breakdown; record assumptions rather than silently choosing them.
-- Produce the Work Breakdown artifact using the mapped project-agile-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Decompose deliverables into work packages with clear boundaries and owners.
+- Identify dependencies, integration points, external approvals and critical path.
+- Define acceptance evidence and estimate-ready assumptions for each package.
+- Review decomposition with delivery and technical owners before estimating.
 
-**Inputs:** approved scope relevant to Work Breakdown, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** work-breakdown-artifact
-**Verification:** Review Work Breakdown against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** approved scope and deliverables, dependencies and constraints, definition of done
+**Artifact:** WBS/backlog hierarchy
+**Verification:** Cross-functional planning review.
+**Handoff:** Transfer WBS/backlog hierarchy with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 38. Effort Estimation
 
-**Purpose:** Make a decision-ready Effort Estimation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** produce a transparent estimate and funding baseline
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Effort Estimation; record assumptions rather than silently choosing them.
-- Produce the Effort Estimation artifact using the mapped project-agile-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Break work into measurable cost drivers and separate one-time from recurring spend.
+- Estimate effort, infrastructure, licensing, vendor, migration and support costs using ranges.
+- Document confidence, exclusions, currency, tax treatment and contingency basis.
+- Reconcile the estimate against available funding and define variance thresholds.
 
-**Inputs:** approved scope relevant to Effort Estimation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** effort-estimation-artifact
-**Verification:** Review Effort Estimation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** scope breakdown and assumptions, rates, capacity and supplier estimates, contingency policy
+**Artifact:** estimate workbook
+**Verification:** Finance review and independent arithmetic check.
+**Handoff:** Transfer estimate workbook with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 39. Sprint Planning
 
-**Purpose:** Make a decision-ready Sprint Planning result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** select a feasible sprint goal and commitment
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Sprint Planning; record assumptions rather than silently choosing them.
-- Produce the Sprint Planning artifact using the mapped project-agile-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Confirm sprint objective and business value before selecting stories.
+- Check readiness, acceptance criteria, dependencies, test data and external blockers.
+- Forecast capacity using recent throughput and actual availability.
+- Split work to deliver testable increments and agree a contingency buffer.
 
-**Inputs:** approved scope relevant to Sprint Planning, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** sprint-planning-artifact
-**Verification:** Review Sprint Planning against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** ordered ready backlog, team capacity and availability, definition of ready and dependencies
+**Artifact:** sprint goal
+**Verification:** Team planning agreement.
+**Handoff:** Transfer sprint goal with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 40. Agile Management
 
-**Purpose:** Make a decision-ready Agile Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** make delivery flow visible and remove impediments
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Agile Management; record assumptions rather than silently choosing them.
-- Produce the Agile Management artifact using the mapped project-agile-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect flow, work in progress, aging items and blocked time rather than relying on status adjectives.
+- Facilitate planning/review/retro with decisions and owners.
+- Escalate cross-team impediments and resolve dependency sequencing.
+- Use trend data to adapt scope and forecast without pressuring unsafe shortcuts.
 
-**Inputs:** approved scope relevant to Agile Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** agile-management-artifact
-**Verification:** Review Agile Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** team working agreement and iteration goal, work item state and cycle-time data, dependency and blocker list
+**Artifact:** flow metrics
+**Verification:** Team retrospective and delivery review.
+**Handoff:** Transfer flow metrics with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 41. Progress Tracking
 
-**Purpose:** Make a decision-ready Progress Tracking result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** make delivery flow visible and remove impediments
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Progress Tracking; record assumptions rather than silently choosing them.
-- Produce the Progress Tracking artifact using the mapped project-agile-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect flow, work in progress, aging items and blocked time rather than relying on status adjectives.
+- Facilitate planning/review/retro with decisions and owners.
+- Escalate cross-team impediments and resolve dependency sequencing.
+- Use trend data to adapt scope and forecast without pressuring unsafe shortcuts.
 
-**Inputs:** approved scope relevant to Progress Tracking, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** progress-tracking-artifact
-**Verification:** Review Progress Tracking against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** team working agreement and iteration goal, work item state and cycle-time data, dependency and blocker list
+**Artifact:** flow metrics
+**Verification:** Team retrospective and delivery review.
+**Handoff:** Transfer flow metrics with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 42. Risk Management
 
-**Purpose:** Make a decision-ready Risk Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** identify, quantify and actively treat delivery and operational risks
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Risk Management; record assumptions rather than silently choosing them.
-- Produce the Risk Management artifact using the mapped project-agile-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Describe each risk as cause-event-impact and distinguish it from an issue.
+- Score likelihood and impact using the agreed scale; identify exposure and trigger.
+- Select avoid, mitigate, transfer or accept treatment with owner and due date.
+- Reassess residual risk and escalate threshold breaches.
 
-**Inputs:** approved scope relevant to Risk Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** risk-management-artifact
-**Verification:** Review Risk Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** scope, architecture and dependency context, risk appetite and thresholds, risk owners
+**Artifact:** RAID/risk register
+**Verification:** Risk owner and governance review.
+**Handoff:** Transfer RAID/risk register with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 43. Stakeholder Management
 
-**Purpose:** Make a decision-ready Stakeholder Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** align decision-makers and affected parties through the lifecycle
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Stakeholder Management; record assumptions rather than silently choosing them.
-- Produce the Stakeholder Management artifact using the mapped project-agile-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Identify decision authority, affected users, veto points and information needs.
+- Set communication cadence and channel by stakeholder group.
+- Capture decisions, concerns, commitments and unresolved conflicts.
+- Escalate missing decisions before they block downstream work.
 
-**Inputs:** approved scope relevant to Stakeholder Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** stakeholder-management-artifact
-**Verification:** Review Stakeholder Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** stakeholder and influence map, decision calendar, communication needs
+**Artifact:** stakeholder map
+**Verification:** Sponsor and stakeholder review.
+**Handoff:** Transfer stakeholder map with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 44. Change Management
 
-**Purpose:** Make a decision-ready Change Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** control scope, configuration or organizational change safely
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Change Management; record assumptions rather than silently choosing them.
-- Produce the Change Management artifact using the mapped project-agile-management procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Classify change type, urgency, blast radius and reversibility.
+- Assess schedule, cost, architecture, security, data, user and operational impacts.
+- Update affected baselines, plans and traceability only after approval.
+- Communicate decision and verify adoption or post-change outcome.
 
-**Inputs:** approved scope relevant to Change Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** change-management-artifact
-**Verification:** Review Change Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** change request and baseline, impact analysis, approval and rollback constraints
+**Artifact:** change request
+**Verification:** Change authority approval.
+**Handoff:** Transfer change request with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

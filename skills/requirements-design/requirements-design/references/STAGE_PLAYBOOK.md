@@ -1,183 +1,183 @@
-# Requirements and Experience Design — Stage Playbook
+# Requirements and experience design — Stage Playbook
 
 > Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 11. Requirement Elicitation
 
-**Purpose:** Make a decision-ready Requirement Elicitation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** discover complete and testable stakeholder needs
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Requirement Elicitation; record assumptions rather than silently choosing them.
-- Produce the Requirement Elicitation artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Select interviews, workshops, observation or document analysis appropriate to each stakeholder.
+- Ask for goals, tasks, exceptions, pain points, constraints and examples of successful outcomes.
+- Resolve conflicting statements by recording source, authority and decision owner.
+- Convert findings into candidate requirements and confirm them with the source stakeholder.
 
-**Inputs:** approved scope relevant to Requirement Elicitation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** requirement-elicitation-artifact
-**Verification:** Review Requirement Elicitation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** stakeholder map and interview plan, business goals and known constraints, elicitation sources
+**Artifact:** elicitation notes
+**Verification:** Stakeholder playback and confirmation.
+**Handoff:** Transfer elicitation notes with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 12. Requirement Documentation
 
-**Purpose:** Make a decision-ready Requirement Documentation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** create a navigable, versioned and traceable specification
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Requirement Documentation; record assumptions rather than silently choosing them.
-- Produce the Requirement Documentation artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Organize scope, actors, terminology, requirements, constraints, dependencies and exclusions.
+- Assign stable IDs and link each requirement to source, owner and downstream tests.
+- Document diagrams, examples, exceptions and unresolved decisions in the repository convention.
+- Review clarity, consistency, links, version and change history.
 
-**Inputs:** approved scope relevant to Requirement Documentation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** requirement-documentation-artifact
-**Verification:** Review Requirement Documentation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** validated needs and decisions, document template and audience, source-of-truth repository
+**Artifact:** versioned specification
+**Verification:** Peer review by product, engineering and QA.
+**Handoff:** Transfer versioned specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 13. Functional Requirements
 
-**Purpose:** Make a decision-ready Functional Requirements result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** specify observable system behavior and business rules
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Functional Requirements; record assumptions rather than silently choosing them.
-- Produce the Functional Requirements artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Write behavior using actor, trigger, precondition, main flow, alternate flow and postcondition.
+- Define validation, state transitions, error responses and idempotency where applicable.
+- Derive positive, negative, boundary and authorization acceptance cases.
+- Trace each behavior to a requirement ID and owner.
 
-**Inputs:** approved scope relevant to Functional Requirements, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** functional-requirements-artifact
-**Verification:** Review Functional Requirements against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** user and system scenarios, business rules and data definitions, external interface constraints
+**Artifact:** functional requirement catalogue
+**Verification:** Scenario walkthrough with developer and tester.
+**Handoff:** Transfer functional requirement catalogue with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 14. Non-Functional Requirements
 
-**Purpose:** Make a decision-ready Non-Functional Requirements result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** specify observable system behavior and business rules
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Non-Functional Requirements; record assumptions rather than silently choosing them.
-- Produce the Non-Functional Requirements artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Write behavior using actor, trigger, precondition, main flow, alternate flow and postcondition.
+- Define validation, state transitions, error responses and idempotency where applicable.
+- Derive positive, negative, boundary and authorization acceptance cases.
+- Trace each behavior to a requirement ID and owner.
 
-**Inputs:** approved scope relevant to Non-Functional Requirements, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** non-functional-requirements-artifact
-**Verification:** Review Non-Functional Requirements against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** user and system scenarios, business rules and data definitions, external interface constraints
+**Artifact:** functional requirement catalogue
+**Verification:** Scenario walkthrough with developer and tester.
+**Handoff:** Transfer functional requirement catalogue with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 15. User Research
 
-**Purpose:** Make a decision-ready User Research result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** collect ethical and representative evidence about user behavior
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect User Research; record assumptions rather than silently choosing them.
-- Produce the User Research artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Recruit participants against explicit inclusion criteria and record sampling limitations.
+- Obtain consent; avoid collecting unnecessary personal or sensitive data.
+- Run neutral interviews or observations with consistent prompts and session notes.
+- Code findings into themes, counterexamples and confidence levels; distinguish participant statements from researcher inference.
 
-**Inputs:** approved scope relevant to User Research, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** user-research-artifact
-**Verification:** Review User Research against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** research question and participant criteria, consent/privacy plan, interview or usability protocol
+**Artifact:** research protocol
+**Verification:** Research peer review and stakeholder playback.
+**Handoff:** Transfer research protocol with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 16. User Journey Mapping
 
-**Purpose:** Make a decision-ready User Journey Mapping result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** map user goals, touchpoints, decisions and friction across a complete journey
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect User Journey Mapping; record assumptions rather than silently choosing them.
-- Produce the User Journey Mapping artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Define journey boundary, user goal and success event.
+- Map stages, actions, touchpoints, emotions, questions, failures and backstage dependencies.
+- Annotate evidence source and pain-point severity at each step.
+- Prioritize opportunities and define measurable experience improvements.
 
-**Inputs:** approved scope relevant to User Journey Mapping, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** user-journey-mapping-artifact
-**Verification:** Review User Journey Mapping against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** validated personas or user segments, research observations, journey scope and start/end events
+**Artifact:** journey map
+**Verification:** Walkthrough with users and service owners.
+**Handoff:** Transfer journey map with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 17. Wireframing
 
-**Purpose:** Make a decision-ready Wireframing result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** explore information hierarchy and interaction structure before visual polish
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Wireframing; record assumptions rather than silently choosing them.
-- Produce the Wireframing artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Identify primary tasks and content hierarchy for each screen.
+- Create low-fidelity layouts with navigation, states, responsive behavior and annotations.
+- Review task completion paths, empty/error/loading states and keyboard flow.
+- Record design decisions and unresolved usability questions.
 
-**Inputs:** approved scope relevant to Wireframing, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** wireframing-artifact
-**Verification:** Review Wireframing against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** validated task flows, content requirements, target viewport/device constraints
+**Artifact:** annotated wireframes
+**Verification:** Product/design review and quick usability walkthrough.
+**Handoff:** Transfer annotated wireframes with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 18. UI Design
 
-**Purpose:** Make a decision-ready UI Design result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** define a consistent and accessible visual interface
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect UI Design; record assumptions rather than silently choosing them.
-- Produce the UI Design artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Apply typography, color, spacing, hierarchy and component states using the design system.
+- Specify responsive behavior, focus/hover/disabled/error states and asset usage.
+- Check color contrast, text scaling and semantic component intent.
+- Document deviations and reusable component decisions.
 
-**Inputs:** approved scope relevant to UI Design, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** ui-design-artifact
-**Verification:** Review UI Design against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** approved wireframes and design tokens, brand and component standards, accessibility requirements
+**Artifact:** high-fidelity screens
+**Verification:** Design-system review and accessibility check.
+**Handoff:** Transfer high-fidelity screens with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 19. UX Design
 
-**Purpose:** Make a decision-ready UX Design result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** optimize task completion, comprehension and error recovery
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect UX Design; record assumptions rather than silently choosing them.
-- Produce the UX Design artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Design navigation, information scent, feedback, affordances and error recovery around user tasks.
+- Cover first-use, repeat-use, empty, loading, failure and recovery states.
+- Prototype critical paths and observe representative users.
+- Revise based on task success, time, error and qualitative feedback.
 
-**Inputs:** approved scope relevant to UX Design, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** ux-design-artifact
-**Verification:** Review UX Design against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** user goals and journey evidence, wireframes and interaction constraints, usability criteria
+**Artifact:** interaction specification
+**Verification:** Moderated usability review.
+**Handoff:** Transfer interaction specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 20. Prototype Development
 
-**Purpose:** Make a decision-ready Prototype Development result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** validate a risky interaction or concept before production implementation
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Prototype Development; record assumptions rather than silently choosing them.
-- Produce the Prototype Development artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Choose fidelity that answers the question without implying production readiness.
+- Build only the critical path and realistic states needed for the experiment.
+- Run task-based sessions and capture observations, failures and time-on-task.
+- Decide iterate, validate further or discard; label simulated behavior and data.
 
-**Inputs:** approved scope relevant to Prototype Development, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** prototype-development-artifact
-**Verification:** Review Prototype Development against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** hypothesis and target user task, prototype fidelity decision, success and failure thresholds
+**Artifact:** prototype artifact
+**Verification:** Product/design decision review.
+**Handoff:** Transfer prototype artifact with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 21. Accessibility Review
 
-**Purpose:** Make a decision-ready Accessibility Review result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** verify inclusive access against applicable WCAG criteria
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Accessibility Review; record assumptions rather than silently choosing them.
-- Produce the Accessibility Review artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect semantic structure, accessible names, headings, landmarks, labels and error associations.
+- Test keyboard-only operation, focus order/visibility, dialogs and escape behavior.
+- Check contrast, zoom/reflow, reduced motion and screen-reader announcements.
+- Combine automated scans with manual assistive-technology testing; log criterion-level failures.
 
-**Inputs:** approved scope relevant to Accessibility Review, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** accessibility-review-artifact
-**Verification:** Review Accessibility Review against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** target standard and conformance level, supported browsers/devices and assistive tech, critical user journeys
+**Artifact:** accessibility audit
+**Verification:** Independent accessibility specialist review.
+**Handoff:** Transfer accessibility audit with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 22. Requirement Validation
 
-**Purpose:** Make a decision-ready Requirement Validation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** prove requirements are complete, consistent, feasible and testable
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Requirement Validation; record assumptions rather than silently choosing them.
-- Produce the Requirement Validation artifact using the mapped requirements-design procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Check each requirement for atomicity, necessity, clarity, feasibility and verifiability.
+- Trace business goals to requirements, design elements and test cases.
+- Run ambiguity, conflict, duplication and orphan checks.
+- Resolve or explicitly defer findings with owners before baseline approval.
 
-**Inputs:** approved scope relevant to Requirement Validation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** requirement-validation-artifact
-**Verification:** Review Requirement Validation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** draft requirements and traceability, stakeholder authority, acceptance and quality criteria
+**Artifact:** validated baseline
+**Verification:** Cross-functional requirements review.
+**Handoff:** Transfer validated baseline with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

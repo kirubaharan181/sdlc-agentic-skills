@@ -1,123 +1,123 @@
-# Engineering Governance — Stage Playbook
+# Repository and engineering operating model — Stage Playbook
 
 > Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 45. Repository Setup
 
-**Purpose:** Make a decision-ready Repository Setup result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** establish a secure and reproducible engineering workspace
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Repository Setup; record assumptions rather than silently choosing them.
-- Produce the Repository Setup artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
+- Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
+- Keep credentials out of source; use approved secret storage and least-privilege access.
+- Add onboarding and contribution guidance, then validate from a clean checkout.
 
-**Inputs:** approved scope relevant to Repository Setup, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** repository-setup-artifact
-**Verification:** Review Repository Setup against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** repository ownership and team model, language/runtime and build manifests, security and contribution policy
+**Artifact:** repository policy
+**Verification:** Repository owner and security review.
+**Handoff:** Transfer repository policy with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 46. Branching Strategy
 
-**Purpose:** Make a decision-ready Branching Strategy result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** establish a secure and reproducible engineering workspace
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Branching Strategy; record assumptions rather than silently choosing them.
-- Produce the Branching Strategy artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
+- Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
+- Keep credentials out of source; use approved secret storage and least-privilege access.
+- Add onboarding and contribution guidance, then validate from a clean checkout.
 
-**Inputs:** approved scope relevant to Branching Strategy, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** branching-strategy-artifact
-**Verification:** Review Branching Strategy against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** repository ownership and team model, language/runtime and build manifests, security and contribution policy
+**Artifact:** repository policy
+**Verification:** Repository owner and security review.
+**Handoff:** Transfer repository policy with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 47. Development Environment
 
-**Purpose:** Make a decision-ready Development Environment result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** establish a secure and reproducible engineering workspace
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Development Environment; record assumptions rather than silently choosing them.
-- Produce the Development Environment artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
+- Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
+- Keep credentials out of source; use approved secret storage and least-privilege access.
+- Add onboarding and contribution guidance, then validate from a clean checkout.
 
-**Inputs:** approved scope relevant to Development Environment, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** development-environment-artifact
-**Verification:** Review Development Environment against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** repository ownership and team model, language/runtime and build manifests, security and contribution policy
+**Artifact:** repository policy
+**Verification:** Repository owner and security review.
+**Handoff:** Transfer repository policy with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 48. Coding Standards
 
-**Purpose:** Make a decision-ready Coding Standards result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** establish a secure and reproducible engineering workspace
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Coding Standards; record assumptions rather than silently choosing them.
-- Produce the Coding Standards artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
+- Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
+- Keep credentials out of source; use approved secret storage and least-privilege access.
+- Add onboarding and contribution guidance, then validate from a clean checkout.
 
-**Inputs:** approved scope relevant to Coding Standards, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** coding-standards-artifact
-**Verification:** Review Coding Standards against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** repository ownership and team model, language/runtime and build manifests, security and contribution policy
+**Artifact:** repository policy
+**Verification:** Repository owner and security review.
+**Handoff:** Transfer repository policy with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 49. Environment Configuration
 
-**Purpose:** Make a decision-ready Environment Configuration result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** establish a secure and reproducible engineering workspace
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Environment Configuration; record assumptions rather than silently choosing them.
-- Produce the Environment Configuration artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
+- Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
+- Keep credentials out of source; use approved secret storage and least-privilege access.
+- Add onboarding and contribution guidance, then validate from a clean checkout.
 
-**Inputs:** approved scope relevant to Environment Configuration, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** environment-configuration-artifact
-**Verification:** Review Environment Configuration against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** repository ownership and team model, language/runtime and build manifests, security and contribution policy
+**Artifact:** repository policy
+**Verification:** Repository owner and security review.
+**Handoff:** Transfer repository policy with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 50. Secrets Management
 
-**Purpose:** Make a decision-ready Secrets Management result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** establish a secure and reproducible engineering workspace
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Secrets Management; record assumptions rather than silently choosing them.
-- Produce the Secrets Management artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
+- Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
+- Keep credentials out of source; use approved secret storage and least-privilege access.
+- Add onboarding and contribution guidance, then validate from a clean checkout.
 
-**Inputs:** approved scope relevant to Secrets Management, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** secrets-management-artifact
-**Verification:** Review Secrets Management against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** repository ownership and team model, language/runtime and build manifests, security and contribution policy
+**Artifact:** repository policy
+**Verification:** Repository owner and security review.
+**Handoff:** Transfer repository policy with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 51. Developer Documentation
 
-**Purpose:** Make a decision-ready Developer Documentation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** create a navigable, versioned and traceable specification
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Developer Documentation; record assumptions rather than silently choosing them.
-- Produce the Developer Documentation artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Organize scope, actors, terminology, requirements, constraints, dependencies and exclusions.
+- Assign stable IDs and link each requirement to source, owner and downstream tests.
+- Document diagrams, examples, exceptions and unresolved decisions in the repository convention.
+- Review clarity, consistency, links, version and change history.
 
-**Inputs:** approved scope relevant to Developer Documentation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** developer-documentation-artifact
-**Verification:** Review Developer Documentation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** validated needs and decisions, document template and audience, source-of-truth repository
+**Artifact:** versioned specification
+**Verification:** Peer review by product, engineering and QA.
+**Handoff:** Transfer versioned specification with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 52. Engineering Governance
 
-**Purpose:** Make a decision-ready Engineering Governance result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** establish a secure and reproducible engineering workspace
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Engineering Governance; record assumptions rather than silently choosing them.
-- Produce the Engineering Governance artifact using the mapped engineering-governance procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
+- Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
+- Keep credentials out of source; use approved secret storage and least-privilege access.
+- Add onboarding and contribution guidance, then validate from a clean checkout.
 
-**Inputs:** approved scope relevant to Engineering Governance, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** engineering-governance-artifact
-**Verification:** Review Engineering Governance against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** repository ownership and team model, language/runtime and build manifests, security and contribution policy
+**Artifact:** repository policy
+**Verification:** Repository owner and security review.
+**Handoff:** Transfer repository policy with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.

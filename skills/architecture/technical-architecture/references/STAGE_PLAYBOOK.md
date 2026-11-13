@@ -1,183 +1,183 @@
-# Technical Architecture — Stage Playbook
+# Architecture and technical decision-making — Stage Playbook
 
 > Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.
 
 ## 23. Solution Architecture
 
-**Purpose:** Make a decision-ready Solution Architecture result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** define the system structure and component boundaries for the target quality attributes
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Solution Architecture; record assumptions rather than silently choosing them.
-- Produce the Solution Architecture artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Define system context, actors, external systems and trust boundaries.
+- Decompose capabilities into components and assign ownership, interfaces and dependency direction.
+- Evaluate synchronous/asynchronous boundaries, data ownership, failure isolation and deployment topology.
+- Compare architecture options against latency, availability, scalability, security, operability and cost scenarios.
 
-**Inputs:** approved scope relevant to Solution Architecture, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** solution-architecture-artifact
-**Verification:** Review Solution Architecture against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** business capabilities and system context, runtime/deployment constraints, quality attribute scenarios
+**Artifact:** system context and container diagrams
+**Verification:** Architecture review against documented quality attribute scenarios.
+**Handoff:** Transfer system context and container diagrams with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 24. System Architecture
 
-**Purpose:** Make a decision-ready System Architecture result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** define the system structure and component boundaries for the target quality attributes
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect System Architecture; record assumptions rather than silently choosing them.
-- Produce the System Architecture artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Define system context, actors, external systems and trust boundaries.
+- Decompose capabilities into components and assign ownership, interfaces and dependency direction.
+- Evaluate synchronous/asynchronous boundaries, data ownership, failure isolation and deployment topology.
+- Compare architecture options against latency, availability, scalability, security, operability and cost scenarios.
 
-**Inputs:** approved scope relevant to System Architecture, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** system-architecture-artifact
-**Verification:** Review System Architecture against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** business capabilities and system context, runtime/deployment constraints, quality attribute scenarios
+**Artifact:** system context and container diagrams
+**Verification:** Architecture review against documented quality attribute scenarios.
+**Handoff:** Transfer system context and container diagrams with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 25. Application Architecture
 
-**Purpose:** Make a decision-ready Application Architecture result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** define the system structure and component boundaries for the target quality attributes
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Application Architecture; record assumptions rather than silently choosing them.
-- Produce the Application Architecture artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Define system context, actors, external systems and trust boundaries.
+- Decompose capabilities into components and assign ownership, interfaces and dependency direction.
+- Evaluate synchronous/asynchronous boundaries, data ownership, failure isolation and deployment topology.
+- Compare architecture options against latency, availability, scalability, security, operability and cost scenarios.
 
-**Inputs:** approved scope relevant to Application Architecture, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** application-architecture-artifact
-**Verification:** Review Application Architecture against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** business capabilities and system context, runtime/deployment constraints, quality attribute scenarios
+**Artifact:** system context and container diagrams
+**Verification:** Architecture review against documented quality attribute scenarios.
+**Handoff:** Transfer system context and container diagrams with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 26. Database Architecture
 
-**Purpose:** Make a decision-ready Database Architecture result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** design durable data structures and safe evolution strategy
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Database Architecture; record assumptions rather than silently choosing them.
-- Produce the Database Architecture artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Model entities, keys, constraints, cardinality and transactional boundaries.
+- Evaluate indexes, query patterns, partitioning, consistency and growth assumptions.
+- Define retention, encryption, access boundaries, backup and recovery strategy.
+- Plan additive migration, backfill, compatibility window and rollback/forward-fix path.
 
-**Inputs:** approved scope relevant to Database Architecture, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** database-architecture-artifact
-**Verification:** Review Database Architecture against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** data ownership and lifecycle, query and workload profile, retention, privacy and recovery requirements
+**Artifact:** logical/physical data model
+**Verification:** DBA, security and application owner review.
+**Handoff:** Transfer logical/physical data model with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 27. API Architecture
 
-**Purpose:** Make a decision-ready API Architecture result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** design stable API resources, contracts and compatibility policy
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect API Architecture; record assumptions rather than silently choosing them.
-- Produce the API Architecture artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Model resources, identifiers, relationships, pagination, filtering and lifecycle semantics.
+- Define OpenAPI schemas, required/optional fields, validation, error envelope and idempotency behavior.
+- Specify authentication, authorization, rate limits, versioning and deprecation policy.
+- Assess consumer migration and generate contract compatibility checks.
 
-**Inputs:** approved scope relevant to API Architecture, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** api-architecture-artifact
-**Verification:** Review API Architecture against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** consumer journeys and use cases, data ownership and security classification, latency/throughput and compatibility needs
+**Artifact:** API decision record
+**Verification:** API consumer and security architecture review.
+**Handoff:** Transfer API decision record with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 28. Cloud Architecture
 
-**Purpose:** Make a decision-ready Cloud Architecture result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** design a secure, resilient and supportable cloud landing pattern
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Cloud Architecture; record assumptions rather than silently choosing them.
-- Produce the Cloud Architecture artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Choose regions, network zones, identity boundaries and managed services against requirements.
+- Model failure domains, autoscaling, backup, observability and deployment topology.
+- Define policy-as-code, encryption, key ownership and secret integration.
+- Estimate lifecycle cost and document portability/vendor lock-in trade-offs.
 
-**Inputs:** approved scope relevant to Cloud Architecture, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** cloud-architecture-artifact
-**Verification:** Review Cloud Architecture against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** availability and recovery objectives, workload sizing and data classification, provider constraints and cost ceiling
+**Artifact:** cloud architecture diagram
+**Verification:** Cloud security and operations design review.
+**Handoff:** Transfer cloud architecture diagram with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 29. Security Architecture
 
-**Purpose:** Make a decision-ready Security Architecture result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** define trust boundaries and security controls before implementation
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Security Architecture; record assumptions rather than silently choosing them.
-- Produce the Security Architecture artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Identify assets, entry points, identities, trust boundaries and privileged operations.
+- Model abuse cases and threats using a documented method such as STRIDE where suitable.
+- Map preventive, detective and recovery controls to threats and owners.
+- Record residual risk, security assumptions and verification requirements.
 
-**Inputs:** approved scope relevant to Security Architecture, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** security-architecture-artifact
-**Verification:** Review Security Architecture against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** data flows and assets, threat actors and trust boundaries, regulatory and risk appetite
+**Artifact:** data-flow diagram
+**Verification:** Independent security architecture review.
+**Handoff:** Transfer data-flow diagram with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 30. Data Architecture
 
-**Purpose:** Make a decision-ready Data Architecture result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** govern data domains, semantics, lineage and lifecycle
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Data Architecture; record assumptions rather than silently choosing them.
-- Produce the Data Architecture artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Define domain entities, canonical terms, identifiers and system-of-record ownership.
+- Map ingestion, transformation, sharing, lineage and quality responsibility.
+- Set classification, access, retention, deletion and residency rules.
+- Review interoperability and schema evolution with producers and consumers.
 
-**Inputs:** approved scope relevant to Data Architecture, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** data-architecture-artifact
-**Verification:** Review Data Architecture against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** business data domains and owners, source/consumer inventory, classification and retention obligations
+**Artifact:** domain model
+**Verification:** Data governance council review.
+**Handoff:** Transfer domain model with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 31. Integration Architecture
 
-**Purpose:** Make a decision-ready Integration Architecture result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** design reliable boundaries between independently operated systems
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Integration Architecture; record assumptions rather than silently choosing them.
-- Produce the Integration Architecture artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Select synchronous or asynchronous interaction based on coupling and latency needs.
+- Define schema, correlation IDs, idempotency, retries, ordering and dead-letter behavior.
+- Specify authentication, secrets, rate limits, observability and contract evolution.
+- Test timeout, duplicate, partial failure and partner outage scenarios.
 
-**Inputs:** approved scope relevant to Integration Architecture, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** integration-architecture-artifact
-**Verification:** Review Integration Architecture against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** producer/consumer contracts, protocol, volume and latency constraints, failure and ownership model
+**Artifact:** context/container diagram
+**Verification:** Producer, consumer and operations review.
+**Handoff:** Transfer context/container diagram with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 32. Technology Selection
 
-**Purpose:** Make a decision-ready Technology Selection result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** choose technology through evidence-based trade-off analysis
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Technology Selection; record assumptions rather than silently choosing them.
-- Produce the Technology Selection artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Define decision criteria and weights before scoring candidates.
+- Evaluate functional fit, integration, maturity, security, licensing, operability and exit cost.
+- Prototype only uncertain high-impact capabilities and record measured results.
+- Publish decision, rejected alternatives, assumptions and review trigger.
 
-**Inputs:** approved scope relevant to Technology Selection, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** technology-selection-artifact
-**Verification:** Review Technology Selection against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** capability requirements and constraints, candidate options and lifecycle costs, security, skills and support requirements
+**Artifact:** technology scorecard
+**Verification:** Architecture governance review.
+**Handoff:** Transfer technology scorecard with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 33. Architecture Documentation
 
-**Purpose:** Make a decision-ready Architecture Documentation result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** publish architecture decisions and models for future operators
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Architecture Documentation; record assumptions rather than silently choosing them.
-- Produce the Architecture Documentation artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Document context, scope, constraints, component boundaries and data/control flows.
+- Link ADRs, interfaces, deployment topology, quality attributes and known limitations.
+- Keep diagrams source-controlled and validate rendering and links.
+- Assign owners and review triggers for decisions that can become stale.
 
-**Inputs:** approved scope relevant to Architecture Documentation, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** architecture-documentation-artifact
-**Verification:** Review Architecture Documentation against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** approved architecture decisions, audience and repository conventions, system context and change history
+**Artifact:** architecture overview
+**Verification:** Architecture peer review.
+**Handoff:** Transfer architecture overview with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
 
 ## 34. Architecture Review
 
-**Purpose:** Make a decision-ready Architecture Review result that is traceable to its scope, constraints, and downstream consumers.
+**Purpose:** independently evaluate architecture against quality attributes and constraints
 
 **Procedure:**
-- Inspect current artifacts and unresolved decisions that affect Architecture Review; record assumptions rather than silently choosing them.
-- Produce the Architecture Review artifact using the mapped technical-architecture procedure and link it to the exact revision, issue, decision, or environment.
-- Review the artifact against acceptance criteria, risk and downstream impact; retain the actual report, review decision, or test output.
-- Handoff the artifact with owner, limitations, follow-up action, and gate state; escalate ambiguity or material risk.
+- Check component boundaries, coupling, data ownership, failure domains and dependency direction.
+- Evaluate security, resilience, scalability, operability, accessibility and cost against scenarios.
+- Record evidence, deviations, trade-offs and remediation priority.
+- Issue accept, conditional accept or reject recommendation without implementing the reviewed change.
 
-**Inputs:** approved scope relevant to Architecture Review, current repository/product evidence, identified owner and acceptance criteria
-**Artifact:** architecture-review-artifact
-**Verification:** Review Architecture Review against its acceptance criteria; run available repository-native checks where the stage changes implementation or configuration.
-**Handoff:** Name receiver, artifact location, revision/digest, validation result, residual risk and next required decision.
+**Inputs:** architecture baseline and ADRs, quality attribute scenarios, risk and change context
+**Artifact:** architecture review report
+**Verification:** Independent architecture board decision.
+**Handoff:** Transfer architecture review report with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.
