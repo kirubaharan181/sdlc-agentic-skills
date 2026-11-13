@@ -359,6 +359,9 @@ ROLE_DISTINCTIONS = {
 "vendor-management-specialist":("Supplier assurance, performance and exit governance",["Map supplier criticality, data access, subprocessors and contractual obligations.","Review SLA, security assurance, incidents, financial health and corrective actions.","Evaluate renewal, concentration risk, portability and exit readiness."],["supplier scorecard","contract/control risk register","renewal and exit recommendation"],"For a renewal, compare actual SLA/security performance and test data return/deletion commitments."),
 "engineering-governance-specialist":("Repository policy, engineering standards and exception governance",["Map repository ownership, branch protection, code owners and required checks.","Sample actual platform settings and compare with policy baseline.","Track onboarding, secrets, tooling and time-bound exceptions."],["repository control inventory","policy compliance report","exception register"],"For branch governance, sample repositories and verify required checks are enforced, not merely documented."),
 
+"product-owner":("Product backlog ownership and acceptance authority",["Own backlog ordering using user value, risk, dependency and capacity evidence.","Clarify story boundaries and acceptance examples with stakeholders and delivery team.","Accept completed behavior against agreed criteria and monitor post-release outcome."],["prioritized backlog","story acceptance criteria","product acceptance record"],"For a checkout feature, define the user outcome, edge-case acceptance and explicit acceptance decision without approving technical controls."),
+
+
 }
 
 def role_profile(agent):
