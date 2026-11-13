@@ -1,5 +1,5 @@
 from pathlib import Path
-import csv, json, textwrap
+import csv, json, textwrap, os
 
 ROOT = Path(__file__).resolve().parents[1]
 DATE = '2026-11-13'
@@ -25,10 +25,24 @@ CATEGORIES = [
 REQUIRED_SECTIONS = ['Purpose','When to use','When not to use','Required inputs','Preconditions','Responsibilities','Step-by-step execution procedure','Decision rules','Engineering principles','Tool requirements','Security constraints','Expected outputs','Output format','Quality checklist','Failure handling','Escalation conditions','Handoff instructions','Examples','Related skills','Related agents','References']
 
 def write(path, content):
-    protected = {'README.md', 'docs/getting-started/GETTING_STARTED.md', 'orchestrator/MASTER_ORCHESTRATOR.md'}
     path = ROOT / path
-    if str(path.relative_to(ROOT)).replace('\\', '/') in protected and path.exists():
+    relative = str(path.relative_to(ROOT)).replace('\\\\', '/')
+    protected = {
+        'README.md',
+        'docs/getting-started/GETTING_STARTED.md',
+        'orchestrator/MASTER_ORCHESTRATOR.md',
+        'registry/SDLC_STAGE_REGISTRY.yaml',
+        'registry/SKILL_REGISTRY.yaml',
+        'registry/AGENT_REGISTRY.yaml',
+        'registry/WORKFLOW_REGISTRY.yaml',
+    }
+    generated_contract = relative.startswith(('agents/', 'workflows/', 'skills/'))
+    if path.exists() and os.getenv('SDLC_FORCE_REGENERATE') != '1' and (relative in protected or generated_contract):
+        print(f'Preserving existing canonical content: {relative} (set SDLC_FORCE_REGENERATE=1 to override)')
         return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(textwrap.dedent(content).lstrip(), encoding='utf-8')
+
     path.parent.mkdir(parents=True, exist_ok=True); path.write_text(textwrap.dedent(content).lstrip(), encoding='utf-8')
 
 def slug(s): return ''.join(c.lower() if c.isalnum() else '-' for c in s).strip('-').replace('--','-')
