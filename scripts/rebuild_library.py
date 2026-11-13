@@ -139,6 +139,9 @@ def main(check=False):
   st['quality_criteria']=profile['criteria']
   st['validation_method']=profile['validation']
   st['handoff_requirements']=f"Transfer {profile['artifacts'][0]} with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role."
+ # Keep workflow and stage membership bidirectional after semantic overrides.
+ for wid,p in workflows.items():
+  p['stages']=[st['stage_id'] for st in stages if wid in st.get('workflow_ids',[])]
  # Build workflow records with explicit phase contracts and workflow-specific safeguards.
  wf=[]
  for wid,p in workflows.items():
