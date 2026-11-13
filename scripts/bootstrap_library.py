@@ -43,7 +43,6 @@ def write(path, content):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(textwrap.dedent(content).lstrip(), encoding='utf-8')
 
-    path.parent.mkdir(parents=True, exist_ok=True); path.write_text(textwrap.dedent(content).lstrip(), encoding='utf-8')
 
 def slug(s): return ''.join(c.lower() if c.isalnum() else '-' for c in s).strip('-').replace('--','-')
 
