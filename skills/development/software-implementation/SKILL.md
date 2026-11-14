@@ -85,4 +85,4 @@ master-orchestration, evidence-quality-gates, secure-change-control.
 Resolve accountable and supporting agents from the canonical stage registry.
 
 ## References
-Stages: 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67. Workflows: bug-fix, emergency-hotfix, existing-application-enhancement, feature-development. See `registry/SDLC_STAGE_REGISTRY.yaml` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.
+Stages: 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67. Workflows: bug-fix, emergency-hotfix, existing-application-enhancement, feature-development. See `registry/SDLC_STAGE_REGISTRY.json` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.

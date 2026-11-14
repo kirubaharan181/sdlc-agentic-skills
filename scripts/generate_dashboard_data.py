@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate Atelier's dashboard snapshot from canonical JSON-compatible YAML registries."""
+"""Generate Atelier's dashboard snapshot from canonical JSON registries."""
 from pathlib import Path
 from datetime import datetime, timezone
 import json
@@ -7,11 +7,11 @@ import os
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
-    "stages": "registry/SDLC_STAGE_REGISTRY.yaml",
-    "agents": "registry/AGENT_REGISTRY.yaml",
-    "skills": "registry/SKILL_REGISTRY.yaml",
-    "workflows": "registry/WORKFLOW_REGISTRY.yaml",
-    "platforms": "adapters/capability-matrix.yaml",
+    "stages": "registry/SDLC_STAGE_REGISTRY.json",
+    "agents": "registry/AGENT_REGISTRY.json",
+    "skills": "registry/SKILL_REGISTRY.json",
+    "workflows": "registry/WORKFLOW_REGISTRY.json",
+    "platforms": "adapters/capability-matrix.json",
 }
 
 def load(path):

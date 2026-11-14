@@ -115,7 +115,7 @@ flowchart TD
     I --> K["📈 Monitor, support and improve"]
 ```
 
-Explore the [workflow directory](workflows/) and [canonical workflow registry](registry/WORKFLOW_REGISTRY.yaml).
+Explore the [workflow directory](workflows/) and [canonical workflow registry](registry/WORKFLOW_REGISTRY.json).
 
 ## 🏗️ Architecture at a glance
 

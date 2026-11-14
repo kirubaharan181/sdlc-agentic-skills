@@ -64,4 +64,4 @@ Operational owner and next action:
 - [Gate policy](policies/GATE_POLICY.md)
 - [Untrusted-content policy](policies/UNTRUSTED_CONTENT_POLICY.md)
 - [Handoff contract](handoff-contracts/STANDARD_HANDOFF.md)
-- [Stage registry](../registry/SDLC_STAGE_REGISTRY.yaml)
+- [Stage registry](../registry/SDLC_STAGE_REGISTRY.json)

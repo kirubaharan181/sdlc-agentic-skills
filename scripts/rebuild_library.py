@@ -87,7 +87,7 @@ def workflow_profiles():
  return {i:{'stages':s,'purpose':p,'phases':p.split(' ') } for i,s,p in zip(ids,stages,purposes)}
 
 def main(check=False):
- stage_doc=read('registry/SDLC_STAGE_REGISTRY.yaml'); stages=stage_doc['stages']; agents_doc=read('registry/AGENT_REGISTRY.yaml'); workflows=workflow_profiles()
+ stage_doc=read('registry/SDLC_STAGE_REGISTRY.json'); stages=stage_doc['stages']; agents_doc=read('registry/AGENT_REGISTRY.json'); workflows=workflow_profiles()
  valid_w=set(workflows); valid_s=set(SKILLS); valid_a={a['agent_id'] for a in agents_doc['agents']}
  # stage contracts: resolve a concrete domain procedure for every canonical stage
  for st in stages:
@@ -305,7 +305,7 @@ master-orchestration, evidence-quality-gates, secure-change-control.
 Resolve accountable and supporting agents from the canonical stage registry.
 
 ## References
-Stages: {', '.join(str(s['stage_id']) for s in matched)}. Workflows: {', '.join(sorted({w for s in matched for w in s['workflow_ids']}))}. See `registry/SDLC_STAGE_REGISTRY.yaml` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.
+Stages: {', '.join(str(s['stage_id']) for s in matched)}. Workflows: {', '.join(sorted({w for s in matched for w in s['workflow_ids']}))}. See `registry/SDLC_STAGE_REGISTRY.json` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.
 """)
   if matched:
    play=['# '+nm+' — Stage Playbook','', '> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.','']
@@ -348,7 +348,7 @@ Required skills: {', '.join(w['required_skills'])}
 ## Completion criteria
 {w['completion_criteria']}
 """)
- dump('registry/SDLC_STAGE_REGISTRY.yaml',stage_doc);dump('registry/AGENT_REGISTRY.yaml',agents_doc);dump('registry/WORKFLOW_REGISTRY.yaml',{'schema_version':'2.0.0','workflows':wf})
+ dump('registry/SDLC_STAGE_REGISTRY.json',stage_doc);dump('registry/AGENT_REGISTRY.json',agents_doc);dump('registry/WORKFLOW_REGISTRY.json',{'schema_version':'2.0.0','workflows':wf})
  if check: return
 
 if __name__=='__main__': main()

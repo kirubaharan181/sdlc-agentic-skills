@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def load(name: str) -> dict:
-    """Load a registry that may be stored as .json or (JSON-compatible) .yaml."""
+    """Load a JSON registry from registry/."""
     for candidate in (f"registry/{name}.json", f"registry/{name}.yaml"):
         path = ROOT / candidate
         if path.exists():

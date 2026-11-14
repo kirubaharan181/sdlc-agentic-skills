@@ -23,7 +23,7 @@ These commands validate mappings and controlled fixtures. They do **not** prove 
 ## 3. Resolve the execution contract
 
 1. Open the selected workflow in [`workflows/`](../../workflows).
-2. Look up its stages in [the canonical registry](../../registry/SDLC_STAGE_REGISTRY.yaml).
+2. Look up its stages in [the canonical registry](../../registry/SDLC_STAGE_REGISTRY.json).
 3. Load the mapped category skill and its stage playbook.
 4. Confirm inputs, permissions, dependencies, acceptance criteria, and applicable standards.
 5. Create evidence and handoff records as work progresses.

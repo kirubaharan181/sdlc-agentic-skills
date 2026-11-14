@@ -5,9 +5,9 @@ R=Path(__file__).resolve().parents[1]
 errors=[]
 def load(p):
     try:return json.loads((R/p).read_text(encoding='utf-8'))
-    except Exception as e: errors.append(f'{p}: invalid JSON-compatible YAML: {e}');return {}
-st=load('registry/SDLC_STAGE_REGISTRY.yaml').get('stages',[])
-skills=load('registry/SKILL_REGISTRY.yaml').get('skills',[]); agents=load('registry/AGENT_REGISTRY.yaml').get('agents',[]); wfs=load('registry/WORKFLOW_REGISTRY.yaml').get('workflows',[])
+    except Exception as e: errors.append(f'{p}: invalid JSON: {e}');return {}
+st=load('registry/SDLC_STAGE_REGISTRY.json').get('stages',[])
+skills=load('registry/SKILL_REGISTRY.json').get('skills',[]); agents=load('registry/AGENT_REGISTRY.json').get('agents',[]); wfs=load('registry/WORKFLOW_REGISTRY.json').get('workflows',[])
 ids=[x.get('stage_id') for x in st]
 if ids!=list(range(1,191)):errors.append('stage IDs must be exactly 1..190 in order')
 if len(set(ids))!=190:errors.append('duplicate/missing stage IDs')

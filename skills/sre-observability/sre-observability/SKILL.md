@@ -85,4 +85,4 @@ master-orchestration, evidence-quality-gates, secure-change-control.
 Resolve accountable and supporting agents from the canonical stage registry.
 
 ## References
-Stages: 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166. Workflows: disaster-recovery, incident-response, root-cause-analysis. See `registry/SDLC_STAGE_REGISTRY.yaml` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.
+Stages: 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166. Workflows: disaster-recovery, incident-response, root-cause-analysis. See `registry/SDLC_STAGE_REGISTRY.json` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.

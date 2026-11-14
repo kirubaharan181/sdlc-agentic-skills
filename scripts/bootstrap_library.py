@@ -13,9 +13,9 @@ import rebuild_library
 
 def generated_files(root: Path):
     files = [
-        root / "registry/SDLC_STAGE_REGISTRY.yaml",
-        root / "registry/AGENT_REGISTRY.yaml",
-        root / "registry/WORKFLOW_REGISTRY.yaml",
+        root / "registry/SDLC_STAGE_REGISTRY.json",
+        root / "registry/AGENT_REGISTRY.json",
+        root / "registry/WORKFLOW_REGISTRY.json",
     ]
     files += list((root / "agents").glob("*.md"))
     files += list((root / "workflows").glob("*.md"))

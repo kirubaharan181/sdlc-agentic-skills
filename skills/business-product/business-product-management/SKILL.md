@@ -85,4 +85,4 @@ master-orchestration, evidence-quality-gates, secure-change-control.
 Resolve accountable and supporting agents from the canonical stage registry.
 
 ## References
-Stages: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. Workflows: existing-application-enhancement, feature-development, new-product-development, product-retirement. See `registry/SDLC_STAGE_REGISTRY.yaml` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.
+Stages: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. Workflows: existing-application-enhancement, feature-development, new-product-development, product-retirement. See `registry/SDLC_STAGE_REGISTRY.json` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.

@@ -85,4 +85,4 @@ master-orchestration, evidence-quality-gates, secure-change-control.
 Resolve accountable and supporting agents from the canonical stage registry.
 
 ## References
-Stages: 45, 46, 47, 48, 49, 50, 51, 52. Workflows: application-maintenance, ci-cd-pipeline-creation, environment-configuration, infrastructure-provisioning. See `registry/SDLC_STAGE_REGISTRY.yaml` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.
+Stages: 45, 46, 47, 48, 49, 50, 51, 52. Workflows: application-maintenance, ci-cd-pipeline-creation, environment-configuration, infrastructure-provisioning. See `registry/SDLC_STAGE_REGISTRY.json` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.
