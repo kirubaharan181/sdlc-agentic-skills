@@ -21,24 +21,13 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import registry_io  # noqa: E402
 
-
-def load(name: str) -> dict:
-    """Load a JSON registry from registry/."""
-    for candidate in (f"registry/{name}.json", f"registry/{name}.yaml"):
-        path = ROOT / candidate
-        if path.exists():
-            return json.loads(path.read_text(encoding="utf-8"))
-    raise SystemExit(f"registry file not found: {name}")
 
 
 def check(root_data: dict | None = None) -> dict:
-    data = root_data or {
-        "stages": load("SDLC_STAGE_REGISTRY")["stages"],
-        "skills": load("SKILL_REGISTRY")["skills"],
-        "agents": load("AGENT_REGISTRY")["agents"],
-        "workflows": load("WORKFLOW_REGISTRY")["workflows"],
-    }
+    data = root_data or registry_io.load_all(ROOT)
     stages, skills, agents, workflows = (data[k] for k in ("stages", "skills", "agents", "workflows"))
     stage_ids = {s["stage_id"] for s in stages}
     skill_ids = {s["skill_id"] for s in skills}

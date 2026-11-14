@@ -1,14 +1,33 @@
 from pathlib import Path
 import json, re, sys
 from semantic_quality import find_near_duplicates
+import registry_io
 R=Path(__file__).resolve().parents[1]
 errors=[]
 def load(p):
     try:return json.loads((R/p).read_text(encoding='utf-8'))
     except Exception as e: errors.append(f'{p}: invalid JSON: {e}');return {}
-st=load('registry/SDLC_STAGE_REGISTRY.json').get('stages',[])
-skills=load('registry/SKILL_REGISTRY.json').get('skills',[]); agents=load('registry/AGENT_REGISTRY.json').get('agents',[]); wfs=load('registry/WORKFLOW_REGISTRY.json').get('workflows',[])
+_all=registry_io.load_all(Path(__file__).resolve().parents[1])
+st=_all['stages']
+skills=_all['skills']; agents=_all['agents']; wfs=_all['workflows']
 ids=[x.get('stage_id') for x in st]
+# JSON Schema validation of every resolved registry record.
+try:
+    import jsonschema
+except ImportError:
+    errors.append('jsonschema is required: pip install jsonschema')
+    jsonschema = None
+if jsonschema:
+    for kind, records, idkey in (('stage', st, 'stage_id'), ('agent', agents, 'agent_id'), ('workflow', wfs, 'workflow_id'), ('skill', skills, 'skill_id')):
+        schema = json.loads((R / 'registry' / 'schemas' / f'{kind}.schema.json').read_text(encoding='utf-8'))
+        validator = jsonschema.Draft202012Validator(schema)
+        for rec in records:
+            for err in validator.iter_errors(rec):
+                where = '/'.join(str(x) for x in err.absolute_path) or '(record)'
+                errors.append(f"schema {kind} {rec.get(idkey)}: {where}: {err.message[:140]}")
+    for rec in st:
+        if rec.get('approval_required') and not rec.get('approval_rationale'):
+            errors.append(f"stage {rec['stage_id']}: approval_required without approval_rationale")
 if ids!=list(range(1,191)):errors.append('stage IDs must be exactly 1..190 in order')
 if len(set(ids))!=190:errors.append('duplicate/missing stage IDs')
 skillids={x['skill_id'] for x in skills}; agentids={x['agent_id'] for x in agents}; wids={x['workflow_id'] for x in wfs}

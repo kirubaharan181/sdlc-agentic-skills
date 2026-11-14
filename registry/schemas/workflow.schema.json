@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workflow.schema.json",
+  "title": "Workflow record (resolved)",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "workflow_id",
+    "trigger",
+    "purpose",
+    "phases",
+    "phase_contracts",
+    "required_inputs",
+    "stages",
+    "responsible_agents",
+    "required_skills",
+    "dependencies",
+    "parallel_tasks",
+    "approval_gates",
+    "outputs",
+    "failure_handling",
+    "rollback_compensation",
+    "communication_plan",
+    "completion_criteria"
+  ],
+  "properties": {
+    "workflow_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "trigger": {
+      "type": "string",
+      "minLength": 10
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 5
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "phase_contracts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "phase",
+          "instruction",
+          "evidence",
+          "exit_criteria",
+          "owner"
+        ]
+      }
+    },
+    "required_inputs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 190
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "responsible_agents": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "minItems": 1
+    },
+    "required_skills": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "minItems": 1
+    },
+    "approval_gates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "failure_handling": {
+      "type": "string",
+      "minLength": 10
+    },
+    "completion_criteria": {
+      "type": "string",
+      "minLength": 10
+    }
+  }
+}

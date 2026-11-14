@@ -1,0 +1,25 @@
+{
+  "_comment": "Shared defaults for stage records. A stage stores a field only when it differs. Phase 4 replaces the templated handoff/dependency text with stage-specific content.",
+  "supporting_roles": [
+    "Quality Governance Specialist",
+    "Technical Writer"
+  ],
+  "approval_required": false,
+  "handoff_requirements_template": "Transfer {artifact} with source/revision, validation evidence, owner, limitations, unresolved risks and the next decision to the downstream role.",
+  "dependencies_template": [
+    "Approved upstream evidence for {stage_name}",
+    "Accountable {primary_role} and required stakeholder access",
+    "Applicable policy, repository instructions and approved operating window"
+  ],
+  "gate_lifecycle": [
+    "NOT_STARTED",
+    "IN_PROGRESS",
+    "PASS",
+    "FAIL",
+    "BLOCKED",
+    "INCONCLUSIVE",
+    "NEEDS_HUMAN_APPROVAL",
+    "WAIVED"
+  ],
+  "evidence_record_template": "templates/evidence-record.json"
+}

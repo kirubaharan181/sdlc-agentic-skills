@@ -7,6 +7,7 @@ documents by hand.
 from __future__ import annotations
 import hashlib, json, re
 from pathlib import Path
+import registry_io
 from execution_profiles import stage_profile, role_profile, phase_profile, SKILL_PROFILES, WORKFLOW_GUARDRAILS
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -87,7 +88,7 @@ def workflow_profiles():
  return {i:{'stages':s,'purpose':p,'phases':p.split(' ') } for i,s,p in zip(ids,stages,purposes)}
 
 def main(check=False):
- stage_doc=read('registry/SDLC_STAGE_REGISTRY.json'); stages=stage_doc['stages']; agents_doc=read('registry/AGENT_REGISTRY.json'); workflows=workflow_profiles()
+ stage_doc=registry_io.load_stage_doc(ROOT); stages=stage_doc['stages']; agents_doc=registry_io.load_agent_doc(ROOT); workflows=workflow_profiles()
  valid_w=set(workflows); valid_s=set(SKILLS); valid_a={a['agent_id'] for a in agents_doc['agents']}
  # stage contracts: resolve a concrete domain procedure for every canonical stage
  for st in stages:
@@ -348,7 +349,7 @@ Required skills: {', '.join(w['required_skills'])}
 ## Completion criteria
 {w['completion_criteria']}
 """)
- dump('registry/SDLC_STAGE_REGISTRY.json',stage_doc);dump('registry/AGENT_REGISTRY.json',agents_doc);dump('registry/WORKFLOW_REGISTRY.json',{'schema_version':'2.0.0','workflows':wf})
+ registry_io.save_stage_doc(stage_doc,ROOT);registry_io.save_agent_doc(agents_doc,ROOT);registry_io.save_workflow_doc({'schema_version':'2.0.0','workflows':wf},ROOT)
  if check: return
 
 if __name__=='__main__': main()

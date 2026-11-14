@@ -4,6 +4,10 @@ from pathlib import Path
 from datetime import datetime, timezone
 import json
 import os
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import registry_io
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
@@ -18,11 +22,10 @@ def load(path):
     return json.loads((ROOT / path).read_text(encoding="utf-8"))
 
 def main():
-    source = {key: load(path) for key, path in SOURCES.items()}
-    stages = source["stages"]["stages"]
-    agents = source["agents"]["agents"]
-    skills = source["skills"]["skills"]
-    workflows = source["workflows"]["workflows"]
+    resolved = registry_io.load_all(ROOT)
+    source = {"platforms": load(SOURCES["platforms"])}
+    stages, agents = resolved["stages"], resolved["agents"]
+    skills, workflows = resolved["skills"], resolved["workflows"]
 
     workflow_ids = {item["workflow_id"] for item in workflows}
     agent_ids = {item["agent_id"] for item in agents}

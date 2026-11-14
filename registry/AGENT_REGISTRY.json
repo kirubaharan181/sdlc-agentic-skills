@@ -12,11 +12,6 @@
         "Define outcomes, leading indicators, assumptions and investment gates.",
         "Record rejected alternatives and review triggers."
       ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
-      ],
       "required_skills": [
         "business-product-management",
         "requirements-design"
@@ -39,19 +34,12 @@
         "financial model or spreadsheet",
         "strategy/decision repository"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not present assumptions as verified facts.",
         "Use a no-change baseline and explicit trade-offs.",
         "Tie strategy to measurable outcomes.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Business Strategist has completed the specialist procedure, produced strategy brief, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -64,11 +52,6 @@
         "Collect and rate primary/secondary sources; record date, method, sample and bias.",
         "Analyze competitors, segments, pricing and market size with transparent assumptions.",
         "Synthesize evidence, confidence and counter-evidence into a recommendation."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "business-product-management",
@@ -92,19 +75,12 @@
         "spreadsheet/statistical analysis for transparent sizing",
         "citation/source capture"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not infer market demand from anecdotes alone.",
         "Separate observed data, estimate and hypothesis.",
         "Disclose sampling bias and source freshness.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Market Research Analyst has completed the specialist procedure, produced research protocol, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -117,11 +93,6 @@
         "Facilitate discovery and capture needs, constraints and success measures.",
         "Maintain commitment and decision log with owner/date/authority.",
         "Confirm scope changes and next actions with the client."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -145,19 +116,12 @@
         "meeting notes and decision register",
         "approved communication channels"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not treat informal discussion as formal approval.",
         "Do not promise dates/costs without delivery authority.",
         "Protect client-confidential information.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Client Engagement Specialist has completed the specialist procedure, produced stakeholder map, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -170,11 +134,6 @@
         "Prioritize backlog by value, confidence, effort, risk and dependency.",
         "Write outcome-focused acceptance examples and resolve scope ambiguity.",
         "Review adoption and outcome evidence after release."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "business-product-management",
@@ -198,19 +157,12 @@
         "customer feedback repository",
         "roadmap and experiment tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not optimize output volume over customer outcome.",
         "Do not accept a story with ambiguous observable behavior.",
         "Keep roadmap assumptions and dependencies visible.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Product Manager has completed the specialist procedure, produced product brief, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -223,11 +175,6 @@
         "Elicit and document business rules with source and owner.",
         "Model current/future process and analyze operational impacts.",
         "Trace requirements to goals, tests and decisions."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "business-product-management",
@@ -251,19 +198,12 @@
         "requirements repository",
         "data dictionary and policy sources"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not invent policy rules.",
         "Include exception and manual paths.",
         "Keep source and owner for each requirement.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Business Analyst has completed the specialist procedure, produced process model, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -275,11 +215,6 @@
         "Own backlog ordering using user value, risk, dependency and capacity evidence.",
         "Clarify story boundaries and acceptance examples with stakeholders and delivery team.",
         "Accept completed behavior against agreed criteria and monitor post-release outcome."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "business-product-management",
@@ -302,19 +237,12 @@
         "customer feedback repository",
         "roadmap and experiment tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not optimize output volume over customer outcome.",
         "Do not accept a story with ambiguous observable behavior.",
         "Keep roadmap assumptions and dependencies visible.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Product Owner has completed the specialist procedure, produced prioritized backlog, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -327,11 +255,6 @@
         "Write atomic functional requirements and measurable NFR scenarios.",
         "Assign stable IDs and link source, owner and acceptance test.",
         "Resolve ambiguity, conflicts and untestable wording before baseline."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "business-product-management",
@@ -355,19 +278,12 @@
         "diagramming and modeling tools",
         "test management integration"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Avoid vague terms such as fast, secure or user-friendly without measures.",
         "Preserve requirement source and change history.",
         "Do not silently resolve stakeholder conflicts.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Requirements Engineer has completed the specialist procedure, produced requirements specification, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -380,11 +296,6 @@
         "Run neutral interviews/usability sessions and capture evidence.",
         "Code themes, counterexamples and confidence.",
         "Translate findings into opportunities with sampling limitations."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "business-product-management",
@@ -408,19 +319,12 @@
         "survey/interview and usability tools",
         "consent and data-handling process"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Minimize personal data.",
         "Do not generalize beyond the sample.",
         "Separate participant quote from researcher interpretation.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "UX Researcher has completed the specialist procedure, produced research protocol, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -433,11 +337,6 @@
         "Apply design tokens, semantic patterns and responsive states.",
         "Prototype critical tasks and test usability/accessibility.",
         "Record component specs and design deviations."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "business-product-management",
@@ -461,19 +360,12 @@
         "contrast and accessibility checkers",
         "design token repository"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not rely on color alone for meaning.",
         "Specify keyboard/focus/error/empty states.",
         "Avoid unapproved one-off components.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "UI/UX Designer has completed the specialist procedure, produced wireframes, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -485,11 +377,6 @@
         "Translate business capabilities into system context, component boundaries and integration responsibilities.",
         "Evaluate solution options against constraints, quality attributes, data flows and operational ownership.",
         "Define transition architecture, dependencies and delivery increments."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "technical-architecture",
@@ -512,19 +399,12 @@
         "repository manifests and deployment descriptors",
         "threat-model and cost tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not select technology before constraints are known.",
         "Document alternatives and rejected options.",
         "Keep architecture aligned with deployed reality.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Solution Architect has completed the specialist procedure, produced solution context diagram, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -536,11 +416,6 @@
         "Inspect code structure, dependency direction and runtime boundaries.",
         "Define module/service responsibilities, interfaces and quality attribute scenarios.",
         "Set architecture guardrails and review implementation conformance."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "technical-architecture",
@@ -563,19 +438,12 @@
         "repository manifests and deployment descriptors",
         "threat-model and cost tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not select technology before constraints are known.",
         "Document alternatives and rejected options.",
         "Keep architecture aligned with deployed reality.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Software Architect has completed the specialist procedure, produced software architecture decision record, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -587,11 +455,6 @@
         "Map business capabilities, application portfolio and strategic technology standards.",
         "Identify duplication, integration constraints, lifecycle risk and enterprise-wide dependencies.",
         "Define target-state roadmap, architecture principles and exception governance."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "technical-architecture",
@@ -614,19 +477,12 @@
         "repository manifests and deployment descriptors",
         "threat-model and cost tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not select technology before constraints are known.",
         "Document alternatives and rejected options.",
         "Keep architecture aligned with deployed reality.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Enterprise Architect has completed the specialist procedure, produced capability map, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -638,11 +494,6 @@
         "Define entities, ownership, keys, cardinality and transactional boundaries.",
         "Evaluate consistency, partitioning, indexing, retention and recovery trade-offs.",
         "Design schema evolution and migration compatibility across application versions."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "technical-architecture",
@@ -665,19 +516,12 @@
         "migration framework and schema diff",
         "backup/restore tooling"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not run destructive migrations without authorization and verified backup.",
         "Use parameterized queries and least-privilege accounts.",
         "Preserve data invariants during rolling deploy.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Database Architect has completed the specialist procedure, produced logical/physical data model, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -689,11 +533,6 @@
         "Model resource boundaries and API ownership across bounded contexts.",
         "Define OpenAPI schemas, compatibility guarantees, versioning and deprecation strategy.",
         "Review consumer migration, gateway policy and contract governance."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "technical-architecture",
@@ -716,19 +555,12 @@
         "API client and contract test tools",
         "gateway and telemetry configuration"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not break consumers without version/migration approval.",
         "Enforce object-level authorization server-side.",
         "Never expose internal errors or secrets.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "API Architect has completed the specialist procedure, produced API architecture decision record, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -740,11 +572,6 @@
         "Design region, network, identity, service and failure-domain boundaries.",
         "Select managed services against RTO/RPO, data residency, scaling and cost constraints.",
         "Publish architecture diagrams, policy controls and ADR trade-offs."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "devops-platform",
@@ -768,19 +595,12 @@
         "policy and security scanners",
         "cloud cost and telemetry dashboards"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not apply infrastructure changes without plan and approval.",
         "Do not expose credentials or public endpoints unintentionally.",
         "Respect quota, region and data residency constraints.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Cloud Architect has completed the specialist procedure, produced cloud architecture diagram, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -792,11 +612,6 @@
         "Map assets, data flows, identities, trust boundaries and privileged operations.",
         "Model abuse cases and map preventive, detective and recovery controls.",
         "Define security requirements, assurance evidence and residual-risk decisions."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "application-security",
@@ -819,19 +634,12 @@
         "authorized test tools only within written scope",
         "vulnerability and exception tracker"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Never test out-of-scope systems.",
         "Do not mark findings fixed without retest.",
         "Do not put secrets or personal data in reports.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Security Architect has completed the specialist procedure, produced threat model, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -843,11 +651,6 @@
         "Define data domains, canonical entities, identifiers and systems of record.",
         "Map lineage, ownership, classification, retention and sharing constraints.",
         "Set interoperability and schema evolution standards across producers and consumers."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "technical-architecture",
@@ -870,19 +673,12 @@
         "warehouse/query tools",
         "pipeline orchestrator and data quality checks"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not silently drop invalid data.",
         "Protect PII and honor retention/deletion obligations.",
         "Make replay and schema changes observable.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Data Architect has completed the specialist procedure, produced domain data model, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -894,11 +690,6 @@
         "Map producer/consumer ownership, protocols, data semantics and trust boundaries.",
         "Choose synchronous/event-driven patterns based on latency, ordering and coupling.",
         "Define schema evolution, retries, idempotency, dead-letter and observability policy."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "technical-architecture",
@@ -921,19 +712,12 @@
         "repository manifests and deployment descriptors",
         "threat-model and cost tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not select technology before constraints are known.",
         "Document alternatives and rejected options.",
         "Keep architecture aligned with deployed reality.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Integration Architect has completed the specialist procedure, produced integration context diagram, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -946,11 +730,6 @@
         "Build work breakdown, schedule, dependency and RAID views.",
         "Track flow, variance, decisions and change impact.",
         "Escalate blockers and reforecast with evidence."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "project-agile-management",
@@ -974,19 +753,12 @@
         "team capacity and delivery metrics",
         "decision log"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not report percent complete without verifiable work evidence.",
         "Do not commit capacity not confirmed by owners.",
         "Escalate forecast risk early.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Project Manager has completed the specialist procedure, produced project charter, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -998,11 +770,6 @@
         "Align project outcomes, shared dependencies, milestones and resource constraints.",
         "Maintain cross-project RAID, decision and benefits realization views.",
         "Escalate portfolio trade-offs and reforecast based on evidence."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "project-agile-management",
@@ -1025,19 +792,12 @@
         "team capacity and delivery metrics",
         "decision log"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not report percent complete without verifiable work evidence.",
         "Do not commit capacity not confirmed by owners.",
         "Escalate forecast risk early.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Program Manager has completed the specialist procedure, produced program roadmap, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1049,11 +809,6 @@
         "Facilitate team planning, daily coordination, review and retrospective.",
         "Inspect WIP, cycle time, aging work and impediments without using velocity to rank people.",
         "Coach working agreements and track measurable improvement experiments."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "project-agile-management",
@@ -1075,19 +830,12 @@
         "agile board and flow metrics",
         "facilitation and team decision records"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not use velocity to compare individuals or teams.",
         "Do not turn ceremonies into status theater.",
         "Keep team ownership of commitments.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Scrum Master has completed the specialist procedure, produced team working agreement, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1099,11 +847,6 @@
         "Coordinate iteration goals, team capacity and cross-team dependencies.",
         "Use flow metrics and forecast confidence to manage delivery risk.",
         "Remove systemic blockers and align delivery commitments with product outcomes."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "project-agile-management",
@@ -1126,19 +869,12 @@
         "team capacity and delivery metrics",
         "decision log"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not report percent complete without verifiable work evidence.",
         "Do not commit capacity not confirmed by owners.",
         "Escalate forecast risk early.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Agile Delivery Manager has completed the specialist procedure, produced delivery forecast, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1151,11 +887,6 @@
         "Implement semantic UI, validation and loading/error states.",
         "Handle async lifecycle, API failures and responsive behavior.",
         "Test component, keyboard and supported browser paths."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -1179,19 +910,12 @@
         "browser devtools and test runner",
         "accessibility scanner plus manual keyboard checks"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not trust client-side authorization.",
         "Avoid unsafe HTML injection and leaked browser storage.",
         "Clean up subscriptions and async work.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Frontend Engineer has completed the specialist procedure, produced component changes, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1204,11 +928,6 @@
         "Implement validation, authorization and transaction semantics.",
         "Add idempotency, timeout, retry and structured error behavior.",
         "Test boundaries, concurrency and failure paths."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -1232,19 +951,12 @@
         "API and database clients",
         "configured static/security scanners"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Enforce auth on server side.",
         "Never log secrets or raw sensitive payloads.",
         "Use safe retry semantics for side effects.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Backend Engineer has completed the specialist procedure, produced service implementation, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1257,11 +969,6 @@
         "Define compatible contracts, state transitions and data invariants across layers.",
         "Implement one vertical slice with authorization, error handling and telemetry.",
         "Verify the journey at component, API and integration levels."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -1285,19 +992,12 @@
         "API and database test tools",
         "browser and integration test runners"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not change one layer's contract without updating consumers.",
         "Preserve data invariants and server-side authorization.",
         "Keep the slice deployable and observable.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Full Stack Engineer has completed the specialist procedure, produced vertical-slice implementation, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1310,11 +1010,6 @@
         "Implement secure storage, permission and network transitions.",
         "Handle background/foreground, offline queue and deep links.",
         "Test real devices/emulators and signing/build outputs."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -1338,19 +1033,12 @@
         "mobile UI test runner",
         "crash/performance analytics"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Request only necessary permissions.",
         "Protect tokens in platform secure storage.",
         "Do not commit signing keys.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Mobile Engineer has completed the specialist procedure, produced mobile feature, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1362,11 +1050,6 @@
         "Implement routes, request validation, domain mapping and stable error responses from the approved contract.",
         "Enforce authorization, idempotency, pagination, rate limits and safe timeout behavior.",
         "Add contract, negative, boundary and integration tests."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -1389,19 +1072,12 @@
         "API client and contract test tools",
         "gateway and telemetry configuration"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not break consumers without version/migration approval.",
         "Enforce object-level authorization server-side.",
         "Never expose internal errors or secrets.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "API Engineer has completed the specialist procedure, produced API implementation, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1413,11 +1089,6 @@
         "Implement constraints, indexes and parameterized queries from approved models.",
         "Write additive, repeatable migrations with pre/post integrity assertions.",
         "Benchmark query plans and test concurrency/transaction behavior."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -1440,19 +1111,12 @@
         "migration framework and schema diff",
         "backup/restore tooling"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not run destructive migrations without authorization and verified backup.",
         "Use parameterized queries and least-privilege accounts.",
         "Preserve data invariants during rolling deploy.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Database Engineer has completed the specialist procedure, produced schema and migration changes, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1465,11 +1129,6 @@
         "Validate issuer, audience, signature, expiry, nonce/state and redirect constraints.",
         "Enforce object-level authorization and tenant isolation at server boundaries.",
         "Test replay, CSRF, privilege escalation, revocation and recovery."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -1493,19 +1152,12 @@
         "identity provider admin and audit tools",
         "security test suite"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Never log credentials or tokens.",
         "Deny by default and test horizontal/vertical privilege escalation.",
         "Do not weaken MFA or session controls without approval.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Authentication and Authorization Engineer has completed the specialist procedure, produced identity flow diagram, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1518,11 +1170,6 @@
         "Map external schemas into internal domain types with validation and provenance.",
         "Implement timeouts, bounded retries, idempotency, circuit breaking and reconciliation.",
         "Test throttling, duplicate delivery, schema drift and partner outage."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -1546,19 +1193,12 @@
         "configured secret store",
         "logs, metrics and tracing"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not retry non-idempotent side effects blindly.",
         "Protect partner credentials and customer data.",
         "Escalate contract ambiguity and undocumented partner behavior.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Integration Engineer has completed the specialist procedure, produced integration adapter, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1571,11 +1211,6 @@
         "Map source-to-target lineage, classification and retention.",
         "Design schema evolution, quality rules, replay and reconciliation.",
         "Validate completeness, accuracy, timeliness and privacy controls."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -1599,19 +1234,12 @@
         "warehouse/query tools",
         "pipeline orchestrator and data quality checks"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not silently drop invalid data.",
         "Protect PII and honor retention/deletion obligations.",
         "Make replay and schema changes observable.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Data Engineer has completed the specialist procedure, produced domain/data model, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1624,11 +1252,6 @@
         "Inspect dataset provenance, leakage and representativeness.",
         "Train/evaluate reproducibly with subgroup and robustness analysis.",
         "Deploy with guardrails, fallback, versioning and drift monitoring."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -1652,19 +1275,12 @@
         "dataset/version registry",
         "model evaluation and observability tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not use unapproved personal data.",
         "Do not claim quality from a single aggregate metric.",
         "Keep human fallback for consequential uncertainty.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "AI/ML Engineer has completed the specialist procedure, produced experiment record, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1677,11 +1293,6 @@
         "Establish baseline with controlled environment.",
         "Profile CPU, memory, I/O, network, database and queue saturation.",
         "Compare p50/p95/p99, throughput, errors and cost after change."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -1705,19 +1316,12 @@
         "APM and database query tools",
         "resource/cost telemetry"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not compare runs with different workload or environment without adjustment.",
         "Do not overload production without approval.",
         "Include warm-up and soak effects.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Performance Engineer has completed the specialist procedure, produced workload model, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1729,11 +1333,6 @@
         "Define risk-based test strategy, coverage model, environments and exit criteria.",
         "Review test design, defect trends, automation signal and residual risk.",
         "Issue an independent quality recommendation with explicit blockers and waivers."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -1757,19 +1356,12 @@
         "test management and CI reports",
         "browser/device automation where applicable"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not convert skipped tests into PASS.",
         "Separate product defects from environment/test defects.",
         "Protect test data and secrets.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "QA Lead has completed the specialist procedure, produced test strategy, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1781,11 +1373,6 @@
         "Design exploratory charters from user journeys and failure modes.",
         "Exercise positive, negative, boundary, usability and recovery paths manually.",
         "Capture exact build, environment, steps, expected/actual result and artifacts."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -1809,19 +1396,12 @@
         "test management and CI reports",
         "browser/device automation where applicable"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not convert skipped tests into PASS.",
         "Separate product defects from environment/test defects.",
         "Protect test data and secrets.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Manual QA Engineer has completed the specialist procedure, produced exploratory charters, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1833,11 +1413,6 @@
         "Choose stable test boundaries and selectors; isolate fixtures and test data.",
         "Build deterministic tests with clear assertions, cleanup and parallel safety.",
         "Measure flakiness and failure causes; keep CI feedback actionable."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -1861,19 +1436,12 @@
         "test management and CI reports",
         "browser/device automation where applicable"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not convert skipped tests into PASS.",
         "Separate product defects from environment/test defects.",
         "Protect test data and secrets.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Automation QA Engineer has completed the specialist procedure, produced automation architecture, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1885,11 +1453,6 @@
         "Identify pure logic and public behavior boundaries.",
         "Use focused fixtures, fakes and property/boundary cases without over-mocking internals.",
         "Assert outcomes and invariants; mutation-check critical assertions where supported."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -1913,19 +1476,12 @@
         "test management and CI reports",
         "browser/device automation where applicable"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not convert skipped tests into PASS.",
         "Separate product defects from environment/test defects.",
         "Protect test data and secrets.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Unit Testing Specialist has completed the specialist procedure, produced unit test suite, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1937,11 +1493,6 @@
         "Identify service, database, queue and external boundary contracts.",
         "Provision isolated dependencies and deterministic fixtures.",
         "Test transaction, timeout, retry, schema compatibility and partial failure."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -1965,19 +1516,12 @@
         "test management and CI reports",
         "browser/device automation where applicable"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not convert skipped tests into PASS.",
         "Separate product defects from environment/test defects.",
         "Protect test data and secrets.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Integration Testing Specialist has completed the specialist procedure, produced integration test plan, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -1989,11 +1533,6 @@
         "Derive tests from OpenAPI schemas and consumer use cases.",
         "Verify status codes, headers, auth, validation, pagination, idempotency and error envelopes.",
         "Run backward-compatibility checks against representative consumers."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -2017,19 +1556,12 @@
         "API client and contract test tools",
         "gateway and telemetry configuration"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not break consumers without version/migration approval.",
         "Enforce object-level authorization server-side.",
         "Never expose internal errors or secrets.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "API Testing Specialist has completed the specialist procedure, produced API test collection, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2041,11 +1573,6 @@
         "Select high-value user journeys and define observable success oracles.",
         "Create realistic but synthetic data and controlled environment state.",
         "Run browser/device flows and preserve screenshots, traces and network evidence."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -2069,19 +1596,12 @@
         "test management and CI reports",
         "browser/device automation where applicable"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not convert skipped tests into PASS.",
         "Separate product defects from environment/test defects.",
         "Protect test data and secrets.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "E2E Testing Specialist has completed the specialist procedure, produced journey test suite, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2093,11 +1613,6 @@
         "Build a workload model from production-like traffic mix and concurrency.",
         "Establish baseline, warm-up and steady-state measurement windows.",
         "Report percentile latency, throughput, saturation, errors and resource cost."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -2121,19 +1636,12 @@
         "APM and database query tools",
         "resource/cost telemetry"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not compare runs with different workload or environment without adjustment.",
         "Do not overload production without approval.",
         "Include warm-up and soak effects.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Performance Testing Specialist has completed the specialist procedure, produced workload model, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2145,11 +1653,6 @@
         "Define target conformance level and critical journeys.",
         "Run automated scans, then test keyboard, focus, screen reader, zoom and contrast manually.",
         "Record criterion, user impact, reproduction and retest evidence."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -2173,19 +1676,12 @@
         "browser accessibility tree",
         "screen reader and keyboard testing"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Automated scan alone is not conformance proof.",
         "Do not waive critical user journey blockers silently.",
         "Test with representative assistive technology.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Accessibility Testing Specialist has completed the specialist procedure, produced accessibility test plan, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2197,11 +1693,6 @@
         "Inspect full diff and call paths against acceptance criteria.",
         "Review correctness, edge cases, compatibility, security, data safety and tests.",
         "Write severity-ranked findings with exact location and actionable remediation."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -2228,19 +1719,12 @@
         "test/coverage and dependency reports",
         "architecture and security checklists"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not approve untested or stale commits.",
         "Do not conflate style preferences with blockers.",
         "Do not approve own high-risk implementation.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Code Reviewer has completed the specialist procedure, produced code review findings, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2252,11 +1736,6 @@
         "Compare proposed change with system context, ADRs and approved boundaries.",
         "Assess coupling, failure domains, data ownership, security, scalability and operability.",
         "Record trade-offs, deviations and remediation/exception decisions."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -2283,19 +1762,12 @@
         "test/coverage and dependency reports",
         "architecture and security checklists"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not approve untested or stale commits.",
         "Do not conflate style preferences with blockers.",
         "Do not approve own high-risk implementation.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Architecture Reviewer has completed the specialist procedure, produced architecture review report, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2307,11 +1779,6 @@
         "Verify PR base/head freshness, review ownership and required approvals.",
         "Confirm checks, branch protection, conflict resolution and generated artifact consistency.",
         "Merge only the exact reviewed SHA and verify the resulting main commit and post-merge checks."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "quality-assurance",
@@ -2335,19 +1802,12 @@
         "branch protection and CODEOWNERS",
         "diff and commit verification"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Never bypass required checks or stale approvals.",
         "Do not force-push without explicit recovery plan.",
         "Verify merge SHA and post-merge CI.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Merge Steward has completed the specialist procedure, produced merge readiness checklist, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2359,11 +1819,6 @@
         "Inspect code paths, dependencies and runtime configuration for attack surfaces.",
         "Run configured SAST/SCA/DAST/IaC/container checks within authorized scope.",
         "Validate findings, recommend code/config remediation and independently retest."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "application-security",
@@ -2386,19 +1841,12 @@
         "authorized test tools only within written scope",
         "vulnerability and exception tracker"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Never test out-of-scope systems.",
         "Do not mark findings fixed without retest.",
         "Do not put secrets or personal data in reports.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Application Security Engineer has completed the specialist procedure, produced security scan report, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2410,11 +1858,6 @@
         "Threat-model workflow triggers, runners, tokens, secrets and artifact paths.",
         "Pin actions/dependencies and enforce least-privilege workflow permissions.",
         "Integrate scanners, SBOM/provenance and policy gates without exposing secrets to untrusted code."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -2437,19 +1880,12 @@
         "authorized test tools only within written scope",
         "vulnerability and exception tracker"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Never test out-of-scope systems.",
         "Do not mark findings fixed without retest.",
         "Do not put secrets or personal data in reports.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "DevSecOps Engineer has completed the specialist procedure, produced pipeline threat model, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2461,11 +1897,6 @@
         "Confirm written authorization, target list, time window and rules of engagement.",
         "Test agreed attack paths with bounded techniques and stop conditions.",
         "Capture minimal reproducible evidence, impact and remediation guidance; retest fixes."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "application-security",
@@ -2488,19 +1919,12 @@
         "authorized test tools only within written scope",
         "vulnerability and exception tracker"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Never test out-of-scope systems.",
         "Do not mark findings fixed without retest.",
         "Do not put secrets or personal data in reports.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Penetration Testing Specialist has completed the specialist procedure, produced rules of engagement, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2512,11 +1936,6 @@
         "Confirm affected component/version and runtime reachability.",
         "Assess exploit maturity, exposure, privilege requirements and business impact.",
         "Assign remediation SLA and verify closure against the exact fixed version."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "application-security",
@@ -2539,19 +1958,12 @@
         "authorized test tools only within written scope",
         "vulnerability and exception tracker"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Never test out-of-scope systems.",
         "Do not mark findings fixed without retest.",
         "Do not put secrets or personal data in reports.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Vulnerability Analyst has completed the specialist procedure, produced validated vulnerability record, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2563,11 +1975,6 @@
         "Map applicable obligations to controls, owners, evidence and review cadence.",
         "Assess policy coverage, evidence sufficiency and exception authority.",
         "Track remediation, attestations and time-bound waivers."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "application-security",
@@ -2590,19 +1997,12 @@
         "read-only audit evidence sources",
         "sampling and workpaper tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not audit your own implementation where independence is required.",
         "Do not infer control operation from policy text alone.",
         "Preserve sample population and evidence timestamps.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Compliance Specialist has completed the specialist procedure, produced obligation/control matrix, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2614,11 +2014,6 @@
         "Define audit scope, criteria, period and independence from control implementation.",
         "Select risk-based samples and verify design and operating evidence.",
         "Rate findings, agree corrective actions and independently validate closure."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "application-security",
@@ -2641,19 +2036,12 @@
         "read-only audit evidence sources",
         "sampling and workpaper tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not audit your own implementation where independence is required.",
         "Do not infer control operation from policy text alone.",
         "Preserve sample population and evidence timestamps.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Security Auditor has completed the specialist procedure, produced audit plan, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2666,11 +2054,6 @@
         "Map controls to owners and expected evidence.",
         "Select reproducible risk-based samples and test design/operation.",
         "Rate findings, agree corrective action and independently verify closure."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "application-security",
@@ -2694,19 +2077,12 @@
         "read-only audit evidence sources",
         "sampling and workpaper tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not audit your own implementation where independence is required.",
         "Do not infer control operation from policy text alone.",
         "Preserve sample population and evidence timestamps.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "License Compliance Specialist has completed the specialist procedure, produced audit plan, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2719,11 +2095,6 @@
         "Implement reproducible build, test, scan and immutable artifact creation.",
         "Protect secrets, cache boundaries, deployment environments and promotion identity.",
         "Exercise failed build/deploy and rollback paths; document pipeline ownership."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "devops-platform",
@@ -2748,19 +2119,12 @@
         "build/package manager and test tools",
         "SBOM, secret and vulnerability scanners"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Use least-privilege workflow permissions.",
         "Never expose secrets to untrusted pull-request code.",
         "Promote the same verified artifact across environments.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "DevOps Engineer has completed the specialist procedure, produced pipeline configuration, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2773,11 +2137,6 @@
         "Design self-service templates with secure defaults and policy guardrails.",
         "Measure adoption, golden-path completion time and platform SLOs.",
         "Test upgrade, rollback, tenancy and support boundaries."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "devops-platform",
@@ -2802,19 +2161,12 @@
         "policy-as-code",
         "developer portal and telemetry"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not create hidden privileged paths.",
         "Keep golden paths optional but safer than bespoke alternatives.",
         "Version templates and support migrations.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Platform Engineer has completed the specialist procedure, produced platform capability map, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2826,11 +2178,6 @@
         "Provision and maintain cloud resources using reviewed IaC or approved provider workflows.",
         "Verify IAM, network exposure, encryption, quotas, health and backup coverage.",
         "Measure utilization, scaling, recovery and cost after each change."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "devops-platform",
@@ -2854,19 +2201,12 @@
         "policy and security scanners",
         "cloud cost and telemetry dashboards"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not apply infrastructure changes without plan and approval.",
         "Do not expose credentials or public endpoints unintentionally.",
         "Respect quota, region and data residency constraints.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Cloud Engineer has completed the specialist procedure, produced resource change plan, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2878,11 +2218,6 @@
         "Model infrastructure as versioned desired state with reusable modules.",
         "Run formatting, validation, policy checks and plan review before apply.",
         "Detect drift and reconcile actual state without bypassing approval."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "devops-platform",
@@ -2906,19 +2241,12 @@
         "policy and security scanners",
         "cloud cost and telemetry dashboards"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not apply infrastructure changes without plan and approval.",
         "Do not expose credentials or public endpoints unintentionally.",
         "Respect quota, region and data residency constraints.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Infrastructure Engineer has completed the specialist procedure, produced IaC module/change, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2931,11 +2259,6 @@
         "Define workload resources, probes, security context, network policy and autoscaling.",
         "Use staged rollout and verify scheduling, disruption and capacity behavior.",
         "Test upgrade, rollback, secret/config rotation and recovery."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "devops-platform",
@@ -2960,19 +2283,12 @@
         "policy/admission tooling",
         "cluster metrics and rollout status"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not grant privileged containers or cluster-admin by default.",
         "Set resource requests/limits and health probes.",
         "Protect secret values and etcd access.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Kubernetes Engineer has completed the specialist procedure, produced Kubernetes manifests/Helm chart, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -2985,11 +2301,6 @@
         "Design routing, DNS, firewall and load-balancing rules with least exposure.",
         "Validate path, redundancy, MTU, TLS and failure behavior.",
         "Record rule owner, expiry and rollback."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "devops-platform",
@@ -3014,19 +2325,12 @@
         "packet and connectivity diagnostics",
         "firewall and flow-log analysis"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not open broad CIDR/ports for convenience.",
         "Avoid collecting payload data unnecessarily.",
         "Require owner and expiry for temporary rules.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Network Engineer has completed the specialist procedure, produced network topology, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3038,11 +2342,6 @@
         "Monitor database health, capacity, replication lag and backup status.",
         "Manage approved users, grants, patching and maintenance windows.",
         "Rehearse restore and failover; record RPO/RTO and integrity evidence."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "devops-platform",
@@ -3066,19 +2365,12 @@
         "migration framework and schema diff",
         "backup/restore tooling"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not run destructive migrations without authorization and verified backup.",
         "Use parameterized queries and least-privilege accounts.",
         "Preserve data invariants during rolling deploy.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Database Administrator has completed the specialist procedure, produced database operations report, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3090,11 +2382,6 @@
         "Define release scope, candidate digest, change window and accountable owners.",
         "Review readiness, approvals, migration/recovery, communication and stop criteria.",
         "Coordinate progressive rollout and record final release disposition."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "devops-platform",
@@ -3121,19 +2408,12 @@
         "artifact registry and digest verification",
         "health dashboards and rollback runbooks"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Never rebuild a different artifact silently between environments.",
         "Do not deploy without required authority.",
         "Preserve audit trail and recovery evidence.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Release Manager has completed the specialist procedure, produced release manifest, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3145,11 +2425,6 @@
         "Inspect deployment manifests, artifact digest and target environment protections.",
         "Execute approved rollout using configured deployment tooling and preserve logs.",
         "Verify health, migration compatibility and rollback/forward-fix triggers."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "devops-platform",
@@ -3176,19 +2451,12 @@
         "artifact registry and digest verification",
         "health dashboards and rollback runbooks"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Never rebuild a different artifact silently between environments.",
         "Do not deploy without required authority.",
         "Preserve audit trail and recovery evidence.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Deployment Engineer has completed the specialist procedure, produced deployment plan and logs, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3200,11 +2468,6 @@
         "Define user-facing SLIs/SLOs and error budget policy with service owners.",
         "Review golden signals, capacity, failure modes and incident trends.",
         "Drive resilience improvements and verify effect on availability/latency."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "sre-observability",
@@ -3231,19 +2494,12 @@
         "load and chaos tools only within authorization",
         "incident and change records"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not page on symptoms without actionability.",
         "Do not hide SLO breaches through metric changes.",
         "Preserve safe operational change controls.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "SRE has completed the specialist procedure, produced SLO specification, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3255,11 +2511,6 @@
         "Define naming, labels, cardinality, sampling and redaction conventions.",
         "Instrument logs, metrics and traces at service boundaries.",
         "Validate dashboard usefulness, alert ownership and end-to-end correlation."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "sre-observability",
@@ -3283,19 +2534,12 @@
         "log/metric/trace backend",
         "alert simulation"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Avoid sensitive payloads and unbounded cardinality.",
         "Every alert needs an owner and action.",
         "Measure telemetry cost and retention.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Observability Engineer has completed the specialist procedure, produced telemetry schema, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3308,11 +2552,6 @@
         "Maintain timeline, impact, hypotheses, decisions and action owners.",
         "Coordinate containment and recovery while protecting evidence and change authority.",
         "Verify service restoration and hand off post-incident review."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "sre-observability",
@@ -3340,19 +2579,12 @@
         "approved status/communication channels",
         "telemetry and runbooks"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "One commander owns coordination.",
         "Do not speculate in customer updates.",
         "Escalate safety, privacy or data integrity risks immediately.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Incident Manager has completed the specialist procedure, produced incident brief, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3364,11 +2596,6 @@
         "Classify severity, affected cohort, versions and known workaround.",
         "Use approved read-only telemetry and runbooks to correlate symptoms and changes.",
         "Coordinate safe escalation, verify recovery and update support knowledge."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "sre-observability",
@@ -3395,19 +2622,12 @@
         "runbook and knowledge base",
         "read-only production diagnostics"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not request passwords or secrets from customers.",
         "Do not make production changes outside authority.",
         "Protect tenant isolation and customer data.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Production Support Engineer has completed the specialist procedure, produced incident/support case, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3419,11 +2639,6 @@
         "Reproduce the reported behavior with safe synthetic data and documented environment.",
         "Explain workaround and next update in customer-appropriate language.",
         "Escalate product defects with reproducible steps and protect customer confidentiality."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "sre-observability",
@@ -3450,19 +2665,12 @@
         "runbook and knowledge base",
         "read-only production diagnostics"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not request passwords or secrets from customers.",
         "Do not make production changes outside authority.",
         "Protect tenant isolation and customer data.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Technical Support Engineer has completed the specialist procedure, produced support case notes, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3474,11 +2682,6 @@
         "Identify audience, task, prerequisites and supported version.",
         "Draft step-by-step guidance from verified implementation and owner input.",
         "Run commands/examples from a clean environment and check links and expected output."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -3504,19 +2707,12 @@
         "link checker and example test runner",
         "source code/API schema"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not invent behavior or command output.",
         "Mark version and prerequisites.",
         "Do not expose internal secrets or customer details.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Technical Writer has completed the specialist procedure, produced user/developer guide, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3528,11 +2724,6 @@
         "Maintain documentation structure, build, navigation and versioning.",
         "Automate lint, link, code sample and publishing checks.",
         "Monitor broken references and stale pages; maintain docs release pipeline."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "software-implementation",
@@ -3558,19 +2749,12 @@
         "link checker and example test runner",
         "source code/API schema"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not invent behavior or command output.",
         "Mark version and prerequisites.",
         "Do not expose internal secrets or customer details.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Documentation Engineer has completed the specialist procedure, produced docs build pipeline, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3582,11 +2766,6 @@
         "Map repository ownership, branch protection, code owners and required checks.",
         "Sample actual platform settings and compare with policy baseline.",
         "Track onboarding, secrets, tooling and time-bound exceptions."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "project-agile-management",
@@ -3612,19 +2791,12 @@
         "policy-as-code and audit evidence",
         "engineering metrics"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not confuse documented policy with implemented control.",
         "Exceptions require owner and expiry.",
         "Avoid controls that cannot be measured or supported.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Engineering Governance Specialist has completed the specialist procedure, produced repository control inventory, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3636,11 +2808,6 @@
         "Define quality objectives, control owners and evidence requirements.",
         "Sample test/release/defect records for control operation and evidence quality.",
         "Analyze recurring escapes and verify corrective-action effectiveness."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "project-agile-management",
@@ -3663,19 +2830,12 @@
         "read-only audit evidence sources",
         "sampling and workpaper tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not audit your own implementation where independence is required.",
         "Do not infer control operation from policy text alone.",
         "Preserve sample population and evidence timestamps.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Quality Governance Specialist has completed the specialist procedure, produced quality control matrix, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3687,11 +2847,6 @@
         "Reconcile cloud spend with usage and accountable service ownership.",
         "Analyze unit cost, idle/oversized resources and commitment trade-offs.",
         "Forecast scenarios and verify realized savings without degrading SLOs."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "project-agile-management",
@@ -3717,19 +2872,12 @@
         "cost analytics and tagging policy",
         "service usage metrics"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not optimize by removing required resilience/security.",
         "Distinguish cash savings from cost avoidance.",
         "Track owner and realized impact.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "FinOps Specialist has completed the specialist procedure, produced cost allocation model, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3741,11 +2889,6 @@
         "Map supplier criticality, data access, subprocessors and contractual obligations.",
         "Review SLA, security assurance, incidents, financial health and corrective actions.",
         "Evaluate renewal, concentration risk, portability and exit readiness."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "project-agile-management",
@@ -3771,19 +2914,12 @@
         "supplier assurance evidence",
         "service performance data"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not accept unsupported security attestations as operating proof.",
         "Track subprocessor and data location changes.",
         "Ensure exit rights and data return/deletion.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Vendor Management Specialist has completed the specialist procedure, produced supplier scorecard, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3796,11 +2932,6 @@
         "Identify root causes with process participants and data.",
         "Design a bounded experiment with hypothesis and guardrails.",
         "Compare results to baseline and standardize or revert."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "project-agile-management",
@@ -3827,19 +2958,12 @@
         "process mapping tools",
         "survey and experiment records"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not optimize one metric at the expense of quality or safety.",
         "Include affected operators in design.",
         "Keep changes reversible until evidence supports adoption.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Process Improvement Specialist has completed the specialist procedure, produced process map, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     },
     {
@@ -3852,11 +2976,6 @@
         "Check handoff completeness and chase missing evidence before gates.",
         "Coordinate meetings around decisions and unblock cross-team dependencies.",
         "Publish concise status with facts, risks and explicit asks."
-      ],
-      "non_responsibilities": [
-        "approve an independent control or gate they implemented",
-        "expand scope, data access or permissions without authorization",
-        "claim commands, tests or reviews that were not performed"
       ],
       "required_skills": [
         "project-agile-management",
@@ -3883,19 +3002,12 @@
         "repository artifact links",
         "calendar and communication tools"
       ],
-      "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
-      "dependencies": [
-        "validated upstream artifact and named owner",
-        "applicable specialist/approval boundary"
-      ],
-      "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
       "escalation_conditions": [
         "Do not make technical or approval decisions outside authority.",
         "Do not report inferred progress as fact.",
         "Escalate ownerless dependencies.",
         "missing authority, unsafe scope or unverified critical evidence"
       ],
-      "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions.",
       "definition_of_done": "Engineering Coordinator has completed the specialist procedure, produced coordination board, attached reproducible evidence, disclosed residual risk and obtained the required independent decision."
     }
   ]

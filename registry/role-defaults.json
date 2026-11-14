@@ -1,0 +1,15 @@
+{
+  "_comment": "Shared defaults for role records. Phase 3 overrides these per role.",
+  "non_responsibilities": [
+    "approve an independent control or gate they implemented",
+    "expand scope, data access or permissions without authorization",
+    "claim commands, tests or reviews that were not performed"
+  ],
+  "permissions": "Read-only by default; request the minimum scoped write permission for assigned artifacts. No production, IAM, secret or destructive authority is implied by role title.",
+  "dependencies": [
+    "validated upstream artifact and named owner",
+    "applicable specialist/approval boundary"
+  ],
+  "handoff_rules": "Transfer artifact path and revision, evidence method/result, limitations, residual risk, receiver and next decision.",
+  "approval_requirements": "Independent approver required for high-risk gates; human authorization required for production, destructive, IAM, secret, security-control and irreversible actions."
+}

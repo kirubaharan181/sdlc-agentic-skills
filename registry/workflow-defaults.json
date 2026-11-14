@@ -1,0 +1,20 @@
+{
+  "_comment": "Shared defaults for workflow records. Phase 2 overrides these per workflow.",
+  "required_inputs": [
+    "named request and accountable owner",
+    "risk/impact classification and authority",
+    "relevant artifact, immutable revision or environment reference",
+    "acceptance criteria and recovery constraints"
+  ],
+  "required_skills": [
+    "master-orchestration",
+    "evidence-quality-gates",
+    "secure-change-control"
+  ],
+  "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
+  "parallel_tasks": [
+    "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
+  ],
+  "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
+  "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+}

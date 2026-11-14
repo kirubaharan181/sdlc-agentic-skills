@@ -72,12 +72,6 @@
           "owner": "release-manager"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         1,
         2,
@@ -125,15 +119,6 @@
         "qa-lead",
         "release-manager"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -145,9 +130,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
-      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state."
     },
     {
       "workflow_id": "existing-application-enhancement",
@@ -221,12 +204,6 @@
           "owner": "qa-lead"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         3,
         4,
@@ -278,15 +255,6 @@
         "full-stack-engineer",
         "qa-lead"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -298,9 +266,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
-      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state."
     },
     {
       "workflow_id": "feature-development",
@@ -373,12 +339,6 @@
           "exit_criteria": "Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.",
           "owner": "automation-qa-engineer"
         }
-      ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
       ],
       "stages": [
         3,
@@ -459,15 +419,6 @@
         "full-stack-engineer",
         "automation-qa-engineer"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -479,9 +430,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
-      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state."
     },
     {
       "workflow_id": "bug-fix",
@@ -556,12 +505,6 @@
           "owner": "qa-lead"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         55,
         56,
@@ -611,15 +554,6 @@
         "code-reviewer",
         "qa-lead"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -631,9 +565,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
-      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state."
     },
     {
       "workflow_id": "emergency-hotfix",
@@ -713,12 +645,6 @@
           "owner": "sre"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         66,
         67,
@@ -739,15 +665,6 @@
         "release-manager",
         "sre"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -760,9 +677,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.",
-      "rollback_compensation": "Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work."
     },
     {
       "workflow_id": "security-vulnerability-remediation",
@@ -842,12 +757,6 @@
           "owner": "security-auditor"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         69,
         98,
@@ -870,15 +779,6 @@
         "backend-engineer",
         "security-auditor"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -890,9 +790,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Confirm affected asset/version and exploitability; keep active testing within written scope; prioritize exposure and exploit maturity; independently retest the fix and record any time-bound exception.",
-      "rollback_compensation": "Confirm affected asset/version and exploitability; keep active testing within written scope; prioritize exposure and exploit maturity; independently retest the fix and record any time-bound exception.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Confirm affected asset/version and exploitability; keep active testing within written scope; prioritize exposure and exploit maturity; independently retest the fix and record any time-bound exception."
     },
     {
       "workflow_id": "dependency-update",
@@ -970,12 +868,6 @@
           "owner": "automation-qa-engineer"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         69,
         72,
@@ -997,15 +889,6 @@
         "license-compliance-specialist",
         "automation-qa-engineer"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -1017,9 +900,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.",
-      "rollback_compensation": "Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback."
     },
     {
       "workflow_id": "database-migration",
@@ -1100,12 +981,6 @@
           "owner": "release-manager"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         26,
         129,
@@ -1122,15 +997,6 @@
         "database-engineer",
         "release-manager"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -1143,9 +1009,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.",
-      "rollback_compensation": "Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan."
     },
     {
       "workflow_id": "api-version-upgrade",
@@ -1225,12 +1089,6 @@
           "owner": "api-testing-specialist"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         27
       ],
@@ -1239,15 +1097,6 @@
         "api-engineer",
         "integration-engineer",
         "api-testing-specialist"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
       ],
       "approval_gates": [
         "scope-and-risk",
@@ -1260,9 +1109,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.",
-      "rollback_compensation": "Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence."
     },
     {
       "workflow_id": "infrastructure-provisioning",
@@ -1342,12 +1189,6 @@
           "owner": "cloud-engineer"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         28,
         47,
@@ -1381,15 +1222,6 @@
         "network-engineer",
         "cloud-engineer"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -1402,9 +1234,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.",
-      "rollback_compensation": "Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply."
     },
     {
       "workflow_id": "environment-configuration",
@@ -1477,12 +1307,6 @@
           "owner": "deployment-engineer"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         49,
         50,
@@ -1498,15 +1322,6 @@
         "application-security-engineer",
         "deployment-engineer"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -1518,9 +1333,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
-      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state."
     },
     {
       "workflow_id": "ci-cd-pipeline-creation",
@@ -1600,12 +1413,6 @@
           "owner": "automation-qa-engineer"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         45,
         46,
@@ -1641,15 +1448,6 @@
         "devsecops-engineer",
         "automation-qa-engineer"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -1661,9 +1459,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.",
-      "rollback_compensation": "Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance."
     },
     {
       "workflow_id": "staging-release",
@@ -1737,12 +1533,6 @@
           "owner": "application-security-engineer"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         77,
         86,
@@ -1765,15 +1555,6 @@
         "qa-lead",
         "application-security-engineer"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -1785,9 +1566,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
-      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state."
     },
     {
       "workflow_id": "production-release",
@@ -1867,12 +1646,6 @@
           "owner": "product-owner"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         78,
         81,
@@ -1910,15 +1683,6 @@
         "sre",
         "product-owner"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -1931,9 +1695,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.",
-      "rollback_compensation": "Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner."
     },
     {
       "workflow_id": "rollback",
@@ -2013,12 +1775,6 @@
           "owner": "sre"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         132,
         133,
@@ -2030,15 +1786,6 @@
         "deployment-engineer",
         "database-administrator",
         "sre"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
       ],
       "approval_gates": [
         "scope-and-risk",
@@ -2052,9 +1799,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.",
-      "rollback_compensation": "Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence."
     },
     {
       "workflow_id": "incident-response",
@@ -2133,12 +1878,6 @@
           "owner": "production-support-engineer"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         141,
         142,
@@ -2167,15 +1906,6 @@
         "observability-engineer",
         "production-support-engineer"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -2187,9 +1917,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.",
-      "rollback_compensation": "Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts."
     },
     {
       "workflow_id": "root-cause-analysis",
@@ -2261,12 +1989,6 @@
           "owner": "process-improvement-specialist"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         153,
         154,
@@ -2286,15 +2008,6 @@
         "software-architect",
         "process-improvement-specialist"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -2306,9 +2019,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
-      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state."
     },
     {
       "workflow_id": "disaster-recovery",
@@ -2387,12 +2098,6 @@
           "owner": "incident-manager"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         141,
         142,
@@ -2421,15 +2126,6 @@
         "sre",
         "incident-manager"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -2442,9 +2138,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.",
-      "rollback_compensation": "Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery."
     },
     {
       "workflow_id": "performance-optimization",
@@ -2519,12 +2213,6 @@
           "owner": "sre"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         174,
         189
@@ -2534,15 +2222,6 @@
         "backend-engineer",
         "database-engineer",
         "sre"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
       ],
       "approval_gates": [
         "scope-and-risk",
@@ -2555,9 +2234,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
-      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state."
     },
     {
       "workflow_id": "technical-debt-reduction",
@@ -2631,12 +2308,6 @@
           "owner": "qa-lead"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         37,
         190
@@ -2646,15 +2317,6 @@
         "full-stack-engineer",
         "code-reviewer",
         "qa-lead"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
       ],
       "approval_gates": [
         "scope-and-risk",
@@ -2667,9 +2329,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
-      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state."
     },
     {
       "workflow_id": "documentation-update",
@@ -2740,12 +2400,6 @@
           "owner": "quality-governance-specialist"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         186
       ],
@@ -2753,15 +2407,6 @@
         "technical-writer",
         "documentation-engineer",
         "quality-governance-specialist"
-      ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
       ],
       "approval_gates": [
         "scope-and-risk",
@@ -2774,9 +2419,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
-      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state."
     },
     {
       "workflow_id": "product-retirement",
@@ -2855,12 +2498,6 @@
           "owner": "technical-support-engineer"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         9,
         10,
@@ -2874,15 +2511,6 @@
         "compliance-specialist",
         "technical-support-engineer"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -2895,9 +2523,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.",
-      "rollback_compensation": "Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure."
     },
     {
       "workflow_id": "application-maintenance",
@@ -2971,12 +2597,6 @@
           "owner": "release-manager"
         }
       ],
-      "required_inputs": [
-        "named request and accountable owner",
-        "risk/impact classification and authority",
-        "relevant artifact, immutable revision or environment reference",
-        "acceptance criteria and recovery constraints"
-      ],
       "stages": [
         47,
         48,
@@ -3009,15 +2629,6 @@
         "backend-engineer",
         "release-manager"
       ],
-      "required_skills": [
-        "master-orchestration",
-        "evidence-quality-gates",
-        "secure-change-control"
-      ],
-      "dependencies": "A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.",
-      "parallel_tasks": [
-        "Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision."
-      ],
       "approval_gates": [
         "scope-and-risk",
         "quality-evidence",
@@ -3029,9 +2640,7 @@
         "verified operational handoff"
       ],
       "failure_handling": "Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.",
-      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.",
-      "communication_plan": "Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.",
-      "completion_criteria": "Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted."
+      "rollback_compensation": "Use the documented rollback, forward-fix, recovery or compensation plan for the changed state."
     }
   ]
 }
