@@ -77,21 +77,21 @@ The 15 domain skills provide focused entry points. Their stage playbooks contain
 
 | Domain | What it covers |
 |---|---|
-| 💼 **Business & Product** | [Strategy, market research, discovery and product direction](skills/business-product/business-product-management/references/STAGE_PLAYBOOK.md) |
-| ✨ **Requirements & UX Design** | [Elicitation, requirements, journeys, wireframes, prototypes and accessibility](skills/requirements-design/requirements-design/references/STAGE_PLAYBOOK.md) |
-| 🏛️ **Solution & Technical Architecture** | [Solution, system, application, data, API, cloud and security architecture](skills/architecture/technical-architecture/references/STAGE_PLAYBOOK.md) |
-| 📋 **Project & Agile Management** | [Initiation, estimation, sprint planning, risks and stakeholder management](skills/project-management/project-agile-management/references/STAGE_PLAYBOOK.md) |
-| 🧰 **Engineering Governance** | [Repository setup, branching, environments, secrets and coding standards](skills/engineering-governance/engineering-governance/references/STAGE_PLAYBOOK.md) |
-| ⚙️ **Software Implementation** | [Frontend, backend, full stack, APIs, databases and integrations](skills/development/software-implementation/references/STAGE_PLAYBOOK.md) |
-| 🔍 **Code Review & Quality** | [Pull requests, peer review, static analysis, merge controls and technical debt](skills/code-review/code-review-quality/references/STAGE_PLAYBOOK.md) |
-| 🧪 **Testing & Quality Assurance** | [Unit, integration, API, UI, end-to-end, regression and performance testing](skills/quality-assurance/quality-assurance/references/STAGE_PLAYBOOK.md) |
-| 🛡️ **Application Security & Compliance** | [Threat modeling, SAST, DAST, dependencies, remediation and security sign-off](skills/security/application-security/references/STAGE_PLAYBOOK.md) |
-| 🚀 **DevOps & Platform Engineering** | [CI/CD, containers, orchestration, infrastructure as code and pipeline security](skills/devops-platform/devops-platform/references/STAGE_PLAYBOOK.md) |
-| 📦 **Release & Deployment** | [Release readiness, staging, migrations, production deployment and rollback](skills/release-deployment/release-deployment/references/STAGE_PLAYBOOK.md) |
-| ☁️ **Cloud Hosting & Operations** | [Compute, databases, storage, networking, backup, resilience and cost](skills/cloud-hosting/cloud-hosting-operations/references/STAGE_PLAYBOOK.md) |
-| 📈 **SRE & Observability** | [Monitoring, logging, tracing, alerting, incidents, SLOs and reliability](skills/sre-observability/sre-observability/references/STAGE_PLAYBOOK.md) |
-| 🔧 **Maintenance & Support** | [L1–L3 support, patches, bug fixes, enhancements and product lifecycle](skills/maintenance-support/maintenance-support/references/STAGE_PLAYBOOK.md) |
-| 🏢 **Enterprise Governance** | [Audit, quality, security, access, vendor, FinOps and process improvement](skills/enterprise-governance/enterprise-governance/references/STAGE_PLAYBOOK.md) |
+| 💼 **Business & Product** | [Strategy, market research, discovery and product direction](skills/business-product/business-product-management/SKILL.md) |
+| ✨ **Requirements & UX Design** | [Elicitation, requirements, journeys, wireframes, prototypes and accessibility](skills/requirements-design/requirements-design/SKILL.md) |
+| 🏛️ **Solution & Technical Architecture** | [Solution, system, application, data, API, cloud and security architecture](skills/architecture/technical-architecture/SKILL.md) |
+| 📋 **Project & Agile Management** | [Initiation, estimation, sprint planning, risks and stakeholder management](skills/project-management/project-agile-management/SKILL.md) |
+| 🧰 **Engineering Governance** | [Repository setup, branching, environments, secrets and coding standards](skills/engineering-governance/engineering-governance/SKILL.md) |
+| ⚙️ **Software Implementation** | [Frontend, backend, full stack, APIs, databases and integrations](skills/development/software-implementation/SKILL.md) |
+| 🔍 **Code Review & Quality** | [Pull requests, peer review, static analysis, merge controls and technical debt](skills/code-review/code-review-quality/SKILL.md) |
+| 🧪 **Testing & Quality Assurance** | [Unit, integration, API, UI, end-to-end, regression and performance testing](skills/quality-assurance/quality-assurance/SKILL.md) |
+| 🛡️ **Application Security & Compliance** | [Threat modeling, SAST, DAST, dependencies, remediation and security sign-off](skills/security/application-security/SKILL.md) |
+| 🚀 **DevOps & Platform Engineering** | [CI/CD, containers, orchestration, infrastructure as code and pipeline security](skills/devops-platform/devops-platform/SKILL.md) |
+| 📦 **Release & Deployment** | [Release readiness, staging, migrations, production deployment and rollback](skills/release-deployment/release-deployment/SKILL.md) |
+| ☁️ **Cloud Hosting & Operations** | [Compute, databases, storage, networking, backup, resilience and cost](skills/cloud-hosting/cloud-hosting-operations/SKILL.md) |
+| 📈 **SRE & Observability** | [Monitoring, logging, tracing, alerting, incidents, SLOs and reliability](skills/sre-observability/sre-observability/SKILL.md) |
+| 🔧 **Maintenance & Support** | [L1–L3 support, patches, bug fixes, enhancements and product lifecycle](skills/maintenance-support/maintenance-support/SKILL.md) |
+| 🏢 **Enterprise Governance** | [Audit, quality, security, access, vendor, FinOps and process improvement](skills/enterprise-governance/enterprise-governance/SKILL.md) |
 
 **Cross-cutting capabilities:** Five additional skills support master orchestration, evidence and quality gates, secure change control, definition of done, and incident command. They connect the domains rather than replacing their specialist playbooks.
 

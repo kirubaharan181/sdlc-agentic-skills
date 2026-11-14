@@ -6,7 +6,8 @@ from the shared defaults in registry/*-defaults.json (or that cannot be derived)
 default or the derivable value, so every fact is stated exactly once.
 
 Resolution rules
-  stage     supporting_roles, approval_required   <- stage-defaults.json
+  stage     supporting_roles, approval_required,
+            status                                <- stage-defaults.json
             handoff_requirements, dependencies    <- templates in stage-defaults.json,
                                                      filled from the record itself
   agent     non_responsibilities, permissions, dependencies, handoff_rules,
@@ -23,7 +24,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-STAGE_FIELDS = ("supporting_roles", "approval_required")
+STAGE_FIELDS = ("supporting_roles", "approval_required", "status")
 ROLE_FIELDS = ("non_responsibilities", "permissions", "dependencies", "handoff_rules", "approval_requirements")
 WORKFLOW_FIELDS = ("required_inputs", "required_skills", "dependencies", "parallel_tasks", "communication_plan", "completion_criteria")
 

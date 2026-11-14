@@ -308,11 +308,6 @@ Resolve accountable and supporting agents from the canonical stage registry.
 ## References
 Stages: {', '.join(str(s['stage_id']) for s in matched)}. Workflows: {', '.join(sorted({w for s in matched for w in s['workflow_ids']}))}. See `registry/SDLC_STAGE_REGISTRY.json` and `orchestrator/handoff-contracts/STANDARD_HANDOFF.md`.
 """)
-  if matched:
-   play=['# '+nm+' — Stage Playbook','', '> Generated from the canonical stage registry. Use the parent skill first, then load only the relevant stage entry.','']
-   for s in matched:
-    play += [f"## {s['stage_id']}. {s['stage_name']}",'',f"**Purpose:** {s['purpose']}",'', '**Procedure:**', *[f'- {x}' for x in s['execution_instructions']], '', f"**Inputs:** {', '.join(s['inputs'])}",f"**Artifact:** {s['deliverable_artifacts'][0]}",f"**Verification:** {s['validation_method']}",f"**Handoff:** {s['handoff_requirements']}",'']
-   write(path.parent/'references/STAGE_PLAYBOOK.md','\n'.join(play))
  # workflow files: publish phase-specific task, evidence and exit criteria
  for w in wf:
   phase_lines=[]

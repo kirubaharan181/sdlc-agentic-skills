@@ -20,20 +20,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: python -m py_compile scripts/execution_profiles.py scripts/rebuild_library.py scripts/bootstrap_library.py scripts/semantic_quality.py scripts/validate.py scripts/run_tests.py
-      - name: Verify deterministic generated content
-        run: python scripts/bootstrap_library.py --check
+      - run: pip install jsonschema
+      - name: Compile scripts
+        run: python -m py_compile scripts/*.py
+      - name: Build is reproducible and committed generated files are current
+        run: python scripts/build.py --check
+      - name: Validate registries, schemas and content
+        run: python scripts/validate.py
       - name: Audit duplication (report-only until Phase 6)
         run: python scripts/audit_duplication.py
       - name: Check cross-references (report-only until Phase 6)
         run: python scripts/check_references.py --report-only
-      - run: python scripts/run_tests.py
-      - run: python scripts/validate.py
-      - run: python scripts/generate_reports.py
-      - run: python scripts/validate.py
-      - name: Generate Atelier dashboard snapshot
-        run: python scripts/generate_dashboard_data.py
-      - name: Validate dashboard snapshot JSON
-        run: python -m json.tool dashboard/data/library.json > /dev/null
-      - name: Validate dashboard JavaScript syntax
-        run: node --check dashboard/assets/app.js
+      - name: Tests
+        run: python scripts/run_tests.py
+      - name: Validate dashboard snapshot JSON and JavaScript
+        run: |
+          python scripts/build.py
+          python -m json.tool dashboard/data/library.json > /dev/null
+          node --check dashboard/assets/app.js
+      - name: Publish coverage report to the job summary
+        run: cat dist/COVERAGE_REPORT.md >> "$GITHUB_STEP_SUMMARY"
