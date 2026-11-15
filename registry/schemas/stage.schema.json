@@ -208,6 +208,21 @@
       "type": "string",
       "minLength": 10,
       "description": "Set when approval applies only to some runs of the stage."
+    },
+    "entry_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_commands": {
+      "type": "array"
+    },
+    "failure_modes": {
+      "type": "array"
+    },
+    "worked_example": {
+      "type": "string"
     }
   }
 }

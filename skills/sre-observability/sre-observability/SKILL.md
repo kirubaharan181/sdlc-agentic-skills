@@ -29,14 +29,14 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 155 | Centralized Logging | stub | Observability Engineer |
 | 156 | Metrics Monitoring | stub | Observability Engineer |
 | 157 | Distributed Tracing | stub | Observability Engineer |
-| 158 | Alert Management | stub | SRE |
+| 158 | Alert Management | complete | SRE |
 | 159 | Uptime Monitoring | stub | Observability Engineer |
-| 160 | SLA/SLO Management | stub | SRE |
+| 160 | SLA/SLO Management | complete | SRE |
 | 161 | Capacity Planning | stub | SRE |
 | 162 | Incident Detection | stub | Incident Manager |
-| 163 | Incident Response | stub | Incident Manager |
-| 164 | Root Cause Analysis | stub | SRE |
-| 165 | Postmortem | stub | Incident Manager |
+| 163 | Incident Response | complete | Incident Manager |
+| 164 | Root Cause Analysis | complete | SRE |
+| 165 | Postmortem | complete | Incident Manager |
 | 166 | Reliability Improvement | stub | SRE |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).

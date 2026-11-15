@@ -1,0 +1,65 @@
+{
+  "stage_id": 100,
+  "purpose": "find vulnerabilities that only appear in a running application by sending hostile requests to an authorized non-production target",
+  "entry_criteria": [
+    "Written scope names the target URLs, environment and test window",
+    "Target is non-production or has explicit owner approval for testing",
+    "Test accounts and data exist; no real customer data is used"
+  ],
+  "inputs": [
+    "target base URL and API definition",
+    "authenticated test accounts per role",
+    "scope and window approval",
+    "DAST tool configuration"
+  ],
+  "procedure": [
+    "Confirm scope and window in writing; verify the target host matches the approved list before sending any traffic.",
+    "Run an authenticated crawl or API-definition-driven scan per role, with rate limits agreed with the environment owner.",
+    "Triage each alert; reproduce with a minimal request and record request and response evidence.",
+    "Rate by exploitability and data exposure; open fix issues with owner and SLA.",
+    "Retest each fixed issue with the same request and confirm the behavior changed.",
+    "Report coverage honestly: which routes and roles were and were not exercised."
+  ],
+  "deliverables": [
+    "scan report with raw requests and responses",
+    "triaged findings list",
+    "coverage statement",
+    "retest evidence"
+  ],
+  "acceptance_criteria": [
+    "Scan stayed inside the approved scope",
+    "Each reported issue has a reproduction",
+    "No open critical or high finding without an approved exception",
+    "Coverage gaps are listed, not hidden"
+  ],
+  "validation_method": "Independent retest of fixed findings with the original request.",
+  "validation": [
+    {
+      "command": "zap-api-scan.py -t $API_SPEC_URL -f openapi -r reports/dast.html -J reports/dast.json   # example; non-production target only",
+      "expect": "report generated; no high alerts outside the approved baseline"
+    },
+    {
+      "command": "grep -oE 'https?://[^/\\\"]+' reports/dast.json | sort -u",
+      "expect": "every host listed is in the approved scope file"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Scan hit an out-of-scope host",
+      "detection": "Request log contains a host not in scope",
+      "response": "Stop immediately; notify the environment owner; record an incident note"
+    },
+    {
+      "mode": "Scan unauthenticated only",
+      "detection": "Coverage statement lists no authenticated routes",
+      "response": "Mark INCONCLUSIVE; rerun with role accounts"
+    },
+    {
+      "mode": "Scan degraded the test environment",
+      "detection": "Error rate rises during the window",
+      "response": "Lower the rate limit and rerun in the next window"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: An authenticated scan of a staging API finds that changing an order id in the URL returns another user's order. Reproduced with two test accounts, rated high, fixed with an ownership check, retested with the same request returning 403.",
+  "status": "complete"
+}

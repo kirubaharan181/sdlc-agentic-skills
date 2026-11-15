@@ -28,6 +28,7 @@ Deliverables: strategy brief; option appraisal; assumption register; outcome sco
 Acceptance: Each strategic choice has evidence, trade-offs and an accountable owner. Metrics have baseline, target, measurement source and review cadence. Unvalidated assumptions are explicit rather than presented as facts.
 
 Validation: Executive challenge session and traceability from strategy choices to measurable outcomes.
+
 Gate: 01-001. Approval: none required
 
 ## 2
@@ -46,6 +47,7 @@ Deliverables: source register with quality notes; competitor comparison; market 
 Acceptance: Every material claim traces to a dated source or is labelled an assumption. Market size states method, units, geography and confidence range. Recommendation identifies disconfirming evidence and research gaps.
 
 Validation: Independent source sampling, arithmetic reconciliation and stakeholder challenge of assumptions.
+
 Gate: 01-002. Approval: none required
 
 ## 3
@@ -64,6 +66,7 @@ Deliverables: stakeholder map; engagement notes; decision and commitment log; co
 Acceptance: Every commitment has an owner and due date. Client acceptance and internal approval are distinguishable. Conflicting expectations are recorded and escalated before scope is baselined.
 
 Validation: Client confirmation of decisions and review by the accountable engagement owner.
+
 Gate: 01-003. Approval: none required
 
 ## 4
@@ -82,6 +85,7 @@ Deliverables: discovery brief; assumption map; experiment cards; prioritized opp
 Acceptance: Each proposed solution links to a validated user problem. Experiments have a falsifiable hypothesis, metric, sample and decision threshold. A stop or pivot decision is accepted as a valid discovery outcome.
 
 Validation: Product owner review of evidence and explicit decision record.
+
 Gate: 01-004. Approval: none required
 
 ## 5
@@ -100,6 +104,7 @@ Deliverables: current/future process model; business rule catalogue; gap analysi
 Acceptance: Process paths include normal, exception and failure cases. Rules have an owner and source. Requirements are testable and trace to a business outcome.
 
 Validation: Walkthrough with process owners and affected users.
+
 Gate: 01-005. Approval: none required
 
 ## 6
@@ -118,6 +123,7 @@ Deliverables: outcome roadmap; prioritization rationale; dependency map; metric 
 Acceptance: Every roadmap item has an outcome, owner and success measure. Dependencies and confidence are visible. Dates are not represented as commitments without capacity and approval.
 
 Validation: Product and delivery leadership review.
+
 Gate: 01-006. Approval: none required
 
 ## 7
@@ -136,6 +142,7 @@ Deliverables: feasibility matrix; risk and assumption register; cost range; proo
 Acceptance: Critical assumptions have evidence or a time-boxed validation plan. Total lifecycle cost is considered, not just build cost. Recommendation names constraints and decision owner.
 
 Validation: Independent architecture, security and finance challenge.
+
 Gate: 01-007. Approval: none required
 
 ## 8
@@ -154,6 +161,7 @@ Deliverables: estimate workbook; assumption and exclusion log; funding request; 
 Acceptance: Totals recalculate from traceable line items. Uncertainty and contingency are visible. Estimate owner and approval authority are named.
 
 Validation: Finance review and independent arithmetic check.
+
 Gate: 01-008. Approval: none required
 
 ## 9
@@ -172,6 +180,7 @@ Deliverables: decision record; evidence index; conditions and waiver log
 Acceptance: Decision authority is verified. Conditions are measurable, owned and time-bound. No missing or failed critical evidence is silently waived.
 
 Validation: Independent approval record and audit trail.
+
 Gate: 01-009. Approval: business-sponsor (always)
 
 ## 10
@@ -190,4 +199,5 @@ Deliverables: obligation matrix; contract exception log; review decision
 Acceptance: Every material obligation has an owner and evidence path. Exceptions have an authorized risk owner. Unresolved legal interpretation is escalated.
 
 Validation: Legal and compliance owner sign-off.
+
 Gate: 01-010. Approval: legal-owner (always)

@@ -1,0 +1,65 @@
+{
+  "stage_id": 101,
+  "purpose": "find known-vulnerable and license-problematic third-party components in what is actually shipped",
+  "entry_criteria": [
+    "Lockfiles are committed and the build is reproducible",
+    "Advisory data source and its refresh date are recorded",
+    "Policy for allowed severities and licenses exists"
+  ],
+  "inputs": [
+    "lockfiles and the built artifact",
+    "SBOM or tool to generate one",
+    "advisory database snapshot",
+    "dependency policy"
+  ],
+  "procedure": [
+    "Generate an SBOM from resolved direct and transitive dependencies of the built artifact.",
+    "Match components to advisories; record advisory ids, affected range and fixed version.",
+    "Assess reachability and exploitability for each match; do not rate by CVSS alone.",
+    "Upgrade, replace or pin to a patched version; where none exists record a compensating control and an expiry.",
+    "Rebuild, regenerate the SBOM and compare against the earlier one to confirm the fix and spot new components.",
+    "Attach the SBOM and the disposition table to the release evidence."
+  ],
+  "deliverables": [
+    "SBOM (CycloneDX or SPDX)",
+    "vulnerability disposition table",
+    "dependency update diff",
+    "post-fix SBOM comparison"
+  ],
+  "acceptance_criteria": [
+    "SBOM matches the shipped artifact, not only the manifest",
+    "No unresolved critical or high advisory without an approved exception",
+    "Every exception has owner and expiry",
+    "Advisory data age is stated"
+  ],
+  "validation_method": "Compare SBOM of the packaged artifact with the lockfile and re-run the audit after fixes.",
+  "validation": [
+    {
+      "command": "osv-scanner --lockfile=package-lock.json --format json > reports/sca.json   # example; use the ecosystem's audit tool",
+      "expect": "exit 0 or only findings listed in the exception register"
+    },
+    {
+      "command": "syft packages dir:. -o cyclonedx-json > reports/sbom.json   # example",
+      "expect": "component count matches the artifact contents"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Scan ran on the manifest, not the artifact",
+      "detection": "SBOM lacks transitive or vendored components",
+      "response": "Regenerate from the built artifact"
+    },
+    {
+      "mode": "Stale advisory data",
+      "detection": "Advisory snapshot older than the agreed age",
+      "response": "Refresh data and rerun"
+    },
+    {
+      "mode": "Upgrade breaks behavior",
+      "detection": "Regression tests fail after bumping",
+      "response": "Revert, pin, record a compensating control and a dated follow-up"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The audit reports a deserialization flaw in a transitive library. It is reachable because the service parses uploaded archives. The direct dependency is bumped to a release that pulls the patched version; the post-fix SBOM shows the new version and tests pass.",
+  "status": "complete"
+}

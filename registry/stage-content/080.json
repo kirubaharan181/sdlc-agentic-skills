@@ -1,0 +1,65 @@
+{
+  "stage_id": 80,
+  "purpose": "prove that components work together across their real boundaries, including failure behavior",
+  "entry_criteria": [
+    "Unit tests for the components pass",
+    "A test environment with the real or realistic dependencies exists",
+    "Contracts between components are written down"
+  ],
+  "inputs": [
+    "component contracts and interfaces",
+    "test environment and fixtures",
+    "failure scenarios",
+    "unit test results"
+  ],
+  "procedure": [
+    "Identify integration points: databases, queues, internal and external services.",
+    "Write tests that exercise each point with real or containerized dependencies and seeded data.",
+    "Cover failure behavior: timeouts, retries, duplicate delivery, partial failure, schema mismatch.",
+    "Isolate tests so each creates and cleans its own data and can run in any order.",
+    "Run in CI with the environment started from scratch; capture logs of failures.",
+    "Record contract changes and notify consuming teams."
+  ],
+  "deliverables": [
+    "integration test suite",
+    "run report with logs",
+    "contract change notes",
+    "environment definition"
+  ],
+  "acceptance_criteria": [
+    "Each integration point has a success and a failure test",
+    "Suite passes from a clean environment",
+    "Tests do not share state",
+    "Failures include enough logs to diagnose"
+  ],
+  "validation_method": "Clean-environment rerun in CI.",
+  "validation": [
+    {
+      "command": "docker compose -f compose.test.yml up -d --wait && pytest -q tests/integration   # example",
+      "expect": "exit 0; no skipped tests without owners"
+    },
+    {
+      "command": "docker compose -f compose.test.yml down -v",
+      "expect": "environment removed; rerun from scratch gives the same result"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Tests pass only on a developer machine",
+      "detection": "CI run fails on clean environment",
+      "response": "Fix environment definition; BLOCKED until CI is green"
+    },
+    {
+      "mode": "Shared test data causes order dependence",
+      "detection": "Random-order run fails",
+      "response": "Isolate data per test"
+    },
+    {
+      "mode": "Mocks replace the real boundary",
+      "detection": "No test exercises the real client",
+      "response": "Add at least one real-boundary test per integration point"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: An order service and a payment adapter are tested against a containerized payment stub that can return success, decline and timeout. The timeout test shows the order stays pending and is retried once.",
+  "status": "complete"
+}

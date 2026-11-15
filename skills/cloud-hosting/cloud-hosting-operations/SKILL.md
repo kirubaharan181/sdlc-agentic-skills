@@ -32,7 +32,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 145 | SSL Certificate Management | stub | Cloud Engineer |
 | 146 | Network Operations | stub | Network Engineer |
 | 147 | Backup Management | stub | Database Administrator |
-| 148 | Disaster Recovery | stub | SRE |
+| 148 | Disaster Recovery | complete | SRE |
 | 149 | High Availability | stub | Cloud Architect |
 | 150 | Auto Scaling | stub | Infrastructure Engineer |
 | 151 | Cost Optimization | stub | FinOps Specialist |

@@ -1,0 +1,65 @@
+{
+  "stage_id": 163,
+  "purpose": "restore service quickly and safely when something is broken, with clear command and communication",
+  "entry_criteria": [
+    "An alert or report indicates user impact",
+    "On-call responder is reachable",
+    "Severity levels and roles are defined"
+  ],
+  "inputs": [
+    "alert or report",
+    "runbooks and dashboards",
+    "severity definitions",
+    "recent change list"
+  ],
+  "procedure": [
+    "Acknowledge, assign an incident commander and open a single incident channel and record.",
+    "Classify severity by user impact and blast radius; escalate per severity.",
+    "Check recent changes and dashboards; choose the safest mitigation (rollback, feature flag, failover) before searching for root cause.",
+    "Communicate status at a fixed interval to stakeholders and affected users.",
+    "Verify recovery with user-facing checks and metrics, then close or downgrade.",
+    "Hand off timeline and artifacts to the postmortem (stage 165)."
+  ],
+  "deliverables": [
+    "incident record with timeline",
+    "status updates",
+    "mitigation actions list",
+    "recovery verification"
+  ],
+  "acceptance_criteria": [
+    "Single commander and channel were named",
+    "Customer-impact communications were sent on schedule",
+    "Recovery was verified by metrics, not by absence of alerts",
+    "Timeline is complete enough for a postmortem"
+  ],
+  "validation_method": "Recovery verified by an independent check.",
+  "validation": [
+    {
+      "check": "compare error rate and latency to pre-incident baseline for 30 minutes",
+      "expect": "within baseline"
+    },
+    {
+      "command": "git log --since='6 hours ago' --oneline",
+      "expect": "changes before the incident are listed in the record"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Investigating while users are impacted",
+      "detection": "Mitigation delayed for diagnosis",
+      "response": "Mitigate first (rollback or flag)"
+    },
+    {
+      "mode": "No communication",
+      "detection": "No status update inside the interval",
+      "response": "Commander assigns a communicator"
+    },
+    {
+      "mode": "Multiple people changing production",
+      "detection": "Conflicting actions in the timeline",
+      "response": "Commander approves all changes"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Error rate jumps right after a release. The commander rolls back within ten minutes, confirms the error rate returns to baseline, and keeps the incident open for thirty minutes of observation.",
+  "status": "complete"
+}

@@ -24,10 +24,10 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 77 | Test Strategy | stub | QA Lead |
+| 77 | Test Strategy | complete | QA Lead |
 | 78 | Test Planning | stub | QA Lead |
-| 79 | Unit Testing | stub | Unit Testing Specialist |
-| 80 | Integration Testing | stub | Integration Testing Specialist |
+| 79 | Unit Testing | complete | Unit Testing Specialist |
+| 80 | Integration Testing | complete | Integration Testing Specialist |
 | 81 | API Testing | stub | API Testing Specialist |
 | 82 | UI Testing | stub | Automation QA Engineer |
 | 83 | Functional Testing | stub | Manual QA Engineer |

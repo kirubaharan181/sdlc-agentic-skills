@@ -28,6 +28,7 @@ Deliverables: repository control inventory; policy compliance report; exception 
 Acceptance: Repository controls are verified in the platform. Exceptions have owner, expiry and compensating control. Clean-checkout onboarding is reproducible.
 
 Validation: Repository policy sample audit.
+
 Gate: 15-181. Approval: none required
 
 ## 182
@@ -46,6 +47,7 @@ Deliverables: quality policy and control map; quality scorecard; audit samples; 
 Acceptance: Metrics have definitions and owners. Evidence samples are reproducible. Corrective actions are verified for effectiveness.
 
 Validation: Quality governance review and sample audit.
+
 Gate: 15-182. Approval: none required
 
 ## 183
@@ -64,24 +66,40 @@ Deliverables: security control matrix; risk/exception register; control effectiv
 Acceptance: Risk acceptance is authorized and time-bound. Controls have evidence and accountable owners. Material exceptions are escalated.
 
 Validation: Security governance council review.
+
 Gate: 15-183. Approval: none required
 
 ## 184
-**Access Governance** (stub). Purpose: govern identity lifecycle and privileged access.
+**Access Governance** (complete). Purpose: make sure each person and system has only the access it needs, and that access is reviewed and removable.
 
-Inputs: identity inventory and role model; joiner/mover/leaver events; privileged access policy
+Entry criteria: Systems in scope and their access owners are listed; Current access export can be obtained from each system; Access policy defines roles and review cadence
+
+Inputs: access export per system; role and entitlement definitions; joiner-mover-leaver records; access policy
 
 Procedure:
-1. Review role definitions, segregation conflicts and least-privilege mappings.
-2. Sample access grants, changes, recertifications and removals against approvals.
-3. Identify dormant, orphaned, excessive and shared privileged accounts.
-4. Track remediation and verify timely revocation and periodic recertification.
+1. Export current entitlements per system and map each account to a named person or service owner.
+2. Compare entitlements with the role definitions; flag excess, dormant and orphaned accounts.
+3. Send each access owner their list for confirm or revoke; set a deadline.
+4. Apply revocations through the normal change path; keep the ticket id for each.
+5. Verify by re-export that revoked access is gone.
+6. Record completion, exceptions with expiry, and the next review date; access-owner approves.
 
-Deliverables: role/access matrix; access review samples; SoD conflict register; remediation evidence
+Deliverables: access review report; revocation tickets; exception register; post-review export
 
-Acceptance: Every privileged grant has owner and approval. Leaver access is removed within policy SLA. Exceptions have expiry and compensating control.
+Acceptance: Every account has an owner and a role justification Dormant and orphaned accounts are removed or excepted Re-export confirms revocations Next review is scheduled
 
-Validation: Independent access recertification audit.
+Validation: Access-owner approval plus re-export comparison.
+
+- `diff <(sort before.csv) <(sort after.csv)` expect: only the requested revocations appear as removed lines; no additions
+- `grep -c ',dormant,' reports/access-review.csv   # example` expect: zero without an exception id
+
+Failure modes:
+- Owner confirms everything without looking | detect: Zero changes across a large population | respond: Sample-check entitlements against role definitions
+- Revocation requested but not applied | detect: Re-export still lists the access | respond: Reopen ticket; BLOCK completion
+- Service accounts have no owner | detect: Owner column empty | respond: Assign an owner or disable the account
+
+ILLUSTRATIVE: A quarterly review of the deployment tool finds two departed contractors with admin rights and one service account with no owner. Admin rights are revoked, the service account is assigned to the platform team, and re-export confirms it.
+
 Gate: 15-184. Approval: access-owner (when granting or widening privileged or break-glass access, or revoking access in bulk)
 
 ## 185
@@ -100,6 +118,7 @@ Deliverables: obligation matrix; contract exception log; review decision
 Acceptance: Every material obligation has an owner and evidence path. Exceptions have an authorized risk owner. Unresolved legal interpretation is escalated.
 
 Validation: Legal and compliance owner sign-off.
+
 Gate: 15-185. Approval: none required
 
 ## 186
@@ -118,6 +137,7 @@ Deliverables: document register; accuracy/review report; retention and archive l
 Acceptance: Each authoritative document has owner and review date. Published guidance matches current behavior. Superseded documents are clearly marked or archived.
 
 Validation: Documentation governance sample review.
+
 Gate: 15-186. Approval: none required
 
 ## 187
@@ -136,6 +156,7 @@ Deliverables: change control matrix; change approval records; audit sample repor
 Acceptance: Emergency path is controlled and retrospectively reviewed. Approval precedes implementation where required. Change outcomes and incidents are linked.
 
 Validation: Change advisory or governance review.
+
 Gate: 15-187. Approval: none required
 
 ## 188
@@ -154,6 +175,7 @@ Deliverables: supplier scorecard; obligation and risk register; renewal/exit rec
 Acceptance: Critical supplier risks have owners and contingency. Contract obligations are evidenced. Exit strategy is practical and tested where critical.
 
 Validation: Procurement, legal, security and service-owner review.
+
 Gate: 15-188. Approval: none required
 
 ## 189
@@ -172,6 +194,7 @@ Deliverables: cost allocation report; optimization backlog; forecast and varianc
 Acceptance: Savings are measured against a comparable baseline. Ownership and allocation coverage are visible. Reliability and security are not traded away silently.
 
 Validation: Finance and service-owner review.
+
 Gate: 15-189. Approval: none required
 
 ## 190
@@ -190,4 +213,5 @@ Deliverables: process map; baseline and experiment plan; result report; standard
 Acceptance: Change is evidence-backed. Guardrails prevent local optimization harm. Adopted process has an owner and review date.
 
 Validation: Process owner and affected team review.
+
 Gate: 15-190. Approval: none required

@@ -1,0 +1,65 @@
+{
+  "stage_id": 128,
+  "purpose": "decide whether a specific build is ready to go to production, using recorded evidence rather than opinion",
+  "entry_criteria": [
+    "Release candidate build exists with an immutable id",
+    "Test, security and migration stages for the scope have results",
+    "Release manager is not the sole implementer"
+  ],
+  "inputs": [
+    "release candidate id and scope",
+    "test and security evidence",
+    "open defect list",
+    "rollback and monitoring plans"
+  ],
+  "procedure": [
+    "List every change in the release and link to its evidence.",
+    "Check each required gate has a PASS with a commit and command, or an approved waiver.",
+    "Review open defects and exceptions; each must be accepted by its owner.",
+    "Confirm rollback plan, monitoring and on-call coverage exist for the release window.",
+    "Confirm communications and support readiness.",
+    "Record GO, NO-GO or CONDITIONAL with reasons and send to change approval (stage 129)."
+  ],
+  "deliverables": [
+    "release readiness checklist",
+    "evidence index",
+    "go/no-go record",
+    "open risk list"
+  ],
+  "acceptance_criteria": [
+    "Every required gate has evidence or an approved waiver",
+    "No critical defect is open",
+    "Rollback and monitoring are confirmed",
+    "Decision is recorded with its reasons"
+  ],
+  "validation_method": "Go/no-go reviewed in the change approval step.",
+  "validation": [
+    {
+      "command": "python3 scripts/check_references.py && python3 scripts/validate.py   # repository integrity if the release includes registry changes",
+      "expect": "both exit 0"
+    },
+    {
+      "check": "open each evidence link and confirm it names the release candidate id",
+      "expect": "all links resolve and match the candidate id"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Evidence belongs to a different build",
+      "detection": "Commit in evidence differs from candidate",
+      "response": "Treat as missing evidence; NO-GO until rerun"
+    },
+    {
+      "mode": "Waivers without owner",
+      "detection": "Waiver lacks owner or expiry",
+      "response": "Reject the waiver"
+    },
+    {
+      "mode": "Readiness decided in a meeting without a record",
+      "detection": "No go/no-go record",
+      "response": "Write the record before proceeding"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: All gates pass except a medium accessibility defect with an owner and fix date. The decision is CONDITIONAL: ship, with the fix tracked in the next release.",
+  "status": "complete"
+}

@@ -30,6 +30,7 @@ Deliverables: system context and container diagrams; component/interface catalog
 Acceptance: Every component has responsibility and owner. Dependencies and failure domains are explicit. Trade-offs are tied to measurable quality scenarios.
 
 Validation: Architecture review against documented quality attribute scenarios.
+
 Gate: 03-023. Approval: none required
 
 ## 24
@@ -48,6 +49,7 @@ Deliverables: system context and container diagrams; component/interface catalog
 Acceptance: Every component has responsibility and owner. Dependencies and failure domains are explicit. Trade-offs are tied to measurable quality scenarios.
 
 Validation: Architecture review against documented quality attribute scenarios.
+
 Gate: 03-024. Approval: none required
 
 ## 25
@@ -66,6 +68,7 @@ Deliverables: system context and container diagrams; component/interface catalog
 Acceptance: Every component has responsibility and owner. Dependencies and failure domains are explicit. Trade-offs are tied to measurable quality scenarios.
 
 Validation: Architecture review against documented quality attribute scenarios.
+
 Gate: 03-025. Approval: none required
 
 ## 26
@@ -84,6 +87,7 @@ Deliverables: logical/physical data model; index and workload rationale; migrati
 Acceptance: Integrity constraints are enforceable. Performance decisions are workload-backed. Migration and restore path are rehearsable.
 
 Validation: DBA, security and application owner review.
+
 Gate: 03-026. Approval: none required
 
 ## 27
@@ -102,6 +106,7 @@ Deliverables: API decision record; OpenAPI contract; versioning and migration pl
 Acceptance: Contract is machine-valid and has representative examples. Breaking changes and consumer impact are identified. Auth/error/idempotency behavior is explicit.
 
 Validation: API consumer and security architecture review.
+
 Gate: 03-027. Approval: none required
 
 ## 28
@@ -120,6 +125,7 @@ Deliverables: cloud architecture diagram; landing-zone decisions; resilience mod
 Acceptance: Failure domains align with RTO/RPO. IAM and network boundaries are least privilege. Cost assumptions and service quotas are explicit.
 
 Validation: Cloud security and operations design review.
+
 Gate: 03-028. Approval: none required
 
 ## 29
@@ -138,6 +144,7 @@ Deliverables: data-flow diagram; threat model; control matrix; residual risk rec
 Acceptance: High-impact threats have treatment and owner. Trust boundaries and data flows are complete. Controls have testable verification evidence.
 
 Validation: Independent security architecture review.
+
 Gate: 03-029. Approval: none required
 
 ## 30
@@ -156,6 +163,7 @@ Deliverables: domain model; data catalogue; lineage map; classification/retentio
 Acceptance: Critical elements have owners and definitions. Lineage covers source-to-consumer flow. Privacy and retention controls are enforceable.
 
 Validation: Data governance council review.
+
 Gate: 03-030. Approval: none required
 
 ## 31
@@ -174,6 +182,7 @@ Deliverables: context/container diagram; interface contract; failure-mode table;
 Acceptance: Every interface has owner and version policy. Retries cannot create unsafe duplicate side effects. Failure handling and telemetry are specified.
 
 Validation: Producer, consumer and operations review.
+
 Gate: 03-031. Approval: none required
 
 ## 32
@@ -192,6 +201,7 @@ Deliverables: technology scorecard; proof evidence; architecture decision record
 Acceptance: Scoring criteria are transparent. Total cost and exit strategy are included. Decision is reproducible from evidence.
 
 Validation: Architecture governance review.
+
 Gate: 03-032. Approval: none required
 
 ## 33
@@ -210,6 +220,7 @@ Deliverables: architecture overview; ADRs; versioned diagrams; review schedule
 Acceptance: Documentation matches deployed reality. Every key decision has rationale and alternatives. Owners and freshness triggers are defined.
 
 Validation: Architecture peer review.
+
 Gate: 03-033. Approval: none required
 
 ## 34
@@ -228,4 +239,5 @@ Deliverables: architecture review report; decision and exception log; remediatio
 Acceptance: Findings cite model element and impact. Reviewer independence is preserved. Exceptions have owner and expiry.
 
 Validation: Independent architecture board decision.
+
 Gate: 03-034. Approval: none required

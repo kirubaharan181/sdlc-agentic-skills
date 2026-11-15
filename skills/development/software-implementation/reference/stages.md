@@ -33,6 +33,7 @@ Deliverables: component implementation; UI state model; component/browser tests;
 Acceptance: Critical flows work at supported viewports. Keyboard and screen-reader semantics are preserved. No unhandled errors or leaked async state.
 
 Validation: UI peer review and browser test run.
+
 Gate: 06-053. Approval: none required
 
 ## 54
@@ -51,6 +52,7 @@ Deliverables: service change; API/error contract; migration if needed; backend t
 Acceptance: Authorization is server-side. Failure paths do not leak secrets or corrupt state. Tests cover boundaries and duplicate requests.
 
 Validation: Code review and service integration tests.
+
 Gate: 06-054. Approval: none required
 
 ## 55
@@ -69,6 +71,7 @@ Deliverables: vertical-slice change; contract and schema updates; cross-layer te
 Acceptance: UI and service behavior agree on contracts. Data changes are backward-compatible or migrated safely. Critical user journey has reproducible end-to-end evidence.
 
 Validation: Cross-layer code review and E2E test.
+
 Gate: 06-055. Approval: none required
 
 ## 56
@@ -87,6 +90,7 @@ Deliverables: mobile feature; permission/data handling notes; device test matrix
 Acceptance: App resumes and recovers from network/lifecycle changes. Permissions are least-privilege and explained. Supported OS/device matrix passes.
 
 Validation: Device testing and mobile release review.
+
 Gate: 06-056. Approval: none required
 
 ## 57
@@ -105,6 +109,7 @@ Deliverables: API implementation; OpenAPI/schema update; contract test report; c
 Acceptance: Implementation matches the published contract. Auth and error cases are tested. Breaking changes require version and migration approval.
 
 Validation: Consumer contract review and automated API tests.
+
 Gate: 06-057. Approval: none required
 
 ## 58
@@ -123,6 +128,7 @@ Deliverables: schema/query change; migration scripts; integrity assertions; quer
 Acceptance: Constraints protect invariants. Migration is repeatable and rehearsed. Performance is measured against a representative workload.
 
 Validation: DBA review and migration rehearsal.
+
 Gate: 06-058. Approval: none required
 
 ## 59
@@ -141,6 +147,7 @@ Deliverables: authentication flow design; secure configuration; auth test eviden
 Acceptance: No credential is stored or logged insecurely. Token/session validation is complete. Recovery and revocation paths are tested.
 
 Validation: Independent security review.
+
 Gate: 06-059. Approval: none required
 
 ## 60
@@ -159,6 +166,7 @@ Deliverables: authorization policy; permission matrix; negative security tests; 
 Acceptance: Unauthenticated and unauthorized paths deny by default. Tenant/object ownership checks are enforced. Negative tests cover privilege boundaries.
 
 Validation: Security review and access-control test.
+
 Gate: 06-060. Approval: none required
 
 ## 61
@@ -177,6 +185,7 @@ Deliverables: integration adapter; mapping specification; contract tests; operat
 Acceptance: External failures are isolated and observable. Retries cannot create unsafe duplicate effects. Credentials and personal data are protected.
 
 Validation: Contract test and integration owner review.
+
 Gate: 06-061. Approval: none required
 
 ## 62
@@ -195,6 +204,7 @@ Deliverables: event contract; stream implementation; recovery behavior; load/rec
 Acceptance: Ordering guarantee is explicit. Clients recover without missing or duplicating state. Backpressure and resource limits are enforced.
 
 Validation: Load and failure-injection review.
+
 Gate: 06-062. Approval: none required
 
 ## 63
@@ -213,6 +223,7 @@ Deliverables: pipeline DAG; schema contract; quality report; lineage and replay 
 Acceptance: Reprocessing is deterministic or explicitly reconciled. Quality failures are visible and bounded. Lineage and ownership are complete.
 
 Validation: Data owner acceptance and pipeline replay test.
+
 Gate: 06-063. Approval: none required
 
 ## 64
@@ -231,6 +242,7 @@ Deliverables: model/data card; reproducible experiment; evaluation report; deplo
 Acceptance: Evaluation matches intended use and baseline. Data leakage and subgroup failures are assessed. Fallback and monitoring are operationally defined.
 
 Validation: Independent model risk and product review.
+
 Gate: 06-064. Approval: none required
 
 ## 65
@@ -249,6 +261,7 @@ Deliverables: profile report; optimization change; cache policy; before/after be
 Acceptance: Improvement is measured against baseline. Correctness and freshness invariants hold. No unbounded memory or stale-data risk is introduced.
 
 Validation: Performance and correctness regression review.
+
 Gate: 06-065. Approval: none required
 
 ## 66
@@ -267,6 +280,7 @@ Deliverables: error taxonomy; response mapping; fault-injection tests; runbook u
 Acceptance: No stack trace or secret leaks to users. Retry policy cannot multiply side effects. Errors are observable and actionable.
 
 Validation: Failure-path test and security review.
+
 Gate: 06-066. Approval: none required
 
 ## 67
@@ -286,4 +300,5 @@ Deliverables: test strategy or plan; version-pinned test report; defect records;
 Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. All required local checks pass on the exact working-tree revision.
 
 Validation: Independent QA review and acceptance decision. Capture command, exit status and output for each required check.
+
 Gate: 06-067. Approval: none required

@@ -61,8 +61,10 @@ def main(check=False):
  stage_doc=registry_io.load_stage_doc(ROOT); stages=stage_doc['stages']; agents_doc=registry_io.load_agent_doc(ROOT); workflows={w['workflow_id']:w for w in registry_io.load_workflow_doc(ROOT)['workflows']}; wf=list(workflows.values())
  valid_w=set(workflows); valid_s=set(SKILLS); valid_a={a['agent_id'] for a in agents_doc['agents']}
  # stage contracts: resolve a concrete domain procedure for every canonical stage
+ authored=set(registry_io.load_stage_content(ROOT))
  for st in stages:
   sid=st['stage_id']; name=st['stage_name']; skill=st['skills'][0]
+  if sid in authored: continue
   profile=stage_profile(st)
   st['purpose']=profile['purpose']
   st['inputs']=profile['inputs']

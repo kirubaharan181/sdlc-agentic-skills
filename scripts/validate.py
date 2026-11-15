@@ -252,6 +252,41 @@ for workflow in wfs:
         if f"| {s['stage']} |" not in doc:
             errors.append(f"workflow {workflow['workflow_id']}: step {s['stage']} missing from generated Markdown")
 
+# stage content (Phase 4): `complete` is only allowed with the full authored contract
+import json as _json
+_content_files = {int(p_.stem): _json.loads(p_.read_text(encoding="utf-8")) for p_ in (R / "registry" / "stage-content").glob("*.json")}
+_REQ = ("purpose", "entry_criteria", "inputs", "procedure", "deliverables", "acceptance_criteria", "validation_method",
+        "validation", "failure_modes", "worked_example")
+for _sid, _c in _content_files.items():
+    if _sid not in stage_by_id:
+        errors.append(f"stage-content/{_sid:03d}.json: unknown stage"); continue
+    for _k in _REQ:
+        if not _c.get(_k):
+            errors.append(f"stage {_sid}: complete content missing '{_k}'")
+    if len(_c.get("procedure", [])) < 4:
+        errors.append(f"stage {_sid}: procedure needs at least 4 ordered steps")
+    if len(_c.get("failure_modes", [])) < 2:
+        errors.append(f"stage {_sid}: needs at least 2 failure modes")
+    if not str(_c.get("worked_example", "")).startswith("ILLUSTRATIVE"):
+        errors.append(f"stage {_sid}: worked_example must start with ILLUSTRATIVE (it is not evidence)")
+    for _v in _c.get("validation", []):
+        if not (("command" in _v) ^ ("check" in _v)) or not _v.get("expect"):
+            errors.append(f"stage {_sid}: each validation needs exactly one of command/check and an expect")
+        for _bad in re.findall(r"scripts/([\w./-]+\.py)", _v.get("command", "")):
+            if not (R / "scripts" / _bad).exists():
+                errors.append(f"stage {_sid}: validation command references missing script scripts/{_bad}")
+    if _c.get("status") != "complete" or stage_by_id[_sid]["status"] != "complete":
+        errors.append(f"stage {_sid}: content present but status is not complete")
+for _s in st:
+    if _s["status"] == "complete" and _s["stage_id"] not in _content_files:
+        errors.append(f"stage {_s['stage_id']}: marked complete without authored content")
+_procs = {i: " ".join(c["procedure"]) for i, c in _content_files.items()}
+import difflib as _dl
+for _a in sorted(_procs):
+    for _b in sorted(_procs):
+        if _a < _b and _dl.SequenceMatcher(None, _procs[_a], _procs[_b], autojunk=False).ratio() > 0.70:
+            errors.append(f"stages {_a} and {_b}: procedures are more than 70% similar")
+
 # role distinctness (Phase 3): contracts must not be near-copies and every role needs a derived footprint
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import audit_duplication as _dup

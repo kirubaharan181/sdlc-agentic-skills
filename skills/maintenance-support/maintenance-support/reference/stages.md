@@ -32,6 +32,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-167. Approval: none required
 
 ## 168
@@ -50,6 +51,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-168. Approval: none required
 
 ## 169
@@ -68,6 +70,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-169. Approval: none required
 
 ## 170
@@ -86,6 +89,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-170. Approval: none required
 
 ## 171
@@ -104,6 +108,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-171. Approval: none required
 
 ## 172
@@ -122,6 +127,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-172. Approval: none required
 
 ## 173
@@ -140,6 +146,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-173. Approval: dba-owner (for destructive or locking maintenance on production data)
 
 ## 174
@@ -158,6 +165,7 @@ Deliverables: profile report; optimization change; cache policy; before/after be
 Acceptance: Improvement is measured against baseline. Correctness and freshness invariants hold. No unbounded memory or stale-data risk is introduced.
 
 Validation: Performance and correctness regression review.
+
 Gate: 14-174. Approval: none required
 
 ## 175
@@ -176,6 +184,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-175. Approval: none required
 
 ## 176
@@ -194,6 +203,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-176. Approval: none required
 
 ## 177
@@ -212,6 +222,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-177. Approval: none required
 
 ## 178
@@ -230,6 +241,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-178. Approval: none required
 
 ## 179
@@ -248,6 +260,7 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-179. Approval: none required
 
 ## 180
@@ -266,4 +279,5 @@ Deliverables: support/maintenance record; reproduction and diagnosis; fix or pat
 Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
 
 Validation: Service owner acceptance and customer-facing closure check.
+
 Gate: 14-180. Approval: business-sponsor (always)

@@ -25,7 +25,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
 | 68 | Pull Request Creation | stub | Full Stack Engineer |
-| 69 | Peer Code Review | stub | Code Reviewer |
+| 69 | Peer Code Review | complete | Code Reviewer |
 | 70 | Architecture Review | stub | Architecture Reviewer |
 | 71 | Static Code Analysis | stub | DevSecOps Engineer |
 | 72 | Dependency Review | stub | DevSecOps Engineer |

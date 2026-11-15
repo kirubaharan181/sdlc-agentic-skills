@@ -62,8 +62,11 @@ def _derive_stage(rec: dict, d: dict, names: dict[str, str] | None = None) -> di
     return out
 
 
-def _compact_stage(rec: dict, d: dict) -> dict:
+def _compact_stage(rec: dict, d: dict, authored: bool = False) -> dict:
     out = dict(rec)
+    if authored:  # fields owned by registry/stage-content/<id>.json are never duplicated here
+        for f in CONTENT_KEYS + ("handoff_requirements", "dependencies"):
+            out.pop(f, None)
     out.pop("workflow_ids", None)  # derived from registry/workflows/*.json
     if out.get("raci"):  # agents, primary_role, supporting_roles are derived from raci
         for f in ("agents", "primary_role", "supporting_roles"):
@@ -78,11 +81,39 @@ def _compact_stage(rec: dict, d: dict) -> dict:
     return out
 
 
+CONTENT_KEYS = ("purpose", "inputs", "execution_instructions", "deliverable_artifacts", "outputs", "quality_criteria",
+                "validation_method", "entry_criteria", "validation_commands", "failure_modes", "worked_example", "status")
+
+
+def load_stage_content(root: Path = ROOT) -> dict[int, dict]:
+    """Authored content for stages that are `complete`: registry/stage-content/<id>.json (the only place it is stated)."""
+    out = {}
+    d = root / "registry" / "stage-content"
+    for p in sorted(d.glob("*.json")) if d.is_dir() else []:
+        c = json.loads(p.read_text(encoding="utf-8"))
+        out[c["stage_id"]] = c
+    return out
+
+
+def _apply_content(rec: dict, c: dict) -> dict:
+    out = dict(rec)
+    out.update(
+        purpose=c["purpose"], entry_criteria=c["entry_criteria"], inputs=c["inputs"], execution_instructions=c["procedure"],
+        deliverable_artifacts=c["deliverables"], outputs=c["deliverables"], quality_criteria=c["acceptance_criteria"],
+        validation_method=c["validation_method"], validation_commands=c["validation"], failure_modes=c["failure_modes"],
+        worked_example=c["worked_example"], status=c["status"],
+    )
+    return out
+
+
 def load_stage_doc(root: Path = ROOT, with_workflows: bool = True) -> dict:
     doc = _read(root, "registry/SDLC_STAGE_REGISTRY.json")
     d = _read(root, "registry/stage-defaults.json")
     names = {a["agent_id"]: a["name"] for a in _read(root, "registry/AGENT_REGISTRY.json")["agents"]}
-    doc["stages"] = [_derive_stage(s, d, names) for s in doc["stages"]]
+    content = load_stage_content(root)
+    doc["stages"] = [
+        _derive_stage(_apply_content(s, content[s["stage_id"]]) if s["stage_id"] in content else s, d, names) for s in doc["stages"]
+    ]
     if with_workflows:
         membership: dict[int, list[str]] = {}
         for w in load_workflow_sources(root):
@@ -96,7 +127,8 @@ def load_stage_doc(root: Path = ROOT, with_workflows: bool = True) -> dict:
 def save_stage_doc(doc: dict, root: Path = ROOT) -> None:
     d = _read(root, "registry/stage-defaults.json")
     out = {k: v for k, v in doc.items() if k != "generated_on"}
-    out["stages"] = [_compact_stage(s, d) for s in doc["stages"]]
+    authored = set(load_stage_content(root))
+    out["stages"] = [_compact_stage(s, d, s["stage_id"] in authored) for s in doc["stages"]]
     _write(root, "registry/SDLC_STAGE_REGISTRY.json", out)
 
 

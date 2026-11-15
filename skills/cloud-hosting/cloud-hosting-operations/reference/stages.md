@@ -31,6 +31,7 @@ Deliverables: infrastructure inventory; change record; health/capacity/cost evid
 Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
 
 Validation: Cloud operations and security review.
+
 Gate: 12-140. Approval: none required
 
 ## 141
@@ -49,6 +50,7 @@ Deliverables: infrastructure inventory; change record; health/capacity/cost evid
 Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
 
 Validation: Cloud operations and security review.
+
 Gate: 12-141. Approval: none required
 
 ## 142
@@ -67,6 +69,7 @@ Deliverables: infrastructure inventory; change record; health/capacity/cost evid
 Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
 
 Validation: Cloud operations and security review.
+
 Gate: 12-142. Approval: none required
 
 ## 143
@@ -85,6 +88,7 @@ Deliverables: infrastructure inventory; change record; health/capacity/cost evid
 Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
 
 Validation: Cloud operations and security review.
+
 Gate: 12-143. Approval: none required
 
 ## 144
@@ -103,6 +107,7 @@ Deliverables: DNS/TLS/routing configuration; validation output; renewal and roll
 Acceptance: No unexpected public exposure. Certificate chain and hostname validation pass. Failover and rollback are tested.
 
 Validation: Network/security review.
+
 Gate: 12-144. Approval: none required
 
 ## 145
@@ -121,6 +126,7 @@ Deliverables: DNS/TLS/routing configuration; validation output; renewal and roll
 Acceptance: No unexpected public exposure. Certificate chain and hostname validation pass. Failover and rollback are tested.
 
 Validation: Network/security review.
+
 Gate: 12-145. Approval: none required
 
 ## 146
@@ -139,6 +145,7 @@ Deliverables: infrastructure inventory; change record; health/capacity/cost evid
 Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
 
 Validation: Cloud operations and security review.
+
 Gate: 12-146. Approval: none required
 
 ## 147
@@ -157,24 +164,40 @@ Deliverables: infrastructure inventory; change record; health/capacity/cost evid
 Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
 
 Validation: Cloud operations and security review.
+
 Gate: 12-147. Approval: none required
 
 ## 148
-**Disaster Recovery** (stub). Purpose: restore critical services within approved recovery objectives.
+**Disaster Recovery** (complete). Purpose: make sure the service can be restored after a major loss, within agreed recovery time and data-loss limits, and prove it.
 
-Inputs: business impact analysis and service dependencies; approved RTO/RPO and recovery runbooks; isolated recovery credentials and backup inventory
+Entry criteria: Recovery time objective and recovery point objective are agreed for the service; Backups or replicas exist; DR owner is named
+
+Inputs: RTO and RPO targets; architecture and dependencies; backup and replication configuration; recovery runbook
 
 Procedure:
-1. Confirm business-approved RTO/RPO for each critical service and data set.
-2. Prepare an isolated recovery environment with scoped credentials and network boundaries.
-3. Restore or fail over in dependency order and capture actual recovery time and replication position.
-4. Validate data integrity and user-facing journeys before reopening traffic; record gaps.
+1. Identify critical components and their dependencies; define recovery order.
+2. Document and automate recovery steps where possible; keep the runbook current.
+3. Run a recovery exercise in an isolated environment or a controlled production test; record recovery time and data-loss window.
+4. Compare measured RTO and RPO with the targets; list gaps.
+5. Fix gaps or get the DR owner to accept the risk with an expiry.
+6. Schedule the next exercise and record results.
 
-Deliverables: recovery plan; restore/failover execution log; integrity and application validation; RTO/RPO gap report
+Deliverables: DR plan and runbook; exercise report with measured RTO and RPO; gap list; risk acceptance
 
-Acceptance: Actual recovery time and data loss are measured. Recovery environment is isolated and access audited. Business owners accept restored data and service state.
+Acceptance: Measured RTO and RPO meet targets or gaps are accepted Runbook worked as written or was corrected Backup restore was verified DR owner approved the result
 
-Validation: Run a timed recovery exercise and compare measured RTO/RPO with approved objectives.
+Validation: DR-owner approval after a recorded exercise.
+
+- manual: restore the latest backup into an isolated environment and time it expect: restore time recorded; data validated
+- manual: compare newest restored record timestamp with the failure time expect: difference is within the RPO
+
+Failure modes:
+- Backups never restored | detect: No restore test record | respond: Run a restore test before approval
+- Runbook outdated | detect: Steps fail during exercise | respond: Update and rerun
+- RTO exceeded | detect: Measured time above target | respond: Improve or formally accept the gap
+
+ILLUSTRATIVE: A regional failover exercise restores the database in 18 minutes with 40 seconds of data loss against targets of 30 minutes and 5 minutes; one runbook step is corrected.
+
 Gate: 12-148. Approval: dr-owner (always)
 
 ## 149
@@ -193,6 +216,7 @@ Deliverables: infrastructure inventory; change record; health/capacity/cost evid
 Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
 
 Validation: Cloud operations and security review.
+
 Gate: 12-149. Approval: none required
 
 ## 150
@@ -211,6 +235,7 @@ Deliverables: SBOM; vulnerability and license disposition; dependency update dif
 Acceptance: All shipped components have known versions and license status. Critical exposure is fixed or formally accepted. Packaged artifact matches scanned dependency tree.
 
 Validation: Compare lockfile and packaged SBOM, then verify the resolved version and notices.
+
 Gate: 12-150. Approval: none required
 
 ## 151
@@ -229,6 +254,7 @@ Deliverables: profile report; optimization change; cache policy; before/after be
 Acceptance: Improvement is measured against baseline. Correctness and freshness invariants hold. No unbounded memory or stale-data risk is introduced.
 
 Validation: Performance and correctness regression review.
+
 Gate: 12-151. Approval: finops-owner (when resizing, deleting or committing spend on billing-sensitive resources)
 
 ## 152
@@ -247,4 +273,5 @@ Deliverables: infrastructure inventory; change record; health/capacity/cost evid
 Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
 
 Validation: Cloud operations and security review.
+
 Gate: 12-152. Approval: none required

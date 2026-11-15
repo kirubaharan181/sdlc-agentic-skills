@@ -1,0 +1,65 @@
+{
+  "stage_id": 184,
+  "purpose": "make sure each person and system has only the access it needs, and that access is reviewed and removable",
+  "entry_criteria": [
+    "Systems in scope and their access owners are listed",
+    "Current access export can be obtained from each system",
+    "Access policy defines roles and review cadence"
+  ],
+  "inputs": [
+    "access export per system",
+    "role and entitlement definitions",
+    "joiner-mover-leaver records",
+    "access policy"
+  ],
+  "procedure": [
+    "Export current entitlements per system and map each account to a named person or service owner.",
+    "Compare entitlements with the role definitions; flag excess, dormant and orphaned accounts.",
+    "Send each access owner their list for confirm or revoke; set a deadline.",
+    "Apply revocations through the normal change path; keep the ticket id for each.",
+    "Verify by re-export that revoked access is gone.",
+    "Record completion, exceptions with expiry, and the next review date; access-owner approves."
+  ],
+  "deliverables": [
+    "access review report",
+    "revocation tickets",
+    "exception register",
+    "post-review export"
+  ],
+  "acceptance_criteria": [
+    "Every account has an owner and a role justification",
+    "Dormant and orphaned accounts are removed or excepted",
+    "Re-export confirms revocations",
+    "Next review is scheduled"
+  ],
+  "validation_method": "Access-owner approval plus re-export comparison.",
+  "validation": [
+    {
+      "command": "diff <(sort before.csv) <(sort after.csv)",
+      "expect": "only the requested revocations appear as removed lines; no additions"
+    },
+    {
+      "command": "grep -c ',dormant,' reports/access-review.csv   # example",
+      "expect": "zero without an exception id"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Owner confirms everything without looking",
+      "detection": "Zero changes across a large population",
+      "response": "Sample-check entitlements against role definitions"
+    },
+    {
+      "mode": "Revocation requested but not applied",
+      "detection": "Re-export still lists the access",
+      "response": "Reopen ticket; BLOCK completion"
+    },
+    {
+      "mode": "Service accounts have no owner",
+      "detection": "Owner column empty",
+      "response": "Assign an owner or disable the account"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A quarterly review of the deployment tool finds two departed contractors with admin rights and one service account with no owner. Admin rights are revoked, the service account is assigned to the platform team, and re-export confirms it.",
+  "status": "complete"
+}

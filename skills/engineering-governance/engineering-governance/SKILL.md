@@ -29,7 +29,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 47 | Development Environment | stub | Platform Engineer |
 | 48 | Coding Standards | stub | Engineering Governance Specialist |
 | 49 | Environment Configuration | stub | DevOps Engineer |
-| 50 | Secrets Management | stub | DevSecOps Engineer |
+| 50 | Secrets Management | complete | DevSecOps Engineer |
 | 51 | Developer Documentation | stub | Documentation Engineer |
 | 52 | Engineering Governance | stub | Engineering Governance Specialist |
 

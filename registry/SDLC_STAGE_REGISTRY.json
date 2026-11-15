@@ -2504,37 +2504,8 @@
       "skills": [
         "engineering-governance"
       ],
-      "inputs": [
-        "repository ownership and team model",
-        "language/runtime and build manifests",
-        "security and contribution policy"
-      ],
-      "outputs": [
-        "secrets-management-deliverable",
-        "repository policy",
-        "setup instructions"
-      ],
       "quality_gate": "05-050",
       "approval_required": true,
-      "validation_method": "Repository owner and security review.",
-      "purpose": "establish a secure and reproducible engineering workspace",
-      "execution_instructions": [
-        "Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.",
-        "Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.",
-        "Keep credentials out of source; use approved secret storage and least-privilege access.",
-        "Add onboarding and contribution guidance, then validate from a clean checkout."
-      ],
-      "deliverable_artifacts": [
-        "repository policy",
-        "setup instructions",
-        "branch protection/check evidence",
-        "secret handling guide"
-      ],
-      "quality_criteria": [
-        "A clean contributor can reproduce setup.",
-        "Protected branches require review and checks.",
-        "No secret value is committed."
-      ],
       "approval_rationale": "Rotating or revoking production secrets can cause outages and is hard to undo; a human must confirm timing and blast radius.",
       "raci": {
         "accountable": "devsecops-engineer",
@@ -3490,36 +3461,7 @@
       "skills": [
         "code-review-quality"
       ],
-      "inputs": [
-        "diff and target branch",
-        "coding/architecture standards",
-        "test, dependency and static-analysis evidence"
-      ],
-      "outputs": [
-        "peer-code-review-deliverable",
-        "review report",
-        "static/dependency findings"
-      ],
       "quality_gate": "07-069",
-      "validation_method": "Independent reviewer confirms findings and disposition.",
-      "purpose": "independently inspect code quality and maintainability risks",
-      "execution_instructions": [
-        "Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.",
-        "Inspect static findings and dependency provenance, severity, reachability and license obligations.",
-        "Assess test coverage quality and identify untested critical branches rather than relying only on percentage.",
-        "Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions."
-      ],
-      "deliverable_artifacts": [
-        "review report",
-        "static/dependency findings",
-        "coverage interpretation",
-        "technical debt actions"
-      ],
-      "quality_criteria": [
-        "Findings are reproducible and tied to exact commit.",
-        "False positives and accepted debt have rationale and owner.",
-        "Critical paths have meaningful assertions."
-      ],
       "raci": {
         "accountable": "code-reviewer",
         "responsible": [],
@@ -3900,39 +3842,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "test-strategy-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-077",
-      "validation_method": "Independent QA review and acceptance decision. Review coverage against top user and failure scenarios.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Select risk-based test levels and map each critical product risk to an oracle and accountable test owner."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "risk-to-test coverage matrix"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Every high-impact risk has an explicit test level and measurable exit condition."
-      ],
       "raci": {
         "accountable": "qa-lead",
         "responsible": [
@@ -4009,39 +3919,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "unit-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-079",
-      "validation_method": "Independent QA review and acceptance decision. Run focused unit suite and inspect assertion quality.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Isolate pure logic with deterministic fixtures and cover boundaries, invariants and failure results."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "unit test suite and boundary assertions"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Tests fail when behavior breaks and do not depend on external services."
-      ],
       "raci": {
         "accountable": "unit-testing-specialist",
         "responsible": [
@@ -4063,39 +3941,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "integration-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-080",
-      "validation_method": "Independent QA review and acceptance decision. Run integration suite with dependency health and cleanup evidence.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Verify service, database, queue and adapter contracts with isolated dependencies."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "integration contract report and environment setup"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Partial failures, retries, transaction boundaries and schema compatibility are exercised."
-      ],
       "raci": {
         "accountable": "integration-testing-specialist",
         "responsible": [
@@ -5028,36 +4874,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "system/data-flow diagrams",
-        "assets, actors and trust boundaries",
-        "security assumptions"
-      ],
-      "outputs": [
-        "threat-modeling-deliverable",
-        "threat model",
-        "abuse-case catalogue"
-      ],
       "quality_gate": "09-098",
-      "validation_method": "Independent security design review.",
-      "purpose": "identify abuse paths and prioritize security treatment",
-      "execution_instructions": [
-        "Inventory entry points, identities, privileged operations and sensitive data.",
-        "Enumerate threats/abuse cases using a repeatable taxonomy and attacker capability.",
-        "Rate likelihood/impact and map mitigations to design controls and tests.",
-        "Track accepted residual risks with owner, expiry and monitoring trigger."
-      ],
-      "deliverable_artifacts": [
-        "threat model",
-        "abuse-case catalogue",
-        "mitigation matrix",
-        "residual risk log"
-      ],
-      "quality_criteria": [
-        "High-impact trust-boundary threats are addressed.",
-        "Mitigations are testable.",
-        "Accepted risk is authorized and time-bound."
-      ],
       "raci": {
         "accountable": "security-architect",
         "responsible": [
@@ -5080,35 +4897,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "source revision and language coverage",
-        "scanner configuration and severity policy",
-        "threat model and reachable entry points"
-      ],
-      "outputs": [
-        "sast-deliverable",
-        "SAST report",
-        "validated source-to-sink findings"
-      ],
       "quality_gate": "09-099",
-      "validation_method": "Trace a high-severity taint finding to the trust boundary and verify the fix with a regression test.",
-      "purpose": "identify exploitable source-code weaknesses before runtime",
-      "execution_instructions": [
-        "Run configured static analysis on the exact source revision and include generated/critical code according to policy.",
-        "Trace high-impact findings from source to sink and assess reachability and sanitization.",
-        "Triage false positives with evidence and assign remediation owners and SLAs.",
-        "Retest the fixed revision and add regression coverage for the vulnerable path."
-      ],
-      "deliverable_artifacts": [
-        "SAST report",
-        "validated source-to-sink findings",
-        "remediation and retest evidence"
-      ],
-      "quality_criteria": [
-        "Findings identify file/line and reachable path.",
-        "Suppressions have rationale and expiry.",
-        "Critical findings are retested after fix."
-      ],
       "raci": {
         "accountable": "devsecops-engineer",
         "responsible": [
@@ -5130,35 +4919,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "written target scope and time window",
-        "test account and safe data",
-        "running build and rules of engagement"
-      ],
-      "outputs": [
-        "dast-deliverable",
-        "DAST scan report",
-        "validated runtime findings"
-      ],
       "quality_gate": "09-100",
-      "validation_method": "Run only the approved test paths and manually confirm the highest-risk finding before assigning severity.",
-      "purpose": "validate runtime attack surface within explicit authorization",
-      "execution_instructions": [
-        "Confirm ownership, target list, exclusions, rate limits and stop conditions before scanning.",
-        "Exercise approved runtime paths for injection, authentication/session and security-header weaknesses.",
-        "Manually validate high-severity results without destructive payloads or unnecessary data access.",
-        "Record exact build/environment, reproduction and remediation; retest the fixed build."
-      ],
-      "deliverable_artifacts": [
-        "DAST scan report",
-        "validated runtime findings",
-        "rules-of-engagement and retest record"
-      ],
-      "quality_criteria": [
-        "All active tests remain in written scope.",
-        "Findings are reproducible against the named build.",
-        "No destructive or unnecessary data access occurs."
-      ],
       "raci": {
         "accountable": "devsecops-engineer",
         "responsible": [
@@ -5180,36 +4941,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "resolved lockfiles and packaged artifact",
-        "SBOM and advisory feeds",
-        "license policy and runtime exposure"
-      ],
-      "outputs": [
-        "sca-deliverable",
-        "SBOM",
-        "vulnerability and license disposition"
-      ],
       "quality_gate": "09-101",
-      "validation_method": "Compare lockfile and packaged SBOM, then verify the resolved version and notices.",
-      "purpose": "assess dependency vulnerabilities and license obligations",
-      "execution_instructions": [
-        "Generate inventory from resolved direct and transitive dependencies.",
-        "Match versions to advisories and assess reachability, exploitability and vendor support.",
-        "Review license compatibility, provenance and required notices.",
-        "Upgrade or replace affected components, rerun regression/security checks and compare SBOM."
-      ],
-      "deliverable_artifacts": [
-        "SBOM",
-        "vulnerability and license disposition",
-        "dependency update diff",
-        "retest report"
-      ],
-      "quality_criteria": [
-        "All shipped components have known versions and license status.",
-        "Critical exposure is fixed or formally accepted.",
-        "Packaged artifact matches scanned dependency tree."
-      ],
       "raci": {
         "accountable": "devsecops-engineer",
         "responsible": [
@@ -5639,36 +5371,8 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "threat model and asset scope",
-        "scan findings and remediation evidence",
-        "risk acceptance authority and exception expiry"
-      ],
-      "outputs": [
-        "security-sign-off-deliverable",
-        "security gate report",
-        "finding disposition and retest links"
-      ],
       "quality_gate": "09-110",
       "approval_required": true,
-      "validation_method": "Re-fetch the candidate revision and verify every critical finding disposition before issuing the security decision.",
-      "purpose": "make an independent security release decision from verified evidence",
-      "execution_instructions": [
-        "Review threat coverage, SAST/SCA/DAST/IaC results and the exact candidate revision.",
-        "Verify high-severity findings have independent retest evidence or authorized exception.",
-        "Assess residual risk, compensating controls, exposure and release conditions.",
-        "Record approve, conditional approve or block with named security authority."
-      ],
-      "deliverable_artifacts": [
-        "security gate report",
-        "finding disposition and retest links",
-        "time-bound exception record"
-      ],
-      "quality_criteria": [
-        "No critical unresolved finding is hidden as PASS.",
-        "Reviewer is independent from implementation.",
-        "Exceptions have owner, scope and expiry."
-      ],
       "approval_rationale": "Accepting residual security risk or releasing with open findings is a risk decision that must not be made by the agent that fixed or scanned the code.",
       "raci": {
         "accountable": "security-auditor",
@@ -5692,36 +5396,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "ci-pipeline-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-111",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "raci": {
         "accountable": "devops-engineer",
         "responsible": [
@@ -5997,35 +5672,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "resource requirements and ownership",
-        "state backend and environment",
-        "security and cost policy"
-      ],
-      "outputs": [
-        "infrastructure-as-code-deliverable",
-        "IaC module and plan",
-        "policy/security report"
-      ],
       "quality_gate": "10-117",
-      "validation_method": "Review plan output for destructive actions and prove policy checks fail on an intentionally unsafe fixture.",
-      "purpose": "provision infrastructure through reviewed and policy-checked desired state",
-      "execution_instructions": [
-        "Model resources in reusable versioned modules with explicit inputs and outputs.",
-        "Run formatting, validation, security/policy checks and plan against the target workspace.",
-        "Review destructive changes, IAM, network exposure, state locking, quotas and cost.",
-        "Apply only after approval, then detect drift and verify actual state."
-      ],
-      "deliverable_artifacts": [
-        "IaC module and plan",
-        "policy/security report",
-        "apply and drift evidence"
-      ],
-      "quality_criteria": [
-        "Plan is reviewed before apply.",
-        "State is protected and changes are scoped.",
-        "Actual resources match approved desired state."
-      ],
       "approval_required": true,
       "approval_rationale": "Applying IaC that deletes resources or changes IAM can destroy data or widen access; a human owner must review the plan output before apply.",
       "raci": {
@@ -6566,35 +6213,7 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "candidate digest and scope",
-        "test/security/operations evidence",
-        "migration, backup and rollback plan"
-      ],
-      "outputs": [
-        "release-readiness-deliverable",
-        "release readiness checklist",
-        "artifact provenance"
-      ],
       "quality_gate": "11-128",
-      "validation_method": "Re-fetch candidate digest and verify readiness evidence before requesting change approval.",
-      "purpose": "decide whether an immutable candidate is safe to promote",
-      "execution_instructions": [
-        "Verify artifact provenance, required checks, open defects and change scope.",
-        "Review migration compatibility, backup freshness, monitoring, runbooks and support readiness.",
-        "Check approvals, operator coverage, communication and stop/rollback thresholds.",
-        "Record go/no-go with conditions and named authority."
-      ],
-      "deliverable_artifacts": [
-        "release readiness checklist",
-        "artifact provenance",
-        "risk and approval record"
-      ],
-      "quality_criteria": [
-        "Evidence refers to the exact candidate digest.",
-        "All critical blockers are closed or authorized exceptions.",
-        "Operational ownership and recovery are ready."
-      ],
       "raci": {
         "accountable": "release-manager",
         "responsible": [
@@ -6617,36 +6236,8 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "decision request and accountable sponsor",
-        "impact/risk assessment",
-        "supporting evidence and alternatives"
-      ],
-      "outputs": [
-        "change-approval-deliverable",
-        "decision record",
-        "evidence index"
-      ],
       "quality_gate": "11-129",
       "approval_required": true,
-      "validation_method": "Independent approval record and audit trail.",
-      "purpose": "prepare a controlled decision with sufficient evidence and independent authority",
-      "execution_instructions": [
-        "Check the decision request is complete, in scope and owned by an authorized requester.",
-        "Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.",
-        "Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.",
-        "Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver."
-      ],
-      "deliverable_artifacts": [
-        "decision record",
-        "evidence index",
-        "conditions and waiver log"
-      ],
-      "quality_criteria": [
-        "Decision authority is verified.",
-        "Conditions are measurable, owned and time-bound.",
-        "No missing or failed critical evidence is silently waived."
-      ],
       "approval_rationale": "Authorizes a production change; segregation of duties requires someone other than the requester to approve.",
       "raci": {
         "accountable": "release-manager",
@@ -6772,37 +6363,8 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "schema consumers and compatibility matrix",
-        "representative data volume and backup policy",
-        "approved migration window and recovery objectives"
-      ],
-      "outputs": [
-        "database-migration-deliverable",
-        "migration plan and scripts",
-        "backup/restore rehearsal report"
-      ],
       "quality_gate": "11-132",
       "approval_required": true,
-      "validation_method": "Rehearse on representative data and reconcile row counts/checksums before approving the production window.",
-      "purpose": "change schema and data with rehearsed recovery and integrity controls",
-      "execution_instructions": [
-        "Inventory schema consumers, write paths, locks, data volume and rolling-version compatibility.",
-        "Design expand/backfill/contract or equivalent safe sequence with pre/post integrity checks.",
-        "Rehearse backup and isolated restore; measure RPO/RTO and migration duration.",
-        "Execute only after approval, reconcile counts/checksums and monitor application behavior."
-      ],
-      "deliverable_artifacts": [
-        "migration plan and scripts",
-        "backup/restore rehearsal report",
-        "compatibility matrix",
-        "data reconciliation evidence"
-      ],
-      "quality_criteria": [
-        "Restore is proven before production execution.",
-        "No unexplained data loss or incompatible consumer remains.",
-        "Rollback/forward-fix and stop conditions are approved."
-      ],
       "approval_rationale": "Production schema or data changes can be irreversible and cause data loss; a DBA owner must confirm backup, dry run and rollback.",
       "raci": {
         "accountable": "database-administrator",
@@ -6826,37 +6388,8 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "release candidate digest and scope",
-        "change approvals and readiness evidence",
-        "rollback/recovery and communication plan"
-      ],
-      "outputs": [
-        "production-deployment-deliverable",
-        "release manifest",
-        "readiness checklist"
-      ],
       "quality_gate": "11-133",
       "approval_required": true,
-      "validation_method": "Change authority approval and post-deploy verification.",
-      "purpose": "prepare and execute a controlled release or migration",
-      "execution_instructions": [
-        "Confirm immutable candidate, included changes, compatibility and outstanding risk.",
-        "Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.",
-        "Obtain change authority and communicate schedule, impact, owners and stop conditions.",
-        "Deploy progressively, verify health and business signals, then confirm or execute recovery."
-      ],
-      "deliverable_artifacts": [
-        "release manifest",
-        "readiness checklist",
-        "deployment and migration evidence",
-        "post-deploy verification"
-      ],
-      "quality_criteria": [
-        "Deployed digest matches approved candidate.",
-        "Migration and recovery are rehearsed.",
-        "Stop/rollback thresholds and authority are explicit."
-      ],
       "approval_rationale": "Changes customer-facing systems; an authorized human must approve the exact artifact version and window.",
       "raci": {
         "accountable": "deployment-engineer",
@@ -7030,36 +6563,7 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "release and migration design",
-        "data compatibility and irreversible side-effect inventory",
-        "rollback authority and recovery window"
-      ],
-      "outputs": [
-        "rollback-planning-deliverable",
-        "rollback decision tree",
-        "recovery runbook"
-      ],
       "quality_gate": "11-137",
-      "validation_method": "Walk through a failed release including schema changes and demonstrate the chosen recovery path.",
-      "purpose": "select a safe recovery path before a release changes production state",
-      "execution_instructions": [
-        "Define measurable rollback triggers from customer-facing health and business signals.",
-        "Assess schema compatibility, writes after release, queued events and irreversible side effects.",
-        "Choose rollback, forward-fix or compensation path and identify operator/approver.",
-        "Rehearse the recovery sequence and verify data reconciliation and communication."
-      ],
-      "deliverable_artifacts": [
-        "rollback decision tree",
-        "recovery runbook",
-        "data-state compatibility assessment",
-        "rehearsal evidence"
-      ],
-      "quality_criteria": [
-        "Recovery does not corrupt or silently discard committed data.",
-        "Trigger, approver and operator are named.",
-        "Rehearsal proves recovery within the agreed window."
-      ],
       "raci": {
         "accountable": "release-manager",
         "responsible": [
@@ -7082,36 +6586,7 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "release candidate digest and scope",
-        "change approvals and readiness evidence",
-        "rollback/recovery and communication plan"
-      ],
-      "outputs": [
-        "production-smoke-test-deliverable",
-        "release manifest",
-        "readiness checklist"
-      ],
       "quality_gate": "11-138",
-      "validation_method": "Change authority approval and post-deploy verification.",
-      "purpose": "prepare and execute a controlled release or migration",
-      "execution_instructions": [
-        "Confirm immutable candidate, included changes, compatibility and outstanding risk.",
-        "Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.",
-        "Obtain change authority and communicate schedule, impact, owners and stop conditions.",
-        "Deploy progressively, verify health and business signals, then confirm or execute recovery."
-      ],
-      "deliverable_artifacts": [
-        "release manifest",
-        "readiness checklist",
-        "deployment and migration evidence",
-        "post-deploy verification"
-      ],
-      "quality_criteria": [
-        "Deployed digest matches approved candidate.",
-        "Migration and recovery are rehearsed.",
-        "Stop/rollback thresholds and authority are explicit."
-      ],
       "raci": {
         "accountable": "sre",
         "responsible": [
@@ -7585,37 +7060,8 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "business impact analysis and service dependencies",
-        "approved RTO/RPO and recovery runbooks",
-        "isolated recovery credentials and backup inventory"
-      ],
-      "outputs": [
-        "disaster-recovery-deliverable",
-        "recovery plan",
-        "restore/failover execution log"
-      ],
       "quality_gate": "12-148",
       "approval_required": true,
-      "validation_method": "Run a timed recovery exercise and compare measured RTO/RPO with approved objectives.",
-      "purpose": "restore critical services within approved recovery objectives",
-      "execution_instructions": [
-        "Confirm business-approved RTO/RPO for each critical service and data set.",
-        "Prepare an isolated recovery environment with scoped credentials and network boundaries.",
-        "Restore or fail over in dependency order and capture actual recovery time and replication position.",
-        "Validate data integrity and user-facing journeys before reopening traffic; record gaps."
-      ],
-      "deliverable_artifacts": [
-        "recovery plan",
-        "restore/failover execution log",
-        "integrity and application validation",
-        "RTO/RPO gap report"
-      ],
-      "quality_criteria": [
-        "Actual recovery time and data loss are measured.",
-        "Recovery environment is isolated and access audited.",
-        "Business owners accept restored data and service state."
-      ],
       "approval_rationale": "Failover or restore actions can cause downtime or data loss and are a business decision; the DR owner must authorize execution.",
       "raci": {
         "accountable": "sre",
@@ -8106,36 +7552,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "service map and critical user journeys",
-        "SLO and alert thresholds",
-        "telemetry and privacy requirements"
-      ],
-      "outputs": [
-        "alert-management-deliverable",
-        "telemetry specification",
-        "dashboards and alerts"
-      ],
       "quality_gate": "13-158",
-      "validation_method": "SRE review and alert simulation.",
-      "purpose": "provide actionable observability and service-level control",
-      "execution_instructions": [
-        "Instrument golden signals and key business transactions with stable service/environment labels.",
-        "Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.",
-        "Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.",
-        "Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts."
-      ],
-      "deliverable_artifacts": [
-        "telemetry specification",
-        "dashboards and alerts",
-        "SLO/error-budget report",
-        "runbook links"
-      ],
-      "quality_criteria": [
-        "Signals support diagnosis and customer impact assessment.",
-        "Alerts have owner and action.",
-        "SLOs are measurable and privacy-safe."
-      ],
       "raci": {
         "accountable": "sre",
         "responsible": [
@@ -8208,36 +7625,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "service map and critical user journeys",
-        "SLO and alert thresholds",
-        "telemetry and privacy requirements"
-      ],
-      "outputs": [
-        "sla-slo-management-deliverable",
-        "telemetry specification",
-        "dashboards and alerts"
-      ],
       "quality_gate": "13-160",
-      "validation_method": "SRE review and alert simulation.",
-      "purpose": "provide actionable observability and service-level control",
-      "execution_instructions": [
-        "Instrument golden signals and key business transactions with stable service/environment labels.",
-        "Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.",
-        "Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.",
-        "Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts."
-      ],
-      "deliverable_artifacts": [
-        "telemetry specification",
-        "dashboards and alerts",
-        "SLO/error-budget report",
-        "runbook links"
-      ],
-      "quality_criteria": [
-        "Signals support diagnosis and customer impact assessment.",
-        "Alerts have owner and action.",
-        "SLOs are measurable and privacy-safe."
-      ],
       "raci": {
         "accountable": "sre",
         "responsible": [
@@ -8362,36 +7750,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "incident signals and timeline",
-        "severity and command policy",
-        "service dependency and recovery data"
-      ],
-      "outputs": [
-        "incident-response-deliverable",
-        "incident timeline",
-        "impact statement"
-      ],
       "quality_gate": "13-163",
-      "validation_method": "Incident commander and service owner review.",
-      "purpose": "restore service and convert failure evidence into prevention",
-      "execution_instructions": [
-        "Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.",
-        "Assess customer impact and contain safely before attempting speculative fixes.",
-        "Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.",
-        "Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates."
-      ],
-      "deliverable_artifacts": [
-        "incident timeline",
-        "impact statement",
-        "recovery verification",
-        "postmortem and action register"
-      ],
-      "quality_criteria": [
-        "Customer impact and recovery time are evidence-backed.",
-        "Containment does not destroy forensic evidence unnecessarily.",
-        "Actions are measurable and tracked to closure."
-      ],
       "raci": {
         "accountable": "incident-manager",
         "responsible": [
@@ -8414,36 +7773,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "incident signals and timeline",
-        "severity and command policy",
-        "service dependency and recovery data"
-      ],
-      "outputs": [
-        "root-cause-analysis-deliverable",
-        "incident timeline",
-        "impact statement"
-      ],
       "quality_gate": "13-164",
-      "validation_method": "Incident commander and service owner review.",
-      "purpose": "restore service and convert failure evidence into prevention",
-      "execution_instructions": [
-        "Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.",
-        "Assess customer impact and contain safely before attempting speculative fixes.",
-        "Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.",
-        "Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates."
-      ],
-      "deliverable_artifacts": [
-        "incident timeline",
-        "impact statement",
-        "recovery verification",
-        "postmortem and action register"
-      ],
-      "quality_criteria": [
-        "Customer impact and recovery time are evidence-backed.",
-        "Containment does not destroy forensic evidence unnecessarily.",
-        "Actions are measurable and tracked to closure."
-      ],
       "raci": {
         "accountable": "sre",
         "responsible": [
@@ -8466,36 +7796,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "incident signals and timeline",
-        "severity and command policy",
-        "service dependency and recovery data"
-      ],
-      "outputs": [
-        "postmortem-deliverable",
-        "incident timeline",
-        "impact statement"
-      ],
       "quality_gate": "13-165",
-      "validation_method": "Incident commander and service owner review.",
-      "purpose": "restore service and convert failure evidence into prevention",
-      "execution_instructions": [
-        "Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.",
-        "Assess customer impact and contain safely before attempting speculative fixes.",
-        "Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.",
-        "Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates."
-      ],
-      "deliverable_artifacts": [
-        "incident timeline",
-        "impact statement",
-        "recovery verification",
-        "postmortem and action register"
-      ],
-      "quality_criteria": [
-        "Customer impact and recovery time are evidence-backed.",
-        "Containment does not destroy forensic evidence unnecessarily.",
-        "Actions are measurable and tracked to closure."
-      ],
       "raci": {
         "accountable": "incident-manager",
         "responsible": [
@@ -9445,37 +8746,8 @@
       "skills": [
         "enterprise-governance"
       ],
-      "inputs": [
-        "identity inventory and role model",
-        "joiner/mover/leaver events",
-        "privileged access policy"
-      ],
-      "outputs": [
-        "access-governance-deliverable",
-        "role/access matrix",
-        "access review samples"
-      ],
       "quality_gate": "15-184",
       "approval_required": true,
-      "validation_method": "Independent access recertification audit.",
-      "purpose": "govern identity lifecycle and privileged access",
-      "execution_instructions": [
-        "Review role definitions, segregation conflicts and least-privilege mappings.",
-        "Sample access grants, changes, recertifications and removals against approvals.",
-        "Identify dormant, orphaned, excessive and shared privileged accounts.",
-        "Track remediation and verify timely revocation and periodic recertification."
-      ],
-      "deliverable_artifacts": [
-        "role/access matrix",
-        "access review samples",
-        "SoD conflict register",
-        "remediation evidence"
-      ],
-      "quality_criteria": [
-        "Every privileged grant has owner and approval.",
-        "Leaver access is removed within policy SLA.",
-        "Exceptions have expiry and compensating control."
-      ],
       "approval_rationale": "Granting, widening or revoking privileged access, including break-glass, affects security and operations; the access owner must decide.",
       "raci": {
         "accountable": "compliance-specialist",

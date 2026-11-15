@@ -27,24 +27,40 @@ Deliverables: pull request description; linked issue; test evidence; risk and mi
 Acceptance: Diff contains only intended changes. Evidence is from the PR head commit. Required reviewers and checks are requested.
 
 Validation: PR checklist and diff review.
+
 Gate: 07-068. Approval: none required
 
 ## 69
-**Peer Code Review** (stub). Purpose: independently inspect code quality and maintainability risks.
+**Peer Code Review** (complete). Purpose: have an independent person judge whether a change is correct, safe and maintainable before it merges.
 
-Inputs: diff and target branch; coding/architecture standards; test, dependency and static-analysis evidence
+Entry criteria: Change is small enough to review (split otherwise) and linked to a work item; CI checks for the change have finished; Reviewer is not the author
+
+Inputs: diff against the target branch; linked work item and acceptance criteria; CI results; coding and architecture standards
 
 Procedure:
-1. Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
-2. Inspect static findings and dependency provenance, severity, reachability and license obligations.
-3. Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
-4. Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
+1. Read the description and acceptance criteria first, then the diff; confirm the change matches the stated intent.
+2. Check behavior: edge cases, error paths, concurrency, data handling and backward compatibility.
+3. Check tests: do they fail without the change, and do they assert behavior rather than implementation details.
+4. Check security and privacy: input validation, authorization, secrets, logging of sensitive data.
+5. Write findings with file and line, impact and a suggested fix; label each blocker or suggestion.
+6. Re-review the author's fixes and approve only when all blockers are resolved.
 
-Deliverables: review report; static/dependency findings; coverage interpretation; technical debt actions
+Deliverables: review comments with severity labels; approval or change-request decision; list of deferred items with issue links
 
-Acceptance: Findings are reproducible and tied to exact commit. False positives and accepted debt have rationale and owner. Critical paths have meaningful assertions.
+Acceptance: All blocker comments are resolved or explicitly deferred with an issue Reviewer ran or read the tests that cover the change Approval is on the final commit, not an earlier one Reviewer is independent of the author
 
-Validation: Independent reviewer confirms findings and disposition.
+Validation: Approval recorded against the exact head commit.
+
+- `git diff --stat origin/main...HEAD` expect: diff size matches what the reviewer was asked to review
+- `gh pr view --json reviewDecision,headRefOid` expect: reviewDecision is APPROVED and headRefOid equals the commit reviewed
+
+Failure modes:
+- Rubber-stamp approval | detect: Approval with no comments on a large risky diff | respond: Request a second reviewer for risky areas
+- Approval on an earlier commit | detect: headRefOid differs from the approved commit | respond: Dismiss stale approval and re-review
+- Author approves own change | detect: Reviewer equals author | respond: Reject; assign another reviewer
+
+ILLUSTRATIVE: A change adds a discount code. Review finds the discount can be applied twice by retrying the request (blocker) and a missing test for negative totals (suggestion). The author adds an idempotency check and test; the reviewer approves the new commit.
+
 Gate: 07-069. Approval: none required
 
 ## 70
@@ -63,6 +79,7 @@ Deliverables: architecture review report; decision and exception log; remediatio
 Acceptance: Findings cite model element and impact. Reviewer independence is preserved. Exceptions have owner and expiry.
 
 Validation: Independent architecture board decision.
+
 Gate: 07-070. Approval: none required
 
 ## 71
@@ -81,6 +98,7 @@ Deliverables: review report; static/dependency findings; coverage interpretation
 Acceptance: Findings are reproducible and tied to exact commit. False positives and accepted debt have rationale and owner. Critical paths have meaningful assertions.
 
 Validation: Independent reviewer confirms findings and disposition.
+
 Gate: 07-071. Approval: none required
 
 ## 72
@@ -99,6 +117,7 @@ Deliverables: review report; static/dependency findings; coverage interpretation
 Acceptance: Findings are reproducible and tied to exact commit. False positives and accepted debt have rationale and owner. Critical paths have meaningful assertions.
 
 Validation: Independent reviewer confirms findings and disposition.
+
 Gate: 07-072. Approval: none required
 
 ## 73
@@ -117,6 +136,7 @@ Deliverables: review report; static/dependency findings; coverage interpretation
 Acceptance: Findings are reproducible and tied to exact commit. False positives and accepted debt have rationale and owner. Critical paths have meaningful assertions.
 
 Validation: Independent reviewer confirms findings and disposition.
+
 Gate: 07-073. Approval: none required
 
 ## 74
@@ -135,6 +155,7 @@ Deliverables: review report; static/dependency findings; coverage interpretation
 Acceptance: Findings are reproducible and tied to exact commit. False positives and accepted debt have rationale and owner. Critical paths have meaningful assertions.
 
 Validation: Independent reviewer confirms findings and disposition.
+
 Gate: 07-074. Approval: none required
 
 ## 75
@@ -153,6 +174,7 @@ Deliverables: decision record; evidence index; conditions and waiver log
 Acceptance: Decision authority is verified. Conditions are measurable, owned and time-bound. No missing or failed critical evidence is silently waived.
 
 Validation: Independent approval record and audit trail.
+
 Gate: 07-075. Approval: code-owner (always)
 
 ## 76
@@ -171,4 +193,5 @@ Deliverables: review report; static/dependency findings; coverage interpretation
 Acceptance: Findings are reproducible and tied to exact commit. False positives and accepted debt have rationale and owner. Critical paths have meaningful assertions.
 
 Validation: Independent reviewer confirms findings and disposition.
+
 Gate: 07-076. Approval: none required

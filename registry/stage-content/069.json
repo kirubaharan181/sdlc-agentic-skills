@@ -1,0 +1,64 @@
+{
+  "stage_id": 69,
+  "purpose": "have an independent person judge whether a change is correct, safe and maintainable before it merges",
+  "entry_criteria": [
+    "Change is small enough to review (split otherwise) and linked to a work item",
+    "CI checks for the change have finished",
+    "Reviewer is not the author"
+  ],
+  "inputs": [
+    "diff against the target branch",
+    "linked work item and acceptance criteria",
+    "CI results",
+    "coding and architecture standards"
+  ],
+  "procedure": [
+    "Read the description and acceptance criteria first, then the diff; confirm the change matches the stated intent.",
+    "Check behavior: edge cases, error paths, concurrency, data handling and backward compatibility.",
+    "Check tests: do they fail without the change, and do they assert behavior rather than implementation details.",
+    "Check security and privacy: input validation, authorization, secrets, logging of sensitive data.",
+    "Write findings with file and line, impact and a suggested fix; label each blocker or suggestion.",
+    "Re-review the author's fixes and approve only when all blockers are resolved."
+  ],
+  "deliverables": [
+    "review comments with severity labels",
+    "approval or change-request decision",
+    "list of deferred items with issue links"
+  ],
+  "acceptance_criteria": [
+    "All blocker comments are resolved or explicitly deferred with an issue",
+    "Reviewer ran or read the tests that cover the change",
+    "Approval is on the final commit, not an earlier one",
+    "Reviewer is independent of the author"
+  ],
+  "validation_method": "Approval recorded against the exact head commit.",
+  "validation": [
+    {
+      "command": "git diff --stat origin/main...HEAD",
+      "expect": "diff size matches what the reviewer was asked to review"
+    },
+    {
+      "command": "gh pr view --json reviewDecision,headRefOid",
+      "expect": "reviewDecision is APPROVED and headRefOid equals the commit reviewed"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Rubber-stamp approval",
+      "detection": "Approval with no comments on a large risky diff",
+      "response": "Request a second reviewer for risky areas"
+    },
+    {
+      "mode": "Approval on an earlier commit",
+      "detection": "headRefOid differs from the approved commit",
+      "response": "Dismiss stale approval and re-review"
+    },
+    {
+      "mode": "Author approves own change",
+      "detection": "Reviewer equals author",
+      "response": "Reject; assign another reviewer"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A change adds a discount code. Review finds the discount can be applied twice by retrying the request (blocker) and a missing test for negative totals (suggestion). The author adds an idempotency check and test; the reviewer approves the new commit.",
+  "status": "complete"
+}

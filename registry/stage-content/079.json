@@ -1,0 +1,65 @@
+{
+  "stage_id": 79,
+  "purpose": "prove each unit of logic behaves correctly in isolation and keep that proof fast and trustworthy",
+  "entry_criteria": [
+    "Code under test builds locally and in CI",
+    "Unit boundaries and seams for isolating dependencies exist",
+    "Test framework is chosen by the repository"
+  ],
+  "inputs": [
+    "code under test",
+    "acceptance criteria and edge cases",
+    "test framework and conventions",
+    "coverage baseline"
+  ],
+  "procedure": [
+    "List behaviors per unit, including boundaries, invalid input and error paths.",
+    "Write tests that isolate external dependencies with fakes or stubs, one behavior per test, with descriptive names.",
+    "Run tests and confirm each new test fails when the behavior is broken (mutate the code or revert the fix).",
+    "Remove time, randomness and ordering dependence so tests are deterministic.",
+    "Run the whole unit suite in CI and record counts, duration and coverage change.",
+    "Report skipped or quarantined tests with owner and reason."
+  ],
+  "deliverables": [
+    "unit test files",
+    "test run report",
+    "coverage report with change",
+    "skipped-test list"
+  ],
+  "acceptance_criteria": [
+    "Every new behavior has a test that fails without the change",
+    "Suite is deterministic across three consecutive runs",
+    "No test depends on network, clock or ordering",
+    "Skipped tests are listed with owners"
+  ],
+  "validation_method": "Rerun in CI and compare with the local run.",
+  "validation": [
+    {
+      "command": "pytest -q --maxfail=1 --cov --cov-report=term-missing   # example for Python; use the project's runner",
+      "expect": "exit 0; failed 0; coverage not below baseline"
+    },
+    {
+      "command": "for i in 1 2 3; do pytest -q -p no:randomly || break; done",
+      "expect": "three green runs in a row"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Tests pass but assert nothing",
+      "detection": "Mutating the code leaves tests green",
+      "response": "Strengthen assertions; mark stage FAIL until mutation is caught"
+    },
+    {
+      "mode": "Flaky test",
+      "detection": "Intermittent failure across reruns",
+      "response": "Fix or quarantine with owner and expiry; do not retry-until-green"
+    },
+    {
+      "mode": "Coverage met by trivial tests",
+      "detection": "High coverage with weak assertions",
+      "response": "Review assertions on critical paths"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A price-rounding function gets tests for exact cents, half-up cases, negative amounts and zero. Reverting the rounding fix makes two tests fail, which proves they check behavior.",
+  "status": "complete"
+}

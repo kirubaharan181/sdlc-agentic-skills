@@ -18,6 +18,10 @@
 
 </div>
 
+> **Status, measured:** all 190 stages are mapped to roles, skills, gates and workflows, but only **25 of 190 (13%)** have
+> stage-specific, hand-written content (`status: complete`). The other 165 are marked `stub` and contain generated template
+> text. Reproduce with `make build && cat dist/COVERAGE_REPORT.md`. No stage has been exercised by a scenario test yet.
+
 ---
 
 ## ✦ Why this library exists

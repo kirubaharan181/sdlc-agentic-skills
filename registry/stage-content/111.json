@@ -1,0 +1,65 @@
+{
+  "stage_id": 111,
+  "purpose": "turn each commit into a repeatable, trusted build-and-check result that gates merging",
+  "entry_criteria": [
+    "Repository builds from a clean checkout with documented commands",
+    "CI runner and secrets store are available",
+    "Required checks are agreed (build, tests, lint, security scans)"
+  ],
+  "inputs": [
+    "repository and build instructions",
+    "required-check list",
+    "runner and cache configuration",
+    "secret store references"
+  ],
+  "procedure": [
+    "Define the pipeline as code in the repository; pin tool and action versions.",
+    "Run build, unit tests, lint and security scans on every pull request, with least-privilege tokens.",
+    "Cache dependencies by lockfile hash; never cache secrets.",
+    "Publish build artifacts with the commit id and a checksum.",
+    "Protect the default branch: required checks must pass before merge.",
+    "Measure duration and flake rate; investigate regressions."
+  ],
+  "deliverables": [
+    "pipeline definition",
+    "run history",
+    "artifact with checksum",
+    "branch protection settings"
+  ],
+  "acceptance_criteria": [
+    "Pipeline runs on every pull request and on the default branch",
+    "Required checks block merge",
+    "Actions and tools are pinned",
+    "Failed runs show the failing step and logs"
+  ],
+  "validation_method": "A deliberately failing change is blocked from merging.",
+  "validation": [
+    {
+      "command": "gh run list --limit 5 --json conclusion,headSha",
+      "expect": "latest run on the default branch concluded success for the current head"
+    },
+    {
+      "command": "gh api repos/{owner}/{repo}/branches/main/protection --jq .required_status_checks.contexts",
+      "expect": "lists every required check"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Checks are advisory only",
+      "detection": "A failing PR can still be merged",
+      "response": "Enable required status checks"
+    },
+    {
+      "mode": "Unpinned actions or tools",
+      "detection": "Workflow uses moving tags",
+      "response": "Pin to versions or digests"
+    },
+    {
+      "mode": "Secrets exposed to forked PRs",
+      "detection": "Workflow runs with secrets on fork events",
+      "response": "Restrict secrets to trusted events"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A new service gets a workflow that builds, tests and scans on each pull request. A test PR with a failing unit test is blocked from merging until fixed.",
+  "status": "complete"
+}

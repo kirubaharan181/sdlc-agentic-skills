@@ -1,0 +1,65 @@
+{
+  "stage_id": 158,
+  "purpose": "page the right person for conditions that need action, and nobody for anything else",
+  "entry_criteria": [
+    "Service level objectives or critical symptoms are defined",
+    "On-call rota and escalation path exist",
+    "Metrics and logs are available to alert on"
+  ],
+  "inputs": [
+    "SLOs and critical user symptoms",
+    "metrics and log sources",
+    "on-call rota",
+    "runbooks"
+  ],
+  "procedure": [
+    "Choose alerts that reflect user-visible symptoms or SLO burn, not every internal metric.",
+    "For each alert write severity, threshold, evaluation window, owner and a runbook link stating the first action.",
+    "Route by severity: page for urgent user impact, ticket for non-urgent.",
+    "Test each alert by triggering or replaying the condition in a safe environment.",
+    "Review alert volume weekly; remove or retune alerts that fire without action.",
+    "Record every change to alert rules in version control."
+  ],
+  "deliverables": [
+    "alert rule definitions",
+    "runbook per alert",
+    "routing configuration",
+    "alert quality review"
+  ],
+  "acceptance_criteria": [
+    "Every page has an owner and a runbook with a first action",
+    "Each alert was tested at least once",
+    "Pages that required no action are tracked and reduced",
+    "Rules are versioned"
+  ],
+  "validation_method": "Test fire of each alert reaches the on-call person.",
+  "validation": [
+    {
+      "command": "promtool check rules alerts/*.yml   # example for Prometheus rules",
+      "expect": "SUCCESS for every file"
+    },
+    {
+      "check": "trigger the test alert and confirm the on-call device receives it within the target time",
+      "expect": "receipt time recorded"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Alert fatigue",
+      "detection": "More than half of pages need no action",
+      "response": "Retune or delete the alert"
+    },
+    {
+      "mode": "Alert without runbook",
+      "detection": "Runbook link empty",
+      "response": "Block merge of the rule"
+    },
+    {
+      "mode": "Routing sends to a team that no longer exists",
+      "detection": "Test page not received",
+      "response": "Fix routing; retest"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A page for 'error budget burn above 10x over one hour' links to a runbook that starts with checking the latest deployment. A test replay of last week's incident metrics fires the alert.",
+  "status": "complete"
+}

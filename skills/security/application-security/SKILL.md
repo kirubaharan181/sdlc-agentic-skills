@@ -24,10 +24,10 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 98 | Threat Modeling | stub | Security Architect |
-| 99 | SAST | stub | DevSecOps Engineer |
-| 100 | DAST | stub | DevSecOps Engineer |
-| 101 | SCA | stub | DevSecOps Engineer |
+| 98 | Threat Modeling | complete | Security Architect |
+| 99 | SAST | complete | DevSecOps Engineer |
+| 100 | DAST | complete | DevSecOps Engineer |
+| 101 | SCA | complete | DevSecOps Engineer |
 | 102 | Container Security | stub | DevSecOps Engineer |
 | 103 | Infrastructure Security | stub | DevSecOps Engineer |
 | 104 | Penetration Testing | stub | Penetration Testing Specialist |
@@ -36,7 +36,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 107 | Compliance Review | stub | Compliance Specialist |
 | 108 | License Compliance | stub | License Compliance Specialist |
 | 109 | Vulnerability Remediation | stub | Application Security Engineer |
-| 110 | Security Sign-off | stub | Security Auditor |
+| 110 | Security Sign-off | complete | Security Auditor |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

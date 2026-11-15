@@ -1,0 +1,65 @@
+{
+  "stage_id": 77,
+  "purpose": "decide what to test, at which level and to what depth, based on risk, so that release confidence is justified",
+  "entry_criteria": [
+    "Scope and requirements are known",
+    "Risk areas are identified with the product owner",
+    "Environments and test data availability are known"
+  ],
+  "inputs": [
+    "requirements and acceptance criteria",
+    "risk assessment",
+    "architecture overview",
+    "environment and data constraints"
+  ],
+  "procedure": [
+    "List features and quality attributes in scope; rank by business impact and likelihood of failure.",
+    "Choose test levels per risk (unit, integration, contract, end-to-end, performance, security, accessibility) and say what each will not cover.",
+    "Define entry and exit criteria, including pass thresholds and defect severity rules.",
+    "Define environments, data, tools and who owns each activity.",
+    "Map each high risk to at least one planned test; list residual risk accepted.",
+    "Get the strategy reviewed by engineering and the product owner and baseline it."
+  ],
+  "deliverables": [
+    "test strategy document",
+    "risk-to-test matrix",
+    "entry and exit criteria",
+    "accepted-gap list"
+  ],
+  "acceptance_criteria": [
+    "Every high risk maps to a planned test",
+    "Exit criteria are measurable",
+    "Out-of-scope areas are listed with reasons",
+    "Owners and environments are named"
+  ],
+  "validation_method": "Review by engineering lead and product owner.",
+  "validation": [
+    {
+      "check": "trace each high risk in the risk list to a test in the matrix",
+      "expect": "no high risk without a test or an accepted gap"
+    },
+    {
+      "check": "confirm every exit criterion has a number or a yes/no check",
+      "expect": "none are phrased as 'adequate' or 'good enough'"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Strategy lists tools but not risks",
+      "detection": "Risk-to-test matrix missing",
+      "response": "Return to risk ranking"
+    },
+    {
+      "mode": "Exit criteria are vague",
+      "detection": "Criteria contain no threshold",
+      "response": "Rewrite with measurable thresholds"
+    },
+    {
+      "mode": "Only the happy path is planned",
+      "detection": "No negative or failure scenarios in matrix",
+      "response": "Add failure-mode tests for high-risk areas"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A payments feature ranks refund calculation as highest risk. The strategy puts heavy unit and contract testing there, a small set of end-to-end journeys, a load test for peak hour, and records that localization beyond two currencies is out of scope.",
+  "status": "complete"
+}

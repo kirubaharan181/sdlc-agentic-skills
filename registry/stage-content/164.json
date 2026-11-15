@@ -1,0 +1,65 @@
+{
+  "stage_id": 164,
+  "purpose": "find the conditions that caused an incident and prove them, so the fix addresses the cause and not the symptom",
+  "entry_criteria": [
+    "Incident is mitigated",
+    "Timeline and artifacts are preserved",
+    "People who responded are available"
+  ],
+  "inputs": [
+    "incident timeline",
+    "logs, metrics and traces",
+    "change history",
+    "configuration at the time"
+  ],
+  "procedure": [
+    "Build a precise timeline from logs, metrics and change history.",
+    "List contributing factors across code, config, process and detection.",
+    "Ask why repeatedly for each factor until you reach something the team can change.",
+    "Test each hypothesis against evidence or reproduce it; mark unproven hypotheses as such.",
+    "State the most likely cause with its confidence and what evidence supports it.",
+    "Propose corrective and preventive actions with owners and dates."
+  ],
+  "deliverables": [
+    "root-cause analysis document",
+    "evidence references",
+    "hypothesis log with status",
+    "action list"
+  ],
+  "acceptance_criteria": [
+    "Causes are supported by evidence or marked unproven",
+    "No cause is a person's name; causes are conditions",
+    "Actions have owners and dates",
+    "Detection and response gaps are included"
+  ],
+  "validation_method": "Reproduction or evidence check by someone outside the responding team.",
+  "validation": [
+    {
+      "check": "reproduce the failure in a test environment or replay the logs",
+      "expect": "failure reproduced or the document states it was not"
+    },
+    {
+      "check": "check each action has an owner and due date",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Blame assigned to an individual",
+      "detection": "Cause text names a person",
+      "response": "Rewrite as a condition"
+    },
+    {
+      "mode": "Cause not verified",
+      "detection": "Hypothesis has no evidence",
+      "response": "Mark INCONCLUSIVE and list tests to run"
+    },
+    {
+      "mode": "Only the trigger is addressed",
+      "detection": "Actions fix the symptom only",
+      "response": "Add actions for the underlying condition"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A connection pool exhausted because a new feature held connections during a slow external call. Contributing factors: no timeout, no pool alert, load test missed the path. Actions: add timeout, alert, and a load test.",
+  "status": "complete"
+}

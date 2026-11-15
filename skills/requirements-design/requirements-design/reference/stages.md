@@ -30,6 +30,7 @@ Deliverables: elicitation notes; stakeholder needs catalogue; open-question log
 Acceptance: Needs are attributed to a source and context. Conflicts and assumptions remain visible. Coverage includes exceptions and operational users.
 
 Validation: Stakeholder playback and confirmation.
+
 Gate: 02-011. Approval: none required
 
 ## 12
@@ -48,6 +49,7 @@ Deliverables: versioned specification; traceability matrix; glossary and decisio
 Acceptance: No ambiguous pronouns or unbounded terms remain in normative requirements. IDs are stable and traceable. Links, diagrams and examples render.
 
 Validation: Peer review by product, engineering and QA.
+
 Gate: 02-012. Approval: none required
 
 ## 13
@@ -66,6 +68,7 @@ Deliverables: functional requirement catalogue; state/sequence diagrams; accepta
 Acceptance: Each requirement has observable expected behavior. Boundary and failure cases are covered. No implementation detail is mistaken for a user outcome.
 
 Validation: Scenario walkthrough with developer and tester.
+
 Gate: 02-013. Approval: none required
 
 ## 14
@@ -84,6 +87,7 @@ Deliverables: quality attribute scenarios; measurable NFR matrix; verification p
 Acceptance: Every NFR has a threshold, workload condition and verification method. Targets are measurable and tied to business criticality. Trade-offs and owners are explicit.
 
 Validation: Review each NFR for measurable thresholds and verify test plans can produce the required evidence.
+
 Gate: 02-014. Approval: none required
 
 ## 15
@@ -102,6 +106,7 @@ Deliverables: research protocol; consented notes; coded themes; insight report
 Acceptance: Research question maps to evidence. Sampling bias and limitations are disclosed. Recommendations do not overgeneralize beyond the sample.
 
 Validation: Research peer review and stakeholder playback.
+
 Gate: 02-015. Approval: none required
 
 ## 16
@@ -120,6 +125,7 @@ Deliverables: journey map; pain-point evidence; opportunity backlog
 Acceptance: Journey reflects observed behavior, not assumed ideal flow. Frontstage and backstage dependencies are visible. Each opportunity has an owner and measure.
 
 Validation: Walkthrough with users and service owners.
+
 Gate: 02-016. Approval: none required
 
 ## 17
@@ -138,6 +144,7 @@ Deliverables: annotated wireframes; screen inventory; interaction flow
 Acceptance: Wireframes cover all critical states and target viewports. Labels and navigation support user goals. No decorative styling hides missing behavior.
 
 Validation: Product/design review and quick usability walkthrough.
+
 Gate: 02-017. Approval: none required
 
 ## 18
@@ -156,6 +163,7 @@ Deliverables: high-fidelity screens; component specifications; design token usag
 Acceptance: Visual states and responsive breakpoints are specified. Contrast and text scaling meet agreed standards. Components reuse approved tokens or record justified exceptions.
 
 Validation: Design-system review and accessibility check.
+
 Gate: 02-018. Approval: none required
 
 ## 19
@@ -174,6 +182,7 @@ Deliverables: interaction specification; task flow; usability findings
 Acceptance: Critical tasks have clear entry, progress and recovery. Usability issues are prioritized by impact. Design changes are linked to research evidence.
 
 Validation: Moderated usability review.
+
 Gate: 02-019. Approval: none required
 
 ## 20
@@ -192,6 +201,7 @@ Deliverables: prototype artifact; experiment protocol; test observations; decisi
 Acceptance: Prototype limitations are explicit. Success criteria are measured. No prototype-only behavior is represented as production capability.
 
 Validation: Product/design decision review.
+
 Gate: 02-020. Approval: none required
 
 ## 21
@@ -210,6 +220,7 @@ Deliverables: accessibility audit; manual test evidence; defect and remediation 
 Acceptance: Automated scans are not treated as full conformance proof. Critical journeys work without pointer input. Findings cite criterion, impact and reproduction.
 
 Validation: Independent accessibility specialist review.
+
 Gate: 02-021. Approval: none required
 
 ## 22
@@ -228,4 +239,5 @@ Deliverables: validated baseline; traceability matrix; review issue log
 Acceptance: No critical orphan, conflict or untestable requirement remains. Stakeholders approve the baseline version. Deferred items have owner and impact.
 
 Validation: Cross-functional requirements review.
+
 Gate: 02-022. Approval: none required

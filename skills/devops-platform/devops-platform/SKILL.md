@@ -24,13 +24,13 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 111 | CI Pipeline | stub | DevOps Engineer |
+| 111 | CI Pipeline | complete | DevOps Engineer |
 | 112 | Automated Test Pipeline | stub | DevOps Engineer |
 | 113 | Build Management | stub | DevOps Engineer |
 | 114 | Artifact Management | stub | Platform Engineer |
 | 115 | Containerization | stub | DevOps Engineer |
 | 116 | Container Orchestration | stub | Kubernetes Engineer |
-| 117 | Infrastructure as Code | stub | Infrastructure Engineer |
+| 117 | Infrastructure as Code | complete | Infrastructure Engineer |
 | 118 | Configuration Management | stub | Platform Engineer |
 | 119 | CD Pipeline | stub | DevOps Engineer |
 | 120 | Environment Provisioning | stub | Infrastructure Engineer |

@@ -1,0 +1,65 @@
+{
+  "stage_id": 98,
+  "purpose": "find and rank ways an attacker can abuse the system before it is built or changed, and tie each to a control and a test",
+  "entry_criteria": [
+    "Architecture or data-flow diagram exists for the feature or system in scope",
+    "Assets and data classifications are listed",
+    "Accountable security-architect and a developer who knows the design are available"
+  ],
+  "inputs": [
+    "data-flow diagram with trust boundaries",
+    "asset and data classification list",
+    "identity and privilege model",
+    "existing threat model (if any)"
+  ],
+  "procedure": [
+    "Draw or confirm the data-flow diagram; mark every trust boundary, entry point, data store and external dependency.",
+    "Enumerate threats per element with a named taxonomy (for example STRIDE) and an attacker capability (unauthenticated, authenticated user, insider, compromised dependency).",
+    "Score each threat by likelihood and impact on one fixed scale; record the scale in the document.",
+    "For each threat above the agreed threshold, name a mitigation, the control that implements it, and the test or scan that will verify it.",
+    "Record accepted residual risks with owner, rationale and an expiry date.",
+    "Link each mitigation to a backlog item and each verification to a later stage (SAST 99, DAST 100, Penetration Testing 104)."
+  ],
+  "deliverables": [
+    "threat model document",
+    "abuse-case catalogue",
+    "mitigation-to-test matrix",
+    "residual risk log"
+  ],
+  "acceptance_criteria": [
+    "Every trust boundary crossing has at least one enumerated threat or a written reason for none",
+    "Every high or critical threat has a mitigation with a verifying test",
+    "Every accepted risk has a named owner and an expiry date",
+    "Diagram and document are versioned with the design they describe"
+  ],
+  "validation_method": "Independent security design review by someone who did not author the model.",
+  "validation": [
+    {
+      "check": "independent reviewer walks the diagram and confirms each trust-boundary crossing has a threat entry",
+      "expect": "reviewer initials and date recorded in the document"
+    },
+    {
+      "command": "grep -c 'residual-risk-expiry:' docs/threat-model.md   # example",
+      "expect": "count equals the number of accepted risks"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Diagram is out of date with the code",
+      "detection": "Reviewer cannot map a code path to a diagram element",
+      "response": "Return to step 1; model is BLOCKED until the diagram matches the current design"
+    },
+    {
+      "mode": "Threats listed without mitigations",
+      "detection": "Mitigation-to-test matrix has empty cells",
+      "response": "Mark INCONCLUSIVE; assign owners and dates, or record explicit risk acceptance"
+    },
+    {
+      "mode": "Risk accepted by the author of the feature",
+      "detection": "Approver equals implementer in the residual risk log",
+      "response": "Reject; the security-architect or risk owner must accept"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A new file-upload endpoint crosses the browser-to-API boundary. Enumerated threats include oversized or malicious files (denial of service, malware storage) and path traversal in filenames. Mitigations: size limit and content-type allow-list at the gateway, random server-side object names, virus scan before the file becomes readable. Each maps to an integration test and to DAST scope in stage 100.",
+  "status": "complete"
+}

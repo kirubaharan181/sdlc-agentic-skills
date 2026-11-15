@@ -28,6 +28,7 @@ Deliverables: project charter; RACI; initial RAID log; governance calendar
 Acceptance: Accountability and authority are explicit. Outcomes and scope are measurable. Open assumptions have owners and due dates.
 
 Validation: Sponsor approval.
+
 Gate: 04-035. Approval: none required
 
 ## 36
@@ -46,6 +47,7 @@ Deliverables: capacity plan; skills matrix; resource risk log
 Acceptance: Plan uses available capacity, not nominal headcount. Critical skill gaps have mitigations. Allocation changes are approved.
 
 Validation: Delivery manager and functional owner review.
+
 Gate: 04-036. Approval: none required
 
 ## 37
@@ -64,6 +66,7 @@ Deliverables: WBS/backlog hierarchy; dependency network; work package acceptance
 Acceptance: Every scope item maps to a work package. No package is too broad to estimate or verify. Dependencies and ownership are explicit.
 
 Validation: Cross-functional planning review.
+
 Gate: 04-037. Approval: none required
 
 ## 38
@@ -82,6 +85,7 @@ Deliverables: estimate workbook; assumption and exclusion log; funding request; 
 Acceptance: Totals recalculate from traceable line items. Uncertainty and contingency are visible. Estimate owner and approval authority are named.
 
 Validation: Finance review and independent arithmetic check.
+
 Gate: 04-038. Approval: none required
 
 ## 39
@@ -100,6 +104,7 @@ Deliverables: sprint goal; committed backlog; capacity and dependency view
 Acceptance: Commitment fits actual capacity. Stories meet readiness criteria. Sprint goal is outcome-focused and measurable.
 
 Validation: Team planning agreement.
+
 Gate: 04-039. Approval: none required
 
 ## 40
@@ -118,6 +123,7 @@ Deliverables: flow metrics; impediment register; iteration decision log
 Acceptance: Work state reflects evidence. Impediments have owners and next actions. Metrics are used for improvement, not individual surveillance.
 
 Validation: Team retrospective and delivery review.
+
 Gate: 04-040. Approval: none required
 
 ## 41
@@ -136,6 +142,7 @@ Deliverables: flow metrics; impediment register; iteration decision log
 Acceptance: Work state reflects evidence. Impediments have owners and next actions. Metrics are used for improvement, not individual surveillance.
 
 Validation: Team retrospective and delivery review.
+
 Gate: 04-041. Approval: none required
 
 ## 42
@@ -154,6 +161,7 @@ Deliverables: RAID/risk register; treatment plan; residual risk acceptance
 Acceptance: High risks have active treatments and triggers. Risk acceptance is authorized and time-bound. Issues are not hidden as risks.
 
 Validation: Risk owner and governance review.
+
 Gate: 04-042. Approval: none required
 
 ## 43
@@ -172,6 +180,7 @@ Deliverables: stakeholder map; communications plan; decision log
 Acceptance: Every key decision has an owner and due date. Affected parties are informed before impact. Conflicts are resolved or explicitly escalated.
 
 Validation: Sponsor and stakeholder review.
+
 Gate: 04-043. Approval: none required
 
 ## 44
@@ -190,4 +199,5 @@ Deliverables: change request; impact assessment; approval record; updated baseli
 Acceptance: No unapproved baseline change is treated as accepted. Rollback and communication needs are considered. Impact owners have reviewed the change.
 
 Validation: Change authority approval.
+
 Gate: 04-044. Approval: change-board (always)

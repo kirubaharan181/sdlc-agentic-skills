@@ -1,0 +1,65 @@
+{
+  "stage_id": 117,
+  "purpose": "describe infrastructure as reviewed, versioned code so environments are reproducible and drift is visible",
+  "entry_criteria": [
+    "Target environments and ownership are defined",
+    "State storage and locking are decided",
+    "Infra-owner is named"
+  ],
+  "inputs": [
+    "environment requirements",
+    "current infrastructure inventory",
+    "IaC tooling and module standards",
+    "state backend configuration"
+  ],
+  "procedure": [
+    "Model resources in code with parameters per environment; keep secrets out of code.",
+    "Run format, validate and policy checks in CI.",
+    "Produce a plan against the target environment and review the diff, especially deletions and replacements.",
+    "Apply through the pipeline with the infra-owner's approval for production.",
+    "Detect drift on a schedule and reconcile by code, not by hand.",
+    "Record rollback: previous version of the code and state backup."
+  ],
+  "deliverables": [
+    "IaC modules and environment configs",
+    "plan output",
+    "policy check results",
+    "drift report"
+  ],
+  "acceptance_criteria": [
+    "Plan shows only expected changes",
+    "Policy checks pass",
+    "State is remote, locked and backed up",
+    "Production apply has infra-owner approval"
+  ],
+  "validation_method": "Infra-owner review of the plan before production apply.",
+  "validation": [
+    {
+      "command": "terraform fmt -check -recursive && terraform validate   # example; use the project's IaC tool",
+      "expect": "exit 0"
+    },
+    {
+      "command": "terraform plan -detailed-exitcode -out=plan.out",
+      "expect": "exit 2 means changes pending; review diff; exit 0 means no drift"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Plan includes unexpected destroys",
+      "detection": "Plan lists replacements of stateful resources",
+      "response": "Stop; review before any apply"
+    },
+    {
+      "mode": "Manual change in console",
+      "detection": "Drift report shows differences",
+      "response": "Reconcile in code; document who changed what"
+    },
+    {
+      "mode": "Secrets in state or code",
+      "detection": "Scanner finds values",
+      "response": "Rotate and move to the secret manager"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Adding a database replica changes one module. The plan shows one resource created and none destroyed; the infra-owner approves and drift check afterwards is clean.",
+  "status": "complete"
+}

@@ -87,11 +87,17 @@ def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict
     for s in stages:
         ref += [
             f"## {s['stage_id']}", f"**{s['stage_name']}** ({s['status']}). Purpose: {s['purpose']}.", "",
+            *(["Entry criteria: " + "; ".join(s["entry_criteria"]), ""] if s.get("entry_criteria") else []),
             "Inputs: " + "; ".join(s["inputs"]), "",
             "Procedure:", *(f"{i + 1}. {x}" for i, x in enumerate(s["execution_instructions"])), "",
             "Deliverables: " + "; ".join(s["deliverable_artifacts"]), "",
             "Acceptance: " + " ".join(s["quality_criteria"]), "",
             f"Validation: {s['validation_method']}",
-            f"Gate: {s['quality_gate']}. Approval: " + (f"{s['approver']} ({s.get('approval_condition', 'always')})" if s["approval_required"] else "none required"), "",
+            *(["", *(f"- `{v['command']}` expect: {v['expect']}" if "command" in v else f"- manual: {v['check']} expect: {v['expect']}" for v in s["validation_commands"])]
+              if s.get("validation_commands") else []),
+            *(["", "Failure modes:", *(f"- {f['mode']} | detect: {f['detection']} | respond: {f['response']}" for f in s["failure_modes"])]
+              if s.get("failure_modes") else []),
+            *(["", s["worked_example"]] if s.get("worked_example") else []),
+            "", f"Gate: {s['quality_gate']}. Approval: " + (f"{s['approver']} ({s.get('approval_condition', 'always')})" if s["approval_required"] else "none required"), "",
         ]
     return skill_md, "\n".join(ref) + "\n"
