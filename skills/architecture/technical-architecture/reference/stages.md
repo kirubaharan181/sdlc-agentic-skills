@@ -224,20 +224,34 @@ Validation: Architecture peer review.
 Gate: 03-033. Approval: none required
 
 ## 34
-**Architecture Review** (stub). Purpose: independently evaluate architecture against quality attributes and constraints.
+**Architecture Review** (complete). Purpose: have a person independent of the design judge whether it meets the requirements, quality attributes and standards, and record the decision.
 
-Inputs: architecture baseline and ADRs; quality attribute scenarios; risk and change context
+Entry criteria: Design document and architecture decision records exist; Requirements and quality-attribute targets are available; Reviewer did not design the system
+
+Inputs: architecture description and diagrams; architecture decision records; quality-attribute requirements; standards and constraints
 
 Procedure:
-1. Check component boundaries, coupling, data ownership, failure domains and dependency direction.
-2. Evaluate security, resilience, scalability, operability, accessibility and cost against scenarios.
-3. Record evidence, deviations, trade-offs and remediation priority.
-4. Issue accept, conditional accept or reject recommendation without implementing the reviewed change.
+1. Read the requirements and quality-attribute targets first; then review the design against them.
+2. Examine boundaries, coupling, data ownership, failure modes, scalability and security assumptions.
+3. Check each significant decision has a record with alternatives and consequences.
+4. Record findings as blocker, risk or suggestion with the affected requirement.
+5. Decide approve, approve with conditions or reject, and record the reasoning.
+6. Track conditions to completion and re-review changes that affect a decision.
 
-Deliverables: architecture review report; decision and exception log; remediation actions
+Deliverables: review report with severity-labelled findings; decision record; conditions list; updated decision records
 
-Acceptance: Findings cite model element and impact. Reviewer independence is preserved. Exceptions have owner and expiry.
+Acceptance: Each finding names the requirement or attribute at risk Every significant decision has a record with alternatives The decision and its reasons are recorded Reviewer is independent of the designer
 
 Validation: Independent architecture board decision.
+
+- manual: trace each quality-attribute target to the part of the design that satisfies it expect: every target maps to a design element or a recorded risk
+- manual: check each blocker finding has an owner and a resolution date expect: none missing
+
+Failure modes:
+- Design approved without the requirements | detect: Review record cites no requirement | respond: Redo the review against the requirements
+- Blockers deferred silently | detect: Conditions without owners | respond: Assign owners or reject
+- Reviewer is the designer | detect: Same person on both records | respond: Assign an independent reviewer
+
+ILLUSTRATIVE: Review of a new order service finds one shared database table written by two services. It is rated a blocker for data ownership; the design is changed so one service owns the table and the other reads through an API.
 
 Gate: 03-034. Approval: none required

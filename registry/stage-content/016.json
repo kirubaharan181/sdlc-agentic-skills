@@ -1,0 +1,65 @@
+{
+  "stage_id": 16,
+  "purpose": "describe how real users move through a goal across steps and channels, so design effort goes to the real pain points",
+  "entry_criteria": [
+    "A target user group and a goal are chosen",
+    "Research access exists (interviews, analytics or support data)",
+    "Service owner is available to validate"
+  ],
+  "inputs": [
+    "user research and interview notes",
+    "analytics and support data",
+    "current process description",
+    "personas or user segments"
+  ],
+  "procedure": [
+    "Choose one user goal and the start and end of the journey.",
+    "List the steps users take across channels, with what they think, feel and do, using research rather than assumption.",
+    "Mark pain points and drop-off points with the evidence for each.",
+    "Walk through the map with users and the service owner and correct it.",
+    "Rank opportunities by user impact and effort and link them to requirements.",
+    "Record the sources and confidence for each claim."
+  ],
+  "deliverables": [
+    "journey map",
+    "pain-point list with evidence",
+    "ranked opportunities",
+    "source and confidence notes"
+  ],
+  "acceptance_criteria": [
+    "Every pain point cites evidence",
+    "The map was validated with users or the owner",
+    "Opportunities link to requirements",
+    "Assumptions are marked as assumptions"
+  ],
+  "validation_method": "Walkthrough with users and service owners.",
+  "validation": [
+    {
+      "check": "for each pain point, open the cited source and confirm it supports the claim",
+      "expect": "all supported or marked as assumption"
+    },
+    {
+      "check": "ask two users to read the map and say where it is wrong",
+      "expect": "corrections recorded"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Map built from internal opinion",
+      "detection": "No sources cited",
+      "response": "Gather evidence or mark as hypothesis"
+    },
+    {
+      "mode": "Only the happy path mapped",
+      "detection": "No failure or abandonment steps",
+      "response": "Add where users give up"
+    },
+    {
+      "mode": "Map never used",
+      "detection": "No opportunity links to requirements",
+      "response": "Connect to the backlog or retire the map"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Support tickets and interviews show new users abandon sign-up at the identity-check step. The map marks that step, ranks a simpler check as the top opportunity, and links it to a requirement.",
+  "status": "complete"
+}

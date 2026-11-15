@@ -1,0 +1,65 @@
+{
+  "stage_id": 170,
+  "purpose": "fix a confirmed defect with the smallest safe change and prove it with a test that failed before",
+  "entry_criteria": [
+    "Defect is reproduced and has a ticket with steps and expected behavior",
+    "The affected version and area of code are known",
+    "Owner and priority are set"
+  ],
+  "inputs": [
+    "defect report with reproduction steps",
+    "affected code and version",
+    "existing tests",
+    "acceptance expectation"
+  ],
+  "procedure": [
+    "Write a failing test that reproduces the defect before touching the code.",
+    "Find the root cause; fix the cause rather than the symptom, with the smallest change.",
+    "Confirm the new test passes and the surrounding tests still pass.",
+    "Check related code paths for the same mistake and note or fix them.",
+    "Describe cause, fix and risk in the pull request and link the ticket.",
+    "After release, confirm with the reporter or monitoring that the defect no longer occurs."
+  ],
+  "deliverables": [
+    "regression test",
+    "minimal fix",
+    "pull request with cause and risk",
+    "post-release confirmation"
+  ],
+  "acceptance_criteria": [
+    "The regression test fails without the fix and passes with it",
+    "The change is limited to the defect",
+    "Related paths were checked",
+    "Reporter or monitoring confirms the fix"
+  ],
+  "validation_method": "Service owner acceptance and customer-facing closure check.",
+  "validation": [
+    {
+      "command": "git stash && pytest -q tests/regression/test_bug_1234.py; git stash pop && pytest -q tests/regression/test_bug_1234.py   # example",
+      "expect": "fails before the fix, passes after"
+    },
+    {
+      "command": "pytest -q",
+      "expect": "full suite passes"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Test passes without the fix",
+      "detection": "Test does not fail on the old code",
+      "response": "Rewrite the test to reproduce the defect"
+    },
+    {
+      "mode": "Fix changes unrelated behavior",
+      "detection": "Diff touches unrelated files",
+      "response": "Split the change"
+    },
+    {
+      "mode": "Symptom hidden, cause remains",
+      "detection": "Same defect appears elsewhere",
+      "response": "Fix the root cause"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Totals are off by one cent for certain discounts. A test with that discount fails; the rounding is moved to the end of the calculation; the test and suite pass; the finance team confirms next day.",
+  "status": "complete"
+}

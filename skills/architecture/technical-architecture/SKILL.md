@@ -35,7 +35,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 31 | Integration Architecture | stub | Integration Architect |
 | 32 | Technology Selection | stub | Enterprise Architect |
 | 33 | Architecture Documentation | stub | Technical Writer |
-| 34 | Architecture Review | stub | Architecture Reviewer |
+| 34 | Architecture Review | complete | Architecture Reviewer |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

@@ -53,7 +53,7 @@ def test_approvers_are_humans_not_agents(data):
 
 def test_complete_stages_have_full_content(data):
     complete = [s for s in data["stages"] if s["status"] == "complete"]
-    assert len(complete) == 25
+    assert len(complete) == json.loads((Path(__file__).parent / 'golden' / 'metrics.json').read_text())['stages_complete']
     for s in complete:
         assert len(s["execution_instructions"]) >= 4 and s["failure_modes"] and s["entry_criteria"]
         assert s["worked_example"].startswith("ILLUSTRATIVE")

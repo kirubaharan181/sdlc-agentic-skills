@@ -27,7 +27,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 167 | L1 Support | stub | Technical Support Engineer |
 | 168 | L2 Support | stub | Production Support Engineer |
 | 169 | L3 Support | stub | Backend Engineer |
-| 170 | Bug Fixing | stub | Backend Engineer |
+| 170 | Bug Fixing | complete | Backend Engineer |
 | 171 | Patch Management | stub | DevOps Engineer |
 | 172 | Dependency Updates | stub | Backend Engineer |
 | 173 | Database Maintenance | stub | Database Administrator |

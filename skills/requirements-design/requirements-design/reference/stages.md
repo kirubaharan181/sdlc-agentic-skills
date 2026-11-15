@@ -110,21 +110,35 @@ Validation: Research peer review and stakeholder playback.
 Gate: 02-015. Approval: none required
 
 ## 16
-**User Journey Mapping** (stub). Purpose: map user goals, touchpoints, decisions and friction across a complete journey.
+**User Journey Mapping** (complete). Purpose: describe how real users move through a goal across steps and channels, so design effort goes to the real pain points.
 
-Inputs: validated personas or user segments; research observations; journey scope and start/end events
+Entry criteria: A target user group and a goal are chosen; Research access exists (interviews, analytics or support data); Service owner is available to validate
+
+Inputs: user research and interview notes; analytics and support data; current process description; personas or user segments
 
 Procedure:
-1. Define journey boundary, user goal and success event.
-2. Map stages, actions, touchpoints, emotions, questions, failures and backstage dependencies.
-3. Annotate evidence source and pain-point severity at each step.
-4. Prioritize opportunities and define measurable experience improvements.
+1. Choose one user goal and the start and end of the journey.
+2. List the steps users take across channels, with what they think, feel and do, using research rather than assumption.
+3. Mark pain points and drop-off points with the evidence for each.
+4. Walk through the map with users and the service owner and correct it.
+5. Rank opportunities by user impact and effort and link them to requirements.
+6. Record the sources and confidence for each claim.
 
-Deliverables: journey map; pain-point evidence; opportunity backlog
+Deliverables: journey map; pain-point list with evidence; ranked opportunities; source and confidence notes
 
-Acceptance: Journey reflects observed behavior, not assumed ideal flow. Frontstage and backstage dependencies are visible. Each opportunity has an owner and measure.
+Acceptance: Every pain point cites evidence The map was validated with users or the owner Opportunities link to requirements Assumptions are marked as assumptions
 
 Validation: Walkthrough with users and service owners.
+
+- manual: for each pain point, open the cited source and confirm it supports the claim expect: all supported or marked as assumption
+- manual: ask two users to read the map and say where it is wrong expect: corrections recorded
+
+Failure modes:
+- Map built from internal opinion | detect: No sources cited | respond: Gather evidence or mark as hypothesis
+- Only the happy path mapped | detect: No failure or abandonment steps | respond: Add where users give up
+- Map never used | detect: No opportunity links to requirements | respond: Connect to the backlog or retire the map
+
+ILLUSTRATIVE: Support tickets and interviews show new users abandon sign-up at the identity-check step. The map marks that step, ranks a simpler check as the top opportunity, and links it to a requirement.
 
 Gate: 02-016. Approval: none required
 

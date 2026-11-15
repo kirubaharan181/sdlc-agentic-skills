@@ -148,21 +148,35 @@ ILLUSTRATIVE: The audit reports a deserialization flaw in a transitive library. 
 Gate: 09-101. Approval: none required
 
 ## 102
-**Container Security** (stub). Purpose: assess and remediate a defined security attack surface.
+**Container Security** (complete). Purpose: find and fix vulnerabilities and unsafe configuration in container images and their runtime settings before they run in production.
 
-Inputs: authorized scope and asset inventory; scanner/tool configuration and version; severity policy and remediation SLA
+Entry criteria: Image is built from a pinned base image and a Dockerfile in the repository; Registry and scanner access are available; Runtime policy (user, capabilities, network) is defined
+
+Inputs: Dockerfile and build context; built image digest; base image policy; runtime security policy
 
 Procedure:
-1. Confirm asset ownership, scope, exclusions and written authorization before active testing.
-2. Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
-3. Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
-4. Assign remediation, retest the exact fix and record residual risk or approved exception.
+1. Build the image from a clean checkout and record its digest; scan the digest, not a tag.
+2. Scan OS packages and application dependencies for known vulnerabilities; record advisory ids and fixed versions.
+3. Check the image configuration: non-root user, no embedded secrets, minimal base, read-only filesystem where possible, no unnecessary capabilities.
+4. Fix by updating the base image or packages, or by removing the component; document any accepted finding with owner and expiry.
+5. Rebuild, rescan the new digest and compare findings with the previous scan.
+6. Sign or record the approved digest so deployment can verify it matches.
 
-Deliverables: scan/test report; validated finding register; remediation and retest evidence
+Deliverables: image scan report for the digest; configuration check results; exception register; approved digest record
 
-Acceptance: Active testing stays within authorization. Findings have reproducible evidence and severity rationale. Closure is independently retested.
+Acceptance: The scanned digest equals the digest that will be deployed No unresolved critical or high finding without an approved exception Image runs as a non-root user with no embedded secrets Every exception has owner and expiry
 
-Validation: Security owner and system owner disposition.
+Validation: Security owner and system owner disposition of remaining findings.
+
+- `trivy image --severity HIGH,CRITICAL --exit-code 1 registry.example.com/app@sha256:<digest>   # example; use the project's scanner` expect: exit 0, or only findings listed in the exception register
+- `docker inspect --format '{{.Config.User}}' registry.example.com/app@sha256:<digest>` expect: a non-root user, not empty and not root
+
+Failure modes:
+- Scanned a tag that later moved | detect: Scan digest differs from deployed digest | respond: Rescan the deployed digest; BLOCKED until it matches
+- Secret baked into an image layer | detect: Scanner or history inspection finds a credential | respond: Rotate the secret, rebuild without it, never rely on deleting a later layer
+- Base image never updated | detect: Same findings reappear each scan | respond: Schedule base-image refresh and rebuild
+
+ILLUSTRATIVE: The scan of a service image reports a critical OpenSSL issue in the base layer. The base image is bumped to the patched release, the digest changes, the rescan is clean, and the container runs as user 10001.
 
 Gate: 09-102. Approval: none required
 

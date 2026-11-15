@@ -102,21 +102,35 @@ Validation: Independent reviewer confirms findings and disposition.
 Gate: 07-071. Approval: none required
 
 ## 72
-**Dependency Review** (stub). Purpose: independently inspect code quality and maintainability risks.
+**Dependency Review** (complete). Purpose: review each new or changed dependency for provenance, vulnerabilities and license fit before it is merged.
 
-Inputs: diff and target branch; coding/architecture standards; test, dependency and static-analysis evidence
+Entry criteria: A pull request adds or changes a dependency; License policy and approved-registry list exist; Lockfile diff is available
+
+Inputs: dependency and lockfile diff; license policy; advisory data; the package's maintainer and release history
 
 Procedure:
-1. Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
-2. Inspect static findings and dependency provenance, severity, reachability and license obligations.
-3. Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
-4. Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
+1. List each added or changed package, including transitive ones introduced by the lockfile diff.
+2. Check provenance: official registry, maintainer activity, release age, download and repository signals, and typosquat look-alikes.
+3. Check advisories and the license of each package against the policy; note copyleft or unknown licenses.
+4. Check whether the dependency is needed or whether existing code or the standard library covers it.
+5. Record approve, reject or approve-with-condition per package with the reason.
+6. Require pinned versions and a lockfile change in the same pull request.
 
-Deliverables: review report; static/dependency findings; coverage interpretation; technical debt actions
+Deliverables: dependency review record; license findings; decision per package; lockfile diff reference
 
-Acceptance: Findings are reproducible and tied to exact commit. False positives and accepted debt have rationale and owner. Critical paths have meaningful assertions.
+Acceptance: Every added package has a recorded decision No unknown or policy-forbidden license is approved Versions are pinned in the lockfile Reviewer is not the author of the change
 
 Validation: Independent reviewer confirms findings and disposition.
+
+- `git diff origin/main...HEAD -- package-lock.json requirements.txt   # example lockfiles` expect: every added or changed package appears in the review record
+- `pip-audit -r requirements.txt   # example; use the ecosystem's audit tool` expect: no unresolved high or critical advisory
+
+Failure modes:
+- Look-alike package name approved | detect: Name differs by a character from a popular package | respond: Reject; use the intended package
+- Transitive dependencies ignored | detect: Lockfile diff shows packages not in the record | respond: Review each new transitive package
+- License unknown | detect: Metadata has no license | respond: Reject or ask legal for a written decision
+
+ILLUSTRATIVE: A pull request adds a small date library. Review finds the same function already exists in the standard library, so the dependency is rejected and the author uses the standard function.
 
 Gate: 07-072. Approval: none required
 

@@ -1,0 +1,65 @@
+{
+  "stage_id": 112,
+  "purpose": "run the right automated tests on every change in a pipeline that is fast, reliable and trusted",
+  "entry_criteria": [
+    "Test suites exist at unit, integration and end-to-end levels",
+    "CI pipeline exists (stage 111)",
+    "Test environments or containers can be created on demand"
+  ],
+  "inputs": [
+    "test suites and their runtimes",
+    "CI configuration",
+    "environment definitions",
+    "flake history"
+  ],
+  "procedure": [
+    "Order the stages so cheap, fast tests run first and fail early; run slow suites only when relevant paths change.",
+    "Run independent suites in parallel with isolated data and environments.",
+    "Publish test reports and logs as artifacts, with failing test names in the summary.",
+    "Track flaky tests with owner and expiry; quarantine rather than retry-until-green.",
+    "Set a time budget for the pipeline and alert when it is exceeded.",
+    "Make the test stage a required check on the default branch."
+  ],
+  "deliverables": [
+    "pipeline definition with test stages",
+    "test reports",
+    "flaky-test register",
+    "duration and pass-rate trend"
+  ],
+  "acceptance_criteria": [
+    "Required checks block merging",
+    "Failures show which test failed and why",
+    "Flaky tests have owners and expiry dates",
+    "Pipeline duration is within the agreed budget"
+  ],
+  "validation_method": "Platform and security review plus a clean pipeline run from scratch.",
+  "validation": [
+    {
+      "command": "gh run list --workflow=ci.yml --limit 10 --json conclusion,createdAt,updatedAt   # example",
+      "expect": "recent runs succeed; durations within budget"
+    },
+    {
+      "check": "open a pull request with a deliberately failing test",
+      "expect": "merge is blocked and the report names the test"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Retrying hides flakes",
+      "detection": "Pass after rerun with no investigation",
+      "response": "Quarantine with owner; fix root cause"
+    },
+    {
+      "mode": "Tests share data",
+      "detection": "Parallel run fails, serial passes",
+      "response": "Isolate data per test"
+    },
+    {
+      "mode": "Pipeline too slow",
+      "detection": "Duration above budget",
+      "response": "Split suites, cache dependencies, run slow tests on a schedule"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Unit tests finish in two minutes and gate integration tests, which run in four parallel jobs. Two flaky end-to-end tests are quarantined with owners and a one-month expiry.",
+  "status": "complete"
+}

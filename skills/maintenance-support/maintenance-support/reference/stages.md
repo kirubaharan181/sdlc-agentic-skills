@@ -74,21 +74,35 @@ Validation: Service owner acceptance and customer-facing closure check.
 Gate: 14-169. Approval: none required
 
 ## 170
-**Bug Fixing** (stub). Purpose: maintain a live service safely and preserve customer continuity.
+**Bug Fixing** (complete). Purpose: fix a confirmed defect with the smallest safe change and prove it with a test that failed before.
 
-Inputs: support case or maintenance request; affected versions and customer impact; service ownership and change policy
+Entry criteria: Defect is reproduced and has a ticket with steps and expected behavior; The affected version and area of code are known; Owner and priority are set
+
+Inputs: defect report with reproduction steps; affected code and version; existing tests; acceptance expectation
 
 Procedure:
-1. Classify severity, affected customers, workaround and escalation path using support policy.
-2. Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.
-3. Implement the smallest safe correction or maintenance action with regression and compatibility coverage.
-4. Communicate workaround/fix version, verify closure and update runbook or knowledge base.
+1. Write a failing test that reproduces the defect before touching the code.
+2. Find the root cause; fix the cause rather than the symptom, with the smallest change.
+3. Confirm the new test passes and the surrounding tests still pass.
+4. Check related code paths for the same mistake and note or fix them.
+5. Describe cause, fix and risk in the pull request and link the ticket.
+6. After release, confirm with the reporter or monitoring that the defect no longer occurs.
 
-Deliverables: support/maintenance record; reproduction and diagnosis; fix or patch evidence; customer communication and knowledge update
+Deliverables: regression test; minimal fix; pull request with cause and risk; post-release confirmation
 
-Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
+Acceptance: The regression test fails without the fix and passes with it The change is limited to the defect Related paths were checked Reporter or monitoring confirms the fix
 
 Validation: Service owner acceptance and customer-facing closure check.
+
+- `git stash && pytest -q tests/regression/test_bug_1234.py; git stash pop && pytest -q tests/regression/test_bug_1234.py   # example` expect: fails before the fix, passes after
+- `pytest -q` expect: full suite passes
+
+Failure modes:
+- Test passes without the fix | detect: Test does not fail on the old code | respond: Rewrite the test to reproduce the defect
+- Fix changes unrelated behavior | detect: Diff touches unrelated files | respond: Split the change
+- Symptom hidden, cause remains | detect: Same defect appears elsewhere | respond: Fix the root cause
+
+ILLUSTRATIVE: Totals are off by one cent for certain discounts. A test with that discount fails; the rounding is moved to the end of the calculation; the test and suite pass; the finance team confirms next day.
 
 Gate: 14-170. Approval: none required
 

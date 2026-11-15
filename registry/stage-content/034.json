@@ -1,0 +1,65 @@
+{
+  "stage_id": 34,
+  "purpose": "have a person independent of the design judge whether it meets the requirements, quality attributes and standards, and record the decision",
+  "entry_criteria": [
+    "Design document and architecture decision records exist",
+    "Requirements and quality-attribute targets are available",
+    "Reviewer did not design the system"
+  ],
+  "inputs": [
+    "architecture description and diagrams",
+    "architecture decision records",
+    "quality-attribute requirements",
+    "standards and constraints"
+  ],
+  "procedure": [
+    "Read the requirements and quality-attribute targets first; then review the design against them.",
+    "Examine boundaries, coupling, data ownership, failure modes, scalability and security assumptions.",
+    "Check each significant decision has a record with alternatives and consequences.",
+    "Record findings as blocker, risk or suggestion with the affected requirement.",
+    "Decide approve, approve with conditions or reject, and record the reasoning.",
+    "Track conditions to completion and re-review changes that affect a decision."
+  ],
+  "deliverables": [
+    "review report with severity-labelled findings",
+    "decision record",
+    "conditions list",
+    "updated decision records"
+  ],
+  "acceptance_criteria": [
+    "Each finding names the requirement or attribute at risk",
+    "Every significant decision has a record with alternatives",
+    "The decision and its reasons are recorded",
+    "Reviewer is independent of the designer"
+  ],
+  "validation_method": "Independent architecture board decision.",
+  "validation": [
+    {
+      "check": "trace each quality-attribute target to the part of the design that satisfies it",
+      "expect": "every target maps to a design element or a recorded risk"
+    },
+    {
+      "check": "check each blocker finding has an owner and a resolution date",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Design approved without the requirements",
+      "detection": "Review record cites no requirement",
+      "response": "Redo the review against the requirements"
+    },
+    {
+      "mode": "Blockers deferred silently",
+      "detection": "Conditions without owners",
+      "response": "Assign owners or reject"
+    },
+    {
+      "mode": "Reviewer is the designer",
+      "detection": "Same person on both records",
+      "response": "Assign an independent reviewer"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Review of a new order service finds one shared database table written by two services. It is rated a blocker for data ownership; the design is changed so one service owns the table and the other reads through an API.",
+  "status": "complete"
+}

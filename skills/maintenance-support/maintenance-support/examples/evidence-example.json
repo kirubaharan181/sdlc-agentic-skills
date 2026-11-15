@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "maintenance-support",
-  "stage_id": 167,
-  "stage_name": "L1 Support",
+  "stage_id": 170,
+  "stage_name": "Bug Fixing",
   "commit_sha": "<commit under review>",
-  "executor": "<Technical Support Engineer or named person>",
+  "executor": "<Backend Engineer or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
     "method": "Service owner acceptance and customer-facing closure check.",
-    "command": "<command or review technique actually used>",
-    "expected": "<expected result>",
+    "command": "git stash && pytest -q tests/regression/test_bug_1234.py; git stash pop && pytest -q tests/regression/test_bug_1234.py   # example",
+    "expected": "fails before the fix, passes after",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "support/maintenance record",
-      "path": "<path or immutable URL of support/maintenance record>"
+      "name": "regression test",
+      "path": "<path or immutable URL of regression test>"
     },
     {
-      "name": "reproduction and diagnosis",
-      "path": "<path or immutable URL of reproduction and diagnosis>"
+      "name": "minimal fix",
+      "path": "<path or immutable URL of minimal fix>"
     },
     {
-      "name": "fix or patch evidence",
-      "path": "<path or immutable URL of fix or patch evidence>"
+      "name": "pull request with cause and risk",
+      "path": "<path or immutable URL of pull request with cause and risk>"
     }
   ],
   "limitations": [

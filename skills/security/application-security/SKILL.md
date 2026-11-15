@@ -28,7 +28,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 99 | SAST | complete | DevSecOps Engineer |
 | 100 | DAST | complete | DevSecOps Engineer |
 | 101 | SCA | complete | DevSecOps Engineer |
-| 102 | Container Security | stub | DevSecOps Engineer |
+| 102 | Container Security | complete | DevSecOps Engineer |
 | 103 | Infrastructure Security | stub | DevSecOps Engineer |
 | 104 | Penetration Testing | stub | Penetration Testing Specialist |
 | 105 | Authentication Security | stub | Application Security Engineer |

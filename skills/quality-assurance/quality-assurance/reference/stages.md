@@ -323,22 +323,35 @@ Validation: Independent QA review and acceptance decision. Run emulator and repr
 Gate: 08-089. Approval: none required
 
 ## 90
-**Accessibility Testing** (stub). Purpose: verify inclusive access against applicable WCAG criteria.
+**Accessibility Testing** (complete). Purpose: verify that people using assistive technology and keyboards can complete the key journeys, against a named standard.
 
-Inputs: target standard and conformance level; supported browsers/devices and assistive tech; critical user journeys
+Entry criteria: Target standard and level are named (for example WCAG 2.2 AA); Key journeys and a testable build exist; Access to a screen reader and keyboard-only testing is available
+
+Inputs: build or staging URL; list of key journeys; target accessibility standard; design system components in use
 
 Procedure:
-1. Inspect semantic structure, accessible names, headings, landmarks, labels and error associations.
-2. Test keyboard-only operation, focus order/visibility, dialogs and escape behavior.
-3. Check contrast, zoom/reflow, reduced motion and screen-reader announcements.
-4. Combine automated scans with manual assistive-technology testing; log criterion-level failures.
-5. Check semantic names, keyboard-only operation, focus management, contrast, zoom and screen-reader announcements.
+1. Run an automated accessibility scan on each key page and record results; treat it as partial coverage only.
+2. Test each key journey with the keyboard alone: focus order, visible focus, no keyboard traps, skip links.
+3. Test with at least one screen reader: names, roles, states, form labels and error messages are announced correctly.
+4. Check contrast, text resizing to 200 percent, reflow at narrow widths, motion and time limits.
+5. Log each defect with the success criterion, steps, assistive technology used and severity.
+6. Retest fixes and publish a conformance statement that lists what was and was not tested.
 
-Deliverables: accessibility audit; manual test evidence; defect and remediation list; WCAG criterion-level audit and manual test evidence
+Deliverables: automated scan report; manual test log per journey; defect list mapped to criteria; conformance statement with scope
 
-Acceptance: Automated scans are not treated as full conformance proof. Critical journeys work without pointer input. Findings cite criterion, impact and reproduction. Critical journeys pass manual assistive-technology checks.
+Acceptance: Each key journey was completed with keyboard only and with a screen reader No open critical or serious defect on a key journey Defects cite the success criterion Statement lists untested areas
 
-Validation: Independent accessibility specialist review. Run automated scans plus keyboard and screen-reader verification.
+Validation: Independent accessibility specialist review.
+
+- `npx playwright test tests/a11y --reporter=line   # example: axe-based checks in the project's test runner` expect: no serious or critical violations on the key pages
+- manual: complete each key journey with keyboard only and with a screen reader and record the result expect: every journey completed; defects logged
+
+Failure modes:
+- Only automated scans were run | detect: Manual log is empty | respond: Mark INCONCLUSIVE; automated tools find a minority of issues
+- Defect fixed visually but not for assistive technology | detect: Retest with the screen reader still fails | respond: Reopen with the technology named
+- Custom component without semantics | detect: Role or name missing in the accessibility tree | respond: Use a native element or add correct roles and states
+
+ILLUSTRATIVE: Keyboard testing of a checkout form finds that the date picker traps focus. A screen reader reads the error summary but not the field names. Both are logged against the relevant criteria and fixed, then retested.
 
 Gate: 08-090. Approval: none required
 
