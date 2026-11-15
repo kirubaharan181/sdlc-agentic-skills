@@ -1,12 +1,35 @@
 {
+  "example": true,
+  "status": "ILLUSTRATIVE_ONLY",
+  "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+  "skill": "maintenance-support",
   "stage_id": 167,
-  "status": "PASS",
-  "commit_sha": "<real-sha-required>",
-  "evidence": [
+  "stage_name": "L1 Support",
+  "commit_sha": "<commit under review>",
+  "executor": "<Technical Support Engineer or named person>",
+  "timestamp": "<ISO 8601 time of the run>",
+  "validation": {
+    "method": "Service owner acceptance and customer-facing closure check.",
+    "command": "<command or review technique actually used>",
+    "expected": "<expected result>",
+    "exit_status": "<observed>"
+  },
+  "artifacts": [
     {
-      "type": "reviewed-artifact",
-      "path": "<actual-path>",
-      "result": "passed"
+      "name": "support/maintenance record",
+      "path": "<path or immutable URL of support/maintenance record>"
+    },
+    {
+      "name": "reproduction and diagnosis",
+      "path": "<path or immutable URL of reproduction and diagnosis>"
+    },
+    {
+      "name": "fix or patch evidence",
+      "path": "<path or immutable URL of fix or patch evidence>"
     }
-  ]
+  ],
+  "limitations": [
+    "<what was not covered>"
+  ],
+  "approval": null
 }

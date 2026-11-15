@@ -1,12 +1,35 @@
 {
-  "stage_id": 68,
-  "status": "PASS",
-  "commit_sha": "<real-sha-required>",
-  "evidence": [
+  "example": true,
+  "status": "ILLUSTRATIVE_ONLY",
+  "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+  "skill": "code-review-quality",
+  "stage_id": 69,
+  "stage_name": "Peer Code Review",
+  "commit_sha": "<commit under review>",
+  "executor": "<Code Reviewer or named person>",
+  "timestamp": "<ISO 8601 time of the run>",
+  "validation": {
+    "method": "Approval recorded against the exact head commit.",
+    "command": "git diff --stat origin/main...HEAD",
+    "expected": "diff size matches what the reviewer was asked to review",
+    "exit_status": "<observed>"
+  },
+  "artifacts": [
     {
-      "type": "reviewed-artifact",
-      "path": "<actual-path>",
-      "result": "passed"
+      "name": "review comments with severity labels",
+      "path": "<path or immutable URL of review comments with severity labels>"
+    },
+    {
+      "name": "approval or change-request decision",
+      "path": "<path or immutable URL of approval or change-request decision>"
+    },
+    {
+      "name": "list of deferred items with issue links",
+      "path": "<path or immutable URL of list of deferred items with issue links>"
     }
-  ]
+  ],
+  "limitations": [
+    "<what was not covered>"
+  ],
+  "approval": null
 }

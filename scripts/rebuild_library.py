@@ -152,6 +152,8 @@ Transfer the artifact path/revision, validation evidence, limitations, residual 
   skill_md,ref_md=render_skills.render_skill(sid,SKILL_PROFILES[sid],matched,agents_doc['agents'],ROOT/path.parent)
   write(path,skill_md)
   if matched: write(path.parent/'reference'/'stages.md',ref_md)
+  ev=render_skills.render_evidence_example(sid,matched)
+  if ev: (ROOT/path.parent/'examples').mkdir(exist_ok=True); (ROOT/path.parent/'examples'/'evidence-example.json').write_text(ev,encoding='utf-8')
  # workflow files are rendered from registry/workflows/*.json
  stages_by_id={s['stage_id']:s for s in registry_io.load_stage_doc(ROOT)['stages']}
  for w in wf:

@@ -1,12 +1,35 @@
 {
-  "stage_id": 153,
-  "status": "PASS",
-  "commit_sha": "<real-sha-required>",
-  "evidence": [
+  "example": true,
+  "status": "ILLUSTRATIVE_ONLY",
+  "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+  "skill": "sre-observability",
+  "stage_id": 158,
+  "stage_name": "Alert Management",
+  "commit_sha": "<commit under review>",
+  "executor": "<SRE or named person>",
+  "timestamp": "<ISO 8601 time of the run>",
+  "validation": {
+    "method": "Test fire of each alert reaches the on-call person.",
+    "command": "promtool check rules alerts/*.yml   # example for Prometheus rules",
+    "expected": "SUCCESS for every file",
+    "exit_status": "<observed>"
+  },
+  "artifacts": [
     {
-      "type": "reviewed-artifact",
-      "path": "<actual-path>",
-      "result": "passed"
+      "name": "alert rule definitions",
+      "path": "<path or immutable URL of alert rule definitions>"
+    },
+    {
+      "name": "runbook per alert",
+      "path": "<path or immutable URL of runbook per alert>"
+    },
+    {
+      "name": "routing configuration",
+      "path": "<path or immutable URL of routing configuration>"
     }
-  ]
+  ],
+  "limitations": [
+    "<what was not covered>"
+  ],
+  "approval": null
 }

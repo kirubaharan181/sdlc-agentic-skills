@@ -101,3 +101,34 @@ def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict
             "", f"Gate: {s['quality_gate']}. Approval: " + (f"{s['approver']} ({s.get('approval_condition', 'always')})" if s["approval_required"] else "none required"), "",
         ]
     return skill_md, "\n".join(ref) + "\n"
+
+
+def render_evidence_example(sid: str, stages: list[dict]) -> str | None:
+    """A clearly labelled, stage-specific example of an evidence record. It is documentation, never evidence."""
+    import json
+
+    if not stages:
+        return None
+    s = next((x for x in stages if x["status"] == "complete"), stages[0])
+    cmds = [v for v in s.get("validation_commands", []) if "command" in v]
+    record = {
+        "example": True,
+        "status": "ILLUSTRATIVE_ONLY",
+        "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+        "skill": sid,
+        "stage_id": s["stage_id"],
+        "stage_name": s["stage_name"],
+        "commit_sha": "<commit under review>",
+        "executor": f"<{s['primary_role']} or named person>",
+        "timestamp": "<ISO 8601 time of the run>",
+        "validation": {
+            "method": s["validation_method"],
+            "command": cmds[0]["command"] if cmds else "<command or review technique actually used>",
+            "expected": cmds[0]["expect"] if cmds else "<expected result>",
+            "exit_status": "<observed>",
+        },
+        "artifacts": [{"name": a, "path": f"<path or immutable URL of {a}>"} for a in s["deliverable_artifacts"][:3]],
+        "limitations": ["<what was not covered>"],
+        "approval": ({"approver": s["approver"], "decision": "<pending>"} if s["approval_required"] else None),
+    }
+    return json.dumps(record, indent=2, ensure_ascii=False) + "\n"

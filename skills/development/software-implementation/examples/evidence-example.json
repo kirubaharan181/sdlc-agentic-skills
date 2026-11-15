@@ -1,12 +1,35 @@
 {
+  "example": true,
+  "status": "ILLUSTRATIVE_ONLY",
+  "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+  "skill": "software-implementation",
   "stage_id": 53,
-  "status": "PASS",
-  "commit_sha": "<real-sha-required>",
-  "evidence": [
+  "stage_name": "Frontend Development",
+  "commit_sha": "<commit under review>",
+  "executor": "<Frontend Engineer or named person>",
+  "timestamp": "<ISO 8601 time of the run>",
+  "validation": {
+    "method": "UI peer review and browser test run.",
+    "command": "<command or review technique actually used>",
+    "expected": "<expected result>",
+    "exit_status": "<observed>"
+  },
+  "artifacts": [
     {
-      "type": "reviewed-artifact",
-      "path": "<actual-path>",
-      "result": "passed"
+      "name": "component implementation",
+      "path": "<path or immutable URL of component implementation>"
+    },
+    {
+      "name": "UI state model",
+      "path": "<path or immutable URL of UI state model>"
+    },
+    {
+      "name": "component/browser tests",
+      "path": "<path or immutable URL of component/browser tests>"
     }
-  ]
+  ],
+  "limitations": [
+    "<what was not covered>"
+  ],
+  "approval": null
 }

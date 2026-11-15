@@ -1,12 +1,38 @@
 {
-  "stage_id": 140,
-  "status": "PASS",
-  "commit_sha": "<real-sha-required>",
-  "evidence": [
+  "example": true,
+  "status": "ILLUSTRATIVE_ONLY",
+  "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+  "skill": "cloud-hosting-operations",
+  "stage_id": 148,
+  "stage_name": "Disaster Recovery",
+  "commit_sha": "<commit under review>",
+  "executor": "<SRE or named person>",
+  "timestamp": "<ISO 8601 time of the run>",
+  "validation": {
+    "method": "DR-owner approval after a recorded exercise.",
+    "command": "<command or review technique actually used>",
+    "expected": "<expected result>",
+    "exit_status": "<observed>"
+  },
+  "artifacts": [
     {
-      "type": "reviewed-artifact",
-      "path": "<actual-path>",
-      "result": "passed"
+      "name": "DR plan and runbook",
+      "path": "<path or immutable URL of DR plan and runbook>"
+    },
+    {
+      "name": "exercise report with measured RTO and RPO",
+      "path": "<path or immutable URL of exercise report with measured RTO and RPO>"
+    },
+    {
+      "name": "gap list",
+      "path": "<path or immutable URL of gap list>"
     }
-  ]
+  ],
+  "limitations": [
+    "<what was not covered>"
+  ],
+  "approval": {
+    "approver": "dr-owner",
+    "decision": "<pending>"
+  }
 }

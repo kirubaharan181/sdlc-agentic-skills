@@ -1,12 +1,35 @@
 {
+  "example": true,
+  "status": "ILLUSTRATIVE_ONLY",
+  "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+  "skill": "quality-assurance",
   "stage_id": 77,
-  "status": "PASS",
-  "commit_sha": "<real-sha-required>",
-  "evidence": [
+  "stage_name": "Test Strategy",
+  "commit_sha": "<commit under review>",
+  "executor": "<QA Lead or named person>",
+  "timestamp": "<ISO 8601 time of the run>",
+  "validation": {
+    "method": "Review by engineering lead and product owner.",
+    "command": "<command or review technique actually used>",
+    "expected": "<expected result>",
+    "exit_status": "<observed>"
+  },
+  "artifacts": [
     {
-      "type": "reviewed-artifact",
-      "path": "<actual-path>",
-      "result": "passed"
+      "name": "test strategy document",
+      "path": "<path or immutable URL of test strategy document>"
+    },
+    {
+      "name": "risk-to-test matrix",
+      "path": "<path or immutable URL of risk-to-test matrix>"
+    },
+    {
+      "name": "entry and exit criteria",
+      "path": "<path or immutable URL of entry and exit criteria>"
     }
-  ]
+  ],
+  "limitations": [
+    "<what was not covered>"
+  ],
+  "approval": null
 }

@@ -287,6 +287,22 @@ for _a in sorted(_procs):
         if _a < _b and _dl.SequenceMatcher(None, _procs[_a], _procs[_b], autojunk=False).ratio() > 0.70:
             errors.append(f"stages {_a} and {_b}: procedures are more than 70% similar")
 
+# skill distinctness and illustrative-evidence labelling (Phase 5)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import audit_duplication as _dup
+_sp, _ = _dup.near_duplicates(R, 0.70, scope=("skills",))
+for _a, _b, _r in _sp:
+    errors.append(f"skill documents too similar ({_r:.2f} >= 0.70): {_a} <-> {_b}")
+_ex_seen = {}
+for _p in (R / "skills").rglob("examples/*.json"):
+    _d = _json.loads(_p.read_text(encoding="utf-8"))
+    if _d.get("example") is not True or _d.get("status") == "PASS":
+        errors.append(f"{_p.relative_to(R)}: example evidence must set \"example\": true and must not say PASS")
+    _ex_seen.setdefault(_p.read_text(encoding="utf-8"), []).append(_p)
+for _txt, _ps in _ex_seen.items():
+    if len(_ps) > 1:
+        errors.append("identical example evidence in " + ", ".join(str(x.relative_to(R)) for x in _ps))
+
 # role distinctness (Phase 3): contracts must not be near-copies and every role needs a derived footprint
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import audit_duplication as _dup
