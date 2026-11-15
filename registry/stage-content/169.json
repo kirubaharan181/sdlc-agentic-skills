@@ -1,0 +1,65 @@
+{
+  "stage_id": 169,
+  "purpose": "fix or workaround production problems that need code-level investigation, with evidence and a safe change",
+  "entry_criteria": [
+    "The issue is escalated from L2 with evidence",
+    "Access to code, logs and a test environment exists",
+    "Severity and owner are set"
+  ],
+  "inputs": [
+    "escalation package with evidence",
+    "source code and recent changes",
+    "logs and traces",
+    "test environment"
+  ],
+  "procedure": [
+    "Reproduce the problem in a test environment or isolate it precisely in logs and traces.",
+    "Find the root cause; if a quick safe workaround exists, give support a workaround first.",
+    "Write a failing test, then the smallest fix; hand off to the bug-fix procedure (stage 170) for delivery.",
+    "Review with an independent engineer and check data impact; plan any data repair separately and carefully.",
+    "Release through the normal or emergency path according to severity.",
+    "Return the resolution and the cause to L2 and the reporter, and update the runbook."
+  ],
+  "deliverables": [
+    "root-cause note",
+    "workaround for support",
+    "failing test and fix",
+    "resolution communication"
+  ],
+  "acceptance_criteria": [
+    "The cause is established with evidence",
+    "A workaround was offered when the fix could not be immediate",
+    "Any data repair was planned and approved separately",
+    "Support has the resolution and runbook update"
+  ],
+  "validation_method": "Service owner acceptance of the resolution.",
+  "validation": [
+    {
+      "command": "pytest -q tests/regression/test_issue_5678.py   # example failing test then passing",
+      "expect": "fails before, passes after the fix"
+    },
+    {
+      "check": "check data affected by the defect and confirm repair or a decision not to repair",
+      "expect": "decision recorded"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Fix deployed without a test",
+      "detection": "No regression test in the change",
+      "response": "Add the test"
+    },
+    {
+      "mode": "Data damage not assessed",
+      "detection": "No statement on affected data",
+      "response": "Assess and plan repair"
+    },
+    {
+      "mode": "Support not informed",
+      "detection": "L2 has no resolution note",
+      "response": "Send resolution and workaround details"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: An escalation shows duplicate shipments for retried orders. Engineers reproduce it, add an idempotency check with a regression test, release the fix, and support receives the list of affected orders to correct.",
+  "status": "complete"
+}

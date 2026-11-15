@@ -12,21 +12,35 @@
 - [76 Technical Debt Review](#76)
 
 ## 68
-**Pull Request Creation** (stub). Purpose: prepare a reviewable and reproducible change proposal.
+**Pull Request Creation** (complete). Purpose: package a finished change so a reviewer can understand it, verify it and merge it safely.
 
-Inputs: approved issue and acceptance criteria; working branch and target base; local test and review policy
+Entry criteria: The change builds and its tests pass locally; A work item with acceptance criteria exists; The branch is current with the target branch
+
+Inputs: branch with the change; linked work item and acceptance criteria; test results; contribution guidelines
 
 Procedure:
-1. Check branch base and working-tree scope; separate unrelated changes.
-2. Write a PR summary linking issue, behavior change, risk and migration impact.
-3. Attach exact test commands/results, screenshots or reports and known limitations.
-4. Request required code owners and reviewers; ensure the PR is small enough to review.
+1. Keep the change to one purpose; split unrelated work into separate pull requests.
+2. Write a title and description that state what changed, why, how it was tested and what could go wrong.
+3. Link the work item and note any migration, configuration or rollout step the reviewer must know about.
+4. Run the project's checks locally and confirm the CI checks start and pass.
+5. Self-review the diff first and remove debug code, stray files and secrets.
+6. Request reviewers who own the affected area and respond to comments promptly.
 
-Deliverables: pull request description; linked issue; test evidence; risk and migration note
+Deliverables: pull request with description; link to work item; test evidence; self-review notes
 
-Acceptance: Diff contains only intended changes. Evidence is from the PR head commit. Required reviewers and checks are requested.
+Acceptance: Description states purpose, testing and risk The diff contains only the intended change CI checks are running or green Work item is linked
 
-Validation: PR checklist and diff review.
+Validation: Code review (stage 69) and merge approval (stage 75) follow.
+
+- `git diff --stat origin/main...HEAD` expect: changed files match the stated purpose
+- `gh pr checks` expect: required checks are pending or passing
+
+Failure modes:
+- Very large mixed change | detect: Diff touches unrelated areas | respond: Split into smaller pull requests
+- Secret or debug output committed | detect: Scan or self-review finds it | respond: Remove, rotate if a secret, and force a clean history before review
+- No description | detect: Body is empty | respond: Write the description before requesting review
+
+ILLUSTRATIVE: A pull request adds an export endpoint. The description lists the new route, the test that covers pagination, and a note that a new index is created by migration 0042.
 
 Gate: 07-068. Approval: none required
 
@@ -173,21 +187,35 @@ Validation: Independent reviewer confirms findings and disposition.
 Gate: 07-074. Approval: none required
 
 ## 75
-**Merge Approval** (stub). Purpose: prepare a controlled decision with sufficient evidence and independent authority.
+**Merge Approval** (complete). Purpose: confirm that a reviewed change meets the merge conditions and let it into the protected branch, by someone other than its author.
 
-Inputs: decision request and accountable sponsor; impact/risk assessment; supporting evidence and alternatives
+Entry criteria: Code review (stage 69) is approved on the current head commit; Required checks have passed; A merge steward or code owner is available
+
+Inputs: pull request and head commit; review approvals; required check results; branch protection rules and code owners
 
 Procedure:
-1. Check the decision request is complete, in scope and owned by an authorized requester.
-2. Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
-3. Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
-4. Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
+1. Confirm the approvals are on the current head commit and from the required code owners.
+2. Confirm every required check is green and no check was bypassed.
+3. Confirm there are no unresolved blocking comments and no conflicts with the target branch.
+4. Confirm the change fits the release plan or freeze status.
+5. Merge using the agreed method and record who merged and when.
+6. Confirm the target branch pipeline starts and passes after the merge.
 
-Deliverables: decision record; evidence index; conditions and waiver log
+Deliverables: merge record; approval and check summary; post-merge pipeline result
 
-Acceptance: Decision authority is verified. Conditions are measurable, owned and time-bound. No missing or failed critical evidence is silently waived.
+Acceptance: Approval is on the head commit being merged Required checks passed without bypass Merger is not the sole author and approver Post-merge pipeline is green
 
-Validation: Independent approval record and audit trail.
+Validation: Code-owner approval.
+
+- `gh pr view --json reviewDecision,headRefOid,mergeStateStatus` expect: reviewDecision APPROVED, mergeStateStatus CLEAN, headRefOid equals the reviewed commit
+- `gh run list --branch main --limit 1 --json conclusion` expect: success after the merge
+
+Failure modes:
+- Stale approval | detect: Approved commit differs from head | respond: Dismiss and re-review
+- Check bypassed by an admin | detect: Merge record shows an override | respond: Record the reason; review in the next retrospective
+- Merge breaks the main branch | detect: Post-merge pipeline fails | respond: Revert quickly and investigate
+
+ILLUSTRATIVE: The steward sees approval from the code owner on commit a1b2c3, all required checks green and no conflicts. The change merges and the main-branch pipeline passes.
 
 Gate: 07-075. Approval: code-owner (always)
 

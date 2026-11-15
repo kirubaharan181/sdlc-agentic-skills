@@ -3,36 +3,33 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "cloud-hosting-operations",
-  "stage_id": 148,
-  "stage_name": "Disaster Recovery",
+  "stage_id": 147,
+  "stage_name": "Backup Management",
   "commit_sha": "<commit under review>",
-  "executor": "<SRE or named person>",
+  "executor": "<Database Administrator or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "DR-owner approval after a recorded exercise.",
+    "method": "Database administrator and data owner review of restore results.",
     "command": "<command or review technique actually used>",
     "expected": "<expected result>",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "DR plan and runbook",
-      "path": "<path or immutable URL of DR plan and runbook>"
+      "name": "backup configuration",
+      "path": "<path or immutable URL of backup configuration>"
     },
     {
-      "name": "exercise report with measured RTO and RPO",
-      "path": "<path or immutable URL of exercise report with measured RTO and RPO>"
+      "name": "job monitoring and alerts",
+      "path": "<path or immutable URL of job monitoring and alerts>"
     },
     {
-      "name": "gap list",
-      "path": "<path or immutable URL of gap list>"
+      "name": "restore test reports",
+      "path": "<path or immutable URL of restore test reports>"
     }
   ],
   "limitations": [
     "<what was not covered>"
   ],
-  "approval": {
-    "approver": "dr-owner",
-    "decision": "<pending>"
-  }
+  "approval": null
 }

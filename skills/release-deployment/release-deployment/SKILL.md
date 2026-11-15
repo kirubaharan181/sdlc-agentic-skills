@@ -25,11 +25,11 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
 | 126 | Release Planning | stub | Release Manager |
-| 127 | Release Notes | stub | Release Manager |
+| 127 | Release Notes | complete | Release Manager |
 | 128 | Release Readiness | complete | Release Manager |
 | 129 | Change Approval | complete | Release Manager |
 | 130 | Staging Deployment | complete | Deployment Engineer |
-| 131 | Staging Validation | stub | QA Lead |
+| 131 | Staging Validation | complete | QA Lead |
 | 132 | Database Migration | complete | Database Administrator |
 | 133 | Production Deployment | complete | Deployment Engineer |
 | 134 | Domain & DNS | stub | Cloud Engineer |
@@ -37,7 +37,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 136 | Load Balancer Setup | stub | Network Engineer |
 | 137 | Rollback Planning | complete | Release Manager |
 | 138 | Production Smoke Test | complete | SRE |
-| 139 | Deployment Sign-off | stub | Release Manager |
+| 139 | Deployment Sign-off | complete | Release Manager |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

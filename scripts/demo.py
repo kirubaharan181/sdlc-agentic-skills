@@ -49,7 +49,8 @@ def plan(workflow_id: str) -> str:
     out += [f"  - {x}" for x in wf["exit_criteria"]]
     done = sum(1 for s in wf["steps"] if stages[s["stage"]]["status"] == "complete")
     out.append("")
-    out.append(f"{len(wf['steps'])} steps, {len(wf['approval_points'])} human approvals, {done} steps with complete stage content, {len(wf['steps']) - done} stubs.")
+    n_steps, n_appr, n_left = len(wf["steps"]), len(wf["approval_points"]), len(wf["steps"]) - done
+    out.append(f"{n_steps} steps, {n_appr} human approvals, {done} steps with complete stage content, {n_left} still stub.")
     return "\n".join(out) + "\n"
 
 

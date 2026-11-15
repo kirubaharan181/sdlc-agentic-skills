@@ -3353,36 +3353,7 @@
       "skills": [
         "code-review-quality"
       ],
-      "inputs": [
-        "approved issue and acceptance criteria",
-        "working branch and target base",
-        "local test and review policy"
-      ],
-      "outputs": [
-        "pull-request-creation-deliverable",
-        "pull request description",
-        "linked issue"
-      ],
       "quality_gate": "07-068",
-      "validation_method": "PR checklist and diff review.",
-      "purpose": "prepare a reviewable and reproducible change proposal",
-      "execution_instructions": [
-        "Check branch base and working-tree scope; separate unrelated changes.",
-        "Write a PR summary linking issue, behavior change, risk and migration impact.",
-        "Attach exact test commands/results, screenshots or reports and known limitations.",
-        "Request required code owners and reviewers; ensure the PR is small enough to review."
-      ],
-      "deliverable_artifacts": [
-        "pull request description",
-        "linked issue",
-        "test evidence",
-        "risk and migration note"
-      ],
-      "quality_criteria": [
-        "Diff contains only intended changes.",
-        "Evidence is from the PR head commit.",
-        "Required reviewers and checks are requested."
-      ],
       "raci": {
         "accountable": "full-stack-engineer",
         "responsible": [
@@ -3651,35 +3622,7 @@
       "skills": [
         "code-review-quality"
       ],
-      "inputs": [
-        "decision request and accountable sponsor",
-        "impact/risk assessment",
-        "supporting evidence and alternatives"
-      ],
-      "outputs": [
-        "merge-approval-deliverable",
-        "decision record",
-        "evidence index"
-      ],
       "quality_gate": "07-075",
-      "validation_method": "Independent approval record and audit trail.",
-      "purpose": "prepare a controlled decision with sufficient evidence and independent authority",
-      "execution_instructions": [
-        "Check the decision request is complete, in scope and owned by an authorized requester.",
-        "Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.",
-        "Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.",
-        "Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver."
-      ],
-      "deliverable_artifacts": [
-        "decision record",
-        "evidence index",
-        "conditions and waiver log"
-      ],
-      "quality_criteria": [
-        "Decision authority is verified.",
-        "Conditions are measurable, owned and time-bound.",
-        "No missing or failed critical evidence is silently waived."
-      ],
       "approval_required": true,
       "raci": {
         "accountable": "merge-steward",
@@ -4096,39 +4039,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "regression-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-085",
-      "validation_method": "Independent QA review and acceptance decision. Compare targeted suite results with the baseline candidate.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Select impacted behavior using code dependencies, API/data changes and historical defect evidence."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "regression scope and comparison report"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Previously accepted critical behavior remains stable on the candidate build."
-      ],
       "raci": {
         "accountable": "automation-qa-engineer",
         "responsible": [
@@ -5961,35 +5872,7 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "approved change list and issue links",
-        "target audience and supported version",
-        "known issues and rollout schedule"
-      ],
-      "outputs": [
-        "release-notes-deliverable",
-        "versioned release notes",
-        "upgrade and known-issue notes"
-      ],
       "quality_gate": "11-127",
-      "validation_method": "Compare release notes with the merged change list and candidate digest.",
-      "purpose": "communicate the exact behavior and operational impact of a release",
-      "execution_instructions": [
-        "Group changes by user-visible capability, fixes, security and operational impact.",
-        "Describe behavior changes, compatibility/deprecation and required customer actions accurately.",
-        "Include known issues, upgrade notes and links to support guidance.",
-        "Verify every statement against the approved candidate and obtain product/support review."
-      ],
-      "deliverable_artifacts": [
-        "versioned release notes",
-        "upgrade and known-issue notes",
-        "review approval"
-      ],
-      "quality_criteria": [
-        "Notes match the actual candidate contents.",
-        "Breaking changes and user actions are explicit.",
-        "No unverified capability claim is published."
-      ],
       "raci": {
         "accountable": "release-manager",
         "responsible": [
@@ -6080,36 +5963,7 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "release candidate digest and scope",
-        "change approvals and readiness evidence",
-        "rollback/recovery and communication plan"
-      ],
-      "outputs": [
-        "staging-validation-deliverable",
-        "release manifest",
-        "readiness checklist"
-      ],
       "quality_gate": "11-131",
-      "validation_method": "Change authority approval and post-deploy verification.",
-      "purpose": "prepare and execute a controlled release or migration",
-      "execution_instructions": [
-        "Confirm immutable candidate, included changes, compatibility and outstanding risk.",
-        "Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.",
-        "Obtain change authority and communicate schedule, impact, owners and stop conditions.",
-        "Deploy progressively, verify health and business signals, then confirm or execute recovery."
-      ],
-      "deliverable_artifacts": [
-        "release manifest",
-        "readiness checklist",
-        "deployment and migration evidence",
-        "post-deploy verification"
-      ],
-      "quality_criteria": [
-        "Deployed digest matches approved candidate.",
-        "Migration and recovery are rehearsed.",
-        "Stop/rollback thresholds and authority are explicit."
-      ],
       "raci": {
         "accountable": "qa-lead",
         "responsible": [
@@ -6377,35 +6231,7 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "decision request and accountable sponsor",
-        "impact/risk assessment",
-        "supporting evidence and alternatives"
-      ],
-      "outputs": [
-        "deployment-sign-off-deliverable",
-        "decision record",
-        "evidence index"
-      ],
       "quality_gate": "11-139",
-      "validation_method": "Independent approval record and audit trail.",
-      "purpose": "prepare a controlled decision with sufficient evidence and independent authority",
-      "execution_instructions": [
-        "Check the decision request is complete, in scope and owned by an authorized requester.",
-        "Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.",
-        "Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.",
-        "Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver."
-      ],
-      "deliverable_artifacts": [
-        "decision record",
-        "evidence index",
-        "conditions and waiver log"
-      ],
-      "quality_criteria": [
-        "Decision authority is verified.",
-        "Conditions are measurable, owned and time-bound.",
-        "No missing or failed critical evidence is silently waived."
-      ],
       "raci": {
         "accountable": "release-manager",
         "responsible": [
@@ -6778,36 +6604,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "service inventory and ownership",
-        "SLO/RTO/RPO and capacity profile",
-        "access, backup and cost policies"
-      ],
-      "outputs": [
-        "backup-management-deliverable",
-        "infrastructure inventory",
-        "change record"
-      ],
       "quality_gate": "12-147",
-      "validation_method": "Cloud operations and security review.",
-      "purpose": "operate cloud infrastructure within reliability and cost objectives",
-      "execution_instructions": [
-        "Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.",
-        "Verify identity boundaries, encryption, network exposure, patch state and backup coverage.",
-        "Measure health, capacity, utilization, recovery readiness and cost allocation.",
-        "Apply a reviewed, reversible change and verify telemetry, drift and customer impact."
-      ],
-      "deliverable_artifacts": [
-        "infrastructure inventory",
-        "change record",
-        "health/capacity/cost evidence",
-        "operator runbook"
-      ],
-      "quality_criteria": [
-        "Changes are scoped and reversible.",
-        "Backup/recovery meets stated objectives.",
-        "Cost and reliability effects are measured."
-      ],
       "raci": {
         "accountable": "database-administrator",
         "responsible": [
@@ -6986,36 +6783,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "service inventory and ownership",
-        "SLO/RTO/RPO and capacity profile",
-        "access, backup and cost policies"
-      ],
-      "outputs": [
-        "infrastructure-maintenance-deliverable",
-        "infrastructure inventory",
-        "change record"
-      ],
       "quality_gate": "12-152",
-      "validation_method": "Cloud operations and security review.",
-      "purpose": "operate cloud infrastructure within reliability and cost objectives",
-      "execution_instructions": [
-        "Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.",
-        "Verify identity boundaries, encryption, network exposure, patch state and backup coverage.",
-        "Measure health, capacity, utilization, recovery readiness and cost allocation.",
-        "Apply a reviewed, reversible change and verify telemetry, drift and customer impact."
-      ],
-      "deliverable_artifacts": [
-        "infrastructure inventory",
-        "change record",
-        "health/capacity/cost evidence",
-        "operator runbook"
-      ],
-      "quality_criteria": [
-        "Changes are scoped and reversible.",
-        "Backup/recovery meets stated objectives.",
-        "Cost and reliability effects are measured."
-      ],
       "raci": {
         "accountable": "infrastructure-engineer",
         "responsible": [
@@ -7628,36 +7396,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "l2-support-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-168",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "raci": {
         "accountable": "production-support-engineer",
         "responsible": [
@@ -7679,36 +7418,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "l3-support-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-169",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "raci": {
         "accountable": "backend-engineer",
         "responsible": [
@@ -7804,36 +7514,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "dependency-updates-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-172",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "raci": {
         "accountable": "backend-engineer",
         "responsible": [
@@ -7855,36 +7536,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "database-maintenance-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-173",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "approval_required": true,
       "approval_rationale": "Destructive maintenance (purge, reindex on live tables, vacuum full, retention deletes) can lock or lose data; a DBA owner must approve.",
       "raci": {

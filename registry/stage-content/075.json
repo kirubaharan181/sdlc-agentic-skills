@@ -1,0 +1,64 @@
+{
+  "stage_id": 75,
+  "purpose": "confirm that a reviewed change meets the merge conditions and let it into the protected branch, by someone other than its author",
+  "entry_criteria": [
+    "Code review (stage 69) is approved on the current head commit",
+    "Required checks have passed",
+    "A merge steward or code owner is available"
+  ],
+  "inputs": [
+    "pull request and head commit",
+    "review approvals",
+    "required check results",
+    "branch protection rules and code owners"
+  ],
+  "procedure": [
+    "Confirm the approvals are on the current head commit and from the required code owners.",
+    "Confirm every required check is green and no check was bypassed.",
+    "Confirm there are no unresolved blocking comments and no conflicts with the target branch.",
+    "Confirm the change fits the release plan or freeze status.",
+    "Merge using the agreed method and record who merged and when.",
+    "Confirm the target branch pipeline starts and passes after the merge."
+  ],
+  "deliverables": [
+    "merge record",
+    "approval and check summary",
+    "post-merge pipeline result"
+  ],
+  "acceptance_criteria": [
+    "Approval is on the head commit being merged",
+    "Required checks passed without bypass",
+    "Merger is not the sole author and approver",
+    "Post-merge pipeline is green"
+  ],
+  "validation_method": "Code-owner approval.",
+  "validation": [
+    {
+      "command": "gh pr view --json reviewDecision,headRefOid,mergeStateStatus",
+      "expect": "reviewDecision APPROVED, mergeStateStatus CLEAN, headRefOid equals the reviewed commit"
+    },
+    {
+      "command": "gh run list --branch main --limit 1 --json conclusion",
+      "expect": "success after the merge"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Stale approval",
+      "detection": "Approved commit differs from head",
+      "response": "Dismiss and re-review"
+    },
+    {
+      "mode": "Check bypassed by an admin",
+      "detection": "Merge record shows an override",
+      "response": "Record the reason; review in the next retrospective"
+    },
+    {
+      "mode": "Merge breaks the main branch",
+      "detection": "Post-merge pipeline fails",
+      "response": "Revert quickly and investigate"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The steward sees approval from the code owner on commit a1b2c3, all required checks green and no conflicts. The change merges and the main-branch pipeline passes.",
+  "status": "complete"
+}

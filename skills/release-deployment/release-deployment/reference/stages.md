@@ -36,21 +36,35 @@ Validation: Change authority approval and post-deploy verification.
 Gate: 11-126. Approval: none required
 
 ## 127
-**Release Notes** (stub). Purpose: communicate the exact behavior and operational impact of a release.
+**Release Notes** (complete). Purpose: tell users and support what changed in a release, truthfully and in language they can use.
 
-Inputs: approved change list and issue links; target audience and supported version; known issues and rollout schedule
+Entry criteria: Release scope is fixed; Changes are linked to work items; Known issues and required user actions are known
+
+Inputs: list of merged changes with work items; known issues; migration or upgrade steps; support and product input
 
 Procedure:
-1. Group changes by user-visible capability, fixes, security and operational impact.
-2. Describe behavior changes, compatibility/deprecation and required customer actions accurately.
-3. Include known issues, upgrade notes and links to support guidance.
-4. Verify every statement against the approved candidate and obtain product/support review.
+1. Collect every change in the release from merged work items; do not rely on memory.
+2. Group into new features, improvements, fixes, deprecations and breaking changes.
+3. Write each entry from the user's point of view; state required actions and breaking changes first.
+4. List known issues and workarounds honestly.
+5. Have product and support review for accuracy and for anything missing.
+6. Publish with the version and date; keep it in the repository next to the code.
 
-Deliverables: versioned release notes; upgrade and known-issue notes; review approval
+Deliverables: release notes; known-issues list; upgrade steps
 
-Acceptance: Notes match the actual candidate contents. Breaking changes and user actions are explicit. No unverified capability claim is published.
+Acceptance: Every user-visible change in the release appears Breaking changes and required actions come first Known issues are listed Reviewed by product and support
 
-Validation: Compare release notes with the merged change list and candidate digest.
+Validation: Release manager approval of the published notes.
+
+- `git log --oneline v1.0.0..HEAD | wc -l` expect: count of changes reconciles with entries in the notes
+- manual: pick three entries and verify each against its work item expect: all match
+
+Failure modes:
+- Breaking change not mentioned | detect: Diff shows API removal absent from notes | respond: Add it prominently
+- Marketing language hides a problem | detect: Known issue missing | respond: List the issue and workaround
+- Notes written before scope froze | detect: Entries for unmerged work | respond: Reconcile with the merged list
+
+ILLUSTRATIVE: Release notes lead with a breaking change to the export format and the one-line migration command, then list three fixes with ticket links and one known issue with a workaround.
 
 Gate: 11-127. Approval: none required
 
@@ -154,21 +168,35 @@ ILLUSTRATIVE: Release candidate digest sha256:ab12 is deployed to staging by the
 Gate: 11-130. Approval: none required
 
 ## 131
-**Staging Validation** (stub). Purpose: prepare and execute a controlled release or migration.
+**Staging Validation** (complete). Purpose: prove in staging that the release candidate works end to end and is fit to be approved for production.
 
-Inputs: release candidate digest and scope; change approvals and readiness evidence; rollback/recovery and communication plan
+Entry criteria: Staging deployment of the candidate is complete (stage 130); Test data and test accounts are available; Acceptance criteria for the release are written
+
+Inputs: release candidate on staging; acceptance criteria; regression and critical-journey suites; performance and security results
 
 Procedure:
-1. Confirm immutable candidate, included changes, compatibility and outstanding risk.
-2. Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
-3. Obtain change authority and communicate schedule, impact, owners and stop conditions.
-4. Deploy progressively, verify health and business signals, then confirm or execute recovery.
+1. Run the regression suite and critical-journey tests against staging and record results.
+2. Verify the acceptance criteria for each change in the release with the product owner or their delegate.
+3. Check non-functional results: performance against objectives, security scan status, accessibility where in scope.
+4. Review open defects; each is fixed, accepted by its owner or blocks the release.
+5. Record PASS, FAIL or CONDITIONAL with evidence for each area.
+6. Hand the record to release readiness (stage 128).
 
-Deliverables: release manifest; readiness checklist; deployment and migration evidence; post-deploy verification
+Deliverables: staging validation report; acceptance verification; defect disposition list; go or no-go recommendation
 
-Acceptance: Deployed digest matches approved candidate. Migration and recovery are rehearsed. Stop/rollback thresholds and authority are explicit.
+Acceptance: Critical journeys pass on staging Every change in the release has acceptance evidence Open defects are fixed, accepted or blocking Report is tied to the candidate digest
 
-Validation: Change authority approval and post-deploy verification.
+Validation: QA lead sign-off on the report.
+
+- `pytest -q tests/e2e --base-url https://staging.example.com   # example` expect: all critical journeys pass
+- manual: compare the digest in the report with the one deployed to staging expect: identical
+
+Failure modes:
+- Validated a different build | detect: Digest mismatch | respond: Revalidate the candidate
+- Acceptance not checked for a change | detect: No evidence for a listed change | respond: Verify before sign-off
+- Known defect hidden | detect: Defect missing from the list | respond: Add and have its owner decide
+
+ILLUSTRATIVE: All critical journeys pass on staging. One cosmetic defect is accepted by the product owner for the next release; the recommendation is GO.
 
 Gate: 11-131. Approval: none required
 
@@ -362,20 +390,34 @@ ILLUSTRATIVE: After release, login, search and order history each respond within
 Gate: 11-138. Approval: none required
 
 ## 139
-**Deployment Sign-off** (stub). Purpose: prepare a controlled decision with sufficient evidence and independent authority.
+**Deployment Sign-off** (complete). Purpose: record, after deployment and verification, that the release is accepted in production and operations has taken over.
 
-Inputs: decision request and accountable sponsor; impact/risk assessment; supporting evidence and alternatives
+Entry criteria: Production deployment and smoke test are complete; Observation window has ended or has an agreed end; Monitoring and on-call coverage are active
+
+Inputs: deployment record; smoke test and metric results; open issues from the window; rollback status
 
 Procedure:
-1. Check the decision request is complete, in scope and owned by an authorized requester.
-2. Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
-3. Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
-4. Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
+1. Review the deployment and smoke test records for the exact release id.
+2. Check metrics and alerts through the observation window against the baseline.
+3. Confirm open issues are fixed, accepted by owners or ticketed with a decision.
+4. Confirm the rollback path is no longer needed or is explicitly retained.
+5. Record accepted, accepted with conditions or rejected with reasons and the people who decided.
+6. Hand over to operations and close the change record.
 
-Deliverables: decision record; evidence index; conditions and waiver log
+Deliverables: deployment sign-off record; observation window summary; open issue dispositions; closed change record
 
-Acceptance: Decision authority is verified. Conditions are measurable, owned and time-bound. No missing or failed critical evidence is silently waived.
+Acceptance: Sign-off names the exact release id Metrics stayed within thresholds through the window Open issues have decisions Change record is closed with the outcome
 
-Validation: Independent approval record and audit trail.
+Validation: Release manager sign-off with the production approver informed.
+
+- manual: compare error rate and latency for the window to the pre-release baseline expect: within thresholds
+- manual: confirm the release id in the record equals the deployed one expect: identical
+
+Failure modes:
+- Signed off before the window ends | detect: Timestamp earlier than the window end | respond: Reopen; sign off after observation
+- Open incident ignored | detect: Incident linked to the release is still open | respond: Resolve or record as a condition
+- Change record left open | detect: Record still in progress | respond: Close with the outcome
+
+ILLUSTRATIVE: After two hours of normal metrics and no open issues, the release manager records acceptance for release 2.4.0 and closes the change record.
 
 Gate: 11-139. Approval: none required

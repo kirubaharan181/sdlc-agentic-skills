@@ -1,0 +1,65 @@
+{
+  "stage_id": 68,
+  "purpose": "package a finished change so a reviewer can understand it, verify it and merge it safely",
+  "entry_criteria": [
+    "The change builds and its tests pass locally",
+    "A work item with acceptance criteria exists",
+    "The branch is current with the target branch"
+  ],
+  "inputs": [
+    "branch with the change",
+    "linked work item and acceptance criteria",
+    "test results",
+    "contribution guidelines"
+  ],
+  "procedure": [
+    "Keep the change to one purpose; split unrelated work into separate pull requests.",
+    "Write a title and description that state what changed, why, how it was tested and what could go wrong.",
+    "Link the work item and note any migration, configuration or rollout step the reviewer must know about.",
+    "Run the project's checks locally and confirm the CI checks start and pass.",
+    "Self-review the diff first and remove debug code, stray files and secrets.",
+    "Request reviewers who own the affected area and respond to comments promptly."
+  ],
+  "deliverables": [
+    "pull request with description",
+    "link to work item",
+    "test evidence",
+    "self-review notes"
+  ],
+  "acceptance_criteria": [
+    "Description states purpose, testing and risk",
+    "The diff contains only the intended change",
+    "CI checks are running or green",
+    "Work item is linked"
+  ],
+  "validation_method": "Code review (stage 69) and merge approval (stage 75) follow.",
+  "validation": [
+    {
+      "command": "git diff --stat origin/main...HEAD",
+      "expect": "changed files match the stated purpose"
+    },
+    {
+      "command": "gh pr checks",
+      "expect": "required checks are pending or passing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Very large mixed change",
+      "detection": "Diff touches unrelated areas",
+      "response": "Split into smaller pull requests"
+    },
+    {
+      "mode": "Secret or debug output committed",
+      "detection": "Scan or self-review finds it",
+      "response": "Remove, rotate if a secret, and force a clean history before review"
+    },
+    {
+      "mode": "No description",
+      "detection": "Body is empty",
+      "response": "Write the description before requesting review"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A pull request adds an export endpoint. The description lists the new route, the test that covers pagination, and a note that a new index is created by migration 0042.",
+  "status": "complete"
+}

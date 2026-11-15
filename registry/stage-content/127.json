@@ -1,0 +1,64 @@
+{
+  "stage_id": 127,
+  "purpose": "tell users and support what changed in a release, truthfully and in language they can use",
+  "entry_criteria": [
+    "Release scope is fixed",
+    "Changes are linked to work items",
+    "Known issues and required user actions are known"
+  ],
+  "inputs": [
+    "list of merged changes with work items",
+    "known issues",
+    "migration or upgrade steps",
+    "support and product input"
+  ],
+  "procedure": [
+    "Collect every change in the release from merged work items; do not rely on memory.",
+    "Group into new features, improvements, fixes, deprecations and breaking changes.",
+    "Write each entry from the user's point of view; state required actions and breaking changes first.",
+    "List known issues and workarounds honestly.",
+    "Have product and support review for accuracy and for anything missing.",
+    "Publish with the version and date; keep it in the repository next to the code."
+  ],
+  "deliverables": [
+    "release notes",
+    "known-issues list",
+    "upgrade steps"
+  ],
+  "acceptance_criteria": [
+    "Every user-visible change in the release appears",
+    "Breaking changes and required actions come first",
+    "Known issues are listed",
+    "Reviewed by product and support"
+  ],
+  "validation_method": "Release manager approval of the published notes.",
+  "validation": [
+    {
+      "command": "git log --oneline v1.0.0..HEAD | wc -l",
+      "expect": "count of changes reconciles with entries in the notes"
+    },
+    {
+      "check": "pick three entries and verify each against its work item",
+      "expect": "all match"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Breaking change not mentioned",
+      "detection": "Diff shows API removal absent from notes",
+      "response": "Add it prominently"
+    },
+    {
+      "mode": "Marketing language hides a problem",
+      "detection": "Known issue missing",
+      "response": "List the issue and workaround"
+    },
+    {
+      "mode": "Notes written before scope froze",
+      "detection": "Entries for unmerged work",
+      "response": "Reconcile with the merged list"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Release notes lead with a breaking change to the export format and the one-line migration command, then list three fixes with ticket links and one known issue with a workaround.",
+  "status": "complete"
+}

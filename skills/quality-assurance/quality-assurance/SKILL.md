@@ -32,7 +32,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 82 | UI Testing | stub | Automation QA Engineer |
 | 83 | Functional Testing | stub | Manual QA Engineer |
 | 84 | End-to-End Testing | stub | E2E Testing Specialist |
-| 85 | Regression Testing | stub | Automation QA Engineer |
+| 85 | Regression Testing | complete | Automation QA Engineer |
 | 86 | Smoke Testing | stub | Automation QA Engineer |
 | 87 | Sanity Testing | stub | Manual QA Engineer |
 | 88 | Cross-browser Testing | stub | E2E Testing Specialist |

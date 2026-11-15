@@ -1,0 +1,65 @@
+{
+  "stage_id": 172,
+  "purpose": "keep dependencies current and safe through small, tested updates on a regular schedule",
+  "entry_criteria": [
+    "Lockfiles exist and the test suite is reliable enough to detect breakage",
+    "A schedule and an owner for updates exist",
+    "Advisory feed or audit tool is available"
+  ],
+  "inputs": [
+    "dependency list and lockfiles",
+    "advisory and release information",
+    "test suite",
+    "update policy"
+  ],
+  "procedure": [
+    "List outdated and vulnerable dependencies, with security fixes first.",
+    "Group low-risk updates; update high-risk or major-version dependencies one at a time.",
+    "Read the changelog for breaking changes and deprecations before updating.",
+    "Run the full test suite and any relevant scans after each update.",
+    "Merge through the normal review (stage 72 for new dependencies), with rollback by reverting the commit.",
+    "Record versions changed and any deferred updates with a reason and a date."
+  ],
+  "deliverables": [
+    "update pull requests",
+    "test results",
+    "deferred update list",
+    "version change record"
+  ],
+  "acceptance_criteria": [
+    "Security updates are applied within the agreed time",
+    "Each update was tested",
+    "Deferred updates have a reason and a date",
+    "Updates are reversible by revert"
+  ],
+  "validation_method": "Review of the update pull request.",
+  "validation": [
+    {
+      "command": "pip list --outdated   # example; use the ecosystem's tool",
+      "expect": "list recorded; security-relevant items addressed"
+    },
+    {
+      "command": "pytest -q && pip-audit",
+      "expect": "tests pass and no unresolved high or critical advisory"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Big-bang update breaks many things",
+      "detection": "Many failures after a batch update",
+      "response": "Split and update one at a time"
+    },
+    {
+      "mode": "Update skipped for months",
+      "detection": "Outdated list grows",
+      "response": "Schedule and enforce a cadence"
+    },
+    {
+      "mode": "Changelog ignored",
+      "detection": "Behavior change in production",
+      "response": "Read changelogs; add a test for the changed behavior"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A monthly run updates six minor versions in one pull request after the tests pass, and moves one major-version upgrade into its own tracked change with a migration test.",
+  "status": "complete"
+}

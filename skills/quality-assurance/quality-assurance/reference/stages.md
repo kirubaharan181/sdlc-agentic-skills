@@ -223,22 +223,35 @@ Validation: Independent QA review and acceptance decision. Run critical journeys
 Gate: 08-084. Approval: none required
 
 ## 85
-**Regression Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Regression Testing** (complete). Purpose: show that existing behavior still works after a change by running a risk-based set of earlier tests.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: A change is ready to test; A regression suite exists with known coverage of critical behavior; Test environment and data are available
+
+Inputs: the change and its impact analysis; regression suite; defect history for the area; test environment
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Select impacted behavior using code dependencies, API/data changes and historical defect evidence.
+1. Use the impact analysis to select the tests around changed and dependent areas, always including the critical journeys.
+2. Run the selected suite; for high-risk changes run the whole suite.
+3. Investigate each failure: new defect, outdated test or flaky test, and record which.
+4. Add or update tests where the change exposed a gap, including a test for any defect found.
+5. Record results with counts, duration and the commit under test.
+6. Report coverage gaps that remain.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; regression scope and comparison report
+Deliverables: regression run report; failure analysis; new or updated tests; known gaps
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. Previously accepted critical behavior remains stable on the candidate build.
+Acceptance: Critical journeys were run on the commit under test Each failure is classified and handled Tests were added for defects found Remaining gaps are stated
 
-Validation: Independent QA review and acceptance decision. Compare targeted suite results with the baseline candidate.
+Validation: Independent rerun in CI.
+
+- `pytest -q -m regression --junitxml=reports/regression.xml   # example marker` expect: zero failures, or each failure classified in the analysis
+- manual: compare selected tests with the impact analysis expect: every impacted area has tests
+
+Failure modes:
+- Regression suite run on the wrong commit | detect: Commit id in report differs | respond: Rerun on the correct commit
+- Failures dismissed as flaky without proof | detect: No evidence of flakiness | respond: Reproduce or fix
+- Suite does not cover the change | detect: Impacted area has no tests | respond: Write tests before sign-off
+
+ILLUSTRATIVE: A change to the discount module selects 140 tests across pricing and checkout. Two fail; one is a real rounding defect, the other an outdated expectation. Both are fixed and the rerun passes.
 
 Gate: 08-085. Approval: none required
 

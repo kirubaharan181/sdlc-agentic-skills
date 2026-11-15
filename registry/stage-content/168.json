@@ -1,0 +1,65 @@
+{
+  "stage_id": 168,
+  "purpose": "resolve user-reported problems that first-line support cannot, using logs, runbooks and safe diagnosis, and escalate correctly",
+  "entry_criteria": [
+    "A ticket is escalated from first-line support with steps and impact",
+    "Runbooks and read access to logs and dashboards exist",
+    "Escalation path to engineering is defined"
+  ],
+  "inputs": [
+    "escalated ticket",
+    "logs, metrics and dashboards",
+    "runbooks and known-issue list",
+    "recent changes"
+  ],
+  "procedure": [
+    "Confirm the impact, the affected users and the severity; raise severity if many users are affected.",
+    "Reproduce or find the failing request in logs using the ticket's identifiers.",
+    "Check the known-issue list and recent changes for a match and apply the runbook fix if one exists.",
+    "If there is no known fix, collect the evidence engineering needs and escalate to L3 with it.",
+    "Update the customer at the agreed intervals in plain language.",
+    "Record the cause and fix, and add or improve the runbook entry."
+  ],
+  "deliverables": [
+    "diagnosis notes",
+    "customer updates",
+    "escalation package or resolution record",
+    "runbook update"
+  ],
+  "acceptance_criteria": [
+    "Severity and impact are recorded",
+    "Escalation includes identifiers, logs and reproduction steps",
+    "Customer was updated at the agreed intervals",
+    "Runbook was updated for new fixes"
+  ],
+  "validation_method": "Support lead review of the resolution record.",
+  "validation": [
+    {
+      "check": "confirm the escalation ticket contains request identifiers, timestamps and log excerpts",
+      "expect": "all present"
+    },
+    {
+      "check": "check the time between updates to the customer against the target",
+      "expect": "within target"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Escalation without evidence",
+      "detection": "L3 asks for basic details",
+      "response": "Return and gather evidence first"
+    },
+    {
+      "mode": "Customer left without updates",
+      "detection": "Gap longer than target",
+      "response": "Send an update now"
+    },
+    {
+      "mode": "Fix applied without recording",
+      "detection": "No runbook change",
+      "response": "Document it"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A customer's invoices fail to download. Logs show a timeout on one large account. The runbook step to regenerate the file works; the cause is escalated to L3 with the request id, and the customer is updated.",
+  "status": "complete"
+}
