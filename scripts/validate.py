@@ -64,9 +64,34 @@ for sk in skills:
     p=R/sk['path']
     if not p.exists():errors.append(f"missing skill file {sk['path']}");continue
     t=p.read_text(encoding='utf-8')
-    if not t.startswith('---\n') or 'description:' not in t:errors.append(f"{sk['skill_id']}: invalid frontmatter")
-    for sec in ['Purpose','When to use','When not to use','Required inputs','Preconditions','Responsibilities','Step-by-step execution procedure','Decision rules','Engineering principles','Tool requirements','Security constraints','Expected outputs','Output format','Quality checklist','Failure handling','Escalation conditions','Handoff instructions','Examples','Related skills','Related agents','References']:
-        if f'## {sec}' not in t:errors.append(f"{sk['skill_id']}: missing section {sec}")
+    fm = re.match(r"---\n(.*?)\n---\n", t, re.S)
+    if not fm:
+        errors.append(f"{sk['skill_id']}: invalid frontmatter"); continue
+    meta = dict(re.findall(r"^(\w+):\s*(.*)$", fm.group(1), re.M))
+    name, desc = meta.get("name", ""), meta.get("description", "")
+    if name != sk["skill_id"] or not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", name) or len(name) > 64:
+        errors.append(f"{sk['skill_id']}: frontmatter name must equal the skill id (lowercase, hyphens, <=64 chars)")
+    if any(w in name for w in ("anthropic", "claude")):
+        errors.append(f"{sk['skill_id']}: name contains a reserved word")
+    if not desc or len(desc) > 1024 or re.search(r"[<>]", desc):
+        errors.append(f"{sk['skill_id']}: description must be 1-1024 chars with no XML tags")
+    if re.match(r"(?i)(i|you|we)\b", desc) or "use when" not in desc.lower():
+        errors.append(f"{sk['skill_id']}: description must be third person and say what the skill does and 'Use when ...'")
+    body_lines = t.count("\n")
+    if body_lines > 500:
+        errors.append(f"{sk['skill_id']}: SKILL.md has {body_lines} lines (limit 500); move detail to reference files")
+    for sec in ("Procedure", "Stages covered"):
+        if f"## {sec}" not in t:
+            errors.append(f"{sk['skill_id']}: missing section {sec}")
+    for link in re.findall(r"\]\(([^)#]+)(?:#[^)]*)?\)", t):
+        if link.startswith("http"):
+            continue
+        target = (p.parent / link).resolve()
+        if not target.exists():
+            errors.append(f"{sk['skill_id']}: broken link {link}")
+        elif target.suffix == ".md" and target.parent.name == "reference":
+            if re.search(r"\]\((?!http|#)[^)]*\.md", target.read_text(encoding="utf-8")):
+                errors.append(f"{sk['skill_id']}: reference file links to another file (references must be one level deep)")
 for a in agents:
     for s in a.get('required_skills',[]):
         if s not in skillids:errors.append(f"agent {a['agent_id']}: unknown skill {s}")
@@ -103,7 +128,7 @@ for p in docs:
     seen[key]=p
 for p in (R/'skills').rglob('SKILL.md'):
     text=p.read_text(encoding='utf-8')
-    if len(text.split()) < 280: errors.append(f'{p.relative_to(R)}: skill is not substantive')
+    if len(text.split()) < 100 or len(re.findall(r'(?m)^\d+\. ', text)) < 3: errors.append(f'{p.relative_to(R)}: skill needs a procedure of at least 3 steps')
     if 'execute assigned stages' in text.lower() or 'project-approved tools' in text.lower(): errors.append(f'{p.relative_to(R)}: generic filler detected')
 # Semantic execution-depth checks: counts alone do not prove specialist uniqueness.
 def extract_section(document, heading):

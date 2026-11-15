@@ -10,7 +10,7 @@ Branch: `refactor/dedupe-and-differentiate`. Updated after each phase. Resume by
 | 2 Workflows | done | 23 distinct sources in `registry/workflows/*.json` (steps+owner+needs DAG, decisions, failure paths, handoffs); `render_workflows.py`; validator rules: distinct stage lists, owners are stage A/R, acyclic, targets resolve, every stage covered, NPD = 190 stages |
 | 3 Roles | done | RACI on every stage; 0 unassigned roles; role contract fields derived from RACI, stage skills/approvers and workflow graph; `permission_tier` per role; shared policy in `docs/governance/COMMON_ROLE_POLICY.md`; `docs/audit/ROLE_DECISIONS.md` (all 74 kept, 0 merged/removed); fixed profile-regex bug (license-compliance got the audit contract); validator rejects role pairs >=0.85 similar, `master-orchestration` as role skill, unassigned roles |
 | 4 Stage content | not started | |
-| 5 Skills | not started | |
+| 5 Skills | in progress | Skills moved to the Anthropic best-practice format: `name` = id, third-person `Use when` descriptions, <60-line `SKILL.md`, `reference/stages.md` per skill, `skills/_shared/CORE_PROCEDURE.md`; validator enforces it. Near-duplicate pairs >=0.80: 197 -> 7 (all role contracts). Remaining: labelled illustrative evidence examples, per-skill examples, similarity rule for skills |
 | 6 Validation, tests, CI | not started | |
 | 7 Adoption and community | not started | |
 
