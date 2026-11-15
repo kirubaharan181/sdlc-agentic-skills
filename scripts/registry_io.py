@@ -11,8 +11,9 @@ Resolution rules
             status                                <- stage-defaults.json
             handoff_requirements, dependencies    <- templates in stage-defaults.json,
                                                      filled from the record itself
-  agent     non_responsibilities, permissions, dependencies, handoff_rules,
-            approval_requirements                 <- role-defaults.json
+  agent     required_skills, non_responsibilities, permissions, dependencies,
+            handoff_rules, approval_requirements  <- derived from RACI, stage skills/approvers,
+                                                     workflow graph and permission_tier
   workflow  every field is authored in registry/workflows/<id>.json or derived from its steps;
             stage `workflow_ids` are derived from workflow membership (never stored)
 An explicit value in a record always wins over the default.
@@ -26,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 STAGE_FIELDS = ("supporting_roles", "approval_required", "status")
-ROLE_FIELDS = ("non_responsibilities", "permissions", "dependencies", "handoff_rules", "approval_requirements")
+DERIVED_ROLE_FIELDS = ("required_skills", "non_responsibilities", "permissions", "dependencies", "handoff_rules", "approval_requirements", "raci_summary")
 
 
 def _read(root: Path, rel: str) -> dict:
@@ -100,17 +101,83 @@ def save_stage_doc(doc: dict, root: Path = ROOT) -> None:
 
 
 # ---------------------------------------------------------------- agents
+def _ids(items: list[int], limit: int = 12) -> str:
+    return ", ".join(map(str, items[:limit])) + (f" (+{len(items) - limit} more)" if len(items) > limit else "")
+
+
+def derive_role_contract(a: dict, stages: list[dict], wf_sources: list[dict], names: dict[str, str], tiers: dict[str, str]) -> dict:
+    """Role-specific contract fields, derived from RACI, stage skills/approvers and the workflow graph."""
+    me = a["agent_id"]
+    by_id = {s["stage_id"]: s for s in stages}
+    acc = [s["stage_id"] for s in stages if s["raci"]["accountable"] == me]
+    res = [s["stage_id"] for s in stages if me in s["raci"]["responsible"]]
+    con = [s["stage_id"] for s in stages if me in s["raci"]["consulted"]]
+    inf = [s["stage_id"] for s in stages if me in s["raci"]["informed"]]
+    owned = sorted(set(acc) | set(res))
+    freq: dict[str, int] = {}
+    for sid in owned:
+        for k in by_id[sid]["skills"]:
+            freq[k] = freq.get(k, 0) + 1
+    skills = [k for k, _ in sorted(freq.items(), key=lambda kv: (-kv[1], kv[0]))][:4]
+    # approvals this role must obtain or cannot give
+    gated = [sid for sid in owned if by_id[sid].get("approval_required")]
+    approver_of = {}
+    for sid in gated:
+        approver_of.setdefault(by_id[sid]["approver"], []).append(sid)
+    if approver_of:
+        appr = "Stages needing human approval before completion: " + "; ".join(
+            f"{who} approves {_ids(ids, 6)}" for who, ids in sorted(approver_of.items())
+        ) + "."
+    else:
+        appr = "Owns no stage that requires a named human approver; still needs independent review where its output gates another stage."
+    # neighbours in workflow graphs
+    upstream: dict[str, set[int]] = {}
+    downstream: dict[str, set[int]] = {}
+    for w in wf_sources:
+        owner_of = {s["stage"]: s["owner"] for s in w["steps"]}
+        for s in w["steps"]:
+            for n in s["needs"]:
+                if n not in owner_of:
+                    continue
+                if s["owner"] == me and owner_of[n] != me:
+                    upstream.setdefault(owner_of[n], set()).add(n)
+                if owner_of[n] == me and s["owner"] != me:
+                    downstream.setdefault(s["owner"], set()).add(s["stage"])
+    def _fmt(m: dict[str, set[int]]) -> list[str]:
+        return [f"{names[r]} (stages {_ids(sorted(v), 5)})" for r, v in sorted(m.items(), key=lambda kv: (-len(kv[1]), kv[0]))[:6]]
+    deps = [f"Receives work from {x}" for x in _fmt(upstream)] or ["No upstream owner in any workflow; starts from requester input."]
+    handoff = ("Hands off to " + "; ".join(_fmt(downstream)) + ". ") if downstream else "No downstream owner in any workflow; delivers to the requester. "
+    handoff += "Each handoff carries the artifact path and revision, evidence method and result, limitations, residual risk and the next decision."
+    nonresp = []
+    if gated:
+        nonresp.append(f"Does not approve stage(s) {_ids(gated, 6)}; the named approver decides, not this role")
+    if con:
+        nonresp.append(f"Advises only (no ownership) on stages {_ids(con, 6)}")
+    if inf and not con:
+        nonresp.append(f"Is informed only on stages {_ids(inf, 6)}")
+    if not nonresp:
+        nonresp.append("Owns no approval gate; does not sign off another role's stage")
+    perm = tiers[a["permission_tier"]]
+    summary = {"accountable": acc, "responsible": res, "consulted": con, "informed": inf}
+    return {
+        "required_skills": skills, "non_responsibilities": nonresp, "permissions": perm,
+        "dependencies": deps, "handoff_rules": handoff, "approval_requirements": appr, "raci_summary": summary,
+    }
+
+
 def load_agent_doc(root: Path = ROOT) -> dict:
     doc = _read(root, "registry/AGENT_REGISTRY.json")
     d = _read(root, "registry/role-defaults.json")
-    doc["agents"] = [{**{f: copy.deepcopy(d[f]) for f in ROLE_FIELDS}, **a} for a in doc["agents"]]
+    names = {a["agent_id"]: a["name"] for a in doc["agents"]}
+    stages = load_stage_doc(root, with_workflows=False)["stages"]
+    wfs = load_workflow_sources(root)
+    doc["agents"] = [{**a, **derive_role_contract(a, stages, wfs, names, d["permission_tiers"])} for a in doc["agents"]]
     return doc
 
 
 def save_agent_doc(doc: dict, root: Path = ROOT) -> None:
-    d = _read(root, "registry/role-defaults.json")
     out = dict(doc)
-    out["agents"] = [{k: v for k, v in a.items() if not (k in ROLE_FIELDS and v == d[k])} for a in doc["agents"]]
+    out["agents"] = [{k: v for k, v in a.items() if k not in DERIVED_ROLE_FIELDS} for a in doc["agents"]]
     _write(root, "registry/AGENT_REGISTRY.json", out)
 
 

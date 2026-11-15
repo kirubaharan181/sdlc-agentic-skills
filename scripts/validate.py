@@ -227,6 +227,21 @@ for workflow in wfs:
         if f"| {s['stage']} |" not in doc:
             errors.append(f"workflow {workflow['workflow_id']}: step {s['stage']} missing from generated Markdown")
 
+# role distinctness (Phase 3): contracts must not be near-copies and every role needs a derived footprint
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import audit_duplication as _dup
+_pairs, _ = _dup.near_duplicates(R, 0.85, scope=("agents",))
+for a_, b_, r_ in _pairs:
+    errors.append(f"role contracts too similar ({r_:.2f} >= 0.85): {a_} <-> {b_}; differentiate or merge (see docs/audit/ROLE_DECISIONS.md)")
+for item in agents:
+    if "master-orchestration" in item["required_skills"]:
+        errors.append(f"{item['agent_id']}: master-orchestration is an entry-point skill, not a role skill")
+    if not item.get("permission_tier"):
+        errors.append(f"{item['agent_id']}: permission_tier missing")
+    rs_ = item["raci_summary"]
+    if not (rs_["accountable"] or rs_["responsible"]):
+        errors.append(f"{item['agent_id']}: owns no stage (decide assign/merge/remove in ROLE_DECISIONS.md)")
+
 # credential heuristic
 for p in R.rglob('*'):
     if p.is_file() and '.git' not in p.parts and p.suffix in {'.md','.yaml','.json','.py','.csv'}:

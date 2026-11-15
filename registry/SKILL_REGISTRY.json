@@ -284,27 +284,37 @@
     {
       "skill_id": "master-orchestration",
       "path": "skills/cross-cutting/master-orchestration/SKILL.md",
-      "stage_ids": []
+      "stage_ids": [],
+      "cross_cutting": true,
+      "applies_to": "Entry-point skill for routing a request to a workflow; used by the orchestrator, not assigned to roles."
     },
     {
       "skill_id": "evidence-quality-gates",
       "path": "skills/cross-cutting/evidence-quality-gates/SKILL.md",
-      "stage_ids": []
+      "stage_ids": [],
+      "cross_cutting": true,
+      "applies_to": "Applies to every gated stage; defines how evidence is recorded and judged."
     },
     {
       "skill_id": "secure-change-control",
       "path": "skills/cross-cutting/secure-change-control/SKILL.md",
-      "stage_ids": []
+      "stage_ids": [],
+      "cross_cutting": true,
+      "applies_to": "Applies to any stage that changes production, IAM, secrets or security controls."
     },
     {
       "skill_id": "definition-of-done",
       "path": "skills/cross-cutting/definition-of-done/SKILL.md",
-      "stage_ids": []
+      "stage_ids": [],
+      "cross_cutting": true,
+      "applies_to": "Applies to every stage as the completion test; not bound to a single stage."
     },
     {
       "skill_id": "incident-command",
       "path": "skills/cross-cutting/incident-command/SKILL.md",
-      "stage_ids": []
+      "stage_ids": [],
+      "cross_cutting": true,
+      "applies_to": "Applies when an incident is declared, regardless of lifecycle stage."
     }
   ]
 }

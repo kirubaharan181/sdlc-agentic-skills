@@ -95,7 +95,7 @@ def check(root_data: dict | None = None) -> dict:
     orphans = {
         "agents_not_in_any_stage_or_workflow": sorted(agent_ids - used_agents),
         "agents_not_in_any_stage": sorted(agent_ids - stage_agent_only),
-        "skills_unused": sorted(skill_ids - used_skills),
+        "skills_unused": sorted(skill_ids - used_skills - {s["skill_id"] for s in skills if s.get("cross_cutting")}),
         "workflows_without_stages": sorted(w for w in wf_ids if not wf_by_id[w].get("stages")),
     }
     return {

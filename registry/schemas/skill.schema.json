@@ -25,6 +25,12 @@
         "minimum": 1,
         "maximum": 190
       }
+    },
+    "cross_cutting": {
+      "type": "boolean"
+    },
+    "applies_to": {
+      "type": "string"
     }
   }
 }

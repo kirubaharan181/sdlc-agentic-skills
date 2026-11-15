@@ -118,6 +118,16 @@
     "definition_of_done": {
       "type": "string",
       "minLength": 10
+    },
+    "permission_tier": {
+      "enum": [
+        "observe",
+        "change-non-production",
+        "propose"
+      ]
+    },
+    "raci_summary": {
+      "type": "object"
     }
   }
 }
