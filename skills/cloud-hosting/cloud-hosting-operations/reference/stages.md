@@ -149,21 +149,35 @@ Validation: Cloud operations and security review.
 Gate: 12-146. Approval: none required
 
 ## 147
-**Backup Management** (stub). Purpose: operate cloud infrastructure within reliability and cost objectives.
+**Backup Management** (complete). Purpose: make sure data can be restored when needed, by taking backups on schedule and proving they restore.
 
-Inputs: service inventory and ownership; SLO/RTO/RPO and capacity profile; access, backup and cost policies
+Entry criteria: Data stores and their recovery objectives are listed; Backup tooling and storage are available; Retention and encryption requirements are known
+
+Inputs: list of data stores and criticality; recovery point and time objectives; backup configuration; retention and encryption policy
 
 Procedure:
-1. Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
-2. Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
-3. Measure health, capacity, utilization, recovery readiness and cost allocation.
-4. Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
+1. Configure backups per data store to meet the recovery point objective; encrypt them and store a copy in a separate failure domain.
+2. Monitor each backup job and alert on failure or missing runs.
+3. Restore a recent backup into an isolated environment on a schedule and verify the data.
+4. Record restore time and compare it with the recovery time objective.
+5. Enforce retention and deletion rules, including legal and privacy requirements.
+6. Report failures and restore-test results to the data owner.
 
-Deliverables: infrastructure inventory; change record; health/capacity/cost evidence; operator runbook
+Deliverables: backup configuration; job monitoring and alerts; restore test reports; retention evidence
 
-Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
+Acceptance: Every critical store has a backup that meets the recovery point objective A restore test succeeded within the recovery time objective Backups are encrypted and stored in a separate failure domain Failures alert someone
 
-Validation: Cloud operations and security review.
+Validation: Database administrator and data owner review of restore results.
+
+- manual: restore last night's backup into an isolated environment and run row-count and integrity checks expect: restore succeeded; time recorded; checks pass
+- manual: list backup jobs that did not run in the last 7 days expect: none, or each has a ticket
+
+Failure modes:
+- Backups never restored | detect: No restore test record | respond: Run a restore test now
+- Backup job silently failing | detect: Missing runs without an alert | respond: Add monitoring and alert
+- Backups in the same failure domain | detect: Copy only in the primary region or account | respond: Add a separate copy
+
+ILLUSTRATIVE: A monthly restore of the orders database into a sandbox takes 22 minutes against a 60-minute objective, and checksums of key tables match production at the backup time.
 
 Gate: 12-147. Approval: none required
 
@@ -272,20 +286,34 @@ Validation: Performance and correctness regression review.
 Gate: 12-151. Approval: finops-owner (when resizing, deleting or committing spend on billing-sensitive resources)
 
 ## 152
-**Infrastructure Maintenance** (stub). Purpose: operate cloud infrastructure within reliability and cost objectives.
+**Infrastructure Maintenance** (complete). Purpose: keep servers, networks and platform components patched, supported and healthy through planned changes.
 
-Inputs: service inventory and ownership; SLO/RTO/RPO and capacity profile; access, backup and cost policies
+Entry criteria: Inventory of infrastructure and versions exists; Maintenance windows and owners are defined; Rollback or replacement approach is known
+
+Inputs: infrastructure inventory with versions; vendor advisories and end-of-support dates; maintenance windows; monitoring
 
 Procedure:
-1. Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
-2. Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
-3. Measure health, capacity, utilization, recovery readiness and cost allocation.
-4. Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
+1. Review the inventory for items with security patches due, nearing end of support or showing health problems.
+2. Plan the change: scope, order, window, communication and rollback; roll out to non-production first.
+3. Apply changes in small batches using automation, with health checks between batches.
+4. Verify service health and capacity afterward and compare with the baseline.
+5. Update the inventory and retire items that are out of support.
+6. Record the work, exceptions and the next planned maintenance.
 
-Deliverables: infrastructure inventory; change record; health/capacity/cost evidence; operator runbook
+Deliverables: maintenance plan; change execution log; post-change verification; updated inventory
 
-Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
+Acceptance: Security patches are applied within the agreed time or excepted Rollout was staged with health checks Inventory reflects the new versions Exceptions have an owner and an expiry
 
-Validation: Cloud operations and security review.
+Validation: Platform owner review of the results.
+
+- `kubectl get nodes -o wide   # example; use the platform's inventory command` expect: all nodes at the target version and Ready
+- manual: list inventory items past end of support expect: none without an exception or retirement plan
+
+Failure modes:
+- Batch patch breaks service | detect: Health checks fail mid-rollout | respond: Stop, roll back the batch, and fix before continuing
+- Unsupported systems ignored | detect: Items past end of support without plan | respond: Schedule retirement or accept risk with expiry
+- Inventory out of date | detect: Versions differ from reality | respond: Reconcile from automation output
+
+ILLUSTRATIVE: Nodes are upgraded in batches of two with a health check between batches; one node fails its check and is replaced, and the inventory is updated to the new versions.
 
 Gate: 12-152. Approval: none required

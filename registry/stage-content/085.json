@@ -1,0 +1,65 @@
+{
+  "stage_id": 85,
+  "purpose": "show that existing behavior still works after a change by running a risk-based set of earlier tests",
+  "entry_criteria": [
+    "A change is ready to test",
+    "A regression suite exists with known coverage of critical behavior",
+    "Test environment and data are available"
+  ],
+  "inputs": [
+    "the change and its impact analysis",
+    "regression suite",
+    "defect history for the area",
+    "test environment"
+  ],
+  "procedure": [
+    "Use the impact analysis to select the tests around changed and dependent areas, always including the critical journeys.",
+    "Run the selected suite; for high-risk changes run the whole suite.",
+    "Investigate each failure: new defect, outdated test or flaky test, and record which.",
+    "Add or update tests where the change exposed a gap, including a test for any defect found.",
+    "Record results with counts, duration and the commit under test.",
+    "Report coverage gaps that remain."
+  ],
+  "deliverables": [
+    "regression run report",
+    "failure analysis",
+    "new or updated tests",
+    "known gaps"
+  ],
+  "acceptance_criteria": [
+    "Critical journeys were run on the commit under test",
+    "Each failure is classified and handled",
+    "Tests were added for defects found",
+    "Remaining gaps are stated"
+  ],
+  "validation_method": "Independent rerun in CI.",
+  "validation": [
+    {
+      "command": "pytest -q -m regression --junitxml=reports/regression.xml   # example marker",
+      "expect": "zero failures, or each failure classified in the analysis"
+    },
+    {
+      "check": "compare selected tests with the impact analysis",
+      "expect": "every impacted area has tests"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Regression suite run on the wrong commit",
+      "detection": "Commit id in report differs",
+      "response": "Rerun on the correct commit"
+    },
+    {
+      "mode": "Failures dismissed as flaky without proof",
+      "detection": "No evidence of flakiness",
+      "response": "Reproduce or fix"
+    },
+    {
+      "mode": "Suite does not cover the change",
+      "detection": "Impacted area has no tests",
+      "response": "Write tests before sign-off"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A change to the discount module selects 140 tests across pricing and checkout. Two fail; one is a real rounding defect, the other an outdated expectation. Both are fixed and the rerun passes.",
+  "status": "complete"
+}

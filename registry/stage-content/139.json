@@ -1,0 +1,65 @@
+{
+  "stage_id": 139,
+  "purpose": "record, after deployment and verification, that the release is accepted in production and operations has taken over",
+  "entry_criteria": [
+    "Production deployment and smoke test are complete",
+    "Observation window has ended or has an agreed end",
+    "Monitoring and on-call coverage are active"
+  ],
+  "inputs": [
+    "deployment record",
+    "smoke test and metric results",
+    "open issues from the window",
+    "rollback status"
+  ],
+  "procedure": [
+    "Review the deployment and smoke test records for the exact release id.",
+    "Check metrics and alerts through the observation window against the baseline.",
+    "Confirm open issues are fixed, accepted by owners or ticketed with a decision.",
+    "Confirm the rollback path is no longer needed or is explicitly retained.",
+    "Record accepted, accepted with conditions or rejected with reasons and the people who decided.",
+    "Hand over to operations and close the change record."
+  ],
+  "deliverables": [
+    "deployment sign-off record",
+    "observation window summary",
+    "open issue dispositions",
+    "closed change record"
+  ],
+  "acceptance_criteria": [
+    "Sign-off names the exact release id",
+    "Metrics stayed within thresholds through the window",
+    "Open issues have decisions",
+    "Change record is closed with the outcome"
+  ],
+  "validation_method": "Release manager sign-off with the production approver informed.",
+  "validation": [
+    {
+      "check": "compare error rate and latency for the window to the pre-release baseline",
+      "expect": "within thresholds"
+    },
+    {
+      "check": "confirm the release id in the record equals the deployed one",
+      "expect": "identical"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Signed off before the window ends",
+      "detection": "Timestamp earlier than the window end",
+      "response": "Reopen; sign off after observation"
+    },
+    {
+      "mode": "Open incident ignored",
+      "detection": "Incident linked to the release is still open",
+      "response": "Resolve or record as a condition"
+    },
+    {
+      "mode": "Change record left open",
+      "detection": "Record still in progress",
+      "response": "Close with the outcome"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: After two hours of normal metrics and no open issues, the release manager records acceptance for release 2.4.0 and closes the change record.",
+  "status": "complete"
+}

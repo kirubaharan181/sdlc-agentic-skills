@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "code-review-quality",
-  "stage_id": 69,
-  "stage_name": "Peer Code Review",
+  "stage_id": 68,
+  "stage_name": "Pull Request Creation",
   "commit_sha": "<commit under review>",
-  "executor": "<Code Reviewer or named person>",
+  "executor": "<Full Stack Engineer or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Approval recorded against the exact head commit.",
+    "method": "Code review (stage 69) and merge approval (stage 75) follow.",
     "command": "git diff --stat origin/main...HEAD",
-    "expected": "diff size matches what the reviewer was asked to review",
+    "expected": "changed files match the stated purpose",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "review comments with severity labels",
-      "path": "<path or immutable URL of review comments with severity labels>"
+      "name": "pull request with description",
+      "path": "<path or immutable URL of pull request with description>"
     },
     {
-      "name": "approval or change-request decision",
-      "path": "<path or immutable URL of approval or change-request decision>"
+      "name": "link to work item",
+      "path": "<path or immutable URL of link to work item>"
     },
     {
-      "name": "list of deferred items with issue links",
-      "path": "<path or immutable URL of list of deferred items with issue links>"
+      "name": "test evidence",
+      "path": "<path or immutable URL of test evidence>"
     }
   ],
   "limitations": [

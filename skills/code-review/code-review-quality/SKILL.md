@@ -24,14 +24,14 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 68 | Pull Request Creation | stub | Full Stack Engineer |
+| 68 | Pull Request Creation | complete | Full Stack Engineer |
 | 69 | Peer Code Review | complete | Code Reviewer |
 | 70 | Architecture Review | stub | Architecture Reviewer |
 | 71 | Static Code Analysis | stub | DevSecOps Engineer |
 | 72 | Dependency Review | complete | DevSecOps Engineer |
 | 73 | Code Coverage Review | stub | Code Reviewer |
 | 74 | Coding Standards Validation | stub | Code Reviewer |
-| 75 | Merge Approval | stub | Merge Steward |
+| 75 | Merge Approval | complete | Merge Steward |
 | 76 | Technical Debt Review | stub | Software Architect |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).

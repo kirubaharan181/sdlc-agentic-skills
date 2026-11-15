@@ -1,0 +1,65 @@
+{
+  "stage_id": 173,
+  "purpose": "maintain the health of production databases through planned, safe, reversible maintenance",
+  "entry_criteria": [
+    "Maintenance needs are identified from monitoring (bloat, fragmentation, growth, statistics)",
+    "A maintenance window is agreed",
+    "Backup and restore are verified"
+  ],
+  "inputs": [
+    "database health metrics",
+    "maintenance plan and window",
+    "verified backup",
+    "rollback or stop conditions"
+  ],
+  "procedure": [
+    "Identify the work from metrics: index maintenance, statistics, vacuum or compaction, storage growth, version patches.",
+    "Rehearse on a copy and record duration and locking effects.",
+    "Confirm a verified backup exists and obtain the DBA owner's approval for the window.",
+    "Run the maintenance with monitoring and stop conditions; stop if thresholds are crossed.",
+    "Verify health metrics and query performance afterward against the baseline.",
+    "Record what was done and schedule the next review."
+  ],
+  "deliverables": [
+    "maintenance plan and rehearsal results",
+    "approval for the window",
+    "execution log",
+    "before and after metrics"
+  ],
+  "acceptance_criteria": [
+    "Backup was verified before starting",
+    "Rehearsal showed acceptable impact",
+    "Metrics improved or stayed within limits",
+    "DBA owner approved the window"
+  ],
+  "validation_method": "DBA-owner approval.",
+  "validation": [
+    {
+      "command": "psql -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10\"   # example for PostgreSQL",
+      "expect": "dead tuples fall after maintenance"
+    },
+    {
+      "check": "compare p95 query latency before and after the window",
+      "expect": "no regression"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Maintenance locks a busy table",
+      "detection": "Rehearsal or run shows long locks",
+      "response": "Use online methods or schedule later"
+    },
+    {
+      "mode": "No backup before starting",
+      "detection": "No verified backup record",
+      "response": "Stop until one exists"
+    },
+    {
+      "mode": "Performance worsens",
+      "detection": "Latency above baseline after",
+      "response": "Roll back where possible or apply the prepared fix"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A weekend window rebuilds three bloated indexes online. Rehearsal showed no long locks; afterward the table's dead tuples drop and p95 latency is unchanged.",
+  "status": "complete"
+}

@@ -25,12 +25,12 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
 | 167 | L1 Support | stub | Technical Support Engineer |
-| 168 | L2 Support | stub | Production Support Engineer |
-| 169 | L3 Support | stub | Backend Engineer |
+| 168 | L2 Support | complete | Production Support Engineer |
+| 169 | L3 Support | complete | Backend Engineer |
 | 170 | Bug Fixing | complete | Backend Engineer |
 | 171 | Patch Management | stub | DevOps Engineer |
-| 172 | Dependency Updates | stub | Backend Engineer |
-| 173 | Database Maintenance | stub | Database Administrator |
+| 172 | Dependency Updates | complete | Backend Engineer |
+| 173 | Database Maintenance | complete | Database Administrator |
 | 174 | Performance Optimization | stub | Performance Engineer |
 | 175 | Technical Debt Reduction | stub | Backend Engineer |
 | 176 | Feature Enhancement | stub | Product Owner |

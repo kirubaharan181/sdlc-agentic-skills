@@ -1,0 +1,65 @@
+{
+  "stage_id": 147,
+  "purpose": "make sure data can be restored when needed, by taking backups on schedule and proving they restore",
+  "entry_criteria": [
+    "Data stores and their recovery objectives are listed",
+    "Backup tooling and storage are available",
+    "Retention and encryption requirements are known"
+  ],
+  "inputs": [
+    "list of data stores and criticality",
+    "recovery point and time objectives",
+    "backup configuration",
+    "retention and encryption policy"
+  ],
+  "procedure": [
+    "Configure backups per data store to meet the recovery point objective; encrypt them and store a copy in a separate failure domain.",
+    "Monitor each backup job and alert on failure or missing runs.",
+    "Restore a recent backup into an isolated environment on a schedule and verify the data.",
+    "Record restore time and compare it with the recovery time objective.",
+    "Enforce retention and deletion rules, including legal and privacy requirements.",
+    "Report failures and restore-test results to the data owner."
+  ],
+  "deliverables": [
+    "backup configuration",
+    "job monitoring and alerts",
+    "restore test reports",
+    "retention evidence"
+  ],
+  "acceptance_criteria": [
+    "Every critical store has a backup that meets the recovery point objective",
+    "A restore test succeeded within the recovery time objective",
+    "Backups are encrypted and stored in a separate failure domain",
+    "Failures alert someone"
+  ],
+  "validation_method": "Database administrator and data owner review of restore results.",
+  "validation": [
+    {
+      "check": "restore last night's backup into an isolated environment and run row-count and integrity checks",
+      "expect": "restore succeeded; time recorded; checks pass"
+    },
+    {
+      "check": "list backup jobs that did not run in the last 7 days",
+      "expect": "none, or each has a ticket"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Backups never restored",
+      "detection": "No restore test record",
+      "response": "Run a restore test now"
+    },
+    {
+      "mode": "Backup job silently failing",
+      "detection": "Missing runs without an alert",
+      "response": "Add monitoring and alert"
+    },
+    {
+      "mode": "Backups in the same failure domain",
+      "detection": "Copy only in the primary region or account",
+      "response": "Add a separate copy"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A monthly restore of the orders database into a sandbox takes 22 minutes against a 60-minute objective, and checksums of key tables match production at the backup time.",
+  "status": "complete"
+}

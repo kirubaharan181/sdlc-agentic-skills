@@ -31,12 +31,12 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 144 | DNS Management | stub | Network Engineer |
 | 145 | SSL Certificate Management | stub | Cloud Engineer |
 | 146 | Network Operations | stub | Network Engineer |
-| 147 | Backup Management | stub | Database Administrator |
+| 147 | Backup Management | complete | Database Administrator |
 | 148 | Disaster Recovery | complete | SRE |
 | 149 | High Availability | stub | Cloud Architect |
 | 150 | Auto Scaling | complete | Infrastructure Engineer |
 | 151 | Cost Optimization | stub | FinOps Specialist |
-| 152 | Infrastructure Maintenance | stub | Infrastructure Engineer |
+| 152 | Infrastructure Maintenance | complete | Infrastructure Engineer |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

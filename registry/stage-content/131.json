@@ -1,0 +1,65 @@
+{
+  "stage_id": 131,
+  "purpose": "prove in staging that the release candidate works end to end and is fit to be approved for production",
+  "entry_criteria": [
+    "Staging deployment of the candidate is complete (stage 130)",
+    "Test data and test accounts are available",
+    "Acceptance criteria for the release are written"
+  ],
+  "inputs": [
+    "release candidate on staging",
+    "acceptance criteria",
+    "regression and critical-journey suites",
+    "performance and security results"
+  ],
+  "procedure": [
+    "Run the regression suite and critical-journey tests against staging and record results.",
+    "Verify the acceptance criteria for each change in the release with the product owner or their delegate.",
+    "Check non-functional results: performance against objectives, security scan status, accessibility where in scope.",
+    "Review open defects; each is fixed, accepted by its owner or blocks the release.",
+    "Record PASS, FAIL or CONDITIONAL with evidence for each area.",
+    "Hand the record to release readiness (stage 128)."
+  ],
+  "deliverables": [
+    "staging validation report",
+    "acceptance verification",
+    "defect disposition list",
+    "go or no-go recommendation"
+  ],
+  "acceptance_criteria": [
+    "Critical journeys pass on staging",
+    "Every change in the release has acceptance evidence",
+    "Open defects are fixed, accepted or blocking",
+    "Report is tied to the candidate digest"
+  ],
+  "validation_method": "QA lead sign-off on the report.",
+  "validation": [
+    {
+      "command": "pytest -q tests/e2e --base-url https://staging.example.com   # example",
+      "expect": "all critical journeys pass"
+    },
+    {
+      "check": "compare the digest in the report with the one deployed to staging",
+      "expect": "identical"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Validated a different build",
+      "detection": "Digest mismatch",
+      "response": "Revalidate the candidate"
+    },
+    {
+      "mode": "Acceptance not checked for a change",
+      "detection": "No evidence for a listed change",
+      "response": "Verify before sign-off"
+    },
+    {
+      "mode": "Known defect hidden",
+      "detection": "Defect missing from the list",
+      "response": "Add and have its owner decide"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: All critical journeys pass on staging. One cosmetic defect is accepted by the product owner for the next release; the recommendation is GO.",
+  "status": "complete"
+}

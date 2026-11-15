@@ -18,9 +18,9 @@ Step group 5
   [133] Production Deployment  owner: Deployment Engineer  status: complete  APPROVAL: production-approver
 Step group 6  (these can run in parallel)
   [138] Production Smoke Test  owner: SRE  status: complete
-  [127] Release Notes  owner: Technical Writer  status: stub
+  [127] Release Notes  owner: Technical Writer  status: complete
 Step group 7
-  [139] Deployment Sign-off  owner: Release Manager  status: stub
+  [139] Deployment Sign-off  owner: Release Manager  status: complete
 
 Decisions:
   - after 138: Smoke test passed?  yes -> 139, no -> workflow:rollback
@@ -33,4 +33,4 @@ Exit criteria:
   - Smoke test and health checks pass
   - Release record lists version, time and approver
 
-9 steps, 3 human approvals, 6 steps with complete stage content, 3 stubs.
+9 steps, 3 human approvals, 8 steps with complete stage content, 1 still stub.

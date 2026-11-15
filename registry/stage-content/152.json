@@ -1,0 +1,65 @@
+{
+  "stage_id": 152,
+  "purpose": "keep servers, networks and platform components patched, supported and healthy through planned changes",
+  "entry_criteria": [
+    "Inventory of infrastructure and versions exists",
+    "Maintenance windows and owners are defined",
+    "Rollback or replacement approach is known"
+  ],
+  "inputs": [
+    "infrastructure inventory with versions",
+    "vendor advisories and end-of-support dates",
+    "maintenance windows",
+    "monitoring"
+  ],
+  "procedure": [
+    "Review the inventory for items with security patches due, nearing end of support or showing health problems.",
+    "Plan the change: scope, order, window, communication and rollback; roll out to non-production first.",
+    "Apply changes in small batches using automation, with health checks between batches.",
+    "Verify service health and capacity afterward and compare with the baseline.",
+    "Update the inventory and retire items that are out of support.",
+    "Record the work, exceptions and the next planned maintenance."
+  ],
+  "deliverables": [
+    "maintenance plan",
+    "change execution log",
+    "post-change verification",
+    "updated inventory"
+  ],
+  "acceptance_criteria": [
+    "Security patches are applied within the agreed time or excepted",
+    "Rollout was staged with health checks",
+    "Inventory reflects the new versions",
+    "Exceptions have an owner and an expiry"
+  ],
+  "validation_method": "Platform owner review of the results.",
+  "validation": [
+    {
+      "command": "kubectl get nodes -o wide   # example; use the platform's inventory command",
+      "expect": "all nodes at the target version and Ready"
+    },
+    {
+      "check": "list inventory items past end of support",
+      "expect": "none without an exception or retirement plan"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Batch patch breaks service",
+      "detection": "Health checks fail mid-rollout",
+      "response": "Stop, roll back the batch, and fix before continuing"
+    },
+    {
+      "mode": "Unsupported systems ignored",
+      "detection": "Items past end of support without plan",
+      "response": "Schedule retirement or accept risk with expiry"
+    },
+    {
+      "mode": "Inventory out of date",
+      "detection": "Versions differ from reality",
+      "response": "Reconcile from automation output"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Nodes are upgraded in batches of two with a health check between batches; one node fails its check and is replaced, and the inventory is updated to the new versions.",
+  "status": "complete"
+}
