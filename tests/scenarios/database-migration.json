@@ -1,0 +1,28 @@
+{
+  "scenario_id": "database-migration",
+  "description": "Change a production schema with rollback planning and DBA approval.",
+  "workflow": "database-migration",
+  "stage_ids": [
+    137,
+    129,
+    132,
+    138
+  ],
+  "expected_approvers": {
+    "132": "dba-owner"
+  },
+  "expected_order": [
+    [
+      137,
+      132
+    ],
+    [
+      129,
+      132
+    ],
+    [
+      132,
+      138
+    ]
+  ]
+}

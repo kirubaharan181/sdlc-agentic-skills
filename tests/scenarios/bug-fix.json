@@ -1,0 +1,30 @@
+{
+  "scenario_id": "bug-fix",
+  "description": "Fix a reproducible production defect with a regression test, review, approval and verification.",
+  "workflow": "bug-fix",
+  "stage_ids": [
+    169,
+    170,
+    79,
+    69,
+    133,
+    138
+  ],
+  "expected_approvers": {
+    "133": "production-approver"
+  },
+  "expected_order": [
+    [
+      170,
+      79
+    ],
+    [
+      69,
+      133
+    ],
+    [
+      133,
+      138
+    ]
+  ]
+}

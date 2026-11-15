@@ -1,0 +1,37 @@
+{
+  "scenario_id": "production-release",
+  "description": "Release a reviewed build to production through change approval, migration, deployment and smoke test.",
+  "workflow": "production-release",
+  "stage_ids": [
+    128,
+    137,
+    129,
+    132,
+    134,
+    133,
+    138
+  ],
+  "expected_approvers": {
+    "129": "change-board",
+    "132": "dba-owner",
+    "133": "production-approver"
+  },
+  "expected_order": [
+    [
+      128,
+      129
+    ],
+    [
+      129,
+      133
+    ],
+    [
+      137,
+      133
+    ],
+    [
+      133,
+      138
+    ]
+  ]
+}

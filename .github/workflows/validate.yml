@@ -20,18 +20,22 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: pip install jsonschema
+      - run: pip install jsonschema pytest
       - name: Compile scripts
         run: python -m py_compile scripts/*.py
       - name: Build is reproducible and committed generated files are current
         run: python scripts/build.py --check
       - name: Validate registries, schemas and content
         run: python scripts/validate.py
-      - name: Audit duplication (report-only until Phase 6)
-        run: python scripts/audit_duplication.py
-      - name: Check cross-references (report-only until Phase 6)
-        run: python scripts/check_references.py --report-only
-      - name: Tests
+      - name: Duplication audit (exact copies and pairs at or above 0.85 fail)
+        run: python scripts/audit_duplication.py --threshold 0.85 --fail-on-findings
+      - name: Cross-references and orphans (blocking)
+        run: python scripts/check_references.py --fail-on-orphans
+      - name: Relative Markdown links resolve
+        run: python scripts/check_links.py
+      - name: Tests (unit, golden, scenario, broken-fixture)
+        run: python -m pytest -q
+      - name: Legacy fixture tests
         run: python scripts/run_tests.py
       - name: Validate dashboard snapshot JSON and JavaScript
         run: |

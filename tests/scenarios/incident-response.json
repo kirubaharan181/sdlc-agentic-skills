@@ -1,0 +1,21 @@
+{
+  "scenario_id": "incident-response",
+  "description": "Respond to, analyze and learn from a production incident.",
+  "workflow": "incident-response",
+  "stage_ids": [
+    163,
+    164,
+    165
+  ],
+  "expected_approvers": {},
+  "expected_order": [
+    [
+      163,
+      164
+    ],
+    [
+      164,
+      165
+    ]
+  ]
+}
