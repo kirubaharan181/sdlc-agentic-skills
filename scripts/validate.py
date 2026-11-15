@@ -25,9 +25,26 @@ if jsonschema:
             for err in validator.iter_errors(rec):
                 where = '/'.join(str(x) for x in err.absolute_path) or '(record)'
                 errors.append(f"schema {kind} {rec.get(idkey)}: {where}: {err.message[:140]}")
+    agent_ids = {a['agent_id'] for a in agents}
     for rec in st:
         if rec.get('approval_required') and not rec.get('approval_rationale'):
             errors.append(f"stage {rec['stage_id']}: approval_required without approval_rationale")
+        if rec.get('approval_required') and not rec.get('approver'):
+            errors.append(f"stage {rec['stage_id']}: approval_required without a named human approver")
+        if rec.get('approver') and not rec.get('approval_required'):
+            errors.append(f"stage {rec['stage_id']}: approver set but approval_required is false")
+        if rec.get('approver') in agent_ids:
+            errors.append(f"stage {rec['stage_id']}: approver '{rec['approver']}' is an agent; approvers must be human roles")
+        raci = rec.get('raci') or {}
+        roles = [raci.get('accountable'), *raci.get('responsible', []), *raci.get('consulted', []), *raci.get('informed', [])]
+        for r in roles:
+            if r not in agent_ids:
+                errors.append(f"stage {rec['stage_id']}: RACI role '{r}' is not a registered role")
+        if len(roles) != len(set(roles)):
+            errors.append(f"stage {rec['stage_id']}: a role appears more than once in the RACI")
+    used = {r for rec in st for r in [rec['raci']['accountable'], *rec['raci']['responsible']]}
+    for a in sorted(agent_ids - used):
+        errors.append(f"orphan role: '{a}' is neither accountable nor responsible for any stage")
 if ids!=list(range(1,191)):errors.append('stage IDs must be exactly 1..190 in order')
 if len(set(ids))!=190:errors.append('duplicate/missing stage IDs')
 skillids={x['skill_id'] for x in skills}; agentids={x['agent_id'] for x in agents}; wids={x['workflow_id'] for x in wfs}

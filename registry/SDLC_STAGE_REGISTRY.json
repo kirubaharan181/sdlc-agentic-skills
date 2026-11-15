@@ -6,12 +6,8 @@
       "stage_name": "Business Strategy",
       "category_id": 1,
       "category_name": "Business, Strategy and Product Management",
-      "primary_role": "Business Strategist",
       "skills": [
         "business-product-management"
-      ],
-      "agents": [
-        "business-strategist"
       ],
       "workflow_ids": [
         "new-product-development"
@@ -45,19 +41,26 @@
         "Each strategic choice has evidence, trade-offs and an accountable owner.",
         "Metrics have baseline, target, measurement source and review cadence.",
         "Unvalidated assumptions are explicit rather than presented as facts."
-      ]
+      ],
+      "raci": {
+        "accountable": "business-strategist",
+        "responsible": [],
+        "consulted": [
+          "product-manager",
+          "finops-specialist"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      }
     },
     {
       "stage_id": 2,
       "stage_name": "Market Research",
       "category_id": 1,
       "category_name": "Business, Strategy and Product Management",
-      "primary_role": "Business Strategist",
       "skills": [
         "business-product-management"
-      ],
-      "agents": [
-        "business-strategist"
       ],
       "workflow_ids": [
         "new-product-development"
@@ -91,19 +94,27 @@
         "Every material claim traces to a dated source or is labelled an assumption.",
         "Market size states method, units, geography and confidence range.",
         "Recommendation identifies disconfirming evidence and research gaps."
-      ]
+      ],
+      "raci": {
+        "accountable": "market-research-analyst",
+        "responsible": [
+          "business-strategist"
+        ],
+        "consulted": [
+          "product-manager"
+        ],
+        "informed": [
+          "client-engagement-specialist"
+        ]
+      }
     },
     {
       "stage_id": 3,
       "stage_name": "Client Engagement",
       "category_id": 1,
       "category_name": "Business, Strategy and Product Management",
-      "primary_role": "Business Strategist",
       "skills": [
         "business-product-management"
-      ],
-      "agents": [
-        "business-strategist"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -139,19 +150,26 @@
         "Every commitment has an owner and due date.",
         "Client acceptance and internal approval are distinguishable.",
         "Conflicting expectations are recorded and escalated before scope is baselined."
-      ]
+      ],
+      "raci": {
+        "accountable": "client-engagement-specialist",
+        "responsible": [],
+        "consulted": [
+          "business-analyst",
+          "product-manager"
+        ],
+        "informed": [
+          "business-strategist"
+        ]
+      }
     },
     {
       "stage_id": 4,
       "stage_name": "Product Discovery",
       "category_id": 1,
       "category_name": "Business, Strategy and Product Management",
-      "primary_role": "Business Strategist",
       "skills": [
         "business-product-management"
-      ],
-      "agents": [
-        "business-strategist"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -187,19 +205,29 @@
         "Each proposed solution links to a validated user problem.",
         "Experiments have a falsifiable hypothesis, metric, sample and decision threshold.",
         "A stop or pivot decision is accepted as a valid discovery outcome."
-      ]
+      ],
+      "raci": {
+        "accountable": "product-manager",
+        "responsible": [
+          "ux-researcher",
+          "market-research-analyst"
+        ],
+        "consulted": [
+          "business-analyst",
+          "business-strategist"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      }
     },
     {
       "stage_id": 5,
       "stage_name": "Business Analysis",
       "category_id": 1,
       "category_name": "Business, Strategy and Product Management",
-      "primary_role": "Business Strategist",
       "skills": [
         "business-product-management"
-      ],
-      "agents": [
-        "business-strategist"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -235,19 +263,26 @@
         "Process paths include normal, exception and failure cases.",
         "Rules have an owner and source.",
         "Requirements are testable and trace to a business outcome."
-      ]
+      ],
+      "raci": {
+        "accountable": "business-analyst",
+        "responsible": [],
+        "consulted": [
+          "product-owner",
+          "enterprise-architect"
+        ],
+        "informed": [
+          "product-manager"
+        ]
+      }
     },
     {
       "stage_id": 6,
       "stage_name": "Product Planning",
       "category_id": 1,
       "category_name": "Business, Strategy and Product Management",
-      "primary_role": "Business Strategist",
       "skills": [
         "business-product-management"
-      ],
-      "agents": [
-        "business-strategist"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -283,19 +318,28 @@
         "Every roadmap item has an outcome, owner and success measure.",
         "Dependencies and confidence are visible.",
         "Dates are not represented as commitments without capacity and approval."
-      ]
+      ],
+      "raci": {
+        "accountable": "product-manager",
+        "responsible": [
+          "product-owner"
+        ],
+        "consulted": [
+          "business-analyst",
+          "solution-architect"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      }
     },
     {
       "stage_id": 7,
       "stage_name": "Feasibility Analysis",
       "category_id": 1,
       "category_name": "Business, Strategy and Product Management",
-      "primary_role": "Business Strategist",
       "skills": [
         "business-product-management"
-      ],
-      "agents": [
-        "business-strategist"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -331,19 +375,29 @@
         "Critical assumptions have evidence or a time-boxed validation plan.",
         "Total lifecycle cost is considered, not just build cost.",
         "Recommendation names constraints and decision owner."
-      ]
+      ],
+      "raci": {
+        "accountable": "solution-architect",
+        "responsible": [
+          "finops-specialist",
+          "software-architect"
+        ],
+        "consulted": [
+          "business-strategist",
+          "cloud-architect"
+        ],
+        "informed": [
+          "product-manager"
+        ]
+      }
     },
     {
       "stage_id": 8,
       "stage_name": "Budget & Estimation",
       "category_id": 1,
       "category_name": "Business, Strategy and Product Management",
-      "primary_role": "Business Strategist",
       "skills": [
         "business-product-management"
-      ],
-      "agents": [
-        "business-strategist"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -379,19 +433,28 @@
         "Totals recalculate from traceable line items.",
         "Uncertainty and contingency are visible.",
         "Estimate owner and approval authority are named."
-      ]
+      ],
+      "raci": {
+        "accountable": "finops-specialist",
+        "responsible": [
+          "project-manager"
+        ],
+        "consulted": [
+          "solution-architect",
+          "business-strategist"
+        ],
+        "informed": [
+          "product-manager"
+        ]
+      }
     },
     {
       "stage_id": 9,
       "stage_name": "Project Approval",
       "category_id": 1,
       "category_name": "Business, Strategy and Product Management",
-      "primary_role": "Business Strategist",
       "skills": [
         "business-product-management"
-      ],
-      "agents": [
-        "business-strategist"
       ],
       "workflow_ids": [
         "product-retirement"
@@ -424,19 +487,29 @@
         "Decision authority is verified.",
         "Conditions are measurable, owned and time-bound.",
         "No missing or failed critical evidence is silently waived."
-      ]
+      ],
+      "approval_required": true,
+      "raci": {
+        "accountable": "product-manager",
+        "responsible": [],
+        "consulted": [
+          "program-manager",
+          "business-strategist"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      },
+      "approver": "business-sponsor",
+      "approval_rationale": "Commits budget and staff to the project on the organization's behalf; only the sponsor may authorize that."
     },
     {
       "stage_id": 10,
       "stage_name": "Contract & Compliance",
       "category_id": 1,
       "category_name": "Business, Strategy and Product Management",
-      "primary_role": "Business Strategist",
       "skills": [
         "business-product-management"
-      ],
-      "agents": [
-        "business-strategist"
       ],
       "workflow_ids": [
         "product-retirement"
@@ -469,19 +542,31 @@
         "Every material obligation has an owner and evidence path.",
         "Exceptions have an authorized risk owner.",
         "Unresolved legal interpretation is escalated."
-      ]
+      ],
+      "approval_required": true,
+      "raci": {
+        "accountable": "compliance-specialist",
+        "responsible": [
+          "vendor-management-specialist"
+        ],
+        "consulted": [
+          "security-architect",
+          "business-strategist"
+        ],
+        "informed": [
+          "product-manager"
+        ]
+      },
+      "approver": "legal-owner",
+      "approval_rationale": "Accepting contract terms creates legal obligations; the legal owner must approve before commitment."
     },
     {
       "stage_id": 11,
       "stage_name": "Requirement Elicitation",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -516,19 +601,28 @@
         "Needs are attributed to a source and context.",
         "Conflicts and assumptions remain visible.",
         "Coverage includes exceptions and operational users."
-      ]
+      ],
+      "raci": {
+        "accountable": "requirements-engineer",
+        "responsible": [
+          "business-analyst"
+        ],
+        "consulted": [
+          "client-engagement-specialist",
+          "product-owner"
+        ],
+        "informed": [
+          "ux-researcher"
+        ]
+      }
     },
     {
       "stage_id": 12,
       "stage_name": "Requirement Documentation",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "new-product-development"
@@ -561,19 +655,27 @@
         "No ambiguous pronouns or unbounded terms remain in normative requirements.",
         "IDs are stable and traceable.",
         "Links, diagrams and examples render."
-      ]
+      ],
+      "raci": {
+        "accountable": "requirements-engineer",
+        "responsible": [
+          "technical-writer"
+        ],
+        "consulted": [
+          "business-analyst"
+        ],
+        "informed": [
+          "quality-governance-specialist"
+        ]
+      }
     },
     {
       "stage_id": 13,
       "stage_name": "Functional Requirements",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -608,19 +710,28 @@
         "Each requirement has observable expected behavior.",
         "Boundary and failure cases are covered.",
         "No implementation detail is mistaken for a user outcome."
-      ]
+      ],
+      "raci": {
+        "accountable": "requirements-engineer",
+        "responsible": [
+          "business-analyst"
+        ],
+        "consulted": [
+          "product-owner",
+          "qa-lead"
+        ],
+        "informed": [
+          "software-architect"
+        ]
+      }
     },
     {
       "stage_id": 14,
       "stage_name": "Non-Functional Requirements",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -655,19 +766,29 @@
         "Every NFR has a threshold, workload condition and verification method.",
         "Targets are measurable and tied to business criticality.",
         "Trade-offs and owners are explicit."
-      ]
+      ],
+      "raci": {
+        "accountable": "requirements-engineer",
+        "responsible": [
+          "performance-engineer",
+          "security-architect"
+        ],
+        "consulted": [
+          "solution-architect",
+          "sre"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 15,
       "stage_name": "User Research",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -703,19 +824,26 @@
         "Research question maps to evidence.",
         "Sampling bias and limitations are disclosed.",
         "Recommendations do not overgeneralize beyond the sample."
-      ]
+      ],
+      "raci": {
+        "accountable": "ux-researcher",
+        "responsible": [],
+        "consulted": [
+          "product-manager",
+          "client-engagement-specialist"
+        ],
+        "informed": [
+          "ui-ux-designer"
+        ]
+      }
     },
     {
       "stage_id": 16,
       "stage_name": "User Journey Mapping",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "new-product-development"
@@ -748,19 +876,27 @@
         "Journey reflects observed behavior, not assumed ideal flow.",
         "Frontstage and backstage dependencies are visible.",
         "Each opportunity has an owner and measure."
-      ]
+      ],
+      "raci": {
+        "accountable": "ux-researcher",
+        "responsible": [
+          "ui-ux-designer"
+        ],
+        "consulted": [
+          "business-analyst"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 17,
       "stage_name": "Wireframing",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "feature-development"
@@ -793,19 +929,26 @@
         "Wireframes cover all critical states and target viewports.",
         "Labels and navigation support user goals.",
         "No decorative styling hides missing behavior."
-      ]
+      ],
+      "raci": {
+        "accountable": "ui-ux-designer",
+        "responsible": [],
+        "consulted": [
+          "ux-researcher",
+          "frontend-engineer"
+        ],
+        "informed": [
+          "requirements-engineer"
+        ]
+      }
     },
     {
       "stage_id": 18,
       "stage_name": "UI Design",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -839,19 +982,26 @@
         "Visual states and responsive breakpoints are specified.",
         "Contrast and text scaling meet agreed standards.",
         "Components reuse approved tokens or record justified exceptions."
-      ]
+      ],
+      "raci": {
+        "accountable": "ui-ux-designer",
+        "responsible": [],
+        "consulted": [
+          "frontend-engineer",
+          "accessibility-testing-specialist"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 19,
       "stage_name": "UX Design",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -886,19 +1036,27 @@
         "Critical tasks have clear entry, progress and recovery.",
         "Usability issues are prioritized by impact.",
         "Design changes are linked to research evidence."
-      ]
+      ],
+      "raci": {
+        "accountable": "ui-ux-designer",
+        "responsible": [
+          "ux-researcher"
+        ],
+        "consulted": [
+          "requirements-engineer"
+        ],
+        "informed": [
+          "frontend-engineer"
+        ]
+      }
     },
     {
       "stage_id": 20,
       "stage_name": "Prototype Development",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -934,19 +1092,28 @@
         "Prototype limitations are explicit.",
         "Success criteria are measured.",
         "No prototype-only behavior is represented as production capability."
-      ]
+      ],
+      "raci": {
+        "accountable": "ui-ux-designer",
+        "responsible": [
+          "frontend-engineer"
+        ],
+        "consulted": [
+          "product-owner",
+          "ux-researcher"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 21,
       "stage_name": "Accessibility Review",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -981,19 +1148,27 @@
         "Automated scans are not treated as full conformance proof.",
         "Critical journeys work without pointer input.",
         "Findings cite criterion, impact and reproduction."
-      ]
+      ],
+      "raci": {
+        "accountable": "accessibility-testing-specialist",
+        "responsible": [
+          "ui-ux-designer"
+        ],
+        "consulted": [
+          "frontend-engineer"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 22,
       "stage_name": "Requirement Validation",
       "category_id": 2,
       "category_name": "Requirements Engineering and UI/UX Design",
-      "primary_role": "Requirements Engineer",
       "skills": [
         "requirements-design"
-      ],
-      "agents": [
-        "requirements-engineer"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1028,19 +1203,29 @@
         "No critical orphan, conflict or untestable requirement remains.",
         "Stakeholders approve the baseline version.",
         "Deferred items have owner and impact."
-      ]
+      ],
+      "raci": {
+        "accountable": "product-owner",
+        "responsible": [
+          "requirements-engineer"
+        ],
+        "consulted": [
+          "business-analyst",
+          "qa-lead",
+          "software-architect"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      }
     },
     {
       "stage_id": 23,
       "stage_name": "Solution Architecture",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1075,19 +1260,28 @@
         "Every component has responsibility and owner.",
         "Dependencies and failure domains are explicit.",
         "Trade-offs are tied to measurable quality scenarios."
-      ]
+      ],
+      "raci": {
+        "accountable": "solution-architect",
+        "responsible": [
+          "enterprise-architect"
+        ],
+        "consulted": [
+          "security-architect",
+          "cloud-architect"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      }
     },
     {
       "stage_id": 24,
       "stage_name": "System Architecture",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "new-product-development"
@@ -1120,19 +1314,28 @@
         "Every component has responsibility and owner.",
         "Dependencies and failure domains are explicit.",
         "Trade-offs are tied to measurable quality scenarios."
-      ]
+      ],
+      "raci": {
+        "accountable": "software-architect",
+        "responsible": [
+          "solution-architect"
+        ],
+        "consulted": [
+          "performance-engineer",
+          "security-architect"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      }
     },
     {
       "stage_id": 25,
       "stage_name": "Application Architecture",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1167,19 +1370,26 @@
         "Every component has responsibility and owner.",
         "Dependencies and failure domains are explicit.",
         "Trade-offs are tied to measurable quality scenarios."
-      ]
+      ],
+      "raci": {
+        "accountable": "software-architect",
+        "responsible": [],
+        "consulted": [
+          "backend-engineer",
+          "frontend-engineer"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 26,
       "stage_name": "Database Architecture",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "database-migration"
@@ -1213,19 +1423,28 @@
         "Integrity constraints are enforceable.",
         "Performance decisions are workload-backed.",
         "Migration and restore path are rehearsable."
-      ]
+      ],
+      "raci": {
+        "accountable": "database-architect",
+        "responsible": [
+          "data-architect"
+        ],
+        "consulted": [
+          "database-administrator",
+          "backend-engineer"
+        ],
+        "informed": [
+          "database-engineer"
+        ]
+      }
     },
     {
       "stage_id": 27,
       "stage_name": "API Architecture",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1260,19 +1479,26 @@
         "Contract is machine-valid and has representative examples.",
         "Breaking changes and consumer impact are identified.",
         "Auth/error/idempotency behavior is explicit."
-      ]
+      ],
+      "raci": {
+        "accountable": "api-architect",
+        "responsible": [],
+        "consulted": [
+          "backend-engineer",
+          "security-architect"
+        ],
+        "informed": [
+          "api-testing-specialist"
+        ]
+      }
     },
     {
       "stage_id": 28,
       "stage_name": "Cloud Architecture",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "infrastructure-provisioning"
@@ -1306,19 +1532,27 @@
         "Failure domains align with RTO/RPO.",
         "IAM and network boundaries are least privilege.",
         "Cost assumptions and service quotas are explicit."
-      ]
+      ],
+      "raci": {
+        "accountable": "cloud-architect",
+        "responsible": [],
+        "consulted": [
+          "security-architect",
+          "finops-specialist",
+          "infrastructure-engineer"
+        ],
+        "informed": [
+          "devops-engineer"
+        ]
+      }
     },
     {
       "stage_id": 29,
       "stage_name": "Security Architecture",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "new-product-development"
@@ -1352,19 +1586,26 @@
         "High-impact threats have treatment and owner.",
         "Trust boundaries and data flows are complete.",
         "Controls have testable verification evidence."
-      ]
+      ],
+      "raci": {
+        "accountable": "security-architect",
+        "responsible": [],
+        "consulted": [
+          "application-security-engineer",
+          "compliance-specialist"
+        ],
+        "informed": [
+          "backend-engineer"
+        ]
+      }
     },
     {
       "stage_id": 30,
       "stage_name": "Data Architecture",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1400,19 +1641,28 @@
         "Critical elements have owners and definitions.",
         "Lineage covers source-to-consumer flow.",
         "Privacy and retention controls are enforceable."
-      ]
+      ],
+      "raci": {
+        "accountable": "data-architect",
+        "responsible": [
+          "database-architect"
+        ],
+        "consulted": [
+          "compliance-specialist",
+          "data-engineer"
+        ],
+        "informed": [
+          "ai-ml-engineer"
+        ]
+      }
     },
     {
       "stage_id": 31,
       "stage_name": "Integration Architecture",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1448,19 +1698,28 @@
         "Every interface has owner and version policy.",
         "Retries cannot create unsafe duplicate side effects.",
         "Failure handling and telemetry are specified."
-      ]
+      ],
+      "raci": {
+        "accountable": "integration-architect",
+        "responsible": [
+          "api-architect"
+        ],
+        "consulted": [
+          "integration-engineer",
+          "security-architect"
+        ],
+        "informed": [
+          "backend-engineer"
+        ]
+      }
     },
     {
       "stage_id": 32,
       "stage_name": "Technology Selection",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1495,19 +1754,29 @@
         "Scoring criteria are transparent.",
         "Total cost and exit strategy are included.",
         "Decision is reproducible from evidence."
-      ]
+      ],
+      "raci": {
+        "accountable": "enterprise-architect",
+        "responsible": [
+          "solution-architect"
+        ],
+        "consulted": [
+          "finops-specialist",
+          "vendor-management-specialist",
+          "security-architect"
+        ],
+        "informed": [
+          "license-compliance-specialist"
+        ]
+      }
     },
     {
       "stage_id": 33,
       "stage_name": "Architecture Documentation",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1543,19 +1812,27 @@
         "Documentation matches deployed reality.",
         "Every key decision has rationale and alternatives.",
         "Owners and freshness triggers are defined."
-      ]
+      ],
+      "raci": {
+        "accountable": "technical-writer",
+        "responsible": [
+          "software-architect"
+        ],
+        "consulted": [
+          "solution-architect"
+        ],
+        "informed": [
+          "documentation-engineer"
+        ]
+      }
     },
     {
       "stage_id": 34,
       "stage_name": "Architecture Review",
       "category_id": 3,
       "category_name": "Software, Solution and Technical Architecture",
-      "primary_role": "Software Architect",
       "skills": [
         "technical-architecture"
-      ],
-      "agents": [
-        "software-architect"
       ],
       "workflow_ids": [
         "existing-application-enhancement"
@@ -1588,19 +1865,26 @@
         "Findings cite model element and impact.",
         "Reviewer independence is preserved.",
         "Exceptions have owner and expiry."
-      ]
+      ],
+      "raci": {
+        "accountable": "architecture-reviewer",
+        "responsible": [],
+        "consulted": [
+          "software-architect",
+          "security-architect"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      }
     },
     {
       "stage_id": 35,
       "stage_name": "Project Initiation",
       "category_id": 4,
       "category_name": "Project, Program and Agile Management",
-      "primary_role": "Project Manager",
       "skills": [
         "project-agile-management"
-      ],
-      "agents": [
-        "project-manager"
       ],
       "workflow_ids": [
         "new-product-development"
@@ -1634,19 +1918,28 @@
         "Accountability and authority are explicit.",
         "Outcomes and scope are measurable.",
         "Open assumptions have owners and due dates."
-      ]
+      ],
+      "raci": {
+        "accountable": "project-manager",
+        "responsible": [
+          "program-manager"
+        ],
+        "consulted": [
+          "product-manager",
+          "business-strategist"
+        ],
+        "informed": [
+          "engineering-coordinator"
+        ]
+      }
     },
     {
       "stage_id": 36,
       "stage_name": "Resource Planning",
       "category_id": 4,
       "category_name": "Project, Program and Agile Management",
-      "primary_role": "Project Manager",
       "skills": [
         "project-agile-management"
-      ],
-      "agents": [
-        "project-manager"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1681,19 +1974,27 @@
         "Plan uses available capacity, not nominal headcount.",
         "Critical skill gaps have mitigations.",
         "Allocation changes are approved."
-      ]
+      ],
+      "raci": {
+        "accountable": "project-manager",
+        "responsible": [
+          "engineering-coordinator"
+        ],
+        "consulted": [
+          "finops-specialist"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      }
     },
     {
       "stage_id": 37,
       "stage_name": "Work Breakdown",
       "category_id": 4,
       "category_name": "Project, Program and Agile Management",
-      "primary_role": "Project Manager",
       "skills": [
         "project-agile-management"
-      ],
-      "agents": [
-        "project-manager"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1729,19 +2030,28 @@
         "Every scope item maps to a work package.",
         "No package is too broad to estimate or verify.",
         "Dependencies and ownership are explicit."
-      ]
+      ],
+      "raci": {
+        "accountable": "project-manager",
+        "responsible": [
+          "software-architect"
+        ],
+        "consulted": [
+          "product-owner",
+          "qa-lead"
+        ],
+        "informed": [
+          "scrum-master"
+        ]
+      }
     },
     {
       "stage_id": 38,
       "stage_name": "Effort Estimation",
       "category_id": 4,
       "category_name": "Project, Program and Agile Management",
-      "primary_role": "Project Manager",
       "skills": [
         "project-agile-management"
-      ],
-      "agents": [
-        "project-manager"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1777,19 +2087,29 @@
         "Totals recalculate from traceable line items.",
         "Uncertainty and contingency are visible.",
         "Estimate owner and approval authority are named."
-      ]
+      ],
+      "raci": {
+        "accountable": "project-manager",
+        "responsible": [
+          "scrum-master"
+        ],
+        "consulted": [
+          "software-architect",
+          "backend-engineer",
+          "frontend-engineer"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 39,
       "stage_name": "Sprint Planning",
       "category_id": 4,
       "category_name": "Project, Program and Agile Management",
-      "primary_role": "Project Manager",
       "skills": [
         "project-agile-management"
-      ],
-      "agents": [
-        "project-manager"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1824,19 +2144,27 @@
         "Commitment fits actual capacity.",
         "Stories meet readiness criteria.",
         "Sprint goal is outcome-focused and measurable."
-      ]
+      ],
+      "raci": {
+        "accountable": "scrum-master",
+        "responsible": [
+          "project-manager"
+        ],
+        "consulted": [
+          "product-owner"
+        ],
+        "informed": [
+          "agile-delivery-manager"
+        ]
+      }
     },
     {
       "stage_id": 40,
       "stage_name": "Agile Management",
       "category_id": 4,
       "category_name": "Project, Program and Agile Management",
-      "primary_role": "Project Manager",
       "skills": [
         "project-agile-management"
-      ],
-      "agents": [
-        "project-manager"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1871,19 +2199,25 @@
         "Work state reflects evidence.",
         "Impediments have owners and next actions.",
         "Metrics are used for improvement, not individual surveillance."
-      ]
+      ],
+      "raci": {
+        "accountable": "agile-delivery-manager",
+        "responsible": [
+          "scrum-master"
+        ],
+        "consulted": [],
+        "informed": [
+          "project-manager"
+        ]
+      }
     },
     {
       "stage_id": 41,
       "stage_name": "Progress Tracking",
       "category_id": 4,
       "category_name": "Project, Program and Agile Management",
-      "primary_role": "Project Manager",
       "skills": [
         "project-agile-management"
-      ],
-      "agents": [
-        "project-manager"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1918,19 +2252,26 @@
         "Work state reflects evidence.",
         "Impediments have owners and next actions.",
         "Metrics are used for improvement, not individual surveillance."
-      ]
+      ],
+      "raci": {
+        "accountable": "agile-delivery-manager",
+        "responsible": [
+          "project-manager"
+        ],
+        "consulted": [],
+        "informed": [
+          "program-manager",
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 42,
       "stage_name": "Risk Management",
       "category_id": 4,
       "category_name": "Project, Program and Agile Management",
-      "primary_role": "Project Manager",
       "skills": [
         "project-agile-management"
-      ],
-      "agents": [
-        "project-manager"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -1965,19 +2306,28 @@
         "High risks have active treatments and triggers.",
         "Risk acceptance is authorized and time-bound.",
         "Issues are not hidden as risks."
-      ]
+      ],
+      "raci": {
+        "accountable": "program-manager",
+        "responsible": [
+          "project-manager"
+        ],
+        "consulted": [
+          "security-architect",
+          "sre"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 43,
       "stage_name": "Stakeholder Management",
       "category_id": 4,
       "category_name": "Project, Program and Agile Management",
-      "primary_role": "Project Manager",
       "skills": [
         "project-agile-management"
-      ],
-      "agents": [
-        "project-manager"
       ],
       "workflow_ids": [
         "new-product-development",
@@ -2012,19 +2362,25 @@
         "Every key decision has an owner and due date.",
         "Affected parties are informed before impact.",
         "Conflicts are resolved or explicitly escalated."
-      ]
+      ],
+      "raci": {
+        "accountable": "program-manager",
+        "responsible": [
+          "project-manager"
+        ],
+        "consulted": [],
+        "informed": [
+          "client-engagement-specialist"
+        ]
+      }
     },
     {
       "stage_id": 44,
       "stage_name": "Change Management",
       "category_id": 4,
       "category_name": "Project, Program and Agile Management",
-      "primary_role": "Project Manager",
       "skills": [
         "project-agile-management"
-      ],
-      "agents": [
-        "project-manager"
       ],
       "workflow_ids": [
         "existing-application-enhancement"
@@ -2058,19 +2414,30 @@
         "No unapproved baseline change is treated as accepted.",
         "Rollback and communication needs are considered.",
         "Impact owners have reviewed the change."
-      ]
+      ],
+      "approval_required": true,
+      "raci": {
+        "accountable": "engineering-governance-specialist",
+        "responsible": [
+          "project-manager"
+        ],
+        "consulted": [
+          "release-manager"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      },
+      "approver": "change-board",
+      "approval_rationale": "Approving a change request alters committed scope, cost or schedule; the change board decides, not the requester."
     },
     {
       "stage_id": 45,
       "stage_name": "Repository Setup",
       "category_id": 5,
       "category_name": "Development Environment and Engineering Governance",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "engineering-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation"
@@ -2104,19 +2471,27 @@
         "A clean contributor can reproduce setup.",
         "Protected branches require review and checks.",
         "No secret value is committed."
-      ]
+      ],
+      "raci": {
+        "accountable": "platform-engineer",
+        "responsible": [
+          "devops-engineer"
+        ],
+        "consulted": [
+          "engineering-governance-specialist"
+        ],
+        "informed": [
+          "backend-engineer"
+        ]
+      }
     },
     {
       "stage_id": 46,
       "stage_name": "Branching Strategy",
       "category_id": 5,
       "category_name": "Development Environment and Engineering Governance",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "engineering-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation"
@@ -2150,19 +2525,28 @@
         "A clean contributor can reproduce setup.",
         "Protected branches require review and checks.",
         "No secret value is committed."
-      ]
+      ],
+      "raci": {
+        "accountable": "engineering-governance-specialist",
+        "responsible": [
+          "devops-engineer"
+        ],
+        "consulted": [
+          "code-reviewer"
+        ],
+        "informed": [
+          "backend-engineer",
+          "frontend-engineer"
+        ]
+      }
     },
     {
       "stage_id": 47,
       "stage_name": "Development Environment",
       "category_id": 5,
       "category_name": "Development Environment and Engineering Governance",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "engineering-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation",
@@ -2198,19 +2582,28 @@
         "A clean contributor can reproduce setup.",
         "Protected branches require review and checks.",
         "No secret value is committed."
-      ]
+      ],
+      "raci": {
+        "accountable": "platform-engineer",
+        "responsible": [
+          "devops-engineer"
+        ],
+        "consulted": [
+          "backend-engineer",
+          "frontend-engineer"
+        ],
+        "informed": [
+          "documentation-engineer"
+        ]
+      }
     },
     {
       "stage_id": 48,
       "stage_name": "Coding Standards",
       "category_id": 5,
       "category_name": "Development Environment and Engineering Governance",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "engineering-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation",
@@ -2246,19 +2639,27 @@
         "A clean contributor can reproduce setup.",
         "Protected branches require review and checks.",
         "No secret value is committed."
-      ]
+      ],
+      "raci": {
+        "accountable": "engineering-governance-specialist",
+        "responsible": [
+          "software-architect"
+        ],
+        "consulted": [
+          "code-reviewer"
+        ],
+        "informed": [
+          "backend-engineer"
+        ]
+      }
     },
     {
       "stage_id": 49,
       "stage_name": "Environment Configuration",
       "category_id": 5,
       "category_name": "Development Environment and Engineering Governance",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "engineering-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "environment-configuration"
@@ -2292,19 +2693,27 @@
         "A clean contributor can reproduce setup.",
         "Protected branches require review and checks.",
         "No secret value is committed."
-      ]
+      ],
+      "raci": {
+        "accountable": "devops-engineer",
+        "responsible": [
+          "platform-engineer"
+        ],
+        "consulted": [
+          "security-architect"
+        ],
+        "informed": [
+          "backend-engineer"
+        ]
+      }
     },
     {
       "stage_id": 50,
       "stage_name": "Secrets Management",
       "category_id": 5,
       "category_name": "Development Environment and Engineering Governance",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "engineering-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "environment-configuration",
@@ -2341,19 +2750,29 @@
         "Protected branches require review and checks.",
         "No secret value is committed."
       ],
-      "approval_rationale": "Rotating or revoking production secrets can cause outages and is hard to undo; a human must confirm timing and blast radius."
+      "approval_rationale": "Rotating or revoking production secrets can cause outages and is hard to undo; a human must confirm timing and blast radius.",
+      "raci": {
+        "accountable": "devsecops-engineer",
+        "responsible": [
+          "devops-engineer"
+        ],
+        "consulted": [
+          "security-architect"
+        ],
+        "informed": [
+          "engineering-governance-specialist"
+        ]
+      },
+      "approver": "secrets-owner",
+      "approval_condition": "when rotating or revoking production secrets"
     },
     {
       "stage_id": 51,
       "stage_name": "Developer Documentation",
       "category_id": 5,
       "category_name": "Development Environment and Engineering Governance",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "engineering-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation",
@@ -2388,19 +2807,28 @@
         "No ambiguous pronouns or unbounded terms remain in normative requirements.",
         "IDs are stable and traceable.",
         "Links, diagrams and examples render."
-      ]
+      ],
+      "raci": {
+        "accountable": "documentation-engineer",
+        "responsible": [
+          "technical-writer"
+        ],
+        "consulted": [
+          "backend-engineer",
+          "frontend-engineer"
+        ],
+        "informed": [
+          "engineering-governance-specialist"
+        ]
+      }
     },
     {
       "stage_id": 52,
       "stage_name": "Engineering Governance",
       "category_id": 5,
       "category_name": "Development Environment and Engineering Governance",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "engineering-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation",
@@ -2436,19 +2864,28 @@
         "A clean contributor can reproduce setup.",
         "Protected branches require review and checks.",
         "No secret value is committed."
-      ]
+      ],
+      "raci": {
+        "accountable": "engineering-governance-specialist",
+        "responsible": [
+          "quality-governance-specialist"
+        ],
+        "consulted": [
+          "software-architect",
+          "security-architect"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      }
     },
     {
       "stage_id": 53,
       "stage_name": "Frontend Development",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "existing-application-enhancement",
@@ -2483,19 +2920,26 @@
         "Critical flows work at supported viewports.",
         "Keyboard and screen-reader semantics are preserved.",
         "No unhandled errors or leaked async state."
-      ]
+      ],
+      "raci": {
+        "accountable": "frontend-engineer",
+        "responsible": [],
+        "consulted": [
+          "ui-ux-designer",
+          "api-engineer"
+        ],
+        "informed": [
+          "code-reviewer"
+        ]
+      }
     },
     {
       "stage_id": 54,
       "stage_name": "Backend Development",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "existing-application-enhancement",
@@ -2530,19 +2974,28 @@
         "Authorization is server-side.",
         "Failure paths do not leak secrets or corrupt state.",
         "Tests cover boundaries and duplicate requests."
-      ]
+      ],
+      "raci": {
+        "accountable": "backend-engineer",
+        "responsible": [
+          "api-engineer"
+        ],
+        "consulted": [
+          "software-architect",
+          "database-engineer"
+        ],
+        "informed": [
+          "code-reviewer"
+        ]
+      }
     },
     {
       "stage_id": 55,
       "stage_name": "Full Stack Development",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -2577,19 +3030,28 @@
         "UI and service behavior agree on contracts.",
         "Data changes are backward-compatible or migrated safely.",
         "Critical user journey has reproducible end-to-end evidence."
-      ]
+      ],
+      "raci": {
+        "accountable": "full-stack-engineer",
+        "responsible": [
+          "frontend-engineer",
+          "backend-engineer"
+        ],
+        "consulted": [
+          "software-architect"
+        ],
+        "informed": [
+          "code-reviewer"
+        ]
+      }
     },
     {
       "stage_id": 56,
       "stage_name": "Mobile Development",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -2625,19 +3087,26 @@
         "App resumes and recovers from network/lifecycle changes.",
         "Permissions are least-privilege and explained.",
         "Supported OS/device matrix passes."
-      ]
+      ],
+      "raci": {
+        "accountable": "mobile-engineer",
+        "responsible": [],
+        "consulted": [
+          "ui-ux-designer",
+          "api-engineer"
+        ],
+        "informed": [
+          "code-reviewer"
+        ]
+      }
     },
     {
       "stage_id": 57,
       "stage_name": "API Development",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "feature-development"
@@ -2671,19 +3140,28 @@
         "Implementation matches the published contract.",
         "Auth and error cases are tested.",
         "Breaking changes require version and migration approval."
-      ]
+      ],
+      "raci": {
+        "accountable": "api-engineer",
+        "responsible": [
+          "backend-engineer"
+        ],
+        "consulted": [
+          "api-architect",
+          "api-testing-specialist"
+        ],
+        "informed": [
+          "integration-engineer"
+        ]
+      }
     },
     {
       "stage_id": 58,
       "stage_name": "Database Development",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -2719,19 +3197,28 @@
         "Constraints protect invariants.",
         "Migration is repeatable and rehearsed.",
         "Performance is measured against a representative workload."
-      ]
+      ],
+      "raci": {
+        "accountable": "database-engineer",
+        "responsible": [
+          "database-administrator"
+        ],
+        "consulted": [
+          "database-architect",
+          "backend-engineer"
+        ],
+        "informed": [
+          "data-engineer"
+        ]
+      }
     },
     {
       "stage_id": 59,
       "stage_name": "Authentication Development",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -2766,19 +3253,28 @@
         "No credential is stored or logged insecurely.",
         "Token/session validation is complete.",
         "Recovery and revocation paths are tested."
-      ]
+      ],
+      "raci": {
+        "accountable": "authentication-and-authorization-engineer",
+        "responsible": [
+          "backend-engineer"
+        ],
+        "consulted": [
+          "security-architect",
+          "application-security-engineer"
+        ],
+        "informed": [
+          "code-reviewer"
+        ]
+      }
     },
     {
       "stage_id": 60,
       "stage_name": "Authorization Development",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -2814,19 +3310,28 @@
         "Unauthenticated and unauthorized paths deny by default.",
         "Tenant/object ownership checks are enforced.",
         "Negative tests cover privilege boundaries."
-      ]
+      ],
+      "raci": {
+        "accountable": "authentication-and-authorization-engineer",
+        "responsible": [
+          "backend-engineer"
+        ],
+        "consulted": [
+          "security-architect",
+          "application-security-engineer"
+        ],
+        "informed": [
+          "code-reviewer"
+        ]
+      }
     },
     {
       "stage_id": 61,
       "stage_name": "Third-party Integration",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -2862,19 +3367,28 @@
         "External failures are isolated and observable.",
         "Retries cannot create unsafe duplicate effects.",
         "Credentials and personal data are protected."
-      ]
+      ],
+      "raci": {
+        "accountable": "integration-engineer",
+        "responsible": [
+          "backend-engineer"
+        ],
+        "consulted": [
+          "integration-architect",
+          "security-architect"
+        ],
+        "informed": [
+          "api-testing-specialist"
+        ]
+      }
     },
     {
       "stage_id": 62,
       "stage_name": "Real-time Development",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -2910,19 +3424,28 @@
         "Ordering guarantee is explicit.",
         "Clients recover without missing or duplicating state.",
         "Backpressure and resource limits are enforced."
-      ]
+      ],
+      "raci": {
+        "accountable": "backend-engineer",
+        "responsible": [
+          "frontend-engineer"
+        ],
+        "consulted": [
+          "performance-engineer",
+          "sre"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 63,
       "stage_name": "Data Engineering",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -2958,19 +3481,26 @@
         "Reprocessing is deterministic or explicitly reconciled.",
         "Quality failures are visible and bounded.",
         "Lineage and ownership are complete."
-      ]
+      ],
+      "raci": {
+        "accountable": "data-engineer",
+        "responsible": [],
+        "consulted": [
+          "data-architect",
+          "database-engineer"
+        ],
+        "informed": [
+          "ai-ml-engineer"
+        ]
+      }
     },
     {
       "stage_id": 64,
       "stage_name": "AI/ML Development",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3006,19 +3536,28 @@
         "Evaluation matches intended use and baseline.",
         "Data leakage and subgroup failures are assessed.",
         "Fallback and monitoring are operationally defined."
-      ]
+      ],
+      "raci": {
+        "accountable": "ai-ml-engineer",
+        "responsible": [
+          "data-engineer"
+        ],
+        "consulted": [
+          "data-architect",
+          "security-architect"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 65,
       "stage_name": "Caching & Optimization",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3054,19 +3593,28 @@
         "Improvement is measured against baseline.",
         "Correctness and freshness invariants hold.",
         "No unbounded memory or stale-data risk is introduced."
-      ]
+      ],
+      "raci": {
+        "accountable": "performance-engineer",
+        "responsible": [
+          "backend-engineer"
+        ],
+        "consulted": [
+          "software-architect",
+          "database-engineer"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 66,
       "stage_name": "Error Handling",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "bug-fix",
@@ -3101,19 +3649,28 @@
         "No stack trace or secret leaks to users.",
         "Retry policy cannot multiply side effects.",
         "Errors are observable and actionable."
-      ]
+      ],
+      "raci": {
+        "accountable": "backend-engineer",
+        "responsible": [
+          "full-stack-engineer"
+        ],
+        "consulted": [
+          "software-architect",
+          "sre"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 67,
       "stage_name": "Developer Testing",
       "category_id": 6,
       "category_name": "Software Development and Implementation",
-      "primary_role": "Full Stack Engineer",
       "skills": [
         "software-implementation"
-      ],
-      "agents": [
-        "full-stack-engineer"
       ],
       "workflow_ids": [
         "existing-application-enhancement",
@@ -3153,19 +3710,29 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "All required local checks pass on the exact working-tree revision."
-      ]
+      ],
+      "raci": {
+        "accountable": "full-stack-engineer",
+        "responsible": [
+          "unit-testing-specialist",
+          "backend-engineer",
+          "frontend-engineer"
+        ],
+        "consulted": [
+          "qa-lead"
+        ],
+        "informed": [
+          "code-reviewer"
+        ]
+      }
     },
     {
       "stage_id": 68,
       "stage_name": "Pull Request Creation",
       "category_id": 7,
       "category_name": "Code Review, Static Analysis and Quality Engineering",
-      "primary_role": "Code Reviewer",
       "skills": [
         "code-review-quality"
-      ],
-      "agents": [
-        "code-reviewer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3200,19 +3767,28 @@
         "Diff contains only intended changes.",
         "Evidence is from the PR head commit.",
         "Required reviewers and checks are requested."
-      ]
+      ],
+      "raci": {
+        "accountable": "full-stack-engineer",
+        "responsible": [
+          "backend-engineer",
+          "frontend-engineer"
+        ],
+        "consulted": [
+          "code-reviewer"
+        ],
+        "informed": [
+          "merge-steward"
+        ]
+      }
     },
     {
       "stage_id": 69,
       "stage_name": "Peer Code Review",
       "category_id": 7,
       "category_name": "Code Review, Static Analysis and Quality Engineering",
-      "primary_role": "Code Reviewer",
       "skills": [
         "code-review-quality"
-      ],
-      "agents": [
-        "code-reviewer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3250,19 +3826,26 @@
         "Findings are reproducible and tied to exact commit.",
         "False positives and accepted debt have rationale and owner.",
         "Critical paths have meaningful assertions."
-      ]
+      ],
+      "raci": {
+        "accountable": "code-reviewer",
+        "responsible": [],
+        "consulted": [
+          "software-architect",
+          "application-security-engineer"
+        ],
+        "informed": [
+          "merge-steward"
+        ]
+      }
     },
     {
       "stage_id": 70,
       "stage_name": "Architecture Review",
       "category_id": 7,
       "category_name": "Code Review, Static Analysis and Quality Engineering",
-      "primary_role": "Code Reviewer",
       "skills": [
         "code-review-quality"
-      ],
-      "agents": [
-        "code-reviewer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3297,19 +3880,27 @@
         "Findings cite model element and impact.",
         "Reviewer independence is preserved.",
         "Exceptions have owner and expiry."
-      ]
+      ],
+      "raci": {
+        "accountable": "architecture-reviewer",
+        "responsible": [
+          "software-architect"
+        ],
+        "consulted": [
+          "solution-architect"
+        ],
+        "informed": [
+          "code-reviewer"
+        ]
+      }
     },
     {
       "stage_id": 71,
       "stage_name": "Static Code Analysis",
       "category_id": 7,
       "category_name": "Code Review, Static Analysis and Quality Engineering",
-      "primary_role": "Code Reviewer",
       "skills": [
         "code-review-quality"
-      ],
-      "agents": [
-        "code-reviewer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3345,19 +3936,27 @@
         "Findings are reproducible and tied to exact commit.",
         "False positives and accepted debt have rationale and owner.",
         "Critical paths have meaningful assertions."
-      ]
+      ],
+      "raci": {
+        "accountable": "devsecops-engineer",
+        "responsible": [
+          "code-reviewer"
+        ],
+        "consulted": [
+          "application-security-engineer"
+        ],
+        "informed": [
+          "merge-steward"
+        ]
+      }
     },
     {
       "stage_id": 72,
       "stage_name": "Dependency Review",
       "category_id": 7,
       "category_name": "Code Review, Static Analysis and Quality Engineering",
-      "primary_role": "Code Reviewer",
       "skills": [
         "code-review-quality"
-      ],
-      "agents": [
-        "code-reviewer"
       ],
       "workflow_ids": [
         "dependency-update"
@@ -3391,19 +3990,27 @@
         "Findings are reproducible and tied to exact commit.",
         "False positives and accepted debt have rationale and owner.",
         "Critical paths have meaningful assertions."
-      ]
+      ],
+      "raci": {
+        "accountable": "devsecops-engineer",
+        "responsible": [
+          "license-compliance-specialist"
+        ],
+        "consulted": [
+          "vulnerability-analyst"
+        ],
+        "informed": [
+          "merge-steward"
+        ]
+      }
     },
     {
       "stage_id": 73,
       "stage_name": "Code Coverage Review",
       "category_id": 7,
       "category_name": "Code Review, Static Analysis and Quality Engineering",
-      "primary_role": "Code Reviewer",
       "skills": [
         "code-review-quality"
-      ],
-      "agents": [
-        "code-reviewer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3439,19 +4046,27 @@
         "Findings are reproducible and tied to exact commit.",
         "False positives and accepted debt have rationale and owner.",
         "Critical paths have meaningful assertions."
-      ]
+      ],
+      "raci": {
+        "accountable": "code-reviewer",
+        "responsible": [
+          "unit-testing-specialist"
+        ],
+        "consulted": [
+          "qa-lead"
+        ],
+        "informed": [
+          "merge-steward"
+        ]
+      }
     },
     {
       "stage_id": 74,
       "stage_name": "Coding Standards Validation",
       "category_id": 7,
       "category_name": "Code Review, Static Analysis and Quality Engineering",
-      "primary_role": "Code Reviewer",
       "skills": [
         "code-review-quality"
-      ],
-      "agents": [
-        "code-reviewer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3487,19 +4102,27 @@
         "Findings are reproducible and tied to exact commit.",
         "False positives and accepted debt have rationale and owner.",
         "Critical paths have meaningful assertions."
-      ]
+      ],
+      "raci": {
+        "accountable": "code-reviewer",
+        "responsible": [
+          "engineering-governance-specialist"
+        ],
+        "consulted": [
+          "software-architect"
+        ],
+        "informed": [
+          "merge-steward"
+        ]
+      }
     },
     {
       "stage_id": 75,
       "stage_name": "Merge Approval",
       "category_id": 7,
       "category_name": "Code Review, Static Analysis and Quality Engineering",
-      "primary_role": "Code Reviewer",
       "skills": [
         "code-review-quality"
-      ],
-      "agents": [
-        "code-reviewer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3534,19 +4157,31 @@
         "Decision authority is verified.",
         "Conditions are measurable, owned and time-bound.",
         "No missing or failed critical evidence is silently waived."
-      ]
+      ],
+      "approval_required": true,
+      "raci": {
+        "accountable": "merge-steward",
+        "responsible": [
+          "code-reviewer"
+        ],
+        "consulted": [
+          "qa-lead",
+          "application-security-engineer"
+        ],
+        "informed": [
+          "release-manager"
+        ]
+      },
+      "approver": "code-owner",
+      "approval_rationale": "Merging changes the protected branch that feeds releases; branch protection must record a human code-owner approval, not the agent's own."
     },
     {
       "stage_id": 76,
       "stage_name": "Technical Debt Review",
       "category_id": 7,
       "category_name": "Code Review, Static Analysis and Quality Engineering",
-      "primary_role": "Code Reviewer",
       "skills": [
         "code-review-quality"
-      ],
-      "agents": [
-        "code-reviewer"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3582,19 +4217,28 @@
         "Findings are reproducible and tied to exact commit.",
         "False positives and accepted debt have rationale and owner.",
         "Critical paths have meaningful assertions."
-      ]
+      ],
+      "raci": {
+        "accountable": "software-architect",
+        "responsible": [
+          "code-reviewer"
+        ],
+        "consulted": [
+          "engineering-governance-specialist",
+          "project-manager"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 77,
       "stage_name": "Test Strategy",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "staging-release"
@@ -3631,19 +4275,28 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Every high-impact risk has an explicit test level and measurable exit condition."
-      ]
+      ],
+      "raci": {
+        "accountable": "qa-lead",
+        "responsible": [
+          "quality-governance-specialist"
+        ],
+        "consulted": [
+          "software-architect",
+          "product-owner"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      }
     },
     {
       "stage_id": 78,
       "stage_name": "Test Planning",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3682,19 +4335,27 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Test data, environment, owners and exit criteria are ready before execution."
-      ]
+      ],
+      "raci": {
+        "accountable": "qa-lead",
+        "responsible": [
+          "manual-qa-engineer"
+        ],
+        "consulted": [
+          "automation-qa-engineer"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 79,
       "stage_name": "Unit Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3732,19 +4393,27 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Tests fail when behavior breaks and do not depend on external services."
-      ]
+      ],
+      "raci": {
+        "accountable": "unit-testing-specialist",
+        "responsible": [
+          "automation-qa-engineer"
+        ],
+        "consulted": [
+          "backend-engineer"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 80,
       "stage_name": "Integration Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development"
@@ -3781,19 +4450,28 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Partial failures, retries, transaction boundaries and schema compatibility are exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "integration-testing-specialist",
+        "responsible": [
+          "automation-qa-engineer"
+        ],
+        "consulted": [
+          "backend-engineer",
+          "integration-engineer"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 81,
       "stage_name": "API Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3832,19 +4510,28 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Response schemas and status behavior match the published contract."
-      ]
+      ],
+      "raci": {
+        "accountable": "api-testing-specialist",
+        "responsible": [
+          "automation-qa-engineer"
+        ],
+        "consulted": [
+          "api-engineer",
+          "api-architect"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 82,
       "stage_name": "UI Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3883,19 +4570,27 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Critical controls work at supported viewports without console or accessibility blockers."
-      ]
+      ],
+      "raci": {
+        "accountable": "automation-qa-engineer",
+        "responsible": [
+          "e2e-testing-specialist"
+        ],
+        "consulted": [
+          "frontend-engineer"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 83,
       "stage_name": "Functional Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -3934,19 +4629,27 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Every in-scope business rule has an observed expected result."
-      ]
+      ],
+      "raci": {
+        "accountable": "manual-qa-engineer",
+        "responsible": [
+          "qa-lead"
+        ],
+        "consulted": [
+          "product-owner"
+        ],
+        "informed": [
+          "business-analyst"
+        ]
+      }
     },
     {
       "stage_id": 84,
       "stage_name": "End-to-End Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development"
@@ -3983,19 +4686,27 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Journey state is correct across boundaries and recovery works."
-      ]
+      ],
+      "raci": {
+        "accountable": "e2e-testing-specialist",
+        "responsible": [
+          "automation-qa-engineer"
+        ],
+        "consulted": [
+          "ui-ux-designer"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 85,
       "stage_name": "Regression Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -4033,19 +4744,25 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Previously accepted critical behavior remains stable on the candidate build."
-      ]
+      ],
+      "raci": {
+        "accountable": "automation-qa-engineer",
+        "responsible": [
+          "qa-lead"
+        ],
+        "consulted": [],
+        "informed": [
+          "release-manager"
+        ]
+      }
     },
     {
       "stage_id": 86,
       "stage_name": "Smoke Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "bug-fix",
@@ -4084,19 +4801,25 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Critical paths meet thresholds before broader testing proceeds."
-      ]
+      ],
+      "raci": {
+        "accountable": "automation-qa-engineer",
+        "responsible": [],
+        "consulted": [
+          "devops-engineer"
+        ],
+        "informed": [
+          "release-manager"
+        ]
+      }
     },
     {
       "stage_id": 87,
       "stage_name": "Sanity Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -4135,19 +4858,23 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "The targeted fix works and adjacent behavior remains stable."
-      ]
+      ],
+      "raci": {
+        "accountable": "manual-qa-engineer",
+        "responsible": [],
+        "consulted": [],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 88,
       "stage_name": "Cross-browser Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -4186,19 +4913,27 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "No supported browser has a critical functional or layout regression."
-      ]
+      ],
+      "raci": {
+        "accountable": "e2e-testing-specialist",
+        "responsible": [
+          "automation-qa-engineer"
+        ],
+        "consulted": [
+          "frontend-engineer"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 89,
       "stage_name": "Mobile Compatibility Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -4237,19 +4972,27 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Critical flows work on the supported device/OS matrix."
-      ]
+      ],
+      "raci": {
+        "accountable": "automation-qa-engineer",
+        "responsible": [
+          "manual-qa-engineer"
+        ],
+        "consulted": [
+          "mobile-engineer"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 90,
       "stage_name": "Accessibility Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -4287,19 +5030,28 @@
         "Critical journeys work without pointer input.",
         "Findings cite criterion, impact and reproduction.",
         "Critical journeys pass manual assistive-technology checks."
-      ]
+      ],
+      "raci": {
+        "accountable": "accessibility-testing-specialist",
+        "responsible": [
+          "manual-qa-engineer"
+        ],
+        "consulted": [
+          "ui-ux-designer",
+          "frontend-engineer"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 91,
       "stage_name": "Performance Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -4338,19 +5090,28 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "p50/p95/p99 and resource use meet agreed thresholds under representative load."
-      ]
+      ],
+      "raci": {
+        "accountable": "performance-testing-specialist",
+        "responsible": [
+          "performance-engineer"
+        ],
+        "consulted": [
+          "sre",
+          "backend-engineer"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 92,
       "stage_name": "Load Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -4389,19 +5150,27 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "System sustains forecast peak plus agreed headroom without SLO breach."
-      ]
+      ],
+      "raci": {
+        "accountable": "performance-testing-specialist",
+        "responsible": [
+          "performance-engineer"
+        ],
+        "consulted": [
+          "sre"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 93,
       "stage_name": "Stress Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -4440,19 +5209,27 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Overload is bounded, shedding is graceful and recovery occurs after load drops."
-      ]
+      ],
+      "raci": {
+        "accountable": "performance-testing-specialist",
+        "responsible": [
+          "performance-engineer"
+        ],
+        "consulted": [
+          "sre"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 94,
       "stage_name": "Soak Testing",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -4491,19 +5268,27 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Memory, handles, queues and latency remain stable through the agreed duration."
-      ]
+      ],
+      "raci": {
+        "accountable": "performance-testing-specialist",
+        "responsible": [
+          "sre"
+        ],
+        "consulted": [
+          "performance-engineer"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 95,
       "stage_name": "UAT",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -4541,19 +5326,31 @@
         "Evidence identifies build, environment, data and result.",
         "Flaky or blocked tests are not reported as PASS.",
         "Business owner accepts outcomes or records named defects and conditions."
-      ]
+      ],
+      "approval_required": true,
+      "raci": {
+        "accountable": "qa-lead",
+        "responsible": [
+          "manual-qa-engineer"
+        ],
+        "consulted": [
+          "business-analyst",
+          "client-engagement-specialist"
+        ],
+        "informed": [
+          "product-manager"
+        ]
+      },
+      "approver": "uat-acceptor",
+      "approval_rationale": "UAT acceptance means the business accepts the release; the product owner, not the QA agent that ran the tests, must accept."
     },
     {
       "stage_id": 96,
       "stage_name": "Defect Management",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "bug-fix"
@@ -4587,19 +5384,28 @@
         "Reproduction is reliable.",
         "Severity rationale reflects impact.",
         "Closure includes fix-version retest and regression protection."
-      ]
+      ],
+      "raci": {
+        "accountable": "qa-lead",
+        "responsible": [
+          "manual-qa-engineer"
+        ],
+        "consulted": [
+          "backend-engineer",
+          "frontend-engineer"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      }
     },
     {
       "stage_id": 97,
       "stage_name": "Test Sign-off",
       "category_id": 8,
       "category_name": "Software Testing and Quality Assurance",
-      "primary_role": "QA Lead",
       "skills": [
         "quality-assurance"
-      ],
-      "agents": [
-        "qa-lead"
       ],
       "workflow_ids": [
         "feature-development",
@@ -4634,19 +5440,27 @@
         "Decision authority is verified.",
         "Conditions are measurable, owned and time-bound.",
         "No missing or failed critical evidence is silently waived."
-      ]
+      ],
+      "raci": {
+        "accountable": "qa-lead",
+        "responsible": [
+          "quality-governance-specialist"
+        ],
+        "consulted": [
+          "product-owner"
+        ],
+        "informed": [
+          "release-manager"
+        ]
+      }
     },
     {
       "stage_id": 98,
       "stage_name": "Threat Modeling",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation"
@@ -4680,19 +5494,28 @@
         "High-impact trust-boundary threats are addressed.",
         "Mitigations are testable.",
         "Accepted risk is authorized and time-bound."
-      ]
+      ],
+      "raci": {
+        "accountable": "security-architect",
+        "responsible": [
+          "application-security-engineer"
+        ],
+        "consulted": [
+          "software-architect",
+          "vulnerability-analyst"
+        ],
+        "informed": [
+          "devsecops-engineer"
+        ]
+      }
     },
     {
       "stage_id": 99,
       "stage_name": "SAST",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation",
@@ -4727,19 +5550,27 @@
         "Findings identify file/line and reachable path.",
         "Suppressions have rationale and expiry.",
         "Critical findings are retested after fix."
-      ]
+      ],
+      "raci": {
+        "accountable": "devsecops-engineer",
+        "responsible": [
+          "application-security-engineer"
+        ],
+        "consulted": [
+          "backend-engineer"
+        ],
+        "informed": [
+          "vulnerability-analyst"
+        ]
+      }
     },
     {
       "stage_id": 100,
       "stage_name": "DAST",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation",
@@ -4774,19 +5605,27 @@
         "All active tests remain in written scope.",
         "Findings are reproducible against the named build.",
         "No destructive or unnecessary data access occurs."
-      ]
+      ],
+      "raci": {
+        "accountable": "devsecops-engineer",
+        "responsible": [
+          "application-security-engineer"
+        ],
+        "consulted": [
+          "qa-lead"
+        ],
+        "informed": [
+          "vulnerability-analyst"
+        ]
+      }
     },
     {
       "stage_id": 101,
       "stage_name": "SCA",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation",
@@ -4822,19 +5661,27 @@
         "All shipped components have known versions and license status.",
         "Critical exposure is fixed or formally accepted.",
         "Packaged artifact matches scanned dependency tree."
-      ]
+      ],
+      "raci": {
+        "accountable": "devsecops-engineer",
+        "responsible": [
+          "vulnerability-analyst"
+        ],
+        "consulted": [
+          "license-compliance-specialist"
+        ],
+        "informed": [
+          "backend-engineer"
+        ]
+      }
     },
     {
       "stage_id": 102,
       "stage_name": "Container Security",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation",
@@ -4869,19 +5716,27 @@
         "Active testing stays within authorization.",
         "Findings have reproducible evidence and severity rationale.",
         "Closure is independently retested."
-      ]
+      ],
+      "raci": {
+        "accountable": "devsecops-engineer",
+        "responsible": [
+          "kubernetes-engineer"
+        ],
+        "consulted": [
+          "platform-engineer"
+        ],
+        "informed": [
+          "vulnerability-analyst"
+        ]
+      }
     },
     {
       "stage_id": 103,
       "stage_name": "Infrastructure Security",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning"
@@ -4914,19 +5769,27 @@
         "Active testing stays within authorization.",
         "Findings have reproducible evidence and severity rationale.",
         "Closure is independently retested."
-      ]
+      ],
+      "raci": {
+        "accountable": "devsecops-engineer",
+        "responsible": [
+          "infrastructure-engineer"
+        ],
+        "consulted": [
+          "cloud-architect"
+        ],
+        "informed": [
+          "security-auditor"
+        ]
+      }
     },
     {
       "stage_id": 104,
       "stage_name": "Penetration Testing",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation"
@@ -4962,19 +5825,27 @@
         "Findings include reproducible steps and safe remediation."
       ],
       "approval_required": true,
-      "approval_rationale": "Active testing against a target without written authorization may be illegal or disruptive; a human owner must approve scope, target and window first."
+      "approval_rationale": "Active testing against a target without written authorization may be illegal or disruptive; a human owner must approve scope, target and window first.",
+      "raci": {
+        "accountable": "penetration-testing-specialist",
+        "responsible": [],
+        "consulted": [
+          "security-architect",
+          "vulnerability-analyst"
+        ],
+        "informed": [
+          "application-security-engineer"
+        ]
+      },
+      "approver": "security-lead"
     },
     {
       "stage_id": 105,
       "stage_name": "Authentication Security",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation",
@@ -5009,19 +5880,27 @@
         "Active testing stays within authorization.",
         "Findings have reproducible evidence and severity rationale.",
         "Closure is independently retested."
-      ]
+      ],
+      "raci": {
+        "accountable": "application-security-engineer",
+        "responsible": [
+          "authentication-and-authorization-engineer"
+        ],
+        "consulted": [
+          "security-architect"
+        ],
+        "informed": [
+          "security-auditor"
+        ]
+      }
     },
     {
       "stage_id": 106,
       "stage_name": "Data Protection",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation",
@@ -5056,19 +5935,27 @@
         "Active testing stays within authorization.",
         "Findings have reproducible evidence and severity rationale.",
         "Closure is independently retested."
-      ]
+      ],
+      "raci": {
+        "accountable": "application-security-engineer",
+        "responsible": [
+          "compliance-specialist"
+        ],
+        "consulted": [
+          "data-architect"
+        ],
+        "informed": [
+          "security-auditor"
+        ]
+      }
     },
     {
       "stage_id": 107,
       "stage_name": "Compliance Review",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation",
@@ -5103,19 +5990,26 @@
         "Every material obligation has an owner and evidence path.",
         "Exceptions have an authorized risk owner.",
         "Unresolved legal interpretation is escalated."
-      ]
+      ],
+      "raci": {
+        "accountable": "compliance-specialist",
+        "responsible": [],
+        "consulted": [
+          "security-architect",
+          "client-engagement-specialist"
+        ],
+        "informed": [
+          "security-auditor"
+        ]
+      }
     },
     {
       "stage_id": 108,
       "stage_name": "License Compliance",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "dependency-update"
@@ -5151,19 +6045,29 @@
         "Unknown licenses are not silently accepted."
       ],
       "approval_required": true,
-      "approval_rationale": "Accepting a license exception creates a legal obligation for the organization; only a legal or compliance owner may accept it."
+      "approval_rationale": "Accepting a license exception creates a legal obligation for the organization; only a legal or compliance owner may accept it.",
+      "raci": {
+        "accountable": "license-compliance-specialist",
+        "responsible": [
+          "devsecops-engineer"
+        ],
+        "consulted": [
+          "compliance-specialist"
+        ],
+        "informed": [
+          "vendor-management-specialist"
+        ]
+      },
+      "approver": "compliance-owner",
+      "approval_condition": "when a license exception is requested"
     },
     {
       "stage_id": 109,
       "stage_name": "Vulnerability Remediation",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation",
@@ -5197,19 +6101,28 @@
         "Affected exposure is removed from the released artifact.",
         "Fix does not introduce an unapproved breaking change.",
         "Retest is independent and revision-pinned."
-      ]
+      ],
+      "raci": {
+        "accountable": "application-security-engineer",
+        "responsible": [
+          "vulnerability-analyst",
+          "backend-engineer"
+        ],
+        "consulted": [
+          "devsecops-engineer"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      }
     },
     {
       "stage_id": 110,
       "stage_name": "Security Sign-off",
       "category_id": 9,
       "category_name": "Cybersecurity, Application Security and Compliance",
-      "primary_role": "Application Security Engineer",
       "skills": [
         "application-security"
-      ],
-      "agents": [
-        "application-security-engineer"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation",
@@ -5246,19 +6159,28 @@
         "Reviewer is independent from implementation.",
         "Exceptions have owner, scope and expiry."
       ],
-      "approval_rationale": "Accepting residual security risk or releasing with open findings is a risk decision that must not be made by the agent that fixed or scanned the code."
+      "approval_rationale": "Accepting residual security risk or releasing with open findings is a risk decision that must not be made by the agent that fixed or scanned the code.",
+      "raci": {
+        "accountable": "security-auditor",
+        "responsible": [
+          "vulnerability-analyst"
+        ],
+        "consulted": [
+          "application-security-engineer"
+        ],
+        "informed": [
+          "release-manager"
+        ]
+      },
+      "approver": "security-lead"
     },
     {
       "stage_id": 111,
       "stage_name": "CI Pipeline",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation"
@@ -5292,19 +6214,27 @@
         "Build is reproducible and artifacts are immutable/promoted.",
         "Secrets and environment permissions are scoped.",
         "Failure and rollback behavior is exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "devops-engineer",
+        "responsible": [
+          "platform-engineer"
+        ],
+        "consulted": [
+          "devsecops-engineer"
+        ],
+        "informed": [
+          "backend-engineer"
+        ]
+      }
     },
     {
       "stage_id": 112,
       "stage_name": "Automated Test Pipeline",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation"
@@ -5338,19 +6268,27 @@
         "Build is reproducible and artifacts are immutable/promoted.",
         "Secrets and environment permissions are scoped.",
         "Failure and rollback behavior is exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "devops-engineer",
+        "responsible": [
+          "automation-qa-engineer"
+        ],
+        "consulted": [
+          "qa-lead"
+        ],
+        "informed": [
+          "backend-engineer"
+        ]
+      }
     },
     {
       "stage_id": 113,
       "stage_name": "Build Management",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation"
@@ -5384,19 +6322,25 @@
         "Build is reproducible and artifacts are immutable/promoted.",
         "Secrets and environment permissions are scoped.",
         "Failure and rollback behavior is exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "devops-engineer",
+        "responsible": [
+          "platform-engineer"
+        ],
+        "consulted": [],
+        "informed": [
+          "release-manager"
+        ]
+      }
     },
     {
       "stage_id": 114,
       "stage_name": "Artifact Management",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation"
@@ -5430,19 +6374,27 @@
         "Build is reproducible and artifacts are immutable/promoted.",
         "Secrets and environment permissions are scoped.",
         "Failure and rollback behavior is exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "platform-engineer",
+        "responsible": [
+          "devops-engineer"
+        ],
+        "consulted": [
+          "devsecops-engineer"
+        ],
+        "informed": [
+          "release-manager"
+        ]
+      }
     },
     {
       "stage_id": 115,
       "stage_name": "Containerization",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation"
@@ -5476,19 +6428,27 @@
         "Image is reproducible and free of embedded secrets.",
         "Runtime is non-root and least-privilege.",
         "Image digest and scan evidence match."
-      ]
+      ],
+      "raci": {
+        "accountable": "devops-engineer",
+        "responsible": [
+          "kubernetes-engineer"
+        ],
+        "consulted": [
+          "devsecops-engineer"
+        ],
+        "informed": [
+          "backend-engineer"
+        ]
+      }
     },
     {
       "stage_id": 116,
       "stage_name": "Container Orchestration",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation",
@@ -5524,19 +6484,28 @@
         "Build is reproducible and artifacts are immutable/promoted.",
         "Secrets and environment permissions are scoped.",
         "Failure and rollback behavior is exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "kubernetes-engineer",
+        "responsible": [
+          "platform-engineer"
+        ],
+        "consulted": [
+          "cloud-architect",
+          "sre"
+        ],
+        "informed": [
+          "devops-engineer"
+        ]
+      }
     },
     {
       "stage_id": 117,
       "stage_name": "Infrastructure as Code",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning"
@@ -5571,19 +6540,30 @@
         "Actual resources match approved desired state."
       ],
       "approval_required": true,
-      "approval_rationale": "Applying IaC that deletes resources or changes IAM can destroy data or widen access; a human owner must review the plan output before apply."
+      "approval_rationale": "Applying IaC that deletes resources or changes IAM can destroy data or widen access; a human owner must review the plan output before apply.",
+      "raci": {
+        "accountable": "infrastructure-engineer",
+        "responsible": [
+          "devops-engineer"
+        ],
+        "consulted": [
+          "cloud-architect",
+          "devsecops-engineer"
+        ],
+        "informed": [
+          "finops-specialist"
+        ]
+      },
+      "approver": "infra-owner",
+      "approval_condition": "before applying a plan to production; always when the plan destroys resources or changes IAM"
     },
     {
       "stage_id": 118,
       "stage_name": "Configuration Management",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "environment-configuration"
@@ -5617,19 +6597,27 @@
         "Build is reproducible and artifacts are immutable/promoted.",
         "Secrets and environment permissions are scoped.",
         "Failure and rollback behavior is exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "platform-engineer",
+        "responsible": [
+          "devops-engineer"
+        ],
+        "consulted": [
+          "security-architect"
+        ],
+        "informed": [
+          "deployment-engineer"
+        ]
+      }
     },
     {
       "stage_id": 119,
       "stage_name": "CD Pipeline",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation"
@@ -5663,19 +6651,28 @@
         "Build is reproducible and artifacts are immutable/promoted.",
         "Secrets and environment permissions are scoped.",
         "Failure and rollback behavior is exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "devops-engineer",
+        "responsible": [
+          "deployment-engineer"
+        ],
+        "consulted": [
+          "release-manager",
+          "devsecops-engineer"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 120,
       "stage_name": "Environment Provisioning",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning",
@@ -5710,19 +6707,27 @@
         "Build is reproducible and artifacts are immutable/promoted.",
         "Secrets and environment permissions are scoped.",
         "Failure and rollback behavior is exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "infrastructure-engineer",
+        "responsible": [
+          "cloud-engineer"
+        ],
+        "consulted": [
+          "cloud-architect"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 121,
       "stage_name": "Network Engineering",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning",
@@ -5759,19 +6764,29 @@
         "Failure and rollback behavior is exercised."
       ],
       "approval_required": true,
-      "approval_rationale": "Firewall, security-group and routing changes can expose services or cut connectivity; an infrastructure owner must approve production changes."
+      "approval_rationale": "Firewall, security-group and routing changes can expose services or cut connectivity; an infrastructure owner must approve production changes.",
+      "raci": {
+        "accountable": "network-engineer",
+        "responsible": [
+          "infrastructure-engineer"
+        ],
+        "consulted": [
+          "security-architect"
+        ],
+        "informed": [
+          "sre"
+        ]
+      },
+      "approver": "infra-owner",
+      "approval_condition": "for production firewall, security-group or routing changes"
     },
     {
       "stage_id": 122,
       "stage_name": "Database Operations",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation",
@@ -5807,19 +6822,27 @@
         "Build is reproducible and artifacts are immutable/promoted.",
         "Secrets and environment permissions are scoped.",
         "Failure and rollback behavior is exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "database-administrator",
+        "responsible": [
+          "database-engineer"
+        ],
+        "consulted": [
+          "database-architect"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 123,
       "stage_name": "CDN & Edge Configuration",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation",
@@ -5855,19 +6878,27 @@
         "Build is reproducible and artifacts are immutable/promoted.",
         "Secrets and environment permissions are scoped.",
         "Failure and rollback behavior is exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "platform-engineer",
+        "responsible": [
+          "network-engineer"
+        ],
+        "consulted": [
+          "cloud-architect"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 124,
       "stage_name": "Deployment Automation",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation"
@@ -5901,19 +6932,27 @@
         "Build is reproducible and artifacts are immutable/promoted.",
         "Secrets and environment permissions are scoped.",
         "Failure and rollback behavior is exercised."
-      ]
+      ],
+      "raci": {
+        "accountable": "deployment-engineer",
+        "responsible": [
+          "devops-engineer"
+        ],
+        "consulted": [
+          "release-manager"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 125,
       "stage_name": "Pipeline Security",
       "category_id": 10,
       "category_name": "DevOps, CI/CD and Platform Engineering",
-      "primary_role": "DevOps Engineer",
       "skills": [
         "devops-platform"
-      ],
-      "agents": [
-        "devops-engineer"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation"
@@ -5947,19 +6986,27 @@
         "Untrusted code cannot access privileged credentials.",
         "Artifacts cannot be replaced across trust boundaries.",
         "Required checks and environment approvals are enforced."
-      ]
+      ],
+      "raci": {
+        "accountable": "devsecops-engineer",
+        "responsible": [
+          "devops-engineer"
+        ],
+        "consulted": [
+          "application-security-engineer"
+        ],
+        "informed": [
+          "release-manager"
+        ]
+      }
     },
     {
       "stage_id": 126,
       "stage_name": "Release Planning",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "staging-release",
@@ -5994,19 +7041,27 @@
         "Deployed digest matches approved candidate.",
         "Migration and recovery are rehearsed.",
         "Stop/rollback thresholds and authority are explicit."
-      ]
+      ],
+      "raci": {
+        "accountable": "release-manager",
+        "responsible": [
+          "project-manager"
+        ],
+        "consulted": [
+          "product-owner"
+        ],
+        "informed": [
+          "production-support-engineer"
+        ]
+      }
     },
     {
       "stage_id": 127,
       "stage_name": "Release Notes",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "staging-release",
@@ -6040,19 +7095,27 @@
         "Notes match the actual candidate contents.",
         "Breaking changes and user actions are explicit.",
         "No unverified capability claim is published."
-      ]
+      ],
+      "raci": {
+        "accountable": "release-manager",
+        "responsible": [
+          "technical-writer"
+        ],
+        "consulted": [
+          "product-owner"
+        ],
+        "informed": [
+          "production-support-engineer"
+        ]
+      }
     },
     {
       "stage_id": 128,
       "stage_name": "Release Readiness",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "staging-release",
@@ -6086,19 +7149,28 @@
         "Evidence refers to the exact candidate digest.",
         "All critical blockers are closed or authorized exceptions.",
         "Operational ownership and recovery are ready."
-      ]
+      ],
+      "raci": {
+        "accountable": "release-manager",
+        "responsible": [
+          "qa-lead",
+          "application-security-engineer"
+        ],
+        "consulted": [
+          "sre"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 129,
       "stage_name": "Change Approval",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "database-migration",
@@ -6135,19 +7207,27 @@
         "Conditions are measurable, owned and time-bound.",
         "No missing or failed critical evidence is silently waived."
       ],
-      "approval_rationale": "Authorizes a production change; segregation of duties requires someone other than the requester to approve."
+      "approval_rationale": "Authorizes a production change; segregation of duties requires someone other than the requester to approve.",
+      "raci": {
+        "accountable": "release-manager",
+        "responsible": [],
+        "consulted": [
+          "engineering-governance-specialist",
+          "qa-lead"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      },
+      "approver": "change-board"
     },
     {
       "stage_id": 130,
       "stage_name": "Staging Deployment",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "database-migration",
@@ -6182,19 +7262,27 @@
         "Deployed digest matches approved candidate.",
         "Migration and recovery are rehearsed.",
         "Stop/rollback thresholds and authority are explicit."
-      ]
+      ],
+      "raci": {
+        "accountable": "deployment-engineer",
+        "responsible": [
+          "devops-engineer"
+        ],
+        "consulted": [
+          "release-manager"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 131,
       "stage_name": "Staging Validation",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "database-migration",
@@ -6230,19 +7318,28 @@
         "Deployed digest matches approved candidate.",
         "Migration and recovery are rehearsed.",
         "Stop/rollback thresholds and authority are explicit."
-      ]
+      ],
+      "raci": {
+        "accountable": "qa-lead",
+        "responsible": [
+          "automation-qa-engineer"
+        ],
+        "consulted": [
+          "release-manager",
+          "sre"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 132,
       "stage_name": "Database Migration",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "database-migration",
@@ -6280,19 +7377,28 @@
         "No unexplained data loss or incompatible consumer remains.",
         "Rollback/forward-fix and stop conditions are approved."
       ],
-      "approval_rationale": "Production schema or data changes can be irreversible and cause data loss; a DBA owner must confirm backup, dry run and rollback."
+      "approval_rationale": "Production schema or data changes can be irreversible and cause data loss; a DBA owner must confirm backup, dry run and rollback.",
+      "raci": {
+        "accountable": "database-administrator",
+        "responsible": [
+          "database-engineer"
+        ],
+        "consulted": [
+          "release-manager"
+        ],
+        "informed": [
+          "sre"
+        ]
+      },
+      "approver": "dba-owner"
     },
     {
       "stage_id": 133,
       "stage_name": "Production Deployment",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "database-migration",
@@ -6330,19 +7436,28 @@
         "Migration and recovery are rehearsed.",
         "Stop/rollback thresholds and authority are explicit."
       ],
-      "approval_rationale": "Changes customer-facing systems; an authorized human must approve the exact artifact version and window."
+      "approval_rationale": "Changes customer-facing systems; an authorized human must approve the exact artifact version and window.",
+      "raci": {
+        "accountable": "deployment-engineer",
+        "responsible": [
+          "release-manager"
+        ],
+        "consulted": [
+          "sre"
+        ],
+        "informed": [
+          "production-support-engineer"
+        ]
+      },
+      "approver": "production-approver"
     },
     {
       "stage_id": 134,
       "stage_name": "Domain & DNS",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "production-release"
@@ -6375,19 +7490,27 @@
         "No unexpected public exposure.",
         "Certificate chain and hostname validation pass.",
         "Failover and rollback are tested."
-      ]
+      ],
+      "raci": {
+        "accountable": "cloud-engineer",
+        "responsible": [
+          "network-engineer"
+        ],
+        "consulted": [
+          "release-manager"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 135,
       "stage_name": "SSL/TLS Setup",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "production-release"
@@ -6420,19 +7543,27 @@
         "No unexpected public exposure.",
         "Certificate chain and hostname validation pass.",
         "Failover and rollback are tested."
-      ]
+      ],
+      "raci": {
+        "accountable": "network-engineer",
+        "responsible": [
+          "cloud-engineer"
+        ],
+        "consulted": [
+          "security-architect"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 136,
       "stage_name": "Load Balancer Setup",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "production-release"
@@ -6465,19 +7596,27 @@
         "No unexpected public exposure.",
         "Certificate chain and hostname validation pass.",
         "Failover and rollback are tested."
-      ]
+      ],
+      "raci": {
+        "accountable": "network-engineer",
+        "responsible": [
+          "cloud-engineer"
+        ],
+        "consulted": [
+          "sre"
+        ],
+        "informed": [
+          "release-manager"
+        ]
+      }
     },
     {
       "stage_id": 137,
       "stage_name": "Rollback Planning",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "database-migration",
@@ -6513,19 +7652,28 @@
         "Recovery does not corrupt or silently discard committed data.",
         "Trigger, approver and operator are named.",
         "Rehearsal proves recovery within the agreed window."
-      ]
+      ],
+      "raci": {
+        "accountable": "release-manager",
+        "responsible": [
+          "sre",
+          "database-administrator"
+        ],
+        "consulted": [
+          "deployment-engineer"
+        ],
+        "informed": [
+          "incident-manager"
+        ]
+      }
     },
     {
       "stage_id": 138,
       "stage_name": "Production Smoke Test",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "database-migration",
@@ -6562,19 +7710,27 @@
         "Deployed digest matches approved candidate.",
         "Migration and recovery are rehearsed.",
         "Stop/rollback thresholds and authority are explicit."
-      ]
+      ],
+      "raci": {
+        "accountable": "sre",
+        "responsible": [
+          "automation-qa-engineer"
+        ],
+        "consulted": [
+          "deployment-engineer"
+        ],
+        "informed": [
+          "release-manager"
+        ]
+      }
     },
     {
       "stage_id": 139,
       "stage_name": "Deployment Sign-off",
       "category_id": 11,
       "category_name": "Release Engineering and Deployment Management",
-      "primary_role": "Release Manager",
       "skills": [
         "release-deployment"
-      ],
-      "agents": [
-        "release-manager"
       ],
       "workflow_ids": [
         "staging-release",
@@ -6608,19 +7764,27 @@
         "Decision authority is verified.",
         "Conditions are measurable, owned and time-bound.",
         "No missing or failed critical evidence is silently waived."
-      ]
+      ],
+      "raci": {
+        "accountable": "release-manager",
+        "responsible": [
+          "sre"
+        ],
+        "consulted": [
+          "qa-lead"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 140,
       "stage_name": "Cloud Hosting",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning"
@@ -6654,19 +7818,27 @@
         "Changes are scoped and reversible.",
         "Backup/recovery meets stated objectives.",
         "Cost and reliability effects are measured."
-      ]
+      ],
+      "raci": {
+        "accountable": "cloud-engineer",
+        "responsible": [
+          "infrastructure-engineer"
+        ],
+        "consulted": [
+          "cloud-architect"
+        ],
+        "informed": [
+          "finops-specialist"
+        ]
+      }
     },
     {
       "stage_id": 141,
       "stage_name": "Compute Management",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning",
@@ -6702,19 +7874,25 @@
         "Changes are scoped and reversible.",
         "Backup/recovery meets stated objectives.",
         "Cost and reliability effects are measured."
-      ]
+      ],
+      "raci": {
+        "accountable": "cloud-engineer",
+        "responsible": [
+          "infrastructure-engineer"
+        ],
+        "consulted": [],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 142,
       "stage_name": "Database Hosting",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning",
@@ -6750,19 +7928,27 @@
         "Changes are scoped and reversible.",
         "Backup/recovery meets stated objectives.",
         "Cost and reliability effects are measured."
-      ]
+      ],
+      "raci": {
+        "accountable": "database-administrator",
+        "responsible": [
+          "cloud-engineer"
+        ],
+        "consulted": [
+          "database-architect"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 143,
       "stage_name": "Storage Management",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning",
@@ -6798,19 +7984,27 @@
         "Changes are scoped and reversible.",
         "Backup/recovery meets stated objectives.",
         "Cost and reliability effects are measured."
-      ]
+      ],
+      "raci": {
+        "accountable": "cloud-engineer",
+        "responsible": [
+          "infrastructure-engineer"
+        ],
+        "consulted": [
+          "security-architect"
+        ],
+        "informed": [
+          "finops-specialist"
+        ]
+      }
     },
     {
       "stage_id": 144,
       "stage_name": "DNS Management",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning",
@@ -6845,19 +8039,25 @@
         "No unexpected public exposure.",
         "Certificate chain and hostname validation pass.",
         "Failover and rollback are tested."
-      ]
+      ],
+      "raci": {
+        "accountable": "network-engineer",
+        "responsible": [
+          "cloud-engineer"
+        ],
+        "consulted": [],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 145,
       "stage_name": "SSL Certificate Management",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning",
@@ -6892,19 +8092,27 @@
         "No unexpected public exposure.",
         "Certificate chain and hostname validation pass.",
         "Failover and rollback are tested."
-      ]
+      ],
+      "raci": {
+        "accountable": "cloud-engineer",
+        "responsible": [
+          "network-engineer"
+        ],
+        "consulted": [
+          "security-architect"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 146,
       "stage_name": "Network Operations",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning"
@@ -6938,19 +8146,27 @@
         "Changes are scoped and reversible.",
         "Backup/recovery meets stated objectives.",
         "Cost and reliability effects are measured."
-      ]
+      ],
+      "raci": {
+        "accountable": "network-engineer",
+        "responsible": [
+          "infrastructure-engineer"
+        ],
+        "consulted": [
+          "security-architect"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 147,
       "stage_name": "Backup Management",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "disaster-recovery"
@@ -6984,19 +8200,27 @@
         "Changes are scoped and reversible.",
         "Backup/recovery meets stated objectives.",
         "Cost and reliability effects are measured."
-      ]
+      ],
+      "raci": {
+        "accountable": "database-administrator",
+        "responsible": [
+          "cloud-engineer"
+        ],
+        "consulted": [
+          "sre"
+        ],
+        "informed": [
+          "incident-manager"
+        ]
+      }
     },
     {
       "stage_id": 148,
       "stage_name": "Disaster Recovery",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "disaster-recovery"
@@ -7032,19 +8256,30 @@
         "Recovery environment is isolated and access audited.",
         "Business owners accept restored data and service state."
       ],
-      "approval_rationale": "Failover or restore actions can cause downtime or data loss and are a business decision; the DR owner must authorize execution."
+      "approval_rationale": "Failover or restore actions can cause downtime or data loss and are a business decision; the DR owner must authorize execution.",
+      "raci": {
+        "accountable": "sre",
+        "responsible": [
+          "database-administrator",
+          "cloud-engineer"
+        ],
+        "consulted": [
+          "cloud-architect",
+          "incident-manager"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      },
+      "approver": "dr-owner"
     },
     {
       "stage_id": 149,
       "stage_name": "High Availability",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning",
@@ -7079,19 +8314,28 @@
         "Changes are scoped and reversible.",
         "Backup/recovery meets stated objectives.",
         "Cost and reliability effects are measured."
-      ]
+      ],
+      "raci": {
+        "accountable": "cloud-architect",
+        "responsible": [
+          "sre",
+          "infrastructure-engineer"
+        ],
+        "consulted": [
+          "performance-engineer"
+        ],
+        "informed": [
+          "finops-specialist"
+        ]
+      }
     },
     {
       "stage_id": 150,
       "stage_name": "Auto Scaling",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning"
@@ -7125,19 +8369,28 @@
         "All shipped components have known versions and license status.",
         "Critical exposure is fixed or formally accepted.",
         "Packaged artifact matches scanned dependency tree."
-      ]
+      ],
+      "raci": {
+        "accountable": "infrastructure-engineer",
+        "responsible": [
+          "sre",
+          "performance-engineer"
+        ],
+        "consulted": [
+          "finops-specialist"
+        ],
+        "informed": [
+          "cloud-engineer"
+        ]
+      }
     },
     {
       "stage_id": 151,
       "stage_name": "Cost Optimization",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning",
@@ -7175,19 +8428,29 @@
         "No unbounded memory or stale-data risk is introduced."
       ],
       "approval_required": true,
-      "approval_rationale": "Resizing, deleting or committing spend on billing-sensitive resources has direct financial impact; a FinOps owner must approve changes."
+      "approval_rationale": "Resizing, deleting or committing spend on billing-sensitive resources has direct financial impact; a FinOps owner must approve changes.",
+      "raci": {
+        "accountable": "finops-specialist",
+        "responsible": [
+          "cloud-engineer"
+        ],
+        "consulted": [
+          "cloud-architect"
+        ],
+        "informed": [
+          "vendor-management-specialist"
+        ]
+      },
+      "approver": "finops-owner",
+      "approval_condition": "when resizing, deleting or committing spend on billing-sensitive resources"
     },
     {
       "stage_id": 152,
       "stage_name": "Infrastructure Maintenance",
       "category_id": 12,
       "category_name": "Cloud Infrastructure and Hosting Operations",
-      "primary_role": "Cloud Engineer",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "agents": [
-        "cloud-engineer"
       ],
       "workflow_ids": [
         "infrastructure-provisioning"
@@ -7221,19 +8484,27 @@
         "Changes are scoped and reversible.",
         "Backup/recovery meets stated objectives.",
         "Cost and reliability effects are measured."
-      ]
+      ],
+      "raci": {
+        "accountable": "infrastructure-engineer",
+        "responsible": [
+          "cloud-engineer"
+        ],
+        "consulted": [
+          "sre"
+        ],
+        "informed": [
+          "release-manager"
+        ]
+      }
     },
     {
       "stage_id": 153,
       "stage_name": "Application Monitoring",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "incident-response",
@@ -7269,19 +8540,27 @@
         "Signals support diagnosis and customer impact assessment.",
         "Alerts have owner and action.",
         "SLOs are measurable and privacy-safe."
-      ]
+      ],
+      "raci": {
+        "accountable": "observability-engineer",
+        "responsible": [
+          "sre"
+        ],
+        "consulted": [
+          "backend-engineer"
+        ],
+        "informed": [
+          "incident-manager"
+        ]
+      }
     },
     {
       "stage_id": 154,
       "stage_name": "Infrastructure Monitoring",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "incident-response",
@@ -7317,19 +8596,27 @@
         "Signals support diagnosis and customer impact assessment.",
         "Alerts have owner and action.",
         "SLOs are measurable and privacy-safe."
-      ]
+      ],
+      "raci": {
+        "accountable": "observability-engineer",
+        "responsible": [
+          "infrastructure-engineer"
+        ],
+        "consulted": [
+          "sre"
+        ],
+        "informed": [
+          "incident-manager"
+        ]
+      }
     },
     {
       "stage_id": 155,
       "stage_name": "Centralized Logging",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "incident-response",
@@ -7365,19 +8652,27 @@
         "Signals support diagnosis and customer impact assessment.",
         "Alerts have owner and action.",
         "SLOs are measurable and privacy-safe."
-      ]
+      ],
+      "raci": {
+        "accountable": "observability-engineer",
+        "responsible": [
+          "platform-engineer"
+        ],
+        "consulted": [
+          "security-architect"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 156,
       "stage_name": "Metrics Monitoring",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "incident-response",
@@ -7413,19 +8708,27 @@
         "Signals support diagnosis and customer impact assessment.",
         "Alerts have owner and action.",
         "SLOs are measurable and privacy-safe."
-      ]
+      ],
+      "raci": {
+        "accountable": "observability-engineer",
+        "responsible": [
+          "sre"
+        ],
+        "consulted": [
+          "performance-engineer"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 157,
       "stage_name": "Distributed Tracing",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "incident-response",
@@ -7461,19 +8764,27 @@
         "Signals support diagnosis and customer impact assessment.",
         "Alerts have owner and action.",
         "SLOs are measurable and privacy-safe."
-      ]
+      ],
+      "raci": {
+        "accountable": "observability-engineer",
+        "responsible": [
+          "backend-engineer"
+        ],
+        "consulted": [
+          "software-architect"
+        ],
+        "informed": [
+          "sre"
+        ]
+      }
     },
     {
       "stage_id": 158,
       "stage_name": "Alert Management",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "incident-response"
@@ -7507,19 +8818,27 @@
         "Signals support diagnosis and customer impact assessment.",
         "Alerts have owner and action.",
         "SLOs are measurable and privacy-safe."
-      ]
+      ],
+      "raci": {
+        "accountable": "sre",
+        "responsible": [
+          "observability-engineer"
+        ],
+        "consulted": [
+          "incident-manager"
+        ],
+        "informed": [
+          "production-support-engineer"
+        ]
+      }
     },
     {
       "stage_id": 159,
       "stage_name": "Uptime Monitoring",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "disaster-recovery"
@@ -7553,19 +8872,27 @@
         "Signals support diagnosis and customer impact assessment.",
         "Alerts have owner and action.",
         "SLOs are measurable and privacy-safe."
-      ]
+      ],
+      "raci": {
+        "accountable": "observability-engineer",
+        "responsible": [
+          "sre"
+        ],
+        "consulted": [
+          "network-engineer"
+        ],
+        "informed": [
+          "production-support-engineer"
+        ]
+      }
     },
     {
       "stage_id": 160,
       "stage_name": "SLA/SLO Management",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "disaster-recovery"
@@ -7599,19 +8926,28 @@
         "Signals support diagnosis and customer impact assessment.",
         "Alerts have owner and action.",
         "SLOs are measurable and privacy-safe."
-      ]
+      ],
+      "raci": {
+        "accountable": "sre",
+        "responsible": [
+          "observability-engineer"
+        ],
+        "consulted": [
+          "product-owner",
+          "performance-engineer"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      }
     },
     {
       "stage_id": 161,
       "stage_name": "Capacity Planning",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "incident-response",
@@ -7647,19 +8983,28 @@
         "Signals support diagnosis and customer impact assessment.",
         "Alerts have owner and action.",
         "SLOs are measurable and privacy-safe."
-      ]
+      ],
+      "raci": {
+        "accountable": "sre",
+        "responsible": [
+          "performance-engineer"
+        ],
+        "consulted": [
+          "finops-specialist",
+          "cloud-architect"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      }
     },
     {
       "stage_id": 162,
       "stage_name": "Incident Detection",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "incident-response"
@@ -7693,19 +9038,26 @@
         "Customer impact and recovery time are evidence-backed.",
         "Containment does not destroy forensic evidence unnecessarily.",
         "Actions are measurable and tracked to closure."
-      ]
+      ],
+      "raci": {
+        "accountable": "incident-manager",
+        "responsible": [
+          "sre",
+          "observability-engineer"
+        ],
+        "consulted": [],
+        "informed": [
+          "production-support-engineer"
+        ]
+      }
     },
     {
       "stage_id": 163,
       "stage_name": "Incident Response",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "incident-response",
@@ -7741,19 +9093,28 @@
         "Customer impact and recovery time are evidence-backed.",
         "Containment does not destroy forensic evidence unnecessarily.",
         "Actions are measurable and tracked to closure."
-      ]
+      ],
+      "raci": {
+        "accountable": "incident-manager",
+        "responsible": [
+          "sre",
+          "production-support-engineer"
+        ],
+        "consulted": [
+          "backend-engineer"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 164,
       "stage_name": "Root Cause Analysis",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "incident-response",
@@ -7788,19 +9149,28 @@
         "Customer impact and recovery time are evidence-backed.",
         "Containment does not destroy forensic evidence unnecessarily.",
         "Actions are measurable and tracked to closure."
-      ]
+      ],
+      "raci": {
+        "accountable": "sre",
+        "responsible": [
+          "observability-engineer",
+          "backend-engineer"
+        ],
+        "consulted": [
+          "incident-manager"
+        ],
+        "informed": [
+          "process-improvement-specialist"
+        ]
+      }
     },
     {
       "stage_id": 165,
       "stage_name": "Postmortem",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "incident-response",
@@ -7836,19 +9206,27 @@
         "Customer impact and recovery time are evidence-backed.",
         "Containment does not destroy forensic evidence unnecessarily.",
         "Actions are measurable and tracked to closure."
-      ]
+      ],
+      "raci": {
+        "accountable": "incident-manager",
+        "responsible": [
+          "sre"
+        ],
+        "consulted": [
+          "process-improvement-specialist"
+        ],
+        "informed": [
+          "engineering-governance-specialist"
+        ]
+      }
     },
     {
       "stage_id": 166,
       "stage_name": "Reliability Improvement",
       "category_id": 13,
       "category_name": "Production Monitoring, Observability and SRE",
-      "primary_role": "SRE",
       "skills": [
         "sre-observability"
-      ],
-      "agents": [
-        "sre"
       ],
       "workflow_ids": [
         "root-cause-analysis",
@@ -7883,19 +9261,28 @@
         "Customer impact and recovery time are evidence-backed.",
         "Containment does not destroy forensic evidence unnecessarily.",
         "Actions are measurable and tracked to closure."
-      ]
+      ],
+      "raci": {
+        "accountable": "sre",
+        "responsible": [
+          "process-improvement-specialist",
+          "backend-engineer"
+        ],
+        "consulted": [
+          "software-architect"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      }
     },
     {
       "stage_id": 167,
       "stage_name": "L1 Support",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "incident-response",
@@ -7930,19 +9317,23 @@
         "Customer impact and affected versions are explicit.",
         "Fix is verified on supported versions.",
         "Operational knowledge is updated and owned."
-      ]
+      ],
+      "raci": {
+        "accountable": "technical-support-engineer",
+        "responsible": [],
+        "consulted": [],
+        "informed": [
+          "production-support-engineer"
+        ]
+      }
     },
     {
       "stage_id": 168,
       "stage_name": "L2 Support",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "incident-response",
@@ -7977,19 +9368,27 @@
         "Customer impact and affected versions are explicit.",
         "Fix is verified on supported versions.",
         "Operational knowledge is updated and owned."
-      ]
+      ],
+      "raci": {
+        "accountable": "production-support-engineer",
+        "responsible": [
+          "technical-support-engineer"
+        ],
+        "consulted": [
+          "backend-engineer"
+        ],
+        "informed": [
+          "incident-manager"
+        ]
+      }
     },
     {
       "stage_id": 169,
       "stage_name": "L3 Support",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "incident-response",
@@ -8024,19 +9423,27 @@
         "Customer impact and affected versions are explicit.",
         "Fix is verified on supported versions.",
         "Operational knowledge is updated and owned."
-      ]
+      ],
+      "raci": {
+        "accountable": "backend-engineer",
+        "responsible": [
+          "production-support-engineer"
+        ],
+        "consulted": [
+          "software-architect"
+        ],
+        "informed": [
+          "qa-lead"
+        ]
+      }
     },
     {
       "stage_id": 170,
       "stage_name": "Bug Fixing",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "bug-fix",
@@ -8071,19 +9478,28 @@
         "Customer impact and affected versions are explicit.",
         "Fix is verified on supported versions.",
         "Operational knowledge is updated and owned."
-      ]
+      ],
+      "raci": {
+        "accountable": "backend-engineer",
+        "responsible": [
+          "frontend-engineer"
+        ],
+        "consulted": [
+          "qa-lead",
+          "code-reviewer"
+        ],
+        "informed": [
+          "production-support-engineer"
+        ]
+      }
     },
     {
       "stage_id": 171,
       "stage_name": "Patch Management",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "dependency-update",
@@ -8118,19 +9534,27 @@
         "Customer impact and affected versions are explicit.",
         "Fix is verified on supported versions.",
         "Operational knowledge is updated and owned."
-      ]
+      ],
+      "raci": {
+        "accountable": "devops-engineer",
+        "responsible": [
+          "devsecops-engineer"
+        ],
+        "consulted": [
+          "release-manager"
+        ],
+        "informed": [
+          "production-support-engineer"
+        ]
+      }
     },
     {
       "stage_id": 172,
       "stage_name": "Dependency Updates",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "dependency-update",
@@ -8165,19 +9589,27 @@
         "Customer impact and affected versions are explicit.",
         "Fix is verified on supported versions.",
         "Operational knowledge is updated and owned."
-      ]
+      ],
+      "raci": {
+        "accountable": "backend-engineer",
+        "responsible": [
+          "devsecops-engineer"
+        ],
+        "consulted": [
+          "license-compliance-specialist"
+        ],
+        "informed": [
+          "release-manager"
+        ]
+      }
     },
     {
       "stage_id": 173,
       "stage_name": "Database Maintenance",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "application-maintenance"
@@ -8213,19 +9645,29 @@
         "Operational knowledge is updated and owned."
       ],
       "approval_required": true,
-      "approval_rationale": "Destructive maintenance (purge, reindex on live tables, vacuum full, retention deletes) can lock or lose data; a DBA owner must approve."
+      "approval_rationale": "Destructive maintenance (purge, reindex on live tables, vacuum full, retention deletes) can lock or lose data; a DBA owner must approve.",
+      "raci": {
+        "accountable": "database-administrator",
+        "responsible": [
+          "database-engineer"
+        ],
+        "consulted": [
+          "sre"
+        ],
+        "informed": [
+          "release-manager"
+        ]
+      },
+      "approver": "dba-owner",
+      "approval_condition": "for destructive or locking maintenance on production data"
     },
     {
       "stage_id": 174,
       "stage_name": "Performance Optimization",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "performance-optimization",
@@ -8260,19 +9702,28 @@
         "Improvement is measured against baseline.",
         "Correctness and freshness invariants hold.",
         "No unbounded memory or stale-data risk is introduced."
-      ]
+      ],
+      "raci": {
+        "accountable": "performance-engineer",
+        "responsible": [
+          "backend-engineer",
+          "database-engineer"
+        ],
+        "consulted": [
+          "sre"
+        ],
+        "informed": [
+          "product-owner"
+        ]
+      }
     },
     {
       "stage_id": 175,
       "stage_name": "Technical Debt Reduction",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "application-maintenance",
@@ -8308,19 +9759,28 @@
         "Customer impact and affected versions are explicit.",
         "Fix is verified on supported versions.",
         "Operational knowledge is updated and owned."
-      ]
+      ],
+      "raci": {
+        "accountable": "backend-engineer",
+        "responsible": [
+          "full-stack-engineer"
+        ],
+        "consulted": [
+          "software-architect",
+          "code-reviewer"
+        ],
+        "informed": [
+          "project-manager"
+        ]
+      }
     },
     {
       "stage_id": 176,
       "stage_name": "Feature Enhancement",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "application-maintenance"
@@ -8354,19 +9814,28 @@
         "Customer impact and affected versions are explicit.",
         "Fix is verified on supported versions.",
         "Operational knowledge is updated and owned."
-      ]
+      ],
+      "raci": {
+        "accountable": "product-owner",
+        "responsible": [
+          "full-stack-engineer"
+        ],
+        "consulted": [
+          "product-manager",
+          "software-architect"
+        ],
+        "informed": [
+          "production-support-engineer"
+        ]
+      }
     },
     {
       "stage_id": 177,
       "stage_name": "Customer Feedback",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "application-maintenance",
@@ -8402,19 +9871,28 @@
         "Customer impact and affected versions are explicit.",
         "Fix is verified on supported versions.",
         "Operational knowledge is updated and owned."
-      ]
+      ],
+      "raci": {
+        "accountable": "product-manager",
+        "responsible": [
+          "technical-support-engineer",
+          "client-engagement-specialist"
+        ],
+        "consulted": [
+          "ux-researcher"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      }
     },
     {
       "stage_id": 178,
       "stage_name": "Knowledge Base",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "application-maintenance"
@@ -8448,19 +9926,28 @@
         "Customer impact and affected versions are explicit.",
         "Fix is verified on supported versions.",
         "Operational knowledge is updated and owned."
-      ]
+      ],
+      "raci": {
+        "accountable": "technical-writer",
+        "responsible": [
+          "technical-support-engineer",
+          "production-support-engineer"
+        ],
+        "consulted": [
+          "documentation-engineer"
+        ],
+        "informed": [
+          "product-manager"
+        ]
+      }
     },
     {
       "stage_id": 179,
       "stage_name": "Maintenance Release",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "bug-fix",
@@ -8496,19 +9983,27 @@
         "Customer impact and affected versions are explicit.",
         "Fix is verified on supported versions.",
         "Operational knowledge is updated and owned."
-      ]
+      ],
+      "raci": {
+        "accountable": "release-manager",
+        "responsible": [
+          "production-support-engineer"
+        ],
+        "consulted": [
+          "qa-lead"
+        ],
+        "informed": [
+          "technical-support-engineer"
+        ]
+      }
     },
     {
       "stage_id": 180,
       "stage_name": "Product Lifecycle Management",
       "category_id": 14,
       "category_name": "Application Maintenance, Technical Support and Customer Success",
-      "primary_role": "Production Support Engineer",
       "skills": [
         "maintenance-support"
-      ],
-      "agents": [
-        "production-support-engineer"
       ],
       "workflow_ids": [
         "product-retirement",
@@ -8545,19 +10040,29 @@
         "Operational knowledge is updated and owned."
       ],
       "approval_required": true,
-      "approval_rationale": "Retiring a product or deleting customer data is irreversible and has contractual and legal effects; the sponsor must approve."
+      "approval_rationale": "Retiring a product or deleting customer data is irreversible and has contractual and legal effects; the sponsor must approve.",
+      "raci": {
+        "accountable": "product-manager",
+        "responsible": [
+          "vendor-management-specialist"
+        ],
+        "consulted": [
+          "finops-specialist",
+          "compliance-specialist"
+        ],
+        "informed": [
+          "business-strategist"
+        ]
+      },
+      "approver": "business-sponsor"
     },
     {
       "stage_id": 181,
       "stage_name": "Engineering Governance",
       "category_id": 15,
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "enterprise-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "ci-cd-pipeline-creation",
@@ -8593,19 +10098,27 @@
         "Repository controls are verified in the platform.",
         "Exceptions have owner, expiry and compensating control.",
         "Clean-checkout onboarding is reproducible."
-      ]
+      ],
+      "raci": {
+        "accountable": "engineering-governance-specialist",
+        "responsible": [
+          "program-manager"
+        ],
+        "consulted": [
+          "software-architect"
+        ],
+        "informed": [
+          "quality-governance-specialist"
+        ]
+      }
     },
     {
       "stage_id": 182,
       "stage_name": "Quality Governance",
       "category_id": 15,
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "enterprise-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "production-release",
@@ -8640,19 +10153,27 @@
         "Metrics have definitions and owners.",
         "Evidence samples are reproducible.",
         "Corrective actions are verified for effectiveness."
-      ]
+      ],
+      "raci": {
+        "accountable": "quality-governance-specialist",
+        "responsible": [
+          "qa-lead"
+        ],
+        "consulted": [
+          "process-improvement-specialist"
+        ],
+        "informed": [
+          "engineering-governance-specialist"
+        ]
+      }
     },
     {
       "stage_id": 183,
       "stage_name": "Security Governance",
       "category_id": 15,
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "enterprise-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation",
@@ -8686,19 +10207,27 @@
         "Risk acceptance is authorized and time-bound.",
         "Controls have evidence and accountable owners.",
         "Material exceptions are escalated."
-      ]
+      ],
+      "raci": {
+        "accountable": "security-auditor",
+        "responsible": [
+          "compliance-specialist"
+        ],
+        "consulted": [
+          "security-architect"
+        ],
+        "informed": [
+          "engineering-governance-specialist"
+        ]
+      }
     },
     {
       "stage_id": 184,
       "stage_name": "Access Governance",
       "category_id": 15,
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "enterprise-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "security-vulnerability-remediation",
@@ -8735,19 +10264,29 @@
         "Leaver access is removed within policy SLA.",
         "Exceptions have expiry and compensating control."
       ],
-      "approval_rationale": "Granting, widening or revoking privileged access, including break-glass, affects security and operations; the access owner must decide."
+      "approval_rationale": "Granting, widening or revoking privileged access, including break-glass, affects security and operations; the access owner must decide.",
+      "raci": {
+        "accountable": "compliance-specialist",
+        "responsible": [
+          "security-auditor"
+        ],
+        "consulted": [
+          "infrastructure-engineer"
+        ],
+        "informed": [
+          "engineering-governance-specialist"
+        ]
+      },
+      "approver": "access-owner",
+      "approval_condition": "when granting or widening privileged or break-glass access, or revoking access in bulk"
     },
     {
       "stage_id": 185,
       "stage_name": "Compliance Auditing",
       "category_id": 15,
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "enterprise-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "product-retirement"
@@ -8780,19 +10319,25 @@
         "Every material obligation has an owner and evidence path.",
         "Exceptions have an authorized risk owner.",
         "Unresolved legal interpretation is escalated."
-      ]
+      ],
+      "raci": {
+        "accountable": "security-auditor",
+        "responsible": [
+          "compliance-specialist"
+        ],
+        "consulted": [],
+        "informed": [
+          "program-manager"
+        ]
+      }
     },
     {
       "stage_id": 186,
       "stage_name": "Documentation Governance",
       "category_id": 15,
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "enterprise-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "documentation-update",
@@ -8826,19 +10371,27 @@
         "Each authoritative document has owner and review date.",
         "Published guidance matches current behavior.",
         "Superseded documents are clearly marked or archived."
-      ]
+      ],
+      "raci": {
+        "accountable": "documentation-engineer",
+        "responsible": [
+          "technical-writer"
+        ],
+        "consulted": [
+          "engineering-governance-specialist"
+        ],
+        "informed": [
+          "quality-governance-specialist"
+        ]
+      }
     },
     {
       "stage_id": 187,
       "stage_name": "Change Governance",
       "category_id": 15,
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "enterprise-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "production-release",
@@ -8874,19 +10427,27 @@
         "Emergency path is controlled and retrospectively reviewed.",
         "Approval precedes implementation where required.",
         "Change outcomes and incidents are linked."
-      ]
+      ],
+      "raci": {
+        "accountable": "engineering-governance-specialist",
+        "responsible": [
+          "release-manager"
+        ],
+        "consulted": [
+          "project-manager"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      }
     },
     {
       "stage_id": 188,
       "stage_name": "Vendor Management",
       "category_id": 15,
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "enterprise-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "product-retirement",
@@ -8920,19 +10481,27 @@
         "Critical supplier risks have owners and contingency.",
         "Contract obligations are evidenced.",
         "Exit strategy is practical and tested where critical."
-      ]
+      ],
+      "raci": {
+        "accountable": "vendor-management-specialist",
+        "responsible": [
+          "finops-specialist"
+        ],
+        "consulted": [
+          "compliance-specialist"
+        ],
+        "informed": [
+          "enterprise-architect"
+        ]
+      }
     },
     {
       "stage_id": 189,
       "stage_name": "FinOps Governance",
       "category_id": 15,
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "enterprise-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "infrastructure-provisioning",
@@ -8968,19 +10537,27 @@
         "Savings are measured against a comparable baseline.",
         "Ownership and allocation coverage are visible.",
         "Reliability and security are not traded away silently."
-      ]
+      ],
+      "raci": {
+        "accountable": "finops-specialist",
+        "responsible": [
+          "vendor-management-specialist"
+        ],
+        "consulted": [
+          "cloud-architect"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      }
     },
     {
       "stage_id": 190,
       "stage_name": "Process Improvement",
       "category_id": 15,
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
-      "primary_role": "Engineering Governance Specialist",
       "skills": [
         "enterprise-governance"
-      ],
-      "agents": [
-        "engineering-governance-specialist"
       ],
       "workflow_ids": [
         "root-cause-analysis",
@@ -9015,7 +10592,20 @@
         "Change is evidence-backed.",
         "Guardrails prevent local optimization harm.",
         "Adopted process has an owner and review date."
-      ]
+      ],
+      "raci": {
+        "accountable": "process-improvement-specialist",
+        "responsible": [
+          "quality-governance-specialist",
+          "engineering-coordinator"
+        ],
+        "consulted": [
+          "engineering-governance-specialist"
+        ],
+        "informed": [
+          "program-manager"
+        ]
+      }
     }
   ]
 }

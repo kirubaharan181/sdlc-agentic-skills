@@ -6,7 +6,8 @@ from the shared defaults in registry/*-defaults.json (or that cannot be derived)
 default or the derivable value, so every fact is stated exactly once.
 
 Resolution rules
-  stage     supporting_roles, approval_required,
+  stage     agents, primary_role, supporting_roles  <- derived from `raci`
+            approval_required,
             status                                <- stage-defaults.json
             handoff_requirements, dependencies    <- templates in stage-defaults.json,
                                                      filled from the record itself
@@ -38,8 +39,18 @@ def _write(root: Path, rel: str, obj: dict) -> None:
 
 
 # ---------------------------------------------------------------- stages
-def _derive_stage(rec: dict, d: dict) -> dict:
+def _derive_stage(rec: dict, d: dict, names: dict[str, str] | None = None) -> dict:
     out = dict(rec)
+    raci = out.get("raci")
+    if raci:
+        out["agents"] = [raci["accountable"], *raci["responsible"]]
+        if names:
+            out["primary_role"] = names[raci["accountable"]]
+            seen: list[str] = []
+            for rid in [*raci["responsible"], *raci["consulted"]]:
+                if names[rid] not in seen:
+                    seen.append(names[rid])
+            out["supporting_roles"] = seen
     for f in STAGE_FIELDS:
         out.setdefault(f, copy.deepcopy(d[f]))
     if "handoff_requirements" not in out and out.get("deliverable_artifacts"):
@@ -53,10 +64,13 @@ def _derive_stage(rec: dict, d: dict) -> dict:
 
 def _compact_stage(rec: dict, d: dict) -> dict:
     out = dict(rec)
+    if out.get("raci"):  # agents, primary_role, supporting_roles are derived from raci
+        for f in ("agents", "primary_role", "supporting_roles"):
+            out.pop(f, None)
     for f in STAGE_FIELDS:
         if out.get(f) == d[f]:
             out.pop(f, None)
-    derived = _derive_stage({k: v for k, v in out.items() if k not in ("handoff_requirements", "dependencies")}, d)
+    derived = _derive_stage({k: v for k, v in rec.items() if k not in ("handoff_requirements", "dependencies")}, d, None)
     for f in ("handoff_requirements", "dependencies"):
         if out.get(f) == derived.get(f):
             out.pop(f, None)
@@ -66,7 +80,8 @@ def _compact_stage(rec: dict, d: dict) -> dict:
 def load_stage_doc(root: Path = ROOT) -> dict:
     doc = _read(root, "registry/SDLC_STAGE_REGISTRY.json")
     d = _read(root, "registry/stage-defaults.json")
-    doc["stages"] = [_derive_stage(s, d) for s in doc["stages"]]
+    names = {a["agent_id"]: a["name"] for a in _read(root, "registry/AGENT_REGISTRY.json")["agents"]}
+    doc["stages"] = [_derive_stage(s, d, names) for s in doc["stages"]]
     return doc
 
 

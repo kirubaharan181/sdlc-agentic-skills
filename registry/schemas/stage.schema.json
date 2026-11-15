@@ -24,7 +24,8 @@
     "execution_instructions",
     "deliverable_artifacts",
     "quality_criteria",
-    "dependencies"
+    "dependencies",
+    "raci"
   ],
   "properties": {
     "stage_id": {
@@ -157,6 +158,56 @@
         "minLength": 1
       },
       "minItems": 1
+    },
+    "raci": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "accountable",
+        "responsible",
+        "consulted",
+        "informed"
+      ],
+      "properties": {
+        "accountable": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "responsible": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "uniqueItems": true
+        },
+        "consulted": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "uniqueItems": true
+        },
+        "informed": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "approver": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Human approver role (not an agent). Required when approval_required is true."
+    },
+    "approval_condition": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Set when approval applies only to some runs of the stage."
     }
   }
 }
