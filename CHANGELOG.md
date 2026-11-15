@@ -5,6 +5,17 @@ versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Summary of the dedupe and integrity work
+- **Workflows:** 23 distinct sources in `registry/workflows/*.json` (steps, owners, dependency graph, decisions, failure paths,
+  handoffs); the old cloned workflow registry is removed. `new-product-development` covers all 190 stages.
+- **Roles:** every stage has a RACI; all 74 roles own at least one stage; role contract fields are derived from RACI and the
+  workflow graph; each role has a `permission_tier`; shared rules live in `docs/governance/COMMON_ROLE_POLICY.md`.
+- **Skills:** adopted the Anthropic authoring format (name equals id, third-person "Use when" description, short `SKILL.md`,
+  `reference/stages.md`, `skills/_shared/CORE_PROCEDURE.md`). Near-duplicate Markdown pairs at 0.80 or higher: 197 to 7.
+- **Stage content:** 25 Tier-1 stages are `complete` (`registry/stage-content/`); 165 remain `stub`.
+- **Tests and CI:** 35+ pytest tests (unit, golden, scenarios, broken-fixture); CI blocks on duplicates, references, orphans, links.
+- **Adoption:** `make demo`, quickstart, evals harness (no model results yet), community files, issue and PR templates.
+
 ### Changed
 - **Breaking (paths):** registry files renamed from `*.yaml` to `*.json` because they always contained JSON:
   `registry/{SDLC_STAGE,AGENT,SKILL,WORKFLOW}_REGISTRY.json` and `adapters/capability-matrix.json`.

@@ -18,6 +18,11 @@
 
 </div>
 
+> **In one line:** a validated operating model for AI-assisted delivery. Each workflow has its own steps, owners, approvals and
+> failure paths, and the validator rejects clones, unresolved references and unlabelled example evidence.
+> **Try it:** `make all && make demo`. See the [Quickstart](docs/getting-started/QUICKSTART.md) and a
+> [recorded run](docs/examples/DEMO_production-release.txt).
+>
 > **Status, measured:** all 190 stages are mapped to roles, skills, gates and workflows, but only **25 of 190 (13%)** have
 > stage-specific, hand-written content (`status: complete`). The other 165 are marked `stub` and contain generated template
 > text. Reproduce with `make build && cat dist/COVERAGE_REPORT.md`. 21 stages are named by machine-readable scenario tests (`tests/scenarios/`), which check workflow structure, order and approvers; they do not run a real project through the library.

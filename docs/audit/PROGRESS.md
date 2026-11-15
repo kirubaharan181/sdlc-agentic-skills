@@ -12,11 +12,11 @@ Branch: `refactor/dedupe-and-differentiate`. Updated after each phase. Resume by
 | 4 Stage content | done (first tranche) | 25 Tier-1 stages authored in `registry/stage-content/*.json` (entry criteria, inputs, procedure, deliverables, acceptance, validation, failure modes, worked example), `status: complete`; 165 remain honest stubs; validator forbids `complete` without full content, missing scripts in commands, procedures >70% similar |
 | 5 Skills | done | name=id, third-person `Use when` descriptions, short `SKILL.md`, `reference/stages.md`, shared `_shared/CORE_PROCEDURE.md`; per-skill generated evidence examples flagged `"example": true` / `ILLUSTRATIVE_ONLY`; validator: skills <0.70 similar, examples never PASS |
 | 6 Validation, tests, CI | done | 32 pytest tests (unit, golden metrics, 6 scenarios, 7 broken-fixture); `check_links.py`; CI now blocks on duplicate audit (0.85), references + orphans, links, pytest; stage `status` complete\|stub validated |
-| 7 Adoption and community | not started | |
+| 7 Adoption and community | done (except owner-gated items) | `make demo`, quickstart, recorded demo + test, evals harness (no model results), CONTRIBUTING, CODE_OF_CONDUCT, templates, CODEOWNERS, 15 drafted issues, launch drafts, CHANGELOG, RC notes. Not done, owner-gated: tag/release, opening issues, posting, repo topics. Adapters remain documented, not tested |
 
 ## Decisions
 - `agents/*.md`, `workflows/*.md` and `SKILL.md` stay committed (platform adapters install them directly) but are generated; `build.py --check` fails CI on drift. CSV, coverage report and stage playbooks live only in `dist/`.
 - Stage `status` defaults to `stub`; nothing is `complete` until Phase 4 content exists.
 
 ## Next action
-Phase 7: README positioning and quickstart, `make demo`, worked example, evals harness, adapter test logs (only mark tested with a dated log), dashboard on Pages, community files, issues, CHANGELOG, open PR (do not merge), v1.1.0 RC notes, final report. Launch posts drafted only.
+Open the PR (do not merge), then owner review. Owner decisions: tag v1.1.0-rc.1, open the drafted issues, repo topics, any launch posts.

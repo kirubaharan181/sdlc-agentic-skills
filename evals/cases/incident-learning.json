@@ -1,0 +1,19 @@
+{
+  "eval_id": "incident-learning",
+  "skills": [
+    "sre-observability"
+  ],
+  "workflow": "incident-response",
+  "query": "Run a postmortem after a forty-minute outage",
+  "stage_ids": [
+    163,
+    164,
+    165
+  ],
+  "expected_behavior": [
+    "Uses blameless wording",
+    "Lists contributing conditions, not people",
+    "Every action has an owner and a date"
+  ],
+  "model_results": "not run"
+}

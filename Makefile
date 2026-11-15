@@ -1,4 +1,4 @@
-.PHONY: build check validate test refs audit links all
+.PHONY: build check validate test refs audit links demo all
 PY ?= python3
 
 build:      ## regenerate everything derived (registries' derived fields, agent/workflow/skill md, dist/, dashboard data)
@@ -17,3 +17,5 @@ test:       ## pytest (unit, golden, scenario, broken-fixture) plus legacy fixtu
 	$(PY) -m pytest -q
 	$(PY) scripts/run_tests.py
 all: build validate refs links test check
+demo:       ## print the execution plan for a workflow (WORKFLOW=bug-fix to change)
+	$(PY) scripts/demo.py $(WORKFLOW)

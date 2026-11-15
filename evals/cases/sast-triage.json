@@ -1,0 +1,17 @@
+{
+  "eval_id": "sast-triage",
+  "skills": [
+    "application-security"
+  ],
+  "workflow": "security-vulnerability-remediation",
+  "query": "Triage SAST findings on a pull request",
+  "stage_ids": [
+    99
+  ],
+  "expected_behavior": [
+    "Reads the scanner report for the exact commit",
+    "Classifies each finding true positive, false positive or accepted risk",
+    "Does not suppress a finding without owner and expiry"
+  ],
+  "model_results": "not run"
+}

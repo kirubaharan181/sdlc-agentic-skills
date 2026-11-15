@@ -1,0 +1,12 @@
+name: Bug or wrong content
+description: Something in a registry, workflow, role or skill is wrong or inconsistent
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes: {label: What is wrong, description: "Name the stage, role, skill or workflow."}
+    validations: {required: true}
+  - type: textarea
+    id: repro
+    attributes: {label: How to reproduce, description: "The command and its output."}
+    validations: {required: true}
