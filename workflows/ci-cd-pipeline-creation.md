@@ -1,102 +1,96 @@
-# Ci Cd Pipeline Creation
+# CI/CD pipeline creation
 
-> **Purpose:** create a trusted source-to-artifact delivery path
+> Generated from `registry/workflows/ci-cd-pipeline-creation.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to create a trusted source-to-artifact delivery path.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Build secure CI and CD pipelines with gated deployments.
 
-## Lifecycle phases
-### 1. Map trust boundaries
+**Trigger.** A repository needs build, test or deploy automation.
 
-**Accountable role:** devops-engineer
+## Entry criteria
+- Repository and branch protection exist
+- Test commands are known
 
-**Execution:** Identify workflow actors, runner trust, event sources, tokens, secrets, artifacts and deployment environments. Workflow-specific control: Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.
+## Required inputs
+- repository
+- test_plan
+- target_environments
 
-**Required evidence:**
-- pipeline threat model
-- permission matrix
-- untrusted-event map
-- workflow-specific safety/control evidence
+## Flow
 
-**Exit criteria:** Every trust boundary has a control owner and least-privilege policy.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Build/test/scan/provenance
+```mermaid
+flowchart TD
+  S50{{"50 Secrets Management"}}
+  S111["111 CI Pipeline"]
+  S112["112 Automated Test Pipeline"]
+  S113["113 Build Management"]
+  S114["114 Artifact Management"]
+  S115["115 Containerization"]
+  S116["116 Container Orchestration"]
+  S119["119 CD Pipeline"]
+  S124["124 Deployment Automation"]
+  S125["125 Pipeline Security"]
+  S111 --> S112
+  S111 --> S113
+  S113 --> S114
+  S113 --> S115
+  S115 --> S116
+  S114 --> S119
+  S112 --> S119
+  S50 --> S119
+  S119 --> S124
+  S119 --> S125
+  S125 -. fail .-> S119
+```
 
-**Accountable role:** platform-engineer
+## Steps
 
-**Execution:** Build reproducibly, run unit/integration/security checks and produce provenance tied to source revision and artifact digest. Workflow-specific control: Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 50 | Secrets Management | `devsecops-engineer` | - | Pipeline secrets via the secret store.; approval: secrets-owner |
+| 111 | CI Pipeline | `devops-engineer` | - |  |
+| 112 | Automated Test Pipeline | `devops-engineer` | 111 |  |
+| 113 | Build Management | `devops-engineer` | 111 |  |
+| 114 | Artifact Management | `platform-engineer` | 113 |  |
+| 115 | Containerization | `devops-engineer` | 113 | optional |
+| 116 | Container Orchestration | `kubernetes-engineer` | 115 | optional |
+| 119 | CD Pipeline | `devops-engineer` | 114, 112, 50 |  |
+| 124 | Deployment Automation | `deployment-engineer` | 119 |  |
+| 125 | Pipeline Security | `devsecops-engineer` | 119 |  |
 
-**Required evidence:**
-- build/test/scan reports
-- artifact digest
-- provenance attestation
-- workflow-specific safety/control evidence
+## Parallel work
+- Stages 50, 111
+- Stages 112, 113
+- Stages 114, 115
+- Stages 116, 119
+- Stages 124, 125
 
-**Exit criteria:** Only the expected source revision produces a verified artifact.
+## Human approval points
 
-### 3. Protect immutable artifacts
+| Stage | Approver | When |
+|---:|---|---|
+| 50 Secrets Management | `secrets-owner` | when rotating or revoking production secrets |
 
-**Accountable role:** devsecops-engineer
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Promote the same digest between environments, enforce retention/signing policy and prevent untrusted jobs from overwriting release artifacts. Workflow-specific control: Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.
+## Failure and remediation
 
-**Required evidence:**
-- artifact promotion policy
-- signature/digest verification
-- retention controls
-- workflow-specific safety/control evidence
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 125 | Pipeline can write to production without approval | Block until the approval gate is added | 119 |
 
-**Exit criteria:** Artifact identity is unchanged and verifiable across promotion.
+## Outputs
+- ci_pipeline_definition
+- cd_pipeline_definition
+- pipeline_security_review
 
-### 4. Exercise recovery
+## Exit criteria
+- Pipeline runs green on a sample commit
+- Production deploy stage requires approval
+- Least-privilege tokens; pinned actions or images
 
-**Accountable role:** automation-qa-engineer
+## Communication
+Document how to run and debug the pipeline.
 
-**Execution:** Simulate pipeline/deployment failure and verify rollback, runner isolation, secret revocation and recovery from partial promotion. Workflow-specific control: Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.
-
-**Required evidence:**
-- failure-injection log
-- recovery result
-- secret/access review
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Recovery restores a known-good state without exposing credentials.
-
-### 5. Document ownership
-
-**Accountable role:** automation-qa-engineer
-
-**Execution:** Assign pipeline owner, support SLA, permission steward, runbook, dependency update cadence and deprecation path. Workflow-specific control: Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.
-
-**Required evidence:**
-- ownership record
-- runbook
-- maintenance schedule
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Every production workflow has an accountable maintainer and escalation path.
-
-
-## Stage set and accountable roles
-Stage IDs: 45, 46, 47, 48, 50, 51, 52, 99, 100, 101, 102, 105, 106, 107, 111, 112, 113, 114, 115, 116, 119, 122, 123, 124, 125, 181, 183
-Accountable roles: devops-engineer, platform-engineer, devsecops-engineer, automation-qa-engineer
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.
-**Recovery:** Treat workflow code, runners, secrets and artifacts as a supply-chain boundary; pin actions, scope permissions, isolate untrusted pull requests and verify artifact provenance.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

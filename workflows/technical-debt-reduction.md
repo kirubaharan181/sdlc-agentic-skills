@@ -1,96 +1,84 @@
-# Technical Debt Reduction
+# Technical debt reduction
 
-> **Purpose:** reduce a documented debt hotspot without behavior loss
+> Generated from `registry/workflows/technical-debt-reduction.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to reduce a documented debt hotspot without behavior loss.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Pay down a prioritized debt item without changing behaviour.
 
-## Lifecycle phases
-### 1. Identify debt hotspot
+**Trigger.** A debt item is prioritized in the debt register.
 
-**Accountable role:** software-architect
+## Entry criteria
+- Debt item has a clear definition of done
 
-**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.
+## Required inputs
+- technical_debt_register
+- target_item
 
-**Required evidence:**
-- baseline and scope record
-- assumptions and risk log
+## Flow
 
-**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Plan safe refactor
+```mermaid
+flowchart TD
+  S76["76 Technical Debt Review"]
+  S79["79 Unit Testing"]
+  S175["175 Technical Debt Reduction"]
+  S68["68 Pull Request Creation"]
+  S69["69 Peer Code Review"]
+  S73["73 Code Coverage Review"]
+  S85["85 Regression Testing"]
+  S75{{"75 Merge Approval"}}
+  S76 --> S79
+  S79 --> S175
+  S175 --> S68
+  S68 --> S69
+  S68 --> S73
+  S68 --> S85
+  S69 --> S75
+  S73 --> S75
+  S85 --> S75
+  S85 -. fail .-> S175
+```
 
-**Accountable role:** full-stack-engineer
+## Steps
 
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 76 | Technical Debt Review | `software-architect` | - |  |
+| 79 | Unit Testing | `unit-testing-specialist` | 76 | Characterization tests before changing code. |
+| 175 | Technical Debt Reduction | `backend-engineer` | 79 |  |
+| 68 | Pull Request Creation | `full-stack-engineer` | 175 |  |
+| 69 | Peer Code Review | `code-reviewer` | 68 |  |
+| 73 | Code Coverage Review | `code-reviewer` | 68 |  |
+| 85 | Regression Testing | `automation-qa-engineer` | 68 |  |
+| 75 | Merge Approval | `merge-steward` | 69, 73, 85 | approval: code-owner |
 
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
+## Parallel work
+- Stages 69, 73, 85
 
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+## Human approval points
 
-### 3. Add characterization tests
+| Stage | Approver | When |
+|---:|---|---|
+| 75 Merge Approval | `code-owner` | always |
 
-**Accountable role:** code-reviewer
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.
+## Failure and remediation
 
-**Required evidence:**
-- verification report
-- residual risk and decision log
-- handoff record
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 85 | Behaviour changed | Revert; behaviour change is out of scope | 175 |
 
-**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
+## Outputs
+- debt_reduction_pr
+- coverage_assessment
+- updated_debt_register
 
-### 4. Review regression
+## Exit criteria
+- Tests green before and after
+- Debt register updated
 
-**Accountable role:** qa-lead
+## Communication
+Note refactors in the changelog.
 
-**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.
-
-**Required evidence:**
-- verification report
-- residual risk and decision log
-- handoff record
-
-**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
-
-### 5. Track remaining debt
-
-**Accountable role:** qa-lead
-
-**Execution:** Complete the track remaining debt phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.
-
-**Required evidence:**
-- phase work product
-- verification evidence
-- handoff record
-
-**Exit criteria:** The accountable owner accepts the output and all blocking issues have an owner.
-
-
-## Stage set and accountable roles
-Stage IDs: 37, 190
-Accountable roles: software-architect, full-stack-engineer, code-reviewer, qa-lead
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
-**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

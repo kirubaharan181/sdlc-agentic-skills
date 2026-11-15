@@ -1,0 +1,70 @@
+{
+  "workflow_id": "environment-configuration",
+  "name": "Environment configuration",
+  "purpose": "Define and apply configuration and secrets for an environment without leaking values.",
+  "trigger": "A new or changed environment setting is required.",
+  "entry_criteria": [
+    "Environment exists or is being provisioned"
+  ],
+  "required_inputs": [
+    "environment_requirements",
+    "secret_inventory"
+  ],
+  "steps": [
+    {
+      "stage": 49,
+      "owner": "devops-engineer",
+      "needs": []
+    },
+    {
+      "stage": 50,
+      "owner": "devsecops-engineer",
+      "needs": [
+        49
+      ],
+      "note": "Secrets go to the secret store; rotation of production secrets needs approval."
+    },
+    {
+      "stage": 118,
+      "owner": "platform-engineer",
+      "needs": [
+        49
+      ]
+    },
+    {
+      "stage": 120,
+      "owner": "infrastructure-engineer",
+      "needs": [
+        50,
+        118
+      ]
+    },
+    {
+      "stage": 86,
+      "owner": "automation-qa-engineer",
+      "needs": [
+        120
+      ]
+    }
+  ],
+  "decisions": [],
+  "failure_paths": [
+    {
+      "at": 86,
+      "condition": "Smoke test fails after configuration change",
+      "action": "Revert the configuration change and investigate",
+      "goto": 118
+    }
+  ],
+  "outputs": [
+    "environment_config_matrix",
+    "secret_store_entries",
+    "smoke_test_report"
+  ],
+  "exit_criteria": [
+    "Configuration is in version control; no secret values in repo, logs or reports",
+    "Smoke test passes in the environment"
+  ],
+  "communication_plan": "Document changed settings for the on-call team.",
+  "handoff_workflows": []
+}

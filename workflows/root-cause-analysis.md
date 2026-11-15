@@ -1,94 +1,73 @@
-# Root Cause Analysis
+# Root cause analysis
 
-> **Purpose:** establish causal learning after an incident
+> Generated from `registry/workflows/root-cause-analysis.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to establish causal learning after an incident.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Find evidence-backed causes of an incident or recurring defect and turn them into fixes.
 
-## Lifecycle phases
-### 1. Collect timeline
+**Trigger.** An incident is resolved or a defect keeps recurring.
 
-**Accountable role:** incident-manager
+## Entry criteria
+- Incident timeline or defect history exists
+- Logs and traces cover the time window
 
-**Execution:** Collect alerts, deploys, traces, logs and operator decisions into a UTC timeline with source references.
+## Required inputs
+- incident_timeline
+- logs
+- traces
+- metrics
 
-**Required evidence:**
-- timestamped event timeline
-- evidence source index
+## Flow
 
-**Exit criteria:** Timeline is traceable and separates observed facts from interpretation.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Test causal hypotheses
+```mermaid
+flowchart TD
+  S155["155 Centralized Logging"]
+  S157["157 Distributed Tracing"]
+  S164["164 Root Cause Analysis"]
+  S165["165 Postmortem"]
+  S166["166 Reliability Improvement"]
+  S190["190 Process Improvement"]
+  S155 --> S164
+  S157 --> S164
+  S164 --> S165
+  S165 --> S166
+  S165 --> S190
+  S164 -. fail .-> S166
+```
 
-**Accountable role:** sre
+## Steps
 
-**Execution:** Construct causal hypotheses, test them against independent evidence and identify contributing conditions rather than a single blame target.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 155 | Centralized Logging | `observability-engineer` | - |  |
+| 157 | Distributed Tracing | `observability-engineer` | - |  |
+| 164 | Root Cause Analysis | `sre` | 155, 157 |  |
+| 165 | Postmortem | `incident-manager` | 164 |  |
+| 166 | Reliability Improvement | `sre` | 165 |  |
+| 190 | Process Improvement | `process-improvement-specialist` | 165 |  |
 
-**Required evidence:**
-- hypothesis/evidence matrix
-- causal analysis
-- uncertainty notes
+## Parallel work
+- Stages 155, 157
+- Stages 166, 190
 
-**Exit criteria:** Root cause claims have supporting evidence and alternatives are addressed.
+## Failure and remediation
 
-### 3. Identify contributors
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 164 | Evidence is missing | Record the gap as an action; do not guess a cause | 166 |
 
-**Accountable role:** software-architect
+## Outputs
+- rca_report
+- blameless_postmortem
+- reliability_backlog
+- process_improvements
 
-**Execution:** Examine technical, process, organizational and external contributors that allowed the event or increased impact.
+## Exit criteria
+- Each cause is backed by evidence; hypotheses are labelled
+- Every action has an owner and due date
 
-**Required evidence:**
-- contributing-factor map
-- control gap analysis
+## Communication
+Share the postmortem broadly; review actions monthly.
 
-**Exit criteria:** Analysis explains both occurrence and impact amplification.
-
-### 4. Assign corrective actions
-
-**Accountable role:** process-improvement-specialist
-
-**Execution:** Create preventive, detective and recovery actions with measurable outcomes, accountable owners and due dates.
-
-**Required evidence:**
-- corrective action register
-- priority and owner
-
-**Exit criteria:** Actions address verified contributors and are trackable.
-
-### 5. Verify follow-through
-
-**Accountable role:** process-improvement-specialist
-
-**Execution:** Review action completion evidence and measure recurrence or control effectiveness after an agreed period.
-
-**Required evidence:**
-- closure evidence
-- effectiveness measure
-- residual-risk review
-
-**Exit criteria:** Actions are not closed on status alone; effectiveness is demonstrated.
-
-
-## Stage set and accountable roles
-Stage IDs: 153, 154, 155, 156, 157, 161, 163, 164, 165, 166, 190
-Accountable roles: incident-manager, sre, software-architect, process-improvement-specialist
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
-**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

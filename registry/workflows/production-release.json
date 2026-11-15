@@ -1,0 +1,118 @@
+{
+  "workflow_id": "production-release",
+  "name": "Production release",
+  "purpose": "Release a validated artifact to production with approval, a tested way back, and verification.",
+  "trigger": "A release candidate has passed staging validation and readiness review.",
+  "entry_criteria": [
+    "Staging validation report for the same artifact version",
+    "QA and security sign-offs exist"
+  ],
+  "required_inputs": [
+    "release_readiness_report",
+    "artifact_version",
+    "rollback_plan"
+  ],
+  "steps": [
+    {
+      "stage": 128,
+      "owner": "release-manager",
+      "needs": []
+    },
+    {
+      "stage": 137,
+      "owner": "release-manager",
+      "needs": [
+        128
+      ]
+    },
+    {
+      "stage": 129,
+      "owner": "release-manager",
+      "needs": [
+        128,
+        137
+      ],
+      "note": "Change board approval."
+    },
+    {
+      "stage": 132,
+      "owner": "database-administrator",
+      "needs": [
+        129
+      ],
+      "optional": true
+    },
+    {
+      "stage": 134,
+      "owner": "cloud-engineer",
+      "needs": [
+        129
+      ],
+      "optional": true
+    },
+    {
+      "stage": 133,
+      "owner": "deployment-engineer",
+      "needs": [
+        129,
+        132,
+        134
+      ],
+      "note": "Approval by the production approver for this artifact version."
+    },
+    {
+      "stage": 138,
+      "owner": "sre",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 139,
+      "owner": "release-manager",
+      "needs": [
+        138
+      ]
+    },
+    {
+      "stage": 127,
+      "owner": "technical-writer",
+      "needs": [
+        133
+      ],
+      "note": "Publish release notes."
+    }
+  ],
+  "decisions": [
+    {
+      "after": 138,
+      "question": "Smoke test passed?",
+      "branches": {
+        "yes": 139,
+        "no": "workflow:rollback"
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 129,
+      "condition": "Change not approved",
+      "action": "Stop; record the decision and reasons",
+      "goto": "abort"
+    }
+  ],
+  "outputs": [
+    "release_record",
+    "production_smoke_report",
+    "published_release_notes"
+  ],
+  "exit_criteria": [
+    "Production approver approved the exact artifact version",
+    "Smoke test and health checks pass",
+    "Release record lists version, time and approver"
+  ],
+  "communication_plan": "Announce window and completion to stakeholders.",
+  "handoff_workflows": [
+    "rollback"
+  ]
+}

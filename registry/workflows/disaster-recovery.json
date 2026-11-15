@@ -1,0 +1,108 @@
+{
+  "workflow_id": "disaster-recovery",
+  "name": "Disaster recovery",
+  "purpose": "Recover service and data after a regional failure or data loss and measure recovery against targets.",
+  "trigger": "A region, data store or provider is lost, or a scheduled DR exercise starts.",
+  "entry_criteria": [
+    "DR plan and RTO/RPO targets exist",
+    "Backups are available in an isolated location"
+  ],
+  "required_inputs": [
+    "dr_plan",
+    "rto_rpo_targets",
+    "backup_inventory"
+  ],
+  "steps": [
+    {
+      "stage": 162,
+      "owner": "incident-manager",
+      "needs": [],
+      "note": "Assess scope of loss."
+    },
+    {
+      "stage": 147,
+      "owner": "database-administrator",
+      "needs": [
+        162
+      ],
+      "note": "Verify which backup to restore from."
+    },
+    {
+      "stage": 148,
+      "owner": "sre",
+      "needs": [
+        147
+      ],
+      "note": "Declare DR and execute the plan."
+    },
+    {
+      "stage": 142,
+      "owner": "database-administrator",
+      "needs": [
+        148
+      ],
+      "note": "Restore data stores."
+    },
+    {
+      "stage": 149,
+      "owner": "cloud-architect",
+      "needs": [
+        148
+      ],
+      "note": "Fail over or rebuild compute and networking."
+    },
+    {
+      "stage": 138,
+      "owner": "sre",
+      "needs": [
+        142,
+        149
+      ]
+    },
+    {
+      "stage": 165,
+      "owner": "incident-manager",
+      "needs": [
+        138
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "after": 147,
+      "question": "Is a usable backup available?",
+      "branches": {
+        "yes": 148,
+        "no": "end"
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 142,
+      "condition": "Restore fails integrity checks",
+      "action": "Try the previous backup; record data loss window",
+      "goto": 147
+    },
+    {
+      "at": 138,
+      "condition": "Smoke test fails after failover",
+      "action": "Hold traffic; investigate before cutover",
+      "goto": 149
+    }
+  ],
+  "outputs": [
+    "dr_test_report",
+    "measured_rto_rpo",
+    "postmortem"
+  ],
+  "exit_criteria": [
+    "Measured RTO and RPO are recorded against targets",
+    "Data integrity checks pass",
+    "Gaps in the plan become tracked actions"
+  ],
+  "communication_plan": "Declare DR to executives and customers; update at fixed intervals.",
+  "handoff_workflows": [
+    "root-cause-analysis"
+  ]
+}

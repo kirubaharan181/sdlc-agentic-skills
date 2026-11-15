@@ -14,7 +14,7 @@ SOURCES = {
     "stages": "registry/SDLC_STAGE_REGISTRY.json",
     "agents": "registry/AGENT_REGISTRY.json",
     "skills": "registry/SKILL_REGISTRY.json",
-    "workflows": "registry/WORKFLOW_REGISTRY.json",
+    "workflows": "registry/workflows",
     "platforms": "adapters/capability-matrix.json",
 }
 

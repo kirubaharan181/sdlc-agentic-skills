@@ -1,0 +1,102 @@
+{
+  "workflow_id": "rollback",
+  "name": "Rollback",
+  "purpose": "Return production to the last known good version and prove it is healthy.",
+  "trigger": "A production release fails verification, or a Sev1 regression is traced to the latest release.",
+  "entry_criteria": [
+    "Last known good artifact version identified",
+    "Incident commander named"
+  ],
+  "required_inputs": [
+    "failed_release_version",
+    "last_known_good_version",
+    "rollback_plan"
+  ],
+  "steps": [
+    {
+      "stage": 163,
+      "owner": "incident-manager",
+      "needs": []
+    },
+    {
+      "stage": 137,
+      "owner": "release-manager",
+      "needs": [
+        163
+      ],
+      "note": "Confirm the rollback plan matches what was actually deployed."
+    },
+    {
+      "stage": 132,
+      "owner": "database-administrator",
+      "needs": [
+        137
+      ],
+      "optional": true,
+      "note": "Only if the failed release changed the schema or data."
+    },
+    {
+      "stage": 133,
+      "owner": "deployment-engineer",
+      "needs": [
+        137,
+        132
+      ],
+      "note": "Redeploy the last known good artifact."
+    },
+    {
+      "stage": 138,
+      "owner": "sre",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 139,
+      "owner": "release-manager",
+      "needs": [
+        138
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "after": 137,
+      "question": "Did the failed release change the database?",
+      "branches": {
+        "yes": 132,
+        "no": 133
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 138,
+      "condition": "Smoke test fails on the rolled-back version",
+      "action": "Escalate to incident-response; consider rolling back one more version",
+      "goto": "workflow:incident-response"
+    },
+    {
+      "at": 132,
+      "condition": "Data cannot be reverted safely",
+      "action": "Stop; DBA owner and incident commander choose forward-fix or restore from backup",
+      "goto": "workflow:disaster-recovery"
+    }
+  ],
+  "outputs": [
+    "rollback_record",
+    "production_smoke_report",
+    "incident_note"
+  ],
+  "exit_criteria": [
+    "Production runs the last known good version",
+    "Smoke test and health checks pass",
+    "Data impact assessed and recorded",
+    "Failed release version blocked from redeploy"
+  ],
+  "communication_plan": "Announce rollback start and completion in the incident channel; notify affected customers if the failure was user visible.",
+  "handoff_workflows": [
+    "incident-response",
+    "root-cause-analysis"
+  ]
+}

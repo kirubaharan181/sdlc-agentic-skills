@@ -1,102 +1,92 @@
 # Rollback
 
-> **Purpose:** return service to a known-safe version or forward fix
+> Generated from `registry/workflows/rollback.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to return service to a known-safe version or forward fix.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Return production to the last known good version and prove it is healthy.
 
-## Lifecycle phases
-### 1. Confirm trigger
+**Trigger.** A production release fails verification, or a Sev1 regression is traced to the latest release.
 
-**Accountable role:** incident-manager
+## Entry criteria
+- Last known good artifact version identified
+- Incident commander named
 
-**Execution:** Validate the rollback trigger against telemetry, customer impact and release timeline; distinguish transient noise from sustained failure. Workflow-specific control: Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.
+## Required inputs
+- failed_release_version
+- last_known_good_version
+- rollback_plan
 
-**Required evidence:**
-- trigger evidence
-- impact statement
-- decision owner
-- workflow-specific safety/control evidence
+## Flow
 
-**Exit criteria:** Rollback is justified by a defined threshold and authorized decision.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Assess data-state safety
+```mermaid
+flowchart TD
+  S163["163 Incident Response"]
+  S137["137 Rollback Planning"]
+  S132{{"132 Database Migration"}}
+  S133{{"133 Production Deployment"}}
+  S138["138 Production Smoke Test"]
+  S139["139 Deployment Sign-off"]
+  S163 --> S137
+  S137 --> S132
+  S137 --> S133
+  S132 --> S133
+  S133 --> S138
+  S138 --> S139
+  S137 -. yes .-> S132
+  S137 -. no .-> S133
+  S138 -. fail .-> WF_incident_response
+  S132 -. fail .-> WF_disaster_recovery
+  WF_disaster_recovery((run workflow: disaster_recovery))
+  WF_incident_response((run workflow: incident_response))
+```
 
-**Accountable role:** deployment-engineer
+## Steps
 
-**Execution:** Check schema compatibility, writes after release, irreversible side effects, external messages and backup/restore state before reverting. Workflow-specific control: Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 163 | Incident Response | `incident-manager` | - |  |
+| 137 | Rollback Planning | `release-manager` | 163 | Confirm the rollback plan matches what was actually deployed. |
+| 132 | Database Migration | `database-administrator` | 137 | Only if the failed release changed the schema or data.; optional; approval: dba-owner |
+| 133 | Production Deployment | `deployment-engineer` | 137, 132 | Redeploy the last known good artifact.; approval: production-approver |
+| 138 | Production Smoke Test | `sre` | 133 |  |
+| 139 | Deployment Sign-off | `release-manager` | 138 |  |
 
-**Required evidence:**
-- data compatibility assessment
-- side-effect inventory
-- recovery options
-- workflow-specific safety/control evidence
+## Human approval points
 
-**Exit criteria:** Chosen recovery will not corrupt or silently discard committed data.
+| Stage | Approver | When |
+|---:|---|---|
+| 132 Database Migration | `dba-owner` | always |
+| 133 Production Deployment | `production-approver` | always |
 
-### 3. Authorize rollback/forward fix
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Accountable role:** database-administrator
+## Decision points
+- After 137 - Did the failed release change the database? **yes** -> 132; **no** -> 133
 
-**Execution:** Present blast radius, data risk, recovery time and options to the incident/change authority; record the selected path. Workflow-specific control: Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.
+## Failure and remediation
 
-**Required evidence:**
-- recovery decision
-- approval record
-- operator assignments
-- workflow-specific safety/control evidence
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 138 | Smoke test fails on the rolled-back version | Escalate to incident-response; consider rolling back one more version | workflow:incident-response |
+| 132 | Data cannot be reverted safely | Stop; DBA owner and incident commander choose forward-fix or restore from backup | workflow:disaster-recovery |
 
-**Exit criteria:** Named authority accepts the selected rollback or forward-fix path.
+## Outputs
+- rollback_record
+- production_smoke_report
+- incident_note
 
-### 4. Execute recovery
+## Exit criteria
+- Production runs the last known good version
+- Smoke test and health checks pass
+- Data impact assessed and recorded
+- Failed release version blocked from redeploy
 
-**Accountable role:** sre
+## Communication
+Announce rollback start and completion in the incident channel; notify affected customers if the failure was user visible.
 
-**Execution:** Restore the last known-good version or apply a bounded forward fix, then reconcile data and dependencies. Workflow-specific control: Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.
+## Hands off to
+- [incident-response](incident-response.md)
+- [root-cause-analysis](root-cause-analysis.md)
 
-**Required evidence:**
-- recovery execution log
-- artifact/version identity
-- data reconciliation
-- workflow-specific safety/control evidence
-
-**Exit criteria:** System returns to a known-good state with integrity verified.
-
-### 5. Verify and communicate
-
-**Accountable role:** sre
-
-**Execution:** Validate customer journeys, service health and data integrity; issue factual status and document residual risk. Workflow-specific control: Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.
-
-**Required evidence:**
-- recovery verification
-- final status update
-- follow-up actions
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Service owner confirms recovery and accepts remaining risk.
-
-
-## Stage set and accountable roles
-Stage IDs: 132, 133, 137, 138
-Accountable roles: incident-manager, deployment-engineer, database-administrator, sre
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition, explicit-human-authorization. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.
-**Recovery:** Check data/schema compatibility and irreversible side effects before rollback; choose rollback versus forward-fix explicitly; verify user-facing recovery and preserve incident evidence.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

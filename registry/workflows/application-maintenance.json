@@ -1,0 +1,114 @@
+{
+  "workflow_id": "application-maintenance",
+  "name": "Application maintenance",
+  "purpose": "Run routine support, patching, dependency, database and infrastructure upkeep for a released product.",
+  "trigger": "The product is in production and enters or continues its maintenance cycle.",
+  "entry_criteria": [
+    "Support tiers and SLAs are defined"
+  ],
+  "required_inputs": [
+    "support_queue",
+    "patch_advisories",
+    "maintenance_calendar"
+  ],
+  "steps": [
+    {
+      "stage": 167,
+      "owner": "technical-support-engineer",
+      "needs": []
+    },
+    {
+      "stage": 168,
+      "owner": "production-support-engineer",
+      "needs": [
+        167
+      ]
+    },
+    {
+      "stage": 169,
+      "owner": "backend-engineer",
+      "needs": [
+        168
+      ]
+    },
+    {
+      "stage": 171,
+      "owner": "devops-engineer",
+      "needs": []
+    },
+    {
+      "stage": 172,
+      "owner": "backend-engineer",
+      "needs": []
+    },
+    {
+      "stage": 173,
+      "owner": "database-administrator",
+      "needs": []
+    },
+    {
+      "stage": 152,
+      "owner": "infrastructure-engineer",
+      "needs": []
+    },
+    {
+      "stage": 177,
+      "owner": "product-manager",
+      "needs": [
+        167
+      ]
+    },
+    {
+      "stage": 178,
+      "owner": "technical-writer",
+      "needs": [
+        168
+      ]
+    },
+    {
+      "stage": 179,
+      "owner": "release-manager",
+      "needs": [
+        169,
+        171,
+        172,
+        173,
+        152
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "after": 168,
+      "question": "Is it a code defect?",
+      "branches": {
+        "yes": "workflow:bug-fix",
+        "no": 178
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 179,
+      "condition": "Maintenance release fails verification",
+      "action": "Rollback and reschedule",
+      "goto": "workflow:rollback"
+    }
+  ],
+  "outputs": [
+    "maintenance_release_record",
+    "patch_records",
+    "knowledge_base_articles"
+  ],
+  "exit_criteria": [
+    "Support SLAs met",
+    "Patches current within policy",
+    "Knowledge base updated from resolved tickets"
+  ],
+  "communication_plan": "Monthly maintenance report to the product owner.",
+  "handoff_workflows": [
+    "bug-fix",
+    "dependency-update",
+    "rollback"
+  ]
+}

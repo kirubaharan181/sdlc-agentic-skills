@@ -1,0 +1,157 @@
+{
+  "workflow_id": "bug-fix",
+  "name": "Bug fix",
+  "purpose": "Fix a reproducible defect with the smallest safe change and prove it with a regression test.",
+  "trigger": "A defect is triaged by support or QA and recorded with a severity below Sev1.",
+  "entry_criteria": [
+    "Defect recorded with severity, affected version and steps from L1/L2 support",
+    "No active Sev1 incident (otherwise use emergency-hotfix)"
+  ],
+  "required_inputs": [
+    "defect_report",
+    "affected_version",
+    "reproduction_steps"
+  ],
+  "steps": [
+    {
+      "stage": 169,
+      "owner": "backend-engineer",
+      "needs": [],
+      "note": "Reproduce and isolate; write the failing test first."
+    },
+    {
+      "stage": 170,
+      "owner": "backend-engineer",
+      "needs": [
+        169
+      ]
+    },
+    {
+      "stage": 79,
+      "owner": "unit-testing-specialist",
+      "needs": [
+        170
+      ],
+      "note": "Confirm the new test fails on the old code and passes on the fix."
+    },
+    {
+      "stage": 68,
+      "owner": "full-stack-engineer",
+      "needs": [
+        170
+      ]
+    },
+    {
+      "stage": 69,
+      "owner": "code-reviewer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 85,
+      "owner": "automation-qa-engineer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 75,
+      "owner": "merge-steward",
+      "needs": [
+        69,
+        79,
+        85
+      ]
+    },
+    {
+      "stage": 130,
+      "owner": "deployment-engineer",
+      "needs": [
+        75
+      ]
+    },
+    {
+      "stage": 131,
+      "owner": "qa-lead",
+      "needs": [
+        130
+      ]
+    },
+    {
+      "stage": 133,
+      "owner": "deployment-engineer",
+      "needs": [
+        131
+      ]
+    },
+    {
+      "stage": 138,
+      "owner": "sre",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 139,
+      "owner": "release-manager",
+      "needs": [
+        138
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "after": 169,
+      "question": "Can the defect be reproduced?",
+      "branches": {
+        "yes": 170,
+        "no": "end"
+      }
+    },
+    {
+      "after": 138,
+      "question": "Did the production smoke test pass?",
+      "branches": {
+        "yes": 139,
+        "no": "workflow:rollback"
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 169,
+      "condition": "Not reproducible after two attempts with the reporter's data",
+      "action": "Mark the defect NEEDS_INFO, return it to L2 support with what was tried",
+      "goto": "abort"
+    },
+    {
+      "at": 85,
+      "condition": "Regression suite fails",
+      "action": "Return to 170; do not weaken or skip the failing test",
+      "goto": 170
+    },
+    {
+      "at": 131,
+      "condition": "Staging validation fails",
+      "action": "Return to 170 with the staging evidence attached",
+      "goto": 170
+    }
+  ],
+  "outputs": [
+    "merged_fix_pr",
+    "regression_test",
+    "regression_report",
+    "production_smoke_report"
+  ],
+  "exit_criteria": [
+    "Failing test from step 169 is in the suite and passes on the release commit",
+    "Regression suite passes on the merge commit",
+    "Production smoke test passes for the released artifact version",
+    "Defect closed with link to the PR and release"
+  ],
+  "communication_plan": "Update the reporter after reproduction (169) and after release (139); post in the support channel when the fix ships.",
+  "handoff_workflows": [
+    "rollback"
+  ]
+}

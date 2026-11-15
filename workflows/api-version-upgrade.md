@@ -1,102 +1,101 @@
-# Api Version Upgrade
+# API version upgrade
 
-> **Purpose:** evolve an API while protecting consumers
+> Generated from `registry/workflows/api-version-upgrade.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to evolve an API while protecting consumers.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Introduce a new API version with contract tests for old and new versions and a deprecation path.
 
-## Lifecycle phases
-### 1. Inventory consumers
+**Trigger.** An API change is breaking, or a new version is required.
 
-**Accountable role:** api-architect
+## Entry criteria
+- Current API contract is published
+- Consumers are known or discoverable from gateway logs
 
-**Execution:** Find active clients, integrations, SDKs and usage patterns from gateway logs, repositories and owner records; classify migration criticality. Workflow-specific control: Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.
+## Required inputs
+- current_api_contract
+- change_description
+- consumer_inventory
 
-**Required evidence:**
-- consumer inventory
-- usage evidence
-- owner and contact list
-- workflow-specific safety/control evidence
+## Flow
 
-**Exit criteria:** No known active consumer is omitted without documented uncertainty.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Design version and migration
+```mermaid
+flowchart TD
+  S31["31 Integration Architecture"]
+  S27["27 API Architecture"]
+  S57["57 API Development"]
+  S81["81 API Testing"]
+  S68["68 Pull Request Creation"]
+  S69["69 Peer Code Review"]
+  S75{{"75 Merge Approval"}}
+  S127["127 Release Notes"]
+  S130["130 Staging Deployment"]
+  S131["131 Staging Validation"]
+  S133{{"133 Production Deployment"}}
+  S138["138 Production Smoke Test"]
+  S31 --> S27
+  S27 --> S57
+  S57 --> S81
+  S57 --> S68
+  S68 --> S69
+  S69 --> S75
+  S81 --> S75
+  S27 --> S127
+  S75 --> S130
+  S130 --> S131
+  S131 --> S133
+  S127 --> S133
+  S133 --> S138
+  S81 -. fail .-> S57
+```
 
-**Accountable role:** api-engineer
+## Steps
 
-**Execution:** Define version boundary, compatibility guarantees, migration examples, dual-support window and deprecation criteria. Workflow-specific control: Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 31 | Integration Architecture | `integration-architect` | - | Inventory consumers and agree the deprecation window. |
+| 27 | API Architecture | `api-architect` | 31 |  |
+| 57 | API Development | `api-engineer` | 27 |  |
+| 81 | API Testing | `api-testing-specialist` | 57 | Contract tests against both versions. |
+| 68 | Pull Request Creation | `full-stack-engineer` | 57 |  |
+| 69 | Peer Code Review | `code-reviewer` | 68 |  |
+| 75 | Merge Approval | `merge-steward` | 69, 81 | approval: code-owner |
+| 127 | Release Notes | `technical-writer` | 27 | Migration guide and deprecation notice. |
+| 130 | Staging Deployment | `deployment-engineer` | 75 |  |
+| 131 | Staging Validation | `qa-lead` | 130 |  |
+| 133 | Production Deployment | `deployment-engineer` | 131, 127 | approval: production-approver |
+| 138 | Production Smoke Test | `sre` | 133 |  |
 
-**Required evidence:**
-- versioning decision
-- migration guide
-- deprecation timeline
-- workflow-specific safety/control evidence
+## Parallel work
+- Stages 57, 127
+- Stages 68, 81
 
-**Exit criteria:** Consumers have a documented migration path and support window.
+## Human approval points
 
-### 3. Implement compatibility
+| Stage | Approver | When |
+|---:|---|---|
+| 75 Merge Approval | `code-owner` | always |
+| 133 Production Deployment | `production-approver` | always |
 
-**Accountable role:** integration-engineer
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Implement the new contract while preserving the agreed old behavior; add adapters or version routing where necessary. Workflow-specific control: Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.
+## Failure and remediation
 
-**Required evidence:**
-- versioned implementation
-- compatibility tests
-- migration examples
-- workflow-specific safety/control evidence
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 81 | Old-version contract test fails | The change is breaking by accident; fix before release | 57 |
 
-**Exit criteria:** Old and new consumers behave as specified during transition.
+## Outputs
+- versioned_api_contract
+- migration_guide
+- contract_test_report
 
-### 4. Run contract/security tests
+## Exit criteria
+- Old version still passes its contract tests
+- New version passes its contract tests
+- Deprecation date and migration guide published
 
-**Accountable role:** api-testing-specialist
+## Communication
+Email registered consumers with the timeline.
 
-**Execution:** Validate schema compatibility, auth scopes, error handling, rate limits and representative consumer contract suites. Workflow-specific control: Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.
-
-**Required evidence:**
-- contract report
-- security test evidence
-- consumer compatibility result
-- workflow-specific safety/control evidence
-
-**Exit criteria:** All critical consumer contracts and security controls pass.
-
-### 5. Publish and deprecate
-
-**Accountable role:** api-testing-specialist
-
-**Execution:** Publish the version, migration notice, support dates and usage telemetry; deprecate only after consumer readiness criteria are met. Workflow-specific control: Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.
-
-**Required evidence:**
-- release notes
-- migration notice
-- usage/retirement evidence
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Deprecation decision is based on verified usage and approved notice period.
-
-
-## Stage set and accountable roles
-Stage IDs: 27
-Accountable roles: api-architect, api-engineer, integration-engineer, api-testing-specialist
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.
-**Recovery:** Inventory consumers and usage before changing contracts; publish compatibility policy, migration examples, dual-run/deprecation dates and consumer test evidence.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

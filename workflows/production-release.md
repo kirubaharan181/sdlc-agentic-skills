@@ -1,102 +1,104 @@
-# Production Release
+# Production release
 
-> **Purpose:** release an exact approved artifact progressively
+> Generated from `registry/workflows/production-release.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to release an exact approved artifact progressively.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Release a validated artifact to production with approval, a tested way back, and verification.
 
-## Lifecycle phases
-### 1. Confirm artifact/readiness
+**Trigger.** A release candidate has passed staging validation and readiness review.
 
-**Accountable role:** release-manager
+## Entry criteria
+- Staging validation report for the same artifact version
+- QA and security sign-offs exist
 
-**Execution:** Verify candidate digest, change list, test/security evidence, migrations, observability, release notes and rollback readiness. Workflow-specific control: Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.
+## Required inputs
+- release_readiness_report
+- artifact_version
+- rollback_plan
 
-**Required evidence:**
-- release manifest
-- readiness checklist
-- open-risk disposition
-- workflow-specific safety/control evidence
+## Flow
 
-**Exit criteria:** All mandatory readiness checks are complete against the exact candidate.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Obtain change approval
+```mermaid
+flowchart TD
+  S128["128 Release Readiness"]
+  S137["137 Rollback Planning"]
+  S129{{"129 Change Approval"}}
+  S132{{"132 Database Migration"}}
+  S134["134 Domain & DNS"]
+  S133{{"133 Production Deployment"}}
+  S138["138 Production Smoke Test"]
+  S139["139 Deployment Sign-off"]
+  S127["127 Release Notes"]
+  S128 --> S137
+  S128 --> S129
+  S137 --> S129
+  S129 --> S132
+  S129 --> S134
+  S129 --> S133
+  S132 --> S133
+  S134 --> S133
+  S133 --> S138
+  S138 --> S139
+  S133 --> S127
+  S138 -. yes .-> S139
+  S138 -. no .-> WF_rollback
+  S129 -. fail .-> ABORT
+  ABORT((ABORT))
+  WF_rollback((run workflow: rollback))
+```
 
-**Accountable role:** deployment-engineer
+## Steps
 
-**Execution:** Present impact, schedule, approver, operator, communication, stop criteria and recovery plan to the designated authority. Workflow-specific control: Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 128 | Release Readiness | `release-manager` | - |  |
+| 137 | Rollback Planning | `release-manager` | 128 |  |
+| 129 | Change Approval | `release-manager` | 128, 137 | Change board approval.; approval: change-board |
+| 132 | Database Migration | `database-administrator` | 129 | optional; approval: dba-owner |
+| 134 | Domain & DNS | `cloud-engineer` | 129 | optional |
+| 133 | Production Deployment | `deployment-engineer` | 129, 132, 134 | Approval by the production approver for this artifact version.; approval: production-approver |
+| 138 | Production Smoke Test | `sre` | 133 |  |
+| 139 | Deployment Sign-off | `release-manager` | 138 |  |
+| 127 | Release Notes | `technical-writer` | 133 | Publish release notes. |
 
-**Required evidence:**
-- change ticket
-- approval record
-- communication plan
-- workflow-specific safety/control evidence
+## Parallel work
+- Stages 132, 134
+- Stages 127, 138
 
-**Exit criteria:** Approval is explicit, scoped and valid for the planned window.
+## Human approval points
 
-### 3. Progressively roll out
+| Stage | Approver | When |
+|---:|---|---|
+| 129 Change Approval | `change-board` | always |
+| 132 Database Migration | `dba-owner` | always |
+| 133 Production Deployment | `production-approver` | always |
 
-**Accountable role:** sre
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Deploy to a canary or smallest supported cohort, observe health/business metrics and expand only when thresholds remain healthy. Workflow-specific control: Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.
+## Decision points
+- After 138 - Smoke test passed? **yes** -> 139; **no** -> workflow:rollback
 
-**Required evidence:**
-- cohort rollout log
-- canary metrics
-- go/no-go decision
-- workflow-specific safety/control evidence
+## Failure and remediation
 
-**Exit criteria:** Each expansion has evidence and stop thresholds are not breached.
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 129 | Change not approved | Stop; record the decision and reasons | abort |
 
-### 4. Validate health/business outcomes
+## Outputs
+- release_record
+- production_smoke_report
+- published_release_notes
 
-**Accountable role:** product-owner
+## Exit criteria
+- Production approver approved the exact artifact version
+- Smoke test and health checks pass
+- Release record lists version, time and approver
 
-**Execution:** Check service SLIs, key user journeys, transaction integrity and business metrics against pre-release baseline. Workflow-specific control: Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.
+## Communication
+Announce window and completion to stakeholders.
 
-**Required evidence:**
-- post-release SLI report
-- journey verification
-- business outcome check
-- workflow-specific safety/control evidence
+## Hands off to
+- [rollback](rollback.md)
 
-**Exit criteria:** No material regression is hidden by infrastructure-only health checks.
-
-### 5. Confirm or roll back
-
-**Accountable role:** product-owner
-
-**Execution:** Compare observed signals with stop thresholds; record go/no-go decision and execute authorized recovery if breached. Workflow-specific control: Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.
-
-**Required evidence:**
-- release disposition
-- rollback/forward-fix evidence
-- stakeholder update
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Decision is recorded with authority and final system state verified.
-
-
-## Stage set and accountable roles
-Stage IDs: 78, 81, 82, 83, 86, 87, 88, 89, 90, 91, 92, 93, 94, 97, 109, 126, 127, 128, 129, 132, 133, 134, 135, 136, 137, 138, 139, 182, 187
-Accountable roles: release-manager, deployment-engineer, sre, product-owner
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition, explicit-human-authorization. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.
-**Recovery:** Promote the exact immutable artifact digest; use progressive rollout/canary where supported; define health and business stop thresholds; require named change authority and rollback owner.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

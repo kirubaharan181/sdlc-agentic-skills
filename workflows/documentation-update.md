@@ -1,93 +1,63 @@
-# Documentation Update
+# Documentation update
 
-> **Purpose:** correct and publish controlled documentation
+> Generated from `registry/workflows/documentation-update.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to correct and publish controlled documentation.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Change documentation so it matches behaviour, and publish it with a freshness check.
 
-## Lifecycle phases
-### 1. Identify audience/source
+**Trigger.** Behaviour, architecture or process changed, or documentation is found to be wrong.
 
-**Accountable role:** technical-writer
+## Entry criteria
+- The change that makes the docs wrong is identified
 
-**Execution:** Identify the reader task, authoritative source, product version and content owner before drafting.
+## Required inputs
+- change_scope
+- affected_documents
 
-**Required evidence:**
-- audience/task brief
-- source and version inventory
+## Flow
 
-**Exit criteria:** Every statement can be traced to an implementation or policy owner.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Draft accurate content
+```mermaid
+flowchart TD
+  S51["51 Developer Documentation"]
+  S33["33 Architecture Documentation"]
+  S178["178 Knowledge Base"]
+  S186["186 Documentation Governance"]
+  S51 --> S178
+  S51 --> S186
+  S33 --> S186
+  S178 --> S186
+  S186 -. fail .-> S51
+```
 
-**Accountable role:** documentation-engineer
+## Steps
 
-**Execution:** Write prerequisites, steps, expected output, examples and recovery guidance from verified source behavior.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 51 | Developer Documentation | `technical-writer` | - | Update the developer-facing docs and run every documented command. |
+| 33 | Architecture Documentation | `technical-writer` | - | Only if architecture documents are affected.; optional |
+| 178 | Knowledge Base | `technical-writer` | 51 | Only if user-facing support articles are affected.; optional |
+| 186 | Documentation Governance | `documentation-engineer` | 51, 33, 178 | Review, link-check and publish; set the next review date. |
 
-**Required evidence:**
-- draft guide
-- validated code examples
+## Parallel work
+- Stages 33, 51
 
-**Exit criteria:** Instructions are executable and do not invent product behavior.
+## Failure and remediation
 
-### 3. Review links/examples
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 186 | A documented command fails | Fix the doc or the product; do not publish | 51 |
 
-**Accountable role:** quality-governance-specialist
+## Outputs
+- updated_documents
+- link_check_report
 
-**Execution:** Run code examples, validate links, check version references and obtain subject-matter review.
+## Exit criteria
+- All links resolve
+- Every command shown was run and works
+- Owner and next review date recorded
 
-**Required evidence:**
-- link/code validation report
-- SME review
+## Communication
+Announce material changes in the engineering channel.
 
-**Exit criteria:** Broken links, stale commands and unsupported claims are resolved.
-
-### 4. Publish
-
-**Accountable role:** quality-governance-specialist
-
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
-
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
-
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
-
-### 5. Set review date
-
-**Accountable role:** quality-governance-specialist
-
-**Execution:** Assign content owner, review cadence and change triggers linked to releases or policy changes.
-
-**Required evidence:**
-- owner and review date
-- freshness trigger
-
-**Exit criteria:** Published content has an accountable owner and review trigger.
-
-
-## Stage set and accountable roles
-Stage IDs: 186
-Accountable roles: technical-writer, documentation-engineer, quality-governance-specialist
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
-**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

@@ -13,8 +13,8 @@ Resolution rules
                                                      filled from the record itself
   agent     non_responsibilities, permissions, dependencies, handoff_rules,
             approval_requirements                 <- role-defaults.json
-  workflow  required_inputs, required_skills, dependencies, parallel_tasks,
-            communication_plan, completion_criteria <- workflow-defaults.json
+  workflow  every field is authored in registry/workflows/<id>.json or derived from its steps;
+            stage `workflow_ids` are derived from workflow membership (never stored)
 An explicit value in a record always wins over the default.
 """
 from __future__ import annotations
@@ -27,7 +27,6 @@ ROOT = Path(__file__).resolve().parents[1]
 
 STAGE_FIELDS = ("supporting_roles", "approval_required", "status")
 ROLE_FIELDS = ("non_responsibilities", "permissions", "dependencies", "handoff_rules", "approval_requirements")
-WORKFLOW_FIELDS = ("required_inputs", "required_skills", "dependencies", "parallel_tasks", "communication_plan", "completion_criteria")
 
 
 def _read(root: Path, rel: str) -> dict:
@@ -64,6 +63,7 @@ def _derive_stage(rec: dict, d: dict, names: dict[str, str] | None = None) -> di
 
 def _compact_stage(rec: dict, d: dict) -> dict:
     out = dict(rec)
+    out.pop("workflow_ids", None)  # derived from registry/workflows/*.json
     if out.get("raci"):  # agents, primary_role, supporting_roles are derived from raci
         for f in ("agents", "primary_role", "supporting_roles"):
             out.pop(f, None)
@@ -77,11 +77,18 @@ def _compact_stage(rec: dict, d: dict) -> dict:
     return out
 
 
-def load_stage_doc(root: Path = ROOT) -> dict:
+def load_stage_doc(root: Path = ROOT, with_workflows: bool = True) -> dict:
     doc = _read(root, "registry/SDLC_STAGE_REGISTRY.json")
     d = _read(root, "registry/stage-defaults.json")
     names = {a["agent_id"]: a["name"] for a in _read(root, "registry/AGENT_REGISTRY.json")["agents"]}
     doc["stages"] = [_derive_stage(s, d, names) for s in doc["stages"]]
+    if with_workflows:
+        membership: dict[int, list[str]] = {}
+        for w in load_workflow_sources(root):
+            for st in w["steps"]:
+                membership.setdefault(st["stage"], []).append(w["workflow_id"])
+        for s in doc["stages"]:
+            s["workflow_ids"] = membership.get(s["stage_id"], [])
     return doc
 
 
@@ -108,18 +115,64 @@ def save_agent_doc(doc: dict, root: Path = ROOT) -> None:
 
 
 # ------------------------------------------------------------- workflows
+def load_workflow_sources(root: Path = ROOT) -> list[dict]:
+    """Hand-authored workflow definitions: registry/workflows/<id>.json (the only place membership is stated)."""
+    return [json.loads(p.read_text(encoding="utf-8")) for p in sorted((root / "registry" / "workflows").glob("*.json"))]
+
+
+def _levels(steps: list[dict]) -> dict[int, int]:
+    ids = {s["stage"] for s in steps}
+    needs = {s["stage"]: [n for n in s["needs"] if n in ids] for s in steps}
+    level: dict[int, int] = {}
+
+    def lv(i: int) -> int:
+        if i not in level:
+            level[i] = 1 + max((lv(n) for n in needs[i]), default=0)
+        return level[i]
+
+    for i in ids:
+        lv(i)
+    return level
+
+
+def resolve_workflow(src: dict, stages_by_id: dict[int, dict]) -> dict:
+    steps = src["steps"]
+    level = _levels(steps)
+    by_level: dict[int, list[int]] = {}
+    for s in steps:
+        by_level.setdefault(level[s["stage"]], []).append(s["stage"])
+    parallel = [sorted(v) for _, v in sorted(by_level.items()) if len(v) > 1]
+    approvals = [
+        {"stage": s["stage"], "approver": stages_by_id[s["stage"]]["approver"], "condition": stages_by_id[s["stage"]].get("approval_condition", "always")}
+        for s in steps if stages_by_id[s["stage"]].get("approval_required")
+    ]
+    skills: list[str] = []
+    for s in steps:
+        for k in stages_by_id[s["stage"]]["skills"]:
+            if k not in skills:
+                skills.append(k)
+    owners: list[str] = []
+    for s in steps:
+        if s["owner"] not in owners:
+            owners.append(s["owner"])
+    out = dict(src)
+    out["steps"] = [{**s, "level": level[s["stage"]]} for s in steps]
+    out["stages"] = [s["stage"] for s in steps]
+    out["responsible_agents"] = owners
+    out["required_skills"] = skills
+    out["approval_points"] = approvals
+    out["approval_gates"] = [f"{a['stage']} {stages_by_id[a['stage']]['stage_name']} ({a['approver']}; {a['condition']})" for a in approvals]
+    out["parallel_groups"] = parallel
+    out["parallel_tasks"] = [f"Stages {', '.join(map(str, g))} can run in parallel." for g in parallel]
+    out["dependencies"] = [f"{s['stage']} after {', '.join(map(str, s['needs']))}" for s in steps if s["needs"]]
+    out["failure_handling"] = " ".join(f"At {f['at']}: {f['condition']} -> {f['action']}." for f in src["failure_paths"]) or "No stage-specific failure path; halt and escalate per the common failure policy."
+    out["completion_criteria"] = " ".join(src["exit_criteria"])
+    return out
+
+
 def load_workflow_doc(root: Path = ROOT) -> dict:
-    doc = _read(root, "registry/WORKFLOW_REGISTRY.json")
-    d = _read(root, "registry/workflow-defaults.json")
-    doc["workflows"] = [{**{f: copy.deepcopy(d[f]) for f in WORKFLOW_FIELDS}, **w} for w in doc["workflows"]]
-    return doc
-
-
-def save_workflow_doc(doc: dict, root: Path = ROOT) -> None:
-    d = _read(root, "registry/workflow-defaults.json")
-    out = dict(doc)
-    out["workflows"] = [{k: v for k, v in w.items() if not (k in WORKFLOW_FIELDS and v == d[k])} for w in doc["workflows"]]
-    _write(root, "registry/WORKFLOW_REGISTRY.json", out)
+    stages_by_id = {s["stage_id"]: s for s in load_stage_doc(root, with_workflows=False)["stages"]}
+    return {"schema_version": "3.0.0", "workflows": [resolve_workflow(w, stages_by_id) for w in load_workflow_sources(root)]}
 
 
 # ---------------------------------------------------------------- skills

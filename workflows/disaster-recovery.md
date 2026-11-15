@@ -1,101 +1,94 @@
-# Disaster Recovery
+# Disaster recovery
 
-> **Purpose:** prove recoverability against RTO/RPO objectives
+> Generated from `registry/workflows/disaster-recovery.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to prove recoverability against RTO/RPO objectives.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Recover service and data after a regional failure or data loss and measure recovery against targets.
 
-## Lifecycle phases
-### 1. Confirm RTO/RPO
+**Trigger.** A region, data store or provider is lost, or a scheduled DR exercise starts.
 
-**Accountable role:** cloud-engineer
+## Entry criteria
+- DR plan and RTO/RPO targets exist
+- Backups are available in an isolated location
 
-**Execution:** Set business-approved recovery time and point objectives for each critical service/data set. Workflow-specific control: Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.
+## Required inputs
+- dr_plan
+- rto_rpo_targets
+- backup_inventory
 
-**Required evidence:**
-- RTO/RPO matrix
-- business impact rationale
-- workflow-specific safety/control evidence
+## Flow
 
-**Exit criteria:** Objectives are measurable, owned and aligned to business impact.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Prepare isolated recovery
+```mermaid
+flowchart TD
+  S162["162 Incident Detection"]
+  S147["147 Backup Management"]
+  S148{{"148 Disaster Recovery"}}
+  S142["142 Database Hosting"]
+  S149["149 High Availability"]
+  S138["138 Production Smoke Test"]
+  S165["165 Postmortem"]
+  S162 --> S147
+  S147 --> S148
+  S148 --> S142
+  S148 --> S149
+  S142 --> S138
+  S149 --> S138
+  S138 --> S165
+  S147 -. yes .-> S148
+  S147 -. no .-> DONE
+  S142 -. fail .-> S147
+  S138 -. fail .-> S149
+  DONE((DONE))
+```
 
-**Accountable role:** database-administrator
+## Steps
 
-**Execution:** Provision clean recovery identities, network and compute isolated from the compromised/failed environment. Workflow-specific control: Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 162 | Incident Detection | `incident-manager` | - | Assess scope of loss. |
+| 147 | Backup Management | `database-administrator` | 162 | Verify which backup to restore from. |
+| 148 | Disaster Recovery | `sre` | 147 | Declare DR and execute the plan.; approval: dr-owner |
+| 142 | Database Hosting | `database-administrator` | 148 | Restore data stores. |
+| 149 | High Availability | `cloud-architect` | 148 | Fail over or rebuild compute and networking. |
+| 138 | Production Smoke Test | `sre` | 142, 149 |  |
+| 165 | Postmortem | `incident-manager` | 138 |  |
 
-**Required evidence:**
-- recovery environment plan
-- identity/network controls
-- access audit
-- workflow-specific safety/control evidence
+## Parallel work
+- Stages 142, 149
 
-**Exit criteria:** Recovery environment is isolated and access is verified.
+## Human approval points
 
-### 3. Restore/fail over
+| Stage | Approver | When |
+|---:|---|---|
+| 148 Disaster Recovery | `dr-owner` | always |
 
-**Accountable role:** sre
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Restore from selected backup or fail over using documented sequence; capture elapsed time and replication position. Workflow-specific control: Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.
+## Decision points
+- After 147 - Is a usable backup available? **yes** -> 148; **no** -> end
 
-**Required evidence:**
-- restore/failover log
-- backup identity
-- elapsed time
-- workflow-specific safety/control evidence
+## Failure and remediation
 
-**Exit criteria:** Recovery completes within target or gap is formally recorded.
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 142 | Restore fails integrity checks | Try the previous backup; record data loss window | 147 |
+| 138 | Smoke test fails after failover | Hold traffic; investigate before cutover | 149 |
 
-### 4. Validate integrity
+## Outputs
+- dr_test_report
+- measured_rto_rpo
+- postmortem
 
-**Accountable role:** incident-manager
+## Exit criteria
+- Measured RTO and RPO are recorded against targets
+- Data integrity checks pass
+- Gaps in the plan become tracked actions
 
-**Execution:** Run database checks, application smoke tests and business reconciliation before reopening traffic. Workflow-specific control: Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.
+## Communication
+Declare DR to executives and customers; update at fixed intervals.
 
-**Required evidence:**
-- integrity report
-- application validation
-- business reconciliation
-- workflow-specific safety/control evidence
+## Hands off to
+- [root-cause-analysis](root-cause-analysis.md)
 
-**Exit criteria:** Data and application state are accepted by owners.
-
-### 5. Measure gaps
-
-**Accountable role:** incident-manager
-
-**Execution:** Compare actual recovery time/data loss with objectives and prioritize resilience improvements. Workflow-specific control: Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.
-
-**Required evidence:**
-- RTO/RPO result
-- gap register
-- improvement actions
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Each gap has owner, target date and next exercise.
-
-
-## Stage set and accountable roles
-Stage IDs: 141, 142, 143, 144, 145, 147, 148, 149, 151, 153, 154, 155, 156, 157, 159, 160, 161, 163, 165, 166
-Accountable roles: cloud-engineer, database-administrator, sre, incident-manager
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition, explicit-human-authorization. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.
-**Recovery:** Measure actual RTO/RPO during rehearsal; isolate recovery credentials and environment; validate restored data integrity and application dependencies before declaring recovery.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

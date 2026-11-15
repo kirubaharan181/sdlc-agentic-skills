@@ -1,101 +1,101 @@
-# Product Retirement
+# Product retirement
 
-> **Purpose:** retire a product with consumer and data obligations closed
+> Generated from `registry/workflows/product-retirement.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to retire a product with consumer and data obligations closed.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Sunset a product with notice, data export, decommissioning, access revocation and audit.
 
-## Lifecycle phases
-### 1. Approve EOL
+**Trigger.** The business approves retiring a product or major component.
 
-**Accountable role:** product-manager
+## Entry criteria
+- Retirement decision documented
+- Contractual notice periods known
 
-**Execution:** Confirm product retirement rationale, support end date, legal retention and accountable sponsor approval. Workflow-specific control: Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.
+## Required inputs
+- retirement_decision
+- customer_list
+- contract_inventory
+- data_retention_policy
 
-**Required evidence:**
-- EOL decision
-- notice and retention requirements
-- workflow-specific safety/control evidence
+## Flow
 
-**Exit criteria:** Retirement authority and affected-party notice are approved.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Inventory consumers/data/vendors
+```mermaid
+flowchart TD
+  S180{{"180 Product Lifecycle Management"}}
+  S43["43 Stakeholder Management"]
+  S188["188 Vendor Management"]
+  S147["147 Backup Management"]
+  S173{{"173 Database Maintenance"}}
+  S144["144 DNS Management"]
+  S152["152 Infrastructure Maintenance"]
+  S184{{"184 Access Governance"}}
+  S185["185 Compliance Auditing"]
+  S180 --> S43
+  S180 --> S188
+  S43 --> S147
+  S147 --> S173
+  S43 --> S144
+  S173 --> S152
+  S144 --> S152
+  S152 --> S184
+  S184 --> S185
+  S188 --> S185
+  S147 -. yes .-> DONE
+  S147 -. no .-> S173
+  DONE((DONE))
+```
 
-**Accountable role:** vendor-management-specialist
+## Steps
 
-**Execution:** Find active clients, integrations, SDKs and usage patterns from gateway logs, repositories and owner records; classify migration criticality. Workflow-specific control: Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 180 | Product Lifecycle Management | `product-manager` | - | Plan, and obtain sponsor approval.; approval: business-sponsor |
+| 43 | Stakeholder Management | `program-manager` | 180 | Notify customers and internal stakeholders. |
+| 188 | Vendor Management | `vendor-management-specialist` | 180 | Give notice on vendor contracts. |
+| 147 | Backup Management | `database-administrator` | 43 | Export and archive data per retention policy. |
+| 173 | Database Maintenance | `database-administrator` | 147 | Delete data after the retention hold; destructive, approval required.; approval: dba-owner |
+| 144 | DNS Management | `network-engineer` | 43 |  |
+| 152 | Infrastructure Maintenance | `infrastructure-engineer` | 173, 144 | Decommission compute, storage and DNS. |
+| 184 | Access Governance | `compliance-specialist` | 152 | Revoke access; approval by the access owner.; approval: access-owner |
+| 185 | Compliance Auditing | `security-auditor` | 184, 188 |  |
 
-**Required evidence:**
-- consumer inventory
-- usage evidence
-- owner and contact list
-- workflow-specific safety/control evidence
+## Parallel work
+- Stages 43, 188
+- Stages 144, 147
 
-**Exit criteria:** No known active consumer is omitted without documented uncertainty.
+## Human approval points
 
-### 3. Migrate and communicate
+| Stage | Approver | When |
+|---:|---|---|
+| 180 Product Lifecycle Management | `business-sponsor` | always |
+| 173 Database Maintenance | `dba-owner` | for destructive or locking maintenance on production data |
+| 184 Access Governance | `access-owner` | when granting or widening privileged or break-glass access, or revoking access in bulk |
 
-**Accountable role:** compliance-specialist
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Move users and data to an approved successor, reconcile completeness and communicate cutover/support dates. Workflow-specific control: Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.
+## Decision points
+- After 147 - Is any legal or retention hold active? **yes** -> end; **no** -> 173
 
-**Required evidence:**
-- migration and reconciliation report
-- customer notices
-- cutover plan
-- workflow-specific safety/control evidence
+## Failure and remediation
 
-**Exit criteria:** Consumers confirm readiness or receive a supported exception path.
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 184 | Residual access found | Revoke and re-audit before closing | 184 |
 
-### 4. Stage shutdown
+## Outputs
+- retirement_plan
+- data_disposition_record
+- access_revocation_record
+- audit_report
 
-**Accountable role:** technical-support-engineer
+## Exit criteria
+- Customers notified within contract terms
+- Data archived or deleted with recorded approval
+- All access and credentials revoked
+- Recurring cost stopped
 
-**Execution:** Disable access and traffic in controlled steps while monitoring residual usage and preserving required records. Workflow-specific control: Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.
+## Communication
+Customer notice schedule; internal announcement at decommission.
 
-**Required evidence:**
-- shutdown checklist
-- residual access scan
-- traffic/usage evidence
-- workflow-specific safety/control evidence
-
-**Exit criteria:** No active critical consumer remains and rollback window is understood.
-
-### 5. Close audit and support
-
-**Accountable role:** technical-support-engineer
-
-**Execution:** Remove residual credentials/infrastructure, complete retention/deletion evidence and transfer remaining support obligations. Workflow-specific control: Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.
-
-**Required evidence:**
-- decommission evidence
-- deletion/retention record
-- support closure
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Security, legal and service owners accept closure.
-
-
-## Stage set and accountable roles
-Stage IDs: 9, 10, 180, 185, 188
-Accountable roles: product-manager, vendor-management-specialist, compliance-specialist, technical-support-engineer
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition, explicit-human-authorization. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.
-**Recovery:** Inventory users, integrations, data, legal retention and supplier dependencies; communicate notice; verify export/migration, access removal, deletion and audit closure.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

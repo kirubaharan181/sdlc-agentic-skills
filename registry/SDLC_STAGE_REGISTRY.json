@@ -9,9 +9,6 @@
       "skills": [
         "business-product-management"
       ],
-      "workflow_ids": [
-        "new-product-development"
-      ],
       "inputs": [
         "business context and strategic horizon",
         "customer and market evidence",
@@ -61,9 +58,6 @@
       "category_name": "Business, Strategy and Product Management",
       "skills": [
         "business-product-management"
-      ],
-      "workflow_ids": [
-        "new-product-development"
       ],
       "inputs": [
         "research objective and target segment",
@@ -116,11 +110,6 @@
       "skills": [
         "business-product-management"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "client stakeholders and decision authority",
         "statement of need and current commitments",
@@ -170,11 +159,6 @@
       "category_name": "Business, Strategy and Product Management",
       "skills": [
         "business-product-management"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "problem statement and target users",
@@ -229,11 +213,6 @@
       "skills": [
         "business-product-management"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "business objectives and stakeholders",
         "current-state process evidence",
@@ -283,11 +262,6 @@
       "category_name": "Business, Strategy and Product Management",
       "skills": [
         "business-product-management"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "approved product objectives",
@@ -340,11 +314,6 @@
       "category_name": "Business, Strategy and Product Management",
       "skills": [
         "business-product-management"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "solution hypothesis and requirements",
@@ -399,11 +368,6 @@
       "skills": [
         "business-product-management"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "scope breakdown and assumptions",
         "rates, capacity and supplier estimates",
@@ -456,9 +420,6 @@
       "skills": [
         "business-product-management"
       ],
-      "workflow_ids": [
-        "product-retirement"
-      ],
       "inputs": [
         "decision request and accountable sponsor",
         "impact/risk assessment",
@@ -510,9 +471,6 @@
       "category_name": "Business, Strategy and Product Management",
       "skills": [
         "business-product-management"
-      ],
-      "workflow_ids": [
-        "product-retirement"
       ],
       "inputs": [
         "contract version and counterparties",
@@ -568,11 +526,6 @@
       "skills": [
         "requirements-design"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "stakeholder map and interview plan",
         "business goals and known constraints",
@@ -624,9 +577,6 @@
       "skills": [
         "requirements-design"
       ],
-      "workflow_ids": [
-        "new-product-development"
-      ],
       "inputs": [
         "validated needs and decisions",
         "document template and audience",
@@ -676,11 +626,6 @@
       "category_name": "Requirements Engineering and UI/UX Design",
       "skills": [
         "requirements-design"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "user and system scenarios",
@@ -732,11 +677,6 @@
       "category_name": "Requirements Engineering and UI/UX Design",
       "skills": [
         "requirements-design"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "workload profile and business criticality",
@@ -790,11 +730,6 @@
       "skills": [
         "requirements-design"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "research question and participant criteria",
         "consent/privacy plan",
@@ -844,9 +779,6 @@
       "category_name": "Requirements Engineering and UI/UX Design",
       "skills": [
         "requirements-design"
-      ],
-      "workflow_ids": [
-        "new-product-development"
       ],
       "inputs": [
         "validated personas or user segments",
@@ -898,9 +830,6 @@
       "skills": [
         "requirements-design"
       ],
-      "workflow_ids": [
-        "feature-development"
-      ],
       "inputs": [
         "validated task flows",
         "content requirements",
@@ -949,10 +878,6 @@
       "category_name": "Requirements Engineering and UI/UX Design",
       "skills": [
         "requirements-design"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "feature-development"
       ],
       "inputs": [
         "approved wireframes and design tokens",
@@ -1003,11 +928,6 @@
       "skills": [
         "requirements-design"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "user goals and journey evidence",
         "wireframes and interaction constraints",
@@ -1057,11 +977,6 @@
       "category_name": "Requirements Engineering and UI/UX Design",
       "skills": [
         "requirements-design"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "hypothesis and target user task",
@@ -1115,11 +1030,6 @@
       "skills": [
         "requirements-design"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "target standard and conformance level",
         "supported browsers/devices and assistive tech",
@@ -1169,11 +1079,6 @@
       "category_name": "Requirements Engineering and UI/UX Design",
       "skills": [
         "requirements-design"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "draft requirements and traceability",
@@ -1227,11 +1132,6 @@
       "skills": [
         "technical-architecture"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "business capabilities and system context",
         "runtime/deployment constraints",
@@ -1282,9 +1182,6 @@
       "category_name": "Software, Solution and Technical Architecture",
       "skills": [
         "technical-architecture"
-      ],
-      "workflow_ids": [
-        "new-product-development"
       ],
       "inputs": [
         "business capabilities and system context",
@@ -1337,11 +1234,6 @@
       "skills": [
         "technical-architecture"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "business capabilities and system context",
         "runtime/deployment constraints",
@@ -1390,9 +1282,6 @@
       "category_name": "Software, Solution and Technical Architecture",
       "skills": [
         "technical-architecture"
-      ],
-      "workflow_ids": [
-        "database-migration"
       ],
       "inputs": [
         "data ownership and lifecycle",
@@ -1446,11 +1335,6 @@
       "skills": [
         "technical-architecture"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "feature-development",
-        "api-version-upgrade"
-      ],
       "inputs": [
         "consumer journeys and use cases",
         "data ownership and security classification",
@@ -1499,9 +1383,6 @@
       "category_name": "Software, Solution and Technical Architecture",
       "skills": [
         "technical-architecture"
-      ],
-      "workflow_ids": [
-        "infrastructure-provisioning"
       ],
       "inputs": [
         "availability and recovery objectives",
@@ -1554,9 +1435,6 @@
       "skills": [
         "technical-architecture"
       ],
-      "workflow_ids": [
-        "new-product-development"
-      ],
       "inputs": [
         "data flows and assets",
         "threat actors and trust boundaries",
@@ -1606,11 +1484,6 @@
       "category_name": "Software, Solution and Technical Architecture",
       "skills": [
         "technical-architecture"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "business data domains and owners",
@@ -1664,11 +1537,6 @@
       "skills": [
         "technical-architecture"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "producer/consumer contracts",
         "protocol, volume and latency constraints",
@@ -1720,11 +1588,6 @@
       "category_name": "Software, Solution and Technical Architecture",
       "skills": [
         "technical-architecture"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "capability requirements and constraints",
@@ -1778,11 +1641,6 @@
       "skills": [
         "technical-architecture"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "approved architecture decisions",
         "audience and repository conventions",
@@ -1834,9 +1692,6 @@
       "skills": [
         "technical-architecture"
       ],
-      "workflow_ids": [
-        "existing-application-enhancement"
-      ],
       "inputs": [
         "architecture baseline and ADRs",
         "quality attribute scenarios",
@@ -1885,9 +1740,6 @@
       "category_name": "Project, Program and Agile Management",
       "skills": [
         "project-agile-management"
-      ],
-      "workflow_ids": [
-        "new-product-development"
       ],
       "inputs": [
         "business case and sponsor",
@@ -1941,11 +1793,6 @@
       "skills": [
         "project-agile-management"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "work estimates and skill requirements",
         "availability and leave calendar",
@@ -1995,12 +1842,6 @@
       "category_name": "Project, Program and Agile Management",
       "skills": [
         "project-agile-management"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development",
-        "technical-debt-reduction"
       ],
       "inputs": [
         "approved scope and deliverables",
@@ -2052,11 +1893,6 @@
       "category_name": "Project, Program and Agile Management",
       "skills": [
         "project-agile-management"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "scope breakdown and assumptions",
@@ -2111,11 +1947,6 @@
       "skills": [
         "project-agile-management"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "ordered ready backlog",
         "team capacity and availability",
@@ -2166,11 +1997,6 @@
       "skills": [
         "project-agile-management"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "team working agreement and iteration goal",
         "work item state and cycle-time data",
@@ -2218,11 +2044,6 @@
       "category_name": "Project, Program and Agile Management",
       "skills": [
         "project-agile-management"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "team working agreement and iteration goal",
@@ -2272,11 +2093,6 @@
       "category_name": "Project, Program and Agile Management",
       "skills": [
         "project-agile-management"
-      ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "scope, architecture and dependency context",
@@ -2329,11 +2145,6 @@
       "skills": [
         "project-agile-management"
       ],
-      "workflow_ids": [
-        "new-product-development",
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "stakeholder and influence map",
         "decision calendar",
@@ -2381,9 +2192,6 @@
       "category_name": "Project, Program and Agile Management",
       "skills": [
         "project-agile-management"
-      ],
-      "workflow_ids": [
-        "existing-application-enhancement"
       ],
       "inputs": [
         "change request and baseline",
@@ -2439,9 +2247,6 @@
       "skills": [
         "engineering-governance"
       ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation"
-      ],
       "inputs": [
         "repository ownership and team model",
         "language/runtime and build manifests",
@@ -2492,9 +2297,6 @@
       "category_name": "Development Environment and Engineering Governance",
       "skills": [
         "engineering-governance"
-      ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation"
       ],
       "inputs": [
         "repository ownership and team model",
@@ -2548,11 +2350,6 @@
       "skills": [
         "engineering-governance"
       ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation",
-        "infrastructure-provisioning",
-        "application-maintenance"
-      ],
       "inputs": [
         "repository ownership and team model",
         "language/runtime and build manifests",
@@ -2605,11 +2402,6 @@
       "skills": [
         "engineering-governance"
       ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation",
-        "infrastructure-provisioning",
-        "application-maintenance"
-      ],
       "inputs": [
         "repository ownership and team model",
         "language/runtime and build manifests",
@@ -2661,9 +2453,6 @@
       "skills": [
         "engineering-governance"
       ],
-      "workflow_ids": [
-        "environment-configuration"
-      ],
       "inputs": [
         "repository ownership and team model",
         "language/runtime and build manifests",
@@ -2714,10 +2503,6 @@
       "category_name": "Development Environment and Engineering Governance",
       "skills": [
         "engineering-governance"
-      ],
-      "workflow_ids": [
-        "environment-configuration",
-        "ci-cd-pipeline-creation"
       ],
       "inputs": [
         "repository ownership and team model",
@@ -2774,11 +2559,6 @@
       "skills": [
         "engineering-governance"
       ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation",
-        "infrastructure-provisioning",
-        "application-maintenance"
-      ],
       "inputs": [
         "validated needs and decisions",
         "document template and audience",
@@ -2829,11 +2609,6 @@
       "category_name": "Development Environment and Engineering Governance",
       "skills": [
         "engineering-governance"
-      ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation",
-        "environment-configuration",
-        "application-maintenance"
       ],
       "inputs": [
         "repository ownership and team model",
@@ -2887,10 +2662,6 @@
       "skills": [
         "software-implementation"
       ],
-      "workflow_ids": [
-        "existing-application-enhancement",
-        "feature-development"
-      ],
       "inputs": [
         "approved UI/UX specification",
         "API contracts and browser support matrix",
@@ -2940,10 +2711,6 @@
       "category_name": "Software Development and Implementation",
       "skills": [
         "software-implementation"
-      ],
-      "workflow_ids": [
-        "existing-application-enhancement",
-        "feature-development"
       ],
       "inputs": [
         "domain rules and API contract",
@@ -2997,11 +2764,6 @@
       "skills": [
         "software-implementation"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "existing-application-enhancement",
-        "bug-fix"
-      ],
       "inputs": [
         "user story and acceptance examples",
         "frontend/backend/API contracts",
@@ -3053,11 +2815,6 @@
       "skills": [
         "software-implementation"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "existing-application-enhancement",
-        "bug-fix"
-      ],
       "inputs": [
         "platform targets and OS versions",
         "design and API contracts",
@@ -3107,9 +2864,6 @@
       "category_name": "Software Development and Implementation",
       "skills": [
         "software-implementation"
-      ],
-      "workflow_ids": [
-        "feature-development"
       ],
       "inputs": [
         "approved OpenAPI or interface contract",
@@ -3163,11 +2917,6 @@
       "skills": [
         "software-implementation"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "existing-application-enhancement",
-        "bug-fix"
-      ],
       "inputs": [
         "logical data model and query requirements",
         "transaction and concurrency model",
@@ -3220,11 +2969,6 @@
       "skills": [
         "software-implementation"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "existing-application-enhancement",
-        "bug-fix"
-      ],
       "inputs": [
         "identity provider and protocol requirements",
         "session/token lifecycle",
@@ -3275,11 +3019,6 @@
       "category_name": "Software Development and Implementation",
       "skills": [
         "software-implementation"
-      ],
-      "workflow_ids": [
-        "feature-development",
-        "existing-application-enhancement",
-        "bug-fix"
       ],
       "inputs": [
         "roles/attributes and resource ownership model",
@@ -3333,11 +3072,6 @@
       "skills": [
         "software-implementation"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "existing-application-enhancement",
-        "bug-fix"
-      ],
       "inputs": [
         "partner API/contract and credentials via approved secret store",
         "rate limits and service objectives",
@@ -3389,11 +3123,6 @@
       "category_name": "Software Development and Implementation",
       "skills": [
         "software-implementation"
-      ],
-      "workflow_ids": [
-        "feature-development",
-        "existing-application-enhancement",
-        "bug-fix"
       ],
       "inputs": [
         "event/message contract",
@@ -3447,11 +3176,6 @@
       "skills": [
         "software-implementation"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "existing-application-enhancement",
-        "bug-fix"
-      ],
       "inputs": [
         "source contracts and data classification",
         "target model and freshness objective",
@@ -3501,11 +3225,6 @@
       "category_name": "Software Development and Implementation",
       "skills": [
         "software-implementation"
-      ],
-      "workflow_ids": [
-        "feature-development",
-        "existing-application-enhancement",
-        "bug-fix"
       ],
       "inputs": [
         "problem framing and intended use",
@@ -3559,11 +3278,6 @@
       "skills": [
         "software-implementation"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "existing-application-enhancement",
-        "bug-fix"
-      ],
       "inputs": [
         "baseline workload and latency profile",
         "consistency/freshness requirements",
@@ -3616,10 +3330,6 @@
       "skills": [
         "software-implementation"
       ],
-      "workflow_ids": [
-        "bug-fix",
-        "emergency-hotfix"
-      ],
       "inputs": [
         "failure taxonomy and API contract",
         "retry/idempotency constraints",
@@ -3671,12 +3381,6 @@
       "category_name": "Software Development and Implementation",
       "skills": [
         "software-implementation"
-      ],
-      "workflow_ids": [
-        "existing-application-enhancement",
-        "feature-development",
-        "bug-fix",
-        "emergency-hotfix"
       ],
       "inputs": [
         "testable acceptance criteria and risk profile",
@@ -3734,10 +3438,6 @@
       "skills": [
         "code-review-quality"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix"
-      ],
       "inputs": [
         "approved issue and acceptance criteria",
         "working branch and target base",
@@ -3790,13 +3490,6 @@
       "skills": [
         "code-review-quality"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "emergency-hotfix",
-        "security-vulnerability-remediation",
-        "dependency-update"
-      ],
       "inputs": [
         "diff and target branch",
         "coding/architecture standards",
@@ -3847,11 +3540,6 @@
       "skills": [
         "code-review-quality"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "emergency-hotfix"
-      ],
       "inputs": [
         "architecture baseline and ADRs",
         "quality attribute scenarios",
@@ -3901,11 +3589,6 @@
       "category_name": "Code Review, Static Analysis and Quality Engineering",
       "skills": [
         "code-review-quality"
-      ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "emergency-hotfix"
       ],
       "inputs": [
         "diff and target branch",
@@ -3958,9 +3641,6 @@
       "skills": [
         "code-review-quality"
       ],
-      "workflow_ids": [
-        "dependency-update"
-      ],
       "inputs": [
         "diff and target branch",
         "coding/architecture standards",
@@ -4011,11 +3691,6 @@
       "category_name": "Code Review, Static Analysis and Quality Engineering",
       "skills": [
         "code-review-quality"
-      ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "emergency-hotfix"
       ],
       "inputs": [
         "diff and target branch",
@@ -4068,11 +3743,6 @@
       "skills": [
         "code-review-quality"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "emergency-hotfix"
-      ],
       "inputs": [
         "diff and target branch",
         "coding/architecture standards",
@@ -4123,11 +3793,6 @@
       "category_name": "Code Review, Static Analysis and Quality Engineering",
       "skills": [
         "code-review-quality"
-      ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "emergency-hotfix"
       ],
       "inputs": [
         "decision request and accountable sponsor",
@@ -4183,11 +3848,6 @@
       "skills": [
         "code-review-quality"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "emergency-hotfix"
-      ],
       "inputs": [
         "diff and target branch",
         "coding/architecture standards",
@@ -4239,9 +3899,6 @@
       "category_name": "Software Testing and Quality Assurance",
       "skills": [
         "quality-assurance"
-      ],
-      "workflow_ids": [
-        "staging-release"
       ],
       "inputs": [
         "testable acceptance criteria and risk profile",
@@ -4298,11 +3955,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
-      ],
       "inputs": [
         "testable acceptance criteria and risk profile",
         "test environment and data",
@@ -4357,10 +4009,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix"
-      ],
       "inputs": [
         "testable acceptance criteria and risk profile",
         "test environment and data",
@@ -4414,9 +4062,6 @@
       "category_name": "Software Testing and Quality Assurance",
       "skills": [
         "quality-assurance"
-      ],
-      "workflow_ids": [
-        "feature-development"
       ],
       "inputs": [
         "testable acceptance criteria and risk profile",
@@ -4473,11 +4118,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
-      ],
       "inputs": [
         "testable acceptance criteria and risk profile",
         "test environment and data",
@@ -4533,11 +4173,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
-      ],
       "inputs": [
         "testable acceptance criteria and risk profile",
         "test environment and data",
@@ -4591,11 +4226,6 @@
       "category_name": "Software Testing and Quality Assurance",
       "skills": [
         "quality-assurance"
-      ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
       ],
       "inputs": [
         "testable acceptance criteria and risk profile",
@@ -4651,9 +4281,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development"
-      ],
       "inputs": [
         "testable acceptance criteria and risk profile",
         "test environment and data",
@@ -4708,10 +4335,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix"
-      ],
       "inputs": [
         "testable acceptance criteria and risk profile",
         "test environment and data",
@@ -4763,11 +4386,6 @@
       "category_name": "Software Testing and Quality Assurance",
       "skills": [
         "quality-assurance"
-      ],
-      "workflow_ids": [
-        "bug-fix",
-        "staging-release",
-        "production-release"
       ],
       "inputs": [
         "testable acceptance criteria and risk profile",
@@ -4821,11 +4439,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
-      ],
       "inputs": [
         "testable acceptance criteria and risk profile",
         "test environment and data",
@@ -4875,11 +4488,6 @@
       "category_name": "Software Testing and Quality Assurance",
       "skills": [
         "quality-assurance"
-      ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
       ],
       "inputs": [
         "testable acceptance criteria and risk profile",
@@ -4935,11 +4543,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
-      ],
       "inputs": [
         "testable acceptance criteria and risk profile",
         "test environment and data",
@@ -4994,11 +4597,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
-      ],
       "inputs": [
         "target standard and conformance level",
         "supported browsers/devices and assistive tech",
@@ -5052,11 +4650,6 @@
       "category_name": "Software Testing and Quality Assurance",
       "skills": [
         "quality-assurance"
-      ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
       ],
       "inputs": [
         "testable acceptance criteria and risk profile",
@@ -5113,11 +4706,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
-      ],
       "inputs": [
         "testable acceptance criteria and risk profile",
         "test environment and data",
@@ -5171,11 +4759,6 @@
       "category_name": "Software Testing and Quality Assurance",
       "skills": [
         "quality-assurance"
-      ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
       ],
       "inputs": [
         "testable acceptance criteria and risk profile",
@@ -5231,11 +4814,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
-      ],
       "inputs": [
         "testable acceptance criteria and risk profile",
         "test environment and data",
@@ -5289,10 +4867,6 @@
       "category_name": "Software Testing and Quality Assurance",
       "skills": [
         "quality-assurance"
-      ],
-      "workflow_ids": [
-        "feature-development",
-        "staging-release"
       ],
       "inputs": [
         "testable acceptance criteria and risk profile",
@@ -5352,9 +4926,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "bug-fix"
-      ],
       "inputs": [
         "defect report and affected build",
         "severity/priority policy",
@@ -5407,11 +4978,6 @@
       "skills": [
         "quality-assurance"
       ],
-      "workflow_ids": [
-        "feature-development",
-        "bug-fix",
-        "production-release"
-      ],
       "inputs": [
         "decision request and accountable sponsor",
         "impact/risk assessment",
@@ -5461,9 +5027,6 @@
       "category_name": "Cybersecurity, Application Security and Compliance",
       "skills": [
         "application-security"
-      ],
-      "workflow_ids": [
-        "security-vulnerability-remediation"
       ],
       "inputs": [
         "system/data-flow diagrams",
@@ -5517,11 +5080,6 @@
       "skills": [
         "application-security"
       ],
-      "workflow_ids": [
-        "security-vulnerability-remediation",
-        "infrastructure-provisioning",
-        "ci-cd-pipeline-creation"
-      ],
       "inputs": [
         "source revision and language coverage",
         "scanner configuration and severity policy",
@@ -5572,11 +5130,6 @@
       "skills": [
         "application-security"
       ],
-      "workflow_ids": [
-        "security-vulnerability-remediation",
-        "dependency-update",
-        "ci-cd-pipeline-creation"
-      ],
       "inputs": [
         "written target scope and time window",
         "test account and safe data",
@@ -5626,11 +5179,6 @@
       "category_name": "Cybersecurity, Application Security and Compliance",
       "skills": [
         "application-security"
-      ],
-      "workflow_ids": [
-        "security-vulnerability-remediation",
-        "dependency-update",
-        "ci-cd-pipeline-creation"
       ],
       "inputs": [
         "resolved lockfiles and packaged artifact",
@@ -5683,11 +5231,6 @@
       "skills": [
         "application-security"
       ],
-      "workflow_ids": [
-        "security-vulnerability-remediation",
-        "dependency-update",
-        "ci-cd-pipeline-creation"
-      ],
       "inputs": [
         "authorized scope and asset inventory",
         "scanner/tool configuration and version",
@@ -5738,9 +5281,6 @@
       "skills": [
         "application-security"
       ],
-      "workflow_ids": [
-        "infrastructure-provisioning"
-      ],
       "inputs": [
         "authorized scope and asset inventory",
         "scanner/tool configuration and version",
@@ -5790,9 +5330,6 @@
       "category_name": "Cybersecurity, Application Security and Compliance",
       "skills": [
         "application-security"
-      ],
-      "workflow_ids": [
-        "security-vulnerability-remediation"
       ],
       "inputs": [
         "written authorization and target inventory",
@@ -5847,11 +5384,6 @@
       "skills": [
         "application-security"
       ],
-      "workflow_ids": [
-        "security-vulnerability-remediation",
-        "dependency-update",
-        "ci-cd-pipeline-creation"
-      ],
       "inputs": [
         "authorized scope and asset inventory",
         "scanner/tool configuration and version",
@@ -5901,11 +5433,6 @@
       "category_name": "Cybersecurity, Application Security and Compliance",
       "skills": [
         "application-security"
-      ],
-      "workflow_ids": [
-        "security-vulnerability-remediation",
-        "dependency-update",
-        "ci-cd-pipeline-creation"
       ],
       "inputs": [
         "authorized scope and asset inventory",
@@ -5957,11 +5484,6 @@
       "skills": [
         "application-security"
       ],
-      "workflow_ids": [
-        "security-vulnerability-remediation",
-        "dependency-update",
-        "ci-cd-pipeline-creation"
-      ],
       "inputs": [
         "contract version and counterparties",
         "applicable policy/control obligations",
@@ -6010,9 +5532,6 @@
       "category_name": "Cybersecurity, Application Security and Compliance",
       "skills": [
         "application-security"
-      ],
-      "workflow_ids": [
-        "dependency-update"
       ],
       "inputs": [
         "dependency inventory and lockfiles",
@@ -6069,10 +5588,6 @@
       "skills": [
         "application-security"
       ],
-      "workflow_ids": [
-        "security-vulnerability-remediation",
-        "production-release"
-      ],
       "inputs": [
         "validated finding and affected component/version",
         "exploitability, exposure and remediation SLA",
@@ -6123,11 +5638,6 @@
       "category_name": "Cybersecurity, Application Security and Compliance",
       "skills": [
         "application-security"
-      ],
-      "workflow_ids": [
-        "security-vulnerability-remediation",
-        "dependency-update",
-        "infrastructure-provisioning"
       ],
       "inputs": [
         "threat model and asset scope",
@@ -6182,9 +5692,6 @@
       "skills": [
         "devops-platform"
       ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation"
-      ],
       "inputs": [
         "repository and build graph",
         "deployment targets and environment protections",
@@ -6235,9 +5742,6 @@
       "category_name": "DevOps, CI/CD and Platform Engineering",
       "skills": [
         "devops-platform"
-      ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation"
       ],
       "inputs": [
         "repository and build graph",
@@ -6290,9 +5794,6 @@
       "skills": [
         "devops-platform"
       ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation"
-      ],
       "inputs": [
         "repository and build graph",
         "deployment targets and environment protections",
@@ -6341,9 +5842,6 @@
       "category_name": "DevOps, CI/CD and Platform Engineering",
       "skills": [
         "devops-platform"
-      ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation"
       ],
       "inputs": [
         "repository and build graph",
@@ -6396,9 +5894,6 @@
       "skills": [
         "devops-platform"
       ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation"
-      ],
       "inputs": [
         "build context and runtime dependencies",
         "base image and vulnerability policy",
@@ -6449,11 +5944,6 @@
       "category_name": "DevOps, CI/CD and Platform Engineering",
       "skills": [
         "devops-platform"
-      ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation",
-        "infrastructure-provisioning",
-        "staging-release"
       ],
       "inputs": [
         "repository and build graph",
@@ -6506,9 +5996,6 @@
       "category_name": "DevOps, CI/CD and Platform Engineering",
       "skills": [
         "devops-platform"
-      ],
-      "workflow_ids": [
-        "infrastructure-provisioning"
       ],
       "inputs": [
         "resource requirements and ownership",
@@ -6565,9 +6052,6 @@
       "skills": [
         "devops-platform"
       ],
-      "workflow_ids": [
-        "environment-configuration"
-      ],
       "inputs": [
         "repository and build graph",
         "deployment targets and environment protections",
@@ -6618,9 +6102,6 @@
       "category_name": "DevOps, CI/CD and Platform Engineering",
       "skills": [
         "devops-platform"
-      ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation"
       ],
       "inputs": [
         "repository and build graph",
@@ -6674,10 +6155,6 @@
       "skills": [
         "devops-platform"
       ],
-      "workflow_ids": [
-        "infrastructure-provisioning",
-        "environment-configuration"
-      ],
       "inputs": [
         "repository and build graph",
         "deployment targets and environment protections",
@@ -6728,10 +6205,6 @@
       "category_name": "DevOps, CI/CD and Platform Engineering",
       "skills": [
         "devops-platform"
-      ],
-      "workflow_ids": [
-        "infrastructure-provisioning",
-        "environment-configuration"
       ],
       "inputs": [
         "repository and build graph",
@@ -6788,11 +6261,6 @@
       "skills": [
         "devops-platform"
       ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation",
-        "infrastructure-provisioning",
-        "staging-release"
-      ],
       "inputs": [
         "repository and build graph",
         "deployment targets and environment protections",
@@ -6843,11 +6311,6 @@
       "category_name": "DevOps, CI/CD and Platform Engineering",
       "skills": [
         "devops-platform"
-      ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation",
-        "infrastructure-provisioning",
-        "staging-release"
       ],
       "inputs": [
         "repository and build graph",
@@ -6900,9 +6363,6 @@
       "skills": [
         "devops-platform"
       ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation"
-      ],
       "inputs": [
         "repository and build graph",
         "deployment targets and environment protections",
@@ -6953,9 +6413,6 @@
       "category_name": "DevOps, CI/CD and Platform Engineering",
       "skills": [
         "devops-platform"
-      ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation"
       ],
       "inputs": [
         "workflow triggers and runner inventory",
@@ -7008,10 +6465,6 @@
       "skills": [
         "release-deployment"
       ],
-      "workflow_ids": [
-        "staging-release",
-        "production-release"
-      ],
       "inputs": [
         "release candidate digest and scope",
         "change approvals and readiness evidence",
@@ -7063,10 +6516,6 @@
       "skills": [
         "release-deployment"
       ],
-      "workflow_ids": [
-        "staging-release",
-        "production-release"
-      ],
       "inputs": [
         "approved change list and issue links",
         "target audience and supported version",
@@ -7116,10 +6565,6 @@
       "category_name": "Release Engineering and Deployment Management",
       "skills": [
         "release-deployment"
-      ],
-      "workflow_ids": [
-        "staging-release",
-        "production-release"
       ],
       "inputs": [
         "candidate digest and scope",
@@ -7171,11 +6616,6 @@
       "category_name": "Release Engineering and Deployment Management",
       "skills": [
         "release-deployment"
-      ],
-      "workflow_ids": [
-        "database-migration",
-        "staging-release",
-        "production-release"
       ],
       "inputs": [
         "decision request and accountable sponsor",
@@ -7229,10 +6669,6 @@
       "skills": [
         "release-deployment"
       ],
-      "workflow_ids": [
-        "database-migration",
-        "staging-release"
-      ],
       "inputs": [
         "release candidate digest and scope",
         "change approvals and readiness evidence",
@@ -7283,11 +6719,6 @@
       "category_name": "Release Engineering and Deployment Management",
       "skills": [
         "release-deployment"
-      ],
-      "workflow_ids": [
-        "database-migration",
-        "environment-configuration",
-        "staging-release"
       ],
       "inputs": [
         "release candidate digest and scope",
@@ -7340,11 +6771,6 @@
       "category_name": "Release Engineering and Deployment Management",
       "skills": [
         "release-deployment"
-      ],
-      "workflow_ids": [
-        "database-migration",
-        "production-release",
-        "rollback"
       ],
       "inputs": [
         "schema consumers and compatibility matrix",
@@ -7400,11 +6826,6 @@
       "skills": [
         "release-deployment"
       ],
-      "workflow_ids": [
-        "database-migration",
-        "production-release",
-        "rollback"
-      ],
       "inputs": [
         "release candidate digest and scope",
         "change approvals and readiness evidence",
@@ -7459,9 +6880,6 @@
       "skills": [
         "release-deployment"
       ],
-      "workflow_ids": [
-        "production-release"
-      ],
       "inputs": [
         "domain ownership and target topology",
         "certificate and trust requirements",
@@ -7511,9 +6929,6 @@
       "category_name": "Release Engineering and Deployment Management",
       "skills": [
         "release-deployment"
-      ],
-      "workflow_ids": [
-        "production-release"
       ],
       "inputs": [
         "domain ownership and target topology",
@@ -7565,9 +6980,6 @@
       "skills": [
         "release-deployment"
       ],
-      "workflow_ids": [
-        "production-release"
-      ],
       "inputs": [
         "domain ownership and target topology",
         "certificate and trust requirements",
@@ -7617,11 +7029,6 @@
       "category_name": "Release Engineering and Deployment Management",
       "skills": [
         "release-deployment"
-      ],
-      "workflow_ids": [
-        "database-migration",
-        "production-release",
-        "rollback"
       ],
       "inputs": [
         "release and migration design",
@@ -7675,12 +7082,6 @@
       "skills": [
         "release-deployment"
       ],
-      "workflow_ids": [
-        "database-migration",
-        "staging-release",
-        "production-release",
-        "rollback"
-      ],
       "inputs": [
         "release candidate digest and scope",
         "change approvals and readiness evidence",
@@ -7732,10 +7133,6 @@
       "skills": [
         "release-deployment"
       ],
-      "workflow_ids": [
-        "staging-release",
-        "production-release"
-      ],
       "inputs": [
         "decision request and accountable sponsor",
         "impact/risk assessment",
@@ -7785,9 +7182,6 @@
       "category_name": "Cloud Infrastructure and Hosting Operations",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "workflow_ids": [
-        "infrastructure-provisioning"
       ],
       "inputs": [
         "service inventory and ownership",
@@ -7840,11 +7234,6 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "workflow_ids": [
-        "infrastructure-provisioning",
-        "disaster-recovery",
-        "incident-response"
-      ],
       "inputs": [
         "service inventory and ownership",
         "SLO/RTO/RPO and capacity profile",
@@ -7893,11 +7282,6 @@
       "category_name": "Cloud Infrastructure and Hosting Operations",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "workflow_ids": [
-        "infrastructure-provisioning",
-        "disaster-recovery",
-        "incident-response"
       ],
       "inputs": [
         "service inventory and ownership",
@@ -7950,11 +7334,6 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "workflow_ids": [
-        "infrastructure-provisioning",
-        "disaster-recovery",
-        "incident-response"
-      ],
       "inputs": [
         "service inventory and ownership",
         "SLO/RTO/RPO and capacity profile",
@@ -8006,11 +7385,6 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "workflow_ids": [
-        "infrastructure-provisioning",
-        "disaster-recovery",
-        "incident-response"
-      ],
       "inputs": [
         "domain ownership and target topology",
         "certificate and trust requirements",
@@ -8058,11 +7432,6 @@
       "category_name": "Cloud Infrastructure and Hosting Operations",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "workflow_ids": [
-        "infrastructure-provisioning",
-        "disaster-recovery",
-        "incident-response"
       ],
       "inputs": [
         "domain ownership and target topology",
@@ -8113,9 +7482,6 @@
       "category_name": "Cloud Infrastructure and Hosting Operations",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "workflow_ids": [
-        "infrastructure-provisioning"
       ],
       "inputs": [
         "service inventory and ownership",
@@ -8168,9 +7534,6 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "workflow_ids": [
-        "disaster-recovery"
-      ],
       "inputs": [
         "service inventory and ownership",
         "SLO/RTO/RPO and capacity profile",
@@ -8221,9 +7584,6 @@
       "category_name": "Cloud Infrastructure and Hosting Operations",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "workflow_ids": [
-        "disaster-recovery"
       ],
       "inputs": [
         "business impact analysis and service dependencies",
@@ -8281,10 +7641,6 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "workflow_ids": [
-        "infrastructure-provisioning",
-        "disaster-recovery"
-      ],
       "inputs": [
         "service inventory and ownership",
         "SLO/RTO/RPO and capacity profile",
@@ -8337,9 +7693,6 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "workflow_ids": [
-        "infrastructure-provisioning"
-      ],
       "inputs": [
         "resolved lockfiles and packaged artifact",
         "SBOM and advisory feeds",
@@ -8391,11 +7744,6 @@
       "category_name": "Cloud Infrastructure and Hosting Operations",
       "skills": [
         "cloud-hosting-operations"
-      ],
-      "workflow_ids": [
-        "infrastructure-provisioning",
-        "disaster-recovery",
-        "incident-response"
       ],
       "inputs": [
         "baseline workload and latency profile",
@@ -8452,9 +7800,6 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "workflow_ids": [
-        "infrastructure-provisioning"
-      ],
       "inputs": [
         "service inventory and ownership",
         "SLO/RTO/RPO and capacity profile",
@@ -8505,11 +7850,6 @@
       "category_name": "Production Monitoring, Observability and SRE",
       "skills": [
         "sre-observability"
-      ],
-      "workflow_ids": [
-        "incident-response",
-        "root-cause-analysis",
-        "disaster-recovery"
       ],
       "inputs": [
         "service map and critical user journeys",
@@ -8562,11 +7902,6 @@
       "skills": [
         "sre-observability"
       ],
-      "workflow_ids": [
-        "incident-response",
-        "root-cause-analysis",
-        "disaster-recovery"
-      ],
       "inputs": [
         "service map and critical user journeys",
         "SLO and alert thresholds",
@@ -8617,11 +7952,6 @@
       "category_name": "Production Monitoring, Observability and SRE",
       "skills": [
         "sre-observability"
-      ],
-      "workflow_ids": [
-        "incident-response",
-        "root-cause-analysis",
-        "disaster-recovery"
       ],
       "inputs": [
         "service map and critical user journeys",
@@ -8674,11 +8004,6 @@
       "skills": [
         "sre-observability"
       ],
-      "workflow_ids": [
-        "incident-response",
-        "root-cause-analysis",
-        "disaster-recovery"
-      ],
       "inputs": [
         "service map and critical user journeys",
         "SLO and alert thresholds",
@@ -8729,11 +8054,6 @@
       "category_name": "Production Monitoring, Observability and SRE",
       "skills": [
         "sre-observability"
-      ],
-      "workflow_ids": [
-        "incident-response",
-        "root-cause-analysis",
-        "disaster-recovery"
       ],
       "inputs": [
         "service map and critical user journeys",
@@ -8786,9 +8106,6 @@
       "skills": [
         "sre-observability"
       ],
-      "workflow_ids": [
-        "incident-response"
-      ],
       "inputs": [
         "service map and critical user journeys",
         "SLO and alert thresholds",
@@ -8840,9 +8157,6 @@
       "skills": [
         "sre-observability"
       ],
-      "workflow_ids": [
-        "disaster-recovery"
-      ],
       "inputs": [
         "service map and critical user journeys",
         "SLO and alert thresholds",
@@ -8893,9 +8207,6 @@
       "category_name": "Production Monitoring, Observability and SRE",
       "skills": [
         "sre-observability"
-      ],
-      "workflow_ids": [
-        "disaster-recovery"
       ],
       "inputs": [
         "service map and critical user journeys",
@@ -8949,11 +8260,6 @@
       "skills": [
         "sre-observability"
       ],
-      "workflow_ids": [
-        "incident-response",
-        "root-cause-analysis",
-        "disaster-recovery"
-      ],
       "inputs": [
         "service map and critical user journeys",
         "SLO and alert thresholds",
@@ -9006,9 +8312,6 @@
       "skills": [
         "sre-observability"
       ],
-      "workflow_ids": [
-        "incident-response"
-      ],
       "inputs": [
         "incident signals and timeline",
         "severity and command policy",
@@ -9058,11 +8361,6 @@
       "category_name": "Production Monitoring, Observability and SRE",
       "skills": [
         "sre-observability"
-      ],
-      "workflow_ids": [
-        "incident-response",
-        "root-cause-analysis",
-        "disaster-recovery"
       ],
       "inputs": [
         "incident signals and timeline",
@@ -9116,10 +8414,6 @@
       "skills": [
         "sre-observability"
       ],
-      "workflow_ids": [
-        "incident-response",
-        "root-cause-analysis"
-      ],
       "inputs": [
         "incident signals and timeline",
         "severity and command policy",
@@ -9172,11 +8466,6 @@
       "skills": [
         "sre-observability"
       ],
-      "workflow_ids": [
-        "incident-response",
-        "root-cause-analysis",
-        "disaster-recovery"
-      ],
       "inputs": [
         "incident signals and timeline",
         "severity and command policy",
@@ -9227,10 +8516,6 @@
       "category_name": "Production Monitoring, Observability and SRE",
       "skills": [
         "sre-observability"
-      ],
-      "workflow_ids": [
-        "root-cause-analysis",
-        "disaster-recovery"
       ],
       "inputs": [
         "incident signals and timeline",
@@ -9284,10 +8569,6 @@
       "skills": [
         "maintenance-support"
       ],
-      "workflow_ids": [
-        "incident-response",
-        "application-maintenance"
-      ],
       "inputs": [
         "support case or maintenance request",
         "affected versions and customer impact",
@@ -9334,10 +8615,6 @@
       "category_name": "Application Maintenance, Technical Support and Customer Success",
       "skills": [
         "maintenance-support"
-      ],
-      "workflow_ids": [
-        "incident-response",
-        "application-maintenance"
       ],
       "inputs": [
         "support case or maintenance request",
@@ -9390,10 +8667,6 @@
       "skills": [
         "maintenance-support"
       ],
-      "workflow_ids": [
-        "incident-response",
-        "application-maintenance"
-      ],
       "inputs": [
         "support case or maintenance request",
         "affected versions and customer impact",
@@ -9444,10 +8717,6 @@
       "category_name": "Application Maintenance, Technical Support and Customer Success",
       "skills": [
         "maintenance-support"
-      ],
-      "workflow_ids": [
-        "bug-fix",
-        "application-maintenance"
       ],
       "inputs": [
         "support case or maintenance request",
@@ -9501,10 +8770,6 @@
       "skills": [
         "maintenance-support"
       ],
-      "workflow_ids": [
-        "dependency-update",
-        "application-maintenance"
-      ],
       "inputs": [
         "support case or maintenance request",
         "affected versions and customer impact",
@@ -9556,10 +8821,6 @@
       "skills": [
         "maintenance-support"
       ],
-      "workflow_ids": [
-        "dependency-update",
-        "application-maintenance"
-      ],
       "inputs": [
         "support case or maintenance request",
         "affected versions and customer impact",
@@ -9610,9 +8871,6 @@
       "category_name": "Application Maintenance, Technical Support and Customer Success",
       "skills": [
         "maintenance-support"
-      ],
-      "workflow_ids": [
-        "application-maintenance"
       ],
       "inputs": [
         "support case or maintenance request",
@@ -9669,10 +8927,6 @@
       "skills": [
         "maintenance-support"
       ],
-      "workflow_ids": [
-        "performance-optimization",
-        "application-maintenance"
-      ],
       "inputs": [
         "baseline workload and latency profile",
         "consistency/freshness requirements",
@@ -9724,11 +8978,6 @@
       "category_name": "Application Maintenance, Technical Support and Customer Success",
       "skills": [
         "maintenance-support"
-      ],
-      "workflow_ids": [
-        "application-maintenance",
-        "bug-fix",
-        "emergency-hotfix"
       ],
       "inputs": [
         "support case or maintenance request",
@@ -9782,9 +9031,6 @@
       "skills": [
         "maintenance-support"
       ],
-      "workflow_ids": [
-        "application-maintenance"
-      ],
       "inputs": [
         "support case or maintenance request",
         "affected versions and customer impact",
@@ -9836,11 +9082,6 @@
       "category_name": "Application Maintenance, Technical Support and Customer Success",
       "skills": [
         "maintenance-support"
-      ],
-      "workflow_ids": [
-        "application-maintenance",
-        "bug-fix",
-        "emergency-hotfix"
       ],
       "inputs": [
         "support case or maintenance request",
@@ -9894,9 +9135,6 @@
       "skills": [
         "maintenance-support"
       ],
-      "workflow_ids": [
-        "application-maintenance"
-      ],
       "inputs": [
         "support case or maintenance request",
         "affected versions and customer impact",
@@ -9949,11 +9187,6 @@
       "skills": [
         "maintenance-support"
       ],
-      "workflow_ids": [
-        "bug-fix",
-        "dependency-update",
-        "application-maintenance"
-      ],
       "inputs": [
         "support case or maintenance request",
         "affected versions and customer impact",
@@ -10004,10 +9237,6 @@
       "category_name": "Application Maintenance, Technical Support and Customer Success",
       "skills": [
         "maintenance-support"
-      ],
-      "workflow_ids": [
-        "product-retirement",
-        "application-maintenance"
       ],
       "inputs": [
         "support case or maintenance request",
@@ -10064,11 +9293,6 @@
       "skills": [
         "enterprise-governance"
       ],
-      "workflow_ids": [
-        "ci-cd-pipeline-creation",
-        "environment-configuration",
-        "application-maintenance"
-      ],
       "inputs": [
         "repository inventory and ownership",
         "engineering policy and required checks",
@@ -10119,10 +9343,6 @@
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
       "skills": [
         "enterprise-governance"
-      ],
-      "workflow_ids": [
-        "production-release",
-        "application-maintenance"
       ],
       "inputs": [
         "quality policy and objectives",
@@ -10175,10 +9395,6 @@
       "skills": [
         "enterprise-governance"
       ],
-      "workflow_ids": [
-        "security-vulnerability-remediation",
-        "ci-cd-pipeline-creation"
-      ],
       "inputs": [
         "security policy and risk appetite",
         "asset/control ownership",
@@ -10228,10 +9444,6 @@
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
       "skills": [
         "enterprise-governance"
-      ],
-      "workflow_ids": [
-        "security-vulnerability-remediation",
-        "application-maintenance"
       ],
       "inputs": [
         "identity inventory and role model",
@@ -10288,9 +9500,6 @@
       "skills": [
         "enterprise-governance"
       ],
-      "workflow_ids": [
-        "product-retirement"
-      ],
       "inputs": [
         "contract version and counterparties",
         "applicable policy/control obligations",
@@ -10338,10 +9547,6 @@
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
       "skills": [
         "enterprise-governance"
-      ],
-      "workflow_ids": [
-        "documentation-update",
-        "application-maintenance"
       ],
       "inputs": [
         "document inventory and classification",
@@ -10392,11 +9597,6 @@
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
       "skills": [
         "enterprise-governance"
-      ],
-      "workflow_ids": [
-        "production-release",
-        "emergency-hotfix",
-        "application-maintenance"
       ],
       "inputs": [
         "change policy and decision authority",
@@ -10449,10 +9649,6 @@
       "skills": [
         "enterprise-governance"
       ],
-      "workflow_ids": [
-        "product-retirement",
-        "new-product-development"
-      ],
       "inputs": [
         "supplier contract and service inventory",
         "performance/security evidence",
@@ -10502,11 +9698,6 @@
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
       "skills": [
         "enterprise-governance"
-      ],
-      "workflow_ids": [
-        "infrastructure-provisioning",
-        "performance-optimization",
-        "application-maintenance"
       ],
       "inputs": [
         "tagged spend and usage data",
@@ -10558,10 +9749,6 @@
       "category_name": "Enterprise Governance, Audit, Risk and Continuous Improvement",
       "skills": [
         "enterprise-governance"
-      ],
-      "workflow_ids": [
-        "root-cause-analysis",
-        "technical-debt-reduction"
       ],
       "inputs": [
         "process baseline and outcome metric",

@@ -1,101 +1,90 @@
-# Incident Response
+# Incident response
 
-> **Purpose:** contain and recover from an operational incident
+> Generated from `registry/workflows/incident-response.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to contain and recover from an operational incident.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Detect, declare, mitigate, communicate and resolve a production incident, then learn from it.
 
-## Lifecycle phases
-### 1. Assign commander/severity
+**Trigger.** An alert fires or a user report indicates degraded or unavailable service.
 
-**Accountable role:** incident-manager
+## Entry criteria
+- Alert or report is available with time and scope
+- On-call rota is current
 
-**Execution:** Complete the assign commander/severity phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome. Workflow-specific control: Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.
+## Required inputs
+- alert_or_report
+- service_ownership
+- runbook
 
-**Required evidence:**
-- phase work product
-- verification evidence
-- handoff record
-- workflow-specific safety/control evidence
+## Flow
 
-**Exit criteria:** The accountable owner accepts the output and all blocking issues have an owner.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Assess impact/timeline
+```mermaid
+flowchart TD
+  S162["162 Incident Detection"]
+  S163["163 Incident Response"]
+  S168["168 L2 Support"]
+  S138["138 Production Smoke Test"]
+  S164["164 Root Cause Analysis"]
+  S165["165 Postmortem"]
+  S166["166 Reliability Improvement"]
+  S162 --> S163
+  S162 --> S168
+  S163 --> S138
+  S138 --> S164
+  S164 --> S165
+  S165 --> S166
+  S162 -. yes .-> S163
+  S162 -. no .-> DONE
+  S163 -. yes .-> WF_rollback
+  S163 -. no .-> S138
+  S138 -. fail .-> S163
+  DONE((DONE))
+  WF_rollback((run workflow: rollback))
+```
 
-**Accountable role:** sre
+## Steps
 
-**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action. Workflow-specific control: Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 162 | Incident Detection | `incident-manager` | - | Confirm the signal is real and assign severity. |
+| 163 | Incident Response | `incident-manager` | 162 | Declare, mitigate and communicate; keep a timeline. |
+| 168 | L2 Support | `production-support-engineer` | 162 | Assess and message customer impact. |
+| 138 | Production Smoke Test | `sre` | 163 | Verify recovery against the SLO. |
+| 164 | Root Cause Analysis | `sre` | 138 |  |
+| 165 | Postmortem | `incident-manager` | 164 |  |
+| 166 | Reliability Improvement | `sre` | 165 |  |
 
-**Required evidence:**
-- baseline and scope record
-- assumptions and risk log
-- workflow-specific safety/control evidence
+## Parallel work
+- Stages 163, 168
 
-**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
+## Decision points
+- After 162 - Is this a real incident? **yes** -> 163; **no** -> end
+- After 163 - Is the cause a recent release? **yes** -> workflow:rollback; **no** -> 138
 
-### 3. Contain and investigate
+## Failure and remediation
 
-**Accountable role:** observability-engineer
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 138 | Recovery not confirmed | Keep the incident open and escalate severity | 163 |
 
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible. Workflow-specific control: Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.
+## Outputs
+- incident_timeline
+- customer_communication_log
+- rca_report
+- postmortem
+- reliability_backlog
 
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
-- workflow-specific safety/control evidence
+## Exit criteria
+- Service restored and SLO indicators recovered
+- Postmortem published with owners and due dates
+- Follow-up items tracked in the backlog
 
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+## Communication
+Status updates at the severity-defined cadence; final customer notice on resolution.
 
-### 4. Recover and verify
+## Hands off to
+- [rollback](rollback.md)
+- [root-cause-analysis](root-cause-analysis.md)
 
-**Accountable role:** production-support-engineer
-
-**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.
-
-**Required evidence:**
-- verification report
-- residual risk and decision log
-- handoff record
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
-
-### 5. Handoff and postmortem
-
-**Accountable role:** production-support-engineer
-
-**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.
-
-**Required evidence:**
-- verification report
-- residual risk and decision log
-- handoff record
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
-
-
-## Stage set and accountable roles
-Stage IDs: 141, 142, 143, 144, 145, 151, 153, 154, 155, 156, 157, 158, 161, 162, 163, 164, 165, 167, 168, 169
-Accountable roles: incident-manager, sre, observability-engineer, production-support-engineer
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.
-**Recovery:** Assign commander/scribe/comms roles; maintain timeline and impact; prioritize containment and safe restoration; communicate only verified facts.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

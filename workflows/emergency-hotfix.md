@@ -1,102 +1,118 @@
-# Emergency Hotfix
+# Emergency hotfix
 
-> **Purpose:** mitigate active customer impact under emergency control
+> Generated from `registry/workflows/emergency-hotfix.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to mitigate active customer impact under emergency control.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Restore service quickly with the minimum change, keeping review and approval, then audit afterwards.
 
-## Lifecycle phases
-### 1. Establish incident command
+**Trigger.** A Sev1 or Sev2 production incident whose fix needs a code change that cannot wait for the normal release.
 
-**Accountable role:** incident-manager
+## Entry criteria
+- Incident declared with an incident commander
+- Mitigation without code (flag, rollback, scaling) was considered and is insufficient or unavailable
 
-**Execution:** Declare incident severity, appoint commander/operations/comms/scribe roles, open a timestamped timeline and define a single source of truth. Workflow-specific control: Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.
+## Required inputs
+- incident_record
+- suspected_change_or_component
+- rollback_candidate_version
 
-**Required evidence:**
-- incident declaration
-- role assignments
-- timeline and comms channel
-- workflow-specific safety/control evidence
+## Flow
 
-**Exit criteria:** Command roles and communication cadence are active before mitigation work.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Apply safe mitigation
+```mermaid
+flowchart TD
+  S163["163 Incident Response"]
+  S137["137 Rollback Planning"]
+  S170["170 Bug Fixing"]
+  S79["79 Unit Testing"]
+  S68["68 Pull Request Creation"]
+  S69["69 Peer Code Review"]
+  S75{{"75 Merge Approval"}}
+  S129{{"129 Change Approval"}}
+  S133{{"133 Production Deployment"}}
+  S138["138 Production Smoke Test"]
+  S165["165 Postmortem"]
+  S163 --> S137
+  S163 --> S170
+  S170 --> S79
+  S170 --> S68
+  S68 --> S69
+  S69 --> S75
+  S79 --> S75
+  S75 --> S129
+  S137 --> S129
+  S129 --> S133
+  S133 --> S138
+  S138 --> S165
+  S163 -. yes .-> DONE
+  S163 -. no .-> S170
+  S138 -. yes .-> S165
+  S138 -. no .-> WF_rollback
+  S79 -. fail .-> WF_rollback
+  S129 -. fail .-> ABORT
+  ABORT((ABORT))
+  DONE((DONE))
+  WF_rollback((run workflow: rollback))
+```
 
-**Accountable role:** backend-engineer
+## Steps
 
-**Execution:** Choose the least risky action that reduces customer impact, preserve evidence, document expected side effects and define an immediate reversal trigger. Workflow-specific control: Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 163 | Incident Response | `incident-manager` | - |  |
+| 137 | Rollback Planning | `release-manager` | 163 | Know the way back before changing production. |
+| 170 | Bug Fixing | `backend-engineer` | 163 |  |
+| 79 | Unit Testing | `unit-testing-specialist` | 170 |  |
+| 68 | Pull Request Creation | `full-stack-engineer` | 170 |  |
+| 69 | Peer Code Review | `code-reviewer` | 68 | Compressed to the changed lines; never skipped. |
+| 75 | Merge Approval | `merge-steward` | 69, 79 | approval: code-owner |
+| 129 | Change Approval | `release-manager` | 75, 137 | Expedited change approval by the on-call change authority.; approval: change-board |
+| 133 | Production Deployment | `deployment-engineer` | 129 | approval: production-approver |
+| 138 | Production Smoke Test | `sre` | 133 |  |
+| 165 | Postmortem | `incident-manager` | 138 | Audit after service is restored. |
 
-**Required evidence:**
-- mitigation decision
-- before/after state
-- reversal trigger
-- workflow-specific safety/control evidence
+## Parallel work
+- Stages 137, 170
+- Stages 68, 79
 
-**Exit criteria:** Impact is reduced without violating data integrity or access controls.
+## Human approval points
 
-### 3. Constrain minimal patch
+| Stage | Approver | When |
+|---:|---|---|
+| 75 Merge Approval | `code-owner` | always |
+| 129 Change Approval | `change-board` | always |
+| 133 Production Deployment | `production-approver` | always |
 
-**Accountable role:** release-manager
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Limit the hotfix to the incident-causing path, avoid broad dependency or schema changes, and add a targeted regression test. Workflow-specific control: Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.
+## Decision points
+- After 163 - Does mitigation without code restore service? **yes** -> end; **no** -> 170
+- After 138 - Is service healthy? **yes** -> 165; **no** -> workflow:rollback
 
-**Required evidence:**
-- hotfix diff
-- targeted regression
-- risk assessment
-- workflow-specific safety/control evidence
+## Failure and remediation
 
-**Exit criteria:** Patch scope is bounded and independently reviewed.
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 79 | New test fails or cannot be written in the time box | Escalate to the incident commander; prefer rollback over an untested fix | workflow:rollback |
+| 129 | Approval not granted within the time box | Do not deploy; commander chooses rollback or another mitigation | abort |
 
-### 4. Authorize and deploy expedited fix
+## Outputs
+- hotfix_release
+- incident_timeline
+- postmortem
+- backport_pr_to_mainline
 
-**Accountable role:** sre
+## Exit criteria
+- Service restored and held stable for the agreed observation window
+- Post-deploy smoke test passes
+- Fix back-ported to the main branch
+- Postmortem scheduled with an owner
 
-**Execution:** Obtain named emergency authorization, verify artifact identity and required tests, deploy to the smallest safe cohort and monitor stop signals. Workflow-specific control: Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.
+## Communication
+Incident commander posts status at a fixed interval to stakeholders; customer communication follows the incident-response plan.
 
-**Required evidence:**
-- emergency approval
-- artifact digest
-- rollout and monitoring log
-- workflow-specific safety/control evidence
+## Hands off to
+- [rollback](rollback.md)
+- [root-cause-analysis](root-cause-analysis.md)
 
-**Exit criteria:** Authorized approver and rollback owner are recorded; rollout meets canary thresholds.
-
-### 5. Verify recovery and retrospective
-
-**Accountable role:** sre
-
-**Execution:** Verify customer-facing recovery, monitor recurrence, close incident communications and schedule a blameless review with action owners. Workflow-specific control: Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.
-
-**Required evidence:**
-- recovery evidence
-- final incident update
-- retrospective/action register
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Recovery is verified and every corrective action has an owner and due date.
-
-
-## Stage set and accountable roles
-Stage IDs: 66, 67, 69, 70, 71, 73, 74, 75, 76, 175, 177, 187
-Accountable roles: incident-manager, backend-engineer, release-manager, sre
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition, explicit-human-authorization. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.
-**Recovery:** Incident commander owns severity and scope; patch must be minimal, independently reviewed, tested against the incident, explicitly authorized and followed by normal regression and retrospective work.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

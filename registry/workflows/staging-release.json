@@ -1,0 +1,89 @@
+{
+  "workflow_id": "staging-release",
+  "name": "Staging release",
+  "purpose": "Deploy a release candidate to staging and decide whether it is ready for production.",
+  "trigger": "A merged change set is ready to be validated as a release candidate.",
+  "entry_criteria": [
+    "Artifact is built once and versioned",
+    "QA and security evidence for the commit exists"
+  ],
+  "required_inputs": [
+    "release_candidate_artifact",
+    "qa_evidence",
+    "security_evidence"
+  ],
+  "steps": [
+    {
+      "stage": 126,
+      "owner": "release-manager",
+      "needs": []
+    },
+    {
+      "stage": 127,
+      "owner": "technical-writer",
+      "needs": [
+        126
+      ]
+    },
+    {
+      "stage": 130,
+      "owner": "deployment-engineer",
+      "needs": [
+        126
+      ]
+    },
+    {
+      "stage": 86,
+      "owner": "automation-qa-engineer",
+      "needs": [
+        130
+      ]
+    },
+    {
+      "stage": 131,
+      "owner": "qa-lead",
+      "needs": [
+        86
+      ]
+    },
+    {
+      "stage": 128,
+      "owner": "release-manager",
+      "needs": [
+        131,
+        127
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "after": 128,
+      "question": "Ready for production?",
+      "branches": {
+        "yes": "workflow:production-release",
+        "no": "end"
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 86,
+      "condition": "Smoke test fails in staging",
+      "action": "Block the release; return to the owning change",
+      "goto": "abort"
+    }
+  ],
+  "outputs": [
+    "staging_deployment_record",
+    "staging_validation_report",
+    "release_readiness_report"
+  ],
+  "exit_criteria": [
+    "The exact artifact version is validated in staging",
+    "Readiness report references QA and security sign-off"
+  ],
+  "communication_plan": "Share the readiness report with the change board.",
+  "handoff_workflows": [
+    "production-release"
+  ]
+}
