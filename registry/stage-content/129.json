@@ -1,0 +1,65 @@
+{
+  "stage_id": 129,
+  "purpose": "have the named change authority approve or reject a production change after seeing its risk, evidence and rollback",
+  "entry_criteria": [
+    "Release readiness has a GO or CONDITIONAL record",
+    "Change window is proposed",
+    "Change-board members are available"
+  ],
+  "inputs": [
+    "change request",
+    "readiness record and evidence index",
+    "risk assessment",
+    "rollback plan and window"
+  ],
+  "procedure": [
+    "Submit the change request with scope, risk, window, rollback and monitoring owner.",
+    "Check for conflicts with other changes or freezes in the window.",
+    "Change board reviews the evidence; asks for missing items rather than assuming them.",
+    "Board decides approve, reject or approve with conditions; the decision is recorded with names and time.",
+    "Approval is bound to the specific release id and window; a different build needs a new approval.",
+    "Notify implementers, support and stakeholders of the decision."
+  ],
+  "deliverables": [
+    "change request record",
+    "board decision with conditions",
+    "conflict check",
+    "notification"
+  ],
+  "acceptance_criteria": [
+    "Decision is made by the named approver, not the requester",
+    "Approval names the release id and window",
+    "Conditions are written and tracked",
+    "Conflicts were checked"
+  ],
+  "validation_method": "Change-board decision.",
+  "validation": [
+    {
+      "check": "compare release id in the approval with the build to be deployed",
+      "expect": "identical"
+    },
+    {
+      "check": "confirm approver is not the requester or implementer",
+      "expect": "different people"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Approval reused for a different build",
+      "detection": "Release id differs",
+      "response": "Approval void; resubmit"
+    },
+    {
+      "mode": "Requester approves own change",
+      "detection": "Requester equals approver",
+      "response": "Reject; route to the board"
+    },
+    {
+      "mode": "Window conflicts with a freeze",
+      "detection": "Calendar overlap",
+      "response": "Reschedule"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A config change to payment retries is approved for Tuesday 02:00 with the condition that the on-call SRE watches error rate for one hour afterwards.",
+  "status": "complete"
+}

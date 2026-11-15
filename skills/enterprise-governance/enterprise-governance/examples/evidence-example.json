@@ -1,12 +1,38 @@
 {
-  "stage_id": 181,
-  "status": "PASS",
-  "commit_sha": "<real-sha-required>",
-  "evidence": [
+  "example": true,
+  "status": "ILLUSTRATIVE_ONLY",
+  "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+  "skill": "enterprise-governance",
+  "stage_id": 184,
+  "stage_name": "Access Governance",
+  "commit_sha": "<commit under review>",
+  "executor": "<Compliance Specialist or named person>",
+  "timestamp": "<ISO 8601 time of the run>",
+  "validation": {
+    "method": "Access-owner approval plus re-export comparison.",
+    "command": "diff <(sort before.csv) <(sort after.csv)",
+    "expected": "only the requested revocations appear as removed lines; no additions",
+    "exit_status": "<observed>"
+  },
+  "artifacts": [
     {
-      "type": "reviewed-artifact",
-      "path": "<actual-path>",
-      "result": "passed"
+      "name": "access review report",
+      "path": "<path or immutable URL of access review report>"
+    },
+    {
+      "name": "revocation tickets",
+      "path": "<path or immutable URL of revocation tickets>"
+    },
+    {
+      "name": "exception register",
+      "path": "<path or immutable URL of exception register>"
     }
-  ]
+  ],
+  "limitations": [
+    "<what was not covered>"
+  ],
+  "approval": {
+    "approver": "access-owner",
+    "decision": "<pending>"
+  }
 }

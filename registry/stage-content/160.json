@@ -1,0 +1,65 @@
+{
+  "stage_id": 160,
+  "purpose": "set measurable reliability targets with users in mind and use the remaining error budget to steer work",
+  "entry_criteria": [
+    "Critical user journeys are identified",
+    "Measurement data exists or can be collected",
+    "Service owner and product owner are available"
+  ],
+  "inputs": [
+    "critical journeys",
+    "historical reliability data",
+    "dependency list",
+    "support and incident history"
+  ],
+  "procedure": [
+    "Choose SLIs that measure what users experience (availability, latency, correctness) for each critical journey.",
+    "Set SLO targets and windows from historical data and user expectations, not from aspiration alone.",
+    "Compute the error budget and define the policy: what happens when it is spent (for example pause risky releases).",
+    "Implement measurement and a dashboard; verify the SLI matches real user experience.",
+    "Review SLO attainment and budget burn on a fixed cadence.",
+    "Adjust targets with owners when evidence shows they are wrong."
+  ],
+  "deliverables": [
+    "SLO specification",
+    "error-budget policy",
+    "SLI dashboard",
+    "review notes"
+  ],
+  "acceptance_criteria": [
+    "Each SLO has a clear SLI, window and target",
+    "Error-budget policy is agreed by service and product owners",
+    "SLI measurement was verified against a known event",
+    "Review cadence is scheduled"
+  ],
+  "validation_method": "Service owner and product owner agree the policy.",
+  "validation": [
+    {
+      "check": "replay a known past outage against the SLI query and confirm it registers",
+      "expect": "SLI dips during the outage window"
+    },
+    {
+      "command": "promtool query instant http://prometheus:9090 'sum(rate(http_requests_total{code!~\"5..\"}[30d]))/sum(rate(http_requests_total[30d]))'   # example",
+      "expect": "returns a ratio matching the dashboard"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "SLI does not reflect user pain",
+      "detection": "Outage did not move the SLI",
+      "response": "Redefine the SLI"
+    },
+    {
+      "mode": "Budget policy never enforced",
+      "detection": "Budget spent with no action",
+      "response": "Escalate to the owners"
+    },
+    {
+      "mode": "Target set above what the dependencies allow",
+      "detection": "SLO exceeds dependency SLO",
+      "response": "Lower the target or fix the dependency"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A checkout journey gets an SLO of 99.9 percent success over 30 days, a budget of about 43 minutes, and a policy to freeze risky releases when 75 percent of the budget is spent.",
+  "status": "complete"
+}

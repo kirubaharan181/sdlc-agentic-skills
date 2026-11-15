@@ -1,0 +1,132 @@
+{
+  "workflow_id": "database-migration",
+  "name": "Database migration",
+  "purpose": "Change a schema or data safely with a verified backup, a rehearsed migration and a way back.",
+  "trigger": "A schema or data change is required by a feature, fix or maintenance task.",
+  "entry_criteria": [
+    "Migration scripts are forward and reversible, or an irreversible step is explicitly flagged",
+    "A staging environment with production-like data shape exists"
+  ],
+  "required_inputs": [
+    "migration_scripts",
+    "rollback_plan",
+    "maintenance_window"
+  ],
+  "steps": [
+    {
+      "stage": 26,
+      "owner": "database-architect",
+      "needs": [],
+      "note": "Confirm the target design and compatibility with running code."
+    },
+    {
+      "stage": 58,
+      "owner": "database-engineer",
+      "needs": [
+        26
+      ]
+    },
+    {
+      "stage": 147,
+      "owner": "database-administrator",
+      "needs": [
+        26
+      ],
+      "note": "Take and verify a restorable backup."
+    },
+    {
+      "stage": 137,
+      "owner": "release-manager",
+      "needs": [
+        58
+      ]
+    },
+    {
+      "stage": 130,
+      "owner": "deployment-engineer",
+      "needs": [
+        58
+      ],
+      "note": "Apply the migration to staging."
+    },
+    {
+      "stage": 80,
+      "owner": "integration-testing-specialist",
+      "needs": [
+        130
+      ]
+    },
+    {
+      "stage": 131,
+      "owner": "qa-lead",
+      "needs": [
+        130,
+        80
+      ]
+    },
+    {
+      "stage": 129,
+      "owner": "release-manager",
+      "needs": [
+        131,
+        147,
+        137
+      ]
+    },
+    {
+      "stage": 132,
+      "owner": "database-administrator",
+      "needs": [
+        129
+      ],
+      "note": "Production migration inside the window."
+    },
+    {
+      "stage": 138,
+      "owner": "sre",
+      "needs": [
+        132
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "after": 131,
+      "question": "Did staging validation pass?",
+      "branches": {
+        "yes": 129,
+        "no": 58
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 132,
+      "condition": "Migration fails or exceeds the window",
+      "action": "Stop at a safe point, run the rehearsed rollback, notify the DBA owner",
+      "goto": "workflow:rollback"
+    },
+    {
+      "at": 147,
+      "condition": "Backup cannot be restored",
+      "action": "Do not proceed to production",
+      "goto": "abort"
+    }
+  ],
+  "outputs": [
+    "migration_execution_record",
+    "backup_verification",
+    "staging_validation_report",
+    "rollback_plan"
+  ],
+  "exit_criteria": [
+    "Backup restore was tested",
+    "Staging migration and rollback both rehearsed",
+    "Production migration completed with row counts and constraints verified",
+    "Application health checks pass"
+  ],
+  "communication_plan": "Announce the window to affected teams; confirm completion to the change board.",
+  "handoff_workflows": [
+    "rollback"
+  ]
+}

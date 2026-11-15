@@ -1,12 +1,35 @@
 {
+  "example": true,
+  "status": "ILLUSTRATIVE_ONLY",
+  "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+  "skill": "application-security",
   "stage_id": 98,
-  "status": "PASS",
-  "commit_sha": "<real-sha-required>",
-  "evidence": [
+  "stage_name": "Threat Modeling",
+  "commit_sha": "<commit under review>",
+  "executor": "<Security Architect or named person>",
+  "timestamp": "<ISO 8601 time of the run>",
+  "validation": {
+    "method": "Independent security design review by someone who did not author the model.",
+    "command": "grep -c 'residual-risk-expiry:' docs/threat-model.md   # example",
+    "expected": "count equals the number of accepted risks",
+    "exit_status": "<observed>"
+  },
+  "artifacts": [
     {
-      "type": "reviewed-artifact",
-      "path": "<actual-path>",
-      "result": "passed"
+      "name": "threat model document",
+      "path": "<path or immutable URL of threat model document>"
+    },
+    {
+      "name": "abuse-case catalogue",
+      "path": "<path or immutable URL of abuse-case catalogue>"
+    },
+    {
+      "name": "mitigation-to-test matrix",
+      "path": "<path or immutable URL of mitigation-to-test matrix>"
     }
-  ]
+  ],
+  "limitations": [
+    "<what was not covered>"
+  ],
+  "approval": null
 }

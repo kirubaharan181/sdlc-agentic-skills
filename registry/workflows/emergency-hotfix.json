@@ -1,0 +1,147 @@
+{
+  "workflow_id": "emergency-hotfix",
+  "name": "Emergency hotfix",
+  "purpose": "Restore service quickly with the minimum change, keeping review and approval, then audit afterwards.",
+  "trigger": "A Sev1 or Sev2 production incident whose fix needs a code change that cannot wait for the normal release.",
+  "entry_criteria": [
+    "Incident declared with an incident commander",
+    "Mitigation without code (flag, rollback, scaling) was considered and is insufficient or unavailable"
+  ],
+  "required_inputs": [
+    "incident_record",
+    "suspected_change_or_component",
+    "rollback_candidate_version"
+  ],
+  "steps": [
+    {
+      "stage": 163,
+      "owner": "incident-manager",
+      "needs": []
+    },
+    {
+      "stage": 137,
+      "owner": "release-manager",
+      "needs": [
+        163
+      ],
+      "note": "Know the way back before changing production."
+    },
+    {
+      "stage": 170,
+      "owner": "backend-engineer",
+      "needs": [
+        163
+      ]
+    },
+    {
+      "stage": 79,
+      "owner": "unit-testing-specialist",
+      "needs": [
+        170
+      ]
+    },
+    {
+      "stage": 68,
+      "owner": "full-stack-engineer",
+      "needs": [
+        170
+      ]
+    },
+    {
+      "stage": 69,
+      "owner": "code-reviewer",
+      "needs": [
+        68
+      ],
+      "note": "Compressed to the changed lines; never skipped."
+    },
+    {
+      "stage": 75,
+      "owner": "merge-steward",
+      "needs": [
+        69,
+        79
+      ]
+    },
+    {
+      "stage": 129,
+      "owner": "release-manager",
+      "needs": [
+        75,
+        137
+      ],
+      "note": "Expedited change approval by the on-call change authority."
+    },
+    {
+      "stage": 133,
+      "owner": "deployment-engineer",
+      "needs": [
+        129
+      ]
+    },
+    {
+      "stage": 138,
+      "owner": "sre",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 165,
+      "owner": "incident-manager",
+      "needs": [
+        138
+      ],
+      "note": "Audit after service is restored."
+    }
+  ],
+  "decisions": [
+    {
+      "after": 163,
+      "question": "Does mitigation without code restore service?",
+      "branches": {
+        "yes": "end",
+        "no": 170
+      }
+    },
+    {
+      "after": 138,
+      "question": "Is service healthy?",
+      "branches": {
+        "yes": 165,
+        "no": "workflow:rollback"
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 79,
+      "condition": "New test fails or cannot be written in the time box",
+      "action": "Escalate to the incident commander; prefer rollback over an untested fix",
+      "goto": "workflow:rollback"
+    },
+    {
+      "at": 129,
+      "condition": "Approval not granted within the time box",
+      "action": "Do not deploy; commander chooses rollback or another mitigation",
+      "goto": "abort"
+    }
+  ],
+  "outputs": [
+    "hotfix_release",
+    "incident_timeline",
+    "postmortem",
+    "backport_pr_to_mainline"
+  ],
+  "exit_criteria": [
+    "Service restored and held stable for the agreed observation window",
+    "Post-deploy smoke test passes",
+    "Fix back-ported to the main branch",
+    "Postmortem scheduled with an owner"
+  ],
+  "communication_plan": "Incident commander posts status at a fixed interval to stakeholders; customer communication follows the incident-response plan.",
+  "handoff_workflows": [
+    "rollback",
+    "root-cause-analysis"
+  ]
+}

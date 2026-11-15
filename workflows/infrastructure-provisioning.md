@@ -1,102 +1,97 @@
-# Infrastructure Provisioning
+# Infrastructure provisioning
 
-> **Purpose:** provision reviewed infrastructure from desired state
+> Generated from `registry/workflows/infrastructure-provisioning.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to provision reviewed infrastructure from desired state.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Create or change cloud infrastructure through reviewed code and a reviewed plan.
 
-## Lifecycle phases
-### 1. Design desired state
+**Trigger.** A new environment or an infrastructure change is needed.
 
-**Accountable role:** cloud-architect
+## Entry criteria
+- Cloud architecture approved
+- State backend and credentials for non-production exist
 
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
+## Required inputs
+- cloud_architecture
+- target_environment
+- cost_estimate
 
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
-- workflow-specific safety/control evidence
+## Flow
 
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Review IaC/network/security
+```mermaid
+flowchart TD
+  S28["28 Cloud Architecture"]
+  S103["103 Infrastructure Security"]
+  S117{{"117 Infrastructure as Code"}}
+  S120["120 Environment Provisioning"]
+  S121{{"121 Network Engineering"}}
+  S123["123 CDN & Edge Configuration"]
+  S140["140 Cloud Hosting"]
+  S149["149 High Availability"]
+  S184{{"184 Access Governance"}}
+  S28 --> S103
+  S28 --> S117
+  S103 --> S120
+  S117 --> S120
+  S117 --> S121
+  S121 --> S123
+  S120 --> S140
+  S120 --> S149
+  S121 --> S149
+  S120 --> S184
+  S103 -. fail .-> S117
+  S120 -. fail .-> S117
+```
 
-**Accountable role:** infrastructure-engineer
+## Steps
 
-**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 28 | Cloud Architecture | `cloud-architect` | - |  |
+| 103 | Infrastructure Security | `devsecops-engineer` | 28 | Scan IaC before any apply. |
+| 117 | Infrastructure as Code | `infrastructure-engineer` | 28 | Write IaC and produce the plan; production apply needs approval.; approval: infra-owner |
+| 120 | Environment Provisioning | `infrastructure-engineer` | 103, 117 |  |
+| 121 | Network Engineering | `network-engineer` | 117 | Network and firewall rules; production changes need approval.; approval: infra-owner |
+| 123 | CDN & Edge Configuration | `platform-engineer` | 121 | optional |
+| 140 | Cloud Hosting | `cloud-engineer` | 120 |  |
+| 149 | High Availability | `cloud-architect` | 120, 121 |  |
+| 184 | Access Governance | `compliance-specialist` | 120 | approval: access-owner |
 
-**Required evidence:**
-- verification report
-- residual risk and decision log
-- handoff record
-- workflow-specific safety/control evidence
+## Parallel work
+- Stages 103, 117
+- Stages 120, 121
+- Stages 123, 140, 149, 184
 
-**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
+## Human approval points
 
-### 3. Plan approved change
+| Stage | Approver | When |
+|---:|---|---|
+| 117 Infrastructure as Code | `infra-owner` | before applying a plan to production; always when the plan destroys resources or changes IAM |
+| 121 Network Engineering | `infra-owner` | for production firewall, security-group or routing changes |
+| 184 Access Governance | `access-owner` | when granting or widening privileged or break-glass access, or revoking access in bulk |
 
-**Accountable role:** network-engineer
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
+## Failure and remediation
 
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
-- workflow-specific safety/control evidence
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 103 | IaC scan reports a critical issue | Fix the code; no apply | 117 |
+| 120 | Apply fails midway | Do not retry blindly; inspect state, then re-plan | 117 |
 
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+## Outputs
+- iac_code
+- plan_output
+- provisioned_environment
+- access_review
 
-### 4. Provision and verify drift
+## Exit criteria
+- Plan reviewed by a human before production apply
+- Drift check clean after apply
+- Access reviewed; cost within estimate
 
-**Accountable role:** cloud-engineer
+## Communication
+Tell dependent teams when the environment is ready.
 
-**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
-
-**Required evidence:**
-- verification report
-- residual risk and decision log
-- handoff record
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
-
-### 5. Handoff operations
-
-**Accountable role:** cloud-engineer
-
-**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
-
-**Required evidence:**
-- verification report
-- residual risk and decision log
-- handoff record
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
-
-
-## Stage set and accountable roles
-Stage IDs: 28, 47, 48, 51, 99, 103, 110, 116, 117, 120, 121, 122, 123, 140, 141, 142, 143, 144, 145, 146, 149, 150, 151, 152, 189
-Accountable roles: cloud-architect, infrastructure-engineer, network-engineer, cloud-engineer
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition, explicit-human-authorization. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
-**Recovery:** Review IaC plan, state locking, IAM/network exposure, cost/quota and drift; require approved change window and tested recovery before apply.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

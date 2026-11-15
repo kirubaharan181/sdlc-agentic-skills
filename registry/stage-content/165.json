@@ -1,0 +1,65 @@
+{
+  "stage_id": 165,
+  "purpose": "learn from an incident in writing, blamelessly, and make sure the lessons become tracked work",
+  "entry_criteria": [
+    "Incident is resolved",
+    "Timeline and RCA draft exist",
+    "Participants are available for review"
+  ],
+  "inputs": [
+    "incident record",
+    "RCA document",
+    "customer impact data",
+    "action candidates"
+  ],
+  "procedure": [
+    "Summarize impact, duration, detection time and recovery time with numbers.",
+    "Write the timeline and what went well, what went badly and where luck helped.",
+    "Link the RCA findings; agree actions with owners and dates.",
+    "Review in a blameless meeting; capture disagreements.",
+    "Publish to the engineering organization.",
+    "Track actions to completion and report overdue ones."
+  ],
+  "deliverables": [
+    "postmortem document",
+    "action items in the tracker",
+    "published summary",
+    "follow-up report"
+  ],
+  "acceptance_criteria": [
+    "Impact numbers are stated",
+    "Language is blameless",
+    "Every action is in the tracker with owner and date",
+    "Postmortem is published within the agreed time"
+  ],
+  "validation_method": "Review meeting and published record.",
+  "validation": [
+    {
+      "check": "compare action list in the document with tracker items",
+      "expect": "every action has an issue id"
+    },
+    {
+      "check": "check postmortem publish date against incident close date",
+      "expect": "within the agreed number of days"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Actions never completed",
+      "detection": "Overdue items in tracker",
+      "response": "Report to engineering leadership"
+    },
+    {
+      "mode": "Postmortem skipped for minor incidents",
+      "detection": "No document for a sev-2",
+      "response": "Create a short one"
+    },
+    {
+      "mode": "Blame language",
+      "detection": "Names attached to errors",
+      "response": "Edit to focus on conditions"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A forty-minute checkout outage produces a two-page postmortem with six actions, each in the tracker; the follow-up report shows five complete after a month.",
+  "status": "complete"
+}

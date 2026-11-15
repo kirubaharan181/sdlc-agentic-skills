@@ -1,0 +1,170 @@
+{
+  "workflow_id": "existing-application-enhancement",
+  "name": "Existing application enhancement",
+  "purpose": "Change behaviour of a live application while protecting what already works.",
+  "trigger": "A change request alters existing behaviour of a released application.",
+  "entry_criteria": [
+    "Change request approved by the product owner",
+    "Current behaviour is documented or characterized by tests"
+  ],
+  "required_inputs": [
+    "change_request",
+    "current_behaviour_baseline"
+  ],
+  "steps": [
+    {
+      "stage": 176,
+      "owner": "product-owner",
+      "needs": []
+    },
+    {
+      "stage": 5,
+      "owner": "business-analyst",
+      "needs": [
+        176
+      ]
+    },
+    {
+      "stage": 13,
+      "owner": "requirements-engineer",
+      "needs": [
+        5
+      ]
+    },
+    {
+      "stage": 70,
+      "owner": "architecture-reviewer",
+      "needs": [
+        13
+      ],
+      "note": "Impact on existing architecture and compatibility."
+    },
+    {
+      "stage": 37,
+      "owner": "project-manager",
+      "needs": [
+        70
+      ]
+    },
+    {
+      "stage": 55,
+      "owner": "full-stack-engineer",
+      "needs": [
+        37
+      ]
+    },
+    {
+      "stage": 67,
+      "owner": "full-stack-engineer",
+      "needs": [
+        55
+      ]
+    },
+    {
+      "stage": 68,
+      "owner": "full-stack-engineer",
+      "needs": [
+        67
+      ]
+    },
+    {
+      "stage": 69,
+      "owner": "code-reviewer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 71,
+      "owner": "devsecops-engineer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 85,
+      "owner": "automation-qa-engineer",
+      "needs": [
+        68
+      ],
+      "note": "Regression emphasis: existing behaviour must be unchanged unless the request says otherwise."
+    },
+    {
+      "stage": 75,
+      "owner": "merge-steward",
+      "needs": [
+        69,
+        71,
+        85
+      ]
+    },
+    {
+      "stage": 130,
+      "owner": "deployment-engineer",
+      "needs": [
+        75
+      ]
+    },
+    {
+      "stage": 131,
+      "owner": "qa-lead",
+      "needs": [
+        130
+      ]
+    },
+    {
+      "stage": 133,
+      "owner": "deployment-engineer",
+      "needs": [
+        131
+      ]
+    },
+    {
+      "stage": 138,
+      "owner": "sre",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 177,
+      "owner": "product-manager",
+      "needs": [
+        138
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "after": 70,
+      "question": "Does the change break existing consumers?",
+      "branches": {
+        "yes": "workflow:api-version-upgrade",
+        "no": 37
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 85,
+      "condition": "Unintended behaviour change detected",
+      "action": "Revert the unintended part or get product-owner approval to accept it",
+      "goto": 55
+    }
+  ],
+  "outputs": [
+    "merged_enhancement",
+    "regression_report",
+    "release_record",
+    "feedback_summary"
+  ],
+  "exit_criteria": [
+    "Intended behaviour changed and nothing else",
+    "Regression suite passes",
+    "Customer feedback loop opened"
+  ],
+  "communication_plan": "Notify users of changed behaviour in release notes.",
+  "handoff_workflows": [
+    "api-version-upgrade"
+  ]
+}

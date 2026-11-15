@@ -1,100 +1,99 @@
-# Dependency Update
+# Dependency update
 
-> **Purpose:** update a dependency without compatibility regression
+> Generated from `registry/workflows/dependency-update.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to update a dependency without compatibility regression.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Upgrade packages with vulnerability, compatibility and license checks.
 
-## Lifecycle phases
-### 1. Inventory advisories
+**Trigger.** An advisory, scheduled update or end-of-life notice affects a dependency.
 
-**Accountable role:** devsecops-engineer
+## Entry criteria
+- Dependency manifests and lockfiles are current in the repository
 
-**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action. Workflow-specific control: Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.
+## Required inputs
+- dependency_manifests
+- advisory_or_reason
 
-**Required evidence:**
-- baseline and scope record
-- assumptions and risk log
-- workflow-specific safety/control evidence
+## Flow
 
-**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Assess compatibility/license
+```mermaid
+flowchart TD
+  S101["101 SCA"]
+  S172["172 Dependency Updates"]
+  S108{{"108 License Compliance"}}
+  S79["79 Unit Testing"]
+  S85["85 Regression Testing"]
+  S68["68 Pull Request Creation"]
+  S69["69 Peer Code Review"]
+  S75{{"75 Merge Approval"}}
+  S179["179 Maintenance Release"]
+  S101 --> S172
+  S172 --> S108
+  S172 --> S79
+  S172 --> S85
+  S172 --> S68
+  S68 --> S69
+  S69 --> S75
+  S79 --> S75
+  S85 --> S75
+  S108 --> S75
+  S75 --> S179
+  S108 -. yes .-> S172
+  S108 -. no .-> S75
+  S85 -. fail .-> S172
+```
 
-**Accountable role:** backend-engineer
+## Steps
 
-**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action. Workflow-specific control: Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 101 | SCA | `devsecops-engineer` | - |  |
+| 172 | Dependency Updates | `backend-engineer` | 101 |  |
+| 108 | License Compliance | `license-compliance-specialist` | 172 | Approval needed only for a license exception.; approval: compliance-owner |
+| 79 | Unit Testing | `unit-testing-specialist` | 172 |  |
+| 85 | Regression Testing | `automation-qa-engineer` | 172 |  |
+| 68 | Pull Request Creation | `full-stack-engineer` | 172 |  |
+| 69 | Peer Code Review | `code-reviewer` | 68 |  |
+| 75 | Merge Approval | `merge-steward` | 69, 79, 85, 108 | approval: code-owner |
+| 179 | Maintenance Release | `release-manager` | 75 |  |
 
-**Required evidence:**
-- baseline and scope record
-- assumptions and risk log
-- workflow-specific safety/control evidence
+## Parallel work
+- Stages 68, 79, 85, 108
 
-**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
+## Human approval points
 
-### 3. Update provenance
+| Stage | Approver | When |
+|---:|---|---|
+| 108 License Compliance | `compliance-owner` | when a license exception is requested |
+| 75 Merge Approval | `code-owner` | always |
 
-**Accountable role:** license-compliance-specialist
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible. Workflow-specific control: Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.
+## Decision points
+- After 108 - Does a new dependency violate license policy? **yes** -> 172; **no** -> 75
 
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
-- workflow-specific safety/control evidence
+## Failure and remediation
 
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 85 | Regression fails after the upgrade | Pin to the last good version or fix the incompatibility; record the reason | 172 |
 
-### 4. Regression/security test
+## Outputs
+- update_pr
+- sca_report
+- license_report
+- maintenance_release_record
 
-**Accountable role:** automation-qa-engineer
+## Exit criteria
+- No new critical or high advisory
+- License policy satisfied or exception approved
+- Full regression passes on updated lockfile
 
-**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.
+## Communication
+Note breaking changes in the release notes.
 
-**Required evidence:**
-- verification report
-- residual risk and decision log
-- handoff record
-- workflow-specific safety/control evidence
+## Hands off to
+- [production-release](production-release.md)
 
-**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
-
-### 5. Release and monitor
-
-**Accountable role:** automation-qa-engineer
-
-**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner. Workflow-specific control: Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.
-
-**Required evidence:**
-- verification report
-- residual risk and decision log
-- handoff record
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
-
-
-## Stage set and accountable roles
-Stage IDs: 69, 72, 100, 101, 102, 105, 106, 107, 108, 110, 171, 172, 179
-Accountable roles: devsecops-engineer, backend-engineer, license-compliance-specialist, automation-qa-engineer
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.
-**Recovery:** Verify provenance, changelog and advisory impact; inspect transitive dependency/license changes; run regression and security checks; pin the resolved version and document rollback.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

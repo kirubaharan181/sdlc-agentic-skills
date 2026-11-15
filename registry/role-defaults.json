@@ -1,0 +1,8 @@
+{
+  "_comment": "Role fields not listed here are derived from RACI and workflows by registry_io.derive_role_contract.",
+  "permission_tiers": {
+    "observe": "Read-only access to repositories, evidence and telemetry. Writes only the role's own report artifacts.",
+    "change-non-production": "Scoped write to repositories and non-production environments for assigned artifacts. No production, IAM, secret or destructive authority.",
+    "propose": "Prepares plans, diffs and change requests for sensitive actions (production, IAM, secrets, security controls). Execution needs explicit human authorization."
+  }
+}

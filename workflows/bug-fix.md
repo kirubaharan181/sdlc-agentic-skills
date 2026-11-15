@@ -1,97 +1,121 @@
-# Bug Fix
+# Bug fix
 
-> **Purpose:** restore a defective behavior with minimal change
+> Generated from `registry/workflows/bug-fix.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to restore a defective behavior with minimal change.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Fix a reproducible defect with the smallest safe change and prove it with a regression test.
 
-## Lifecycle phases
-### 1. Triage severity and impact
+**Trigger.** A defect is triaged by support or QA and recorded with a severity below Sev1.
 
-**Accountable role:** production-support-engineer
+## Entry criteria
+- Defect recorded with severity, affected version and steps from L1/L2 support
+- No active Sev1 incident (otherwise use emergency-hotfix)
 
-**Execution:** Classify urgency using customer impact, blast radius, data integrity and security exposure; assign incident/request owner, severity, response SLA and stop conditions.
+## Required inputs
+- defect_report
+- affected_version
+- reproduction_steps
 
-**Required evidence:**
-- severity rationale
-- affected-version/cohort list
-- owner and response timeline
+## Flow
 
-**Exit criteria:** Severity and escalation owner are accepted; unsafe changes are prohibited until impact is understood.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Reproduce and isolate root cause
+```mermaid
+flowchart TD
+  S169["169 L3 Support"]
+  S170["170 Bug Fixing"]
+  S79["79 Unit Testing"]
+  S68["68 Pull Request Creation"]
+  S69["69 Peer Code Review"]
+  S85["85 Regression Testing"]
+  S75{{"75 Merge Approval"}}
+  S130["130 Staging Deployment"]
+  S131["131 Staging Validation"]
+  S133{{"133 Production Deployment"}}
+  S138["138 Production Smoke Test"]
+  S139["139 Deployment Sign-off"]
+  S169 --> S170
+  S170 --> S79
+  S170 --> S68
+  S68 --> S69
+  S68 --> S85
+  S69 --> S75
+  S79 --> S75
+  S85 --> S75
+  S75 --> S130
+  S130 --> S131
+  S131 --> S133
+  S133 --> S138
+  S138 --> S139
+  S169 -. yes .-> S170
+  S169 -. no .-> DONE
+  S138 -. yes .-> S139
+  S138 -. no .-> WF_rollback
+  S169 -. fail .-> ABORT
+  S85 -. fail .-> S170
+  S131 -. fail .-> S170
+  ABORT((ABORT))
+  DONE((DONE))
+  WF_rollback((run workflow: rollback))
+```
 
-**Accountable role:** backend-engineer
+## Steps
 
-**Execution:** Reproduce on the affected revision/environment, correlate logs and recent changes, and isolate the smallest failing condition without modifying production state.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 169 | L3 Support | `backend-engineer` | - | Reproduce and isolate; write the failing test first. |
+| 170 | Bug Fixing | `backend-engineer` | 169 |  |
+| 79 | Unit Testing | `unit-testing-specialist` | 170 | Confirm the new test fails on the old code and passes on the fix. |
+| 68 | Pull Request Creation | `full-stack-engineer` | 170 |  |
+| 69 | Peer Code Review | `code-reviewer` | 68 |  |
+| 85 | Regression Testing | `automation-qa-engineer` | 68 |  |
+| 75 | Merge Approval | `merge-steward` | 69, 79, 85 | approval: code-owner |
+| 130 | Staging Deployment | `deployment-engineer` | 75 |  |
+| 131 | Staging Validation | `qa-lead` | 130 |  |
+| 133 | Production Deployment | `deployment-engineer` | 131 | approval: production-approver |
+| 138 | Production Smoke Test | `sre` | 133 |  |
+| 139 | Deployment Sign-off | `release-manager` | 138 |  |
 
-**Required evidence:**
-- minimal reproduction
-- correlated diagnostics
-- hypothesis log
+## Parallel work
+- Stages 68, 79
+- Stages 69, 85
 
-**Exit criteria:** A root-cause hypothesis is supported by reproducible evidence or explicitly marked inconclusive.
+## Human approval points
 
-### 3. Implement minimal correction
+| Stage | Approver | When |
+|---:|---|---|
+| 75 Merge Approval | `code-owner` | always |
+| 133 Production Deployment | `production-approver` | always |
 
-**Accountable role:** code-reviewer
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Change only the failing behavior, preserve existing contracts, add a regression assertion and avoid unrelated refactoring.
+## Decision points
+- After 169 - Can the defect be reproduced? **yes** -> 170; **no** -> end
+- After 138 - Did the production smoke test pass? **yes** -> 139; **no** -> workflow:rollback
 
-**Required evidence:**
-- minimal patch
-- regression test
-- diff risk note
+## Failure and remediation
 
-**Exit criteria:** The regression test fails before the fix and passes after it; unrelated behavior remains unchanged.
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 169 | Not reproducible after two attempts with the reporter's data | Mark the defect NEEDS_INFO, return it to L2 support with what was tried | abort |
+| 85 | Regression suite fails | Return to 170; do not weaken or skip the failing test | 170 |
+| 131 | Staging validation fails | Return to 170 with the staging evidence attached | 170 |
 
-### 4. Run regression and review
+## Outputs
+- merged_fix_pr
+- regression_test
+- regression_report
+- production_smoke_report
 
-**Accountable role:** qa-lead
+## Exit criteria
+- Failing test from step 169 is in the suite and passes on the release commit
+- Regression suite passes on the merge commit
+- Production smoke test passes for the released artifact version
+- Defect closed with link to the PR and release
 
-**Execution:** Run focused and impacted regression suites, inspect the exact diff, and obtain independent review for correctness, security and compatibility.
+## Communication
+Update the reporter after reproduction (169) and after release (139); post in the support channel when the fix ships.
 
-**Required evidence:**
-- test report
-- review findings
-- unresolved-risk list
+## Hands off to
+- [rollback](rollback.md)
 
-**Exit criteria:** Critical regression and review findings are closed or explicitly block release.
-
-### 5. Deploy and verify
-
-**Accountable role:** qa-lead
-
-**Execution:** Promote the approved artifact, deploy using the authorized change path, and verify health and user-facing behavior against stop thresholds.
-
-**Required evidence:**
-- deployment record
-- health metrics
-- customer verification
-
-**Exit criteria:** Service behavior and health remain within thresholds for the agreed observation window.
-
-
-## Stage set and accountable roles
-Stage IDs: 55, 56, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 73, 74, 75, 76, 78, 79, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 96, 97, 170, 175, 177, 179
-Accountable roles: production-support-engineer, backend-engineer, code-reviewer, qa-lead
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
-**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

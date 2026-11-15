@@ -1,96 +1,104 @@
-# Application Maintenance
+# Application maintenance
 
-> **Purpose:** operate and improve a live application
+> Generated from `registry/workflows/application-maintenance.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to operate and improve a live application.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Run routine support, patching, dependency, database and infrastructure upkeep for a released product.
 
-## Lifecycle phases
-### 1. Triage maintenance demand
+**Trigger.** The product is in production and enters or continues its maintenance cycle.
 
-**Accountable role:** production-support-engineer
+## Entry criteria
+- Support tiers and SLAs are defined
 
-**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.
+## Required inputs
+- support_queue
+- patch_advisories
+- maintenance_calendar
 
-**Required evidence:**
-- baseline and scope record
-- assumptions and risk log
+## Flow
 
-**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Diagnose impact
+```mermaid
+flowchart TD
+  S167["167 L1 Support"]
+  S168["168 L2 Support"]
+  S169["169 L3 Support"]
+  S171["171 Patch Management"]
+  S172["172 Dependency Updates"]
+  S173{{"173 Database Maintenance"}}
+  S152["152 Infrastructure Maintenance"]
+  S177["177 Customer Feedback"]
+  S178["178 Knowledge Base"]
+  S179["179 Maintenance Release"]
+  S167 --> S168
+  S168 --> S169
+  S167 --> S177
+  S168 --> S178
+  S169 --> S179
+  S171 --> S179
+  S172 --> S179
+  S173 --> S179
+  S152 --> S179
+  S168 -. yes .-> WF_bug_fix
+  S168 -. no .-> S178
+  S179 -. fail .-> WF_rollback
+  WF_bug_fix((run workflow: bug_fix))
+  WF_rollback((run workflow: rollback))
+```
 
-**Accountable role:** technical-support-engineer
+## Steps
 
-**Execution:** Complete the diagnose impact phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 167 | L1 Support | `technical-support-engineer` | - |  |
+| 168 | L2 Support | `production-support-engineer` | 167 |  |
+| 169 | L3 Support | `backend-engineer` | 168 |  |
+| 171 | Patch Management | `devops-engineer` | - |  |
+| 172 | Dependency Updates | `backend-engineer` | - |  |
+| 173 | Database Maintenance | `database-administrator` | - | approval: dba-owner |
+| 152 | Infrastructure Maintenance | `infrastructure-engineer` | - |  |
+| 177 | Customer Feedback | `product-manager` | 167 |  |
+| 178 | Knowledge Base | `technical-writer` | 168 |  |
+| 179 | Maintenance Release | `release-manager` | 169, 171, 172, 173, 152 |  |
 
-**Required evidence:**
-- phase work product
-- verification evidence
-- handoff record
+## Parallel work
+- Stages 152, 167, 171, 172, 173
+- Stages 168, 177
+- Stages 169, 178
 
-**Exit criteria:** The accountable owner accepts the output and all blocking issues have an owner.
+## Human approval points
 
-### 3. Patch/update safely
+| Stage | Approver | When |
+|---:|---|---|
+| 173 Database Maintenance | `dba-owner` | for destructive or locking maintenance on production data |
 
-**Accountable role:** backend-engineer
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
+## Decision points
+- After 168 - Is it a code defect? **yes** -> workflow:bug-fix; **no** -> 178
 
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
+## Failure and remediation
 
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 179 | Maintenance release fails verification | Rollback and reschedule | workflow:rollback |
 
-### 4. Verify and publish knowledge
+## Outputs
+- maintenance_release_record
+- patch_records
+- knowledge_base_articles
 
-**Accountable role:** release-manager
+## Exit criteria
+- Support SLAs met
+- Patches current within policy
+- Knowledge base updated from resolved tickets
 
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
+## Communication
+Monthly maintenance report to the product owner.
 
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
+## Hands off to
+- [bug-fix](bug-fix.md)
+- [dependency-update](dependency-update.md)
+- [rollback](rollback.md)
 
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
-
-### 5. Plan maintenance release
-
-**Accountable role:** release-manager
-
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
-
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
-
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
-
-
-## Stage set and accountable roles
-Stage IDs: 47, 48, 51, 52, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 184, 186, 187, 189
-Accountable roles: production-support-engineer, technical-support-engineer, backend-engineer, release-manager
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
-**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

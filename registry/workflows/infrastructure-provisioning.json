@@ -1,0 +1,112 @@
+{
+  "workflow_id": "infrastructure-provisioning",
+  "name": "Infrastructure provisioning",
+  "purpose": "Create or change cloud infrastructure through reviewed code and a reviewed plan.",
+  "trigger": "A new environment or an infrastructure change is needed.",
+  "entry_criteria": [
+    "Cloud architecture approved",
+    "State backend and credentials for non-production exist"
+  ],
+  "required_inputs": [
+    "cloud_architecture",
+    "target_environment",
+    "cost_estimate"
+  ],
+  "steps": [
+    {
+      "stage": 28,
+      "owner": "cloud-architect",
+      "needs": []
+    },
+    {
+      "stage": 103,
+      "owner": "devsecops-engineer",
+      "needs": [
+        28
+      ],
+      "note": "Scan IaC before any apply."
+    },
+    {
+      "stage": 117,
+      "owner": "infrastructure-engineer",
+      "needs": [
+        28
+      ],
+      "note": "Write IaC and produce the plan; production apply needs approval."
+    },
+    {
+      "stage": 120,
+      "owner": "infrastructure-engineer",
+      "needs": [
+        103,
+        117
+      ]
+    },
+    {
+      "stage": 121,
+      "owner": "network-engineer",
+      "needs": [
+        117
+      ],
+      "note": "Network and firewall rules; production changes need approval."
+    },
+    {
+      "stage": 123,
+      "owner": "platform-engineer",
+      "needs": [
+        121
+      ],
+      "optional": true
+    },
+    {
+      "stage": 140,
+      "owner": "cloud-engineer",
+      "needs": [
+        120
+      ]
+    },
+    {
+      "stage": 149,
+      "owner": "cloud-architect",
+      "needs": [
+        120,
+        121
+      ]
+    },
+    {
+      "stage": 184,
+      "owner": "compliance-specialist",
+      "needs": [
+        120
+      ]
+    }
+  ],
+  "decisions": [],
+  "failure_paths": [
+    {
+      "at": 103,
+      "condition": "IaC scan reports a critical issue",
+      "action": "Fix the code; no apply",
+      "goto": 117
+    },
+    {
+      "at": 120,
+      "condition": "Apply fails midway",
+      "action": "Do not retry blindly; inspect state, then re-plan",
+      "goto": 117
+    }
+  ],
+  "outputs": [
+    "iac_code",
+    "plan_output",
+    "provisioned_environment",
+    "access_review"
+  ],
+  "exit_criteria": [
+    "Plan reviewed by a human before production apply",
+    "Drift check clean after apply",
+    "Access reviewed; cost within estimate"
+  ],
+  "communication_plan": "Tell dependent teams when the environment is ready.",
+  "handoff_workflows": []
+}

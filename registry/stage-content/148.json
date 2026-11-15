@@ -1,0 +1,65 @@
+{
+  "stage_id": 148,
+  "purpose": "make sure the service can be restored after a major loss, within agreed recovery time and data-loss limits, and prove it",
+  "entry_criteria": [
+    "Recovery time objective and recovery point objective are agreed for the service",
+    "Backups or replicas exist",
+    "DR owner is named"
+  ],
+  "inputs": [
+    "RTO and RPO targets",
+    "architecture and dependencies",
+    "backup and replication configuration",
+    "recovery runbook"
+  ],
+  "procedure": [
+    "Identify critical components and their dependencies; define recovery order.",
+    "Document and automate recovery steps where possible; keep the runbook current.",
+    "Run a recovery exercise in an isolated environment or a controlled production test; record recovery time and data-loss window.",
+    "Compare measured RTO and RPO with the targets; list gaps.",
+    "Fix gaps or get the DR owner to accept the risk with an expiry.",
+    "Schedule the next exercise and record results."
+  ],
+  "deliverables": [
+    "DR plan and runbook",
+    "exercise report with measured RTO and RPO",
+    "gap list",
+    "risk acceptance"
+  ],
+  "acceptance_criteria": [
+    "Measured RTO and RPO meet targets or gaps are accepted",
+    "Runbook worked as written or was corrected",
+    "Backup restore was verified",
+    "DR owner approved the result"
+  ],
+  "validation_method": "DR-owner approval after a recorded exercise.",
+  "validation": [
+    {
+      "check": "restore the latest backup into an isolated environment and time it",
+      "expect": "restore time recorded; data validated"
+    },
+    {
+      "check": "compare newest restored record timestamp with the failure time",
+      "expect": "difference is within the RPO"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Backups never restored",
+      "detection": "No restore test record",
+      "response": "Run a restore test before approval"
+    },
+    {
+      "mode": "Runbook outdated",
+      "detection": "Steps fail during exercise",
+      "response": "Update and rerun"
+    },
+    {
+      "mode": "RTO exceeded",
+      "detection": "Measured time above target",
+      "response": "Improve or formally accept the gap"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A regional failover exercise restores the database in 18 minutes with 40 seconds of data loss against targets of 30 minutes and 5 minutes; one runbook step is corrected.",
+  "status": "complete"
+}

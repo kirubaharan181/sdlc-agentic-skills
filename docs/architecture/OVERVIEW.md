@@ -40,4 +40,4 @@ flowchart LR
 4. **Vendor neutrality:** operating logic is separate from adapters and tool catalogues.
 5. **Safe defaults:** sensitive actions stop at `NEEDS_HUMAN_APPROVAL`.
 
-The [stage registry](../../registry/SDLC_STAGE_REGISTRY.yaml) is JSON-compatible YAML, allowing standard YAML tooling and dependency-free validation.
+The [stage registry](../../registry/SDLC_STAGE_REGISTRY.json) is JSON, parseable with standard tooling and dependency-free validation.

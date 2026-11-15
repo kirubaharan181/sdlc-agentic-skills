@@ -1,95 +1,74 @@
-# Environment Configuration
+# Environment configuration
 
-> **Purpose:** apply configuration safely across environments
+> Generated from `registry/workflows/environment-configuration.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to apply configuration safely across environments.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Define and apply configuration and secrets for an environment without leaking values.
 
-## Lifecycle phases
-### 1. Classify sensitivity
+**Trigger.** A new or changed environment setting is required.
 
-**Accountable role:** devops-engineer
+## Entry criteria
+- Environment exists or is being provisioned
 
-**Execution:** Complete the classify sensitivity phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.
+## Required inputs
+- environment_requirements
+- secret_inventory
 
-**Required evidence:**
-- phase work product
-- verification evidence
-- handoff record
+## Flow
 
-**Exit criteria:** The accountable owner accepts the output and all blocking issues have an owner.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Prepare scoped delta
+```mermaid
+flowchart TD
+  S49["49 Environment Configuration"]
+  S50{{"50 Secrets Management"}}
+  S118["118 Configuration Management"]
+  S120["120 Environment Provisioning"]
+  S86["86 Smoke Testing"]
+  S49 --> S50
+  S49 --> S118
+  S50 --> S120
+  S118 --> S120
+  S120 --> S86
+  S86 -. fail .-> S118
+```
 
-**Accountable role:** application-security-engineer
+## Steps
 
-**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 49 | Environment Configuration | `devops-engineer` | - |  |
+| 50 | Secrets Management | `devsecops-engineer` | 49 | Secrets go to the secret store; rotation of production secrets needs approval.; approval: secrets-owner |
+| 118 | Configuration Management | `platform-engineer` | 49 |  |
+| 120 | Environment Provisioning | `infrastructure-engineer` | 50, 118 |  |
+| 86 | Smoke Testing | `automation-qa-engineer` | 120 |  |
 
-**Required evidence:**
-- baseline and scope record
-- assumptions and risk log
+## Parallel work
+- Stages 50, 118
 
-**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
+## Human approval points
 
-### 3. Validate resolution
+| Stage | Approver | When |
+|---:|---|---|
+| 50 Secrets Management | `secrets-owner` | when rotating or revoking production secrets |
 
-**Accountable role:** deployment-engineer
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.
+## Failure and remediation
 
-**Required evidence:**
-- baseline and scope record
-- assumptions and risk log
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 86 | Smoke test fails after configuration change | Revert the configuration change and investigate | 118 |
 
-**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
+## Outputs
+- environment_config_matrix
+- secret_store_entries
+- smoke_test_report
 
-### 4. Apply protected change
+## Exit criteria
+- Configuration is in version control; no secret values in repo, logs or reports
+- Smoke test passes in the environment
 
-**Accountable role:** deployment-engineer
+## Communication
+Document changed settings for the on-call team.
 
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
-
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
-
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
-
-### 5. Verify/document
-
-**Accountable role:** deployment-engineer
-
-**Execution:** Verify the resulting state using explicit acceptance criteria, independent signals and affected-consumer checks; record limitations and next owner.
-
-**Required evidence:**
-- verification report
-- residual risk and decision log
-- handoff record
-
-**Exit criteria:** Evidence demonstrates the expected outcome; failures are fixed or explicitly blocked/waived by authority.
-
-
-## Stage set and accountable roles
-Stage IDs: 49, 50, 52, 118, 120, 121, 131, 181
-Accountable roles: devops-engineer, application-security-engineer, deployment-engineer
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
-**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

@@ -1,12 +1,35 @@
 {
-  "stage_id": 126,
-  "status": "PASS",
-  "commit_sha": "<real-sha-required>",
-  "evidence": [
+  "example": true,
+  "status": "ILLUSTRATIVE_ONLY",
+  "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+  "skill": "release-deployment",
+  "stage_id": 128,
+  "stage_name": "Release Readiness",
+  "commit_sha": "<commit under review>",
+  "executor": "<Release Manager or named person>",
+  "timestamp": "<ISO 8601 time of the run>",
+  "validation": {
+    "method": "Go/no-go reviewed in the change approval step.",
+    "command": "python3 scripts/check_references.py && python3 scripts/validate.py   # repository integrity if the release includes registry changes",
+    "expected": "both exit 0",
+    "exit_status": "<observed>"
+  },
+  "artifacts": [
     {
-      "type": "reviewed-artifact",
-      "path": "<actual-path>",
-      "result": "passed"
+      "name": "release readiness checklist",
+      "path": "<path or immutable URL of release readiness checklist>"
+    },
+    {
+      "name": "evidence index",
+      "path": "<path or immutable URL of evidence index>"
+    },
+    {
+      "name": "go/no-go record",
+      "path": "<path or immutable URL of go/no-go record>"
     }
-  ]
+  ],
+  "limitations": [
+    "<what was not covered>"
+  ],
+  "approval": null
 }

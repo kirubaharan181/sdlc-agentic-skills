@@ -1,0 +1,113 @@
+{
+  "workflow_id": "dependency-update",
+  "name": "Dependency update",
+  "purpose": "Upgrade packages with vulnerability, compatibility and license checks.",
+  "trigger": "An advisory, scheduled update or end-of-life notice affects a dependency.",
+  "entry_criteria": [
+    "Dependency manifests and lockfiles are current in the repository"
+  ],
+  "required_inputs": [
+    "dependency_manifests",
+    "advisory_or_reason"
+  ],
+  "steps": [
+    {
+      "stage": 101,
+      "owner": "devsecops-engineer",
+      "needs": []
+    },
+    {
+      "stage": 172,
+      "owner": "backend-engineer",
+      "needs": [
+        101
+      ]
+    },
+    {
+      "stage": 108,
+      "owner": "license-compliance-specialist",
+      "needs": [
+        172
+      ],
+      "note": "Approval needed only for a license exception."
+    },
+    {
+      "stage": 79,
+      "owner": "unit-testing-specialist",
+      "needs": [
+        172
+      ]
+    },
+    {
+      "stage": 85,
+      "owner": "automation-qa-engineer",
+      "needs": [
+        172
+      ]
+    },
+    {
+      "stage": 68,
+      "owner": "full-stack-engineer",
+      "needs": [
+        172
+      ]
+    },
+    {
+      "stage": 69,
+      "owner": "code-reviewer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 75,
+      "owner": "merge-steward",
+      "needs": [
+        69,
+        79,
+        85,
+        108
+      ]
+    },
+    {
+      "stage": 179,
+      "owner": "release-manager",
+      "needs": [
+        75
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "after": 108,
+      "question": "Does a new dependency violate license policy?",
+      "branches": {
+        "yes": 172,
+        "no": 75
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 85,
+      "condition": "Regression fails after the upgrade",
+      "action": "Pin to the last good version or fix the incompatibility; record the reason",
+      "goto": 172
+    }
+  ],
+  "outputs": [
+    "update_pr",
+    "sca_report",
+    "license_report",
+    "maintenance_release_record"
+  ],
+  "exit_criteria": [
+    "No new critical or high advisory",
+    "License policy satisfied or exception approved",
+    "Full regression passes on updated lockfile"
+  ],
+  "communication_plan": "Note breaking changes in the release notes.",
+  "handoff_workflows": [
+    "production-release"
+  ]
+}

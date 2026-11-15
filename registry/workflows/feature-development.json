@@ -1,0 +1,209 @@
+{
+  "workflow_id": "feature-development",
+  "name": "Feature development",
+  "purpose": "Deliver one bounded capability from approved story to verified release, with tests at every layer.",
+  "trigger": "An approved backlog item with acceptance criteria is ready.",
+  "entry_criteria": [
+    "Story has acceptance criteria",
+    "Design exists if the feature has UI",
+    "Architecture runway is in place"
+  ],
+  "required_inputs": [
+    "user_story",
+    "acceptance_criteria",
+    "ui_designs_if_any"
+  ],
+  "steps": [
+    {
+      "stage": 13,
+      "owner": "requirements-engineer",
+      "needs": []
+    },
+    {
+      "stage": 22,
+      "owner": "product-owner",
+      "needs": [
+        13
+      ]
+    },
+    {
+      "stage": 17,
+      "owner": "ui-ux-designer",
+      "needs": [
+        13
+      ],
+      "optional": true
+    },
+    {
+      "stage": 27,
+      "owner": "api-architect",
+      "needs": [
+        22
+      ],
+      "optional": true
+    },
+    {
+      "stage": 25,
+      "owner": "software-architect",
+      "needs": [
+        22
+      ]
+    },
+    {
+      "stage": 53,
+      "owner": "frontend-engineer",
+      "needs": [
+        25,
+        17
+      ]
+    },
+    {
+      "stage": 54,
+      "owner": "backend-engineer",
+      "needs": [
+        25,
+        27
+      ]
+    },
+    {
+      "stage": 67,
+      "owner": "full-stack-engineer",
+      "needs": [
+        53,
+        54
+      ]
+    },
+    {
+      "stage": 79,
+      "owner": "unit-testing-specialist",
+      "needs": [
+        67
+      ]
+    },
+    {
+      "stage": 68,
+      "owner": "full-stack-engineer",
+      "needs": [
+        67
+      ]
+    },
+    {
+      "stage": 69,
+      "owner": "code-reviewer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 71,
+      "owner": "devsecops-engineer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 80,
+      "owner": "integration-testing-specialist",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 84,
+      "owner": "e2e-testing-specialist",
+      "needs": [
+        80
+      ]
+    },
+    {
+      "stage": 75,
+      "owner": "merge-steward",
+      "needs": [
+        69,
+        71,
+        79,
+        84
+      ]
+    },
+    {
+      "stage": 127,
+      "owner": "technical-writer",
+      "needs": [
+        75
+      ]
+    },
+    {
+      "stage": 130,
+      "owner": "deployment-engineer",
+      "needs": [
+        75
+      ]
+    },
+    {
+      "stage": 131,
+      "owner": "qa-lead",
+      "needs": [
+        130
+      ]
+    },
+    {
+      "stage": 95,
+      "owner": "qa-lead",
+      "needs": [
+        131
+      ],
+      "note": "UAT on staging; accepted by the UAT acceptor."
+    },
+    {
+      "stage": 133,
+      "owner": "deployment-engineer",
+      "needs": [
+        95,
+        127
+      ]
+    },
+    {
+      "stage": 138,
+      "owner": "sre",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 139,
+      "owner": "release-manager",
+      "needs": [
+        138
+      ]
+    }
+  ],
+  "decisions": [],
+  "failure_paths": [
+    {
+      "at": 84,
+      "condition": "E2E fails",
+      "action": "Return to 54/53 with failing trace",
+      "goto": 67
+    },
+    {
+      "at": 95,
+      "condition": "UAT rejected",
+      "action": "Capture feedback as new acceptance criteria or defects",
+      "goto": 22
+    }
+  ],
+  "outputs": [
+    "merged_feature",
+    "test_reports",
+    "uat_report",
+    "release_notes",
+    "release_record"
+  ],
+  "exit_criteria": [
+    "Each acceptance criterion maps to a passing test",
+    "UAT accepted",
+    "Production smoke test passes"
+  ],
+  "communication_plan": "Demo to the product owner at UAT; release notes on ship.",
+  "handoff_workflows": []
+}

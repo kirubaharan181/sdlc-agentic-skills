@@ -1,0 +1,82 @@
+{
+  "workflow_id": "performance-optimization",
+  "name": "Performance optimization",
+  "purpose": "Improve a measured bottleneck and prove the improvement on the same workload.",
+  "trigger": "An SLO breach, capacity risk or performance regression is observed.",
+  "entry_criteria": [
+    "A repeatable workload exists",
+    "A baseline can be measured"
+  ],
+  "required_inputs": [
+    "performance_baseline",
+    "slo_targets"
+  ],
+  "steps": [
+    {
+      "stage": 156,
+      "owner": "observability-engineer",
+      "needs": []
+    },
+    {
+      "stage": 91,
+      "owner": "performance-testing-specialist",
+      "needs": []
+    },
+    {
+      "stage": 174,
+      "owner": "performance-engineer",
+      "needs": [
+        156,
+        91
+      ]
+    },
+    {
+      "stage": 65,
+      "owner": "performance-engineer",
+      "needs": [
+        174
+      ]
+    },
+    {
+      "stage": 85,
+      "owner": "automation-qa-engineer",
+      "needs": [
+        65
+      ]
+    },
+    {
+      "stage": 92,
+      "owner": "performance-testing-specialist",
+      "needs": [
+        65
+      ]
+    },
+    {
+      "stage": 161,
+      "owner": "sre",
+      "needs": [
+        92
+      ]
+    }
+  ],
+  "decisions": [],
+  "failure_paths": [
+    {
+      "at": 92,
+      "condition": "No measurable improvement",
+      "action": "Revert the change; record the finding",
+      "goto": 174
+    }
+  ],
+  "outputs": [
+    "before_after_benchmarks",
+    "optimization_changes",
+    "capacity_plan_update"
+  ],
+  "exit_criteria": [
+    "Improvement measured on the same workload",
+    "No functional regression"
+  ],
+  "communication_plan": "Report before and after numbers to the service owner.",
+  "handoff_workflows": []
+}

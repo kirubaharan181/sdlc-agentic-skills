@@ -1,0 +1,65 @@
+{
+  "stage_id": 133,
+  "purpose": "put the approved build into production by an authorized, repeatable path with health checks and stop conditions",
+  "entry_criteria": [
+    "Change approval exists for this release id and window",
+    "Artifact digest matches the approved release",
+    "Rollback plan is ready and monitoring is watched"
+  ],
+  "inputs": [
+    "approved release id and artifact digest",
+    "deployment runbook",
+    "health checks and stop thresholds",
+    "rollback plan"
+  ],
+  "procedure": [
+    "Verify the artifact digest equals the approved one and that the window is open.",
+    "Deploy with the pipeline using the approved strategy (rolling, canary or blue-green).",
+    "Watch error rate, latency and saturation against the stop thresholds during rollout.",
+    "Proceed in steps; stop and roll back if a threshold is crossed.",
+    "Record start and end times, versions and who deployed.",
+    "Hand over to the smoke test (stage 138)."
+  ],
+  "deliverables": [
+    "deployment record",
+    "health metrics during rollout",
+    "version inventory",
+    "handover to smoke test"
+  ],
+  "acceptance_criteria": [
+    "Deployed digest equals the approved digest",
+    "Thresholds stayed within limits or rollback occurred",
+    "Deployment is recorded",
+    "Production approver authorized the deployment"
+  ],
+  "validation_method": "Production-approver authorization before start.",
+  "validation": [
+    {
+      "command": "kubectl rollout status deployment/app --timeout=10m   # example",
+      "expect": "successfully rolled out"
+    },
+    {
+      "command": "kubectl get deployment app -o jsonpath='{.spec.template.spec.containers[0].image}'",
+      "expect": "image digest equals the approved digest"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Wrong artifact deployed",
+      "detection": "Digest mismatch",
+      "response": "Roll back and redeploy the approved artifact"
+    },
+    {
+      "mode": "Error rate climbs during rollout",
+      "detection": "Alert or threshold breach",
+      "response": "Stop and roll back per plan"
+    },
+    {
+      "mode": "Deployment outside the window",
+      "detection": "Timestamp outside the approved window",
+      "response": "Stop; get new approval"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A canary receives 5 percent of traffic for ten minutes with stable error rate and latency, then proceeds to 100 percent; the digest check matches the approved release.",
+  "status": "complete"
+}

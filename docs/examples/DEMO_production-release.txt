@@ -1,0 +1,36 @@
+Workflow: production-release
+Trigger: A release candidate has passed staging validation and readiness review.
+
+Entry criteria:
+  - Staging validation report for the same artifact version
+  - QA and security sign-offs exist
+
+Step group 1
+  [128] Release Readiness  owner: Release Manager  status: complete
+Step group 2
+  [137] Rollback Planning  owner: Release Manager  status: complete
+Step group 3
+  [129] Change Approval  owner: Release Manager  status: complete  APPROVAL: change-board
+Step group 4  (these can run in parallel)
+  [132] Database Migration  owner: Database Administrator  status: complete  APPROVAL: dba-owner
+  [134] Domain & DNS  owner: Cloud Engineer  status: stub
+Step group 5
+  [133] Production Deployment  owner: Deployment Engineer  status: complete  APPROVAL: production-approver
+Step group 6  (these can run in parallel)
+  [138] Production Smoke Test  owner: SRE  status: complete
+  [127] Release Notes  owner: Technical Writer  status: stub
+Step group 7
+  [139] Deployment Sign-off  owner: Release Manager  status: stub
+
+Decisions:
+  - after 138: Smoke test passed?  yes -> 139, no -> workflow:rollback
+
+Failure paths:
+  - at 129: Change not approved -> Stop; record the decision and reasons (go to abort)
+
+Exit criteria:
+  - Production approver approved the exact artifact version
+  - Smoke test and health checks pass
+  - Release record lists version, time and approver
+
+9 steps, 3 human approvals, 6 steps with complete stage content, 3 stubs.

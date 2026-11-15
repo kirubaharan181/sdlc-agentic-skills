@@ -1,96 +1,82 @@
-# Staging Release
+# Staging release
 
-> **Purpose:** promote a release candidate through staging evidence
+> Generated from `registry/workflows/staging-release.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to promote a release candidate through staging evidence.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Deploy a release candidate to staging and decide whether it is ready for production.
 
-## Lifecycle phases
-### 1. Select immutable candidate
+**Trigger.** A merged change set is ready to be validated as a release candidate.
 
-**Accountable role:** release-manager
+## Entry criteria
+- Artifact is built once and versioned
+- QA and security evidence for the commit exists
 
-**Execution:** Establish the phase baseline: verify scope, owner, authority, current state, constraints and stop conditions before taking action.
+## Required inputs
+- release_candidate_artifact
+- qa_evidence
+- security_evidence
 
-**Required evidence:**
-- baseline and scope record
-- assumptions and risk log
+## Flow
 
-**Exit criteria:** Owner confirms the baseline and all blocking unknowns have an owner.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Deploy staging
+```mermaid
+flowchart TD
+  S126["126 Release Planning"]
+  S127["127 Release Notes"]
+  S130["130 Staging Deployment"]
+  S86["86 Smoke Testing"]
+  S131["131 Staging Validation"]
+  S128["128 Release Readiness"]
+  S126 --> S127
+  S126 --> S130
+  S130 --> S86
+  S86 --> S131
+  S131 --> S128
+  S127 --> S128
+  S128 -. yes .-> WF_production_release
+  S128 -. no .-> DONE
+  S86 -. fail .-> ABORT
+  ABORT((ABORT))
+  DONE((DONE))
+  WF_production_release((run workflow: production_release))
+```
 
-**Accountable role:** deployment-engineer
+## Steps
 
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 126 | Release Planning | `release-manager` | - |  |
+| 127 | Release Notes | `technical-writer` | 126 |  |
+| 130 | Staging Deployment | `deployment-engineer` | 126 |  |
+| 86 | Smoke Testing | `automation-qa-engineer` | 130 |  |
+| 131 | Staging Validation | `qa-lead` | 86 |  |
+| 128 | Release Readiness | `release-manager` | 131, 127 |  |
 
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
+## Parallel work
+- Stages 127, 130
 
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+## Decision points
+- After 128 - Ready for production? **yes** -> workflow:production-release; **no** -> end
 
-### 3. Run validation suite
+## Failure and remediation
 
-**Accountable role:** qa-lead
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 86 | Smoke test fails in staging | Block the release; return to the owning change | abort |
 
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
+## Outputs
+- staging_deployment_record
+- staging_validation_report
+- release_readiness_report
 
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
+## Exit criteria
+- The exact artifact version is validated in staging
+- Readiness report references QA and security sign-off
 
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
+## Communication
+Share the readiness report with the change board.
 
-### 4. Record readiness
+## Hands off to
+- [production-release](production-release.md)
 
-**Accountable role:** application-security-engineer
-
-**Execution:** Complete the record readiness phase with explicit inputs, accountable owner, recorded decisions and verifiable outcome.
-
-**Required evidence:**
-- phase work product
-- verification evidence
-- handoff record
-
-**Exit criteria:** The accountable owner accepts the output and all blocking issues have an owner.
-
-### 5. Promote/reject
-
-**Accountable role:** application-security-engineer
-
-**Execution:** Perform the phase work against the approved design and bounded change; preserve before/after state and keep the operation reversible where possible.
-
-**Required evidence:**
-- change/design artifact
-- execution log
-- review evidence
-
-**Exit criteria:** The intended change is complete and independently checked against its approved scope.
-
-
-## Stage set and accountable roles
-Stage IDs: 77, 86, 95, 116, 122, 123, 126, 127, 128, 129, 130, 131, 138, 139
-Accountable roles: release-manager, deployment-engineer, qa-lead, application-security-engineer
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested.
-**Recovery:** Use the documented rollback, forward-fix, recovery or compensation plan for the changed state.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

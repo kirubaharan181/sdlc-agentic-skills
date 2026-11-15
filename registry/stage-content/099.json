@@ -1,0 +1,65 @@
+{
+  "stage_id": 99,
+  "purpose": "find vulnerabilities in first-party source code by analysis before it runs, and drive findings to a fix or a recorded exception",
+  "entry_criteria": [
+    "Code builds from a clean checkout at a pinned commit",
+    "Scanner and ruleset versions are chosen and recorded",
+    "A baseline of previously triaged findings exists, or an empty baseline is stated"
+  ],
+  "inputs": [
+    "source at an exact commit",
+    "SAST tool configuration and ruleset",
+    "baseline of triaged findings",
+    "language and framework list"
+  ],
+  "procedure": [
+    "Run the configured scanner on the exact commit; save the raw report (SARIF) and tool version.",
+    "Triage each new finding as true positive, false positive or accepted risk; a false positive needs a written reason and a suppression with owner and expiry.",
+    "For true positives rate severity by reachability and data exposure, not by rule severity alone.",
+    "Fix or open a tracked issue with SLA for every true positive; block the merge on critical and high findings.",
+    "Rerun the scanner on the fix commit and confirm the finding is gone and no new ones appeared.",
+    "Publish the report and the updated baseline with the commit id."
+  ],
+  "deliverables": [
+    "raw scanner report (SARIF)",
+    "triage log",
+    "suppression register with expiries",
+    "fix verification run"
+  ],
+  "acceptance_criteria": [
+    "Scan ran on the commit under review and covers all in-scope languages",
+    "No open critical or high true positive, or each has an approved exception",
+    "Every suppression has a reason, owner and expiry",
+    "Rerun after fixes shows zero regression"
+  ],
+  "validation_method": "Compare the rerun report against the pre-fix report for the same ruleset version.",
+  "validation": [
+    {
+      "command": "semgrep scan --config auto --sarif -o reports/sast.sarif --error   # example; use the project's configured scanner",
+      "expect": "exit 0 and no critical/high findings outside the approved baseline"
+    },
+    {
+      "command": "python3 -c \"import json;r=json.load(open('reports/sast.sarif'));print(sum(len(x['results']) for x in r['runs']))\"",
+      "expect": "number of results matches the triage log"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Scanner skipped part of the code",
+      "detection": "Report file count is below the repository's source file count",
+      "response": "Mark INCONCLUSIVE; fix includes/excludes and rerun"
+    },
+    {
+      "mode": "Blanket suppressions hide real issues",
+      "detection": "Suppression register has entries without reason or expiry",
+      "response": "Reject the suppression; reopen the finding"
+    },
+    {
+      "mode": "Findings reported on a different commit",
+      "detection": "Report commit id differs from the merge commit",
+      "response": "Discard report; rerun on the correct commit"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The scanner flags string-built SQL in an export job. Triage: true positive, reachable by an authenticated user via a filter parameter, high severity. Fix replaces concatenation with a parameterized query and adds a regression test. Rerun shows the finding closed.",
+  "status": "complete"
+}

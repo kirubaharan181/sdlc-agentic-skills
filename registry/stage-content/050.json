@@ -1,0 +1,65 @@
+{
+  "stage_id": 50,
+  "purpose": "keep credentials out of source and logs, and make every secret rotatable and owned",
+  "entry_criteria": [
+    "Inventory of secret types and stores exists or will be created in this stage",
+    "Secret manager or vault is available to the team",
+    "Named secrets-owner exists"
+  ],
+  "inputs": [
+    "repository history and current tree",
+    "secret scanner configuration",
+    "secret manager inventory",
+    "rotation policy"
+  ],
+  "procedure": [
+    "Scan the working tree and full history for credentials; record findings without printing secret values.",
+    "Treat every found credential as compromised: revoke and rotate it before removing it from code.",
+    "Move runtime secrets to the secret manager; reference them by name, never by value, in config and CI.",
+    "Add a pre-commit and CI secret scan that fails the build on new findings.",
+    "Record owner, rotation interval and consumers for each secret.",
+    "Get the secrets-owner's approval of the inventory and the rotation plan."
+  ],
+  "deliverables": [
+    "secret inventory (names, owners, rotation dates; no values)",
+    "scan reports",
+    "rotation log",
+    "CI secret-scan configuration"
+  ],
+  "acceptance_criteria": [
+    "Scan of history and tree reports zero active secrets or each is rotated",
+    "CI blocks new secrets",
+    "Every secret has an owner and a rotation date",
+    "No secret value appears in the evidence"
+  ],
+  "validation_method": "Secrets-owner approval, plus a rerun of the scanner on a clean clone.",
+  "validation": [
+    {
+      "command": "gitleaks detect --source . --redact --report-path reports/secrets.json   # example",
+      "expect": "exit 0; zero findings or all findings marked rotated"
+    },
+    {
+      "command": "git clone --quiet . /tmp/clean && gitleaks detect --source /tmp/clean --redact",
+      "expect": "exit 0 on the clean clone"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Credential removed but not rotated",
+      "detection": "Rotation log has no entry for a found secret",
+      "response": "Rotate now; treat as BLOCKED until logged"
+    },
+    {
+      "mode": "Secret value pasted into the report",
+      "detection": "Report contains an unredacted value",
+      "response": "Delete the report, rotate the secret, rerun with redaction"
+    },
+    {
+      "mode": "Scanner not enforced in CI",
+      "detection": "A test commit with a fake secret passes CI",
+      "response": "Fix pipeline configuration before approval"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: History scan finds a cloud access key committed two years ago. The key is revoked first, a new key is stored in the secret manager, CI is updated to read it by name, and the scanner is added to the pipeline.",
+  "status": "complete"
+}

@@ -1,0 +1,1494 @@
+{
+  "workflow_id": "new-product-development",
+  "name": "New product development",
+  "purpose": "The full journey from business problem to operated, continuously improved product.",
+  "trigger": "A business problem or product idea with no existing codebase.",
+  "entry_criteria": [
+    "A named business sponsor",
+    "A business problem statement"
+  ],
+  "required_inputs": [
+    "business_problem",
+    "sponsor",
+    "market_context"
+  ],
+  "steps": [
+    {
+      "stage": 1,
+      "owner": "business-strategist",
+      "needs": []
+    },
+    {
+      "stage": 2,
+      "owner": "market-research-analyst",
+      "needs": [
+        1
+      ]
+    },
+    {
+      "stage": 3,
+      "owner": "client-engagement-specialist",
+      "needs": [
+        1
+      ]
+    },
+    {
+      "stage": 4,
+      "owner": "product-manager",
+      "needs": [
+        2,
+        3
+      ]
+    },
+    {
+      "stage": 5,
+      "owner": "business-analyst",
+      "needs": [
+        4
+      ]
+    },
+    {
+      "stage": 6,
+      "owner": "product-manager",
+      "needs": [
+        5
+      ]
+    },
+    {
+      "stage": 7,
+      "owner": "solution-architect",
+      "needs": [
+        6
+      ]
+    },
+    {
+      "stage": 8,
+      "owner": "finops-specialist",
+      "needs": [
+        7
+      ]
+    },
+    {
+      "stage": 9,
+      "owner": "product-manager",
+      "needs": [
+        8
+      ]
+    },
+    {
+      "stage": 10,
+      "owner": "compliance-specialist",
+      "needs": [
+        9
+      ]
+    },
+    {
+      "stage": 11,
+      "owner": "requirements-engineer",
+      "needs": [
+        9
+      ]
+    },
+    {
+      "stage": 12,
+      "owner": "requirements-engineer",
+      "needs": [
+        11
+      ]
+    },
+    {
+      "stage": 13,
+      "owner": "requirements-engineer",
+      "needs": [
+        12
+      ]
+    },
+    {
+      "stage": 14,
+      "owner": "requirements-engineer",
+      "needs": [
+        12
+      ]
+    },
+    {
+      "stage": 15,
+      "owner": "ux-researcher",
+      "needs": [
+        4
+      ]
+    },
+    {
+      "stage": 16,
+      "owner": "ux-researcher",
+      "needs": [
+        15
+      ]
+    },
+    {
+      "stage": 17,
+      "owner": "ui-ux-designer",
+      "needs": [
+        16,
+        13
+      ]
+    },
+    {
+      "stage": 18,
+      "owner": "ui-ux-designer",
+      "needs": [
+        17
+      ]
+    },
+    {
+      "stage": 19,
+      "owner": "ui-ux-designer",
+      "needs": [
+        17
+      ]
+    },
+    {
+      "stage": 20,
+      "owner": "ui-ux-designer",
+      "needs": [
+        18,
+        19
+      ]
+    },
+    {
+      "stage": 21,
+      "owner": "accessibility-testing-specialist",
+      "needs": [
+        20
+      ]
+    },
+    {
+      "stage": 22,
+      "owner": "product-owner",
+      "needs": [
+        13,
+        14,
+        21
+      ]
+    },
+    {
+      "stage": 23,
+      "owner": "solution-architect",
+      "needs": [
+        22
+      ]
+    },
+    {
+      "stage": 24,
+      "owner": "software-architect",
+      "needs": [
+        23
+      ]
+    },
+    {
+      "stage": 25,
+      "owner": "software-architect",
+      "needs": [
+        24
+      ]
+    },
+    {
+      "stage": 26,
+      "owner": "database-architect",
+      "needs": [
+        25
+      ]
+    },
+    {
+      "stage": 27,
+      "owner": "api-architect",
+      "needs": [
+        25
+      ]
+    },
+    {
+      "stage": 28,
+      "owner": "cloud-architect",
+      "needs": [
+        24
+      ]
+    },
+    {
+      "stage": 29,
+      "owner": "security-architect",
+      "needs": [
+        24
+      ]
+    },
+    {
+      "stage": 30,
+      "owner": "data-architect",
+      "needs": [
+        25
+      ]
+    },
+    {
+      "stage": 31,
+      "owner": "integration-architect",
+      "needs": [
+        24
+      ]
+    },
+    {
+      "stage": 32,
+      "owner": "enterprise-architect",
+      "needs": [
+        24
+      ]
+    },
+    {
+      "stage": 33,
+      "owner": "technical-writer",
+      "needs": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "stage": 34,
+      "owner": "architecture-reviewer",
+      "needs": [
+        33
+      ]
+    },
+    {
+      "stage": 35,
+      "owner": "project-manager",
+      "needs": [
+        9
+      ]
+    },
+    {
+      "stage": 36,
+      "owner": "project-manager",
+      "needs": [
+        35
+      ]
+    },
+    {
+      "stage": 37,
+      "owner": "project-manager",
+      "needs": [
+        34
+      ]
+    },
+    {
+      "stage": 38,
+      "owner": "project-manager",
+      "needs": [
+        37
+      ]
+    },
+    {
+      "stage": 39,
+      "owner": "scrum-master",
+      "needs": [
+        38
+      ]
+    },
+    {
+      "stage": 40,
+      "owner": "agile-delivery-manager",
+      "needs": [
+        39
+      ]
+    },
+    {
+      "stage": 41,
+      "owner": "agile-delivery-manager",
+      "needs": [
+        39
+      ]
+    },
+    {
+      "stage": 42,
+      "owner": "program-manager",
+      "needs": [
+        35
+      ]
+    },
+    {
+      "stage": 43,
+      "owner": "program-manager",
+      "needs": [
+        35
+      ]
+    },
+    {
+      "stage": 44,
+      "owner": "engineering-governance-specialist",
+      "needs": [
+        35
+      ]
+    },
+    {
+      "stage": 45,
+      "owner": "platform-engineer",
+      "needs": [
+        34
+      ]
+    },
+    {
+      "stage": 46,
+      "owner": "engineering-governance-specialist",
+      "needs": [
+        45
+      ]
+    },
+    {
+      "stage": 47,
+      "owner": "platform-engineer",
+      "needs": [
+        34
+      ]
+    },
+    {
+      "stage": 48,
+      "owner": "engineering-governance-specialist",
+      "needs": [
+        32
+      ]
+    },
+    {
+      "stage": 49,
+      "owner": "devops-engineer",
+      "needs": [
+        47
+      ]
+    },
+    {
+      "stage": 50,
+      "owner": "devsecops-engineer",
+      "needs": [
+        49
+      ]
+    },
+    {
+      "stage": 51,
+      "owner": "documentation-engineer",
+      "needs": [
+        45,
+        47
+      ]
+    },
+    {
+      "stage": 52,
+      "owner": "engineering-governance-specialist",
+      "needs": [
+        46,
+        48
+      ]
+    },
+    {
+      "stage": 53,
+      "owner": "frontend-engineer",
+      "needs": [
+        18,
+        27,
+        52
+      ]
+    },
+    {
+      "stage": 54,
+      "owner": "backend-engineer",
+      "needs": [
+        25,
+        52
+      ]
+    },
+    {
+      "stage": 55,
+      "owner": "full-stack-engineer",
+      "needs": [
+        52
+      ]
+    },
+    {
+      "stage": 56,
+      "owner": "mobile-engineer",
+      "needs": [
+        18,
+        27,
+        52
+      ]
+    },
+    {
+      "stage": 57,
+      "owner": "api-engineer",
+      "needs": [
+        27,
+        52
+      ]
+    },
+    {
+      "stage": 58,
+      "owner": "database-engineer",
+      "needs": [
+        26,
+        52
+      ]
+    },
+    {
+      "stage": 59,
+      "owner": "authentication-and-authorization-engineer",
+      "needs": [
+        29,
+        52
+      ]
+    },
+    {
+      "stage": 60,
+      "owner": "authentication-and-authorization-engineer",
+      "needs": [
+        29,
+        52
+      ]
+    },
+    {
+      "stage": 61,
+      "owner": "integration-engineer",
+      "needs": [
+        31,
+        52
+      ]
+    },
+    {
+      "stage": 62,
+      "owner": "backend-engineer",
+      "needs": [
+        25,
+        52
+      ]
+    },
+    {
+      "stage": 63,
+      "owner": "data-engineer",
+      "needs": [
+        30,
+        52
+      ]
+    },
+    {
+      "stage": 64,
+      "owner": "ai-ml-engineer",
+      "needs": [
+        30,
+        52
+      ]
+    },
+    {
+      "stage": 65,
+      "owner": "performance-engineer",
+      "needs": [
+        25,
+        52
+      ]
+    },
+    {
+      "stage": 66,
+      "owner": "backend-engineer",
+      "needs": [
+        25,
+        52
+      ]
+    },
+    {
+      "stage": 67,
+      "owner": "full-stack-engineer",
+      "needs": [
+        53,
+        54
+      ]
+    },
+    {
+      "stage": 68,
+      "owner": "full-stack-engineer",
+      "needs": [
+        67
+      ]
+    },
+    {
+      "stage": 69,
+      "owner": "code-reviewer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 70,
+      "owner": "architecture-reviewer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 71,
+      "owner": "devsecops-engineer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 72,
+      "owner": "devsecops-engineer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 73,
+      "owner": "code-reviewer",
+      "needs": [
+        67
+      ]
+    },
+    {
+      "stage": 74,
+      "owner": "code-reviewer",
+      "needs": [
+        68,
+        48
+      ]
+    },
+    {
+      "stage": 75,
+      "owner": "merge-steward",
+      "needs": [
+        69,
+        71,
+        72,
+        73,
+        74
+      ]
+    },
+    {
+      "stage": 76,
+      "owner": "software-architect",
+      "needs": [
+        71
+      ]
+    },
+    {
+      "stage": 77,
+      "owner": "qa-lead",
+      "needs": [
+        22,
+        34
+      ]
+    },
+    {
+      "stage": 78,
+      "owner": "qa-lead",
+      "needs": [
+        77
+      ]
+    },
+    {
+      "stage": 79,
+      "owner": "unit-testing-specialist",
+      "needs": [
+        54
+      ]
+    },
+    {
+      "stage": 80,
+      "owner": "integration-testing-specialist",
+      "needs": [
+        78,
+        79
+      ]
+    },
+    {
+      "stage": 81,
+      "owner": "api-testing-specialist",
+      "needs": [
+        57,
+        78
+      ]
+    },
+    {
+      "stage": 82,
+      "owner": "automation-qa-engineer",
+      "needs": [
+        53,
+        78
+      ]
+    },
+    {
+      "stage": 83,
+      "owner": "manual-qa-engineer",
+      "needs": [
+        78
+      ]
+    },
+    {
+      "stage": 84,
+      "owner": "e2e-testing-specialist",
+      "needs": [
+        78
+      ]
+    },
+    {
+      "stage": 85,
+      "owner": "automation-qa-engineer",
+      "needs": [
+        78
+      ]
+    },
+    {
+      "stage": 86,
+      "owner": "automation-qa-engineer",
+      "needs": [
+        78
+      ]
+    },
+    {
+      "stage": 87,
+      "owner": "manual-qa-engineer",
+      "needs": [
+        78
+      ]
+    },
+    {
+      "stage": 88,
+      "owner": "e2e-testing-specialist",
+      "needs": [
+        78
+      ]
+    },
+    {
+      "stage": 89,
+      "owner": "automation-qa-engineer",
+      "needs": [
+        56,
+        78
+      ]
+    },
+    {
+      "stage": 90,
+      "owner": "accessibility-testing-specialist",
+      "needs": [
+        21,
+        78
+      ]
+    },
+    {
+      "stage": 91,
+      "owner": "performance-testing-specialist",
+      "needs": [
+        14,
+        78
+      ]
+    },
+    {
+      "stage": 92,
+      "owner": "performance-testing-specialist",
+      "needs": [
+        14,
+        78
+      ]
+    },
+    {
+      "stage": 93,
+      "owner": "performance-testing-specialist",
+      "needs": [
+        14,
+        78
+      ]
+    },
+    {
+      "stage": 94,
+      "owner": "performance-testing-specialist",
+      "needs": [
+        14,
+        78
+      ]
+    },
+    {
+      "stage": 95,
+      "owner": "qa-lead",
+      "needs": [
+        78
+      ]
+    },
+    {
+      "stage": 96,
+      "owner": "qa-lead",
+      "needs": [
+        79
+      ]
+    },
+    {
+      "stage": 97,
+      "owner": "qa-lead",
+      "needs": [
+        96
+      ]
+    },
+    {
+      "stage": 98,
+      "owner": "security-architect",
+      "needs": [
+        29
+      ]
+    },
+    {
+      "stage": 99,
+      "owner": "devsecops-engineer",
+      "needs": [
+        54
+      ]
+    },
+    {
+      "stage": 100,
+      "owner": "devsecops-engineer",
+      "needs": [
+        57
+      ]
+    },
+    {
+      "stage": 101,
+      "owner": "devsecops-engineer",
+      "needs": [
+        54
+      ]
+    },
+    {
+      "stage": 102,
+      "owner": "devsecops-engineer",
+      "needs": [
+        115
+      ]
+    },
+    {
+      "stage": 103,
+      "owner": "devsecops-engineer",
+      "needs": [
+        117
+      ]
+    },
+    {
+      "stage": 104,
+      "owner": "penetration-testing-specialist",
+      "needs": [
+        98
+      ]
+    },
+    {
+      "stage": 105,
+      "owner": "application-security-engineer",
+      "needs": [
+        59,
+        60
+      ]
+    },
+    {
+      "stage": 106,
+      "owner": "application-security-engineer",
+      "needs": [
+        30
+      ]
+    },
+    {
+      "stage": 107,
+      "owner": "compliance-specialist",
+      "needs": [
+        10
+      ]
+    },
+    {
+      "stage": 108,
+      "owner": "license-compliance-specialist",
+      "needs": [
+        101
+      ]
+    },
+    {
+      "stage": 109,
+      "owner": "application-security-engineer",
+      "needs": [
+        99,
+        100,
+        101
+      ]
+    },
+    {
+      "stage": 110,
+      "owner": "security-auditor",
+      "needs": [
+        104,
+        109
+      ]
+    },
+    {
+      "stage": 111,
+      "owner": "devops-engineer",
+      "needs": [
+        45
+      ]
+    },
+    {
+      "stage": 112,
+      "owner": "devops-engineer",
+      "needs": [
+        111,
+        78
+      ]
+    },
+    {
+      "stage": 113,
+      "owner": "devops-engineer",
+      "needs": [
+        111
+      ]
+    },
+    {
+      "stage": 114,
+      "owner": "platform-engineer",
+      "needs": [
+        113
+      ]
+    },
+    {
+      "stage": 115,
+      "owner": "devops-engineer",
+      "needs": [
+        113
+      ]
+    },
+    {
+      "stage": 116,
+      "owner": "kubernetes-engineer",
+      "needs": [
+        115
+      ]
+    },
+    {
+      "stage": 117,
+      "owner": "infrastructure-engineer",
+      "needs": [
+        28
+      ]
+    },
+    {
+      "stage": 118,
+      "owner": "platform-engineer",
+      "needs": [
+        49
+      ]
+    },
+    {
+      "stage": 119,
+      "owner": "devops-engineer",
+      "needs": [
+        111,
+        114
+      ]
+    },
+    {
+      "stage": 120,
+      "owner": "infrastructure-engineer",
+      "needs": [
+        117
+      ]
+    },
+    {
+      "stage": 121,
+      "owner": "network-engineer",
+      "needs": [
+        28
+      ]
+    },
+    {
+      "stage": 122,
+      "owner": "database-administrator",
+      "needs": [
+        26
+      ]
+    },
+    {
+      "stage": 123,
+      "owner": "platform-engineer",
+      "needs": [
+        28
+      ]
+    },
+    {
+      "stage": 124,
+      "owner": "deployment-engineer",
+      "needs": [
+        119
+      ]
+    },
+    {
+      "stage": 125,
+      "owner": "devsecops-engineer",
+      "needs": [
+        119
+      ]
+    },
+    {
+      "stage": 126,
+      "owner": "release-manager",
+      "needs": [
+        75
+      ]
+    },
+    {
+      "stage": 127,
+      "owner": "release-manager",
+      "needs": [
+        126
+      ]
+    },
+    {
+      "stage": 128,
+      "owner": "release-manager",
+      "needs": [
+        97,
+        110,
+        126
+      ]
+    },
+    {
+      "stage": 129,
+      "owner": "release-manager",
+      "needs": [
+        128,
+        137
+      ]
+    },
+    {
+      "stage": 130,
+      "owner": "deployment-engineer",
+      "needs": [
+        129,
+        124
+      ]
+    },
+    {
+      "stage": 131,
+      "owner": "qa-lead",
+      "needs": [
+        130
+      ]
+    },
+    {
+      "stage": 132,
+      "owner": "database-administrator",
+      "needs": [
+        58,
+        147,
+        131
+      ]
+    },
+    {
+      "stage": 133,
+      "owner": "deployment-engineer",
+      "needs": [
+        131,
+        132,
+        137
+      ]
+    },
+    {
+      "stage": 134,
+      "owner": "cloud-engineer",
+      "needs": [
+        120
+      ]
+    },
+    {
+      "stage": 135,
+      "owner": "network-engineer",
+      "needs": [
+        134
+      ]
+    },
+    {
+      "stage": 136,
+      "owner": "network-engineer",
+      "needs": [
+        121
+      ]
+    },
+    {
+      "stage": 137,
+      "owner": "release-manager",
+      "needs": [
+        126
+      ]
+    },
+    {
+      "stage": 138,
+      "owner": "sre",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 139,
+      "owner": "release-manager",
+      "needs": [
+        138
+      ]
+    },
+    {
+      "stage": 140,
+      "owner": "cloud-engineer",
+      "needs": [
+        120
+      ]
+    },
+    {
+      "stage": 141,
+      "owner": "cloud-engineer",
+      "needs": [
+        140
+      ]
+    },
+    {
+      "stage": 142,
+      "owner": "database-administrator",
+      "needs": [
+        140
+      ]
+    },
+    {
+      "stage": 143,
+      "owner": "cloud-engineer",
+      "needs": [
+        140
+      ]
+    },
+    {
+      "stage": 144,
+      "owner": "network-engineer",
+      "needs": [
+        134
+      ]
+    },
+    {
+      "stage": 145,
+      "owner": "cloud-engineer",
+      "needs": [
+        135
+      ]
+    },
+    {
+      "stage": 146,
+      "owner": "network-engineer",
+      "needs": [
+        121
+      ]
+    },
+    {
+      "stage": 147,
+      "owner": "database-administrator",
+      "needs": [
+        122
+      ]
+    },
+    {
+      "stage": 148,
+      "owner": "sre",
+      "needs": [
+        147
+      ]
+    },
+    {
+      "stage": 149,
+      "owner": "cloud-architect",
+      "needs": [
+        28
+      ]
+    },
+    {
+      "stage": 150,
+      "owner": "infrastructure-engineer",
+      "needs": [
+        91,
+        92
+      ]
+    },
+    {
+      "stage": 151,
+      "owner": "finops-specialist",
+      "needs": [
+        140
+      ]
+    },
+    {
+      "stage": 152,
+      "owner": "infrastructure-engineer",
+      "needs": [
+        140
+      ]
+    },
+    {
+      "stage": 153,
+      "owner": "observability-engineer",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 154,
+      "owner": "observability-engineer",
+      "needs": [
+        140
+      ]
+    },
+    {
+      "stage": 155,
+      "owner": "observability-engineer",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 156,
+      "owner": "observability-engineer",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 157,
+      "owner": "observability-engineer",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 158,
+      "owner": "sre",
+      "needs": [
+        156
+      ]
+    },
+    {
+      "stage": 159,
+      "owner": "observability-engineer",
+      "needs": [
+        133
+      ]
+    },
+    {
+      "stage": 160,
+      "owner": "sre",
+      "needs": [
+        156
+      ]
+    },
+    {
+      "stage": 161,
+      "owner": "sre",
+      "needs": [
+        156,
+        92
+      ]
+    },
+    {
+      "stage": 162,
+      "owner": "incident-manager",
+      "needs": [
+        158
+      ]
+    },
+    {
+      "stage": 163,
+      "owner": "incident-manager",
+      "needs": [
+        162
+      ]
+    },
+    {
+      "stage": 164,
+      "owner": "sre",
+      "needs": [
+        163
+      ]
+    },
+    {
+      "stage": 165,
+      "owner": "incident-manager",
+      "needs": [
+        164
+      ]
+    },
+    {
+      "stage": 166,
+      "owner": "sre",
+      "needs": [
+        165
+      ]
+    },
+    {
+      "stage": 167,
+      "owner": "technical-support-engineer",
+      "needs": []
+    },
+    {
+      "stage": 168,
+      "owner": "production-support-engineer",
+      "needs": [
+        167
+      ]
+    },
+    {
+      "stage": 169,
+      "owner": "backend-engineer",
+      "needs": [
+        168
+      ]
+    },
+    {
+      "stage": 170,
+      "owner": "backend-engineer",
+      "needs": [
+        169
+      ]
+    },
+    {
+      "stage": 171,
+      "owner": "devops-engineer",
+      "needs": [
+        101
+      ]
+    },
+    {
+      "stage": 172,
+      "owner": "backend-engineer",
+      "needs": [
+        101
+      ]
+    },
+    {
+      "stage": 173,
+      "owner": "database-administrator",
+      "needs": [
+        122
+      ]
+    },
+    {
+      "stage": 174,
+      "owner": "performance-engineer",
+      "needs": [
+        91
+      ]
+    },
+    {
+      "stage": 175,
+      "owner": "backend-engineer",
+      "needs": [
+        76
+      ]
+    },
+    {
+      "stage": 176,
+      "owner": "product-owner",
+      "needs": [
+        177
+      ]
+    },
+    {
+      "stage": 177,
+      "owner": "product-manager",
+      "needs": [
+        167
+      ]
+    },
+    {
+      "stage": 178,
+      "owner": "technical-writer",
+      "needs": [
+        167
+      ]
+    },
+    {
+      "stage": 179,
+      "owner": "release-manager",
+      "needs": [
+        170,
+        171
+      ]
+    },
+    {
+      "stage": 180,
+      "owner": "product-manager",
+      "needs": [
+        177
+      ]
+    },
+    {
+      "stage": 181,
+      "owner": "engineering-governance-specialist",
+      "needs": [
+        52
+      ]
+    },
+    {
+      "stage": 182,
+      "owner": "quality-governance-specialist",
+      "needs": [
+        97
+      ]
+    },
+    {
+      "stage": 183,
+      "owner": "security-auditor",
+      "needs": [
+        110
+      ]
+    },
+    {
+      "stage": 184,
+      "owner": "compliance-specialist",
+      "needs": [
+        120
+      ]
+    },
+    {
+      "stage": 185,
+      "owner": "security-auditor",
+      "needs": [
+        107
+      ]
+    },
+    {
+      "stage": 186,
+      "owner": "documentation-engineer",
+      "needs": [
+        33
+      ]
+    },
+    {
+      "stage": 187,
+      "owner": "engineering-governance-specialist",
+      "needs": [
+        44
+      ]
+    },
+    {
+      "stage": 188,
+      "owner": "vendor-management-specialist",
+      "needs": [
+        10
+      ]
+    },
+    {
+      "stage": 189,
+      "owner": "finops-specialist",
+      "needs": [
+        151
+      ]
+    },
+    {
+      "stage": 190,
+      "owner": "process-improvement-specialist",
+      "needs": [
+        181,
+        182,
+        165
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "after": 9,
+      "question": "Is the business case approved?",
+      "branches": {
+        "yes": 11,
+        "no": "end"
+      }
+    },
+    {
+      "after": 34,
+      "question": "Is the architecture approved?",
+      "branches": {
+        "yes": 35,
+        "no": 23
+      }
+    },
+    {
+      "after": 97,
+      "question": "Is QA sign-off granted?",
+      "branches": {
+        "yes": 128,
+        "no": 96
+      }
+    },
+    {
+      "after": 110,
+      "question": "Is security sign-off granted?",
+      "branches": {
+        "yes": 128,
+        "no": 109
+      }
+    },
+    {
+      "after": 138,
+      "question": "Did the production smoke test pass?",
+      "branches": {
+        "yes": 139,
+        "no": "workflow:rollback"
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 22,
+      "condition": "Requirements fail validation",
+      "action": "Return to elicitation with the reviewer notes",
+      "goto": 11
+    },
+    {
+      "at": 34,
+      "condition": "Architecture review rejects the design",
+      "action": "Revise architecture",
+      "goto": 23
+    },
+    {
+      "at": 97,
+      "condition": "Open critical defects at sign-off",
+      "action": "Block release; return defects to engineering",
+      "goto": 96
+    },
+    {
+      "at": 110,
+      "condition": "Open critical security findings",
+      "action": "Block release; remediate",
+      "goto": 109
+    }
+  ],
+  "outputs": [
+    "approved_business_case",
+    "validated_requirements",
+    "architecture_document",
+    "signed_off_release",
+    "production_deployment_record",
+    "runbooks_and_monitoring"
+  ],
+  "exit_criteria": [
+    "Business case approved",
+    "Release passed QA and security sign-off with evidence",
+    "Production verified by smoke test",
+    "Operational handover artifacts exist",
+    "Continuous-improvement backlog created"
+  ],
+  "communication_plan": "Stage gate reviews at each phase boundary; status report per sprint.",
+  "handoff_workflows": [
+    "rollback",
+    "application-maintenance"
+  ]
+}

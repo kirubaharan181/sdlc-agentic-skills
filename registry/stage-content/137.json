@@ -1,0 +1,65 @@
+{
+  "stage_id": 137,
+  "purpose": "decide in advance how to undo a release and prove the undo works",
+  "entry_criteria": [
+    "Release scope and deployment method are known",
+    "Data and schema changes in the release are identified",
+    "Previous version is available"
+  ],
+  "inputs": [
+    "release scope",
+    "deployment method",
+    "schema and data change list",
+    "previous version artifact"
+  ],
+  "procedure": [
+    "For each component, state the rollback action and its time limit.",
+    "Mark changes that cannot be rolled back (data migrations, external side effects) and define a forward-fix instead.",
+    "Define the trigger conditions and who decides.",
+    "Test the rollback in a non-production environment and record the time taken.",
+    "Confirm the previous version, config and secrets are still available.",
+    "Add the plan to the readiness record."
+  ],
+  "deliverables": [
+    "rollback plan",
+    "trigger conditions and decision owner",
+    "rollback test record",
+    "forward-fix notes"
+  ],
+  "acceptance_criteria": [
+    "Every component has a rollback or forward-fix",
+    "Rollback test succeeded and time is recorded",
+    "Triggers and decision owner are named",
+    "Irreversible steps are called out"
+  ],
+  "validation_method": "Rollback rehearsal in a non-production environment.",
+  "validation": [
+    {
+      "command": "kubectl rollout undo deployment/app && kubectl rollout status deployment/app   # example rehearsal in staging",
+      "expect": "previous version running; time recorded"
+    },
+    {
+      "check": "confirm the previous artifact digest is still pullable",
+      "expect": "pull succeeds"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Plan untested",
+      "detection": "No rehearsal record",
+      "response": "Rehearse before approval"
+    },
+    {
+      "mode": "Schema change blocks rollback",
+      "detection": "Old version fails on new schema",
+      "response": "Use expand-then-contract or define a forward-fix"
+    },
+    {
+      "mode": "Nobody owns the decision",
+      "detection": "No named owner",
+      "response": "Assign owner"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Rollback of the service takes four minutes in staging. The additive schema change is left in place because the old version ignores the new column.",
+  "status": "complete"
+}

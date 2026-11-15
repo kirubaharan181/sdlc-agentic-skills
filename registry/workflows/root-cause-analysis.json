@@ -1,0 +1,78 @@
+{
+  "workflow_id": "root-cause-analysis",
+  "name": "Root cause analysis",
+  "purpose": "Find evidence-backed causes of an incident or recurring defect and turn them into fixes.",
+  "trigger": "An incident is resolved or a defect keeps recurring.",
+  "entry_criteria": [
+    "Incident timeline or defect history exists",
+    "Logs and traces cover the time window"
+  ],
+  "required_inputs": [
+    "incident_timeline",
+    "logs",
+    "traces",
+    "metrics"
+  ],
+  "steps": [
+    {
+      "stage": 155,
+      "owner": "observability-engineer",
+      "needs": []
+    },
+    {
+      "stage": 157,
+      "owner": "observability-engineer",
+      "needs": []
+    },
+    {
+      "stage": 164,
+      "owner": "sre",
+      "needs": [
+        155,
+        157
+      ]
+    },
+    {
+      "stage": 165,
+      "owner": "incident-manager",
+      "needs": [
+        164
+      ]
+    },
+    {
+      "stage": 166,
+      "owner": "sre",
+      "needs": [
+        165
+      ]
+    },
+    {
+      "stage": 190,
+      "owner": "process-improvement-specialist",
+      "needs": [
+        165
+      ]
+    }
+  ],
+  "decisions": [],
+  "failure_paths": [
+    {
+      "at": 164,
+      "condition": "Evidence is missing",
+      "action": "Record the gap as an action; do not guess a cause",
+      "goto": 166
+    }
+  ],
+  "outputs": [
+    "rca_report",
+    "blameless_postmortem",
+    "reliability_backlog",
+    "process_improvements"
+  ],
+  "exit_criteria": [
+    "Each cause is backed by evidence; hypotheses are labelled",
+    "Every action has an owner and due date"
+  ],
+  "communication_plan": "Share the postmortem broadly; review actions monthly.",
+  "handoff_workflows": []
+}

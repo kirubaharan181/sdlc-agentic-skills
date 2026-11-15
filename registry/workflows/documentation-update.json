@@ -1,0 +1,74 @@
+{
+  "workflow_id": "documentation-update",
+  "name": "Documentation update",
+  "purpose": "Change documentation so it matches behaviour, and publish it with a freshness check.",
+  "trigger": "Behaviour, architecture or process changed, or documentation is found to be wrong.",
+  "entry_criteria": [
+    "The change that makes the docs wrong is identified"
+  ],
+  "required_inputs": [
+    "change_scope",
+    "affected_documents"
+  ],
+  "steps": [
+    {
+      "stage": 51,
+      "owner": "technical-writer",
+      "needs": [],
+      "note": "Update the developer-facing docs and run every documented command."
+    },
+    {
+      "stage": 33,
+      "owner": "technical-writer",
+      "needs": [],
+      "optional": true,
+      "note": "Only if architecture documents are affected."
+    },
+    {
+      "stage": 178,
+      "owner": "technical-writer",
+      "needs": [
+        51
+      ],
+      "optional": true,
+      "note": "Only if user-facing support articles are affected."
+    },
+    {
+      "stage": 186,
+      "owner": "documentation-engineer",
+      "needs": [
+        51,
+        33,
+        178
+      ],
+      "note": "Review, link-check and publish; set the next review date."
+    }
+  ],
+  "decisions": [],
+  "failure_paths": [
+    {
+      "at": 186,
+      "condition": "A documented command fails",
+      "action": "Fix the doc or the product; do not publish",
+      "goto": 51
+    }
+  ],
+  "outputs": [
+    "updated_documents",
+    "link_check_report"
+  ],
+  "exit_criteria": [
+    "All links resolve",
+    "Every command shown was run and works",
+    "Owner and next review date recorded"
+  ],
+  "communication_plan": "Announce material changes in the engineering channel.",
+  "handoff_workflows": [],
+  "excluded_roles": [
+    "release-manager",
+    "deployment-engineer",
+    "database-administrator",
+    "penetration-testing-specialist",
+    "sre"
+  ]
+}

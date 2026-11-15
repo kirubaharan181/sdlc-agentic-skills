@@ -1,0 +1,65 @@
+{
+  "stage_id": 138,
+  "purpose": "confirm right after deployment that the critical user journeys work in production",
+  "entry_criteria": [
+    "Deployment finished",
+    "Smoke checks are defined and safe to run in production",
+    "Test accounts exist"
+  ],
+  "inputs": [
+    "list of critical journeys",
+    "production test accounts",
+    "health dashboards",
+    "rollback trigger conditions"
+  ],
+  "procedure": [
+    "Run read-only or safely reversible checks for each critical journey with test accounts.",
+    "Compare key metrics with the pre-deployment baseline.",
+    "Check logs for new error types.",
+    "Record result per journey as PASS or FAIL with evidence.",
+    "On any critical failure trigger rollback per plan.",
+    "Report outcome to the release manager and keep watch through the observation window."
+  ],
+  "deliverables": [
+    "smoke test results",
+    "metric comparison",
+    "log check",
+    "outcome report"
+  ],
+  "acceptance_criteria": [
+    "All critical journeys pass or rollback was triggered",
+    "Metrics are within baseline limits",
+    "No new error class in logs",
+    "Results are recorded with times"
+  ],
+  "validation_method": "Rerun of the failed check after any fix.",
+  "validation": [
+    {
+      "command": "curl -fsS https://app.example.com/healthz   # example; replace with the real health URL",
+      "expect": "HTTP 200 and expected body"
+    },
+    {
+      "check": "complete login and one read-only purchase-history view with the test account",
+      "expect": "page loads with expected data"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Smoke test creates real data",
+      "detection": "Test leaves records",
+      "response": "Use dedicated test accounts and cleanup"
+    },
+    {
+      "mode": "Checks run too early",
+      "detection": "Pods not ready",
+      "response": "Wait for readiness then rerun"
+    },
+    {
+      "mode": "Failure ignored",
+      "detection": "FAIL without rollback or decision",
+      "response": "Escalate to release manager"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: After release, login, search and order history each respond within normal latency; the error rate matches the baseline for fifteen minutes.",
+  "status": "complete"
+}

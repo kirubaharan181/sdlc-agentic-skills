@@ -1,0 +1,20 @@
+{
+  "scenario_id": "disaster-recovery-exercise",
+  "description": "Restore service after a major loss and prove recovery objectives.",
+  "workflow": "disaster-recovery",
+  "stage_ids": [
+    147,
+    148,
+    142,
+    138
+  ],
+  "expected_approvers": {
+    "148": "dr-owner"
+  },
+  "expected_order": [
+    [
+      148,
+      138
+    ]
+  ]
+}

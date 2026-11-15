@@ -1,14 +1,50 @@
 from pathlib import Path
 import json, re, sys
 from semantic_quality import find_near_duplicates
+import registry_io
 R=Path(__file__).resolve().parents[1]
 errors=[]
 def load(p):
     try:return json.loads((R/p).read_text(encoding='utf-8'))
-    except Exception as e: errors.append(f'{p}: invalid JSON-compatible YAML: {e}');return {}
-st=load('registry/SDLC_STAGE_REGISTRY.yaml').get('stages',[])
-skills=load('registry/SKILL_REGISTRY.yaml').get('skills',[]); agents=load('registry/AGENT_REGISTRY.yaml').get('agents',[]); wfs=load('registry/WORKFLOW_REGISTRY.yaml').get('workflows',[])
+    except Exception as e: errors.append(f'{p}: invalid JSON: {e}');return {}
+_all=registry_io.load_all(Path(__file__).resolve().parents[1])
+st=_all['stages']
+skills=_all['skills']; agents=_all['agents']; wfs=_all['workflows']
 ids=[x.get('stage_id') for x in st]
+# JSON Schema validation of every resolved registry record.
+try:
+    import jsonschema
+except ImportError:
+    errors.append('jsonschema is required: pip install jsonschema')
+    jsonschema = None
+if jsonschema:
+    for kind, records, idkey in (('stage', st, 'stage_id'), ('agent', agents, 'agent_id'), ('workflow', wfs, 'workflow_id'), ('skill', skills, 'skill_id')):
+        schema = json.loads((R / 'registry' / 'schemas' / f'{kind}.schema.json').read_text(encoding='utf-8'))
+        validator = jsonschema.Draft202012Validator(schema)
+        for rec in records:
+            for err in validator.iter_errors(rec):
+                where = '/'.join(str(x) for x in err.absolute_path) or '(record)'
+                errors.append(f"schema {kind} {rec.get(idkey)}: {where}: {err.message[:140]}")
+    agent_ids = {a['agent_id'] for a in agents}
+    for rec in st:
+        if rec.get('approval_required') and not rec.get('approval_rationale'):
+            errors.append(f"stage {rec['stage_id']}: approval_required without approval_rationale")
+        if rec.get('approval_required') and not rec.get('approver'):
+            errors.append(f"stage {rec['stage_id']}: approval_required without a named human approver")
+        if rec.get('approver') and not rec.get('approval_required'):
+            errors.append(f"stage {rec['stage_id']}: approver set but approval_required is false")
+        if rec.get('approver') in agent_ids:
+            errors.append(f"stage {rec['stage_id']}: approver '{rec['approver']}' is an agent; approvers must be human roles")
+        raci = rec.get('raci') or {}
+        roles = [raci.get('accountable'), *raci.get('responsible', []), *raci.get('consulted', []), *raci.get('informed', [])]
+        for r in roles:
+            if r not in agent_ids:
+                errors.append(f"stage {rec['stage_id']}: RACI role '{r}' is not a registered role")
+        if len(roles) != len(set(roles)):
+            errors.append(f"stage {rec['stage_id']}: a role appears more than once in the RACI")
+    used = {r for rec in st for r in [rec['raci']['accountable'], *rec['raci']['responsible']]}
+    for a in sorted(agent_ids - used):
+        errors.append(f"orphan role: '{a}' is neither accountable nor responsible for any stage")
 if ids!=list(range(1,191)):errors.append('stage IDs must be exactly 1..190 in order')
 if len(set(ids))!=190:errors.append('duplicate/missing stage IDs')
 skillids={x['skill_id'] for x in skills}; agentids={x['agent_id'] for x in agents}; wids={x['workflow_id'] for x in wfs}
@@ -24,14 +60,38 @@ for x in st:
         if a not in agentids:errors.append(f"stage {x['stage_id']}: unknown agent {a}")
     for w in x.get('workflow_ids',[]):
         if w not in wids:errors.append(f"stage {x['stage_id']}: unknown workflow {w}")
-    if 'maintenance' in x.get('workflow_ids',[]): errors.append(f"stage {x['stage_id']}: stale maintenance workflow reference")
 for sk in skills:
     p=R/sk['path']
     if not p.exists():errors.append(f"missing skill file {sk['path']}");continue
     t=p.read_text(encoding='utf-8')
-    if not t.startswith('---\n') or 'description:' not in t:errors.append(f"{sk['skill_id']}: invalid frontmatter")
-    for sec in ['Purpose','When to use','When not to use','Required inputs','Preconditions','Responsibilities','Step-by-step execution procedure','Decision rules','Engineering principles','Tool requirements','Security constraints','Expected outputs','Output format','Quality checklist','Failure handling','Escalation conditions','Handoff instructions','Examples','Related skills','Related agents','References']:
-        if f'## {sec}' not in t:errors.append(f"{sk['skill_id']}: missing section {sec}")
+    fm = re.match(r"---\n(.*?)\n---\n", t, re.S)
+    if not fm:
+        errors.append(f"{sk['skill_id']}: invalid frontmatter"); continue
+    meta = dict(re.findall(r"^(\w+):\s*(.*)$", fm.group(1), re.M))
+    name, desc = meta.get("name", ""), meta.get("description", "")
+    if name != sk["skill_id"] or not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", name) or len(name) > 64:
+        errors.append(f"{sk['skill_id']}: frontmatter name must equal the skill id (lowercase, hyphens, <=64 chars)")
+    if any(w in name for w in ("anthropic", "claude")):
+        errors.append(f"{sk['skill_id']}: name contains a reserved word")
+    if not desc or len(desc) > 1024 or re.search(r"[<>]", desc):
+        errors.append(f"{sk['skill_id']}: description must be 1-1024 chars with no XML tags")
+    if re.match(r"(?i)(i|you|we)\b", desc) or "use when" not in desc.lower():
+        errors.append(f"{sk['skill_id']}: description must be third person and say what the skill does and 'Use when ...'")
+    body_lines = t.count("\n")
+    if body_lines > 500:
+        errors.append(f"{sk['skill_id']}: SKILL.md has {body_lines} lines (limit 500); move detail to reference files")
+    for sec in ("Procedure", "Stages covered"):
+        if f"## {sec}" not in t:
+            errors.append(f"{sk['skill_id']}: missing section {sec}")
+    for link in re.findall(r"\]\(([^)#]+)(?:#[^)]*)?\)", t):
+        if link.startswith("http"):
+            continue
+        target = (p.parent / link).resolve()
+        if not target.exists():
+            errors.append(f"{sk['skill_id']}: broken link {link}")
+        elif target.suffix == ".md" and target.parent.name == "reference":
+            if re.search(r"\]\((?!http|#)[^)]*\.md", target.read_text(encoding="utf-8")):
+                errors.append(f"{sk['skill_id']}: reference file links to another file (references must be one level deep)")
 for a in agents:
     for s in a.get('required_skills',[]):
         if s not in skillids:errors.append(f"agent {a['agent_id']}: unknown skill {s}")
@@ -42,18 +102,13 @@ for a in agents:
         if not a.get(required): errors.append(f"agent {a['agent_id']}: missing registry {required}")
 stage_sets=[]
 for w in wfs:
-    if not w.get('approval_gates') or not w.get('outputs'):errors.append(f"workflow {w['workflow_id']}: missing gates/outputs")
+    if not w.get('outputs'):errors.append(f"workflow {w['workflow_id']}: missing outputs")
     for a in w.get('responsible_agents',[]):
         if a not in agentids:errors.append(f"workflow {w['workflow_id']}: unknown agent {a}")
     for s in w.get('required_skills',[]):
         if s not in skillids:errors.append(f"workflow {w['workflow_id']}: unknown skill {s}")
     for sid in w.get('stages',[]):
         if sid not in ids: errors.append(f"workflow {w['workflow_id']}: unknown stage {sid}")
-    stage_set=tuple(w.get('stages',[]))
-    if stage_set in stage_sets: errors.append(f"workflow {w['workflow_id']}: identical stage set")
-    stage_sets.append(stage_set)
-    p=R/'workflows'/f"{w['workflow_id']}.md"
-    if not p.exists() or len(p.read_text(encoding='utf-8').split()) < 130: errors.append(f"workflow {w['workflow_id']}: missing or insubstantial contract")
 # Duplicate/filler detector: compare domain-bearing first sections, excluding shared policy phrases.
 def domain_body(path):
     text=path.read_text(encoding='utf-8').lower()
@@ -73,7 +128,7 @@ for p in docs:
     seen[key]=p
 for p in (R/'skills').rglob('SKILL.md'):
     text=p.read_text(encoding='utf-8')
-    if len(text.split()) < 280: errors.append(f'{p.relative_to(R)}: skill is not substantive')
+    if len(text.split()) < 100 or len(re.findall(r'(?m)^\d+\. ', text)) < 3: errors.append(f'{p.relative_to(R)}: skill needs a procedure of at least 3 steps')
     if 'execute assigned stages' in text.lower() or 'project-approved tools' in text.lower(): errors.append(f'{p.relative_to(R)}: generic filler detected')
 # Semantic execution-depth checks: counts alone do not prove specialist uniqueness.
 def extract_section(document, heading):
@@ -94,59 +149,79 @@ for item in st:
     if any("inspect current artifacts" in step.lower() for step in item.get("execution_instructions", [])):
         errors.append(f"stage {item.get('stage_id')}: generic execution template remains")
 
-allowed_by_category = {
-    "Business, Strategy and Product Management": {"new-product-development","existing-application-enhancement","feature-development","product-retirement","documentation-update"},
-    "Requirements Engineering and UI/UX Design": {"new-product-development","existing-application-enhancement","feature-development"},
-    "Software, Solution and Technical Architecture": {"new-product-development","existing-application-enhancement","feature-development","infrastructure-provisioning","database-migration","api-version-upgrade","ci-cd-pipeline-creation"},
-    "Project, Program and Agile Management": {"new-product-development","existing-application-enhancement","feature-development","technical-debt-reduction","application-maintenance"},
-    "Development Environment and Engineering Governance": {"ci-cd-pipeline-creation","infrastructure-provisioning","application-maintenance","dependency-update","environment-configuration"},
-    "Software Development and Implementation": {"feature-development","existing-application-enhancement","bug-fix","application-maintenance","emergency-hotfix"},
-    "Code Review, Static Analysis and Quality Engineering": {"feature-development","bug-fix","emergency-hotfix","security-vulnerability-remediation","dependency-update","production-release"},
-    "Software Testing and Quality Assurance": {"feature-development","bug-fix","production-release","staging-release","application-maintenance"},
-    "Cybersecurity, Application Security and Compliance": {"security-vulnerability-remediation","dependency-update","ci-cd-pipeline-creation","infrastructure-provisioning","production-release"},
-    "DevOps, CI/CD and Platform Engineering": {"ci-cd-pipeline-creation","infrastructure-provisioning","staging-release","production-release","environment-configuration"},
-    "Release Engineering and Deployment Management": {"staging-release","production-release","rollback","database-migration","environment-configuration"},
-    "Cloud Infrastructure and Hosting Operations": {"infrastructure-provisioning","disaster-recovery","incident-response","application-maintenance"},
-    "Production Monitoring, Observability and SRE": {"incident-response","root-cause-analysis","disaster-recovery","production-release"},
-    "Application Maintenance, Technical Support and Customer Success": {"application-maintenance","bug-fix","emergency-hotfix","dependency-update","performance-optimization","incident-response","product-retirement"},
-    "Enterprise Governance, Audit, Risk and Continuous Improvement": {"new-product-development","production-release","security-vulnerability-remediation","application-maintenance","product-retirement","documentation-update","root-cause-analysis","technical-debt-reduction","performance-optimization","infrastructure-provisioning","ci-cd-pipeline-creation","environment-configuration","emergency-hotfix"},
-}
-for item in st:
-    allowed = allowed_by_category.get(item.get("category_name"), wids)
-    invalid = set(item.get("workflow_ids", [])) - allowed
-    if invalid:
-        errors.append(f"stage {item.get('stage_id')}: semantically invalid workflow mapping {sorted(invalid)}")
-    if item.get("stage_name") == "Client Engagement" and "application-maintenance" in item.get("workflow_ids", []):
-        errors.append("Client Engagement must not map to application-maintenance")
-    semantic_stage_workflows = {
-        "Process Improvement": {"root-cause-analysis","technical-debt-reduction"},
-        "Quality Governance": {"production-release","application-maintenance"},
-        "Security Governance": {"security-vulnerability-remediation","ci-cd-pipeline-creation"},
-        "Access Governance": {"security-vulnerability-remediation","application-maintenance"},
-        "Documentation Governance": {"documentation-update","application-maintenance"},
-        "Change Governance": {"production-release","emergency-hotfix","application-maintenance"},
-        "FinOps Governance": {"infrastructure-provisioning","performance-optimization","application-maintenance"},
-        "Vendor Management": {"product-retirement","new-product-development"},
-        "Product Lifecycle Management": {"product-retirement","application-maintenance"},
-    }
-    expected = semantic_stage_workflows.get(item.get("stage_name"))
-    if item.get("stage_name") == "Engineering Governance":
-        expected = {"ci-cd-pipeline-creation","environment-configuration","application-maintenance"}
-    if expected and set(item.get("workflow_ids", [])) != expected:
-        errors.append(f"stage {item.get('stage_id')}: incorrect semantic workflow assignment for {item.get('stage_name')}")
-
 stage_by_id = {item["stage_id"]: item for item in st}
 workflow_by_id = {item["workflow_id"]: item for item in wfs}
+covered = set()
+sets_seen = {}
+for w in wfs:
+    wid = w["workflow_id"]
+    step_ids = [s["stage"] for s in w["steps"]]
+    covered |= set(step_ids)
+    if len(step_ids) != len(set(step_ids)):
+        errors.append(f"workflow {wid}: a stage appears in more than one step")
+    key = tuple(sorted(step_ids))
+    if key in sets_seen:
+        errors.append(f"workflow {wid}: identical stage list to {sets_seen[key]} (workflows must be distinct)")
+    sets_seen[key] = wid
+    for s in w["steps"]:
+        stage = stage_by_id.get(s["stage"])
+        if not stage:
+            errors.append(f"workflow {wid}: unknown stage {s['stage']}")
+            continue
+        raci = stage["raci"]
+        if s["owner"] not in [raci["accountable"], *raci["responsible"]]:
+            errors.append(f"workflow {wid}: step {s['stage']} owner '{s['owner']}' is not accountable or responsible for that stage")
+        if s["owner"] in w.get("excluded_roles", []):
+            errors.append(f"workflow {wid}: role '{s['owner']}' is excluded from this workflow but owns step {s['stage']}")
+        for n in s["needs"]:
+            if n not in step_ids:
+                errors.append(f"workflow {wid}: step {s['stage']} needs {n}, which is not a step of this workflow")
+    # acyclic dependency graph
+    needs_of = {s["stage"]: [n for n in s["needs"] if n in step_ids] for s in w["steps"]}
+    state = {}
+    def _visit(node, trail=()):
+        if state.get(node) == 2:
+            return
+        if node in trail:
+            errors.append(f"workflow {wid}: dependency cycle through {node}")
+            return
+        for n in needs_of.get(node, []):
+            _visit(n, trail + (node,))
+        state[node] = 2
+    for node in needs_of:
+        _visit(node)
+    def _target_ok(tgt):
+        if isinstance(tgt, int):
+            return tgt in step_ids
+        if tgt in ("end", "abort"):
+            return True
+        return tgt.startswith("workflow:") and tgt.split(":", 1)[1] in workflow_by_id
+    for d in w["decisions"]:
+        if d["after"] not in step_ids:
+            errors.append(f"workflow {wid}: decision after {d['after']} which is not a step")
+        for label, tgt in d["branches"].items():
+            if not _target_ok(tgt):
+                errors.append(f"workflow {wid}: decision branch '{label}' -> {tgt!r} does not resolve")
+    for f in w["failure_paths"]:
+        if f["at"] not in step_ids:
+            errors.append(f"workflow {wid}: failure path at {f['at']} which is not a step")
+        if not _target_ok(f["goto"]):
+            errors.append(f"workflow {wid}: failure path goto {f['goto']!r} does not resolve")
+    for h in w["handoff_workflows"]:
+        if h not in workflow_by_id:
+            errors.append(f"workflow {wid}: hands off to unknown workflow '{h}'")
+    # a workflow that includes a production-changing stage must surface its approval
+    for s in w["steps"]:
+        if stage_by_id[s["stage"]].get("approval_required") and not any(a["stage"] == s["stage"] for a in w["approval_points"]):
+            errors.append(f"workflow {wid}: approval stage {s['stage']} missing from approval_points")
+if covered != set(stage_by_id):
+    errors.append(f"stages in no workflow: {sorted(set(stage_by_id) - covered)}")
+npd = workflow_by_id.get("new-product-development")
+if not npd or len(npd["steps"]) != 190:
+    errors.append("new-product-development must contain all 190 stages")
 for item in st:
-    for workflow_id in item.get("workflow_ids", []):
-        if item["stage_id"] not in workflow_by_id[workflow_id].get("stages", []):
-            errors.append(f"stage {item['stage_id']}: workflow membership is not reciprocal for {workflow_id}")
-for workflow in wfs:
-    if not workflow.get("stages"):
-        errors.append(f"workflow {workflow['workflow_id']}: no semantically assigned stages")
-    for stage_id in workflow.get("stages", []):
-        if workflow["workflow_id"] not in stage_by_id[stage_id].get("workflow_ids", []):
-            errors.append(f"workflow {workflow['workflow_id']}: stage membership is not reciprocal for {stage_id}")
+    if sorted(item["workflow_ids"]) != sorted(w["workflow_id"] for w in wfs if item["stage_id"] in w["stages"]):
+        errors.append(f"stage {item['stage_id']}: workflow_ids disagree with workflow membership")
 
 role_procedures = {}
 for item in agents:
@@ -165,25 +240,83 @@ for left, right, score in near_role_duplicates:
 if len({re.sub(r"\W+", " ", p.lower()).strip() for p in role_procedures.values()}) < 60:
     errors.append("fewer than 60 distinct specialist execution procedures")
 
-phase_instructions = []
 for workflow in wfs:
-    contracts = workflow.get("phase_contracts", [])
-    if len(contracts) != len(workflow.get("phases", [])) or not contracts:
-        errors.append(f"workflow {workflow['workflow_id']}: phase contracts do not match lifecycle phases")
-    for phase in contracts:
-        for field in ["phase","instruction","evidence","exit_criteria","owner"]:
-            if not phase.get(field):
-                errors.append(f"workflow {workflow['workflow_id']}: phase contract missing {field}")
-        phase_instructions.append(phase.get("instruction", ""))
     path = R / "workflows" / f"{workflow['workflow_id']}.md"
-    if path.exists():
-        doc = path.read_text(encoding="utf-8").lower()
-        if "complete the relevant mapped stages" in doc:
-            errors.append(f"workflow {workflow['workflow_id']}: generic phase filler remains")
-        if doc.count("**execution:**") != len(contracts):
-            errors.append(f"workflow {workflow['workflow_id']}: Markdown phase execution count mismatch")
-if len(set(phase_instructions)) < 40:
-    errors.append(f"workflow phase guidance lacks variation: {len(set(phase_instructions))} unique instructions")
+    if not path.exists():
+        errors.append(f"workflow {workflow['workflow_id']}: missing generated contract {path.relative_to(R)}")
+        continue
+    doc = path.read_text(encoding="utf-8")
+    if len(doc.split()) < 130:
+        errors.append(f"workflow {workflow['workflow_id']}: generated contract is not substantive")
+    for s in workflow["steps"]:
+        if f"| {s['stage']} |" not in doc:
+            errors.append(f"workflow {workflow['workflow_id']}: step {s['stage']} missing from generated Markdown")
+
+# stage content (Phase 4): `complete` is only allowed with the full authored contract
+import json as _json
+_content_files = {int(p_.stem): _json.loads(p_.read_text(encoding="utf-8")) for p_ in (R / "registry" / "stage-content").glob("*.json")}
+_REQ = ("purpose", "entry_criteria", "inputs", "procedure", "deliverables", "acceptance_criteria", "validation_method",
+        "validation", "failure_modes", "worked_example")
+for _sid, _c in _content_files.items():
+    if _sid not in stage_by_id:
+        errors.append(f"stage-content/{_sid:03d}.json: unknown stage"); continue
+    for _k in _REQ:
+        if not _c.get(_k):
+            errors.append(f"stage {_sid}: complete content missing '{_k}'")
+    if len(_c.get("procedure", [])) < 4:
+        errors.append(f"stage {_sid}: procedure needs at least 4 ordered steps")
+    if len(_c.get("failure_modes", [])) < 2:
+        errors.append(f"stage {_sid}: needs at least 2 failure modes")
+    if not str(_c.get("worked_example", "")).startswith("ILLUSTRATIVE"):
+        errors.append(f"stage {_sid}: worked_example must start with ILLUSTRATIVE (it is not evidence)")
+    for _v in _c.get("validation", []):
+        if not (("command" in _v) ^ ("check" in _v)) or not _v.get("expect"):
+            errors.append(f"stage {_sid}: each validation needs exactly one of command/check and an expect")
+        for _bad in re.findall(r"scripts/([\w./-]+\.py)", _v.get("command", "")):
+            if not (R / "scripts" / _bad).exists():
+                errors.append(f"stage {_sid}: validation command references missing script scripts/{_bad}")
+    if _c.get("status") != "complete" or stage_by_id[_sid]["status"] != "complete":
+        errors.append(f"stage {_sid}: content present but status is not complete")
+for _s in st:
+    if _s["status"] == "complete" and _s["stage_id"] not in _content_files:
+        errors.append(f"stage {_s['stage_id']}: marked complete without authored content")
+_procs = {i: " ".join(c["procedure"]) for i, c in _content_files.items()}
+import difflib as _dl
+for _a in sorted(_procs):
+    for _b in sorted(_procs):
+        if _a < _b and _dl.SequenceMatcher(None, _procs[_a], _procs[_b], autojunk=False).ratio() > 0.70:
+            errors.append(f"stages {_a} and {_b}: procedures are more than 70% similar")
+
+# skill distinctness and illustrative-evidence labelling (Phase 5)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import audit_duplication as _dup
+_sp, _ = _dup.near_duplicates(R, 0.70, scope=("skills",))
+for _a, _b, _r in _sp:
+    errors.append(f"skill documents too similar ({_r:.2f} >= 0.70): {_a} <-> {_b}")
+_ex_seen = {}
+for _p in (R / "skills").rglob("examples/*.json"):
+    _d = _json.loads(_p.read_text(encoding="utf-8"))
+    if _d.get("example") is not True or _d.get("status") == "PASS":
+        errors.append(f"{_p.relative_to(R)}: example evidence must set \"example\": true and must not say PASS")
+    _ex_seen.setdefault(_p.read_text(encoding="utf-8"), []).append(_p)
+for _txt, _ps in _ex_seen.items():
+    if len(_ps) > 1:
+        errors.append("identical example evidence in " + ", ".join(str(x.relative_to(R)) for x in _ps))
+
+# role distinctness (Phase 3): contracts must not be near-copies and every role needs a derived footprint
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import audit_duplication as _dup
+_pairs, _ = _dup.near_duplicates(R, 0.85, scope=("agents",))
+for a_, b_, r_ in _pairs:
+    errors.append(f"role contracts too similar ({r_:.2f} >= 0.85): {a_} <-> {b_}; differentiate or merge (see docs/audit/ROLE_DECISIONS.md)")
+for item in agents:
+    if "master-orchestration" in item["required_skills"]:
+        errors.append(f"{item['agent_id']}: master-orchestration is an entry-point skill, not a role skill")
+    if not item.get("permission_tier"):
+        errors.append(f"{item['agent_id']}: permission_tier missing")
+    rs_ = item["raci_summary"]
+    if not (rs_["accountable"] or rs_["responsible"]):
+        errors.append(f"{item['agent_id']}: owns no stage (decide assign/merge/remove in ROLE_DECISIONS.md)")
 
 # credential heuristic
 for p in R.rglob('*'):

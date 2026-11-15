@@ -1,0 +1,65 @@
+{
+  "stage_id": 132,
+  "purpose": "change the production database schema or data safely, with verified backups and a path back",
+  "entry_criteria": [
+    "Migration script is reviewed and tested on a production-like copy",
+    "Backup or snapshot plan exists",
+    "DBA owner is named"
+  ],
+  "inputs": [
+    "migration scripts",
+    "test results on a copy",
+    "backup and restore procedure",
+    "expected duration and locking impact"
+  ],
+  "procedure": [
+    "Review the script for locks, long transactions and irreversible steps; prefer additive, expand-then-contract changes.",
+    "Run on a production-sized copy; record duration and locking.",
+    "Take and verify a backup or snapshot; prove restore works.",
+    "Obtain DBA-owner approval for the window.",
+    "Run the migration with monitoring; stop on error thresholds.",
+    "Verify schema and data checks after; keep the rollback or forward-fix ready until the observation window ends."
+  ],
+  "deliverables": [
+    "migration plan",
+    "copy-run report",
+    "verified backup record",
+    "post-migration verification"
+  ],
+  "acceptance_criteria": [
+    "Restore from backup was tested",
+    "Duration and locking are within the window",
+    "Verification queries pass",
+    "DBA owner approved"
+  ],
+  "validation_method": "DBA-owner approval before running in production.",
+  "validation": [
+    {
+      "command": "psql -f migrations/0042_add_index.sql --single-transaction -v ON_ERROR_STOP=1   # example on the copy",
+      "expect": "exit 0; duration recorded"
+    },
+    {
+      "command": "psql -c \"SELECT count(*) FROM orders WHERE new_col IS NULL\"   # example check",
+      "expect": "expected count after the migration"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Migration locks a hot table",
+      "detection": "Copy run shows long locks",
+      "response": "Redesign (online or batched) before approval"
+    },
+    {
+      "mode": "Backup not restorable",
+      "detection": "Restore test fails",
+      "response": "BLOCKED until a restorable backup exists"
+    },
+    {
+      "mode": "Irreversible change without plan",
+      "detection": "No rollback or forward-fix",
+      "response": "Reject"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Adding a column with a default is done in two steps: add nullable, backfill in batches, then add the constraint. Copy run shows no long locks; restore of last night's snapshot is verified.",
+  "status": "complete"
+}

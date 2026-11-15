@@ -71,7 +71,7 @@ Avoid vague steps such as “perform assigned work”, “use approved tools”,
 
 ### B. Seventy-four specialist role contracts
 
-For every entry in `registry/AGENT_REGISTRY.yaml`, make its matching `agents/<agent-id>.md` a genuine role contract. At minimum include:
+For every entry in `registry/AGENT_REGISTRY.json`, make its matching `agents/<agent-id>.md` a genuine role contract. At minimum include:
 
 - Mission and specialist domain; explicit scope and non-scope.
 - Accountabilities and concrete responsibilities, written for that role.
@@ -98,7 +98,7 @@ Apply this level of specificity to all 74 roles, not only the examples above.
 
 ### C. Twenty-three unique workflow contracts
 
-Every workflow in `registry/WORKFLOW_REGISTRY.yaml` must have a unique trigger, purpose, stage set, phase sequence, role assignment, required skills, inputs, dependencies, approval gates, outputs, failure path, rollback/compensation, communication plan and completion criteria.
+Every workflow in `registry/WORKFLOW_REGISTRY.json` must have a unique trigger, purpose, stage set, phase sequence, role assignment, required skills, inputs, dependencies, approval gates, outputs, failure path, rollback/compensation, communication plan and completion criteria.
 
 The 23 workflow IDs are:
 

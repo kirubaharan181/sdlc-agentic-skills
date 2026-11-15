@@ -1,103 +1,110 @@
-# Database Migration
+# Database migration
 
-> **Purpose:** change schema/data safely with reconciled state
+> Generated from `registry/workflows/database-migration.json`. Edit the source, then run `python scripts/build.py`.
 
-## Trigger and required inputs
-A request requires the controlled lifecycle to change schema/data safely with reconciled state.
-- named request and accountable owner
-- risk/impact classification and authority
-- relevant artifact, immutable revision or environment reference
-- acceptance criteria and recovery constraints
+**Purpose.** Change a schema or data safely with a verified backup, a rehearsed migration and a way back.
 
-## Lifecycle phases
-### 1. Assess schema/data impact
+**Trigger.** A schema or data change is required by a feature, fix or maintenance task.
 
-**Accountable role:** database-architect
+## Entry criteria
+- Migration scripts are forward and reversible, or an irreversible step is explicitly flagged
+- A staging environment with production-like data shape exists
 
-**Execution:** Inventory schema consumers, data volume, locks, write patterns, retention and compatibility across old/new application versions. Workflow-specific control: Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.
+## Required inputs
+- migration_scripts
+- rollback_plan
+- maintenance_window
 
-**Required evidence:**
-- schema impact map
-- data volume and lock estimate
-- compatibility matrix
-- workflow-specific safety/control evidence
+## Flow
 
-**Exit criteria:** Application and data owners accept the impact and migration sequence.
+Solid arrows are dependencies, dotted arrows are decisions and failure paths, hexagons need human approval.
 
-### 2. Rehearse backup and restore
+```mermaid
+flowchart TD
+  S26["26 Database Architecture"]
+  S58["58 Database Development"]
+  S147["147 Backup Management"]
+  S137["137 Rollback Planning"]
+  S130["130 Staging Deployment"]
+  S80["80 Integration Testing"]
+  S131["131 Staging Validation"]
+  S129{{"129 Change Approval"}}
+  S132{{"132 Database Migration"}}
+  S138["138 Production Smoke Test"]
+  S26 --> S58
+  S26 --> S147
+  S58 --> S137
+  S58 --> S130
+  S130 --> S80
+  S130 --> S131
+  S80 --> S131
+  S131 --> S129
+  S147 --> S129
+  S137 --> S129
+  S129 --> S132
+  S132 --> S138
+  S131 -. yes .-> S129
+  S131 -. no .-> S58
+  S132 -. fail .-> WF_rollback
+  S147 -. fail .-> ABORT
+  ABORT((ABORT))
+  WF_rollback((run workflow: rollback))
+```
 
-**Accountable role:** database-administrator
+## Steps
 
-**Execution:** Take a representative backup, restore it into an isolated environment and measure integrity, duration, permissions and RPO/RTO. Workflow-specific control: Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.
+| # | Stage | Owner (accountable or responsible) | Needs | Notes |
+|---:|---|---|---|---|
+| 26 | Database Architecture | `database-architect` | - | Confirm the target design and compatibility with running code. |
+| 58 | Database Development | `database-engineer` | 26 |  |
+| 147 | Backup Management | `database-administrator` | 26 | Take and verify a restorable backup. |
+| 137 | Rollback Planning | `release-manager` | 58 |  |
+| 130 | Staging Deployment | `deployment-engineer` | 58 | Apply the migration to staging. |
+| 80 | Integration Testing | `integration-testing-specialist` | 130 |  |
+| 131 | Staging Validation | `qa-lead` | 130, 80 |  |
+| 129 | Change Approval | `release-manager` | 131, 147, 137 | approval: change-board |
+| 132 | Database Migration | `database-administrator` | 129 | Production migration inside the window.; approval: dba-owner |
+| 138 | Production Smoke Test | `sre` | 132 |  |
 
-**Required evidence:**
-- backup artifact identity
-- restore log
-- integrity reconciliation
-- RPO/RTO result
-- workflow-specific safety/control evidence
+## Parallel work
+- Stages 58, 147
+- Stages 130, 137
 
-**Exit criteria:** Restore succeeds and reconciled data meets recovery objectives before production migration.
+## Human approval points
 
-### 3. Test compatibility and integrity
+| Stage | Approver | When |
+|---:|---|---|
+| 129 Change Approval | `change-board` | always |
+| 132 Database Migration | `dba-owner` | always |
 
-**Accountable role:** database-engineer
+Rationale for each approval is in `docs/governance/APPROVAL_POLICY.md` and the stage's `approval_rationale`.
 
-**Execution:** Run old/new application compatibility tests, migration dry-run, constraint checks and representative read/write reconciliation. Workflow-specific control: Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.
+## Decision points
+- After 131 - Did staging validation pass? **yes** -> 129; **no** -> 58
 
-**Required evidence:**
-- compatibility test report
-- dry-run output
-- row/count/checksum reconciliation
-- workflow-specific safety/control evidence
+## Failure and remediation
 
-**Exit criteria:** No unexplained data loss, duplicate key or incompatible consumer behavior remains.
+| At stage | Condition | Action | Go to |
+|---:|---|---|---|
+| 132 | Migration fails or exceeds the window | Stop at a safe point, run the rehearsed rollback, notify the DBA owner | workflow:rollback |
+| 147 | Backup cannot be restored | Do not proceed to production | abort |
 
-### 4. Execute approved window
+## Outputs
+- migration_execution_record
+- backup_verification
+- staging_validation_report
+- rollback_plan
 
-**Accountable role:** release-manager
+## Exit criteria
+- Backup restore was tested
+- Staging migration and rollback both rehearsed
+- Production migration completed with row counts and constraints verified
+- Application health checks pass
 
-**Execution:** Verify change ticket, approver, backup freshness, operator roles and stop conditions; execute one observable migration step at a time. Workflow-specific control: Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.
+## Communication
+Announce the window to affected teams; confirm completion to the change board.
 
-**Required evidence:**
-- approval and window record
-- operator execution log
-- pre/post migration checks
-- workflow-specific safety/control evidence
+## Hands off to
+- [rollback](rollback.md)
 
-**Exit criteria:** Execution remains within the approved window and every step has a recorded outcome.
-
-### 5. Reconcile and monitor
-
-**Accountable role:** release-manager
-
-**Execution:** Compare source/target counts, checksums, constraints and application behavior; monitor latency, errors and replication lag through the observation window. Workflow-specific control: Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.
-
-**Required evidence:**
-- reconciliation report
-- monitoring snapshot
-- residual discrepancy log
-- workflow-specific safety/control evidence
-
-**Exit criteria:** Discrepancies are resolved or explicitly accepted by the data owner; service health is stable.
-
-
-## Stage set and accountable roles
-Stage IDs: 26, 129, 130, 131, 132, 133, 137, 138
-Accountable roles: database-architect, database-administrator, database-engineer, release-manager
-Required skills: master-orchestration, evidence-quality-gates, secure-change-control
-
-## Dependencies and parallel work
-A phase cannot start until its entry criteria and predecessor evidence are accepted; independent read-only analysis may run in parallel against the same immutable baseline.
-- Independent QA and security analysis may run in parallel after scope is frozen; both must cite the same candidate revision.
-
-## Approval gates
-scope-and-risk, quality-evidence, security-disposition, explicit-human-authorization. Sensitive operations require explicit human authorization.
-
-## Failure, rollback and communication
-Stop progression when a phase exit criterion fails; preserve diagnostics and state, notify the workflow owner, open a named remediation item, and resume only after the failed criterion is re-tested. Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.
-**Recovery:** Require a tested backup and restore, schema compatibility across rolling application versions, migration rehearsal on representative data, row/count/checksum reconciliation, lock/downtime assessment and an approved stop/forward-fix plan.
-**Communication:** Publish phase status, decision owner, customer/operational impact and next update time at each gate; communicate material risk immediately.
-
-## Completion criteria
-Every required phase has accepted exit evidence or a valid, time-bound waiver approved by the designated authority; residual risk and operational ownership are accepted.
+Any FAIL, BLOCKED or INCONCLUSIVE gate halts the steps that depend on it; see `orchestrator/` for the common failure policy.

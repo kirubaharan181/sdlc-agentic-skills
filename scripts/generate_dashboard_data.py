@@ -1,28 +1,31 @@
 #!/usr/bin/env python3
-"""Generate Atelier's dashboard snapshot from canonical JSON-compatible YAML registries."""
+"""Generate Atelier's dashboard snapshot from canonical JSON registries."""
 from pathlib import Path
 from datetime import datetime, timezone
 import json
 import os
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import registry_io
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
-    "stages": "registry/SDLC_STAGE_REGISTRY.yaml",
-    "agents": "registry/AGENT_REGISTRY.yaml",
-    "skills": "registry/SKILL_REGISTRY.yaml",
-    "workflows": "registry/WORKFLOW_REGISTRY.yaml",
-    "platforms": "adapters/capability-matrix.yaml",
+    "stages": "registry/SDLC_STAGE_REGISTRY.json",
+    "agents": "registry/AGENT_REGISTRY.json",
+    "skills": "registry/SKILL_REGISTRY.json",
+    "workflows": "registry/workflows",
+    "platforms": "adapters/capability-matrix.json",
 }
 
 def load(path):
     return json.loads((ROOT / path).read_text(encoding="utf-8"))
 
 def main():
-    source = {key: load(path) for key, path in SOURCES.items()}
-    stages = source["stages"]["stages"]
-    agents = source["agents"]["agents"]
-    skills = source["skills"]["skills"]
-    workflows = source["workflows"]["workflows"]
+    resolved = registry_io.load_all(ROOT)
+    source = {"platforms": load(SOURCES["platforms"])}
+    stages, agents = resolved["stages"], resolved["agents"]
+    skills, workflows = resolved["skills"], resolved["workflows"]
 
     workflow_ids = {item["workflow_id"] for item in workflows}
     agent_ids = {item["agent_id"] for item in agents}

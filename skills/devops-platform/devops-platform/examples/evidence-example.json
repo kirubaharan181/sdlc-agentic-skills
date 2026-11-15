@@ -1,12 +1,35 @@
 {
+  "example": true,
+  "status": "ILLUSTRATIVE_ONLY",
+  "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+  "skill": "devops-platform",
   "stage_id": 111,
-  "status": "PASS",
-  "commit_sha": "<real-sha-required>",
-  "evidence": [
+  "stage_name": "CI Pipeline",
+  "commit_sha": "<commit under review>",
+  "executor": "<DevOps Engineer or named person>",
+  "timestamp": "<ISO 8601 time of the run>",
+  "validation": {
+    "method": "A deliberately failing change is blocked from merging.",
+    "command": "gh run list --limit 5 --json conclusion,headSha",
+    "expected": "latest run on the default branch concluded success for the current head",
+    "exit_status": "<observed>"
+  },
+  "artifacts": [
     {
-      "type": "reviewed-artifact",
-      "path": "<actual-path>",
-      "result": "passed"
+      "name": "pipeline definition",
+      "path": "<path or immutable URL of pipeline definition>"
+    },
+    {
+      "name": "run history",
+      "path": "<path or immutable URL of run history>"
+    },
+    {
+      "name": "artifact with checksum",
+      "path": "<path or immutable URL of artifact with checksum>"
     }
-  ]
+  ],
+  "limitations": [
+    "<what was not covered>"
+  ],
+  "approval": null
 }

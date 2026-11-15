@@ -1,0 +1,125 @@
+{
+  "workflow_id": "api-version-upgrade",
+  "name": "API version upgrade",
+  "purpose": "Introduce a new API version with contract tests for old and new versions and a deprecation path.",
+  "trigger": "An API change is breaking, or a new version is required.",
+  "entry_criteria": [
+    "Current API contract is published",
+    "Consumers are known or discoverable from gateway logs"
+  ],
+  "required_inputs": [
+    "current_api_contract",
+    "change_description",
+    "consumer_inventory"
+  ],
+  "steps": [
+    {
+      "stage": 31,
+      "owner": "integration-architect",
+      "needs": [],
+      "note": "Inventory consumers and agree the deprecation window."
+    },
+    {
+      "stage": 27,
+      "owner": "api-architect",
+      "needs": [
+        31
+      ]
+    },
+    {
+      "stage": 57,
+      "owner": "api-engineer",
+      "needs": [
+        27
+      ]
+    },
+    {
+      "stage": 81,
+      "owner": "api-testing-specialist",
+      "needs": [
+        57
+      ],
+      "note": "Contract tests against both versions."
+    },
+    {
+      "stage": 68,
+      "owner": "full-stack-engineer",
+      "needs": [
+        57
+      ]
+    },
+    {
+      "stage": 69,
+      "owner": "code-reviewer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 75,
+      "owner": "merge-steward",
+      "needs": [
+        69,
+        81
+      ]
+    },
+    {
+      "stage": 127,
+      "owner": "technical-writer",
+      "needs": [
+        27
+      ],
+      "note": "Migration guide and deprecation notice."
+    },
+    {
+      "stage": 130,
+      "owner": "deployment-engineer",
+      "needs": [
+        75
+      ]
+    },
+    {
+      "stage": 131,
+      "owner": "qa-lead",
+      "needs": [
+        130
+      ]
+    },
+    {
+      "stage": 133,
+      "owner": "deployment-engineer",
+      "needs": [
+        131,
+        127
+      ]
+    },
+    {
+      "stage": 138,
+      "owner": "sre",
+      "needs": [
+        133
+      ]
+    }
+  ],
+  "decisions": [],
+  "failure_paths": [
+    {
+      "at": 81,
+      "condition": "Old-version contract test fails",
+      "action": "The change is breaking by accident; fix before release",
+      "goto": 57
+    }
+  ],
+  "outputs": [
+    "versioned_api_contract",
+    "migration_guide",
+    "contract_test_report"
+  ],
+  "exit_criteria": [
+    "Old version still passes its contract tests",
+    "New version passes its contract tests",
+    "Deprecation date and migration guide published"
+  ],
+  "communication_plan": "Email registered consumers with the timeline.",
+  "handoff_workflows": []
+}

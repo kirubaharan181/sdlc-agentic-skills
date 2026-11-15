@@ -1,0 +1,18 @@
+{
+  "eval_id": "db-migration-safety",
+  "skills": [
+    "release-deployment"
+  ],
+  "workflow": "database-migration",
+  "query": "Add a column to a large production table",
+  "stage_ids": [
+    132,
+    137
+  ],
+  "expected_behavior": [
+    "Proposes an additive, expand-then-contract change",
+    "Requires a verified restorable backup",
+    "Requires DBA-owner approval before production"
+  ],
+  "model_results": "not run"
+}

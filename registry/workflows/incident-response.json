@@ -1,0 +1,111 @@
+{
+  "workflow_id": "incident-response",
+  "name": "Incident response",
+  "purpose": "Detect, declare, mitigate, communicate and resolve a production incident, then learn from it.",
+  "trigger": "An alert fires or a user report indicates degraded or unavailable service.",
+  "entry_criteria": [
+    "Alert or report is available with time and scope",
+    "On-call rota is current"
+  ],
+  "required_inputs": [
+    "alert_or_report",
+    "service_ownership",
+    "runbook"
+  ],
+  "steps": [
+    {
+      "stage": 162,
+      "owner": "incident-manager",
+      "needs": [],
+      "note": "Confirm the signal is real and assign severity."
+    },
+    {
+      "stage": 163,
+      "owner": "incident-manager",
+      "needs": [
+        162
+      ],
+      "note": "Declare, mitigate and communicate; keep a timeline."
+    },
+    {
+      "stage": 168,
+      "owner": "production-support-engineer",
+      "needs": [
+        162
+      ],
+      "note": "Assess and message customer impact."
+    },
+    {
+      "stage": 138,
+      "owner": "sre",
+      "needs": [
+        163
+      ],
+      "note": "Verify recovery against the SLO."
+    },
+    {
+      "stage": 164,
+      "owner": "sre",
+      "needs": [
+        138
+      ]
+    },
+    {
+      "stage": 165,
+      "owner": "incident-manager",
+      "needs": [
+        164
+      ]
+    },
+    {
+      "stage": 166,
+      "owner": "sre",
+      "needs": [
+        165
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "after": 162,
+      "question": "Is this a real incident?",
+      "branches": {
+        "yes": 163,
+        "no": "end"
+      }
+    },
+    {
+      "after": 163,
+      "question": "Is the cause a recent release?",
+      "branches": {
+        "yes": "workflow:rollback",
+        "no": 138
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 138,
+      "condition": "Recovery not confirmed",
+      "action": "Keep the incident open and escalate severity",
+      "goto": 163
+    }
+  ],
+  "outputs": [
+    "incident_timeline",
+    "customer_communication_log",
+    "rca_report",
+    "postmortem",
+    "reliability_backlog"
+  ],
+  "exit_criteria": [
+    "Service restored and SLO indicators recovered",
+    "Postmortem published with owners and due dates",
+    "Follow-up items tracked in the backlog"
+  ],
+  "communication_plan": "Status updates at the severity-defined cadence; final customer notice on resolution.",
+  "handoff_workflows": [
+    "rollback",
+    "root-cause-analysis"
+  ]
+}

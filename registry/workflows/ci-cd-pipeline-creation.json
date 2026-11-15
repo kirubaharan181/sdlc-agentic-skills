@@ -1,0 +1,109 @@
+{
+  "workflow_id": "ci-cd-pipeline-creation",
+  "name": "CI/CD pipeline creation",
+  "purpose": "Build secure CI and CD pipelines with gated deployments.",
+  "trigger": "A repository needs build, test or deploy automation.",
+  "entry_criteria": [
+    "Repository and branch protection exist",
+    "Test commands are known"
+  ],
+  "required_inputs": [
+    "repository",
+    "test_plan",
+    "target_environments"
+  ],
+  "steps": [
+    {
+      "stage": 50,
+      "owner": "devsecops-engineer",
+      "needs": [],
+      "note": "Pipeline secrets via the secret store."
+    },
+    {
+      "stage": 111,
+      "owner": "devops-engineer",
+      "needs": []
+    },
+    {
+      "stage": 112,
+      "owner": "devops-engineer",
+      "needs": [
+        111
+      ]
+    },
+    {
+      "stage": 113,
+      "owner": "devops-engineer",
+      "needs": [
+        111
+      ]
+    },
+    {
+      "stage": 114,
+      "owner": "platform-engineer",
+      "needs": [
+        113
+      ]
+    },
+    {
+      "stage": 115,
+      "owner": "devops-engineer",
+      "needs": [
+        113
+      ],
+      "optional": true
+    },
+    {
+      "stage": 116,
+      "owner": "kubernetes-engineer",
+      "needs": [
+        115
+      ],
+      "optional": true
+    },
+    {
+      "stage": 119,
+      "owner": "devops-engineer",
+      "needs": [
+        114,
+        112,
+        50
+      ]
+    },
+    {
+      "stage": 124,
+      "owner": "deployment-engineer",
+      "needs": [
+        119
+      ]
+    },
+    {
+      "stage": 125,
+      "owner": "devsecops-engineer",
+      "needs": [
+        119
+      ]
+    }
+  ],
+  "decisions": [],
+  "failure_paths": [
+    {
+      "at": 125,
+      "condition": "Pipeline can write to production without approval",
+      "action": "Block until the approval gate is added",
+      "goto": 119
+    }
+  ],
+  "outputs": [
+    "ci_pipeline_definition",
+    "cd_pipeline_definition",
+    "pipeline_security_review"
+  ],
+  "exit_criteria": [
+    "Pipeline runs green on a sample commit",
+    "Production deploy stage requires approval",
+    "Least-privilege tokens; pinned actions or images"
+  ],
+  "communication_plan": "Document how to run and debug the pipeline.",
+  "handoff_workflows": []
+}

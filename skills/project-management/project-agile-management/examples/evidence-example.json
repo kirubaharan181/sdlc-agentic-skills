@@ -1,12 +1,35 @@
 {
+  "example": true,
+  "status": "ILLUSTRATIVE_ONLY",
+  "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
+  "skill": "project-agile-management",
   "stage_id": 35,
-  "status": "PASS",
-  "commit_sha": "<real-sha-required>",
-  "evidence": [
+  "stage_name": "Project Initiation",
+  "commit_sha": "<commit under review>",
+  "executor": "<Project Manager or named person>",
+  "timestamp": "<ISO 8601 time of the run>",
+  "validation": {
+    "method": "Sponsor approval.",
+    "command": "<command or review technique actually used>",
+    "expected": "<expected result>",
+    "exit_status": "<observed>"
+  },
+  "artifacts": [
     {
-      "type": "reviewed-artifact",
-      "path": "<actual-path>",
-      "result": "passed"
+      "name": "project charter",
+      "path": "<path or immutable URL of project charter>"
+    },
+    {
+      "name": "RACI",
+      "path": "<path or immutable URL of RACI>"
+    },
+    {
+      "name": "initial RAID log",
+      "path": "<path or immutable URL of initial RAID log>"
     }
-  ]
+  ],
+  "limitations": [
+    "<what was not covered>"
+  ],
+  "approval": null
 }

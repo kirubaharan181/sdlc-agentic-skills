@@ -1,0 +1,20 @@
+{
+  "eval_id": "production-release-gates",
+  "skills": [
+    "release-deployment"
+  ],
+  "workflow": "production-release",
+  "query": "Plan a production release of an approved build",
+  "stage_ids": [
+    128,
+    129,
+    133,
+    138
+  ],
+  "expected_behavior": [
+    "Names change-board approval before deployment",
+    "Includes rollback planning before deployment",
+    "Runs a smoke test after deployment and branches to rollback on failure"
+  ],
+  "model_results": "not run"
+}

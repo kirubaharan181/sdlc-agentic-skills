@@ -1,0 +1,97 @@
+{
+  "workflow_id": "technical-debt-reduction",
+  "name": "Technical debt reduction",
+  "purpose": "Pay down a prioritized debt item without changing behaviour.",
+  "trigger": "A debt item is prioritized in the debt register.",
+  "entry_criteria": [
+    "Debt item has a clear definition of done"
+  ],
+  "required_inputs": [
+    "technical_debt_register",
+    "target_item"
+  ],
+  "steps": [
+    {
+      "stage": 76,
+      "owner": "software-architect",
+      "needs": []
+    },
+    {
+      "stage": 79,
+      "owner": "unit-testing-specialist",
+      "needs": [
+        76
+      ],
+      "note": "Characterization tests before changing code."
+    },
+    {
+      "stage": 175,
+      "owner": "backend-engineer",
+      "needs": [
+        79
+      ]
+    },
+    {
+      "stage": 68,
+      "owner": "full-stack-engineer",
+      "needs": [
+        175
+      ]
+    },
+    {
+      "stage": 69,
+      "owner": "code-reviewer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 73,
+      "owner": "code-reviewer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 85,
+      "owner": "automation-qa-engineer",
+      "needs": [
+        68
+      ]
+    },
+    {
+      "stage": 75,
+      "owner": "merge-steward",
+      "needs": [
+        69,
+        73,
+        85
+      ]
+    }
+  ],
+  "decisions": [],
+  "failure_paths": [
+    {
+      "at": 85,
+      "condition": "Behaviour changed",
+      "action": "Revert; behaviour change is out of scope",
+      "goto": 175
+    }
+  ],
+  "outputs": [
+    "debt_reduction_pr",
+    "coverage_assessment",
+    "updated_debt_register"
+  ],
+  "exit_criteria": [
+    "Tests green before and after",
+    "Debt register updated"
+  ],
+  "communication_plan": "Note refactors in the changelog.",
+  "handoff_workflows": [],
+  "excluded_roles": [
+    "release-manager",
+    "penetration-testing-specialist",
+    "deployment-engineer"
+  ]
+}

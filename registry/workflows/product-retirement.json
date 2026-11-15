@@ -1,0 +1,120 @@
+{
+  "workflow_id": "product-retirement",
+  "name": "Product retirement",
+  "purpose": "Sunset a product with notice, data export, decommissioning, access revocation and audit.",
+  "trigger": "The business approves retiring a product or major component.",
+  "entry_criteria": [
+    "Retirement decision documented",
+    "Contractual notice periods known"
+  ],
+  "required_inputs": [
+    "retirement_decision",
+    "customer_list",
+    "contract_inventory",
+    "data_retention_policy"
+  ],
+  "steps": [
+    {
+      "stage": 180,
+      "owner": "product-manager",
+      "needs": [],
+      "note": "Plan, and obtain sponsor approval."
+    },
+    {
+      "stage": 43,
+      "owner": "program-manager",
+      "needs": [
+        180
+      ],
+      "note": "Notify customers and internal stakeholders."
+    },
+    {
+      "stage": 188,
+      "owner": "vendor-management-specialist",
+      "needs": [
+        180
+      ],
+      "note": "Give notice on vendor contracts."
+    },
+    {
+      "stage": 147,
+      "owner": "database-administrator",
+      "needs": [
+        43
+      ],
+      "note": "Export and archive data per retention policy."
+    },
+    {
+      "stage": 173,
+      "owner": "database-administrator",
+      "needs": [
+        147
+      ],
+      "note": "Delete data after the retention hold; destructive, approval required."
+    },
+    {
+      "stage": 144,
+      "owner": "network-engineer",
+      "needs": [
+        43
+      ]
+    },
+    {
+      "stage": 152,
+      "owner": "infrastructure-engineer",
+      "needs": [
+        173,
+        144
+      ],
+      "note": "Decommission compute, storage and DNS."
+    },
+    {
+      "stage": 184,
+      "owner": "compliance-specialist",
+      "needs": [
+        152
+      ],
+      "note": "Revoke access; approval by the access owner."
+    },
+    {
+      "stage": 185,
+      "owner": "security-auditor",
+      "needs": [
+        184,
+        188
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "after": 147,
+      "question": "Is any legal or retention hold active?",
+      "branches": {
+        "yes": "end",
+        "no": 173
+      }
+    }
+  ],
+  "failure_paths": [
+    {
+      "at": 184,
+      "condition": "Residual access found",
+      "action": "Revoke and re-audit before closing",
+      "goto": 184
+    }
+  ],
+  "outputs": [
+    "retirement_plan",
+    "data_disposition_record",
+    "access_revocation_record",
+    "audit_report"
+  ],
+  "exit_criteria": [
+    "Customers notified within contract terms",
+    "Data archived or deleted with recorded approval",
+    "All access and credentials revoked",
+    "Recurring cost stopped"
+  ],
+  "communication_plan": "Customer notice schedule; internal announcement at decommission.",
+  "handoff_workflows": []
+}

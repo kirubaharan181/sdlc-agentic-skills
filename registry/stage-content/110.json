@@ -1,0 +1,65 @@
+{
+  "stage_id": 110,
+  "purpose": "give a person independent of the implementation the evidence needed to accept the remaining security risk of a release",
+  "entry_criteria": [
+    "Security stages in scope (threat model, SAST, DAST, SCA, secrets) have recorded results",
+    "Open findings and exceptions are listed with owners",
+    "Auditor did not implement the controls being reviewed"
+  ],
+  "inputs": [
+    "evidence records for security stages",
+    "open findings and exception register",
+    "threat model residual risks",
+    "release scope"
+  ],
+  "procedure": [
+    "Collect the evidence record of each security stage and check it names a real commit, command and result.",
+    "Re-run a sample of the recorded checks independently and compare results.",
+    "List every open finding, exception and residual risk with owner and expiry; flag any without one.",
+    "Decide per finding: accept, require fix, or require compensating control; state reasoning.",
+    "Write the sign-off record: scope, evidence reviewed, sample re-runs, decision, conditions.",
+    "Submit to the security-lead for the human decision; do not self-approve."
+  ],
+  "deliverables": [
+    "sign-off record",
+    "sample re-run results",
+    "open risk register",
+    "conditions list"
+  ],
+  "acceptance_criteria": [
+    "Every security stage in scope has evidence or an explicit waiver",
+    "Sample re-runs agree with recorded results",
+    "No critical or high finding is open without a security-lead exception",
+    "Decision and conditions are written and dated"
+  ],
+  "validation_method": "Security-lead approval of the sign-off record.",
+  "validation": [
+    {
+      "command": "python3 scripts/check_references.py && python3 scripts/validate.py   # repository integrity before review",
+      "expect": "both exit 0"
+    },
+    {
+      "check": "open each stage evidence record and confirm commit, command, result and that it is not flagged example",
+      "expect": "none missing; none flagged example"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Evidence is illustrative or unrun",
+      "detection": "Record flagged example or lacks a command and revision",
+      "response": "Treat as FAIL for that stage; do not sign off"
+    },
+    {
+      "mode": "Auditor reviewed own work",
+      "detection": "Auditor appears as implementer in the record",
+      "response": "Reassign review to an independent person"
+    },
+    {
+      "mode": "Pressure to ship with open critical findings",
+      "detection": "Exception without owner or expiry",
+      "response": "Decline; escalate to the security-lead"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Evidence is complete except one DAST high finding with a fix merged but not retested. The auditor requires the retest as a condition; sign-off is conditional on that passing before release.",
+  "status": "complete"
+}
