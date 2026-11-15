@@ -1,0 +1,65 @@
+{
+  "stage_id": 185,
+  "purpose": "provide independent, evidenced assurance that controls operate as claimed, and track findings to closure",
+  "entry_criteria": [
+    "Audit scope, criteria (policy or standard) and period are agreed",
+    "Auditor is independent of the controls being audited",
+    "Evidence sources and owners are named"
+  ],
+  "inputs": [
+    "audit scope and criteria",
+    "control descriptions and owners",
+    "evidence from the audit period",
+    "previous audit findings"
+  ],
+  "procedure": [
+    "Agree scope, criteria, period and sampling approach in writing.",
+    "Request evidence for a risk-based sample of controls and test both design and operation over the period.",
+    "Re-perform the control or verify the evidence independently; do not rely only on assertions.",
+    "Rate each finding with criteria, condition, cause and effect; agree corrective actions and dates with owners.",
+    "Issue the report with scope limits stated, then verify closure of each action independently.",
+    "Report overdue findings to the compliance owner."
+  ],
+  "deliverables": [
+    "audit plan",
+    "workpapers with evidence references",
+    "findings report",
+    "closure verification"
+  ],
+  "acceptance_criteria": [
+    "Each finding cites criteria and evidence",
+    "Sampling basis is documented",
+    "Auditor is independent of the audited control",
+    "Closure is independently verified"
+  ],
+  "validation_method": "Legal and compliance owner sign-off.",
+  "validation": [
+    {
+      "check": "re-perform two sampled controls from raw evidence",
+      "expect": "results match the control owner's assertions or differences are logged"
+    },
+    {
+      "check": "confirm each corrective action has an owner and date",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Auditor reviews own work",
+      "detection": "Auditor appears as control implementer",
+      "response": "Reassign the audit"
+    },
+    {
+      "mode": "Evidence accepted without testing",
+      "detection": "Workpapers contain only screenshots of assertions",
+      "response": "Re-perform tests"
+    },
+    {
+      "mode": "Findings never closed",
+      "detection": "Overdue actions",
+      "response": "Escalate to the compliance owner"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A sample of ten access removals is tested. Two departed users kept access for 45 days against a 7-day policy. The finding is rated medium and closed after a re-extract shows the access removed.",
+  "status": "complete"
+}

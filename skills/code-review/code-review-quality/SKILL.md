@@ -28,7 +28,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 69 | Peer Code Review | complete | Code Reviewer |
 | 70 | Architecture Review | stub | Architecture Reviewer |
 | 71 | Static Code Analysis | stub | DevSecOps Engineer |
-| 72 | Dependency Review | stub | DevSecOps Engineer |
+| 72 | Dependency Review | complete | DevSecOps Engineer |
 | 73 | Code Coverage Review | stub | Code Reviewer |
 | 74 | Coding Standards Validation | stub | Code Reviewer |
 | 75 | Merge Approval | stub | Merge Steward |

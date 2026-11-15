@@ -1,0 +1,65 @@
+{
+  "stage_id": 120,
+  "purpose": "create environments from code so every environment is reproducible, isolated and safe to change",
+  "entry_criteria": [
+    "Environment purpose and ownership are defined",
+    "Infrastructure as code exists or is created in this stage (stage 117)",
+    "Cloud account and access controls are in place"
+  ],
+  "inputs": [
+    "environment requirements",
+    "IaC modules and configuration",
+    "network and access design",
+    "cost budget"
+  ],
+  "procedure": [
+    "Define the environment from code with per-environment parameters; no manual console changes.",
+    "Isolate environments by account or project, network and credentials; production credentials never exist in lower environments.",
+    "Provision through the pipeline and record the plan and the applied changes.",
+    "Seed non-production data with synthetic or properly masked data only.",
+    "Verify the environment with health checks and a baseline smoke test.",
+    "Tag every resource with owner, purpose and expiry; schedule teardown for temporary environments."
+  ],
+  "deliverables": [
+    "environment definition in code",
+    "plan and apply records",
+    "verification results",
+    "resource inventory with owners and expiry"
+  ],
+  "acceptance_criteria": [
+    "The environment can be destroyed and recreated from code",
+    "No production secrets or unmasked customer data exist in it",
+    "Resources are tagged with owner and expiry",
+    "Smoke checks pass"
+  ],
+  "validation_method": "Platform and security review plus a clean pipeline run.",
+  "validation": [
+    {
+      "command": "terraform plan -detailed-exitcode   # example; exit 0 means code matches reality",
+      "expect": "exit 0 after apply"
+    },
+    {
+      "check": "list resources without an owner tag",
+      "expect": "none"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Environment drifts from code",
+      "detection": "Plan shows differences after manual edits",
+      "response": "Reconcile in code and document the change"
+    },
+    {
+      "mode": "Real customer data copied to test",
+      "detection": "Data scan or review finds real records",
+      "response": "Delete, mask and report to the data owner"
+    },
+    {
+      "mode": "Orphaned resources keep costing",
+      "detection": "Resources past expiry",
+      "response": "Tear down or extend with a reason"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A short-lived review environment is created for a pull request from code, receives synthetic data, passes smoke checks, and is destroyed automatically when the pull request closes.",
+  "status": "complete"
+}

@@ -1,0 +1,65 @@
+{
+  "stage_id": 166,
+  "purpose": "turn recurring reliability problems into prioritized, owned improvements and confirm they worked",
+  "entry_criteria": [
+    "Incident, postmortem and SLO data exist for the service",
+    "Error budget status is known",
+    "Service owner is available to prioritize"
+  ],
+  "inputs": [
+    "incident and postmortem actions",
+    "SLO and error-budget reports",
+    "toil and on-call load data",
+    "dependency failure history"
+  ],
+  "procedure": [
+    "Group incidents and alerts by cause to find the largest sources of lost reliability.",
+    "Estimate the budget or toil each cause consumes and the cost of fixing it.",
+    "Prioritize improvements with the service owner and put them in the delivery backlog with owners and dates.",
+    "Implement each change with a measurable target (for example fewer pages or lower failure rate).",
+    "After release, measure the effect against the target over a stated period.",
+    "Report results and drop or rework improvements that did not help."
+  ],
+  "deliverables": [
+    "reliability improvement backlog",
+    "impact estimates",
+    "before and after measurements",
+    "review report"
+  ],
+  "acceptance_criteria": [
+    "Each improvement has an owner, date and measurable target",
+    "Effect was measured against the target",
+    "Improvements follow evidence from incidents and SLO data",
+    "Ineffective changes are reviewed"
+  ],
+  "validation_method": "Incident commander and service owner review.",
+  "validation": [
+    {
+      "check": "compare error-budget burn for the 30 days before and after the change",
+      "expect": "burn decreased by the stated target or the report says it did not"
+    },
+    {
+      "check": "confirm each improvement item has an issue id, owner and date",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Improvements chosen by opinion",
+      "detection": "No incident or SLO data cited",
+      "response": "Add the evidence or drop the item"
+    },
+    {
+      "mode": "No measurement after release",
+      "detection": "No before and after numbers",
+      "response": "Measure now; mark INCONCLUSIVE until done"
+    },
+    {
+      "mode": "Backlog never scheduled",
+      "detection": "Items older than a quarter with no owner",
+      "response": "Escalate to the service owner"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Three of five last-quarter incidents came from slow retries to one dependency. The team adds a timeout and circuit breaker, and the following month's pages from that cause drop to zero.",
+  "status": "complete"
+}

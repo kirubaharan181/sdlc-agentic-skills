@@ -1,0 +1,65 @@
+{
+  "stage_id": 90,
+  "purpose": "verify that people using assistive technology and keyboards can complete the key journeys, against a named standard",
+  "entry_criteria": [
+    "Target standard and level are named (for example WCAG 2.2 AA)",
+    "Key journeys and a testable build exist",
+    "Access to a screen reader and keyboard-only testing is available"
+  ],
+  "inputs": [
+    "build or staging URL",
+    "list of key journeys",
+    "target accessibility standard",
+    "design system components in use"
+  ],
+  "procedure": [
+    "Run an automated accessibility scan on each key page and record results; treat it as partial coverage only.",
+    "Test each key journey with the keyboard alone: focus order, visible focus, no keyboard traps, skip links.",
+    "Test with at least one screen reader: names, roles, states, form labels and error messages are announced correctly.",
+    "Check contrast, text resizing to 200 percent, reflow at narrow widths, motion and time limits.",
+    "Log each defect with the success criterion, steps, assistive technology used and severity.",
+    "Retest fixes and publish a conformance statement that lists what was and was not tested."
+  ],
+  "deliverables": [
+    "automated scan report",
+    "manual test log per journey",
+    "defect list mapped to criteria",
+    "conformance statement with scope"
+  ],
+  "acceptance_criteria": [
+    "Each key journey was completed with keyboard only and with a screen reader",
+    "No open critical or serious defect on a key journey",
+    "Defects cite the success criterion",
+    "Statement lists untested areas"
+  ],
+  "validation_method": "Independent accessibility specialist review.",
+  "validation": [
+    {
+      "command": "npx playwright test tests/a11y --reporter=line   # example: axe-based checks in the project's test runner",
+      "expect": "no serious or critical violations on the key pages"
+    },
+    {
+      "check": "complete each key journey with keyboard only and with a screen reader and record the result",
+      "expect": "every journey completed; defects logged"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Only automated scans were run",
+      "detection": "Manual log is empty",
+      "response": "Mark INCONCLUSIVE; automated tools find a minority of issues"
+    },
+    {
+      "mode": "Defect fixed visually but not for assistive technology",
+      "detection": "Retest with the screen reader still fails",
+      "response": "Reopen with the technology named"
+    },
+    {
+      "mode": "Custom component without semantics",
+      "detection": "Role or name missing in the accessibility tree",
+      "response": "Use a native element or add correct roles and states"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Keyboard testing of a checkout form finds that the date picker traps focus. A screen reader reads the error summary but not the field names. Both are logged against the relevant criteria and fixed, then retested.",
+  "status": "complete"
+}

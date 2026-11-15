@@ -334,20 +334,34 @@ ILLUSTRATIVE: A forty-minute checkout outage produces a two-page postmortem with
 Gate: 13-165. Approval: none required
 
 ## 166
-**Reliability Improvement** (stub). Purpose: restore service and convert failure evidence into prevention.
+**Reliability Improvement** (complete). Purpose: turn recurring reliability problems into prioritized, owned improvements and confirm they worked.
 
-Inputs: incident signals and timeline; severity and command policy; service dependency and recovery data
+Entry criteria: Incident, postmortem and SLO data exist for the service; Error budget status is known; Service owner is available to prioritize
+
+Inputs: incident and postmortem actions; SLO and error-budget reports; toil and on-call load data; dependency failure history
 
 Procedure:
-1. Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.
-2. Assess customer impact and contain safely before attempting speculative fixes.
-3. Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.
-4. Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates.
+1. Group incidents and alerts by cause to find the largest sources of lost reliability.
+2. Estimate the budget or toil each cause consumes and the cost of fixing it.
+3. Prioritize improvements with the service owner and put them in the delivery backlog with owners and dates.
+4. Implement each change with a measurable target (for example fewer pages or lower failure rate).
+5. After release, measure the effect against the target over a stated period.
+6. Report results and drop or rework improvements that did not help.
 
-Deliverables: incident timeline; impact statement; recovery verification; postmortem and action register
+Deliverables: reliability improvement backlog; impact estimates; before and after measurements; review report
 
-Acceptance: Customer impact and recovery time are evidence-backed. Containment does not destroy forensic evidence unnecessarily. Actions are measurable and tracked to closure.
+Acceptance: Each improvement has an owner, date and measurable target Effect was measured against the target Improvements follow evidence from incidents and SLO data Ineffective changes are reviewed
 
 Validation: Incident commander and service owner review.
+
+- manual: compare error-budget burn for the 30 days before and after the change expect: burn decreased by the stated target or the report says it did not
+- manual: confirm each improvement item has an issue id, owner and date expect: none missing
+
+Failure modes:
+- Improvements chosen by opinion | detect: No incident or SLO data cited | respond: Add the evidence or drop the item
+- No measurement after release | detect: No before and after numbers | respond: Measure now; mark INCONCLUSIVE until done
+- Backlog never scheduled | detect: Items older than a quarter with no owner | respond: Escalate to the service owner
+
+ILLUSTRATIVE: Three of five last-quarter incidents came from slow retries to one dependency. The team adds a timeout and circuit breaker, and the following month's pages from that cause drop to zero.
 
 Gate: 13-166. Approval: none required

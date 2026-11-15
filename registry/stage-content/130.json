@@ -1,0 +1,65 @@
+{
+  "stage_id": 130,
+  "purpose": "deploy the release candidate to staging and prove it behaves as it will in production before approval",
+  "entry_criteria": [
+    "Release candidate has an immutable artifact digest",
+    "Staging mirrors production configuration closely enough to be meaningful",
+    "Deployment runbook exists"
+  ],
+  "inputs": [
+    "release candidate digest",
+    "staging environment and configuration",
+    "deployment runbook",
+    "test and smoke suites"
+  ],
+  "procedure": [
+    "Deploy the exact artifact that would go to production, using the same pipeline and steps.",
+    "Apply database migrations to staging first and record duration and result.",
+    "Run smoke, integration and critical-journey tests against staging.",
+    "Compare configuration, versions and data shape with production and list known differences.",
+    "Record results and any defects; block promotion on critical failures.",
+    "Hand the evidence and the list of differences to release readiness (stage 128)."
+  ],
+  "deliverables": [
+    "staging deployment record",
+    "migration result",
+    "test results against staging",
+    "difference list with production"
+  ],
+  "acceptance_criteria": [
+    "Staging runs the exact production candidate digest",
+    "Migrations succeeded and were timed",
+    "Critical journeys passed or defects block promotion",
+    "Differences from production are listed"
+  ],
+  "validation_method": "Change authority approval and post-deploy verification.",
+  "validation": [
+    {
+      "command": "kubectl get deployment app -n staging -o jsonpath='{.spec.template.spec.containers[0].image}'   # example",
+      "expect": "image digest equals the release candidate digest"
+    },
+    {
+      "check": "complete the critical journeys on staging with a test account",
+      "expect": "all pass or defects logged"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "A different build was deployed to staging",
+      "detection": "Digest mismatch",
+      "response": "Redeploy the candidate and retest"
+    },
+    {
+      "mode": "Staging differs from production in ways that matter",
+      "detection": "Difference list contains risky items",
+      "response": "Fix the difference or record the risk for the approver"
+    },
+    {
+      "mode": "Migration works only on tiny data",
+      "detection": "Staging data is far smaller than production",
+      "response": "Rehearse on a production-sized copy (stage 132)"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Release candidate digest sha256:ab12 is deployed to staging by the same pipeline. The migration takes 40 seconds, the critical journeys pass, and the only known difference is a smaller database.",
+  "status": "complete"
+}

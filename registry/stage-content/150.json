@@ -1,0 +1,65 @@
+{
+  "stage_id": 150,
+  "purpose": "make capacity follow demand automatically within limits, so users keep their performance and cost stays bounded",
+  "entry_criteria": [
+    "Load profile and performance objectives are known",
+    "Metrics for utilization and latency are available",
+    "Minimum and maximum capacity limits are agreed with the owner"
+  ],
+  "inputs": [
+    "traffic and load profile",
+    "performance objectives",
+    "utilization and latency metrics",
+    "cost limits"
+  ],
+  "procedure": [
+    "Choose scaling signals that track user demand (requests, queue depth, latency) rather than only CPU.",
+    "Set minimum, maximum and scaling step values from load-test results, and record why each was chosen.",
+    "Set cooldowns and scale-in protection so capacity does not oscillate or drop sessions.",
+    "Load test with a rising and a spiking pattern; record time to add capacity and user-facing impact.",
+    "Alert on hitting the maximum, on scaling failures and on cost against budget.",
+    "Review scaling events monthly and adjust limits."
+  ],
+  "deliverables": [
+    "autoscaling configuration with rationale",
+    "load test results",
+    "alerts for limits and failures",
+    "scaling review notes"
+  ],
+  "acceptance_criteria": [
+    "Latency objective holds during the tested ramp and spike",
+    "Minimum and maximum limits are justified",
+    "Alerts exist for max reached and scaling failure",
+    "Cost is within the agreed bound"
+  ],
+  "validation_method": "Service owner and performance engineer review of load-test results.",
+  "validation": [
+    {
+      "command": "k6 run --vus 200 --duration 10m loadtest/ramp.js   # example",
+      "expect": "latency and error thresholds pass; instance count rises as expected"
+    },
+    {
+      "command": "kubectl get hpa app -o wide   # example",
+      "expect": "current replicas between configured minimum and maximum"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Scaling is too slow for a spike",
+      "detection": "Latency exceeds objective during the spike",
+      "response": "Raise minimum, scale on an earlier signal or pre-warm"
+    },
+    {
+      "mode": "Oscillation",
+      "detection": "Replica count repeatedly goes up and down",
+      "response": "Lengthen cooldown and widen thresholds"
+    },
+    {
+      "mode": "Runaway cost",
+      "detection": "Capacity stays at maximum with no demand",
+      "response": "Investigate the signal and cap with an alert"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A service scales on queue depth with a minimum of 3 and a maximum of 20 replicas. A spike test adds capacity within two minutes and keeps p95 latency under the objective.",
+  "status": "complete"
+}

@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "requirements-design",
-  "stage_id": 11,
-  "stage_name": "Requirement Elicitation",
+  "stage_id": 16,
+  "stage_name": "User Journey Mapping",
   "commit_sha": "<commit under review>",
-  "executor": "<Requirements Engineer or named person>",
+  "executor": "<UX Researcher or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Stakeholder playback and confirmation.",
+    "method": "Walkthrough with users and service owners.",
     "command": "<command or review technique actually used>",
     "expected": "<expected result>",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "elicitation notes",
-      "path": "<path or immutable URL of elicitation notes>"
+      "name": "journey map",
+      "path": "<path or immutable URL of journey map>"
     },
     {
-      "name": "stakeholder needs catalogue",
-      "path": "<path or immutable URL of stakeholder needs catalogue>"
+      "name": "pain-point list with evidence",
+      "path": "<path or immutable URL of pain-point list with evidence>"
     },
     {
-      "name": "open-question log",
-      "path": "<path or immutable URL of open-question log>"
+      "name": "ranked opportunities",
+      "path": "<path or immutable URL of ranked opportunities>"
     }
   ],
   "limitations": [

@@ -1,0 +1,65 @@
+{
+  "stage_id": 72,
+  "purpose": "review each new or changed dependency for provenance, vulnerabilities and license fit before it is merged",
+  "entry_criteria": [
+    "A pull request adds or changes a dependency",
+    "License policy and approved-registry list exist",
+    "Lockfile diff is available"
+  ],
+  "inputs": [
+    "dependency and lockfile diff",
+    "license policy",
+    "advisory data",
+    "the package's maintainer and release history"
+  ],
+  "procedure": [
+    "List each added or changed package, including transitive ones introduced by the lockfile diff.",
+    "Check provenance: official registry, maintainer activity, release age, download and repository signals, and typosquat look-alikes.",
+    "Check advisories and the license of each package against the policy; note copyleft or unknown licenses.",
+    "Check whether the dependency is needed or whether existing code or the standard library covers it.",
+    "Record approve, reject or approve-with-condition per package with the reason.",
+    "Require pinned versions and a lockfile change in the same pull request."
+  ],
+  "deliverables": [
+    "dependency review record",
+    "license findings",
+    "decision per package",
+    "lockfile diff reference"
+  ],
+  "acceptance_criteria": [
+    "Every added package has a recorded decision",
+    "No unknown or policy-forbidden license is approved",
+    "Versions are pinned in the lockfile",
+    "Reviewer is not the author of the change"
+  ],
+  "validation_method": "Independent reviewer confirms findings and disposition.",
+  "validation": [
+    {
+      "command": "git diff origin/main...HEAD -- package-lock.json requirements.txt   # example lockfiles",
+      "expect": "every added or changed package appears in the review record"
+    },
+    {
+      "command": "pip-audit -r requirements.txt   # example; use the ecosystem's audit tool",
+      "expect": "no unresolved high or critical advisory"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Look-alike package name approved",
+      "detection": "Name differs by a character from a popular package",
+      "response": "Reject; use the intended package"
+    },
+    {
+      "mode": "Transitive dependencies ignored",
+      "detection": "Lockfile diff shows packages not in the record",
+      "response": "Review each new transitive package"
+    },
+    {
+      "mode": "License unknown",
+      "detection": "Metadata has no license",
+      "response": "Reject or ask legal for a written decision"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A pull request adds a small date library. Review finds the same function already exists in the standard library, so the dependency is rejected and the author uses the standard function.",
+  "status": "complete"
+}

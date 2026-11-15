@@ -220,21 +220,35 @@ Validation: Cloud operations and security review.
 Gate: 12-149. Approval: none required
 
 ## 150
-**Auto Scaling** (stub). Purpose: assess dependency vulnerabilities and license obligations.
+**Auto Scaling** (complete). Purpose: make capacity follow demand automatically within limits, so users keep their performance and cost stays bounded.
 
-Inputs: resolved lockfiles and packaged artifact; SBOM and advisory feeds; license policy and runtime exposure
+Entry criteria: Load profile and performance objectives are known; Metrics for utilization and latency are available; Minimum and maximum capacity limits are agreed with the owner
+
+Inputs: traffic and load profile; performance objectives; utilization and latency metrics; cost limits
 
 Procedure:
-1. Generate inventory from resolved direct and transitive dependencies.
-2. Match versions to advisories and assess reachability, exploitability and vendor support.
-3. Review license compatibility, provenance and required notices.
-4. Upgrade or replace affected components, rerun regression/security checks and compare SBOM.
+1. Choose scaling signals that track user demand (requests, queue depth, latency) rather than only CPU.
+2. Set minimum, maximum and scaling step values from load-test results, and record why each was chosen.
+3. Set cooldowns and scale-in protection so capacity does not oscillate or drop sessions.
+4. Load test with a rising and a spiking pattern; record time to add capacity and user-facing impact.
+5. Alert on hitting the maximum, on scaling failures and on cost against budget.
+6. Review scaling events monthly and adjust limits.
 
-Deliverables: SBOM; vulnerability and license disposition; dependency update diff; retest report
+Deliverables: autoscaling configuration with rationale; load test results; alerts for limits and failures; scaling review notes
 
-Acceptance: All shipped components have known versions and license status. Critical exposure is fixed or formally accepted. Packaged artifact matches scanned dependency tree.
+Acceptance: Latency objective holds during the tested ramp and spike Minimum and maximum limits are justified Alerts exist for max reached and scaling failure Cost is within the agreed bound
 
-Validation: Compare lockfile and packaged SBOM, then verify the resolved version and notices.
+Validation: Service owner and performance engineer review of load-test results.
+
+- `k6 run --vus 200 --duration 10m loadtest/ramp.js   # example` expect: latency and error thresholds pass; instance count rises as expected
+- `kubectl get hpa app -o wide   # example` expect: current replicas between configured minimum and maximum
+
+Failure modes:
+- Scaling is too slow for a spike | detect: Latency exceeds objective during the spike | respond: Raise minimum, scale on an earlier signal or pre-warm
+- Oscillation | detect: Replica count repeatedly goes up and down | respond: Lengthen cooldown and widen thresholds
+- Runaway cost | detect: Capacity stays at maximum with no demand | respond: Investigate the signal and cap with an alert
+
+ILLUSTRATIVE: A service scales on queue depth with a minimum of 3 and a maximum of 20 replicas. A spike test adds capacity within two minutes and keeps p95 latency under the objective.
 
 Gate: 12-150. Approval: none required
 

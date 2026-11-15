@@ -25,7 +25,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
 | 111 | CI Pipeline | complete | DevOps Engineer |
-| 112 | Automated Test Pipeline | stub | DevOps Engineer |
+| 112 | Automated Test Pipeline | complete | DevOps Engineer |
 | 113 | Build Management | stub | DevOps Engineer |
 | 114 | Artifact Management | stub | Platform Engineer |
 | 115 | Containerization | stub | DevOps Engineer |
@@ -33,7 +33,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 117 | Infrastructure as Code | complete | Infrastructure Engineer |
 | 118 | Configuration Management | stub | Platform Engineer |
 | 119 | CD Pipeline | stub | DevOps Engineer |
-| 120 | Environment Provisioning | stub | Infrastructure Engineer |
+| 120 | Environment Provisioning | complete | Infrastructure Engineer |
 | 121 | Network Engineering | stub | Network Engineer |
 | 122 | Database Operations | stub | Database Administrator |
 | 123 | CDN & Edge Configuration | stub | Platform Engineer |

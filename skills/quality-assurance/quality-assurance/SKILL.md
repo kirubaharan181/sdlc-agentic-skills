@@ -37,7 +37,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 87 | Sanity Testing | stub | Manual QA Engineer |
 | 88 | Cross-browser Testing | stub | E2E Testing Specialist |
 | 89 | Mobile Compatibility Testing | stub | Automation QA Engineer |
-| 90 | Accessibility Testing | stub | Accessibility Testing Specialist |
+| 90 | Accessibility Testing | complete | Accessibility Testing Specialist |
 | 91 | Performance Testing | stub | Performance Testing Specialist |
 | 92 | Load Testing | stub | Performance Testing Specialist |
 | 93 | Stress Testing | stub | Performance Testing Specialist |

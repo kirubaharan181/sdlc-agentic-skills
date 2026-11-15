@@ -121,21 +121,35 @@ ILLUSTRATIVE: A config change to payment retries is approved for Tuesday 02:00 w
 Gate: 11-129. Approval: change-board (always)
 
 ## 130
-**Staging Deployment** (stub). Purpose: prepare and execute a controlled release or migration.
+**Staging Deployment** (complete). Purpose: deploy the release candidate to staging and prove it behaves as it will in production before approval.
 
-Inputs: release candidate digest and scope; change approvals and readiness evidence; rollback/recovery and communication plan
+Entry criteria: Release candidate has an immutable artifact digest; Staging mirrors production configuration closely enough to be meaningful; Deployment runbook exists
+
+Inputs: release candidate digest; staging environment and configuration; deployment runbook; test and smoke suites
 
 Procedure:
-1. Confirm immutable candidate, included changes, compatibility and outstanding risk.
-2. Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
-3. Obtain change authority and communicate schedule, impact, owners and stop conditions.
-4. Deploy progressively, verify health and business signals, then confirm or execute recovery.
+1. Deploy the exact artifact that would go to production, using the same pipeline and steps.
+2. Apply database migrations to staging first and record duration and result.
+3. Run smoke, integration and critical-journey tests against staging.
+4. Compare configuration, versions and data shape with production and list known differences.
+5. Record results and any defects; block promotion on critical failures.
+6. Hand the evidence and the list of differences to release readiness (stage 128).
 
-Deliverables: release manifest; readiness checklist; deployment and migration evidence; post-deploy verification
+Deliverables: staging deployment record; migration result; test results against staging; difference list with production
 
-Acceptance: Deployed digest matches approved candidate. Migration and recovery are rehearsed. Stop/rollback thresholds and authority are explicit.
+Acceptance: Staging runs the exact production candidate digest Migrations succeeded and were timed Critical journeys passed or defects block promotion Differences from production are listed
 
 Validation: Change authority approval and post-deploy verification.
+
+- `kubectl get deployment app -n staging -o jsonpath='{.spec.template.spec.containers[0].image}'   # example` expect: image digest equals the release candidate digest
+- manual: complete the critical journeys on staging with a test account expect: all pass or defects logged
+
+Failure modes:
+- A different build was deployed to staging | detect: Digest mismatch | respond: Redeploy the candidate and retest
+- Staging differs from production in ways that matter | detect: Difference list contains risky items | respond: Fix the difference or record the risk for the approver
+- Migration works only on tiny data | detect: Staging data is far smaller than production | respond: Rehearse on a production-sized copy (stage 132)
+
+ILLUSTRATIVE: Release candidate digest sha256:ab12 is deployed to staging by the same pipeline. The migration takes 40 seconds, the critical journeys pass, and the only known difference is a smaller database.
 
 Gate: 11-130. Approval: none required
 

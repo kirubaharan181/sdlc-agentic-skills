@@ -1,0 +1,65 @@
+{
+  "stage_id": 102,
+  "purpose": "find and fix vulnerabilities and unsafe configuration in container images and their runtime settings before they run in production",
+  "entry_criteria": [
+    "Image is built from a pinned base image and a Dockerfile in the repository",
+    "Registry and scanner access are available",
+    "Runtime policy (user, capabilities, network) is defined"
+  ],
+  "inputs": [
+    "Dockerfile and build context",
+    "built image digest",
+    "base image policy",
+    "runtime security policy"
+  ],
+  "procedure": [
+    "Build the image from a clean checkout and record its digest; scan the digest, not a tag.",
+    "Scan OS packages and application dependencies for known vulnerabilities; record advisory ids and fixed versions.",
+    "Check the image configuration: non-root user, no embedded secrets, minimal base, read-only filesystem where possible, no unnecessary capabilities.",
+    "Fix by updating the base image or packages, or by removing the component; document any accepted finding with owner and expiry.",
+    "Rebuild, rescan the new digest and compare findings with the previous scan.",
+    "Sign or record the approved digest so deployment can verify it matches."
+  ],
+  "deliverables": [
+    "image scan report for the digest",
+    "configuration check results",
+    "exception register",
+    "approved digest record"
+  ],
+  "acceptance_criteria": [
+    "The scanned digest equals the digest that will be deployed",
+    "No unresolved critical or high finding without an approved exception",
+    "Image runs as a non-root user with no embedded secrets",
+    "Every exception has owner and expiry"
+  ],
+  "validation_method": "Security owner and system owner disposition of remaining findings.",
+  "validation": [
+    {
+      "command": "trivy image --severity HIGH,CRITICAL --exit-code 1 registry.example.com/app@sha256:<digest>   # example; use the project's scanner",
+      "expect": "exit 0, or only findings listed in the exception register"
+    },
+    {
+      "command": "docker inspect --format '{{.Config.User}}' registry.example.com/app@sha256:<digest>",
+      "expect": "a non-root user, not empty and not root"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Scanned a tag that later moved",
+      "detection": "Scan digest differs from deployed digest",
+      "response": "Rescan the deployed digest; BLOCKED until it matches"
+    },
+    {
+      "mode": "Secret baked into an image layer",
+      "detection": "Scanner or history inspection finds a credential",
+      "response": "Rotate the secret, rebuild without it, never rely on deleting a later layer"
+    },
+    {
+      "mode": "Base image never updated",
+      "detection": "Same findings reappear each scan",
+      "response": "Schedule base-image refresh and rebuild"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The scan of a service image reports a critical OpenSSL issue in the base layer. The base image is bumped to the patched release, the digest changes, the rescan is clean, and the container runs as user 10001.",
+  "status": "complete"
+}

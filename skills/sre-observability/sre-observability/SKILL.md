@@ -37,7 +37,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 163 | Incident Response | complete | Incident Manager |
 | 164 | Root Cause Analysis | complete | SRE |
 | 165 | Postmortem | complete | Incident Manager |
-| 166 | Reliability Improvement | stub | SRE |
+| 166 | Reliability Improvement | complete | SRE |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

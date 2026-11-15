@@ -51,21 +51,35 @@ ILLUSTRATIVE: A new service gets a workflow that builds, tests and scans on each
 Gate: 10-111. Approval: none required
 
 ## 112
-**Automated Test Pipeline** (stub). Purpose: build a secure and reproducible delivery platform.
+**Automated Test Pipeline** (complete). Purpose: run the right automated tests on every change in a pipeline that is fast, reliable and trusted.
 
-Inputs: repository and build graph; deployment targets and environment protections; artifact trust and supply-chain policy
+Entry criteria: Test suites exist at unit, integration and end-to-end levels; CI pipeline exists (stage 111); Test environments or containers can be created on demand
+
+Inputs: test suites and their runtimes; CI configuration; environment definitions; flake history
 
 Procedure:
-1. Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
-2. Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
-3. Protect credentials, runners, deployment environments and immutable artifact promotion.
-4. Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
+1. Order the stages so cheap, fast tests run first and fail early; run slow suites only when relevant paths change.
+2. Run independent suites in parallel with isolated data and environments.
+3. Publish test reports and logs as artifacts, with failing test names in the summary.
+4. Track flaky tests with owner and expiry; quarantine rather than retry-until-green.
+5. Set a time budget for the pipeline and alert when it is exceeded.
+6. Make the test stage a required check on the default branch.
 
-Deliverables: pipeline/IaC configuration; artifact provenance; test/security results; runbook and ownership
+Deliverables: pipeline definition with test stages; test reports; flaky-test register; duration and pass-rate trend
 
-Acceptance: Build is reproducible and artifacts are immutable/promoted. Secrets and environment permissions are scoped. Failure and rollback behavior is exercised.
+Acceptance: Required checks block merging Failures show which test failed and why Flaky tests have owners and expiry dates Pipeline duration is within the agreed budget
 
-Validation: Platform/security review and clean pipeline run.
+Validation: Platform and security review plus a clean pipeline run from scratch.
+
+- `gh run list --workflow=ci.yml --limit 10 --json conclusion,createdAt,updatedAt   # example` expect: recent runs succeed; durations within budget
+- manual: open a pull request with a deliberately failing test expect: merge is blocked and the report names the test
+
+Failure modes:
+- Retrying hides flakes | detect: Pass after rerun with no investigation | respond: Quarantine with owner; fix root cause
+- Tests share data | detect: Parallel run fails, serial passes | respond: Isolate data per test
+- Pipeline too slow | detect: Duration above budget | respond: Split suites, cache dependencies, run slow tests on a schedule
+
+ILLUSTRATIVE: Unit tests finish in two minutes and gate integration tests, which run in four parallel jobs. Two flaky end-to-end tests are quarantined with owners and a one-month expiry.
 
 Gate: 10-112. Approval: none required
 
@@ -217,21 +231,35 @@ Validation: Platform/security review and clean pipeline run.
 Gate: 10-119. Approval: none required
 
 ## 120
-**Environment Provisioning** (stub). Purpose: build a secure and reproducible delivery platform.
+**Environment Provisioning** (complete). Purpose: create environments from code so every environment is reproducible, isolated and safe to change.
 
-Inputs: repository and build graph; deployment targets and environment protections; artifact trust and supply-chain policy
+Entry criteria: Environment purpose and ownership are defined; Infrastructure as code exists or is created in this stage (stage 117); Cloud account and access controls are in place
+
+Inputs: environment requirements; IaC modules and configuration; network and access design; cost budget
 
 Procedure:
-1. Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
-2. Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
-3. Protect credentials, runners, deployment environments and immutable artifact promotion.
-4. Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
+1. Define the environment from code with per-environment parameters; no manual console changes.
+2. Isolate environments by account or project, network and credentials; production credentials never exist in lower environments.
+3. Provision through the pipeline and record the plan and the applied changes.
+4. Seed non-production data with synthetic or properly masked data only.
+5. Verify the environment with health checks and a baseline smoke test.
+6. Tag every resource with owner, purpose and expiry; schedule teardown for temporary environments.
 
-Deliverables: pipeline/IaC configuration; artifact provenance; test/security results; runbook and ownership
+Deliverables: environment definition in code; plan and apply records; verification results; resource inventory with owners and expiry
 
-Acceptance: Build is reproducible and artifacts are immutable/promoted. Secrets and environment permissions are scoped. Failure and rollback behavior is exercised.
+Acceptance: The environment can be destroyed and recreated from code No production secrets or unmasked customer data exist in it Resources are tagged with owner and expiry Smoke checks pass
 
-Validation: Platform/security review and clean pipeline run.
+Validation: Platform and security review plus a clean pipeline run.
+
+- `terraform plan -detailed-exitcode   # example; exit 0 means code matches reality` expect: exit 0 after apply
+- manual: list resources without an owner tag expect: none
+
+Failure modes:
+- Environment drifts from code | detect: Plan shows differences after manual edits | respond: Reconcile in code and document the change
+- Real customer data copied to test | detect: Data scan or review finds real records | respond: Delete, mask and report to the data owner
+- Orphaned resources keep costing | detect: Resources past expiry | respond: Tear down or extend with a reason
+
+ILLUSTRATIVE: A short-lived review environment is created for a pull request from code, receives synthetic data, passes smoke checks, and is destroyed automatically when the pull request closes.
 
 Gate: 10-120. Approval: none required
 

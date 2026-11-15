@@ -780,35 +780,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "validated personas or user segments",
-        "research observations",
-        "journey scope and start/end events"
-      ],
-      "outputs": [
-        "user-journey-mapping-deliverable",
-        "journey map",
-        "pain-point evidence"
-      ],
       "quality_gate": "02-016",
-      "validation_method": "Walkthrough with users and service owners.",
-      "purpose": "map user goals, touchpoints, decisions and friction across a complete journey",
-      "execution_instructions": [
-        "Define journey boundary, user goal and success event.",
-        "Map stages, actions, touchpoints, emotions, questions, failures and backstage dependencies.",
-        "Annotate evidence source and pain-point severity at each step.",
-        "Prioritize opportunities and define measurable experience improvements."
-      ],
-      "deliverable_artifacts": [
-        "journey map",
-        "pain-point evidence",
-        "opportunity backlog"
-      ],
-      "quality_criteria": [
-        "Journey reflects observed behavior, not assumed ideal flow.",
-        "Frontstage and backstage dependencies are visible.",
-        "Each opportunity has an owner and measure."
-      ],
       "raci": {
         "accountable": "ux-researcher",
         "responsible": [
@@ -1692,35 +1664,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "architecture baseline and ADRs",
-        "quality attribute scenarios",
-        "risk and change context"
-      ],
-      "outputs": [
-        "architecture-review-deliverable",
-        "architecture review report",
-        "decision and exception log"
-      ],
       "quality_gate": "03-034",
-      "validation_method": "Independent architecture board decision.",
-      "purpose": "independently evaluate architecture against quality attributes and constraints",
-      "execution_instructions": [
-        "Check component boundaries, coupling, data ownership, failure domains and dependency direction.",
-        "Evaluate security, resilience, scalability, operability, accessibility and cost against scenarios.",
-        "Record evidence, deviations, trade-offs and remediation priority.",
-        "Issue accept, conditional accept or reject recommendation without implementing the reviewed change."
-      ],
-      "deliverable_artifacts": [
-        "architecture review report",
-        "decision and exception log",
-        "remediation actions"
-      ],
-      "quality_criteria": [
-        "Findings cite model element and impact.",
-        "Reviewer independence is preserved.",
-        "Exceptions have owner and expiry."
-      ],
       "raci": {
         "accountable": "architecture-reviewer",
         "responsible": [],
@@ -3583,36 +3527,7 @@
       "skills": [
         "code-review-quality"
       ],
-      "inputs": [
-        "diff and target branch",
-        "coding/architecture standards",
-        "test, dependency and static-analysis evidence"
-      ],
-      "outputs": [
-        "dependency-review-deliverable",
-        "review report",
-        "static/dependency findings"
-      ],
       "quality_gate": "07-072",
-      "validation_method": "Independent reviewer confirms findings and disposition.",
-      "purpose": "independently inspect code quality and maintainability risks",
-      "execution_instructions": [
-        "Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.",
-        "Inspect static findings and dependency provenance, severity, reachability and license obligations.",
-        "Assess test coverage quality and identify untested critical branches rather than relying only on percentage.",
-        "Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions."
-      ],
-      "deliverable_artifacts": [
-        "review report",
-        "static/dependency findings",
-        "coverage interpretation",
-        "technical debt actions"
-      ],
-      "quality_criteria": [
-        "Findings are reproducible and tied to exact commit.",
-        "False positives and accepted debt have rationale and owner.",
-        "Critical paths have meaningful assertions."
-      ],
       "raci": {
         "accountable": "devsecops-engineer",
         "responsible": [
@@ -4443,38 +4358,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "target standard and conformance level",
-        "supported browsers/devices and assistive tech",
-        "critical user journeys"
-      ],
-      "outputs": [
-        "accessibility-testing-deliverable",
-        "accessibility audit",
-        "manual test evidence"
-      ],
       "quality_gate": "08-090",
-      "validation_method": "Independent accessibility specialist review. Run automated scans plus keyboard and screen-reader verification.",
-      "purpose": "verify inclusive access against applicable WCAG criteria",
-      "execution_instructions": [
-        "Inspect semantic structure, accessible names, headings, landmarks, labels and error associations.",
-        "Test keyboard-only operation, focus order/visibility, dialogs and escape behavior.",
-        "Check contrast, zoom/reflow, reduced motion and screen-reader announcements.",
-        "Combine automated scans with manual assistive-technology testing; log criterion-level failures.",
-        "Check semantic names, keyboard-only operation, focus management, contrast, zoom and screen-reader announcements."
-      ],
-      "deliverable_artifacts": [
-        "accessibility audit",
-        "manual test evidence",
-        "defect and remediation list",
-        "WCAG criterion-level audit and manual test evidence"
-      ],
-      "quality_criteria": [
-        "Automated scans are not treated as full conformance proof.",
-        "Critical journeys work without pointer input.",
-        "Findings cite criterion, impact and reproduction.",
-        "Critical journeys pass manual assistive-technology checks."
-      ],
       "raci": {
         "accountable": "accessibility-testing-specialist",
         "responsible": [
@@ -4963,35 +4847,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "authorized scope and asset inventory",
-        "scanner/tool configuration and version",
-        "severity policy and remediation SLA"
-      ],
-      "outputs": [
-        "container-security-deliverable",
-        "scan/test report",
-        "validated finding register"
-      ],
       "quality_gate": "09-102",
-      "validation_method": "Security owner and system owner disposition.",
-      "purpose": "assess and remediate a defined security attack surface",
-      "execution_instructions": [
-        "Confirm asset ownership, scope, exclusions and written authorization before active testing.",
-        "Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.",
-        "Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.",
-        "Assign remediation, retest the exact fix and record residual risk or approved exception."
-      ],
-      "deliverable_artifacts": [
-        "scan/test report",
-        "validated finding register",
-        "remediation and retest evidence"
-      ],
-      "quality_criteria": [
-        "Active testing stays within authorization.",
-        "Findings have reproducible evidence and severity rationale.",
-        "Closure is independently retested."
-      ],
       "raci": {
         "accountable": "devsecops-engineer",
         "responsible": [
@@ -5418,36 +5274,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "automated-test-pipeline-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-112",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "raci": {
         "accountable": "devops-engineer",
         "responsible": [
@@ -5802,36 +5629,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "environment-provisioning-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-120",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "raci": {
         "accountable": "infrastructure-engineer",
         "responsible": [
@@ -6260,36 +6058,7 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "release candidate digest and scope",
-        "change approvals and readiness evidence",
-        "rollback/recovery and communication plan"
-      ],
-      "outputs": [
-        "staging-deployment-deliverable",
-        "release manifest",
-        "readiness checklist"
-      ],
       "quality_gate": "11-130",
-      "validation_method": "Change authority approval and post-deploy verification.",
-      "purpose": "prepare and execute a controlled release or migration",
-      "execution_instructions": [
-        "Confirm immutable candidate, included changes, compatibility and outstanding risk.",
-        "Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.",
-        "Obtain change authority and communicate schedule, impact, owners and stop conditions.",
-        "Deploy progressively, verify health and business signals, then confirm or execute recovery."
-      ],
-      "deliverable_artifacts": [
-        "release manifest",
-        "readiness checklist",
-        "deployment and migration evidence",
-        "post-deploy verification"
-      ],
-      "quality_criteria": [
-        "Deployed digest matches approved candidate.",
-        "Migration and recovery are rehearsed.",
-        "Stop/rollback thresholds and authority are explicit."
-      ],
       "raci": {
         "accountable": "deployment-engineer",
         "responsible": [
@@ -7139,36 +6908,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "resolved lockfiles and packaged artifact",
-        "SBOM and advisory feeds",
-        "license policy and runtime exposure"
-      ],
-      "outputs": [
-        "auto-scaling-deliverable",
-        "SBOM",
-        "vulnerability and license disposition"
-      ],
       "quality_gate": "12-150",
-      "validation_method": "Compare lockfile and packaged SBOM, then verify the resolved version and notices.",
-      "purpose": "assess dependency vulnerabilities and license obligations",
-      "execution_instructions": [
-        "Generate inventory from resolved direct and transitive dependencies.",
-        "Match versions to advisories and assess reachability, exploitability and vendor support.",
-        "Review license compatibility, provenance and required notices.",
-        "Upgrade or replace affected components, rerun regression/security checks and compare SBOM."
-      ],
-      "deliverable_artifacts": [
-        "SBOM",
-        "vulnerability and license disposition",
-        "dependency update diff",
-        "retest report"
-      ],
-      "quality_criteria": [
-        "All shipped components have known versions and license status.",
-        "Critical exposure is fixed or formally accepted.",
-        "Packaged artifact matches scanned dependency tree."
-      ],
       "raci": {
         "accountable": "infrastructure-engineer",
         "responsible": [
@@ -7818,36 +7558,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "incident signals and timeline",
-        "severity and command policy",
-        "service dependency and recovery data"
-      ],
-      "outputs": [
-        "reliability-improvement-deliverable",
-        "incident timeline",
-        "impact statement"
-      ],
       "quality_gate": "13-166",
-      "validation_method": "Incident commander and service owner review.",
-      "purpose": "restore service and convert failure evidence into prevention",
-      "execution_instructions": [
-        "Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.",
-        "Assess customer impact and contain safely before attempting speculative fixes.",
-        "Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.",
-        "Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates."
-      ],
-      "deliverable_artifacts": [
-        "incident timeline",
-        "impact statement",
-        "recovery verification",
-        "postmortem and action register"
-      ],
-      "quality_criteria": [
-        "Customer impact and recovery time are evidence-backed.",
-        "Containment does not destroy forensic evidence unnecessarily.",
-        "Actions are measurable and tracked to closure."
-      ],
       "raci": {
         "accountable": "sre",
         "responsible": [
@@ -8019,36 +7730,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "bug-fixing-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-170",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "raci": {
         "accountable": "backend-engineer",
         "responsible": [
@@ -8772,35 +8454,7 @@
       "skills": [
         "enterprise-governance"
       ],
-      "inputs": [
-        "contract version and counterparties",
-        "applicable policy/control obligations",
-        "legal/compliance owner"
-      ],
-      "outputs": [
-        "compliance-auditing-deliverable",
-        "obligation matrix",
-        "contract exception log"
-      ],
       "quality_gate": "15-185",
-      "validation_method": "Legal and compliance owner sign-off.",
-      "purpose": "review contractual and regulatory obligations before commitment",
-      "execution_instructions": [
-        "Identify service, data, security, availability, audit, retention, subcontracting and exit obligations.",
-        "Map each obligation to an internal control owner and evidence source.",
-        "Flag ambiguous liability, data processing, IP, jurisdiction, renewal and termination terms.",
-        "Record legal review questions and do not provide legal approval outside delegated authority."
-      ],
-      "deliverable_artifacts": [
-        "obligation matrix",
-        "contract exception log",
-        "review decision"
-      ],
-      "quality_criteria": [
-        "Every material obligation has an owner and evidence path.",
-        "Exceptions have an authorized risk owner.",
-        "Unresolved legal interpretation is escalated."
-      ],
       "raci": {
         "accountable": "security-auditor",
         "responsible": [

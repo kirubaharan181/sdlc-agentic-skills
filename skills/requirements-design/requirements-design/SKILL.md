@@ -29,7 +29,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 13 | Functional Requirements | stub | Requirements Engineer |
 | 14 | Non-Functional Requirements | stub | Requirements Engineer |
 | 15 | User Research | stub | UX Researcher |
-| 16 | User Journey Mapping | stub | UX Researcher |
+| 16 | User Journey Mapping | complete | UX Researcher |
 | 17 | Wireframing | stub | UI/UX Designer |
 | 18 | UI Design | stub | UI/UX Designer |
 | 19 | UX Design | stub | UI/UX Designer |

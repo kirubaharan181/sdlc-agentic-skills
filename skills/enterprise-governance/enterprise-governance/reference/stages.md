@@ -103,21 +103,35 @@ ILLUSTRATIVE: A quarterly review of the deployment tool finds two departed contr
 Gate: 15-184. Approval: access-owner (when granting or widening privileged or break-glass access, or revoking access in bulk)
 
 ## 185
-**Compliance Auditing** (stub). Purpose: review contractual and regulatory obligations before commitment.
+**Compliance Auditing** (complete). Purpose: provide independent, evidenced assurance that controls operate as claimed, and track findings to closure.
 
-Inputs: contract version and counterparties; applicable policy/control obligations; legal/compliance owner
+Entry criteria: Audit scope, criteria (policy or standard) and period are agreed; Auditor is independent of the controls being audited; Evidence sources and owners are named
+
+Inputs: audit scope and criteria; control descriptions and owners; evidence from the audit period; previous audit findings
 
 Procedure:
-1. Identify service, data, security, availability, audit, retention, subcontracting and exit obligations.
-2. Map each obligation to an internal control owner and evidence source.
-3. Flag ambiguous liability, data processing, IP, jurisdiction, renewal and termination terms.
-4. Record legal review questions and do not provide legal approval outside delegated authority.
+1. Agree scope, criteria, period and sampling approach in writing.
+2. Request evidence for a risk-based sample of controls and test both design and operation over the period.
+3. Re-perform the control or verify the evidence independently; do not rely only on assertions.
+4. Rate each finding with criteria, condition, cause and effect; agree corrective actions and dates with owners.
+5. Issue the report with scope limits stated, then verify closure of each action independently.
+6. Report overdue findings to the compliance owner.
 
-Deliverables: obligation matrix; contract exception log; review decision
+Deliverables: audit plan; workpapers with evidence references; findings report; closure verification
 
-Acceptance: Every material obligation has an owner and evidence path. Exceptions have an authorized risk owner. Unresolved legal interpretation is escalated.
+Acceptance: Each finding cites criteria and evidence Sampling basis is documented Auditor is independent of the audited control Closure is independently verified
 
 Validation: Legal and compliance owner sign-off.
+
+- manual: re-perform two sampled controls from raw evidence expect: results match the control owner's assertions or differences are logged
+- manual: confirm each corrective action has an owner and date expect: none missing
+
+Failure modes:
+- Auditor reviews own work | detect: Auditor appears as control implementer | respond: Reassign the audit
+- Evidence accepted without testing | detect: Workpapers contain only screenshots of assertions | respond: Re-perform tests
+- Findings never closed | detect: Overdue actions | respond: Escalate to the compliance owner
+
+ILLUSTRATIVE: A sample of ten access removals is tested. Two departed users kept access for 45 days against a 7-day policy. The finding is rated medium and closed after a re-extract shows the access removed.
 
 Gate: 15-185. Approval: none required
 
