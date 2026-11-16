@@ -26,19 +26,19 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 |---|---|---|---|
 | 111 | CI Pipeline | complete | DevOps Engineer |
 | 112 | Automated Test Pipeline | complete | DevOps Engineer |
-| 113 | Build Management | stub | DevOps Engineer |
-| 114 | Artifact Management | stub | Platform Engineer |
-| 115 | Containerization | stub | DevOps Engineer |
-| 116 | Container Orchestration | stub | Kubernetes Engineer |
+| 113 | Build Management | complete | DevOps Engineer |
+| 114 | Artifact Management | complete | Platform Engineer |
+| 115 | Containerization | complete | DevOps Engineer |
+| 116 | Container Orchestration | complete | Kubernetes Engineer |
 | 117 | Infrastructure as Code | complete | Infrastructure Engineer |
 | 118 | Configuration Management | stub | Platform Engineer |
-| 119 | CD Pipeline | stub | DevOps Engineer |
+| 119 | CD Pipeline | complete | DevOps Engineer |
 | 120 | Environment Provisioning | complete | Infrastructure Engineer |
 | 121 | Network Engineering | stub | Network Engineer |
 | 122 | Database Operations | stub | Database Administrator |
 | 123 | CDN & Edge Configuration | stub | Platform Engineer |
-| 124 | Deployment Automation | stub | Deployment Engineer |
-| 125 | Pipeline Security | stub | DevSecOps Engineer |
+| 124 | Deployment Automation | complete | Deployment Engineer |
+| 125 | Pipeline Security | complete | DevSecOps Engineer |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

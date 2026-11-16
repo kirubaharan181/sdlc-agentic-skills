@@ -1,0 +1,65 @@
+{
+  "stage_id": 114,
+  "purpose": "store built artifacts immutably with their provenance so that what is tested is exactly what is deployed",
+  "entry_criteria": [
+    "Build produces a versioned artifact with a checksum",
+    "An artifact repository or registry is available",
+    "Retention policy is defined"
+  ],
+  "inputs": [
+    "built artifact and checksum",
+    "build metadata (commit, builder)",
+    "artifact repository",
+    "retention policy"
+  ],
+  "procedure": [
+    "Publish each artifact once under an immutable version tied to the commit; forbid overwriting.",
+    "Record provenance: source commit, build run, builder, dependencies (SBOM) and checksum.",
+    "Restrict write access to the pipeline; give consumers read-only access.",
+    "Promote the same artifact through environments by reference to its digest, never by rebuilding.",
+    "Apply retention rules: keep released artifacts, expire snapshots, and never delete what production runs.",
+    "Scan and sign artifacts where supported, and verify the signature before deployment."
+  ],
+  "deliverables": [
+    "published artifact with immutable version",
+    "provenance record",
+    "access and retention configuration",
+    "signature or digest record"
+  ],
+  "acceptance_criteria": [
+    "An existing version cannot be overwritten",
+    "Provenance links the artifact to its commit and build",
+    "Only the pipeline can publish",
+    "Deployment verifies the digest"
+  ],
+  "validation_method": "Platform review of access and retention settings.",
+  "validation": [
+    {
+      "command": "docker manifest inspect registry.example.com/app:1.4.0 | sha256sum   # example",
+      "expect": "digest equals the one in the provenance record"
+    },
+    {
+      "check": "try to republish an existing version",
+      "expect": "the repository refuses"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Tag overwritten",
+      "detection": "Same tag points to a different digest",
+      "response": "Enforce immutability and deploy by digest"
+    },
+    {
+      "mode": "Artifact without provenance",
+      "detection": "No commit or build link",
+      "response": "Rebuild through the pipeline"
+    },
+    {
+      "mode": "Humans can publish",
+      "detection": "Non-pipeline account has write access",
+      "response": "Remove it"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The pipeline publishes app 1.4.0 with its digest, commit and SBOM. A later attempt to push another image under 1.4.0 is rejected, and staging and production both deploy the same digest.",
+  "status": "complete"
+}

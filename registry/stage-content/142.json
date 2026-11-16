@@ -1,0 +1,65 @@
+{
+  "stage_id": 142,
+  "purpose": "run production databases on infrastructure that meets availability, performance, security and recovery needs",
+  "entry_criteria": [
+    "Database engine, size and recovery objectives are decided",
+    "Network and access design exists",
+    "Backup approach is agreed (stage 147)"
+  ],
+  "inputs": [
+    "recovery and availability objectives",
+    "workload profile",
+    "network and security requirements",
+    "cost limits"
+  ],
+  "procedure": [
+    "Choose managed or self-managed hosting from objectives, skills and cost; write the reasons down.",
+    "Provision from code with encryption at rest and in transit, private networking and least-privilege access.",
+    "Configure high availability and replicas to meet the objective and test a failover.",
+    "Configure monitoring for capacity, replication lag, connections and slow queries, with alerts.",
+    "Set up patching and maintenance windows and confirm backups restore.",
+    "Document the connection method, limits and runbooks."
+  ],
+  "deliverables": [
+    "hosting design and rationale",
+    "provisioning code",
+    "failover test results",
+    "monitoring and runbooks"
+  ],
+  "acceptance_criteria": [
+    "Encryption and private networking are in place",
+    "Failover was tested against the objective",
+    "Monitoring and alerts cover capacity and replication",
+    "Restore from backup was verified"
+  ],
+  "validation_method": "Database administrator and security review.",
+  "validation": [
+    {
+      "command": "terraform plan -detailed-exitcode   # example; exit 0 after apply",
+      "expect": "no drift"
+    },
+    {
+      "check": "trigger a failover in a non-production copy and time it",
+      "expect": "within the recovery time objective"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Database reachable from the internet",
+      "detection": "Public endpoint enabled",
+      "response": "Move to private networking"
+    },
+    {
+      "mode": "HA configured but never tested",
+      "detection": "No failover record",
+      "response": "Test it"
+    },
+    {
+      "mode": "Capacity alert missing",
+      "detection": "Disk fills unnoticed",
+      "response": "Add alerts with headroom"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A managed PostgreSQL cluster with one replica in another zone is provisioned from code, reachable only from the application subnet, with alerts for replication lag; a failover test completes in 40 seconds.",
+  "status": "complete"
+}

@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "cloud-hosting-operations",
-  "stage_id": 147,
-  "stage_name": "Backup Management",
+  "stage_id": 142,
+  "stage_name": "Database Hosting",
   "commit_sha": "<commit under review>",
   "executor": "<Database Administrator or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Database administrator and data owner review of restore results.",
-    "command": "<command or review technique actually used>",
-    "expected": "<expected result>",
+    "method": "Database administrator and security review.",
+    "command": "terraform plan -detailed-exitcode   # example; exit 0 after apply",
+    "expected": "no drift",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "backup configuration",
-      "path": "<path or immutable URL of backup configuration>"
+      "name": "hosting design and rationale",
+      "path": "<path or immutable URL of hosting design and rationale>"
     },
     {
-      "name": "job monitoring and alerts",
-      "path": "<path or immutable URL of job monitoring and alerts>"
+      "name": "provisioning code",
+      "path": "<path or immutable URL of provisioning code>"
     },
     {
-      "name": "restore test reports",
-      "path": "<path or immutable URL of restore test reports>"
+      "name": "failover test results",
+      "path": "<path or immutable URL of failover test results>"
     }
   ],
   "limitations": [

@@ -54,21 +54,35 @@ Validation: Cloud operations and security review.
 Gate: 12-141. Approval: none required
 
 ## 142
-**Database Hosting** (stub). Purpose: operate cloud infrastructure within reliability and cost objectives.
+**Database Hosting** (complete). Purpose: run production databases on infrastructure that meets availability, performance, security and recovery needs.
 
-Inputs: service inventory and ownership; SLO/RTO/RPO and capacity profile; access, backup and cost policies
+Entry criteria: Database engine, size and recovery objectives are decided; Network and access design exists; Backup approach is agreed (stage 147)
+
+Inputs: recovery and availability objectives; workload profile; network and security requirements; cost limits
 
 Procedure:
-1. Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
-2. Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
-3. Measure health, capacity, utilization, recovery readiness and cost allocation.
-4. Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
+1. Choose managed or self-managed hosting from objectives, skills and cost; write the reasons down.
+2. Provision from code with encryption at rest and in transit, private networking and least-privilege access.
+3. Configure high availability and replicas to meet the objective and test a failover.
+4. Configure monitoring for capacity, replication lag, connections and slow queries, with alerts.
+5. Set up patching and maintenance windows and confirm backups restore.
+6. Document the connection method, limits and runbooks.
 
-Deliverables: infrastructure inventory; change record; health/capacity/cost evidence; operator runbook
+Deliverables: hosting design and rationale; provisioning code; failover test results; monitoring and runbooks
 
-Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
+Acceptance: Encryption and private networking are in place Failover was tested against the objective Monitoring and alerts cover capacity and replication Restore from backup was verified
 
-Validation: Cloud operations and security review.
+Validation: Database administrator and security review.
+
+- `terraform plan -detailed-exitcode   # example; exit 0 after apply` expect: no drift
+- manual: trigger a failover in a non-production copy and time it expect: within the recovery time objective
+
+Failure modes:
+- Database reachable from the internet | detect: Public endpoint enabled | respond: Move to private networking
+- HA configured but never tested | detect: No failover record | respond: Test it
+- Capacity alert missing | detect: Disk fills unnoticed | respond: Add alerts with headroom
+
+ILLUSTRATIVE: A managed PostgreSQL cluster with one replica in another zone is provisioned from code, reachable only from the application subnet, with alerts for replication lag; a failover test completes in 40 seconds.
 
 Gate: 12-142. Approval: none required
 

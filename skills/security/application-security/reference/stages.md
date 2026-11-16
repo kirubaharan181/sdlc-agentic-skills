@@ -276,21 +276,35 @@ Validation: Legal and compliance owner sign-off.
 Gate: 09-107. Approval: none required
 
 ## 108
-**License Compliance** (stub). Purpose: identify software license obligations and distribution risk.
+**License Compliance** (complete). Purpose: check that third-party licenses allow how we use and distribute the software, and keep proof.
 
-Inputs: dependency inventory and lockfiles; license policy and distribution model; notice/attribution requirements
+Entry criteria: Dependency inventory or SBOM exists; License policy lists allowed, review-required and forbidden licenses; Legal or compliance contact exists
+
+Inputs: SBOM and dependency list; license policy; distribution model (internal, SaaS, shipped); license texts
 
 Procedure:
-1. Generate an SBOM or equivalent inventory from resolved dependencies.
-2. Identify direct/transitive licenses, copyleft triggers, attribution and source-disclosure obligations.
-3. Compare obligations with product distribution and company policy; escalate ambiguous licenses.
-4. Record approved substitutions, notices and exception expiry.
+1. List every dependency with its license from the SBOM, including transitive and vendored code.
+2. Classify each license against the policy and the way the software is distributed; copyleft obligations depend on distribution.
+3. Flag unknown, missing and conflicting licenses for review by compliance.
+4. Resolve flagged items: replace the component, obtain permission, or document the accepted obligation.
+5. Prepare required notices and attributions and include them in the release.
+6. Record the decision for each flagged license with the person who made it.
 
-Deliverables: SBOM; license compatibility matrix; notice bundle; exception record
+Deliverables: license inventory; flagged items and decisions; notices and attribution file; compliance-owner approval
 
-Acceptance: All shipped dependencies have a resolved license or approved exception. Notices and obligations are fulfilled. Unknown licenses are not silently accepted.
+Acceptance: Every component has a recorded license No forbidden license remains Each review-required license has a decision Notices are included in the release
 
-Validation: Legal/compliance review.
+Validation: Compliance-owner approval.
+
+- `pip-licenses --format=csv > reports/licenses.csv   # example; use the ecosystem's tool` expect: every dependency has a license entry
+- manual: compare licenses in the report against the forbidden list expect: no matches or each has a decision
+
+Failure modes:
+- License unknown | detect: Entry says UNKNOWN | respond: Check the source; ask legal or replace
+- Copyleft in a shipped product | detect: Strong copyleft licence in distributed code | respond: Replace or obtain legal approval
+- Notices missing | detect: Release lacks attribution file | respond: Generate and ship it
+
+ILLUSTRATIVE: The inventory shows one dependency with an unknown license. Compliance contacts the maintainer, receives a permissive license statement, and records the decision before release.
 
 Gate: 09-108. Approval: compliance-owner (when a license exception is requested)
 

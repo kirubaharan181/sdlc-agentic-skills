@@ -26,7 +26,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 |---|---|---|---|
 | 140 | Cloud Hosting | stub | Cloud Engineer |
 | 141 | Compute Management | stub | Cloud Engineer |
-| 142 | Database Hosting | stub | Database Administrator |
+| 142 | Database Hosting | complete | Database Administrator |
 | 143 | Storage Management | stub | Cloud Engineer |
 | 144 | DNS Management | stub | Network Engineer |
 | 145 | SSL Certificate Management | stub | Cloud Engineer |

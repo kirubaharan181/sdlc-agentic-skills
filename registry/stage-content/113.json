@@ -1,0 +1,65 @@
+{
+  "stage_id": 113,
+  "purpose": "turn source into a deterministic, reproducible build that anyone can rerun and get the same result",
+  "entry_criteria": [
+    "Source is in version control with a lockfile",
+    "Build instructions are documented",
+    "A clean build environment is available"
+  ],
+  "inputs": [
+    "source at a commit",
+    "lockfiles and build configuration",
+    "build toolchain versions",
+    "build environment definition"
+  ],
+  "procedure": [
+    "Pin the toolchain and dependency versions and build in a clean, defined environment.",
+    "Build with a single documented command that needs no manual steps or local state.",
+    "Stamp the build with the commit id and build number, and avoid embedding timestamps that change the output.",
+    "Build twice and compare outputs (checksums) to check reproducibility; investigate differences.",
+    "Keep build logs and fail on warnings the team treats as errors.",
+    "Hand the output to artifact management (stage 114) with its checksum."
+  ],
+  "deliverables": [
+    "build output",
+    "build log",
+    "checksum and build metadata",
+    "reproducibility comparison"
+  ],
+  "acceptance_criteria": [
+    "Build runs from a clean checkout with one command",
+    "Two builds of the same commit produce identical checksums or differences are explained",
+    "Toolchain and dependencies are pinned",
+    "Output carries commit id"
+  ],
+  "validation_method": "Rebuild in CI on a clean runner.",
+  "validation": [
+    {
+      "command": "make build && sha256sum dist/app.tar.gz > /tmp/a.sum && make clean && make build && sha256sum -c /tmp/a.sum   # example",
+      "expect": "checksum verification OK"
+    },
+    {
+      "check": "read the build log for steps that pull unpinned inputs",
+      "expect": "none found"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Build works only on one machine",
+      "detection": "CI build fails on a clean runner",
+      "response": "Move local state into declared inputs"
+    },
+    {
+      "mode": "Unpinned dependency changes output",
+      "detection": "Checksums differ between builds",
+      "response": "Pin and lock"
+    },
+    {
+      "mode": "Timestamps in output",
+      "detection": "Two builds differ only by time",
+      "response": "Normalize or strip"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Two builds of commit a1b2c3 on clean runners produce the same archive checksum after the team sets a fixed file ordering and strips the build-time field.",
+  "status": "complete"
+}

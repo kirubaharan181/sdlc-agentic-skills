@@ -1,0 +1,65 @@
+{
+  "stage_id": 171,
+  "purpose": "keep running systems patched against known vulnerabilities within agreed timeframes, without breaking service",
+  "entry_criteria": [
+    "Inventory of systems and software versions exists",
+    "Patch policy sets timeframes by severity",
+    "Maintenance windows and rollback options exist"
+  ],
+  "inputs": [
+    "system inventory",
+    "vulnerability and patch information",
+    "patch policy",
+    "maintenance windows"
+  ],
+  "procedure": [
+    "Match the inventory against advisories and rank by severity, exposure and exploit activity.",
+    "Test patches on a representative non-production system and record problems.",
+    "Schedule rollout in stages, starting with low-risk systems, with a rollback for each.",
+    "Apply patches by automation and verify the version and service health afterward.",
+    "Track compliance against the policy timeframes and report exceptions with owner and expiry.",
+    "Update the inventory and record what was patched."
+  ],
+  "deliverables": [
+    "patch plan with priorities",
+    "test results",
+    "rollout record",
+    "compliance report with exceptions"
+  ],
+  "acceptance_criteria": [
+    "Critical patches are applied within the policy time or excepted",
+    "Rollout was staged with verification",
+    "Exceptions have owner and expiry",
+    "Inventory is updated"
+  ],
+  "validation_method": "System owner approval of the plan and exceptions.",
+  "validation": [
+    {
+      "command": "apt list --upgradable 2>/dev/null | head   # example for Debian systems",
+      "expect": "no pending security updates after rollout"
+    },
+    {
+      "check": "compare patched versions with the advisory's fixed versions",
+      "expect": "versions equal or exceed the fix"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Patch applied to production first",
+      "detection": "No test record",
+      "response": "Test first, then roll out in stages"
+    },
+    {
+      "mode": "Systems missing from inventory",
+      "detection": "Unknown hosts found on scan",
+      "response": "Add them and patch"
+    },
+    {
+      "mode": "Exceptions never expire",
+      "detection": "Old exceptions without review",
+      "response": "Require expiry and review"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A critical kernel advisory is tested on one staging node, rolled out to production nodes in three batches with health checks, and the compliance report shows all nodes patched within the 14-day policy.",
+  "status": "complete"
+}

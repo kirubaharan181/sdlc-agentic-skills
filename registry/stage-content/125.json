@@ -1,0 +1,65 @@
+{
+  "stage_id": 125,
+  "purpose": "protect the pipeline itself, since whoever controls it controls what reaches production",
+  "entry_criteria": [
+    "Pipeline definitions are in version control",
+    "Secrets and permissions used by the pipeline are listed",
+    "Required checks are known"
+  ],
+  "inputs": [
+    "pipeline definitions",
+    "pipeline secrets and permissions",
+    "runner configuration",
+    "branch protection and required checks"
+  ],
+  "procedure": [
+    "Give each pipeline job the least privilege it needs; use short-lived credentials from the identity provider instead of stored keys.",
+    "Pin third-party actions and tools to a version or digest and review changes to them.",
+    "Protect pipeline files: changes need review, and untrusted code from forks cannot access secrets.",
+    "Isolate runners; do not run untrusted builds on runners that can reach production.",
+    "Log pipeline runs and alert on unusual changes to pipeline definitions or permissions.",
+    "Test the controls by trying to bypass them in a safe repository."
+  ],
+  "deliverables": [
+    "pipeline permission matrix",
+    "pinned dependency list",
+    "runner isolation notes",
+    "bypass test results"
+  ],
+  "acceptance_criteria": [
+    "No long-lived production credential is stored in the pipeline",
+    "Third-party steps are pinned",
+    "Fork builds cannot read secrets",
+    "Pipeline changes require review"
+  ],
+  "validation_method": "Security review of pipeline configuration and bypass tests.",
+  "validation": [
+    {
+      "command": "grep -rnE 'uses: .+@(main|master|latest|v[0-9]+)$' .github/workflows",
+      "expect": "no moving references, or each justified"
+    },
+    {
+      "check": "open a pull request from a fork that tries to print a secret",
+      "expect": "secret is not available"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Pipeline can deploy anywhere",
+      "detection": "Single admin credential",
+      "response": "Split permissions by environment"
+    },
+    {
+      "mode": "Moving tags for third-party steps",
+      "detection": "Workflow uses a branch reference",
+      "response": "Pin to a digest or version"
+    },
+    {
+      "mode": "Secrets exposed to forks",
+      "detection": "Fork run can read secrets",
+      "response": "Restrict to trusted events"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A review replaces a stored cloud key with short-lived federation, pins five third-party actions to versions, and confirms that a fork pull request cannot read secrets.",
+  "status": "complete"
+}

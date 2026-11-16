@@ -1,0 +1,65 @@
+{
+  "stage_id": 124,
+  "purpose": "automate the mechanics of releasing so deployments are fast, consistent and low-risk",
+  "entry_criteria": [
+    "Deployment procedure is written and has been done by hand successfully",
+    "Target environment is defined as code",
+    "Rollback approach exists"
+  ],
+  "inputs": [
+    "manual deployment runbook",
+    "environment and configuration definitions",
+    "health checks and thresholds",
+    "rollback plan"
+  ],
+  "procedure": [
+    "Convert each manual step into a scripted, idempotent step with clear success and failure output.",
+    "Add pre-checks: the right artifact digest, healthy targets, free capacity, no active incident.",
+    "Use a progressive strategy (rolling, canary or blue-green) with automated health gates between stages.",
+    "Make rollback one automated action that restores the previous version and configuration.",
+    "Run the automation in staging repeatedly, including a forced failure, before using it in production.",
+    "Document how to run, stop and debug it."
+  ],
+  "deliverables": [
+    "deployment automation scripts or pipeline",
+    "pre-check and gate definitions",
+    "rollback automation",
+    "rehearsal results"
+  ],
+  "acceptance_criteria": [
+    "Automation is idempotent and rerunnable",
+    "Pre-checks block unsafe deployments",
+    "Automated rollback was rehearsed",
+    "A forced failure was handled correctly in staging"
+  ],
+  "validation_method": "Release engineering review and rehearsal evidence.",
+  "validation": [
+    {
+      "command": "./deploy.sh --env staging --digest sha256:<digest> && ./deploy.sh --env staging --digest sha256:<digest>   # example: run twice",
+      "expect": "second run makes no change and succeeds"
+    },
+    {
+      "check": "inject a failing health check in staging and run the deployment",
+      "expect": "deployment stops and rolls back"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Not idempotent",
+      "detection": "Second run fails or duplicates",
+      "response": "Make each step safe to repeat"
+    },
+    {
+      "mode": "Rollback untested",
+      "detection": "No rehearsal record",
+      "response": "Rehearse before production"
+    },
+    {
+      "mode": "Pre-checks bypassed with a flag",
+      "detection": "Flag used in production",
+      "response": "Remove the bypass or require approval"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A canary deployment script sends five percent of traffic to the new version, checks error rate for ten minutes, then continues or rolls back automatically; a staging rehearsal with a failing check shows the rollback working.",
+  "status": "complete"
+}
