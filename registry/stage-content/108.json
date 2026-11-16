@@ -1,0 +1,65 @@
+{
+  "stage_id": 108,
+  "purpose": "check that third-party licenses allow how we use and distribute the software, and keep proof",
+  "entry_criteria": [
+    "Dependency inventory or SBOM exists",
+    "License policy lists allowed, review-required and forbidden licenses",
+    "Legal or compliance contact exists"
+  ],
+  "inputs": [
+    "SBOM and dependency list",
+    "license policy",
+    "distribution model (internal, SaaS, shipped)",
+    "license texts"
+  ],
+  "procedure": [
+    "List every dependency with its license from the SBOM, including transitive and vendored code.",
+    "Classify each license against the policy and the way the software is distributed; copyleft obligations depend on distribution.",
+    "Flag unknown, missing and conflicting licenses for review by compliance.",
+    "Resolve flagged items: replace the component, obtain permission, or document the accepted obligation.",
+    "Prepare required notices and attributions and include them in the release.",
+    "Record the decision for each flagged license with the person who made it."
+  ],
+  "deliverables": [
+    "license inventory",
+    "flagged items and decisions",
+    "notices and attribution file",
+    "compliance-owner approval"
+  ],
+  "acceptance_criteria": [
+    "Every component has a recorded license",
+    "No forbidden license remains",
+    "Each review-required license has a decision",
+    "Notices are included in the release"
+  ],
+  "validation_method": "Compliance-owner approval.",
+  "validation": [
+    {
+      "command": "pip-licenses --format=csv > reports/licenses.csv   # example; use the ecosystem's tool",
+      "expect": "every dependency has a license entry"
+    },
+    {
+      "check": "compare licenses in the report against the forbidden list",
+      "expect": "no matches or each has a decision"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "License unknown",
+      "detection": "Entry says UNKNOWN",
+      "response": "Check the source; ask legal or replace"
+    },
+    {
+      "mode": "Copyleft in a shipped product",
+      "detection": "Strong copyleft licence in distributed code",
+      "response": "Replace or obtain legal approval"
+    },
+    {
+      "mode": "Notices missing",
+      "detection": "Release lacks attribution file",
+      "response": "Generate and ship it"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The inventory shows one dependency with an unknown license. Compliance contacts the maintainer, receives a permissive license statement, and records the decision before release.",
+  "status": "complete"
+}

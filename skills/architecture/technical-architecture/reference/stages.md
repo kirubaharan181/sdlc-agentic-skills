@@ -72,21 +72,35 @@ Validation: Architecture review against documented quality attribute scenarios.
 Gate: 03-025. Approval: none required
 
 ## 26
-**Database Architecture** (stub). Purpose: design durable data structures and safe evolution strategy.
+**Database Architecture** (complete). Purpose: design how data is structured, stored, protected and evolved so it stays correct and performs as the system grows.
 
-Inputs: data ownership and lifecycle; query and workload profile; retention, privacy and recovery requirements
+Entry criteria: Domain model and requirements for data are known; Volume, access patterns and consistency needs are estimated; Compliance requirements for data are known
+
+Inputs: domain model; access patterns and volumes; consistency, availability and retention requirements; data protection requirements
 
 Procedure:
-1. Model entities, keys, constraints, cardinality and transactional boundaries.
-2. Evaluate indexes, query patterns, partitioning, consistency and growth assumptions.
-3. Define retention, encryption, access boundaries, backup and recovery strategy.
-4. Plan additive migration, backfill, compatibility window and rollback/forward-fix path.
+1. Choose the data store type from access patterns and consistency needs, and record the alternatives considered.
+2. Design schemas with explicit keys, constraints and relationships; define ownership of each dataset.
+3. Plan indexes from the main queries and estimate size and growth.
+4. Design for evolution: how schema changes are made without downtime and how data is migrated.
+5. Define protection: encryption, access roles, masking of sensitive fields, retention and deletion.
+6. Review with the engineers who will use it and record decisions.
 
-Deliverables: logical/physical data model; index and workload rationale; migration strategy; data control matrix
+Deliverables: data architecture document; schema design; decision records; retention and protection rules
 
-Acceptance: Integrity constraints are enforceable. Performance decisions are workload-backed. Migration and restore path are rehearsable.
+Acceptance: Each dataset has an owner and constraints Main queries have supporting indexes A schema evolution approach exists Sensitive fields have protection rules
 
-Validation: DBA, security and application owner review.
+Validation: Architecture review.
+
+- manual: run the top five queries on a production-sized sample with EXPLAIN expect: plans use the intended indexes
+- manual: check each sensitive field against the protection rules expect: all covered
+
+Failure modes:
+- Schema chosen before access patterns | detect: Queries need full scans | respond: Revisit with real patterns
+- No retention rule | detect: Data kept forever | respond: Define retention and deletion
+- Two services write one table | detect: Shared ownership | respond: Assign one owner
+
+ILLUSTRATIVE: Orders use a relational store because of transactional consistency. The design defines the order and line tables with foreign keys, an index on customer and date, and a rule to archive orders after seven years.
 
 Gate: 03-026. Approval: none required
 

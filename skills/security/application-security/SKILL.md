@@ -34,7 +34,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 105 | Authentication Security | stub | Application Security Engineer |
 | 106 | Data Protection | stub | Application Security Engineer |
 | 107 | Compliance Review | stub | Compliance Specialist |
-| 108 | License Compliance | stub | License Compliance Specialist |
+| 108 | License Compliance | complete | License Compliance Specialist |
 | 109 | Vulnerability Remediation | stub | Application Security Engineer |
 | 110 | Security Sign-off | complete | Security Auditor |
 

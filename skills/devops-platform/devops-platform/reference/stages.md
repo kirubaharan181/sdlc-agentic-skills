@@ -84,78 +84,134 @@ ILLUSTRATIVE: Unit tests finish in two minutes and gate integration tests, which
 Gate: 10-112. Approval: none required
 
 ## 113
-**Build Management** (stub). Purpose: build a secure and reproducible delivery platform.
+**Build Management** (complete). Purpose: turn source into a deterministic, reproducible build that anyone can rerun and get the same result.
 
-Inputs: repository and build graph; deployment targets and environment protections; artifact trust and supply-chain policy
+Entry criteria: Source is in version control with a lockfile; Build instructions are documented; A clean build environment is available
+
+Inputs: source at a commit; lockfiles and build configuration; build toolchain versions; build environment definition
 
 Procedure:
-1. Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
-2. Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
-3. Protect credentials, runners, deployment environments and immutable artifact promotion.
-4. Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
+1. Pin the toolchain and dependency versions and build in a clean, defined environment.
+2. Build with a single documented command that needs no manual steps or local state.
+3. Stamp the build with the commit id and build number, and avoid embedding timestamps that change the output.
+4. Build twice and compare outputs (checksums) to check reproducibility; investigate differences.
+5. Keep build logs and fail on warnings the team treats as errors.
+6. Hand the output to artifact management (stage 114) with its checksum.
 
-Deliverables: pipeline/IaC configuration; artifact provenance; test/security results; runbook and ownership
+Deliverables: build output; build log; checksum and build metadata; reproducibility comparison
 
-Acceptance: Build is reproducible and artifacts are immutable/promoted. Secrets and environment permissions are scoped. Failure and rollback behavior is exercised.
+Acceptance: Build runs from a clean checkout with one command Two builds of the same commit produce identical checksums or differences are explained Toolchain and dependencies are pinned Output carries commit id
 
-Validation: Platform/security review and clean pipeline run.
+Validation: Rebuild in CI on a clean runner.
+
+- `make build && sha256sum dist/app.tar.gz > /tmp/a.sum && make clean && make build && sha256sum -c /tmp/a.sum   # example` expect: checksum verification OK
+- manual: read the build log for steps that pull unpinned inputs expect: none found
+
+Failure modes:
+- Build works only on one machine | detect: CI build fails on a clean runner | respond: Move local state into declared inputs
+- Unpinned dependency changes output | detect: Checksums differ between builds | respond: Pin and lock
+- Timestamps in output | detect: Two builds differ only by time | respond: Normalize or strip
+
+ILLUSTRATIVE: Two builds of commit a1b2c3 on clean runners produce the same archive checksum after the team sets a fixed file ordering and strips the build-time field.
 
 Gate: 10-113. Approval: none required
 
 ## 114
-**Artifact Management** (stub). Purpose: build a secure and reproducible delivery platform.
+**Artifact Management** (complete). Purpose: store built artifacts immutably with their provenance so that what is tested is exactly what is deployed.
 
-Inputs: repository and build graph; deployment targets and environment protections; artifact trust and supply-chain policy
+Entry criteria: Build produces a versioned artifact with a checksum; An artifact repository or registry is available; Retention policy is defined
+
+Inputs: built artifact and checksum; build metadata (commit, builder); artifact repository; retention policy
 
 Procedure:
-1. Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
-2. Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
-3. Protect credentials, runners, deployment environments and immutable artifact promotion.
-4. Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
+1. Publish each artifact once under an immutable version tied to the commit; forbid overwriting.
+2. Record provenance: source commit, build run, builder, dependencies (SBOM) and checksum.
+3. Restrict write access to the pipeline; give consumers read-only access.
+4. Promote the same artifact through environments by reference to its digest, never by rebuilding.
+5. Apply retention rules: keep released artifacts, expire snapshots, and never delete what production runs.
+6. Scan and sign artifacts where supported, and verify the signature before deployment.
 
-Deliverables: pipeline/IaC configuration; artifact provenance; test/security results; runbook and ownership
+Deliverables: published artifact with immutable version; provenance record; access and retention configuration; signature or digest record
 
-Acceptance: Build is reproducible and artifacts are immutable/promoted. Secrets and environment permissions are scoped. Failure and rollback behavior is exercised.
+Acceptance: An existing version cannot be overwritten Provenance links the artifact to its commit and build Only the pipeline can publish Deployment verifies the digest
 
-Validation: Platform/security review and clean pipeline run.
+Validation: Platform review of access and retention settings.
+
+- `docker manifest inspect registry.example.com/app:1.4.0 | sha256sum   # example` expect: digest equals the one in the provenance record
+- manual: try to republish an existing version expect: the repository refuses
+
+Failure modes:
+- Tag overwritten | detect: Same tag points to a different digest | respond: Enforce immutability and deploy by digest
+- Artifact without provenance | detect: No commit or build link | respond: Rebuild through the pipeline
+- Humans can publish | detect: Non-pipeline account has write access | respond: Remove it
+
+ILLUSTRATIVE: The pipeline publishes app 1.4.0 with its digest, commit and SBOM. A later attempt to push another image under 1.4.0 is rejected, and staging and production both deploy the same digest.
 
 Gate: 10-114. Approval: none required
 
 ## 115
-**Containerization** (stub). Purpose: package applications as reproducible least-privilege container images.
+**Containerization** (complete). Purpose: package the application and its runtime into a small, secure, reproducible container image.
 
-Inputs: build context and runtime dependencies; base image and vulnerability policy; runtime user, ports and health expectations
+Entry criteria: Application builds and runs outside a container; Runtime requirements are known; Base image policy exists
+
+Inputs: application build output; runtime requirements; approved base images; container security policy
 
 Procedure:
-1. Use a minimal pinned base image and deterministic build context.
-2. Exclude secrets, development tools and unnecessary files from final layers.
-3. Run as non-root with explicit ports, health checks and resource expectations.
-4. Scan the exact image digest and run startup/shutdown smoke tests.
+1. Write a Dockerfile with a pinned, minimal base image and a multi-stage build so build tools do not ship.
+2. Run as a non-root user, copy only what the application needs, and keep secrets out of layers and build arguments.
+3. Define the entrypoint, health check, exposed ports and resource expectations.
+4. Build the image in CI, tag it by commit, and record its digest.
+5. Run the container locally or in CI and verify it starts, passes the health check and shuts down cleanly on a termination signal.
+6. Hand the digest to container security scanning (stage 102).
 
-Deliverables: Dockerfile/image build; image SBOM and scan; runtime configuration; container smoke test
+Deliverables: Dockerfile; built image digest; container run verification; image size and layer notes
 
-Acceptance: Image is reproducible and free of embedded secrets. Runtime is non-root and least-privilege. Image digest and scan evidence match.
+Acceptance: Image runs as non-root No secrets in layers or build arguments Container starts, is healthy and stops cleanly Base image and tools are pinned
 
-Validation: Inspect final image layers for secrets and run the image with restricted capabilities.
+Validation: Platform and security review of the Dockerfile.
+
+- `docker build -t app:test . && docker run --rm -d --name t app:test && sleep 5 && docker inspect --format '{{.State.Health.Status}}' t` expect: healthy
+- `docker history --no-trunc app:test | grep -iE 'password|secret|token'` expect: no matches
+
+Failure modes:
+- Build tools shipped in the final image | detect: Large image with compilers | respond: Use multi-stage builds
+- Container ignores termination | detect: Takes the kill timeout to stop | respond: Handle the signal; run the process as PID 1 correctly
+- Secret passed as a build argument | detect: Appears in history | respond: Use build secrets and rotate it
+
+ILLUSTRATIVE: A two-stage Dockerfile compiles in a builder image and copies only the binary into a minimal base running as user 10001. The container reports healthy within five seconds and stops on SIGTERM in under a second.
 
 Gate: 10-115. Approval: none required
 
 ## 116
-**Container Orchestration** (stub). Purpose: build a secure and reproducible delivery platform.
+**Container Orchestration** (complete). Purpose: run containers reliably at scale with scheduling, networking, configuration and safe updates managed by the platform.
 
-Inputs: repository and build graph; deployment targets and environment protections; artifact trust and supply-chain policy
+Entry criteria: Container images and their requirements are known; A cluster exists with defined environments; Platform standards for namespaces, quotas and policies exist
+
+Inputs: container images and digests; resource and scaling requirements; cluster standards and policies; configuration and secret sources
 
 Procedure:
-1. Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
-2. Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
-3. Protect credentials, runners, deployment environments and immutable artifact promotion.
-4. Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
+1. Define workloads declaratively with resource requests and limits, health probes and a rolling update strategy.
+2. Separate configuration and secrets from images; mount secrets from the secret store, never in manifests.
+3. Apply network policies, a non-root security context and pod security standards.
+4. Set disruption budgets and spread replicas across failure domains.
+5. Deploy through the pipeline from version control (no manual kubectl in production) and verify rollout status.
+6. Observe and tune: resource use, restarts, scheduling failures.
 
-Deliverables: pipeline/IaC configuration; artifact provenance; test/security results; runbook and ownership
+Deliverables: workload manifests or charts; policy and security context settings; rollout verification; observability dashboards
 
-Acceptance: Build is reproducible and artifacts are immutable/promoted. Secrets and environment permissions are scoped. Failure and rollback behavior is exercised.
+Acceptance: Every workload has resource limits and probes Security context and network policies are applied Replicas are spread across failure domains Changes arrive through version control
 
-Validation: Platform/security review and clean pipeline run.
+Validation: Platform review of manifests.
+
+- `kubectl apply --dry-run=server -f k8s/ && kubectl rollout status deployment/app` expect: applies cleanly and rolls out
+- `kubectl get pods -o jsonpath='{range .items[*]}{.metadata.name}{" "}{.spec.containers[*].resources.limits}{"\n"}{end}'` expect: every pod has limits
+
+Failure modes:
+- No resource limits | detect: Pod can exhaust a node | respond: Set requests and limits
+- Probes missing or wrong | detect: Traffic reaches an unready pod | respond: Add readiness and liveness probes
+- Manual edits in production | detect: Cluster differs from version control | respond: Reconcile from the repository
+
+ILLUSTRATIVE: The service runs three replicas spread across zones with readiness probes, a pod disruption budget of one, and a rolling update that never takes more than one pod down at a time.
 
 Gate: 10-116. Approval: none required
 
@@ -212,21 +268,35 @@ Validation: Platform/security review and clean pipeline run.
 Gate: 10-118. Approval: none required
 
 ## 119
-**CD Pipeline** (stub). Purpose: build a secure and reproducible delivery platform.
+**CD Pipeline** (complete). Purpose: deliver approved artifacts to environments through an automated, auditable and repeatable pipeline.
 
-Inputs: repository and build graph; deployment targets and environment protections; artifact trust and supply-chain policy
+Entry criteria: Immutable artifacts exist (stage 114); Environments are defined as code; Approval points and deployment strategy are agreed
+
+Inputs: artifact digest; environment definitions; deployment strategy and approvals; health checks
 
 Procedure:
-1. Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
-2. Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
-3. Protect credentials, runners, deployment environments and immutable artifact promotion.
-4. Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
+1. Model deployment as a pipeline from the artifact digest to each environment in order.
+2. Use the same deployment steps in every environment; vary only configuration.
+3. Run automated checks after each deployment (health, smoke) and stop on failure.
+4. Require human approval before production in the pipeline, with the approver recorded.
+5. Use short-lived credentials for deployment and keep them out of logs.
+6. Record who deployed what, when and with what result.
 
-Deliverables: pipeline/IaC configuration; artifact provenance; test/security results; runbook and ownership
+Deliverables: deployment pipeline definition; run records with approvals; health and smoke results; deployment history
 
-Acceptance: Build is reproducible and artifacts are immutable/promoted. Secrets and environment permissions are scoped. Failure and rollback behavior is exercised.
+Acceptance: The same digest moves through all environments Production requires a recorded approval A failed check stops the pipeline Credentials are short-lived and not logged
 
-Validation: Platform/security review and clean pipeline run.
+Validation: Platform and change-authority review.
+
+- `gh run view --json conclusion,jobs   # example for the deployment run` expect: all jobs succeeded; production job shows an approval
+- manual: compare the digest deployed to production with the artifact record expect: identical
+
+Failure modes:
+- Different build per environment | detect: Digest differs between environments | respond: Promote one artifact
+- Approval skipped | detect: Production run with no approver | respond: Make the approval mandatory in the pipeline
+- Long-lived deploy key | detect: Static credential in the pipeline | respond: Replace with short-lived tokens
+
+ILLUSTRATIVE: The pipeline deploys digest sha256:9f2c to staging, runs smoke checks, waits for the production approver, then deploys the same digest to production and records the approver and times.
 
 Gate: 10-119. Approval: none required
 
@@ -321,39 +391,67 @@ Validation: Platform/security review and clean pipeline run.
 Gate: 10-123. Approval: none required
 
 ## 124
-**Deployment Automation** (stub). Purpose: build a secure and reproducible delivery platform.
+**Deployment Automation** (complete). Purpose: automate the mechanics of releasing so deployments are fast, consistent and low-risk.
 
-Inputs: repository and build graph; deployment targets and environment protections; artifact trust and supply-chain policy
+Entry criteria: Deployment procedure is written and has been done by hand successfully; Target environment is defined as code; Rollback approach exists
+
+Inputs: manual deployment runbook; environment and configuration definitions; health checks and thresholds; rollback plan
 
 Procedure:
-1. Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
-2. Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
-3. Protect credentials, runners, deployment environments and immutable artifact promotion.
-4. Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
+1. Convert each manual step into a scripted, idempotent step with clear success and failure output.
+2. Add pre-checks: the right artifact digest, healthy targets, free capacity, no active incident.
+3. Use a progressive strategy (rolling, canary or blue-green) with automated health gates between stages.
+4. Make rollback one automated action that restores the previous version and configuration.
+5. Run the automation in staging repeatedly, including a forced failure, before using it in production.
+6. Document how to run, stop and debug it.
 
-Deliverables: pipeline/IaC configuration; artifact provenance; test/security results; runbook and ownership
+Deliverables: deployment automation scripts or pipeline; pre-check and gate definitions; rollback automation; rehearsal results
 
-Acceptance: Build is reproducible and artifacts are immutable/promoted. Secrets and environment permissions are scoped. Failure and rollback behavior is exercised.
+Acceptance: Automation is idempotent and rerunnable Pre-checks block unsafe deployments Automated rollback was rehearsed A forced failure was handled correctly in staging
 
-Validation: Platform/security review and clean pipeline run.
+Validation: Release engineering review and rehearsal evidence.
+
+- `./deploy.sh --env staging --digest sha256:<digest> && ./deploy.sh --env staging --digest sha256:<digest>   # example: run twice` expect: second run makes no change and succeeds
+- manual: inject a failing health check in staging and run the deployment expect: deployment stops and rolls back
+
+Failure modes:
+- Not idempotent | detect: Second run fails or duplicates | respond: Make each step safe to repeat
+- Rollback untested | detect: No rehearsal record | respond: Rehearse before production
+- Pre-checks bypassed with a flag | detect: Flag used in production | respond: Remove the bypass or require approval
+
+ILLUSTRATIVE: A canary deployment script sends five percent of traffic to the new version, checks error rate for ten minutes, then continues or rolls back automatically; a staging rehearsal with a failing check shows the rollback working.
 
 Gate: 10-124. Approval: none required
 
 ## 125
-**Pipeline Security** (stub). Purpose: protect CI trust boundaries, credentials and artifact integrity.
+**Pipeline Security** (complete). Purpose: protect the pipeline itself, since whoever controls it controls what reaches production.
 
-Inputs: workflow triggers and runner inventory; token permissions and secret inventory; artifact promotion and deployment policy
+Entry criteria: Pipeline definitions are in version control; Secrets and permissions used by the pipeline are listed; Required checks are known
+
+Inputs: pipeline definitions; pipeline secrets and permissions; runner configuration; branch protection and required checks
 
 Procedure:
-1. Map untrusted pull-request events, privileged release events, runners and reusable workflows.
-2. Scope GITHUB_TOKEN and third-party action permissions; pin actions to immutable references where policy requires.
-3. Keep secrets unavailable to untrusted code and isolate caches/artifacts by trust level.
-4. Verify provenance, required gates and deployment environment protection with negative fixtures.
+1. Give each pipeline job the least privilege it needs; use short-lived credentials from the identity provider instead of stored keys.
+2. Pin third-party actions and tools to a version or digest and review changes to them.
+3. Protect pipeline files: changes need review, and untrusted code from forks cannot access secrets.
+4. Isolate runners; do not run untrusted builds on runners that can reach production.
+5. Log pipeline runs and alert on unusual changes to pipeline definitions or permissions.
+6. Test the controls by trying to bypass them in a safe repository.
 
-Deliverables: pipeline threat model; workflow permission matrix; policy test report; artifact provenance
+Deliverables: pipeline permission matrix; pinned dependency list; runner isolation notes; bypass test results
 
-Acceptance: Untrusted code cannot access privileged credentials. Artifacts cannot be replaced across trust boundaries. Required checks and environment approvals are enforced.
+Acceptance: No long-lived production credential is stored in the pipeline Third-party steps are pinned Fork builds cannot read secrets Pipeline changes require review
 
-Validation: Test a fork pull request and prove it cannot read release secrets or alter trusted artifacts.
+Validation: Security review of pipeline configuration and bypass tests.
+
+- `grep -rnE 'uses: .+@(main|master|latest|v[0-9]+)$' .github/workflows` expect: no moving references, or each justified
+- manual: open a pull request from a fork that tries to print a secret expect: secret is not available
+
+Failure modes:
+- Pipeline can deploy anywhere | detect: Single admin credential | respond: Split permissions by environment
+- Moving tags for third-party steps | detect: Workflow uses a branch reference | respond: Pin to a digest or version
+- Secrets exposed to forks | detect: Fork run can read secrets | respond: Restrict to trusted events
+
+ILLUSTRATIVE: A review replaces a stored cloud key with short-lived federation, pins five third-party actions to versions, and confirms that a fork pull request cannot read secrets.
 
 Gate: 10-125. Approval: none required

@@ -135,21 +135,35 @@ ILLUSTRATIVE: Totals are off by one cent for certain discounts. A test with that
 Gate: 14-170. Approval: none required
 
 ## 171
-**Patch Management** (stub). Purpose: maintain a live service safely and preserve customer continuity.
+**Patch Management** (complete). Purpose: keep running systems patched against known vulnerabilities within agreed timeframes, without breaking service.
 
-Inputs: support case or maintenance request; affected versions and customer impact; service ownership and change policy
+Entry criteria: Inventory of systems and software versions exists; Patch policy sets timeframes by severity; Maintenance windows and rollback options exist
+
+Inputs: system inventory; vulnerability and patch information; patch policy; maintenance windows
 
 Procedure:
-1. Classify severity, affected customers, workaround and escalation path using support policy.
-2. Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.
-3. Implement the smallest safe correction or maintenance action with regression and compatibility coverage.
-4. Communicate workaround/fix version, verify closure and update runbook or knowledge base.
+1. Match the inventory against advisories and rank by severity, exposure and exploit activity.
+2. Test patches on a representative non-production system and record problems.
+3. Schedule rollout in stages, starting with low-risk systems, with a rollback for each.
+4. Apply patches by automation and verify the version and service health afterward.
+5. Track compliance against the policy timeframes and report exceptions with owner and expiry.
+6. Update the inventory and record what was patched.
 
-Deliverables: support/maintenance record; reproduction and diagnosis; fix or patch evidence; customer communication and knowledge update
+Deliverables: patch plan with priorities; test results; rollout record; compliance report with exceptions
 
-Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
+Acceptance: Critical patches are applied within the policy time or excepted Rollout was staged with verification Exceptions have owner and expiry Inventory is updated
 
-Validation: Service owner acceptance and customer-facing closure check.
+Validation: System owner approval of the plan and exceptions.
+
+- `apt list --upgradable 2>/dev/null | head   # example for Debian systems` expect: no pending security updates after rollout
+- manual: compare patched versions with the advisory's fixed versions expect: versions equal or exceed the fix
+
+Failure modes:
+- Patch applied to production first | detect: No test record | respond: Test first, then roll out in stages
+- Systems missing from inventory | detect: Unknown hosts found on scan | respond: Add them and patch
+- Exceptions never expire | detect: Old exceptions without review | respond: Require expiry and review
+
+ILLUSTRATIVE: A critical kernel advisory is tested on one staging node, rolled out to production nodes in three batches with health checks, and the compliance report shows all nodes patched within the 14-day policy.
 
 Gate: 14-171. Approval: none required
 

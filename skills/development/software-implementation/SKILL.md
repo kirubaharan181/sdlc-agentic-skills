@@ -29,7 +29,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 55 | Full Stack Development | stub | Full Stack Engineer |
 | 56 | Mobile Development | stub | Mobile Engineer |
 | 57 | API Development | complete | API Engineer |
-| 58 | Database Development | stub | Database Engineer |
+| 58 | Database Development | complete | Database Engineer |
 | 59 | Authentication Development | stub | Authentication and Authorization Engineer |
 | 60 | Authorization Development | stub | Authentication and Authorization Engineer |
 | 61 | Third-party Integration | stub | Integration Engineer |

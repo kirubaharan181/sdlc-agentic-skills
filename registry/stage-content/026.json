@@ -1,0 +1,65 @@
+{
+  "stage_id": 26,
+  "purpose": "design how data is structured, stored, protected and evolved so it stays correct and performs as the system grows",
+  "entry_criteria": [
+    "Domain model and requirements for data are known",
+    "Volume, access patterns and consistency needs are estimated",
+    "Compliance requirements for data are known"
+  ],
+  "inputs": [
+    "domain model",
+    "access patterns and volumes",
+    "consistency, availability and retention requirements",
+    "data protection requirements"
+  ],
+  "procedure": [
+    "Choose the data store type from access patterns and consistency needs, and record the alternatives considered.",
+    "Design schemas with explicit keys, constraints and relationships; define ownership of each dataset.",
+    "Plan indexes from the main queries and estimate size and growth.",
+    "Design for evolution: how schema changes are made without downtime and how data is migrated.",
+    "Define protection: encryption, access roles, masking of sensitive fields, retention and deletion.",
+    "Review with the engineers who will use it and record decisions."
+  ],
+  "deliverables": [
+    "data architecture document",
+    "schema design",
+    "decision records",
+    "retention and protection rules"
+  ],
+  "acceptance_criteria": [
+    "Each dataset has an owner and constraints",
+    "Main queries have supporting indexes",
+    "A schema evolution approach exists",
+    "Sensitive fields have protection rules"
+  ],
+  "validation_method": "Architecture review.",
+  "validation": [
+    {
+      "check": "run the top five queries on a production-sized sample with EXPLAIN",
+      "expect": "plans use the intended indexes"
+    },
+    {
+      "check": "check each sensitive field against the protection rules",
+      "expect": "all covered"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Schema chosen before access patterns",
+      "detection": "Queries need full scans",
+      "response": "Revisit with real patterns"
+    },
+    {
+      "mode": "No retention rule",
+      "detection": "Data kept forever",
+      "response": "Define retention and deletion"
+    },
+    {
+      "mode": "Two services write one table",
+      "detection": "Shared ownership",
+      "response": "Assign one owner"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Orders use a relational store because of transactional consistency. The design defines the order and line tables with foreign keys, an index on customer and date, and a rule to archive orders after seven years.",
+  "status": "complete"
+}

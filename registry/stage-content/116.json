@@ -1,0 +1,65 @@
+{
+  "stage_id": 116,
+  "purpose": "run containers reliably at scale with scheduling, networking, configuration and safe updates managed by the platform",
+  "entry_criteria": [
+    "Container images and their requirements are known",
+    "A cluster exists with defined environments",
+    "Platform standards for namespaces, quotas and policies exist"
+  ],
+  "inputs": [
+    "container images and digests",
+    "resource and scaling requirements",
+    "cluster standards and policies",
+    "configuration and secret sources"
+  ],
+  "procedure": [
+    "Define workloads declaratively with resource requests and limits, health probes and a rolling update strategy.",
+    "Separate configuration and secrets from images; mount secrets from the secret store, never in manifests.",
+    "Apply network policies, a non-root security context and pod security standards.",
+    "Set disruption budgets and spread replicas across failure domains.",
+    "Deploy through the pipeline from version control (no manual kubectl in production) and verify rollout status.",
+    "Observe and tune: resource use, restarts, scheduling failures."
+  ],
+  "deliverables": [
+    "workload manifests or charts",
+    "policy and security context settings",
+    "rollout verification",
+    "observability dashboards"
+  ],
+  "acceptance_criteria": [
+    "Every workload has resource limits and probes",
+    "Security context and network policies are applied",
+    "Replicas are spread across failure domains",
+    "Changes arrive through version control"
+  ],
+  "validation_method": "Platform review of manifests.",
+  "validation": [
+    {
+      "command": "kubectl apply --dry-run=server -f k8s/ && kubectl rollout status deployment/app",
+      "expect": "applies cleanly and rolls out"
+    },
+    {
+      "command": "kubectl get pods -o jsonpath='{range .items[*]}{.metadata.name}{\" \"}{.spec.containers[*].resources.limits}{\"\\n\"}{end}'",
+      "expect": "every pod has limits"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "No resource limits",
+      "detection": "Pod can exhaust a node",
+      "response": "Set requests and limits"
+    },
+    {
+      "mode": "Probes missing or wrong",
+      "detection": "Traffic reaches an unready pod",
+      "response": "Add readiness and liveness probes"
+    },
+    {
+      "mode": "Manual edits in production",
+      "detection": "Cluster differs from version control",
+      "response": "Reconcile from the repository"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The service runs three replicas spread across zones with readiness probes, a pod disruption budget of one, and a rolling update that never takes more than one pod down at a time.",
+  "status": "complete"
+}

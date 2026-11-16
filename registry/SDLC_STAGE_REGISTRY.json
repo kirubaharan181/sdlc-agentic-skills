@@ -1227,36 +1227,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "data ownership and lifecycle",
-        "query and workload profile",
-        "retention, privacy and recovery requirements"
-      ],
-      "outputs": [
-        "database-architecture-deliverable",
-        "logical/physical data model",
-        "index and workload rationale"
-      ],
       "quality_gate": "03-026",
-      "validation_method": "DBA, security and application owner review.",
-      "purpose": "design durable data structures and safe evolution strategy",
-      "execution_instructions": [
-        "Model entities, keys, constraints, cardinality and transactional boundaries.",
-        "Evaluate indexes, query patterns, partitioning, consistency and growth assumptions.",
-        "Define retention, encryption, access boundaries, backup and recovery strategy.",
-        "Plan additive migration, backfill, compatibility window and rollback/forward-fix path."
-      ],
-      "deliverable_artifacts": [
-        "logical/physical data model",
-        "index and workload rationale",
-        "migration strategy",
-        "data control matrix"
-      ],
-      "quality_criteria": [
-        "Integrity constraints are enforceable.",
-        "Performance decisions are workload-backed.",
-        "Migration and restore path are rehearsable."
-      ],
       "raci": {
         "accountable": "database-architect",
         "responsible": [
@@ -2747,36 +2718,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "logical data model and query requirements",
-        "transaction and concurrency model",
-        "migration and recovery policy"
-      ],
-      "outputs": [
-        "database-development-deliverable",
-        "schema/query change",
-        "migration scripts"
-      ],
       "quality_gate": "06-058",
-      "validation_method": "DBA review and migration rehearsal.",
-      "purpose": "implement data access and schema evolution without integrity loss",
-      "execution_instructions": [
-        "Implement constraints, indexes and parameterized queries based on observed access patterns.",
-        "Define transaction boundaries, isolation, concurrency and retry behavior.",
-        "Write forward and rollback/forward-fix migration scripts with pre/post checks.",
-        "Test data integrity, query plans and migration on representative volume."
-      ],
-      "deliverable_artifacts": [
-        "schema/query change",
-        "migration scripts",
-        "integrity assertions",
-        "query plan evidence"
-      ],
-      "quality_criteria": [
-        "Constraints protect invariants.",
-        "Migration is repeatable and rehearsed.",
-        "Performance is measured against a representative workload."
-      ],
       "raci": {
         "accountable": "database-engineer",
         "responsible": [
@@ -4822,36 +4764,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "dependency inventory and lockfiles",
-        "license policy and distribution model",
-        "notice/attribution requirements"
-      ],
-      "outputs": [
-        "license-compliance-deliverable",
-        "SBOM",
-        "license compatibility matrix"
-      ],
       "quality_gate": "09-108",
-      "validation_method": "Legal/compliance review.",
-      "purpose": "identify software license obligations and distribution risk",
-      "execution_instructions": [
-        "Generate an SBOM or equivalent inventory from resolved dependencies.",
-        "Identify direct/transitive licenses, copyleft triggers, attribution and source-disclosure obligations.",
-        "Compare obligations with product distribution and company policy; escalate ambiguous licenses.",
-        "Record approved substitutions, notices and exception expiry."
-      ],
-      "deliverable_artifacts": [
-        "SBOM",
-        "license compatibility matrix",
-        "notice bundle",
-        "exception record"
-      ],
-      "quality_criteria": [
-        "All shipped dependencies have a resolved license or approved exception.",
-        "Notices and obligations are fulfilled.",
-        "Unknown licenses are not silently accepted."
-      ],
       "approval_required": true,
       "approval_rationale": "Accepting a license exception creates a legal obligation for the organization; only a legal or compliance owner may accept it.",
       "raci": {
@@ -4997,36 +4910,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "build-management-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-113",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "raci": {
         "accountable": "devops-engineer",
         "responsible": [
@@ -5046,36 +4930,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "artifact-management-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-114",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "raci": {
         "accountable": "platform-engineer",
         "responsible": [
@@ -5097,36 +4952,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "build context and runtime dependencies",
-        "base image and vulnerability policy",
-        "runtime user, ports and health expectations"
-      ],
-      "outputs": [
-        "containerization-deliverable",
-        "Dockerfile/image build",
-        "image SBOM and scan"
-      ],
       "quality_gate": "10-115",
-      "validation_method": "Inspect final image layers for secrets and run the image with restricted capabilities.",
-      "purpose": "package applications as reproducible least-privilege container images",
-      "execution_instructions": [
-        "Use a minimal pinned base image and deterministic build context.",
-        "Exclude secrets, development tools and unnecessary files from final layers.",
-        "Run as non-root with explicit ports, health checks and resource expectations.",
-        "Scan the exact image digest and run startup/shutdown smoke tests."
-      ],
-      "deliverable_artifacts": [
-        "Dockerfile/image build",
-        "image SBOM and scan",
-        "runtime configuration",
-        "container smoke test"
-      ],
-      "quality_criteria": [
-        "Image is reproducible and free of embedded secrets.",
-        "Runtime is non-root and least-privilege.",
-        "Image digest and scan evidence match."
-      ],
       "raci": {
         "accountable": "devops-engineer",
         "responsible": [
@@ -5148,36 +4974,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "container-orchestration-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-116",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "raci": {
         "accountable": "kubernetes-engineer",
         "responsible": [
@@ -5278,36 +5075,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "cd-pipeline-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-119",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "raci": {
         "accountable": "devops-engineer",
         "responsible": [
@@ -5509,36 +5277,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "deployment-automation-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-124",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "raci": {
         "accountable": "deployment-engineer",
         "responsible": [
@@ -5560,36 +5299,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "workflow triggers and runner inventory",
-        "token permissions and secret inventory",
-        "artifact promotion and deployment policy"
-      ],
-      "outputs": [
-        "pipeline-security-deliverable",
-        "pipeline threat model",
-        "workflow permission matrix"
-      ],
       "quality_gate": "10-125",
-      "validation_method": "Test a fork pull request and prove it cannot read release secrets or alter trusted artifacts.",
-      "purpose": "protect CI trust boundaries, credentials and artifact integrity",
-      "execution_instructions": [
-        "Map untrusted pull-request events, privileged release events, runners and reusable workflows.",
-        "Scope GITHUB_TOKEN and third-party action permissions; pin actions to immutable references where policy requires.",
-        "Keep secrets unavailable to untrusted code and isolate caches/artifacts by trust level.",
-        "Verify provenance, required gates and deployment environment protection with negative fixtures."
-      ],
-      "deliverable_artifacts": [
-        "pipeline threat model",
-        "workflow permission matrix",
-        "policy test report",
-        "artifact provenance"
-      ],
-      "quality_criteria": [
-        "Untrusted code cannot access privileged credentials.",
-        "Artifacts cannot be replaced across trust boundaries.",
-        "Required checks and environment approvals are enforced."
-      ],
       "raci": {
         "accountable": "devsecops-engineer",
         "responsible": [
@@ -6143,36 +5853,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "service inventory and ownership",
-        "SLO/RTO/RPO and capacity profile",
-        "access, backup and cost policies"
-      ],
-      "outputs": [
-        "database-hosting-deliverable",
-        "infrastructure inventory",
-        "change record"
-      ],
       "quality_gate": "12-142",
-      "validation_method": "Cloud operations and security review.",
-      "purpose": "operate cloud infrastructure within reliability and cost objectives",
-      "execution_instructions": [
-        "Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.",
-        "Verify identity boundaries, encryption, network exposure, patch state and backup coverage.",
-        "Measure health, capacity, utilization, recovery readiness and cost allocation.",
-        "Apply a reviewed, reversible change and verify telemetry, drift and customer impact."
-      ],
-      "deliverable_artifacts": [
-        "infrastructure inventory",
-        "change record",
-        "health/capacity/cost evidence",
-        "operator runbook"
-      ],
-      "quality_criteria": [
-        "Changes are scoped and reversible.",
-        "Backup/recovery meets stated objectives.",
-        "Cost and reliability effects are measured."
-      ],
       "raci": {
         "accountable": "database-administrator",
         "responsible": [
@@ -7195,36 +6876,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "patch-management-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-171",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "raci": {
         "accountable": "devops-engineer",
         "responsible": [

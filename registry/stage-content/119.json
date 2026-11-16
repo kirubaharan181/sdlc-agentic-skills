@@ -1,0 +1,65 @@
+{
+  "stage_id": 119,
+  "purpose": "deliver approved artifacts to environments through an automated, auditable and repeatable pipeline",
+  "entry_criteria": [
+    "Immutable artifacts exist (stage 114)",
+    "Environments are defined as code",
+    "Approval points and deployment strategy are agreed"
+  ],
+  "inputs": [
+    "artifact digest",
+    "environment definitions",
+    "deployment strategy and approvals",
+    "health checks"
+  ],
+  "procedure": [
+    "Model deployment as a pipeline from the artifact digest to each environment in order.",
+    "Use the same deployment steps in every environment; vary only configuration.",
+    "Run automated checks after each deployment (health, smoke) and stop on failure.",
+    "Require human approval before production in the pipeline, with the approver recorded.",
+    "Use short-lived credentials for deployment and keep them out of logs.",
+    "Record who deployed what, when and with what result."
+  ],
+  "deliverables": [
+    "deployment pipeline definition",
+    "run records with approvals",
+    "health and smoke results",
+    "deployment history"
+  ],
+  "acceptance_criteria": [
+    "The same digest moves through all environments",
+    "Production requires a recorded approval",
+    "A failed check stops the pipeline",
+    "Credentials are short-lived and not logged"
+  ],
+  "validation_method": "Platform and change-authority review.",
+  "validation": [
+    {
+      "command": "gh run view --json conclusion,jobs   # example for the deployment run",
+      "expect": "all jobs succeeded; production job shows an approval"
+    },
+    {
+      "check": "compare the digest deployed to production with the artifact record",
+      "expect": "identical"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Different build per environment",
+      "detection": "Digest differs between environments",
+      "response": "Promote one artifact"
+    },
+    {
+      "mode": "Approval skipped",
+      "detection": "Production run with no approver",
+      "response": "Make the approval mandatory in the pipeline"
+    },
+    {
+      "mode": "Long-lived deploy key",
+      "detection": "Static credential in the pipeline",
+      "response": "Replace with short-lived tokens"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The pipeline deploys digest sha256:9f2c to staging, runs smoke checks, waits for the production approver, then deploys the same digest to production and records the approver and times.",
+  "status": "complete"
+}

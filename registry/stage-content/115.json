@@ -1,0 +1,65 @@
+{
+  "stage_id": 115,
+  "purpose": "package the application and its runtime into a small, secure, reproducible container image",
+  "entry_criteria": [
+    "Application builds and runs outside a container",
+    "Runtime requirements are known",
+    "Base image policy exists"
+  ],
+  "inputs": [
+    "application build output",
+    "runtime requirements",
+    "approved base images",
+    "container security policy"
+  ],
+  "procedure": [
+    "Write a Dockerfile with a pinned, minimal base image and a multi-stage build so build tools do not ship.",
+    "Run as a non-root user, copy only what the application needs, and keep secrets out of layers and build arguments.",
+    "Define the entrypoint, health check, exposed ports and resource expectations.",
+    "Build the image in CI, tag it by commit, and record its digest.",
+    "Run the container locally or in CI and verify it starts, passes the health check and shuts down cleanly on a termination signal.",
+    "Hand the digest to container security scanning (stage 102)."
+  ],
+  "deliverables": [
+    "Dockerfile",
+    "built image digest",
+    "container run verification",
+    "image size and layer notes"
+  ],
+  "acceptance_criteria": [
+    "Image runs as non-root",
+    "No secrets in layers or build arguments",
+    "Container starts, is healthy and stops cleanly",
+    "Base image and tools are pinned"
+  ],
+  "validation_method": "Platform and security review of the Dockerfile.",
+  "validation": [
+    {
+      "command": "docker build -t app:test . && docker run --rm -d --name t app:test && sleep 5 && docker inspect --format '{{.State.Health.Status}}' t",
+      "expect": "healthy"
+    },
+    {
+      "command": "docker history --no-trunc app:test | grep -iE 'password|secret|token'",
+      "expect": "no matches"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Build tools shipped in the final image",
+      "detection": "Large image with compilers",
+      "response": "Use multi-stage builds"
+    },
+    {
+      "mode": "Container ignores termination",
+      "detection": "Takes the kill timeout to stop",
+      "response": "Handle the signal; run the process as PID 1 correctly"
+    },
+    {
+      "mode": "Secret passed as a build argument",
+      "detection": "Appears in history",
+      "response": "Use build secrets and rotate it"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A two-stage Dockerfile compiles in a builder image and copies only the binary into a minimal base running as user 10001. The container reports healthy within five seconds and stops on SIGTERM in under a second.",
+  "status": "complete"
+}

@@ -127,21 +127,35 @@ ILLUSTRATIVE: The orders API handlers reject bodies that fail schema validation 
 Gate: 06-057. Approval: none required
 
 ## 58
-**Database Development** (stub). Purpose: implement data access and schema evolution without integrity loss.
+**Database Development** (complete). Purpose: build the database objects and data access layer that the application needs, safely and testably.
 
-Inputs: logical data model and query requirements; transaction and concurrency model; migration and recovery policy
+Entry criteria: Database design is approved (stage 26); Development database and migration tooling exist; Naming and migration standards exist
+
+Inputs: approved data design; migration tooling and standards; application data access requirements; test data
 
 Procedure:
-1. Implement constraints, indexes and parameterized queries based on observed access patterns.
-2. Define transaction boundaries, isolation, concurrency and retry behavior.
-3. Write forward and rollback/forward-fix migration scripts with pre/post checks.
-4. Test data integrity, query plans and migration on representative volume.
+1. Write schema changes as versioned, repeatable migrations in source control; never edit the database by hand.
+2. Prefer additive, backward-compatible changes so old and new code run against the same schema.
+3. Implement queries with parameters, explicit columns and tested access paths; avoid building SQL from strings.
+4. Test migrations on a copy with realistic data, forward and where possible backward, and record the duration.
+5. Check query plans for the main queries and add indexes where needed.
+6. Review with the database administrator before the change goes toward production (stage 132).
 
-Deliverables: schema/query change; migration scripts; integrity assertions; query plan evidence
+Deliverables: migration scripts; data access code; migration test results; query plan evidence
 
-Acceptance: Constraints protect invariants. Migration is repeatable and rehearsed. Performance is measured against a representative workload.
+Acceptance: Every change is a versioned migration Queries use parameters Migration ran on realistic data with duration recorded Main queries have reviewed plans
 
-Validation: DBA review and migration rehearsal.
+Validation: Database administrator review.
+
+- `alembic upgrade head && alembic downgrade -1 && alembic upgrade head   # example migration tool` expect: all three succeed on a fresh database
+- `grep -rnE "execute\(f?\"[^\"]*(%s|\{)" app/` expect: no SQL built by string formatting
+
+Failure modes:
+- Manual change in a shared database | detect: Schema differs from migrations | respond: Recreate through migration
+- Migration slow on production-size data | detect: Copy run exceeds the window | respond: Batch or redesign
+- SQL injection risk | detect: Query built from strings | respond: Use parameters
+
+ILLUSTRATIVE: A migration adds a nullable column and an index concurrently. It runs up, down and up again on a fresh database, takes two minutes on a production-size copy, and the main query plan uses the new index.
 
 Gate: 06-058. Approval: none required
 
