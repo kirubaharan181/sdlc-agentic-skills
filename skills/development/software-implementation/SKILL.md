@@ -28,7 +28,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 54 | Backend Development | stub | Backend Engineer |
 | 55 | Full Stack Development | stub | Full Stack Engineer |
 | 56 | Mobile Development | stub | Mobile Engineer |
-| 57 | API Development | stub | API Engineer |
+| 57 | API Development | complete | API Engineer |
 | 58 | Database Development | stub | Database Engineer |
 | 59 | Authentication Development | stub | Authentication and Authorization Engineer |
 | 60 | Authorization Development | stub | Authentication and Authorization Engineer |
@@ -38,7 +38,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 64 | AI/ML Development | stub | AI/ML Engineer |
 | 65 | Caching & Optimization | stub | Performance Engineer |
 | 66 | Error Handling | stub | Backend Engineer |
-| 67 | Developer Testing | stub | Full Stack Engineer |
+| 67 | Developer Testing | complete | Full Stack Engineer |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

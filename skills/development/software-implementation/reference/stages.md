@@ -94,21 +94,35 @@ Validation: Device testing and mobile release review.
 Gate: 06-056. Approval: none required
 
 ## 57
-**API Development** (stub). Purpose: implement a versioned and testable API contract.
+**API Development** (complete). Purpose: build the API as specified so that clients get consistent, secure and well-behaved interfaces.
 
-Inputs: approved OpenAPI or interface contract; consumer and authorization requirements; data model and latency constraints
+Entry criteria: API specification is approved (stage 27); Data and business logic services are available; Test environment exists
+
+Inputs: approved API specification; business logic and data layer; security requirements; test environment
 
 Procedure:
-1. Implement route/resource semantics, schema validation and consistent error responses from the approved contract.
-2. Enforce authentication, object-level authorization, rate limits and idempotency for side effects.
-3. Handle pagination, filtering, version compatibility, timeouts and correlation IDs.
-4. Run contract tests for success, invalid input, unauthorized access, boundary values and consumer compatibility.
+1. Generate or write the route and schema skeleton from the specification.
+2. Implement handlers that validate every input against the schema and return the specified errors.
+3. Enforce authentication and per-object authorization in one place and keep it out of handlers.
+4. Add pagination, idempotency keys, rate limiting and request logging with correlation ids; never log secrets.
+5. Write contract tests that run against the implementation and keep the specification and code in sync.
+6. Document known differences from the specification and raise them for decision.
 
-Deliverables: API implementation; OpenAPI/schema update; contract test report; consumer migration note
+Deliverables: API implementation; contract tests; authorization enforcement; difference notes
 
-Acceptance: Implementation matches the published contract. Auth and error cases are tested. Breaking changes require version and migration approval.
+Acceptance: Implementation conforms to the specification Authorization is enforced centrally and tested Inputs are validated against schemas Logs have correlation ids and no secrets
 
-Validation: Consumer contract review and automated API tests.
+Validation: Code review (stage 69) and API test results (stage 81).
+
+- `pytest -q tests/contract` expect: all contract tests pass
+- `grep -rniE 'password|secret|token' app/logging.py` expect: no secret values are logged
+
+Failure modes:
+- Handler trusts client input | detect: Missing validation on a field | respond: Validate against the schema
+- Authorization inside handlers | detect: Inconsistent checks across routes | respond: Centralize
+- Implementation drifts from the specification | detect: Contract test fails | respond: Fix code or update the contract by decision
+
+ILLUSTRATIVE: The orders API handlers reject bodies that fail schema validation with the specified 422 format, check object ownership through a shared dependency, and log a correlation id on each request.
 
 Gate: 06-057. Approval: none required
 
@@ -284,21 +298,34 @@ Validation: Failure-path test and security review.
 Gate: 06-066. Approval: none required
 
 ## 67
-**Developer Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Developer Testing** (complete). Purpose: let the developer find and fix defects early by testing their own change before it is handed on.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: The change is implemented locally; The test suite runs locally; Acceptance criteria are understood
+
+Inputs: the change; acceptance criteria; test suite and tools; local or ephemeral environment
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Run focused unit, lint, type, build and local integration checks before requesting review.
+1. Re-read the acceptance criteria and list the behaviors to check, including error cases.
+2. Run the unit tests and add tests for new behavior and for edge cases found.
+3. Run the application locally and exercise each criterion by hand, including one unhappy path.
+4. Check logs for new warnings or errors and verify data created by the change.
+5. Run the project's checks (format, lint, type check) and fix problems.
+6. Note what was and was not tested in the pull request.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; developer verification transcript
+Deliverables: tests for the change; manual test notes; check results; pull request testing note
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. All required local checks pass on the exact working-tree revision.
+Acceptance: Every acceptance criterion was exercised At least one error path was tried Local checks pass Testing note lists gaps
 
-Validation: Independent QA review and acceptance decision. Capture command, exit status and output for each required check.
+Validation: Reviewer reads the testing note and reruns key tests.
+
+- `pytest -q && ruff check . && mypy .   # example toolchain` expect: all pass
+- manual: exercise each acceptance criterion locally and note the result expect: each criterion verified or gap noted
+
+Failure modes:
+- Only the happy path tested | detect: No error-case test | respond: Add one
+- Tests not run before pushing | detect: CI fails on basic checks | respond: Run checks locally first
+- Testing note empty | detect: Reviewer cannot tell what was verified | respond: Write it
+
+ILLUSTRATIVE: A developer adds an export limit. They test 9,999, 10,000 and 10,001 orders locally, see the expected error at 10,001, add a unit test for the boundary and note that large exports were not load tested.
 
 Gate: 06-067. Approval: none required

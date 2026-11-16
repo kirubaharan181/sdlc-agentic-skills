@@ -1,0 +1,65 @@
+{
+  "stage_id": 81,
+  "purpose": "verify that API behavior matches its contract, including errors, security and compatibility, independently of any user interface",
+  "entry_criteria": [
+    "API specification or documented contract exists",
+    "A test environment with the API is available",
+    "Test accounts for each role exist"
+  ],
+  "inputs": [
+    "API specification",
+    "test environment and data",
+    "accounts per role",
+    "consumer expectations"
+  ],
+  "procedure": [
+    "Derive tests from the contract: every operation, status code, schema and error format.",
+    "Test authentication and authorization with each role and with no or expired credentials; check access to other users' objects.",
+    "Test input validation with missing, malformed, oversized and boundary values.",
+    "Check idempotency, pagination, rate limiting and backward compatibility against the previous version.",
+    "Run the tests in CI against a clean environment and record results.",
+    "Report contract differences to the API owner as defects in code or specification."
+  ],
+  "deliverables": [
+    "API test suite",
+    "contract conformance results",
+    "authorization test results",
+    "defect list"
+  ],
+  "acceptance_criteria": [
+    "Every operation has success and failure tests",
+    "Authorization is tested for each role and for other users' objects",
+    "Compatibility with the previous version is checked",
+    "Suite passes from a clean environment in CI"
+  ],
+  "validation_method": "Independent rerun in CI.",
+  "validation": [
+    {
+      "command": "schemathesis run openapi.yaml --base-url https://staging.example.com --checks all   # example contract fuzzer",
+      "expect": "no failures"
+    },
+    {
+      "command": "pytest -q tests/api",
+      "expect": "all pass"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Only happy paths tested",
+      "detection": "No test for 401, 403 or 422",
+      "response": "Add error-case tests"
+    },
+    {
+      "mode": "Object-level access not tested",
+      "detection": "No test with another user's id",
+      "response": "Add authorization tests"
+    },
+    {
+      "mode": "Specification out of date",
+      "detection": "Tests pass but contract differs",
+      "response": "Fix the contract or the code"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Tests call each operation with each role. A user reading another user's order id receives 403 as the contract says; an oversized body returns 413; the previous version's fields remain present.",
+  "status": "complete"
+}

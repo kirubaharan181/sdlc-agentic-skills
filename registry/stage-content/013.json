@@ -1,0 +1,65 @@
+{
+  "stage_id": 13,
+  "purpose": "state what the system must do in testable terms that stakeholders agree on",
+  "entry_criteria": [
+    "Business goals and stakeholders are identified",
+    "Scope boundary is drafted",
+    "Access to stakeholders exists"
+  ],
+  "inputs": [
+    "business objectives and stakeholder input",
+    "existing processes and systems",
+    "regulatory and policy constraints",
+    "scope statement"
+  ],
+  "procedure": [
+    "Elicit needs from each stakeholder group through interviews, observation and existing documents.",
+    "Write each requirement as one verifiable statement of behavior with a unique id and a source.",
+    "Add acceptance criteria that a tester could check, including error and edge cases.",
+    "Resolve conflicts and duplicates with the stakeholders; record decisions and rejected requests.",
+    "Prioritize with the product owner and trace each requirement to a business objective.",
+    "Baseline the set and manage later changes through a recorded process."
+  ],
+  "deliverables": [
+    "requirements list with ids and sources",
+    "acceptance criteria",
+    "traceability to objectives",
+    "decision and change log"
+  ],
+  "acceptance_criteria": [
+    "Each requirement is a single testable statement",
+    "Each has a source and acceptance criteria",
+    "Conflicts are resolved and recorded",
+    "Stakeholders confirmed the baseline"
+  ],
+  "validation_method": "Stakeholder review and product owner approval of the baseline.",
+  "validation": [
+    {
+      "check": "ask a tester to write one test from each of five random requirements",
+      "expect": "tests can be written without questions"
+    },
+    {
+      "check": "check each requirement traces to an objective",
+      "expect": "none orphaned"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Vague requirement",
+      "detection": "Words like fast or easy with no measure",
+      "response": "Quantify or split"
+    },
+    {
+      "mode": "Requirement without a source",
+      "detection": "No stakeholder named",
+      "response": "Find the source or remove"
+    },
+    {
+      "mode": "Uncontrolled change",
+      "detection": "Requirements differ from baseline without record",
+      "response": "Use the change process"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The requirement says a signed-in user can export their orders as CSV within 30 seconds for up to 10,000 orders, with an error message if the limit is exceeded; a tester writes three tests from it.",
+  "status": "complete"
+}

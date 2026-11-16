@@ -1,0 +1,65 @@
+{
+  "stage_id": 179,
+  "purpose": "ship a small, planned release of fixes and low-risk changes with the same controls as any production change",
+  "entry_criteria": [
+    "Scope is limited to fixes and low-risk changes",
+    "Changes are merged, tested and linked to work items",
+    "Release manager is assigned"
+  ],
+  "inputs": [
+    "list of merged changes",
+    "regression and smoke results",
+    "release calendar and freeze rules",
+    "rollback plan"
+  ],
+  "procedure": [
+    "Confirm each change is in scope for a maintenance release and has passed review and tests.",
+    "Cut the release candidate and run regression and smoke tests against it.",
+    "Check migration and configuration changes and the rollback plan for the release.",
+    "Obtain change approval and schedule the window outside freezes.",
+    "Deploy using the standard path, verify with smoke tests and watch the metrics.",
+    "Publish release notes and record the outcome."
+  ],
+  "deliverables": [
+    "maintenance release record",
+    "test results",
+    "change approval",
+    "release notes"
+  ],
+  "acceptance_criteria": [
+    "Only in-scope changes are included",
+    "Regression and smoke tests passed on the candidate",
+    "Approval and rollback plan exist",
+    "Release notes are published"
+  ],
+  "validation_method": "Release manager decision with change approval where required.",
+  "validation": [
+    {
+      "command": "git log --oneline v2.3.0..release/2.3.1",
+      "expect": "every commit maps to an in-scope work item"
+    },
+    {
+      "command": "gh run list --branch release/2.3.1 --limit 1 --json conclusion",
+      "expect": "success"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "A feature slips in",
+      "detection": "Commit for new functionality in the list",
+      "response": "Remove it or move to a feature release"
+    },
+    {
+      "mode": "Skipped testing because the release is small",
+      "detection": "No regression record",
+      "response": "Run it; small releases break too"
+    },
+    {
+      "mode": "No rollback plan",
+      "detection": "Plan missing",
+      "response": "Prepare before approval"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Release 2.3.1 contains seven fixes. Regression and smoke tests pass on the candidate, the change board approves a Tuesday window, and the release notes list each fix.",
+  "status": "complete"
+}

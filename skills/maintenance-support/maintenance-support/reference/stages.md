@@ -277,59 +277,101 @@ Validation: Service owner acceptance and customer-facing closure check.
 Gate: 14-176. Approval: none required
 
 ## 177
-**Customer Feedback** (stub). Purpose: maintain a live service safely and preserve customer continuity.
+**Customer Feedback** (complete). Purpose: collect, understand and act on what customers tell us, so product decisions rest on evidence.
 
-Inputs: support case or maintenance request; affected versions and customer impact; service ownership and change policy
+Entry criteria: Feedback channels are identified (support, surveys, reviews, interviews); An owner for feedback triage exists; A backlog or roadmap exists to receive insights
+
+Inputs: feedback from each channel; customer segments and usage data; support ticket themes; current roadmap
 
 Procedure:
-1. Classify severity, affected customers, workaround and escalation path using support policy.
-2. Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.
-3. Implement the smallest safe correction or maintenance action with regression and compatibility coverage.
-4. Communicate workaround/fix version, verify closure and update runbook or knowledge base.
+1. Gather feedback from every channel into one place with its source and customer segment.
+2. Tag each item by theme and severity; merge duplicates and keep counts.
+3. Separate what customers asked for from the problem they are trying to solve.
+4. Compare themes with usage data to check that loud feedback matches real behavior.
+5. Decide per theme: act, investigate, defer or decline, with a reason, and link to backlog items.
+6. Tell customers what was decided where practical, and review the outcomes later.
 
-Deliverables: support/maintenance record; reproduction and diagnosis; fix or patch evidence; customer communication and knowledge update
+Deliverables: feedback log with themes and counts; insight summary; decisions linked to backlog items; customer follow-up record
 
-Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
+Acceptance: Every theme has a decision and a reason Counts and segments are shown Insights are checked against usage data Decisions link to backlog items
 
-Validation: Service owner acceptance and customer-facing closure check.
+Validation: Product owner review of the decisions.
+
+- manual: sample five feedback items and trace each to a theme and decision expect: all traced
+- manual: compare the top theme with product usage data expect: data agrees or the disagreement is explained
+
+Failure modes:
+- Only the loudest voice is heard | detect: One account dominates the themes | respond: Weight by segment and count
+- Feedback never reaches the backlog | detect: No backlog links | respond: Link or decline with a reason
+- Requests taken literally | detect: Solutions recorded without the underlying problem | respond: Capture the problem
+
+ILLUSTRATIVE: Forty tickets and two interviews mention slow report exports. Usage data confirms exports over a minute for large accounts. The theme is acted on and linked to a backlog item for background exports.
 
 Gate: 14-177. Approval: none required
 
 ## 178
-**Knowledge Base** (stub). Purpose: maintain a live service safely and preserve customer continuity.
+**Knowledge Base** (complete). Purpose: keep accurate, findable answers to recurring questions so users and support solve problems without escalation.
 
-Inputs: support case or maintenance request; affected versions and customer impact; service ownership and change policy
+Entry criteria: Recurring questions and incidents are identified from tickets; A knowledge base tool and owners exist; Review process for accuracy exists
+
+Inputs: ticket and incident themes; runbooks and product documentation; release notes; search queries from users
 
 Procedure:
-1. Classify severity, affected customers, workaround and escalation path using support policy.
-2. Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.
-3. Implement the smallest safe correction or maintenance action with regression and compatibility coverage.
-4. Communicate workaround/fix version, verify closure and update runbook or knowledge base.
+1. Pick the questions that recur most from tickets and search queries.
+2. Write each article for a named audience: problem as the user states it, steps, expected result, and when to escalate.
+3. Have a subject-matter expert check accuracy and test the steps on a current build.
+4. Tag and title articles with the words users actually search for; link related articles.
+5. Review articles when the product changes and retire outdated ones.
+6. Measure whether articles reduce tickets and fix those that do not.
 
-Deliverables: support/maintenance record; reproduction and diagnosis; fix or patch evidence; customer communication and knowledge update
+Deliverables: knowledge base articles; accuracy review record; review schedule; usage and deflection measures
 
-Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
+Acceptance: Steps were tested on the current build Each article has an owner and review date Outdated articles are retired Searches for top questions find an article
 
-Validation: Service owner acceptance and customer-facing closure check.
+Validation: Subject-matter expert review of each new article.
+
+- manual: follow each new article's steps on a current build expect: steps work as written
+- manual: search the knowledge base for the top five ticket topics expect: each returns the right article first
+
+Failure modes:
+- Article describes an old version | detect: Steps fail on current build | respond: Update or retire
+- Cannot be found | detect: Search for the user's wording returns nothing | respond: Retitle and retag
+- No owner | detect: Owner field empty | respond: Assign owner and review date
+
+ILLUSTRATIVE: The most common ticket is password reset failing for SSO users. An article explains that SSO users reset in their identity provider, with steps and a link, and ticket volume for that topic falls the next month.
 
 Gate: 14-178. Approval: none required
 
 ## 179
-**Maintenance Release** (stub). Purpose: maintain a live service safely and preserve customer continuity.
+**Maintenance Release** (complete). Purpose: ship a small, planned release of fixes and low-risk changes with the same controls as any production change.
 
-Inputs: support case or maintenance request; affected versions and customer impact; service ownership and change policy
+Entry criteria: Scope is limited to fixes and low-risk changes; Changes are merged, tested and linked to work items; Release manager is assigned
+
+Inputs: list of merged changes; regression and smoke results; release calendar and freeze rules; rollback plan
 
 Procedure:
-1. Classify severity, affected customers, workaround and escalation path using support policy.
-2. Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.
-3. Implement the smallest safe correction or maintenance action with regression and compatibility coverage.
-4. Communicate workaround/fix version, verify closure and update runbook or knowledge base.
+1. Confirm each change is in scope for a maintenance release and has passed review and tests.
+2. Cut the release candidate and run regression and smoke tests against it.
+3. Check migration and configuration changes and the rollback plan for the release.
+4. Obtain change approval and schedule the window outside freezes.
+5. Deploy using the standard path, verify with smoke tests and watch the metrics.
+6. Publish release notes and record the outcome.
 
-Deliverables: support/maintenance record; reproduction and diagnosis; fix or patch evidence; customer communication and knowledge update
+Deliverables: maintenance release record; test results; change approval; release notes
 
-Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
+Acceptance: Only in-scope changes are included Regression and smoke tests passed on the candidate Approval and rollback plan exist Release notes are published
 
-Validation: Service owner acceptance and customer-facing closure check.
+Validation: Release manager decision with change approval where required.
+
+- `git log --oneline v2.3.0..release/2.3.1` expect: every commit maps to an in-scope work item
+- `gh run list --branch release/2.3.1 --limit 1 --json conclusion` expect: success
+
+Failure modes:
+- A feature slips in | detect: Commit for new functionality in the list | respond: Remove it or move to a feature release
+- Skipped testing because the release is small | detect: No regression record | respond: Run it; small releases break too
+- No rollback plan | detect: Plan missing | respond: Prepare before approval
+
+ILLUSTRATIVE: Release 2.3.1 contains seven fixes. Regression and smoke tests pass on the candidate, the change board approves a Tuesday window, and the release notes list each fix.
 
 Gate: 14-179. Approval: none required
 

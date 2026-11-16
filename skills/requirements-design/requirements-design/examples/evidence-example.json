@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "requirements-design",
-  "stage_id": 16,
-  "stage_name": "User Journey Mapping",
+  "stage_id": 13,
+  "stage_name": "Functional Requirements",
   "commit_sha": "<commit under review>",
-  "executor": "<UX Researcher or named person>",
+  "executor": "<Requirements Engineer or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Walkthrough with users and service owners.",
+    "method": "Stakeholder review and product owner approval of the baseline.",
     "command": "<command or review technique actually used>",
     "expected": "<expected result>",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "journey map",
-      "path": "<path or immutable URL of journey map>"
+      "name": "requirements list with ids and sources",
+      "path": "<path or immutable URL of requirements list with ids and sources>"
     },
     {
-      "name": "pain-point list with evidence",
-      "path": "<path or immutable URL of pain-point list with evidence>"
+      "name": "acceptance criteria",
+      "path": "<path or immutable URL of acceptance criteria>"
     },
     {
-      "name": "ranked opportunities",
-      "path": "<path or immutable URL of ranked opportunities>"
+      "name": "traceability to objectives",
+      "path": "<path or immutable URL of traceability to objectives>"
     }
   ],
   "limitations": [

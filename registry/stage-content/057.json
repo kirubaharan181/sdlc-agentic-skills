@@ -1,0 +1,65 @@
+{
+  "stage_id": 57,
+  "purpose": "build the API as specified so that clients get consistent, secure and well-behaved interfaces",
+  "entry_criteria": [
+    "API specification is approved (stage 27)",
+    "Data and business logic services are available",
+    "Test environment exists"
+  ],
+  "inputs": [
+    "approved API specification",
+    "business logic and data layer",
+    "security requirements",
+    "test environment"
+  ],
+  "procedure": [
+    "Generate or write the route and schema skeleton from the specification.",
+    "Implement handlers that validate every input against the schema and return the specified errors.",
+    "Enforce authentication and per-object authorization in one place and keep it out of handlers.",
+    "Add pagination, idempotency keys, rate limiting and request logging with correlation ids; never log secrets.",
+    "Write contract tests that run against the implementation and keep the specification and code in sync.",
+    "Document known differences from the specification and raise them for decision."
+  ],
+  "deliverables": [
+    "API implementation",
+    "contract tests",
+    "authorization enforcement",
+    "difference notes"
+  ],
+  "acceptance_criteria": [
+    "Implementation conforms to the specification",
+    "Authorization is enforced centrally and tested",
+    "Inputs are validated against schemas",
+    "Logs have correlation ids and no secrets"
+  ],
+  "validation_method": "Code review (stage 69) and API test results (stage 81).",
+  "validation": [
+    {
+      "command": "pytest -q tests/contract",
+      "expect": "all contract tests pass"
+    },
+    {
+      "command": "grep -rniE 'password|secret|token' app/logging.py",
+      "expect": "no secret values are logged"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Handler trusts client input",
+      "detection": "Missing validation on a field",
+      "response": "Validate against the schema"
+    },
+    {
+      "mode": "Authorization inside handlers",
+      "detection": "Inconsistent checks across routes",
+      "response": "Centralize"
+    },
+    {
+      "mode": "Implementation drifts from the specification",
+      "detection": "Contract test fails",
+      "response": "Fix code or update the contract by decision"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The orders API handlers reject bodies that fail schema validation with the specified 422 format, check object ownership through a shared dependency, and log a correlation id on each request.",
+  "status": "complete"
+}

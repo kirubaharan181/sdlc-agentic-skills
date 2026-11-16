@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "technical-architecture",
-  "stage_id": 34,
-  "stage_name": "Architecture Review",
+  "stage_id": 27,
+  "stage_name": "API Architecture",
   "commit_sha": "<commit under review>",
-  "executor": "<Architecture Reviewer or named person>",
+  "executor": "<API Architect or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Independent architecture board decision.",
-    "command": "<command or review technique actually used>",
-    "expected": "<expected result>",
+    "method": "Architecture review and consumer review of the specification.",
+    "command": "npx @stoplight/spectral-cli lint openapi.yaml   # example linter; use the project's",
+    "expected": "no errors against the style rules",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "review report with severity-labelled findings",
-      "path": "<path or immutable URL of review report with severity-labelled findings>"
+      "name": "API specification (for example OpenAPI)",
+      "path": "<path or immutable URL of API specification (for example OpenAPI)>"
     },
     {
-      "name": "decision record",
-      "path": "<path or immutable URL of decision record>"
+      "name": "API design decisions",
+      "path": "<path or immutable URL of API design decisions>"
     },
     {
-      "name": "conditions list",
-      "path": "<path or immutable URL of conditions list>"
+      "name": "versioning and deprecation policy",
+      "path": "<path or immutable URL of versioning and deprecation policy>"
     }
   ],
   "limitations": [

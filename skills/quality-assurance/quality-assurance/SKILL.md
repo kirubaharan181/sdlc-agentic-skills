@@ -28,12 +28,12 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 78 | Test Planning | stub | QA Lead |
 | 79 | Unit Testing | complete | Unit Testing Specialist |
 | 80 | Integration Testing | complete | Integration Testing Specialist |
-| 81 | API Testing | stub | API Testing Specialist |
+| 81 | API Testing | complete | API Testing Specialist |
 | 82 | UI Testing | stub | Automation QA Engineer |
 | 83 | Functional Testing | stub | Manual QA Engineer |
 | 84 | End-to-End Testing | stub | E2E Testing Specialist |
 | 85 | Regression Testing | complete | Automation QA Engineer |
-| 86 | Smoke Testing | stub | Automation QA Engineer |
+| 86 | Smoke Testing | complete | Automation QA Engineer |
 | 87 | Sanity Testing | stub | Manual QA Engineer |
 | 88 | Cross-browser Testing | stub | E2E Testing Specialist |
 | 89 | Mobile Compatibility Testing | stub | Automation QA Engineer |

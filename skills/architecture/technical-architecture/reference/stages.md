@@ -91,21 +91,35 @@ Validation: DBA, security and application owner review.
 Gate: 03-026. Approval: none required
 
 ## 27
-**API Architecture** (stub). Purpose: design stable API resources, contracts and compatibility policy.
+**API Architecture** (complete). Purpose: define how the system's APIs are shaped, versioned and secured so clients and services can rely on them.
 
-Inputs: consumer journeys and use cases; data ownership and security classification; latency/throughput and compatibility needs
+Entry criteria: Requirements and consumers of the API are identified; Domain model or data ownership is drafted; An API style guide or standard exists or will be agreed
+
+Inputs: functional requirements and consumer list; domain model and data ownership; security and compliance requirements; API style guide
 
 Procedure:
-1. Model resources, identifiers, relationships, pagination, filtering and lifecycle semantics.
-2. Define OpenAPI schemas, required/optional fields, validation, error envelope and idempotency behavior.
-3. Specify authentication, authorization, rate limits, versioning and deprecation policy.
-4. Assess consumer migration and generate contract compatibility checks.
+1. List the consumers and the use cases each API must serve; separate public, partner and internal APIs.
+2. Design resources and operations around the domain, with consistent naming, pagination, filtering and error format.
+3. Define authentication, authorization scopes, rate limits and idempotency for each operation.
+4. Define the versioning and deprecation policy, including how breaking changes are announced.
+5. Write the contract in a machine-readable specification and review it with consumers.
+6. Record the decisions and their alternatives as architecture decision records.
 
-Deliverables: API decision record; OpenAPI contract; versioning and migration plan
+Deliverables: API specification (for example OpenAPI); API design decisions; versioning and deprecation policy; security model for the API
 
-Acceptance: Contract is machine-valid and has representative examples. Breaking changes and consumer impact are identified. Auth/error/idempotency behavior is explicit.
+Acceptance: Each use case maps to an operation in the specification Errors, pagination and idempotency are defined Breaking-change policy is written At least one consumer reviewed the contract
 
-Validation: API consumer and security architecture review.
+Validation: Architecture review and consumer review of the specification.
+
+- `npx @stoplight/spectral-cli lint openapi.yaml   # example linter; use the project's` expect: no errors against the style rules
+- manual: ask a consumer team to implement one call from the specification alone expect: they succeed or the gaps are logged
+
+Failure modes:
+- API mirrors the database | detect: Operations expose tables not use cases | respond: Redesign around domain operations
+- No versioning policy | detect: Breaking change shipped without notice | respond: Define policy before release
+- Inconsistent errors | detect: Different formats across endpoints | respond: Adopt one error format
+
+ILLUSTRATIVE: An orders API defines create, get and cancel operations with an idempotency key on create, cursor pagination on list, and a policy that breaking changes get a new major version and a six-month deprecation window.
 
 Gate: 03-027. Approval: none required
 

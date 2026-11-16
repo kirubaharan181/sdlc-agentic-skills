@@ -1,0 +1,65 @@
+{
+  "stage_id": 27,
+  "purpose": "define how the system's APIs are shaped, versioned and secured so clients and services can rely on them",
+  "entry_criteria": [
+    "Requirements and consumers of the API are identified",
+    "Domain model or data ownership is drafted",
+    "An API style guide or standard exists or will be agreed"
+  ],
+  "inputs": [
+    "functional requirements and consumer list",
+    "domain model and data ownership",
+    "security and compliance requirements",
+    "API style guide"
+  ],
+  "procedure": [
+    "List the consumers and the use cases each API must serve; separate public, partner and internal APIs.",
+    "Design resources and operations around the domain, with consistent naming, pagination, filtering and error format.",
+    "Define authentication, authorization scopes, rate limits and idempotency for each operation.",
+    "Define the versioning and deprecation policy, including how breaking changes are announced.",
+    "Write the contract in a machine-readable specification and review it with consumers.",
+    "Record the decisions and their alternatives as architecture decision records."
+  ],
+  "deliverables": [
+    "API specification (for example OpenAPI)",
+    "API design decisions",
+    "versioning and deprecation policy",
+    "security model for the API"
+  ],
+  "acceptance_criteria": [
+    "Each use case maps to an operation in the specification",
+    "Errors, pagination and idempotency are defined",
+    "Breaking-change policy is written",
+    "At least one consumer reviewed the contract"
+  ],
+  "validation_method": "Architecture review and consumer review of the specification.",
+  "validation": [
+    {
+      "command": "npx @stoplight/spectral-cli lint openapi.yaml   # example linter; use the project's",
+      "expect": "no errors against the style rules"
+    },
+    {
+      "check": "ask a consumer team to implement one call from the specification alone",
+      "expect": "they succeed or the gaps are logged"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "API mirrors the database",
+      "detection": "Operations expose tables not use cases",
+      "response": "Redesign around domain operations"
+    },
+    {
+      "mode": "No versioning policy",
+      "detection": "Breaking change shipped without notice",
+      "response": "Define policy before release"
+    },
+    {
+      "mode": "Inconsistent errors",
+      "detection": "Different formats across endpoints",
+      "response": "Adopt one error format"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: An orders API defines create, get and cancel operations with an idempotency key on create, cursor pagination on list, and a policy that breaking changes get a new major version and a six-month deprecation window.",
+  "status": "complete"
+}

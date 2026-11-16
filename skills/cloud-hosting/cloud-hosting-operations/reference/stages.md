@@ -215,21 +215,35 @@ ILLUSTRATIVE: A regional failover exercise restores the database in 18 minutes w
 Gate: 12-148. Approval: dr-owner (always)
 
 ## 149
-**High Availability** (stub). Purpose: operate cloud infrastructure within reliability and cost objectives.
+**High Availability** (complete). Purpose: keep the service available through the failure of a component, zone or dependency, by design.
 
-Inputs: service inventory and ownership; SLO/RTO/RPO and capacity profile; access, backup and cost policies
+Entry criteria: Availability objective is stated; Architecture and dependency map exist; Failure domains (zones, regions, accounts) are known
+
+Inputs: availability objective; architecture and dependency map; failure domains; traffic and data characteristics
 
 Procedure:
-1. Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
-2. Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
-3. Measure health, capacity, utilization, recovery readiness and cost allocation.
-4. Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
+1. Identify single points of failure across compute, data, network and dependencies.
+2. Remove them with redundancy across failure domains, health checks and automatic failover where the objective needs it.
+3. Design state handling: replication mode, consistency and the data-loss window on failover.
+4. Test failover by removing a component or zone in a safe environment and measure the user impact and time.
+5. Document degraded modes and what the service does when a dependency is down.
+6. Review the design when dependencies or load change.
 
-Deliverables: infrastructure inventory; change record; health/capacity/cost evidence; operator runbook
+Deliverables: high-availability design; failover test results; degraded-mode description; single-point-of-failure list with status
 
-Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
+Acceptance: No unmitigated single point of failure remains or each is accepted Failover was tested and timed Degraded behavior is documented Design meets the availability objective
 
-Validation: Cloud operations and security review.
+Validation: Cloud architect and service owner review.
+
+- manual: terminate one instance in a non-production zone and watch the service expect: traffic continues; failover time recorded
+- manual: list components with a single instance or a single zone expect: each has mitigation or accepted risk
+
+Failure modes:
+- Redundancy exists but failover untested | detect: No failover test record | respond: Test before relying on it
+- Hidden single dependency | detect: Outage in one shared service takes everything down | respond: Add it to the map and mitigate
+- Replication loses data on failover | detect: Data gap after a test | respond: Change replication mode or accept the window explicitly
+
+ILLUSTRATIVE: A service runs in three zones behind health-checked load balancing. Removing one zone in a test keeps error rate under one percent and p95 latency stays within the objective.
 
 Gate: 12-149. Approval: none required
 
