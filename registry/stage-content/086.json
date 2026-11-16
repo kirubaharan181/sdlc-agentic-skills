@@ -1,0 +1,64 @@
+{
+  "stage_id": 86,
+  "purpose": "check quickly that a fresh build is stable enough to be worth testing further or deploying",
+  "entry_criteria": [
+    "A build is deployed to the target environment",
+    "A short list of critical checks exists",
+    "Test accounts are available"
+  ],
+  "inputs": [
+    "deployed build and environment",
+    "list of critical checks",
+    "test accounts",
+    "health endpoints"
+  ],
+  "procedure": [
+    "Confirm the deployed version equals the intended build.",
+    "Run the health checks and the shortest path through each critical function: sign in, one read, one write, one integration.",
+    "Check logs and error metrics for new errors immediately after deployment.",
+    "Record PASS or FAIL per check with timestamps and the build id.",
+    "On any failure, stop further testing or deployment and return the build to the team.",
+    "Keep the suite under a few minutes so it can run after every deployment."
+  ],
+  "deliverables": [
+    "smoke test results",
+    "build identification",
+    "error check"
+  ],
+  "acceptance_criteria": [
+    "Version in the environment equals the intended build",
+    "All critical checks passed",
+    "No new error class in logs",
+    "Suite runs in minutes"
+  ],
+  "validation_method": "Rerun after any fix.",
+  "validation": [
+    {
+      "command": "curl -fsS https://staging.example.com/version",
+      "expect": "returns the intended build id"
+    },
+    {
+      "command": "pytest -q -m smoke   # example marker",
+      "expect": "all smoke tests pass in under the agreed time"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Smoke test passes on the old build",
+      "detection": "Version mismatch",
+      "response": "Redeploy and rerun"
+    },
+    {
+      "mode": "Suite grows slow",
+      "detection": "Duration above target",
+      "response": "Trim to critical paths"
+    },
+    {
+      "mode": "Failure ignored",
+      "detection": "FAIL with testing continued",
+      "response": "Stop and return the build"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: After deployment to staging, the smoke suite confirms the version, signs in, reads an order, creates a test order and calls the payment stub, all within ninety seconds.",
+  "status": "complete"
+}

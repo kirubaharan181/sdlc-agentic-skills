@@ -1,0 +1,65 @@
+{
+  "stage_id": 149,
+  "purpose": "keep the service available through the failure of a component, zone or dependency, by design",
+  "entry_criteria": [
+    "Availability objective is stated",
+    "Architecture and dependency map exist",
+    "Failure domains (zones, regions, accounts) are known"
+  ],
+  "inputs": [
+    "availability objective",
+    "architecture and dependency map",
+    "failure domains",
+    "traffic and data characteristics"
+  ],
+  "procedure": [
+    "Identify single points of failure across compute, data, network and dependencies.",
+    "Remove them with redundancy across failure domains, health checks and automatic failover where the objective needs it.",
+    "Design state handling: replication mode, consistency and the data-loss window on failover.",
+    "Test failover by removing a component or zone in a safe environment and measure the user impact and time.",
+    "Document degraded modes and what the service does when a dependency is down.",
+    "Review the design when dependencies or load change."
+  ],
+  "deliverables": [
+    "high-availability design",
+    "failover test results",
+    "degraded-mode description",
+    "single-point-of-failure list with status"
+  ],
+  "acceptance_criteria": [
+    "No unmitigated single point of failure remains or each is accepted",
+    "Failover was tested and timed",
+    "Degraded behavior is documented",
+    "Design meets the availability objective"
+  ],
+  "validation_method": "Cloud architect and service owner review.",
+  "validation": [
+    {
+      "check": "terminate one instance in a non-production zone and watch the service",
+      "expect": "traffic continues; failover time recorded"
+    },
+    {
+      "check": "list components with a single instance or a single zone",
+      "expect": "each has mitigation or accepted risk"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Redundancy exists but failover untested",
+      "detection": "No failover test record",
+      "response": "Test before relying on it"
+    },
+    {
+      "mode": "Hidden single dependency",
+      "detection": "Outage in one shared service takes everything down",
+      "response": "Add it to the map and mitigate"
+    },
+    {
+      "mode": "Replication loses data on failover",
+      "detection": "Data gap after a test",
+      "response": "Change replication mode or accept the window explicitly"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A service runs in three zones behind health-checked load balancing. Removing one zone in a test keeps error rate under one percent and p95 latency stays within the objective.",
+  "status": "complete"
+}

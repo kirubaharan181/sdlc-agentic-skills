@@ -1,0 +1,65 @@
+{
+  "stage_id": 178,
+  "purpose": "keep accurate, findable answers to recurring questions so users and support solve problems without escalation",
+  "entry_criteria": [
+    "Recurring questions and incidents are identified from tickets",
+    "A knowledge base tool and owners exist",
+    "Review process for accuracy exists"
+  ],
+  "inputs": [
+    "ticket and incident themes",
+    "runbooks and product documentation",
+    "release notes",
+    "search queries from users"
+  ],
+  "procedure": [
+    "Pick the questions that recur most from tickets and search queries.",
+    "Write each article for a named audience: problem as the user states it, steps, expected result, and when to escalate.",
+    "Have a subject-matter expert check accuracy and test the steps on a current build.",
+    "Tag and title articles with the words users actually search for; link related articles.",
+    "Review articles when the product changes and retire outdated ones.",
+    "Measure whether articles reduce tickets and fix those that do not."
+  ],
+  "deliverables": [
+    "knowledge base articles",
+    "accuracy review record",
+    "review schedule",
+    "usage and deflection measures"
+  ],
+  "acceptance_criteria": [
+    "Steps were tested on the current build",
+    "Each article has an owner and review date",
+    "Outdated articles are retired",
+    "Searches for top questions find an article"
+  ],
+  "validation_method": "Subject-matter expert review of each new article.",
+  "validation": [
+    {
+      "check": "follow each new article's steps on a current build",
+      "expect": "steps work as written"
+    },
+    {
+      "check": "search the knowledge base for the top five ticket topics",
+      "expect": "each returns the right article first"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Article describes an old version",
+      "detection": "Steps fail on current build",
+      "response": "Update or retire"
+    },
+    {
+      "mode": "Cannot be found",
+      "detection": "Search for the user's wording returns nothing",
+      "response": "Retitle and retag"
+    },
+    {
+      "mode": "No owner",
+      "detection": "Owner field empty",
+      "response": "Assign owner and review date"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The most common ticket is password reset failing for SSO users. An article explains that SSO users reset in their identity provider, with steps and a link, and ticket volume for that topic falls the next month.",
+  "status": "complete"
+}

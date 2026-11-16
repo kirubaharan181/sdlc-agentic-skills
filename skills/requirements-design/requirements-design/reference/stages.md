@@ -53,21 +53,35 @@ Validation: Peer review by product, engineering and QA.
 Gate: 02-012. Approval: none required
 
 ## 13
-**Functional Requirements** (stub). Purpose: specify observable system behavior and business rules.
+**Functional Requirements** (complete). Purpose: state what the system must do in testable terms that stakeholders agree on.
 
-Inputs: user and system scenarios; business rules and data definitions; external interface constraints
+Entry criteria: Business goals and stakeholders are identified; Scope boundary is drafted; Access to stakeholders exists
+
+Inputs: business objectives and stakeholder input; existing processes and systems; regulatory and policy constraints; scope statement
 
 Procedure:
-1. Write behavior using actor, trigger, precondition, main flow, alternate flow and postcondition.
-2. Define validation, state transitions, error responses and idempotency where applicable.
-3. Derive positive, negative, boundary and authorization acceptance cases.
-4. Trace each behavior to a requirement ID and owner.
+1. Elicit needs from each stakeholder group through interviews, observation and existing documents.
+2. Write each requirement as one verifiable statement of behavior with a unique id and a source.
+3. Add acceptance criteria that a tester could check, including error and edge cases.
+4. Resolve conflicts and duplicates with the stakeholders; record decisions and rejected requests.
+5. Prioritize with the product owner and trace each requirement to a business objective.
+6. Baseline the set and manage later changes through a recorded process.
 
-Deliverables: functional requirement catalogue; state/sequence diagrams; acceptance scenarios
+Deliverables: requirements list with ids and sources; acceptance criteria; traceability to objectives; decision and change log
 
-Acceptance: Each requirement has observable expected behavior. Boundary and failure cases are covered. No implementation detail is mistaken for a user outcome.
+Acceptance: Each requirement is a single testable statement Each has a source and acceptance criteria Conflicts are resolved and recorded Stakeholders confirmed the baseline
 
-Validation: Scenario walkthrough with developer and tester.
+Validation: Stakeholder review and product owner approval of the baseline.
+
+- manual: ask a tester to write one test from each of five random requirements expect: tests can be written without questions
+- manual: check each requirement traces to an objective expect: none orphaned
+
+Failure modes:
+- Vague requirement | detect: Words like fast or easy with no measure | respond: Quantify or split
+- Requirement without a source | detect: No stakeholder named | respond: Find the source or remove
+- Uncontrolled change | detect: Requirements differ from baseline without record | respond: Use the change process
+
+ILLUSTRATIVE: The requirement says a signed-in user can export their orders as CSV within 30 seconds for up to 10,000 orders, with an error message if the limit is exceeded; a tester writes three tests from it.
 
 Gate: 02-013. Approval: none required
 

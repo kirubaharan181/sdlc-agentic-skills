@@ -34,9 +34,9 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 174 | Performance Optimization | stub | Performance Engineer |
 | 175 | Technical Debt Reduction | stub | Backend Engineer |
 | 176 | Feature Enhancement | stub | Product Owner |
-| 177 | Customer Feedback | stub | Product Manager |
-| 178 | Knowledge Base | stub | Technical Writer |
-| 179 | Maintenance Release | stub | Release Manager |
+| 177 | Customer Feedback | complete | Product Manager |
+| 178 | Knowledge Base | complete | Technical Writer |
+| 179 | Maintenance Release | complete | Release Manager |
 | 180 | Product Lifecycle Management | stub | Product Manager |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).

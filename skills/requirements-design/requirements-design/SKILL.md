@@ -26,7 +26,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 |---|---|---|---|
 | 11 | Requirement Elicitation | stub | Requirements Engineer |
 | 12 | Requirement Documentation | stub | Requirements Engineer |
-| 13 | Functional Requirements | stub | Requirements Engineer |
+| 13 | Functional Requirements | complete | Requirements Engineer |
 | 14 | Non-Functional Requirements | stub | Requirements Engineer |
 | 15 | User Research | stub | UX Researcher |
 | 16 | User Journey Mapping | complete | UX Researcher |

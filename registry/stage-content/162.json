@@ -1,0 +1,65 @@
+{
+  "stage_id": 162,
+  "purpose": "notice that something is wrong in production quickly and reliably, and route it to the right responder with enough context",
+  "entry_criteria": [
+    "Monitoring, alerts and logs exist for the service",
+    "On-call and escalation paths are defined",
+    "Severity definitions are agreed"
+  ],
+  "inputs": [
+    "alerts and monitoring signals",
+    "user reports and support tickets",
+    "on-call rota",
+    "severity definitions"
+  ],
+  "procedure": [
+    "Collect detection signals from alerts, synthetic checks, logs and user reports into one view.",
+    "Decide whether a signal indicates user impact; check the dashboards and recent changes.",
+    "Declare an incident when the impact threshold is met and assign severity.",
+    "Page the owner by the rota with the context: symptoms, start time, affected users, recent changes.",
+    "Record detection time and how it was detected; note if users noticed before monitoring did.",
+    "Hand over to incident response (stage 163)."
+  ],
+  "deliverables": [
+    "incident declaration",
+    "detection timeline",
+    "page with context",
+    "detection-gap note"
+  ],
+  "acceptance_criteria": [
+    "Detection time and source are recorded",
+    "The responder received symptoms and recent changes",
+    "Severity is set",
+    "Cases detected by users are listed as monitoring gaps"
+  ],
+  "validation_method": "Incident manager review of detection performance.",
+  "validation": [
+    {
+      "check": "compare incident start time with first alert time",
+      "expect": "gap within the target, or gap recorded as an action"
+    },
+    {
+      "check": "confirm the page contained symptoms, time and recent changes",
+      "expect": "all present"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Users report before alerts fire",
+      "detection": "First report earlier than first alert",
+      "response": "Add or tune detection for that symptom"
+    },
+    {
+      "mode": "Page lacks context",
+      "detection": "Responder had to ask what was wrong",
+      "response": "Improve the alert text and links"
+    },
+    {
+      "mode": "Severity wrong",
+      "detection": "Later raised or lowered",
+      "response": "Review criteria"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A synthetic checkout check fails twice in a row and pages the on-call engineer with the failing step and the deployment from ten minutes earlier. The incident is declared as severity 2.",
+  "status": "complete"
+}

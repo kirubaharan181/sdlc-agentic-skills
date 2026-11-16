@@ -216,21 +216,35 @@ Validation: SRE review and alert simulation.
 Gate: 13-161. Approval: none required
 
 ## 162
-**Incident Detection** (stub). Purpose: restore service and convert failure evidence into prevention.
+**Incident Detection** (complete). Purpose: notice that something is wrong in production quickly and reliably, and route it to the right responder with enough context.
 
-Inputs: incident signals and timeline; severity and command policy; service dependency and recovery data
+Entry criteria: Monitoring, alerts and logs exist for the service; On-call and escalation paths are defined; Severity definitions are agreed
+
+Inputs: alerts and monitoring signals; user reports and support tickets; on-call rota; severity definitions
 
 Procedure:
-1. Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.
-2. Assess customer impact and contain safely before attempting speculative fixes.
-3. Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.
-4. Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates.
+1. Collect detection signals from alerts, synthetic checks, logs and user reports into one view.
+2. Decide whether a signal indicates user impact; check the dashboards and recent changes.
+3. Declare an incident when the impact threshold is met and assign severity.
+4. Page the owner by the rota with the context: symptoms, start time, affected users, recent changes.
+5. Record detection time and how it was detected; note if users noticed before monitoring did.
+6. Hand over to incident response (stage 163).
 
-Deliverables: incident timeline; impact statement; recovery verification; postmortem and action register
+Deliverables: incident declaration; detection timeline; page with context; detection-gap note
 
-Acceptance: Customer impact and recovery time are evidence-backed. Containment does not destroy forensic evidence unnecessarily. Actions are measurable and tracked to closure.
+Acceptance: Detection time and source are recorded The responder received symptoms and recent changes Severity is set Cases detected by users are listed as monitoring gaps
 
-Validation: Incident commander and service owner review.
+Validation: Incident manager review of detection performance.
+
+- manual: compare incident start time with first alert time expect: gap within the target, or gap recorded as an action
+- manual: confirm the page contained symptoms, time and recent changes expect: all present
+
+Failure modes:
+- Users report before alerts fire | detect: First report earlier than first alert | respond: Add or tune detection for that symptom
+- Page lacks context | detect: Responder had to ask what was wrong | respond: Improve the alert text and links
+- Severity wrong | detect: Later raised or lowered | respond: Review criteria
+
+ILLUSTRATIVE: A synthetic checkout check fails twice in a row and pages the on-call engineer with the failing step and the deployment from ten minutes earlier. The incident is declared as severity 2.
 
 Gate: 13-162. Approval: none required
 

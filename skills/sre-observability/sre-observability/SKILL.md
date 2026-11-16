@@ -33,7 +33,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 159 | Uptime Monitoring | stub | Observability Engineer |
 | 160 | SLA/SLO Management | complete | SRE |
 | 161 | Capacity Planning | stub | SRE |
-| 162 | Incident Detection | stub | Incident Manager |
+| 162 | Incident Detection | complete | Incident Manager |
 | 163 | Incident Response | complete | Incident Manager |
 | 164 | Root Cause Analysis | complete | SRE |
 | 165 | Postmortem | complete | Incident Manager |

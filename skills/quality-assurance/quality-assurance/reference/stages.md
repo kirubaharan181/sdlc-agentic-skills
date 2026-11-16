@@ -143,22 +143,35 @@ ILLUSTRATIVE: An order service and a payment adapter are tested against a contai
 Gate: 08-080. Approval: none required
 
 ## 81
-**API Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**API Testing** (complete). Purpose: verify that API behavior matches its contract, including errors, security and compatibility, independently of any user interface.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: API specification or documented contract exists; A test environment with the API is available; Test accounts for each role exist
+
+Inputs: API specification; test environment and data; accounts per role; consumer expectations
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Exercise OpenAPI success, validation, authorization, pagination, idempotency and error cases.
+1. Derive tests from the contract: every operation, status code, schema and error format.
+2. Test authentication and authorization with each role and with no or expired credentials; check access to other users' objects.
+3. Test input validation with missing, malformed, oversized and boundary values.
+4. Check idempotency, pagination, rate limiting and backward compatibility against the previous version.
+5. Run the tests in CI against a clean environment and record results.
+6. Report contract differences to the API owner as defects in code or specification.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; API request collection and contract report
+Deliverables: API test suite; contract conformance results; authorization test results; defect list
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. Response schemas and status behavior match the published contract.
+Acceptance: Every operation has success and failure tests Authorization is tested for each role and for other users' objects Compatibility with the previous version is checked Suite passes from a clean environment in CI
 
-Validation: Independent QA review and acceptance decision. Run contract and negative-case suite against the exact build.
+Validation: Independent rerun in CI.
+
+- `schemathesis run openapi.yaml --base-url https://staging.example.com --checks all   # example contract fuzzer` expect: no failures
+- `pytest -q tests/api` expect: all pass
+
+Failure modes:
+- Only happy paths tested | detect: No test for 401, 403 or 422 | respond: Add error-case tests
+- Object-level access not tested | detect: No test with another user's id | respond: Add authorization tests
+- Specification out of date | detect: Tests pass but contract differs | respond: Fix the contract or the code
+
+ILLUSTRATIVE: Tests call each operation with each role. A user reading another user's order id receives 403 as the contract says; an oversized body returns 413; the previous version's fields remain present.
 
 Gate: 08-081. Approval: none required
 
@@ -256,22 +269,35 @@ ILLUSTRATIVE: A change to the discount module selects 140 tests across pricing a
 Gate: 08-085. Approval: none required
 
 ## 86
-**Smoke Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Smoke Testing** (complete). Purpose: check quickly that a fresh build is stable enough to be worth testing further or deploying.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: A build is deployed to the target environment; A short list of critical checks exists; Test accounts are available
+
+Inputs: deployed build and environment; list of critical checks; test accounts; health endpoints
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Check release-blocking startup, health, authentication and critical transaction paths after deployment.
+1. Confirm the deployed version equals the intended build.
+2. Run the health checks and the shortest path through each critical function: sign in, one read, one write, one integration.
+3. Check logs and error metrics for new errors immediately after deployment.
+4. Record PASS or FAIL per check with timestamps and the build id.
+5. On any failure, stop further testing or deployment and return the build to the team.
+6. Keep the suite under a few minutes so it can run after every deployment.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; smoke report and health snapshot
+Deliverables: smoke test results; build identification; error check
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. Critical paths meet thresholds before broader testing proceeds.
+Acceptance: Version in the environment equals the intended build All critical checks passed No new error class in logs Suite runs in minutes
 
-Validation: Independent QA review and acceptance decision. Run smoke suite against the deployed artifact.
+Validation: Rerun after any fix.
+
+- `curl -fsS https://staging.example.com/version` expect: returns the intended build id
+- `pytest -q -m smoke   # example marker` expect: all smoke tests pass in under the agreed time
+
+Failure modes:
+- Smoke test passes on the old build | detect: Version mismatch | respond: Redeploy and rerun
+- Suite grows slow | detect: Duration above target | respond: Trim to critical paths
+- Failure ignored | detect: FAIL with testing continued | respond: Stop and return the build
+
+ILLUSTRATIVE: After deployment to staging, the smoke suite confirms the version, signs in, reads an order, creates a test order and calls the payment stub, all within ninety seconds.
 
 Gate: 08-086. Approval: none required
 

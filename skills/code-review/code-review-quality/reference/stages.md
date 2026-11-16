@@ -97,21 +97,35 @@ Validation: Independent architecture board decision.
 Gate: 07-070. Approval: none required
 
 ## 71
-**Static Code Analysis** (stub). Purpose: independently inspect code quality and maintainability risks.
+**Static Code Analysis** (complete). Purpose: enforce code quality, style and correctness rules automatically on every change so reviewers can spend time on design.
 
-Inputs: diff and target branch; coding/architecture standards; test, dependency and static-analysis evidence
+Entry criteria: Language and framework are known; Linter, formatter and type checker are chosen; Rules are agreed by the team
+
+Inputs: source code; lint and type-check configuration; team coding standards; CI pipeline
 
 Procedure:
-1. Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
-2. Inspect static findings and dependency provenance, severity, reachability and license obligations.
-3. Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
-4. Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
+1. Configure the formatter, linter and type checker in the repository with pinned versions.
+2. Start with a rule set the team agrees on; record a baseline for existing violations so only new ones block.
+3. Run the tools locally, in a pre-commit hook and in CI as a required check.
+4. Fix new violations; allow a suppression only with a comment explaining why and a link to an issue.
+5. Track the number of suppressions and the baseline over time and reduce them.
+6. Review the rule set when the team finds a rule unhelpful, and change it by decision, not by silent suppression.
 
-Deliverables: review report; static/dependency findings; coverage interpretation; technical debt actions
+Deliverables: tool configuration; baseline of existing violations; CI check; suppression report
 
-Acceptance: Findings are reproducible and tied to exact commit. False positives and accepted debt have rationale and owner. Critical paths have meaningful assertions.
+Acceptance: New violations fail the build Suppressions have explanations and issue links Tool versions are pinned Baseline is shrinking
 
-Validation: Independent reviewer confirms findings and disposition.
+Validation: Team review of rule changes.
+
+- `ruff check . && ruff format --check . && mypy .   # example for Python` expect: exit 0
+- `grep -rn 'noqa\|type: ignore' src | wc -l` expect: count does not grow without justification
+
+Failure modes:
+- Rules disabled to get green | detect: Config edited to relax rules in the same change | respond: Review the relaxation separately
+- Suppressions without reason | detect: Comment lacks explanation | respond: Add reason and issue or remove
+- Tools differ between machines | detect: Different results locally and in CI | respond: Pin versions
+
+ILLUSTRATIVE: A pre-commit hook and a required CI check run the formatter, linter and type checker. A new unused-variable warning blocks a pull request until fixed; suppressions are limited to three, each with an issue link.
 
 Gate: 07-071. Approval: none required
 

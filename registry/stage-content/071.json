@@ -1,0 +1,65 @@
+{
+  "stage_id": 71,
+  "purpose": "enforce code quality, style and correctness rules automatically on every change so reviewers can spend time on design",
+  "entry_criteria": [
+    "Language and framework are known",
+    "Linter, formatter and type checker are chosen",
+    "Rules are agreed by the team"
+  ],
+  "inputs": [
+    "source code",
+    "lint and type-check configuration",
+    "team coding standards",
+    "CI pipeline"
+  ],
+  "procedure": [
+    "Configure the formatter, linter and type checker in the repository with pinned versions.",
+    "Start with a rule set the team agrees on; record a baseline for existing violations so only new ones block.",
+    "Run the tools locally, in a pre-commit hook and in CI as a required check.",
+    "Fix new violations; allow a suppression only with a comment explaining why and a link to an issue.",
+    "Track the number of suppressions and the baseline over time and reduce them.",
+    "Review the rule set when the team finds a rule unhelpful, and change it by decision, not by silent suppression."
+  ],
+  "deliverables": [
+    "tool configuration",
+    "baseline of existing violations",
+    "CI check",
+    "suppression report"
+  ],
+  "acceptance_criteria": [
+    "New violations fail the build",
+    "Suppressions have explanations and issue links",
+    "Tool versions are pinned",
+    "Baseline is shrinking"
+  ],
+  "validation_method": "Team review of rule changes.",
+  "validation": [
+    {
+      "command": "ruff check . && ruff format --check . && mypy .   # example for Python",
+      "expect": "exit 0"
+    },
+    {
+      "command": "grep -rn 'noqa\\|type: ignore' src | wc -l",
+      "expect": "count does not grow without justification"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Rules disabled to get green",
+      "detection": "Config edited to relax rules in the same change",
+      "response": "Review the relaxation separately"
+    },
+    {
+      "mode": "Suppressions without reason",
+      "detection": "Comment lacks explanation",
+      "response": "Add reason and issue or remove"
+    },
+    {
+      "mode": "Tools differ between machines",
+      "detection": "Different results locally and in CI",
+      "response": "Pin versions"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A pre-commit hook and a required CI check run the formatter, linter and type checker. A new unused-variable warning blocks a pull request until fixed; suppressions are limited to three, each with an issue link.",
+  "status": "complete"
+}

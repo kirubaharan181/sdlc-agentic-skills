@@ -1,0 +1,65 @@
+{
+  "stage_id": 177,
+  "purpose": "collect, understand and act on what customers tell us, so product decisions rest on evidence",
+  "entry_criteria": [
+    "Feedback channels are identified (support, surveys, reviews, interviews)",
+    "An owner for feedback triage exists",
+    "A backlog or roadmap exists to receive insights"
+  ],
+  "inputs": [
+    "feedback from each channel",
+    "customer segments and usage data",
+    "support ticket themes",
+    "current roadmap"
+  ],
+  "procedure": [
+    "Gather feedback from every channel into one place with its source and customer segment.",
+    "Tag each item by theme and severity; merge duplicates and keep counts.",
+    "Separate what customers asked for from the problem they are trying to solve.",
+    "Compare themes with usage data to check that loud feedback matches real behavior.",
+    "Decide per theme: act, investigate, defer or decline, with a reason, and link to backlog items.",
+    "Tell customers what was decided where practical, and review the outcomes later."
+  ],
+  "deliverables": [
+    "feedback log with themes and counts",
+    "insight summary",
+    "decisions linked to backlog items",
+    "customer follow-up record"
+  ],
+  "acceptance_criteria": [
+    "Every theme has a decision and a reason",
+    "Counts and segments are shown",
+    "Insights are checked against usage data",
+    "Decisions link to backlog items"
+  ],
+  "validation_method": "Product owner review of the decisions.",
+  "validation": [
+    {
+      "check": "sample five feedback items and trace each to a theme and decision",
+      "expect": "all traced"
+    },
+    {
+      "check": "compare the top theme with product usage data",
+      "expect": "data agrees or the disagreement is explained"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Only the loudest voice is heard",
+      "detection": "One account dominates the themes",
+      "response": "Weight by segment and count"
+    },
+    {
+      "mode": "Feedback never reaches the backlog",
+      "detection": "No backlog links",
+      "response": "Link or decline with a reason"
+    },
+    {
+      "mode": "Requests taken literally",
+      "detection": "Solutions recorded without the underlying problem",
+      "response": "Capture the problem"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Forty tickets and two interviews mention slow report exports. Usage data confirms exports over a minute for large accounts. The theme is acted on and linked to a backlog item for background exports.",
+  "status": "complete"
+}

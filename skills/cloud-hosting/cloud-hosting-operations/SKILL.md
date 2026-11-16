@@ -33,7 +33,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 146 | Network Operations | stub | Network Engineer |
 | 147 | Backup Management | complete | Database Administrator |
 | 148 | Disaster Recovery | complete | SRE |
-| 149 | High Availability | stub | Cloud Architect |
+| 149 | High Availability | complete | Cloud Architect |
 | 150 | Auto Scaling | complete | Infrastructure Engineer |
 | 151 | Cost Optimization | stub | FinOps Specialist |
 | 152 | Infrastructure Maintenance | complete | Infrastructure Engineer |

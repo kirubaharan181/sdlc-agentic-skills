@@ -1,0 +1,65 @@
+{
+  "stage_id": 67,
+  "purpose": "let the developer find and fix defects early by testing their own change before it is handed on",
+  "entry_criteria": [
+    "The change is implemented locally",
+    "The test suite runs locally",
+    "Acceptance criteria are understood"
+  ],
+  "inputs": [
+    "the change",
+    "acceptance criteria",
+    "test suite and tools",
+    "local or ephemeral environment"
+  ],
+  "procedure": [
+    "Re-read the acceptance criteria and list the behaviors to check, including error cases.",
+    "Run the unit tests and add tests for new behavior and for edge cases found.",
+    "Run the application locally and exercise each criterion by hand, including one unhappy path.",
+    "Check logs for new warnings or errors and verify data created by the change.",
+    "Run the project's checks (format, lint, type check) and fix problems.",
+    "Note what was and was not tested in the pull request."
+  ],
+  "deliverables": [
+    "tests for the change",
+    "manual test notes",
+    "check results",
+    "pull request testing note"
+  ],
+  "acceptance_criteria": [
+    "Every acceptance criterion was exercised",
+    "At least one error path was tried",
+    "Local checks pass",
+    "Testing note lists gaps"
+  ],
+  "validation_method": "Reviewer reads the testing note and reruns key tests.",
+  "validation": [
+    {
+      "command": "pytest -q && ruff check . && mypy .   # example toolchain",
+      "expect": "all pass"
+    },
+    {
+      "check": "exercise each acceptance criterion locally and note the result",
+      "expect": "each criterion verified or gap noted"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Only the happy path tested",
+      "detection": "No error-case test",
+      "response": "Add one"
+    },
+    {
+      "mode": "Tests not run before pushing",
+      "detection": "CI fails on basic checks",
+      "response": "Run checks locally first"
+    },
+    {
+      "mode": "Testing note empty",
+      "detection": "Reviewer cannot tell what was verified",
+      "response": "Write it"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A developer adds an export limit. They test 9,999, 10,000 and 10,001 orders locally, see the expected error at 10,001, add a unit test for the boundary and note that large exports were not load tested.",
+  "status": "complete"
+}

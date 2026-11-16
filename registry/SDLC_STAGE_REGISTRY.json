@@ -627,35 +627,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "user and system scenarios",
-        "business rules and data definitions",
-        "external interface constraints"
-      ],
-      "outputs": [
-        "functional-requirements-deliverable",
-        "functional requirement catalogue",
-        "state/sequence diagrams"
-      ],
       "quality_gate": "02-013",
-      "validation_method": "Scenario walkthrough with developer and tester.",
-      "purpose": "specify observable system behavior and business rules",
-      "execution_instructions": [
-        "Write behavior using actor, trigger, precondition, main flow, alternate flow and postcondition.",
-        "Define validation, state transitions, error responses and idempotency where applicable.",
-        "Derive positive, negative, boundary and authorization acceptance cases.",
-        "Trace each behavior to a requirement ID and owner."
-      ],
-      "deliverable_artifacts": [
-        "functional requirement catalogue",
-        "state/sequence diagrams",
-        "acceptance scenarios"
-      ],
-      "quality_criteria": [
-        "Each requirement has observable expected behavior.",
-        "Boundary and failure cases are covered.",
-        "No implementation detail is mistaken for a user outcome."
-      ],
       "raci": {
         "accountable": "requirements-engineer",
         "responsible": [
@@ -1307,35 +1279,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "consumer journeys and use cases",
-        "data ownership and security classification",
-        "latency/throughput and compatibility needs"
-      ],
-      "outputs": [
-        "api-architecture-deliverable",
-        "API decision record",
-        "OpenAPI contract"
-      ],
       "quality_gate": "03-027",
-      "validation_method": "API consumer and security architecture review.",
-      "purpose": "design stable API resources, contracts and compatibility policy",
-      "execution_instructions": [
-        "Model resources, identifiers, relationships, pagination, filtering and lifecycle semantics.",
-        "Define OpenAPI schemas, required/optional fields, validation, error envelope and idempotency behavior.",
-        "Specify authentication, authorization, rate limits, versioning and deprecation policy.",
-        "Assess consumer migration and generate contract compatibility checks."
-      ],
-      "deliverable_artifacts": [
-        "API decision record",
-        "OpenAPI contract",
-        "versioning and migration plan"
-      ],
-      "quality_criteria": [
-        "Contract is machine-valid and has representative examples.",
-        "Breaking changes and consumer impact are identified.",
-        "Auth/error/idempotency behavior is explicit."
-      ],
       "raci": {
         "accountable": "api-architect",
         "responsible": [],
@@ -2780,36 +2724,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "approved OpenAPI or interface contract",
-        "consumer and authorization requirements",
-        "data model and latency constraints"
-      ],
-      "outputs": [
-        "api-development-deliverable",
-        "API implementation",
-        "OpenAPI/schema update"
-      ],
       "quality_gate": "06-057",
-      "validation_method": "Consumer contract review and automated API tests.",
-      "purpose": "implement a versioned and testable API contract",
-      "execution_instructions": [
-        "Implement route/resource semantics, schema validation and consistent error responses from the approved contract.",
-        "Enforce authentication, object-level authorization, rate limits and idempotency for side effects.",
-        "Handle pagination, filtering, version compatibility, timeouts and correlation IDs.",
-        "Run contract tests for success, invalid input, unauthorized access, boundary values and consumer compatibility."
-      ],
-      "deliverable_artifacts": [
-        "API implementation",
-        "OpenAPI/schema update",
-        "contract test report",
-        "consumer migration note"
-      ],
-      "quality_criteria": [
-        "Implementation matches the published contract.",
-        "Auth and error cases are tested.",
-        "Breaking changes require version and migration approval."
-      ],
       "raci": {
         "accountable": "api-engineer",
         "responsible": [
@@ -3297,39 +3212,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "developer-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "06-067",
-      "validation_method": "Independent QA review and acceptance decision. Capture command, exit status and output for each required check.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Run focused unit, lint, type, build and local integration checks before requesting review."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "developer verification transcript"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "All required local checks pass on the exact working-tree revision."
-      ],
       "raci": {
         "accountable": "full-stack-engineer",
         "responsible": [
@@ -3447,36 +3330,7 @@
       "skills": [
         "code-review-quality"
       ],
-      "inputs": [
-        "diff and target branch",
-        "coding/architecture standards",
-        "test, dependency and static-analysis evidence"
-      ],
-      "outputs": [
-        "static-code-analysis-deliverable",
-        "review report",
-        "static/dependency findings"
-      ],
       "quality_gate": "07-071",
-      "validation_method": "Independent reviewer confirms findings and disposition.",
-      "purpose": "independently inspect code quality and maintainability risks",
-      "execution_instructions": [
-        "Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.",
-        "Inspect static findings and dependency provenance, severity, reachability and license obligations.",
-        "Assess test coverage quality and identify untested critical branches rather than relying only on percentage.",
-        "Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions."
-      ],
-      "deliverable_artifacts": [
-        "review report",
-        "static/dependency findings",
-        "coverage interpretation",
-        "technical debt actions"
-      ],
-      "quality_criteria": [
-        "Findings are reproducible and tied to exact commit.",
-        "False positives and accepted debt have rationale and owner.",
-        "Critical paths have meaningful assertions."
-      ],
       "raci": {
         "accountable": "devsecops-engineer",
         "responsible": [
@@ -3822,39 +3676,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "api-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-081",
-      "validation_method": "Independent QA review and acceptance decision. Run contract and negative-case suite against the exact build.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Exercise OpenAPI success, validation, authorization, pagination, idempotency and error cases."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "API request collection and contract report"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Response schemas and status behavior match the published contract."
-      ],
       "raci": {
         "accountable": "api-testing-specialist",
         "responsible": [
@@ -4059,39 +3881,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "smoke-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-086",
-      "validation_method": "Independent QA review and acceptance decision. Run smoke suite against the deployed artifact.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Check release-blocking startup, health, authentication and critical transaction paths after deployment."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "smoke report and health snapshot"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Critical paths meet thresholds before broader testing proceeds."
-      ],
       "raci": {
         "accountable": "automation-qa-engineer",
         "responsible": [],
@@ -6653,36 +6443,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "service inventory and ownership",
-        "SLO/RTO/RPO and capacity profile",
-        "access, backup and cost policies"
-      ],
-      "outputs": [
-        "high-availability-deliverable",
-        "infrastructure inventory",
-        "change record"
-      ],
       "quality_gate": "12-149",
-      "validation_method": "Cloud operations and security review.",
-      "purpose": "operate cloud infrastructure within reliability and cost objectives",
-      "execution_instructions": [
-        "Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.",
-        "Verify identity boundaries, encryption, network exposure, patch state and backup coverage.",
-        "Measure health, capacity, utilization, recovery readiness and cost allocation.",
-        "Apply a reviewed, reversible change and verify telemetry, drift and customer impact."
-      ],
-      "deliverable_artifacts": [
-        "infrastructure inventory",
-        "change record",
-        "health/capacity/cost evidence",
-        "operator runbook"
-      ],
-      "quality_criteria": [
-        "Changes are scoped and reversible.",
-        "Backup/recovery meets stated objectives.",
-        "Cost and reliability effects are measured."
-      ],
       "raci": {
         "accountable": "cloud-architect",
         "responsible": [
@@ -7208,36 +6969,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "incident signals and timeline",
-        "severity and command policy",
-        "service dependency and recovery data"
-      ],
-      "outputs": [
-        "incident-detection-deliverable",
-        "incident timeline",
-        "impact statement"
-      ],
       "quality_gate": "13-162",
-      "validation_method": "Incident commander and service owner review.",
-      "purpose": "restore service and convert failure evidence into prevention",
-      "execution_instructions": [
-        "Establish commander, severity, scribe and communications channel; preserve a timestamped timeline.",
-        "Assess customer impact and contain safely before attempting speculative fixes.",
-        "Use telemetry and controlled hypotheses to isolate contributing causes; record evidence and uncertainty.",
-        "Verify recovery against user-facing signals, then assign blameless corrective actions with owners and dates."
-      ],
-      "deliverable_artifacts": [
-        "incident timeline",
-        "impact statement",
-        "recovery verification",
-        "postmortem and action register"
-      ],
-      "quality_criteria": [
-        "Customer impact and recovery time are evidence-backed.",
-        "Containment does not destroy forensic evidence unnecessarily.",
-        "Actions are measurable and tracked to closure."
-      ],
       "raci": {
         "accountable": "incident-manager",
         "responsible": [
@@ -7718,36 +7450,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "customer-feedback-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-177",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "raci": {
         "accountable": "product-manager",
         "responsible": [
@@ -7770,36 +7473,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "knowledge-base-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-178",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "raci": {
         "accountable": "technical-writer",
         "responsible": [
@@ -7822,36 +7496,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "maintenance-release-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-179",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "raci": {
         "accountable": "release-manager",
         "responsible": [
