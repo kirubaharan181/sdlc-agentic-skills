@@ -1,0 +1,65 @@
+{
+  "stage_id": 33,
+  "purpose": "write the architecture down so that others can understand it, check it and change it, and keep it in step with the system",
+  "entry_criteria": [
+    "Architecture decisions exist",
+    "Audiences are identified",
+    "A place for documentation under version control exists"
+  ],
+  "inputs": [
+    "architecture designs and decision records",
+    "audiences and their questions",
+    "existing diagrams",
+    "the codebase"
+  ],
+  "procedure": [
+    "List the audiences (developers, operators, security, management) and the questions each asks, and organize the documentation around those questions.",
+    "Use a few consistent views, for example a context diagram, a container or component view and key runtime scenarios, with a legend and a stated scope for each.",
+    "Record significant decisions as short records with context, options, decision and consequences, and link them from the views.",
+    "Keep documentation as text and diagrams in code in the repository, reviewed with the code it describes.",
+    "Add a check that detects drift, for example a link check and a script that compares documented components with the code layout.",
+    "Review the documentation with a new team member by asking them to answer onboarding questions from it, and fix what they cannot answer."
+  ],
+  "deliverables": [
+    "architecture documentation set with views",
+    "decision records",
+    "automated documentation checks",
+    "review result by a newcomer"
+  ],
+  "acceptance_criteria": [
+    "Each view states its scope and legend",
+    "Decisions are recorded with options",
+    "Documentation lives with the code",
+    "A newcomer could answer onboarding questions"
+  ],
+  "validation_method": "Architect review.",
+  "validation": [
+    {
+      "command": "python3 scripts/check_links.py",
+      "expect": "no broken links"
+    },
+    {
+      "check": "ask a new team member to find where the payment module is called from using only the documentation",
+      "expect": "found without help"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Diagram no longer matches reality",
+      "detection": "Component named in diagram is gone",
+      "response": "Update with the change and add a drift check"
+    },
+    {
+      "mode": "One huge diagram",
+      "detection": "Nobody can read it",
+      "response": "Split into views with scope"
+    },
+    {
+      "mode": "Decisions lost",
+      "detection": "No one knows why",
+      "response": "Write decision records"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Documentation keeps a context diagram, a component view and a decision record for choosing a message broker. A new engineer follows it to find the order flow in under ten minutes, and a CI check fails on broken links.",
+  "status": "complete"
+}

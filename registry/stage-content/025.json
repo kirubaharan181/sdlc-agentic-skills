@@ -1,0 +1,65 @@
+{
+  "stage_id": 25,
+  "purpose": "design how one application is organized internally, so features can be added and fixed without the whole thing being affected",
+  "entry_criteria": [
+    "Quality targets and the solution context exist (stages 14, 23)",
+    "Technology stack is chosen (stage 32)",
+    "The team size and skills are known"
+  ],
+  "inputs": [
+    "quality targets",
+    "solution context",
+    "technology choices",
+    "domain model"
+  ],
+  "procedure": [
+    "Identify the business domains and their boundaries from the domain model, and align modules to them rather than to technical layers alone.",
+    "Define each module's public interface and rules for dependencies, keeping the business logic independent of frameworks and storage.",
+    "Choose how modules communicate: direct calls inside a process, events for loose coupling, and state the consistency each needs.",
+    "Define cross-cutting design: configuration, error handling, logging, authentication context and transaction boundaries.",
+    "Check the design against the quality targets with a scenario for each, such as a change to one module or a dependency failure.",
+    "Record decisions, create a skeleton that already enforces the dependency rules, and review it with the developers."
+  ],
+  "deliverables": [
+    "module and dependency design",
+    "communication and consistency rules",
+    "cross-cutting design",
+    "skeleton with enforced rules"
+  ],
+  "acceptance_criteria": [
+    "Modules align to domains with stated interfaces",
+    "Dependency rules are enforced by a tool",
+    "Each quality target has a checked scenario",
+    "Decisions are recorded"
+  ],
+  "validation_method": "Software architect and team lead review.",
+  "validation": [
+    {
+      "command": "npx depcruise --validate .dependency-cruiser.js src   # example; use the language's equivalent",
+      "expect": "no rule violations in the skeleton"
+    },
+    {
+      "check": "walk through a change to one module and list the other modules touched",
+      "expect": "none beyond the declared interface"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Modules by technical layer only",
+      "detection": "A feature touches every layer's code in many places",
+      "response": "Reorganize around domains"
+    },
+    {
+      "mode": "Shared mutable state",
+      "detection": "Changes in one module break another",
+      "response": "Make ownership explicit"
+    },
+    {
+      "mode": "Rules only on paper",
+      "detection": "Violations appear",
+      "response": "Enforce in CI"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: An ordering application is split into catalogue, basket, orders and payments modules. Payments may be called only through its interface, and the CI rule fails a change that imports its internals.",
+  "status": "complete"
+}

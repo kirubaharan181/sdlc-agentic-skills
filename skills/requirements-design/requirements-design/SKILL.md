@@ -30,12 +30,12 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 14 | Non-Functional Requirements | complete | Requirements Engineer |
 | 15 | User Research | complete | UX Researcher |
 | 16 | User Journey Mapping | complete | UX Researcher |
-| 17 | Wireframing | stub | UI/UX Designer |
+| 17 | Wireframing | complete | UI/UX Designer |
 | 18 | UI Design | complete | UI/UX Designer |
 | 19 | UX Design | complete | UI/UX Designer |
 | 20 | Prototype Development | complete | UI/UX Designer |
 | 21 | Accessibility Review | complete | Accessibility Testing Specialist |
-| 22 | Requirement Validation | stub | Product Owner |
+| 22 | Requirement Validation | complete | Product Owner |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

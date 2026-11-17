@@ -1,0 +1,65 @@
+{
+  "stage_id": 28,
+  "purpose": "design how the system uses cloud services so it is secure, resilient across failures, cost-aware and operable from code",
+  "entry_criteria": [
+    "Requirements, quality targets and data classification exist",
+    "A cloud provider and account strategy is chosen",
+    "Recovery objectives are defined"
+  ],
+  "inputs": [
+    "quality and recovery targets",
+    "data classification",
+    "provider capabilities and quotas",
+    "compliance obligations"
+  ],
+  "procedure": [
+    "Design the account or subscription structure: separate environments and workloads, central logging and guardrails with organization-level policies.",
+    "Design networking: private subnets for workloads, controlled ingress and egress, private connectivity to managed services and segmentation by trust.",
+    "Design resilience to the failure level required: multi-zone by default, and multi-region only where the recovery objectives justify the cost and complexity.",
+    "Choose managed services where they reduce operational load, noting lock-in, limits and failure modes of each.",
+    "Design identity: roles with least privilege, no long-lived keys, and separate admin paths with strong authentication.",
+    "Define everything as code with environments created from the same definitions, and estimate the run cost with the assumptions."
+  ],
+  "deliverables": [
+    "account and network design",
+    "resilience design with recovery mapping",
+    "identity and access design",
+    "infrastructure as code layout and cost estimate"
+  ],
+  "acceptance_criteria": [
+    "Resilience level matches the recovery objectives",
+    "Workloads sit in private networks with controlled egress",
+    "No long-lived keys",
+    "Cost estimate states its assumptions"
+  ],
+  "validation_method": "Cloud architect and security review.",
+  "validation": [
+    {
+      "command": "terraform validate && terraform plan -out=plan.out   # example; use the project's IaC tool",
+      "expect": "plan shows only expected resources"
+    },
+    {
+      "check": "map each recovery objective to the design element that meets it",
+      "expect": "none unmapped"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Multi-region without need",
+      "detection": "Complexity and cost without benefit",
+      "response": "Match the design to objectives"
+    },
+    {
+      "mode": "Public access by default",
+      "detection": "Workloads exposed",
+      "response": "Use private subnets and explicit ingress"
+    },
+    {
+      "mode": "Manual console changes",
+      "detection": "Drift from code",
+      "response": "Detect drift and enforce IaC"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A service runs across three zones in one region because the recovery objective is a 30-minute RTO for zone loss; workloads are in private subnets, access uses roles, and the whole stack is created from code.",
+  "status": "complete"
+}

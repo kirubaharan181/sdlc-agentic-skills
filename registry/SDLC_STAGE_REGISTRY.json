@@ -97,36 +97,7 @@
       "skills": [
         "business-product-management"
       ],
-      "inputs": [
-        "business objectives and stakeholders",
-        "current-state process evidence",
-        "policy and data constraints"
-      ],
-      "outputs": [
-        "business-analysis-deliverable",
-        "current/future process model",
-        "business rule catalogue"
-      ],
       "quality_gate": "01-005",
-      "validation_method": "Walkthrough with process owners and affected users.",
-      "purpose": "translate business needs into process and decision requirements",
-      "execution_instructions": [
-        "Map current actors, events, inputs, decisions, exceptions and downstream outcomes.",
-        "Identify process pain points, business rules, data ownership and control points.",
-        "Model the proposed state and compare impacts, dependencies and exception paths.",
-        "Trace each requirement to a business objective and a measurable acceptance condition."
-      ],
-      "deliverable_artifacts": [
-        "current/future process model",
-        "business rule catalogue",
-        "gap analysis",
-        "requirements traceability"
-      ],
-      "quality_criteria": [
-        "Process paths include normal, exception and failure cases.",
-        "Rules have an owner and source.",
-        "Requirements are testable and trace to a business outcome."
-      ],
       "raci": {
         "accountable": "business-analyst",
         "responsible": [],
@@ -402,35 +373,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "validated task flows",
-        "content requirements",
-        "target viewport/device constraints"
-      ],
-      "outputs": [
-        "wireframing-deliverable",
-        "annotated wireframes",
-        "screen inventory"
-      ],
       "quality_gate": "02-017",
-      "validation_method": "Product/design review and quick usability walkthrough.",
-      "purpose": "explore information hierarchy and interaction structure before visual polish",
-      "execution_instructions": [
-        "Identify primary tasks and content hierarchy for each screen.",
-        "Create low-fidelity layouts with navigation, states, responsive behavior and annotations.",
-        "Review task completion paths, empty/error/loading states and keyboard flow.",
-        "Record design decisions and unresolved usability questions."
-      ],
-      "deliverable_artifacts": [
-        "annotated wireframes",
-        "screen inventory",
-        "interaction flow"
-      ],
-      "quality_criteria": [
-        "Wireframes cover all critical states and target viewports.",
-        "Labels and navigation support user goals.",
-        "No decorative styling hides missing behavior."
-      ],
       "raci": {
         "accountable": "ui-ux-designer",
         "responsible": [],
@@ -539,35 +482,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "draft requirements and traceability",
-        "stakeholder authority",
-        "acceptance and quality criteria"
-      ],
-      "outputs": [
-        "requirement-validation-deliverable",
-        "validated baseline",
-        "traceability matrix"
-      ],
       "quality_gate": "02-022",
-      "validation_method": "Cross-functional requirements review.",
-      "purpose": "prove requirements are complete, consistent, feasible and testable",
-      "execution_instructions": [
-        "Check each requirement for atomicity, necessity, clarity, feasibility and verifiability.",
-        "Trace business goals to requirements, design elements and test cases.",
-        "Run ambiguity, conflict, duplication and orphan checks.",
-        "Resolve or explicitly defer findings with owners before baseline approval."
-      ],
-      "deliverable_artifacts": [
-        "validated baseline",
-        "traceability matrix",
-        "review issue log"
-      ],
-      "quality_criteria": [
-        "No critical orphan, conflict or untestable requirement remains.",
-        "Stakeholders approve the baseline version.",
-        "Deferred items have owner and impact."
-      ],
       "raci": {
         "accountable": "product-owner",
         "responsible": [
@@ -637,35 +552,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "business capabilities and system context",
-        "runtime/deployment constraints",
-        "quality attribute scenarios"
-      ],
-      "outputs": [
-        "application-architecture-deliverable",
-        "system context and container diagrams",
-        "component/interface catalogue"
-      ],
       "quality_gate": "03-025",
-      "validation_method": "Architecture review against documented quality attribute scenarios.",
-      "purpose": "define the system structure and component boundaries for the target quality attributes",
-      "execution_instructions": [
-        "Define system context, actors, external systems and trust boundaries.",
-        "Decompose capabilities into components and assign ownership, interfaces and dependency direction.",
-        "Evaluate synchronous/asynchronous boundaries, data ownership, failure isolation and deployment topology.",
-        "Compare architecture options against latency, availability, scalability, security, operability and cost scenarios."
-      ],
-      "deliverable_artifacts": [
-        "system context and container diagrams",
-        "component/interface catalogue",
-        "architecture decision records"
-      ],
-      "quality_criteria": [
-        "Every component has responsibility and owner.",
-        "Dependencies and failure domains are explicit.",
-        "Trade-offs are tied to measurable quality scenarios."
-      ],
       "raci": {
         "accountable": "software-architect",
         "responsible": [],
@@ -730,36 +617,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "availability and recovery objectives",
-        "workload sizing and data classification",
-        "provider constraints and cost ceiling"
-      ],
-      "outputs": [
-        "cloud-architecture-deliverable",
-        "cloud architecture diagram",
-        "landing-zone decisions"
-      ],
       "quality_gate": "03-028",
-      "validation_method": "Cloud security and operations design review.",
-      "purpose": "design a secure, resilient and supportable cloud landing pattern",
-      "execution_instructions": [
-        "Choose regions, network zones, identity boundaries and managed services against requirements.",
-        "Model failure domains, autoscaling, backup, observability and deployment topology.",
-        "Define policy-as-code, encryption, key ownership and secret integration.",
-        "Estimate lifecycle cost and document portability/vendor lock-in trade-offs."
-      ],
-      "deliverable_artifacts": [
-        "cloud architecture diagram",
-        "landing-zone decisions",
-        "resilience model",
-        "cost estimate"
-      ],
-      "quality_criteria": [
-        "Failure domains align with RTO/RPO.",
-        "IAM and network boundaries are least privilege.",
-        "Cost assumptions and service quotas are explicit."
-      ],
       "raci": {
         "accountable": "cloud-architect",
         "responsible": [],
@@ -825,36 +683,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "producer/consumer contracts",
-        "protocol, volume and latency constraints",
-        "failure and ownership model"
-      ],
-      "outputs": [
-        "integration-architecture-deliverable",
-        "context/container diagram",
-        "interface contract"
-      ],
       "quality_gate": "03-031",
-      "validation_method": "Producer, consumer and operations review.",
-      "purpose": "design reliable boundaries between independently operated systems",
-      "execution_instructions": [
-        "Select synchronous or asynchronous interaction based on coupling and latency needs.",
-        "Define schema, correlation IDs, idempotency, retries, ordering and dead-letter behavior.",
-        "Specify authentication, secrets, rate limits, observability and contract evolution.",
-        "Test timeout, duplicate, partial failure and partner outage scenarios."
-      ],
-      "deliverable_artifacts": [
-        "context/container diagram",
-        "interface contract",
-        "failure-mode table",
-        "operational ownership"
-      ],
-      "quality_criteria": [
-        "Every interface has owner and version policy.",
-        "Retries cannot create unsafe duplicate side effects.",
-        "Failure handling and telemetry are specified."
-      ],
       "raci": {
         "accountable": "integration-architect",
         "responsible": [
@@ -901,36 +730,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "approved architecture decisions",
-        "audience and repository conventions",
-        "system context and change history"
-      ],
-      "outputs": [
-        "architecture-documentation-deliverable",
-        "architecture overview",
-        "ADRs"
-      ],
       "quality_gate": "03-033",
-      "validation_method": "Architecture peer review.",
-      "purpose": "publish architecture decisions and models for future operators",
-      "execution_instructions": [
-        "Document context, scope, constraints, component boundaries and data/control flows.",
-        "Link ADRs, interfaces, deployment topology, quality attributes and known limitations.",
-        "Keep diagrams source-controlled and validate rendering and links.",
-        "Assign owners and review triggers for decisions that can become stale."
-      ],
-      "deliverable_artifacts": [
-        "architecture overview",
-        "ADRs",
-        "versioned diagrams",
-        "review schedule"
-      ],
-      "quality_criteria": [
-        "Documentation matches deployed reality.",
-        "Every key decision has rationale and alternatives.",
-        "Owners and freshness triggers are defined."
-      ],
       "raci": {
         "accountable": "technical-writer",
         "responsible": [
@@ -1018,35 +818,7 @@
       "skills": [
         "project-agile-management"
       ],
-      "inputs": [
-        "approved scope and deliverables",
-        "dependencies and constraints",
-        "definition of done"
-      ],
-      "outputs": [
-        "work-breakdown-deliverable",
-        "WBS/backlog hierarchy",
-        "dependency network"
-      ],
       "quality_gate": "04-037",
-      "validation_method": "Cross-functional planning review.",
-      "purpose": "decompose approved scope into estimable and verifiable work",
-      "execution_instructions": [
-        "Decompose deliverables into work packages with clear boundaries and owners.",
-        "Identify dependencies, integration points, external approvals and critical path.",
-        "Define acceptance evidence and estimate-ready assumptions for each package.",
-        "Review decomposition with delivery and technical owners before estimating."
-      ],
-      "deliverable_artifacts": [
-        "WBS/backlog hierarchy",
-        "dependency network",
-        "work package acceptance criteria"
-      ],
-      "quality_criteria": [
-        "Every scope item maps to a work package.",
-        "No package is too broad to estimate or verify.",
-        "Dependencies and ownership are explicit."
-      ],
       "raci": {
         "accountable": "project-manager",
         "responsible": [
@@ -1179,35 +951,7 @@
       "skills": [
         "project-agile-management"
       ],
-      "inputs": [
-        "stakeholder and influence map",
-        "decision calendar",
-        "communication needs"
-      ],
-      "outputs": [
-        "stakeholder-management-deliverable",
-        "stakeholder map",
-        "communications plan"
-      ],
       "quality_gate": "04-043",
-      "validation_method": "Sponsor and stakeholder review.",
-      "purpose": "align decision-makers and affected parties through the lifecycle",
-      "execution_instructions": [
-        "Identify decision authority, affected users, veto points and information needs.",
-        "Set communication cadence and channel by stakeholder group.",
-        "Capture decisions, concerns, commitments and unresolved conflicts.",
-        "Escalate missing decisions before they block downstream work."
-      ],
-      "deliverable_artifacts": [
-        "stakeholder map",
-        "communications plan",
-        "decision log"
-      ],
-      "quality_criteria": [
-        "Every key decision has an owner and due date.",
-        "Affected parties are informed before impact.",
-        "Conflicts are resolved or explicitly escalated."
-      ],
       "raci": {
         "accountable": "program-manager",
         "responsible": [
@@ -1342,36 +1086,7 @@
       "skills": [
         "engineering-governance"
       ],
-      "inputs": [
-        "repository ownership and team model",
-        "language/runtime and build manifests",
-        "security and contribution policy"
-      ],
-      "outputs": [
-        "environment-configuration-deliverable",
-        "repository policy",
-        "setup instructions"
-      ],
       "quality_gate": "05-049",
-      "validation_method": "Repository owner and security review.",
-      "purpose": "establish a secure and reproducible engineering workspace",
-      "execution_instructions": [
-        "Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.",
-        "Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.",
-        "Keep credentials out of source; use approved secret storage and least-privilege access.",
-        "Add onboarding and contribution guidance, then validate from a clean checkout."
-      ],
-      "deliverable_artifacts": [
-        "repository policy",
-        "setup instructions",
-        "branch protection/check evidence",
-        "secret handling guide"
-      ],
-      "quality_criteria": [
-        "A clean contributor can reproduce setup.",
-        "Protected branches require review and checks.",
-        "No secret value is committed."
-      ],
       "raci": {
         "accountable": "devops-engineer",
         "responsible": [
@@ -1419,35 +1134,7 @@
       "skills": [
         "engineering-governance"
       ],
-      "inputs": [
-        "validated needs and decisions",
-        "document template and audience",
-        "source-of-truth repository"
-      ],
-      "outputs": [
-        "developer-documentation-deliverable",
-        "versioned specification",
-        "traceability matrix"
-      ],
       "quality_gate": "05-051",
-      "validation_method": "Peer review by product, engineering and QA.",
-      "purpose": "create a navigable, versioned and traceable specification",
-      "execution_instructions": [
-        "Organize scope, actors, terminology, requirements, constraints, dependencies and exclusions.",
-        "Assign stable IDs and link each requirement to source, owner and downstream tests.",
-        "Document diagrams, examples, exceptions and unresolved decisions in the repository convention.",
-        "Review clarity, consistency, links, version and change history."
-      ],
-      "deliverable_artifacts": [
-        "versioned specification",
-        "traceability matrix",
-        "glossary and decision links"
-      ],
-      "quality_criteria": [
-        "No ambiguous pronouns or unbounded terms remain in normative requirements.",
-        "IDs are stable and traceable.",
-        "Links, diagrams and examples render."
-      ],
       "raci": {
         "accountable": "documentation-engineer",
         "responsible": [
@@ -1493,36 +1180,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "approved UI/UX specification",
-        "API contracts and browser support matrix",
-        "design tokens and accessibility criteria"
-      ],
-      "outputs": [
-        "frontend-development-deliverable",
-        "component implementation",
-        "UI state model"
-      ],
       "quality_gate": "06-053",
-      "validation_method": "UI peer review and browser test run.",
-      "purpose": "implement accessible client behavior and resilient interface states",
-      "execution_instructions": [
-        "Inspect routing, state management, component conventions and existing design system.",
-        "Implement semantic components, responsive layout, keyboard behavior and loading/empty/error states.",
-        "Integrate typed or validated API boundaries and handle cancellation/retry safely.",
-        "Add component and browser tests for critical interactions; verify accessibility and console/network errors."
-      ],
-      "deliverable_artifacts": [
-        "component implementation",
-        "UI state model",
-        "component/browser tests",
-        "accessibility evidence"
-      ],
-      "quality_criteria": [
-        "Critical flows work at supported viewports.",
-        "Keyboard and screen-reader semantics are preserved.",
-        "No unhandled errors or leaked async state."
-      ],
       "raci": {
         "accountable": "frontend-engineer",
         "responsible": [],

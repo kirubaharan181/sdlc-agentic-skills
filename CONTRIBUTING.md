@@ -15,8 +15,8 @@ Everything must pass before you open a pull request. CI runs the same checks and
 - Never change stage IDs 1-190 or stage names.
 
 ## Good first contributions
-- **Turn a stub stage into a complete one.** Copy a file from `registry/stage-content/`, write the stage's real procedure,
-  validation commands, failure modes and an `ILLUSTRATIVE` worked example. Do not reference scripts that do not exist.
+- **Prove or correct a stage.** Pick a stage in `registry/stage-content/`, run its validation commands on a real project, and fix the
+  procedure, commands or failure modes where they were wrong. Keep the worked example labelled `ILLUSTRATIVE`. Do not reference scripts that do not exist.
 - Add a scenario to `tests/scenarios/` or an eval case to `evals/cases/`.
 - Run an eval against a model and submit the dated result (see `evals/README.md`).
 - See `docs/community/GOOD_FIRST_ISSUES.md`.

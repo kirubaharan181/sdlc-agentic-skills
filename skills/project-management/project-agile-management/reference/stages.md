@@ -79,21 +79,35 @@ ILLUSTRATIVE: A plan needs two backend engineers for six months. One is availabl
 Gate: 04-036. Approval: none required
 
 ## 37
-**Work Breakdown** (stub). Purpose: decompose approved scope into estimable and verifiable work.
+**Work Breakdown** (complete). Purpose: break scope into well-defined pieces of work that can be estimated, assigned, tracked and accepted.
 
-Inputs: approved scope and deliverables; dependencies and constraints; definition of done
+Entry criteria: Scope and requirements are baselined; The team or teams are known; A tracking tool is available
+
+Inputs: scope statement and requirements; architecture and constraints; team capacity; dependency information
 
 Procedure:
-1. Decompose deliverables into work packages with clear boundaries and owners.
-2. Identify dependencies, integration points, external approvals and critical path.
-3. Define acceptance evidence and estimate-ready assumptions for each package.
-4. Review decomposition with delivery and technical owners before estimating.
+1. Break the deliverables down to work packages by outcome, not by activity, until each can be estimated, assigned to one owner and finished within a few days to a few weeks.
+2. Keep the breakdown complete: the lower levels must add up to the whole scope, including testing, documentation, deployment and handover.
+3. Give each package a definition of done and acceptance criteria, and an identifier that tools and reports use.
+4. Identify dependencies between packages and with other teams, and sequence the work with the riskiest parts first.
+5. Estimate each package (stage 38), and check the totals against the plan and budget.
+6. Place the packages in the tracker under their parent, and keep the breakdown current through change control.
 
-Deliverables: WBS/backlog hierarchy; dependency network; work package acceptance criteria
+Deliverables: work breakdown structure; work package definitions with acceptance criteria; dependency and sequence map; tracker structure
 
-Acceptance: Every scope item maps to a work package. No package is too broad to estimate or verify. Dependencies and ownership are explicit.
+Acceptance: The lower levels add up to the whole scope Each package has one owner and a definition of done Testing and deployment work is included Dependencies are recorded
 
-Validation: Cross-functional planning review.
+Validation: Project manager review with team leads.
+
+- manual: sum package estimates and compare with the plan total expect: equal within the stated tolerance
+- manual: check each package has an owner, acceptance criteria and a parent expect: none missing
+
+Failure modes:
+- Activities instead of outcomes | detect: Packages like 'work on API' | respond: Rewrite as deliverables
+- Missing testing and release work | detect: Late surprises | respond: Add the packages
+- Packages too big | detect: Estimates wide, status vague | respond: Split further
+
+ILLUSTRATIVE: A reporting feature is broken into packages such as 'export API with tests', 'scheduler with failure alerts', and 'deployment and runbook'; each has an owner and acceptance criteria, and the totals match the plan.
 
 Gate: 04-037. Approval: none required
 
@@ -263,21 +277,35 @@ ILLUSTRATIVE: A risk reads 'Because the vendor is the only supplier of the SDK, 
 Gate: 04-042. Approval: none required
 
 ## 43
-**Stakeholder Management** (stub). Purpose: align decision-makers and affected parties through the lifecycle.
+**Stakeholder Management** (complete). Purpose: identify the people who affect or are affected by the work, understand what they need, and keep them engaged and informed in a way that fits each.
 
-Inputs: stakeholder and influence map; decision calendar; communication needs
+Entry criteria: The project or program scope is known; A sponsor is named; A way to record communication exists
+
+Inputs: scope and goals; organization chart and influence; past interactions; risk register
 
 Procedure:
-1. Identify decision authority, affected users, veto points and information needs.
-2. Set communication cadence and channel by stakeholder group.
-3. Capture decisions, concerns, commitments and unresolved conflicts.
-4. Escalate missing decisions before they block downstream work.
+1. Identify stakeholders broadly, including users, operators, support, security, legal and affected teams, not only those who fund the work.
+2. Analyze each one's interest, influence, expectations and concerns, from conversations rather than assumptions.
+3. Decide the engagement for each: inform, consult or involve in decisions, and set frequency and channel.
+4. Make a communication plan with owner, content and schedule, and keep an issue and decision log visible to stakeholders.
+5. Check understanding and support periodically through short conversations or pulse questions, and adjust the engagement.
+6. Escalate unresolved concerns to the sponsor with a clear ask, and record the outcome.
 
-Deliverables: stakeholder map; communications plan; decision log
+Deliverables: stakeholder register with analysis; engagement and communication plan; decision and issue log; periodic support check
 
-Acceptance: Every key decision has an owner and due date. Affected parties are informed before impact. Conflicts are resolved or explicitly escalated.
+Acceptance: Operators, support and security are in the register Each stakeholder has an engagement level and an owner Decisions and issues are logged visibly Unresolved concerns reach the sponsor
 
-Validation: Sponsor and stakeholder review.
+Validation: Program manager review; sponsor for escalations.
+
+- manual: compare the register with the organization chart and the list of affected systems expect: no affected group missing
+- manual: sample three stakeholders and check the last contact against the plan expect: contact on schedule
+
+Failure modes:
+- Operations not consulted | detect: Surprises at handover | respond: Add and involve early
+- Concern raised and lost | detect: Not in the log | respond: Record and review weekly
+- Everyone gets the same updates | detect: Some ignore, some want more | respond: Tailor by interest
+
+ILLUSTRATIVE: The register adds the support team, which is affected by a new ticket form. A fortnightly review with them surfaces a training need, recorded in the issue log and resolved before launch.
 
 Gate: 04-043. Approval: none required
 

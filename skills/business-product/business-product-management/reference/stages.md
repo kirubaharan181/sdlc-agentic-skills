@@ -145,21 +145,35 @@ ILLUSTRATIVE: Eight interviews show that small teams re-enter data between two t
 Gate: 01-004. Approval: none required
 
 ## 5
-**Business Analysis** (stub). Purpose: translate business needs into process and decision requirements.
+**Business Analysis** (complete). Purpose: turn a business problem into analyzed needs, process models and options with costs and benefits, so the right thing gets specified.
 
-Inputs: business objectives and stakeholders; current-state process evidence; policy and data constraints
+Entry criteria: A business problem or opportunity is stated; Stakeholders can be reached; A sponsor is named
+
+Inputs: problem statement and goals; current process descriptions and data; stakeholder input; constraints
 
 Procedure:
-1. Map current actors, events, inputs, decisions, exceptions and downstream outcomes.
-2. Identify process pain points, business rules, data ownership and control points.
-3. Model the proposed state and compare impacts, dependencies and exception paths.
-4. Trace each requirement to a business objective and a measurable acceptance condition.
+1. Describe the current process end to end (who, steps, systems, volumes, delays and error rates) using observation and data, not only descriptions.
+2. Model it with a standard notation such as BPMN, and mark where work waits, loops back or is done by hand.
+3. Find root causes with a method such as five whys or cause-and-effect analysis, and test each cause against data.
+4. Define options including the do-nothing case, and compare them on cost, benefit, risk and effort with the assumptions shown.
+5. Recommend an option and state the measurable change expected, such as handling time or error rate, with the baseline.
+6. Hand over the analysis and the recommendation to requirements work with the open questions listed.
 
-Deliverables: current/future process model; business rule catalogue; gap analysis; requirements traceability
+Deliverables: current-state process model with measures; root cause analysis; options comparison including do-nothing; recommendation with baseline and expected change
 
-Acceptance: Process paths include normal, exception and failure cases. Rules have an owner and source. Requirements are testable and trace to a business outcome.
+Acceptance: Process models match what people do, confirmed by them Causes are supported by data Do-nothing is one of the options The expected benefit has a baseline
 
-Validation: Walkthrough with process owners and affected users.
+Validation: Sponsor review of the recommendation.
+
+- manual: walk two process participants through the model and record corrections expect: corrections applied
+- manual: recompute the benefit estimate from the cited baseline figures expect: same result
+
+Failure modes:
+- Model shows the official process, not the real one | detect: Staff describe different steps | respond: Observe the work and revise
+- Benefit without baseline | detect: No measure to compare | respond: Collect baseline first
+- Only one option compared | detect: No alternatives | respond: Add do-nothing and a cheaper option
+
+ILLUSTRATIVE: Observation shows invoice approvals wait a median of 6 days, mostly for one approver. Options are compared, including a delegation rule, and the recommendation targets a 2-day median with the 6-day figure as the baseline.
 
 Gate: 01-005. Approval: none required
 

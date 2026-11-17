@@ -1,0 +1,65 @@
+{
+  "stage_id": 53,
+  "purpose": "build the user-facing part of the application so it is correct, fast, accessible and maintainable, using the agreed designs and API contracts",
+  "entry_criteria": [
+    "Approved designs and an API contract exist",
+    "A design system or component library is in place",
+    "The browser and device support policy is known"
+  ],
+  "inputs": [
+    "designs and design system",
+    "API contract",
+    "accessibility and performance requirements",
+    "supported browser policy"
+  ],
+  "procedure": [
+    "Build from the design system components, and extend them rather than writing page-specific copies; use semantic HTML and correct roles so accessibility starts from structure.",
+    "Handle all states: loading, empty, error and success, plus validation messages and disabled states, against the real API contract using mocks until the backend exists.",
+    "Manage state deliberately: keep server data in a data-fetching layer with caching, local state local, and avoid duplicating the same data in several stores.",
+    "Meet performance budgets: control bundle size with code splitting, optimize images, defer non-critical scripts and measure Core Web Vitals.",
+    "Protect against common web risks: escape output, avoid unsafe HTML insertion, use content security policy and keep tokens out of local storage where the design allows.",
+    "Test with unit and component tests, accessibility checks and a few end-to-end journeys, and run them in CI."
+  ],
+  "deliverables": [
+    "components and pages built from the design system",
+    "state and data fetching layer",
+    "performance measurements",
+    "component, accessibility and end-to-end tests"
+  ],
+  "acceptance_criteria": [
+    "All states are implemented",
+    "Semantic HTML and keyboard use are verified",
+    "Performance budgets are measured and met",
+    "Untrusted data is never inserted as HTML"
+  ],
+  "validation_method": "Frontend lead review.",
+  "validation": [
+    {
+      "command": "npx vitest run && npx playwright test --grep @a11y   # example; use the project's tools",
+      "expect": "tests pass, including accessibility checks"
+    },
+    {
+      "command": "npx lighthouse http://localhost:3000 --only-categories=performance,accessibility --quiet --chrome-flags='--headless'   # example",
+      "expect": "scores meet the agreed budgets"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Only the happy state built",
+      "detection": "Blank screen on error",
+      "response": "Implement every state"
+    },
+    {
+      "mode": "Bundle grows unchecked",
+      "detection": "Slow first load",
+      "response": "Add a size budget in CI"
+    },
+    {
+      "mode": "Unescaped user content",
+      "detection": "Script runs from input",
+      "response": "Escape and add a content security policy"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A product list page uses the design system table, shows skeleton, empty and error states, fetches through a cached data layer, and a CI budget fails the build if the main bundle grows by more than 10 percent.",
+  "status": "complete"
+}

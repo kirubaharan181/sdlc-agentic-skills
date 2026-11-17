@@ -18,21 +18,35 @@
 - [67 Developer Testing](#67)
 
 ## 53
-**Frontend Development** (stub). Purpose: implement accessible client behavior and resilient interface states.
+**Frontend Development** (complete). Purpose: build the user-facing part of the application so it is correct, fast, accessible and maintainable, using the agreed designs and API contracts.
 
-Inputs: approved UI/UX specification; API contracts and browser support matrix; design tokens and accessibility criteria
+Entry criteria: Approved designs and an API contract exist; A design system or component library is in place; The browser and device support policy is known
+
+Inputs: designs and design system; API contract; accessibility and performance requirements; supported browser policy
 
 Procedure:
-1. Inspect routing, state management, component conventions and existing design system.
-2. Implement semantic components, responsive layout, keyboard behavior and loading/empty/error states.
-3. Integrate typed or validated API boundaries and handle cancellation/retry safely.
-4. Add component and browser tests for critical interactions; verify accessibility and console/network errors.
+1. Build from the design system components, and extend them rather than writing page-specific copies; use semantic HTML and correct roles so accessibility starts from structure.
+2. Handle all states: loading, empty, error and success, plus validation messages and disabled states, against the real API contract using mocks until the backend exists.
+3. Manage state deliberately: keep server data in a data-fetching layer with caching, local state local, and avoid duplicating the same data in several stores.
+4. Meet performance budgets: control bundle size with code splitting, optimize images, defer non-critical scripts and measure Core Web Vitals.
+5. Protect against common web risks: escape output, avoid unsafe HTML insertion, use content security policy and keep tokens out of local storage where the design allows.
+6. Test with unit and component tests, accessibility checks and a few end-to-end journeys, and run them in CI.
 
-Deliverables: component implementation; UI state model; component/browser tests; accessibility evidence
+Deliverables: components and pages built from the design system; state and data fetching layer; performance measurements; component, accessibility and end-to-end tests
 
-Acceptance: Critical flows work at supported viewports. Keyboard and screen-reader semantics are preserved. No unhandled errors or leaked async state.
+Acceptance: All states are implemented Semantic HTML and keyboard use are verified Performance budgets are measured and met Untrusted data is never inserted as HTML
 
-Validation: UI peer review and browser test run.
+Validation: Frontend lead review.
+
+- `npx vitest run && npx playwright test --grep @a11y   # example; use the project's tools` expect: tests pass, including accessibility checks
+- `npx lighthouse http://localhost:3000 --only-categories=performance,accessibility --quiet --chrome-flags='--headless'   # example` expect: scores meet the agreed budgets
+
+Failure modes:
+- Only the happy state built | detect: Blank screen on error | respond: Implement every state
+- Bundle grows unchecked | detect: Slow first load | respond: Add a size budget in CI
+- Unescaped user content | detect: Script runs from input | respond: Escape and add a content security policy
+
+ILLUSTRATIVE: A product list page uses the design system table, shows skeleton, empty and error states, fetches through a cached data layer, and a CI budget fails the build if the main bundle grows by more than 10 percent.
 
 Gate: 06-053. Approval: none required
 

@@ -1,0 +1,65 @@
+{
+  "stage_id": 22,
+  "purpose": "confirm with the right people that the written requirements are correct, complete, consistent and testable before design and build rely on them",
+  "entry_criteria": [
+    "Requirements are documented with identifiers (stage 12)",
+    "Stakeholders and a product owner are available",
+    "Acceptance criteria exist for the requirements"
+  ],
+  "inputs": [
+    "requirements document",
+    "business goals and rules",
+    "stakeholder list",
+    "traceability to needs"
+  ],
+  "procedure": [
+    "Check each requirement against the quality attributes: necessary, unambiguous, testable, consistent, feasible and traceable to a need.",
+    "Check the set for gaps against the process models and the goals, and for conflicts between requirements and with the rules.",
+    "Walk the stakeholders through scenarios built from the requirements, and record where the scenario does not match their expectations.",
+    "Review with developers and testers: can it be built and can each criterion be tested.",
+    "Log each finding with the requirement id, the problem and the decision, and update the requirements.",
+    "Have the product owner approve the validated baseline in writing and set the change process from then on."
+  ],
+  "deliverables": [
+    "review findings log",
+    "scenario walkthrough notes",
+    "updated requirements baseline",
+    "product owner approval"
+  ],
+  "acceptance_criteria": [
+    "Every requirement was checked against the named attributes",
+    "Gaps and conflicts are logged with decisions",
+    "Testers and developers reviewed it",
+    "The product owner approved the baseline"
+  ],
+  "validation_method": "Product owner approval of the baseline.",
+  "validation": [
+    {
+      "check": "check every requirement id has a source need, an acceptance criterion and a review result",
+      "expect": "none missing"
+    },
+    {
+      "check": "trace three goals to the requirements that satisfy them",
+      "expect": "all traced"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Approval without review",
+      "detection": "No findings log",
+      "response": "Perform the review"
+    },
+    {
+      "mode": "Conflict found late",
+      "detection": "Two requirements contradict in design",
+      "response": "Resolve with the owner and record"
+    },
+    {
+      "mode": "Untestable requirement",
+      "detection": "Tester cannot judge pass or fail",
+      "response": "Rewrite with a measure"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A walkthrough of the refund scenario shows two requirements give different time limits. The owner decides on 30 days, both are corrected, and the baseline is approved with the finding logged.",
+  "status": "complete"
+}

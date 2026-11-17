@@ -213,21 +213,35 @@ ILLUSTRATIVE: Support tickets and interviews show new users abandon sign-up at t
 Gate: 02-016. Approval: none required
 
 ## 17
-**Wireframing** (stub). Purpose: explore information hierarchy and interaction structure before visual polish.
+**Wireframing** (complete). Purpose: sketch screens and structure early and cheaply, so the layout and flow can be judged before visual design or code.
 
-Inputs: validated task flows; content requirements; target viewport/device constraints
+Entry criteria: Key user flows exist; Requirements for the screens are known; Reviewers from product and engineering are available
+
+Inputs: user flows; requirements and content list; device and breakpoint targets; design system components
 
 Procedure:
-1. Identify primary tasks and content hierarchy for each screen.
-2. Create low-fidelity layouts with navigation, states, responsive behavior and annotations.
-3. Review task completion paths, empty/error/loading states and keyboard flow.
-4. Record design decisions and unresolved usability questions.
+1. List the content and actions each screen must hold, ordered by priority for the user's task.
+2. Sketch low-fidelity layouts with boxes and labels, without colour or final images, so discussion is about structure and flow.
+3. Show navigation, the main call to action, and all key states: empty, loading, error and filled.
+4. Annotate behavior that is not visible: validation, conditional fields, permissions and what each action does.
+5. Review with a developer for feasibility and with a few users or colleagues on a task, and record what confused them.
+6. Revise and save the approved version with its annotations as the input to UI design.
 
-Deliverables: annotated wireframes; screen inventory; interaction flow
+Deliverables: wireframes for each screen and key state; annotations of behavior; review notes; approved version
 
-Acceptance: Wireframes cover all critical states and target viewports. Labels and navigation support user goals. No decorative styling hides missing behavior.
+Acceptance: Each screen shows its priority content and primary action Key states are drawn Behavior is annotated A task review was done and recorded
 
-Validation: Product/design review and quick usability walkthrough.
+Validation: UX lead and product owner review.
+
+- manual: ask a reviewer to complete the main task on the wireframes without help and note where they hesitate expect: hesitations recorded and addressed
+- manual: check each screen has empty, loading and error states expect: none missing
+
+Failure modes:
+- Wireframes drift into visual design | detect: Debate about colours | respond: Keep low fidelity
+- States missing | detect: Developers invent error screens | respond: Add the states
+- No task test | detect: Layout liked but not usable | respond: Test with a task
+
+ILLUSTRATIVE: Wireframes for a settings area show the save action, an inline error state and a read-only view for users without permission. A reviewer cannot find where to change the email, so the section is renamed and moved up.
 
 Gate: 02-017. Approval: none required
 
@@ -364,20 +378,34 @@ ILLUSTRATIVE: Automated checks find missing form labels; a keyboard test finds a
 Gate: 02-021. Approval: none required
 
 ## 22
-**Requirement Validation** (stub). Purpose: prove requirements are complete, consistent, feasible and testable.
+**Requirement Validation** (complete). Purpose: confirm with the right people that the written requirements are correct, complete, consistent and testable before design and build rely on them.
 
-Inputs: draft requirements and traceability; stakeholder authority; acceptance and quality criteria
+Entry criteria: Requirements are documented with identifiers (stage 12); Stakeholders and a product owner are available; Acceptance criteria exist for the requirements
+
+Inputs: requirements document; business goals and rules; stakeholder list; traceability to needs
 
 Procedure:
-1. Check each requirement for atomicity, necessity, clarity, feasibility and verifiability.
-2. Trace business goals to requirements, design elements and test cases.
-3. Run ambiguity, conflict, duplication and orphan checks.
-4. Resolve or explicitly defer findings with owners before baseline approval.
+1. Check each requirement against the quality attributes: necessary, unambiguous, testable, consistent, feasible and traceable to a need.
+2. Check the set for gaps against the process models and the goals, and for conflicts between requirements and with the rules.
+3. Walk the stakeholders through scenarios built from the requirements, and record where the scenario does not match their expectations.
+4. Review with developers and testers: can it be built and can each criterion be tested.
+5. Log each finding with the requirement id, the problem and the decision, and update the requirements.
+6. Have the product owner approve the validated baseline in writing and set the change process from then on.
 
-Deliverables: validated baseline; traceability matrix; review issue log
+Deliverables: review findings log; scenario walkthrough notes; updated requirements baseline; product owner approval
 
-Acceptance: No critical orphan, conflict or untestable requirement remains. Stakeholders approve the baseline version. Deferred items have owner and impact.
+Acceptance: Every requirement was checked against the named attributes Gaps and conflicts are logged with decisions Testers and developers reviewed it The product owner approved the baseline
 
-Validation: Cross-functional requirements review.
+Validation: Product owner approval of the baseline.
+
+- manual: check every requirement id has a source need, an acceptance criterion and a review result expect: none missing
+- manual: trace three goals to the requirements that satisfy them expect: all traced
+
+Failure modes:
+- Approval without review | detect: No findings log | respond: Perform the review
+- Conflict found late | detect: Two requirements contradict in design | respond: Resolve with the owner and record
+- Untestable requirement | detect: Tester cannot judge pass or fail | respond: Rewrite with a measure
+
+ILLUSTRATIVE: A walkthrough of the refund scenario shows two requirements give different time limits. The owner decides on 30 days, both are corrected, and the baseline is approved with the finding logged.
 
 Gate: 02-022. Approval: none required

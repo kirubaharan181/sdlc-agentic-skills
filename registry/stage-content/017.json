@@ -1,0 +1,65 @@
+{
+  "stage_id": 17,
+  "purpose": "sketch screens and structure early and cheaply, so the layout and flow can be judged before visual design or code",
+  "entry_criteria": [
+    "Key user flows exist",
+    "Requirements for the screens are known",
+    "Reviewers from product and engineering are available"
+  ],
+  "inputs": [
+    "user flows",
+    "requirements and content list",
+    "device and breakpoint targets",
+    "design system components"
+  ],
+  "procedure": [
+    "List the content and actions each screen must hold, ordered by priority for the user's task.",
+    "Sketch low-fidelity layouts with boxes and labels, without colour or final images, so discussion is about structure and flow.",
+    "Show navigation, the main call to action, and all key states: empty, loading, error and filled.",
+    "Annotate behavior that is not visible: validation, conditional fields, permissions and what each action does.",
+    "Review with a developer for feasibility and with a few users or colleagues on a task, and record what confused them.",
+    "Revise and save the approved version with its annotations as the input to UI design."
+  ],
+  "deliverables": [
+    "wireframes for each screen and key state",
+    "annotations of behavior",
+    "review notes",
+    "approved version"
+  ],
+  "acceptance_criteria": [
+    "Each screen shows its priority content and primary action",
+    "Key states are drawn",
+    "Behavior is annotated",
+    "A task review was done and recorded"
+  ],
+  "validation_method": "UX lead and product owner review.",
+  "validation": [
+    {
+      "check": "ask a reviewer to complete the main task on the wireframes without help and note where they hesitate",
+      "expect": "hesitations recorded and addressed"
+    },
+    {
+      "check": "check each screen has empty, loading and error states",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Wireframes drift into visual design",
+      "detection": "Debate about colours",
+      "response": "Keep low fidelity"
+    },
+    {
+      "mode": "States missing",
+      "detection": "Developers invent error screens",
+      "response": "Add the states"
+    },
+    {
+      "mode": "No task test",
+      "detection": "Layout liked but not usable",
+      "response": "Test with a task"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Wireframes for a settings area show the save action, an inline error state and a read-only view for users without permission. A reviewer cannot find where to change the email, so the section is renamed and moved up.",
+  "status": "complete"
+}

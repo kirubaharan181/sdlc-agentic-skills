@@ -5,13 +5,12 @@ platform support or model results that the repository cannot show.
 
 ## Short post
 Open-source library that gives AI coding agents an SDLC operating model: 190 stages, 74 roles with RACI, 23 distinct
-workflows with approvals, and a validator that rejects duplicate or unrunnable content. 85 stages have real content so far;
-the rest are marked stub. `make demo` prints a release plan from the registries. Feedback on the stage content welcome.
+workflows with approvals, and a validator that rejects duplicate or unrunnable content. all 190 stages have authored content, but none has been run against a real project yet. `make demo` prints a release plan from the registries. Feedback on the stage content welcome.
 
 ## Longer post: what is different
 - Each workflow has its own steps, owners, approval points and failure paths; the validator rejects clones.
 - Evidence examples are labelled illustrative; a record may say PASS only for a run that happened.
-- Completeness is reported honestly: 178 of 190 stages complete, 12 stubs.
+- Completeness is reported honestly: 190 of 190 stages authored (none are stubs), not yet run on a real project.
 - Not done: no model eval has been run, and no agent platform adapter has been tested (see `adapters/COMPATIBILITY.md`).
 
 ## Where it might go (owner's choice)

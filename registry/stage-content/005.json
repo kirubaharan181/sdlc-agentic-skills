@@ -1,0 +1,65 @@
+{
+  "stage_id": 5,
+  "purpose": "turn a business problem into analyzed needs, process models and options with costs and benefits, so the right thing gets specified",
+  "entry_criteria": [
+    "A business problem or opportunity is stated",
+    "Stakeholders can be reached",
+    "A sponsor is named"
+  ],
+  "inputs": [
+    "problem statement and goals",
+    "current process descriptions and data",
+    "stakeholder input",
+    "constraints"
+  ],
+  "procedure": [
+    "Describe the current process end to end (who, steps, systems, volumes, delays and error rates) using observation and data, not only descriptions.",
+    "Model it with a standard notation such as BPMN, and mark where work waits, loops back or is done by hand.",
+    "Find root causes with a method such as five whys or cause-and-effect analysis, and test each cause against data.",
+    "Define options including the do-nothing case, and compare them on cost, benefit, risk and effort with the assumptions shown.",
+    "Recommend an option and state the measurable change expected, such as handling time or error rate, with the baseline.",
+    "Hand over the analysis and the recommendation to requirements work with the open questions listed."
+  ],
+  "deliverables": [
+    "current-state process model with measures",
+    "root cause analysis",
+    "options comparison including do-nothing",
+    "recommendation with baseline and expected change"
+  ],
+  "acceptance_criteria": [
+    "Process models match what people do, confirmed by them",
+    "Causes are supported by data",
+    "Do-nothing is one of the options",
+    "The expected benefit has a baseline"
+  ],
+  "validation_method": "Sponsor review of the recommendation.",
+  "validation": [
+    {
+      "check": "walk two process participants through the model and record corrections",
+      "expect": "corrections applied"
+    },
+    {
+      "check": "recompute the benefit estimate from the cited baseline figures",
+      "expect": "same result"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Model shows the official process, not the real one",
+      "detection": "Staff describe different steps",
+      "response": "Observe the work and revise"
+    },
+    {
+      "mode": "Benefit without baseline",
+      "detection": "No measure to compare",
+      "response": "Collect baseline first"
+    },
+    {
+      "mode": "Only one option compared",
+      "detection": "No alternatives",
+      "response": "Add do-nothing and a cheaper option"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Observation shows invoice approvals wait a median of 6 days, mostly for one approver. Options are compared, including a delegation rule, and the recommendation targets a 2-day median with the 6-day figure as the baseline.",
+  "status": "complete"
+}
