@@ -1,0 +1,65 @@
+{
+  "stage_id": 7,
+  "purpose": "judge whether an idea can be built and run within technical, time, cost and legal limits, before it is committed",
+  "entry_criteria": [
+    "A candidate solution or options exist",
+    "Constraints on time, budget and compliance are known",
+    "An architect is available to assess"
+  ],
+  "inputs": [
+    "solution options",
+    "constraints and requirements",
+    "existing architecture",
+    "team skills"
+  ],
+  "procedure": [
+    "List the requirements that most affect feasibility, such as scale, integration, data and compliance.",
+    "For each option, assess technical fit, integration effort, skill gaps, operating cost and legal constraints.",
+    "Identify the largest unknown for each option and run a small spike to test it.",
+    "Compare options with the same criteria and show the scoring and the evidence.",
+    "Recommend an option, or recommend not to proceed, with the main risks and how to reduce them.",
+    "Record the assumptions that, if wrong, would change the recommendation."
+  ],
+  "deliverables": [
+    "feasibility assessment",
+    "spike results",
+    "options comparison",
+    "recommendation with risks and assumptions"
+  ],
+  "acceptance_criteria": [
+    "Options are scored on the same criteria",
+    "The largest unknown was tested",
+    "Risks have a reduction step",
+    "Key assumptions are listed"
+  ],
+  "validation_method": "Solution architect recommendation; sponsor decision.",
+  "validation": [
+    {
+      "check": "confirm each option row has evidence or marked assumption",
+      "expect": "no unsupported scores"
+    },
+    {
+      "check": "check the spike output is attached to the assessment",
+      "expect": "attached"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Preferred option wins by design",
+      "detection": "Criteria written after the choice",
+      "response": "Fix criteria first"
+    },
+    {
+      "mode": "Unknown never tested",
+      "detection": "Risk unsupported by evidence",
+      "response": "Run a spike"
+    },
+    {
+      "mode": "Cost counted only to build",
+      "detection": "Operating cost missing",
+      "response": "Add run cost"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Two options for ingesting partner data are compared. A one-day spike shows the partner's API limits rule out near-real-time polling, so the batch option is recommended with a note that the assumption about volume must be rechecked.",
+  "status": "complete"
+}

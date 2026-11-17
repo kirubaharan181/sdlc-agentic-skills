@@ -1,0 +1,65 @@
+{
+  "stage_id": 4,
+  "purpose": "find real problems worth solving and test the idea cheaply before committing to build it",
+  "entry_criteria": [
+    "A target user group or problem area is named",
+    "Access to users exists",
+    "The team has time for short experiments"
+  ],
+  "inputs": [
+    "user research",
+    "usage data",
+    "problem hypotheses",
+    "competing solutions"
+  ],
+  "procedure": [
+    "Write the problem hypotheses as who has the problem, what happens, and why it matters.",
+    "Interview users about past behavior, not opinions about your idea, and record what they say.",
+    "Rank problems by frequency, pain and willingness to change, using evidence from the interviews.",
+    "For the best problem, run the cheapest test of a solution: prototype, concierge version or landing page.",
+    "Set the success threshold before the test, then judge by it.",
+    "Decide to proceed, change direction or stop, and record the evidence."
+  ],
+  "deliverables": [
+    "problem hypotheses",
+    "interview notes",
+    "experiment design and result",
+    "decision record"
+  ],
+  "acceptance_criteria": [
+    "Success threshold was set before the test",
+    "Interview notes are recorded",
+    "Decision is based on the threshold",
+    "Stopping is a valid recorded outcome"
+  ],
+  "validation_method": "Product manager decision.",
+  "validation": [
+    {
+      "check": "confirm the success threshold was written before the experiment started",
+      "expect": "dated record exists"
+    },
+    {
+      "check": "count interviews supporting each ranked problem",
+      "expect": "counts shown in the ranking"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Leading interviews",
+      "detection": "Users agree with everything",
+      "response": "Ask about past behavior"
+    },
+    {
+      "mode": "Threshold moved afterwards",
+      "detection": "Result passes only after change",
+      "response": "Treat as failed"
+    },
+    {
+      "mode": "Only friendly users",
+      "detection": "Sample not representative",
+      "response": "Recruit outside the network"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Eight interviews show that small teams re-enter data between two tools weekly. A concierge version run by hand for five teams meets the pre-set threshold of three repeat uses, so the idea proceeds to planning.",
+  "status": "complete"
+}

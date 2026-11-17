@@ -31,13 +31,13 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 171 | Patch Management | complete | DevOps Engineer |
 | 172 | Dependency Updates | complete | Backend Engineer |
 | 173 | Database Maintenance | complete | Database Administrator |
-| 174 | Performance Optimization | stub | Performance Engineer |
-| 175 | Technical Debt Reduction | stub | Backend Engineer |
-| 176 | Feature Enhancement | stub | Product Owner |
+| 174 | Performance Optimization | complete | Performance Engineer |
+| 175 | Technical Debt Reduction | complete | Backend Engineer |
+| 176 | Feature Enhancement | complete | Product Owner |
 | 177 | Customer Feedback | complete | Product Manager |
 | 178 | Knowledge Base | complete | Technical Writer |
 | 179 | Maintenance Release | complete | Release Manager |
-| 180 | Product Lifecycle Management | stub | Product Manager |
+| 180 | Product Lifecycle Management | complete | Product Manager |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

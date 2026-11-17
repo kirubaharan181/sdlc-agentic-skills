@@ -1,0 +1,65 @@
+{
+  "stage_id": 180,
+  "purpose": "manage a product from launch to retirement with decisions made on evidence and communicated to those affected",
+  "entry_criteria": [
+    "The product is released or planned for release",
+    "Usage, revenue or cost data exists",
+    "A sponsor accepts decisions on investment and retirement"
+  ],
+  "inputs": [
+    "usage and business data",
+    "support and maintenance cost",
+    "roadmap and strategy",
+    "customer commitments"
+  ],
+  "procedure": [
+    "Define the lifecycle stages in use (introduce, grow, mature, decline, retire) and the signals for each.",
+    "Review each product on a regular schedule using the same measures: users, revenue, cost, risk and strategic fit.",
+    "Decide per product to invest, maintain, simplify or retire, and record the reason with the sponsor.",
+    "For retirement, plan the notice period, migration path, data handling and support end date.",
+    "Communicate to customers and internal teams in advance and track who has moved.",
+    "Shut down in stages, confirm nothing depends on it, and archive records required by policy."
+  ],
+  "deliverables": [
+    "lifecycle review",
+    "decision record with sponsor",
+    "retirement plan and notices",
+    "archive confirmation"
+  ],
+  "acceptance_criteria": [
+    "Every product has a stage and a decision",
+    "Retirement has notice, migration and data handling",
+    "Dependents are identified before shutdown",
+    "The sponsor approved investment and retirement"
+  ],
+  "validation_method": "Business sponsor approval.",
+  "validation": [
+    {
+      "check": "check each product in scope has a recorded stage and decision with date",
+      "expect": "no gaps"
+    },
+    {
+      "check": "confirm for each retirement that no active customers or internal consumers remain",
+      "expect": "none, or exceptions approved"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Products linger unreviewed",
+      "detection": "No review in over a year",
+      "response": "Schedule reviews with an owner"
+    },
+    {
+      "mode": "Retirement surprises customers",
+      "detection": "Complaints after shutdown",
+      "response": "Extend notice and support"
+    },
+    {
+      "mode": "Hidden dependency",
+      "detection": "Another system breaks on shutdown",
+      "response": "Inventory dependents first"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A reporting add-on has 3 percent of users and 15 percent of support load. The sponsor approves retirement with six months notice and a migration guide; usage is tracked until it reaches zero.",
+  "status": "complete"
+}

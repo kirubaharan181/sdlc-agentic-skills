@@ -1,0 +1,65 @@
+{
+  "stage_id": 186,
+  "purpose": "keep documentation accurate, findable and owned over time, so people can trust it",
+  "entry_criteria": [
+    "Documentation exists in known places",
+    "A way to assign owners exists",
+    "A review cadence can be agreed"
+  ],
+  "inputs": [
+    "documentation inventory",
+    "usage and search data",
+    "recent product and process changes",
+    "style and structure standards"
+  ],
+  "procedure": [
+    "Inventory the documents, assign an owner to each and record the last review date.",
+    "Define standards for structure, naming, status labels and where each type of content lives.",
+    "Link documentation changes to code or process changes so they are reviewed together.",
+    "Review on a schedule by type, and archive or delete outdated pages instead of leaving them.",
+    "Check for broken links and orphaned pages automatically.",
+    "Track search failures and reader feedback, and fix the most common gaps first."
+  ],
+  "deliverables": [
+    "documentation inventory with owners",
+    "standards",
+    "review schedule and results",
+    "archive log"
+  ],
+  "acceptance_criteria": [
+    "Every document has an owner and a review date",
+    "No broken links in published docs",
+    "Outdated pages are archived",
+    "Changes to behavior include documentation updates"
+  ],
+  "validation_method": "Documentation owner approval of standards.",
+  "validation": [
+    {
+      "command": "python3 scripts/check_links.py",
+      "expect": "no broken relative links"
+    },
+    {
+      "check": "list documents past their review date",
+      "expect": "each has an owner and a planned action"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Documents without owners",
+      "detection": "Inventory blanks",
+      "response": "Assign or archive"
+    },
+    {
+      "mode": "Docs drift from the code",
+      "detection": "Readers report wrong steps",
+      "response": "Tie docs to the change review"
+    },
+    {
+      "mode": "Duplicate pages",
+      "detection": "Different answers to one question",
+      "response": "Merge and redirect"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: An inventory finds 12 pages with no owner. Eight are archived, four are assigned, and a link check runs in CI so a renamed page fails the build instead of leaving dead links.",
+  "status": "complete"
+}

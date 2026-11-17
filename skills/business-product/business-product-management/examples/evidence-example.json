@@ -9,23 +9,23 @@
   "executor": "<Business Strategist or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Executive challenge session and traceability from strategy choices to measurable outcomes.",
+    "method": "Business sponsor approval.",
     "command": "<command or review technique actually used>",
     "expected": "<expected result>",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "strategy brief",
-      "path": "<path or immutable URL of strategy brief>"
+      "name": "strategy statement",
+      "path": "<path or immutable URL of strategy statement>"
     },
     {
-      "name": "option appraisal",
-      "path": "<path or immutable URL of option appraisal>"
+      "name": "evidence summary",
+      "path": "<path or immutable URL of evidence summary>"
     },
     {
-      "name": "assumption register",
-      "path": "<path or immutable URL of assumption register>"
+      "name": "outcomes and measures",
+      "path": "<path or immutable URL of outcomes and measures>"
     }
   ],
   "limitations": [

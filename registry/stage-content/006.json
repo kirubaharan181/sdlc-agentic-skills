@@ -1,0 +1,65 @@
+{
+  "stage_id": 6,
+  "purpose": "turn a validated opportunity into a plan with scope, order, owners and dates that the team can commit to",
+  "entry_criteria": [
+    "The opportunity is validated (stage 4)",
+    "Capacity of the teams is known",
+    "Dependencies on other teams are listed"
+  ],
+  "inputs": [
+    "validated opportunity",
+    "feasibility and estimates",
+    "team capacity",
+    "strategy and goals"
+  ],
+  "procedure": [
+    "State the outcome and the measure of success, and what is explicitly out of scope.",
+    "Break the work into releasable increments, each delivering value alone.",
+    "Order increments by value, risk and dependency, and put the riskiest assumptions earliest.",
+    "Estimate with ranges against known capacity, and mark the assumptions behind them.",
+    "Name the owner of each increment and each dependency, and agree dates with those teams.",
+    "Set review points where scope or order can change, and publish the plan."
+  ],
+  "deliverables": [
+    "product plan with scope and out-of-scope",
+    "ordered increments",
+    "estimates with ranges",
+    "dependency and owner list"
+  ],
+  "acceptance_criteria": [
+    "Outcome and measure are stated",
+    "Out of scope is written",
+    "Every increment has an owner and a range estimate",
+    "Dependencies are agreed with the other teams"
+  ],
+  "validation_method": "Product manager and sponsor sign-off.",
+  "validation": [
+    {
+      "check": "check each increment delivers value on its own and has an owner",
+      "expect": "none fails"
+    },
+    {
+      "check": "confirm each external dependency has an agreed date from the other team",
+      "expect": "all confirmed"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Plan is a single date",
+      "detection": "No ranges or assumptions",
+      "response": "Add ranges and list assumptions"
+    },
+    {
+      "mode": "Dependency not agreed",
+      "detection": "Other team unaware",
+      "response": "Agree before committing"
+    },
+    {
+      "mode": "Riskiest work last",
+      "detection": "Late discovery",
+      "response": "Move the riskiest assumption first"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A billing revamp is split into three increments. The one testing the new provider's API comes first because it carries the most risk; estimates are ranges, and the finance team confirms the cut-over window.",
+  "status": "complete"
+}

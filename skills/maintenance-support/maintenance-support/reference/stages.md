@@ -248,59 +248,101 @@ ILLUSTRATIVE: A weekend window rebuilds three bloated indexes online. Rehearsal 
 Gate: 14-173. Approval: dba-owner (for destructive or locking maintenance on production data)
 
 ## 174
-**Performance Optimization** (stub). Purpose: improve measured performance without violating correctness.
+**Performance Optimization** (complete). Purpose: improve the speed or resource use of a running system against a stated target, and keep the gain from regressing.
 
-Inputs: baseline workload and latency profile; consistency/freshness requirements; resource and cost limits
+Entry criteria: A target exists, such as p95 latency or cost per request; The system is observable (stages 155-157); A repeatable load or benchmark exists
+
+Inputs: performance target; production and test measurements; profiles and traces; change history of hot components
 
 Procedure:
-1. Profile before changing code; identify dominant cost and reproducible baseline.
-2. Choose cache key, TTL, invalidation and consistency behavior based on data semantics.
-3. Bound memory, stampede, stale data and eviction behavior.
-4. Compare before/after p50/p95/p99, throughput, error rate and cost under equivalent load.
+1. Reproduce the problem with a benchmark whose result you trust, and record the baseline with its spread.
+2. Locate the bottleneck with profiles and traces; list the top three causes by time share.
+3. Change one thing at a time, starting with the largest share, and re-measure after each change.
+4. Keep only changes that improve the target beyond the noise; revert the rest.
+5. Check that the gain holds on production-like data and does not move cost or errors elsewhere.
+6. Add a performance check to CI or monitoring so a regression is caught, and record what was learned.
 
-Deliverables: profile report; optimization change; cache policy; before/after benchmark
+Deliverables: baseline and final measurements; list of kept and reverted changes; regression check; short write-up
 
-Acceptance: Improvement is measured against baseline. Correctness and freshness invariants hold. No unbounded memory or stale-data risk is introduced.
+Acceptance: Target met or the shortfall is explained Each kept change has measured benefit A regression check exists No functional test fails
 
-Validation: Performance and correctness regression review.
+Validation: Performance engineer and service owner review.
+
+- manual: run the same benchmark three times before and after and compare the medians expect: improvement exceeds the run-to-run spread
+- `pytest -q` expect: all functional tests pass after the changes
+
+Failure modes:
+- Gain within noise | detect: Before and after ranges overlap | respond: Revert or measure longer
+- Fix shifts load elsewhere | detect: Another service slows | respond: Measure the whole path
+- Regression returns | detect: Metric drifts back in weeks | respond: Add the CI or alert check
+
+ILLUSTRATIVE: A search endpoint has p95 of 1.2 s against a 500 ms target. A profile shows 60 percent in one N+1 query; batching it brings p95 to 450 ms, and a latency alert is added at 600 ms.
 
 Gate: 14-174. Approval: none required
 
 ## 175
-**Technical Debt Reduction** (stub). Purpose: maintain a live service safely and preserve customer continuity.
+**Technical Debt Reduction** (complete). Purpose: reduce a chosen piece of debt safely, in small steps that keep behavior unchanged and leave the code easier to change.
 
-Inputs: support case or maintenance request; affected versions and customer impact; service ownership and change policy
+Entry criteria: The debt item is chosen and has an owner (stage 76); Tests cover the area or can be added first; The change can ship in small steps
+
+Inputs: debt register entry; code and its tests; change and incident history; agreed done definition
 
 Procedure:
-1. Classify severity, affected customers, workaround and escalation path using support policy.
-2. Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.
-3. Implement the smallest safe correction or maintenance action with regression and compatibility coverage.
-4. Communicate workaround/fix version, verify closure and update runbook or knowledge base.
+1. State the outcome that proves the debt is paid, such as a removed module or a lower defect rate.
+2. Add characterization tests around current behavior before touching the code.
+3. Refactor in small commits that each keep the tests green; do not mix in new features.
+4. Release behind a flag or in stages when the area is critical, and watch the metrics after each release.
+5. Delete the old code and unused configuration once nothing uses them.
+6. Close the register entry with the evidence and note anything new discovered.
 
-Deliverables: support/maintenance record; reproduction and diagnosis; fix or patch evidence; customer communication and knowledge update
+Deliverables: characterization tests; small refactoring commits; removed old code; closed register entry with evidence
 
-Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
+Acceptance: Behavior is unchanged by the characterization tests The stated outcome is met Old code is actually removed No unrelated features are in the change
 
-Validation: Service owner acceptance and customer-facing closure check.
+Validation: Code review and owner confirmation.
+
+- `pytest -q` expect: characterization and existing tests pass at every commit
+- `git grep -n 'old_module_name' -- src | wc -l` expect: 0 references to removed code
+
+Failure modes:
+- Refactor changes behavior | detect: Characterization test fails | respond: Revert the step and make it smaller
+- Scope grows | detect: Pull request mixes features | respond: Split it
+- Old code stays | detect: Dead modules after release | respond: Delete in a follow-up
+
+ILLUSTRATIVE: A hand-written date parser causes repeated bugs. Tests pin its current outputs, calls are moved to the standard library in five small commits, and the parser file is deleted.
 
 Gate: 14-175. Approval: none required
 
 ## 176
-**Feature Enhancement** (stub). Purpose: maintain a live service safely and preserve customer continuity.
+**Feature Enhancement** (complete). Purpose: decide and deliver an improvement to an existing feature based on evidence of how users actually use it.
 
-Inputs: support case or maintenance request; affected versions and customer impact; service ownership and change policy
+Entry criteria: The feature is live and used; Usage data and feedback exist; A product owner owns the backlog
+
+Inputs: usage analytics; user feedback and support tickets; feature goals; delivery capacity
 
 Procedure:
-1. Classify severity, affected customers, workaround and escalation path using support policy.
-2. Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.
-3. Implement the smallest safe correction or maintenance action with regression and compatibility coverage.
-4. Communicate workaround/fix version, verify closure and update runbook or knowledge base.
+1. Gather evidence: how often and how the feature is used, where users stop, and what they ask for.
+2. Write the problem as a user outcome and the metric that should move.
+3. List options including doing nothing, estimate effort and risk, and pick one with a reason.
+4. Define acceptance criteria and a rollout plan, with a flag for staged release when useful.
+5. Ship, then compare the metric with the baseline after a fixed period.
+6. Record the result and decide to keep, adjust or roll back.
 
-Deliverables: support/maintenance record; reproduction and diagnosis; fix or patch evidence; customer communication and knowledge update
+Deliverables: problem statement with evidence; chosen option and reasoning; acceptance criteria; post-release result
 
-Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
+Acceptance: The change targets a stated outcome and metric Alternatives were considered The result is compared with a baseline A keep or rollback decision is recorded
 
-Validation: Service owner acceptance and customer-facing closure check.
+Validation: Product owner decision with stakeholder input.
+
+- manual: compare the metric for the period before release with the period after expect: change reported with the dates used
+- manual: confirm each acceptance criterion in staging expect: all pass
+
+Failure modes:
+- Request from one loud user | detect: No wider usage evidence | respond: Check data before committing
+- No baseline | detect: Cannot tell if it worked | respond: Record the baseline before release
+- Feature creep | detect: Scope keeps growing | respond: Hold to the stated outcome
+
+ILLUSTRATIVE: Analytics show 40 percent of users abandon the export dialog at the format choice. Defaulting to the last-used format is shipped behind a flag, and completion is compared two weeks later.
 
 Gate: 14-176. Approval: none required
 
@@ -404,20 +446,34 @@ ILLUSTRATIVE: Release 2.3.1 contains seven fixes. Regression and smoke tests pas
 Gate: 14-179. Approval: none required
 
 ## 180
-**Product Lifecycle Management** (stub). Purpose: maintain a live service safely and preserve customer continuity.
+**Product Lifecycle Management** (complete). Purpose: manage a product from launch to retirement with decisions made on evidence and communicated to those affected.
 
-Inputs: support case or maintenance request; affected versions and customer impact; service ownership and change policy
+Entry criteria: The product is released or planned for release; Usage, revenue or cost data exists; A sponsor accepts decisions on investment and retirement
+
+Inputs: usage and business data; support and maintenance cost; roadmap and strategy; customer commitments
 
 Procedure:
-1. Classify severity, affected customers, workaround and escalation path using support policy.
-2. Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.
-3. Implement the smallest safe correction or maintenance action with regression and compatibility coverage.
-4. Communicate workaround/fix version, verify closure and update runbook or knowledge base.
+1. Define the lifecycle stages in use (introduce, grow, mature, decline, retire) and the signals for each.
+2. Review each product on a regular schedule using the same measures: users, revenue, cost, risk and strategic fit.
+3. Decide per product to invest, maintain, simplify or retire, and record the reason with the sponsor.
+4. For retirement, plan the notice period, migration path, data handling and support end date.
+5. Communicate to customers and internal teams in advance and track who has moved.
+6. Shut down in stages, confirm nothing depends on it, and archive records required by policy.
 
-Deliverables: support/maintenance record; reproduction and diagnosis; fix or patch evidence; customer communication and knowledge update
+Deliverables: lifecycle review; decision record with sponsor; retirement plan and notices; archive confirmation
 
-Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
+Acceptance: Every product has a stage and a decision Retirement has notice, migration and data handling Dependents are identified before shutdown The sponsor approved investment and retirement
 
-Validation: Service owner acceptance and customer-facing closure check.
+Validation: Business sponsor approval.
+
+- manual: check each product in scope has a recorded stage and decision with date expect: no gaps
+- manual: confirm for each retirement that no active customers or internal consumers remain expect: none, or exceptions approved
+
+Failure modes:
+- Products linger unreviewed | detect: No review in over a year | respond: Schedule reviews with an owner
+- Retirement surprises customers | detect: Complaints after shutdown | respond: Extend notice and support
+- Hidden dependency | detect: Another system breaks on shutdown | respond: Inventory dependents first
+
+ILLUSTRATIVE: A reporting add-on has 3 percent of users and 15 percent of support load. The sponsor approves retirement with six months notice and a migration guide; usage is tracked until it reaches zero.
 
 Gate: 14-180. Approval: business-sponsor (always)

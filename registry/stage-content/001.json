@@ -1,0 +1,65 @@
+{
+  "stage_id": 1,
+  "purpose": "set the direction that product and engineering work will serve, in terms the organization can test and fund",
+  "entry_criteria": [
+    "Business context and leadership input are available",
+    "Market and financial data can be gathered",
+    "A sponsor is accountable for the strategy"
+  ],
+  "inputs": [
+    "company goals and finances",
+    "market and competitor information",
+    "customer evidence",
+    "capability assessment"
+  ],
+  "procedure": [
+    "State the business goals and the time horizon in measurable terms.",
+    "Describe the market position, customers served and what makes the offering different, using evidence.",
+    "Assess strengths, gaps and constraints in people, technology and money.",
+    "Set a small number of strategic choices, including what not to do, with reasons.",
+    "Turn each choice into outcomes and measures that product teams can plan against.",
+    "Review on a schedule and revise when evidence changes, recording what changed and why."
+  ],
+  "deliverables": [
+    "strategy statement",
+    "evidence summary",
+    "outcomes and measures",
+    "review schedule"
+  ],
+  "acceptance_criteria": [
+    "Goals have measures and dates",
+    "Choices include what is not pursued",
+    "Claims cite evidence",
+    "A review date and owner exist"
+  ],
+  "validation_method": "Business sponsor approval.",
+  "validation": [
+    {
+      "check": "check every strategic goal has a measure, an owner and a date",
+      "expect": "none missing"
+    },
+    {
+      "check": "trace each claim about the market to a cited source",
+      "expect": "all traced or marked as assumption"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Goals not measurable",
+      "detection": "No way to judge progress",
+      "response": "Rewrite with measures"
+    },
+    {
+      "mode": "Strategy lists everything",
+      "detection": "No trade-offs shown",
+      "response": "Add what is not pursued"
+    },
+    {
+      "mode": "Assumptions unmarked",
+      "detection": "Claims lack sources",
+      "response": "Label them and plan to test"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A company sets a goal of 20 percent more recurring revenue in two years by focusing on mid-sized customers and deliberately not building a consumer product, with quarterly review of three measures.",
+  "status": "complete"
+}

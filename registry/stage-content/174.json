@@ -1,0 +1,65 @@
+{
+  "stage_id": 174,
+  "purpose": "improve the speed or resource use of a running system against a stated target, and keep the gain from regressing",
+  "entry_criteria": [
+    "A target exists, such as p95 latency or cost per request",
+    "The system is observable (stages 155-157)",
+    "A repeatable load or benchmark exists"
+  ],
+  "inputs": [
+    "performance target",
+    "production and test measurements",
+    "profiles and traces",
+    "change history of hot components"
+  ],
+  "procedure": [
+    "Reproduce the problem with a benchmark whose result you trust, and record the baseline with its spread.",
+    "Locate the bottleneck with profiles and traces; list the top three causes by time share.",
+    "Change one thing at a time, starting with the largest share, and re-measure after each change.",
+    "Keep only changes that improve the target beyond the noise; revert the rest.",
+    "Check that the gain holds on production-like data and does not move cost or errors elsewhere.",
+    "Add a performance check to CI or monitoring so a regression is caught, and record what was learned."
+  ],
+  "deliverables": [
+    "baseline and final measurements",
+    "list of kept and reverted changes",
+    "regression check",
+    "short write-up"
+  ],
+  "acceptance_criteria": [
+    "Target met or the shortfall is explained",
+    "Each kept change has measured benefit",
+    "A regression check exists",
+    "No functional test fails"
+  ],
+  "validation_method": "Performance engineer and service owner review.",
+  "validation": [
+    {
+      "check": "run the same benchmark three times before and after and compare the medians",
+      "expect": "improvement exceeds the run-to-run spread"
+    },
+    {
+      "command": "pytest -q",
+      "expect": "all functional tests pass after the changes"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Gain within noise",
+      "detection": "Before and after ranges overlap",
+      "response": "Revert or measure longer"
+    },
+    {
+      "mode": "Fix shifts load elsewhere",
+      "detection": "Another service slows",
+      "response": "Measure the whole path"
+    },
+    {
+      "mode": "Regression returns",
+      "detection": "Metric drifts back in weeks",
+      "response": "Add the CI or alert check"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A search endpoint has p95 of 1.2 s against a 500 ms target. A profile shows 60 percent in one N+1 query; batching it brings p95 to 450 ms, and a latency alert is added at 600 ms.",
+  "status": "complete"
+}

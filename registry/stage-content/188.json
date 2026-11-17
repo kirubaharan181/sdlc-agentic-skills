@@ -1,0 +1,65 @@
+{
+  "stage_id": 188,
+  "purpose": "choose, contract and oversee outside suppliers so the organization gets the service it pays for and carries known risk",
+  "entry_criteria": [
+    "A need that may be met by a vendor exists",
+    "Procurement and legal contacts are known",
+    "Security and compliance requirements are defined"
+  ],
+  "inputs": [
+    "requirements",
+    "vendor proposals",
+    "security and compliance requirements",
+    "budget"
+  ],
+  "procedure": [
+    "Write requirements and evaluation criteria, with weights, before talking to vendors.",
+    "Assess each candidate on the criteria, including security, data handling, financial stability and exit options.",
+    "Negotiate service levels, data ownership, breach notice, audit rights and termination terms with legal.",
+    "After onboarding, track delivery against service levels and review on a schedule with the vendor.",
+    "Keep a register of vendors with owner, data accessed, contract end and renewal notice date.",
+    "Plan the exit: data return, transition support and replacement options."
+  ],
+  "deliverables": [
+    "evaluation record",
+    "contract terms summary",
+    "vendor register",
+    "review notes and exit plan"
+  ],
+  "acceptance_criteria": [
+    "Selection used criteria written before the vendor talks",
+    "Security and data terms were reviewed",
+    "The register shows owner and renewal date",
+    "An exit path is documented"
+  ],
+  "validation_method": "Procurement and security approval.",
+  "validation": [
+    {
+      "check": "compare the contract terms with the requirements list",
+      "expect": "gaps noted and accepted or closed"
+    },
+    {
+      "check": "list contracts with renewal notice due within 90 days",
+      "expect": "each has an owner decision"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Auto-renewal missed",
+      "detection": "Contract renews unnoticed",
+      "response": "Track notice dates"
+    },
+    {
+      "mode": "Vendor holds data without terms",
+      "detection": "No data clause",
+      "response": "Add before access is given"
+    },
+    {
+      "mode": "Lock-in",
+      "detection": "No export route",
+      "response": "Require export and test it"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Three monitoring vendors are scored on weighted criteria. The chosen one agrees to 72-hour breach notice and full data export, and the register notes a renewal notice date of 90 days before term end.",
+  "status": "complete"
+}
