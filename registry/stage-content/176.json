@@ -1,0 +1,65 @@
+{
+  "stage_id": 176,
+  "purpose": "decide and deliver an improvement to an existing feature based on evidence of how users actually use it",
+  "entry_criteria": [
+    "The feature is live and used",
+    "Usage data and feedback exist",
+    "A product owner owns the backlog"
+  ],
+  "inputs": [
+    "usage analytics",
+    "user feedback and support tickets",
+    "feature goals",
+    "delivery capacity"
+  ],
+  "procedure": [
+    "Gather evidence: how often and how the feature is used, where users stop, and what they ask for.",
+    "Write the problem as a user outcome and the metric that should move.",
+    "List options including doing nothing, estimate effort and risk, and pick one with a reason.",
+    "Define acceptance criteria and a rollout plan, with a flag for staged release when useful.",
+    "Ship, then compare the metric with the baseline after a fixed period.",
+    "Record the result and decide to keep, adjust or roll back."
+  ],
+  "deliverables": [
+    "problem statement with evidence",
+    "chosen option and reasoning",
+    "acceptance criteria",
+    "post-release result"
+  ],
+  "acceptance_criteria": [
+    "The change targets a stated outcome and metric",
+    "Alternatives were considered",
+    "The result is compared with a baseline",
+    "A keep or rollback decision is recorded"
+  ],
+  "validation_method": "Product owner decision with stakeholder input.",
+  "validation": [
+    {
+      "check": "compare the metric for the period before release with the period after",
+      "expect": "change reported with the dates used"
+    },
+    {
+      "check": "confirm each acceptance criterion in staging",
+      "expect": "all pass"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Request from one loud user",
+      "detection": "No wider usage evidence",
+      "response": "Check data before committing"
+    },
+    {
+      "mode": "No baseline",
+      "detection": "Cannot tell if it worked",
+      "response": "Record the baseline before release"
+    },
+    {
+      "mode": "Feature creep",
+      "detection": "Scope keeps growing",
+      "response": "Hold to the stated outcome"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Analytics show 40 percent of users abandon the export dialog at the format choice. Defaulting to the last-used format is shipped behind a flag, and completion is compared two weeks later.",
+  "status": "complete"
+}

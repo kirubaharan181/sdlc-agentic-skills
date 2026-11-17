@@ -1,0 +1,65 @@
+{
+  "stage_id": 175,
+  "purpose": "reduce a chosen piece of debt safely, in small steps that keep behavior unchanged and leave the code easier to change",
+  "entry_criteria": [
+    "The debt item is chosen and has an owner (stage 76)",
+    "Tests cover the area or can be added first",
+    "The change can ship in small steps"
+  ],
+  "inputs": [
+    "debt register entry",
+    "code and its tests",
+    "change and incident history",
+    "agreed done definition"
+  ],
+  "procedure": [
+    "State the outcome that proves the debt is paid, such as a removed module or a lower defect rate.",
+    "Add characterization tests around current behavior before touching the code.",
+    "Refactor in small commits that each keep the tests green; do not mix in new features.",
+    "Release behind a flag or in stages when the area is critical, and watch the metrics after each release.",
+    "Delete the old code and unused configuration once nothing uses them.",
+    "Close the register entry with the evidence and note anything new discovered."
+  ],
+  "deliverables": [
+    "characterization tests",
+    "small refactoring commits",
+    "removed old code",
+    "closed register entry with evidence"
+  ],
+  "acceptance_criteria": [
+    "Behavior is unchanged by the characterization tests",
+    "The stated outcome is met",
+    "Old code is actually removed",
+    "No unrelated features are in the change"
+  ],
+  "validation_method": "Code review and owner confirmation.",
+  "validation": [
+    {
+      "command": "pytest -q",
+      "expect": "characterization and existing tests pass at every commit"
+    },
+    {
+      "command": "git grep -n 'old_module_name' -- src | wc -l",
+      "expect": "0 references to removed code"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Refactor changes behavior",
+      "detection": "Characterization test fails",
+      "response": "Revert the step and make it smaller"
+    },
+    {
+      "mode": "Scope grows",
+      "detection": "Pull request mixes features",
+      "response": "Split it"
+    },
+    {
+      "mode": "Old code stays",
+      "detection": "Dead modules after release",
+      "response": "Delete in a follow-up"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A hand-written date parser causes repeated bugs. Tests pin its current outputs, calls are moved to the standard library in five small commits, and the parser file is deleted.",
+  "status": "complete"
+}

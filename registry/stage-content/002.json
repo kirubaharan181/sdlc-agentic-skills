@@ -1,0 +1,65 @@
+{
+  "stage_id": 2,
+  "purpose": "learn what the market and the customers actually do and want, with sources that others can check",
+  "entry_criteria": [
+    "A decision depends on market knowledge",
+    "Access to data sources or customers exists",
+    "Questions are agreed with the requester"
+  ],
+  "inputs": [
+    "research questions",
+    "published market data",
+    "competitor information",
+    "customer interviews or surveys"
+  ],
+  "procedure": [
+    "Write the decisions the research should inform and turn them into specific questions.",
+    "Choose methods per question: published data, competitor analysis, interviews, survey or usage data.",
+    "Record every source with date and type, and note limits such as sample size and bias.",
+    "Separate findings (what the data shows) from interpretation (what it may mean).",
+    "Size the opportunity with the method shown, and give a range, not one number.",
+    "Report answers to each question and what remains unknown."
+  ],
+  "deliverables": [
+    "research plan",
+    "source log",
+    "findings report",
+    "market size with method"
+  ],
+  "acceptance_criteria": [
+    "Each question is answered or marked unanswered",
+    "Sources are dated and logged",
+    "Findings are separate from interpretation",
+    "Estimates show their method and range"
+  ],
+  "validation_method": "Requester review.",
+  "validation": [
+    {
+      "check": "check every number in the report against the source log",
+      "expect": "each traceable"
+    },
+    {
+      "check": "confirm interview sample and selection method are stated",
+      "expect": "stated"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Leading questions",
+      "detection": "Interviews confirm what was expected",
+      "response": "Revise the guide and repeat"
+    },
+    {
+      "mode": "Stale data",
+      "detection": "Source older than needed",
+      "response": "Find newer or flag"
+    },
+    {
+      "mode": "Single number for market size",
+      "detection": "No range",
+      "response": "Show low and high cases"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: To decide on entering a new region, the team compiles public data, six competitor price pages and eight customer interviews. The report gives a market size range from 40 to 70 million with the method shown and lists unknowns.",
+  "status": "complete"
+}

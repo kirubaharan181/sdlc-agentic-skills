@@ -29,11 +29,11 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 183 | Security Governance | stub | Security Auditor |
 | 184 | Access Governance | complete | Compliance Specialist |
 | 185 | Compliance Auditing | complete | Security Auditor |
-| 186 | Documentation Governance | stub | Documentation Engineer |
+| 186 | Documentation Governance | complete | Documentation Engineer |
 | 187 | Change Governance | stub | Engineering Governance Specialist |
-| 188 | Vendor Management | stub | Vendor Management Specialist |
+| 188 | Vendor Management | complete | Vendor Management Specialist |
 | 189 | FinOps Governance | stub | FinOps Specialist |
-| 190 | Process Improvement | stub | Process Improvement Specialist |
+| 190 | Process Improvement | complete | Process Improvement Specialist |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

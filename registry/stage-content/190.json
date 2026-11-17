@@ -1,0 +1,65 @@
+{
+  "stage_id": 190,
+  "purpose": "find, test and embed process changes that reduce delay, rework or risk, and show whether they worked",
+  "entry_criteria": [
+    "A process with measurable pain exists",
+    "Process data or the means to collect it exists",
+    "A process owner agrees to change"
+  ],
+  "inputs": [
+    "process descriptions",
+    "cycle time, rework and defect data",
+    "feedback from people who do the work",
+    "retrospective actions"
+  ],
+  "procedure": [
+    "Pick one process and measure it first: cycle time, waiting time, rework and defects.",
+    "Map the actual process with the people who do it and mark where work waits or loops back.",
+    "Choose the largest cause and design a small change with an expected effect on a named measure.",
+    "Trial it for a fixed period with a few teams, comparing with the baseline.",
+    "Adopt, adjust or drop based on the result; update the documented process if adopted.",
+    "Share what was learned and revisit the measure after several months."
+  ],
+  "deliverables": [
+    "baseline measures",
+    "process map",
+    "trial design and results",
+    "updated process document"
+  ],
+  "acceptance_criteria": [
+    "A baseline exists before the change",
+    "The trial has a period and a measure",
+    "The decision follows the results",
+    "Adopted changes are documented"
+  ],
+  "validation_method": "Process owner decision.",
+  "validation": [
+    {
+      "check": "compare cycle time for the trial period with the baseline period",
+      "expect": "difference and sample size reported"
+    },
+    {
+      "check": "check the process document reflects the adopted change",
+      "expect": "updated and dated"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Change without a baseline",
+      "detection": "Cannot show improvement",
+      "response": "Measure first"
+    },
+    {
+      "mode": "Change imposed without the team",
+      "detection": "Workarounds appear",
+      "response": "Involve the people who do the work"
+    },
+    {
+      "mode": "Gains fade",
+      "detection": "Measure returns to baseline",
+      "response": "Review later and embed the change in tooling"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Pull requests wait a median of 30 hours for review. Two trial teams adopt a daily review slot and the median falls to 12 hours over four weeks; the process page is updated and the slot adopted by other teams.",
+  "status": "complete"
+}

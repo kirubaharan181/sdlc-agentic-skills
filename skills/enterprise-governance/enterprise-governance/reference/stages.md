@@ -136,21 +136,35 @@ ILLUSTRATIVE: A sample of ten access removals is tested. Two departed users kept
 Gate: 15-185. Approval: none required
 
 ## 186
-**Documentation Governance** (stub). Purpose: control documentation accuracy, ownership and lifecycle.
+**Documentation Governance** (complete). Purpose: keep documentation accurate, findable and owned over time, so people can trust it.
 
-Inputs: document inventory and classification; owners and review cadence; retention and publication policy
+Entry criteria: Documentation exists in known places; A way to assign owners exists; A review cadence can be agreed
+
+Inputs: documentation inventory; usage and search data; recent product and process changes; style and structure standards
 
 Procedure:
-1. Inventory authoritative documents, audience, version and source of truth.
-2. Check accuracy against current implementation, policy and approved decisions.
-3. Review access, retention, link integrity and stale/duplicate content.
-4. Assign owner and review date; archive superseded material according to policy.
+1. Inventory the documents, assign an owner to each and record the last review date.
+2. Define standards for structure, naming, status labels and where each type of content lives.
+3. Link documentation changes to code or process changes so they are reviewed together.
+4. Review on a schedule by type, and archive or delete outdated pages instead of leaving them.
+5. Check for broken links and orphaned pages automatically.
+6. Track search failures and reader feedback, and fix the most common gaps first.
 
-Deliverables: document register; accuracy/review report; retention and archive log
+Deliverables: documentation inventory with owners; standards; review schedule and results; archive log
 
-Acceptance: Each authoritative document has owner and review date. Published guidance matches current behavior. Superseded documents are clearly marked or archived.
+Acceptance: Every document has an owner and a review date No broken links in published docs Outdated pages are archived Changes to behavior include documentation updates
 
-Validation: Documentation governance sample review.
+Validation: Documentation owner approval of standards.
+
+- `python3 scripts/check_links.py` expect: no broken relative links
+- manual: list documents past their review date expect: each has an owner and a planned action
+
+Failure modes:
+- Documents without owners | detect: Inventory blanks | respond: Assign or archive
+- Docs drift from the code | detect: Readers report wrong steps | respond: Tie docs to the change review
+- Duplicate pages | detect: Different answers to one question | respond: Merge and redirect
+
+ILLUSTRATIVE: An inventory finds 12 pages with no owner. Eight are archived, four are assigned, and a link check runs in CI so a renamed page fails the build instead of leaving dead links.
 
 Gate: 15-186. Approval: none required
 
@@ -174,21 +188,35 @@ Validation: Change advisory or governance review.
 Gate: 15-187. Approval: none required
 
 ## 188
-**Vendor Management** (stub). Purpose: govern supplier performance, obligations and exit readiness.
+**Vendor Management** (complete). Purpose: choose, contract and oversee outside suppliers so the organization gets the service it pays for and carries known risk.
 
-Inputs: supplier contract and service inventory; performance/security evidence; renewal and exit dates
+Entry criteria: A need that may be met by a vendor exists; Procurement and legal contacts are known; Security and compliance requirements are defined
+
+Inputs: requirements; vendor proposals; security and compliance requirements; budget
 
 Procedure:
-1. Map supplier service, data access, subprocessors, criticality and business dependency.
-2. Review SLA performance, incidents, security attestations, financial/operational health and open obligations.
-3. Track corrective actions, renewal decisions, concentration risk and exit/portability plan.
-4. Escalate material breaches and record authorized risk acceptance.
+1. Write requirements and evaluation criteria, with weights, before talking to vendors.
+2. Assess each candidate on the criteria, including security, data handling, financial stability and exit options.
+3. Negotiate service levels, data ownership, breach notice, audit rights and termination terms with legal.
+4. After onboarding, track delivery against service levels and review on a schedule with the vendor.
+5. Keep a register of vendors with owner, data accessed, contract end and renewal notice date.
+6. Plan the exit: data return, transition support and replacement options.
 
-Deliverables: supplier scorecard; obligation and risk register; renewal/exit recommendation
+Deliverables: evaluation record; contract terms summary; vendor register; review notes and exit plan
 
-Acceptance: Critical supplier risks have owners and contingency. Contract obligations are evidenced. Exit strategy is practical and tested where critical.
+Acceptance: Selection used criteria written before the vendor talks Security and data terms were reviewed The register shows owner and renewal date An exit path is documented
 
-Validation: Procurement, legal, security and service-owner review.
+Validation: Procurement and security approval.
+
+- manual: compare the contract terms with the requirements list expect: gaps noted and accepted or closed
+- manual: list contracts with renewal notice due within 90 days expect: each has an owner decision
+
+Failure modes:
+- Auto-renewal missed | detect: Contract renews unnoticed | respond: Track notice dates
+- Vendor holds data without terms | detect: No data clause | respond: Add before access is given
+- Lock-in | detect: No export route | respond: Require export and test it
+
+ILLUSTRATIVE: Three monitoring vendors are scored on weighted criteria. The chosen one agrees to 72-hour breach notice and full data export, and the register notes a renewal notice date of 90 days before term end.
 
 Gate: 15-188. Approval: none required
 
@@ -212,20 +240,34 @@ Validation: Finance and service-owner review.
 Gate: 15-189. Approval: none required
 
 ## 190
-**Process Improvement** (stub). Purpose: improve a measured process through controlled experimentation.
+**Process Improvement** (complete). Purpose: find, test and embed process changes that reduce delay, rework or risk, and show whether they worked.
 
-Inputs: process baseline and outcome metric; stakeholder pain points; change constraints
+Entry criteria: A process with measurable pain exists; Process data or the means to collect it exists; A process owner agrees to change
+
+Inputs: process descriptions; cycle time, rework and defect data; feedback from people who do the work; retrospective actions
 
 Procedure:
-1. Map current flow, queues, handoffs, rework and failure demand using observed data.
-2. Identify root causes and distinguish symptoms from constraints.
-3. Design a small experiment with hypothesis, guardrail metric and rollback.
-4. Compare results with baseline, retain or revert the change and assign ongoing ownership.
+1. Pick one process and measure it first: cycle time, waiting time, rework and defects.
+2. Map the actual process with the people who do it and mark where work waits or loops back.
+3. Choose the largest cause and design a small change with an expected effect on a named measure.
+4. Trial it for a fixed period with a few teams, comparing with the baseline.
+5. Adopt, adjust or drop based on the result; update the documented process if adopted.
+6. Share what was learned and revisit the measure after several months.
 
-Deliverables: process map; baseline and experiment plan; result report; standardized improvement
+Deliverables: baseline measures; process map; trial design and results; updated process document
 
-Acceptance: Change is evidence-backed. Guardrails prevent local optimization harm. Adopted process has an owner and review date.
+Acceptance: A baseline exists before the change The trial has a period and a measure The decision follows the results Adopted changes are documented
 
-Validation: Process owner and affected team review.
+Validation: Process owner decision.
+
+- manual: compare cycle time for the trial period with the baseline period expect: difference and sample size reported
+- manual: check the process document reflects the adopted change expect: updated and dated
+
+Failure modes:
+- Change without a baseline | detect: Cannot show improvement | respond: Measure first
+- Change imposed without the team | detect: Workarounds appear | respond: Involve the people who do the work
+- Gains fade | detect: Measure returns to baseline | respond: Review later and embed the change in tooling
+
+ILLUSTRATIVE: Pull requests wait a median of 30 hours for review. Two trial teams adopt a daily review slot and the median falls to 12 hours over four weeks; the process page is updated and the slot adopted by other teams.
 
 Gate: 15-190. Approval: none required

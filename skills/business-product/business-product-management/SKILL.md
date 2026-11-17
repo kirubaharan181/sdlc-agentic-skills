@@ -24,13 +24,13 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 1 | Business Strategy | stub | Business Strategist |
-| 2 | Market Research | stub | Market Research Analyst |
+| 1 | Business Strategy | complete | Business Strategist |
+| 2 | Market Research | complete | Market Research Analyst |
 | 3 | Client Engagement | stub | Client Engagement Specialist |
-| 4 | Product Discovery | stub | Product Manager |
+| 4 | Product Discovery | complete | Product Manager |
 | 5 | Business Analysis | stub | Business Analyst |
-| 6 | Product Planning | stub | Product Manager |
-| 7 | Feasibility Analysis | stub | Solution Architect |
+| 6 | Product Planning | complete | Product Manager |
+| 7 | Feasibility Analysis | complete | Solution Architect |
 | 8 | Budget & Estimation | stub | FinOps Specialist |
 | 9 | Project Approval | stub | Product Manager |
 | 10 | Contract & Compliance | stub | Compliance Specialist |

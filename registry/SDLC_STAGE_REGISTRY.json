@@ -9,36 +9,7 @@
       "skills": [
         "business-product-management"
       ],
-      "inputs": [
-        "business context and strategic horizon",
-        "customer and market evidence",
-        "constraints and investment boundaries"
-      ],
-      "outputs": [
-        "business-strategy-deliverable",
-        "strategy brief",
-        "option appraisal"
-      ],
       "quality_gate": "01-001",
-      "validation_method": "Executive challenge session and traceability from strategy choices to measurable outcomes.",
-      "purpose": "turn business intent into measurable strategic choices",
-      "execution_instructions": [
-        "State the business problem, affected customer groups and strategic time horizon.",
-        "Assess market forces, internal capabilities, dependencies and external constraints using cited evidence.",
-        "Compare at least two strategic options, including a no-change baseline, with assumptions and trade-offs.",
-        "Define outcome metrics, leading indicators, investment hypotheses and review triggers."
-      ],
-      "deliverable_artifacts": [
-        "strategy brief",
-        "option appraisal",
-        "assumption register",
-        "outcome scorecard"
-      ],
-      "quality_criteria": [
-        "Each strategic choice has evidence, trade-offs and an accountable owner.",
-        "Metrics have baseline, target, measurement source and review cadence.",
-        "Unvalidated assumptions are explicit rather than presented as facts."
-      ],
       "raci": {
         "accountable": "business-strategist",
         "responsible": [],
@@ -59,36 +30,7 @@
       "skills": [
         "business-product-management"
       ],
-      "inputs": [
-        "research objective and target segment",
-        "source inclusion/exclusion criteria",
-        "competitor and market evidence"
-      ],
-      "outputs": [
-        "market-research-deliverable",
-        "source register with quality notes",
-        "competitor comparison"
-      ],
       "quality_gate": "01-002",
-      "validation_method": "Independent source sampling, arithmetic reconciliation and stakeholder challenge of assumptions.",
-      "purpose": "validate a market opportunity with traceable external evidence",
-      "execution_instructions": [
-        "Define research questions, target geography, customer segment, time horizon and decision the research must support.",
-        "Collect primary and secondary evidence; record source URL, publication date, sample, methodology and conflicts of interest.",
-        "Compare competitors, substitutes, pricing and market signals; separate observed facts from estimates and assumptions.",
-        "Synthesize opportunity, risks, confidence limits and unanswered questions into a decision brief."
-      ],
-      "deliverable_artifacts": [
-        "source register with quality notes",
-        "competitor comparison",
-        "market sizing assumptions",
-        "evidence-backed opportunity brief"
-      ],
-      "quality_criteria": [
-        "Every material claim traces to a dated source or is labelled an assumption.",
-        "Market size states method, units, geography and confidence range.",
-        "Recommendation identifies disconfirming evidence and research gaps."
-      ],
       "raci": {
         "accountable": "market-research-analyst",
         "responsible": [
@@ -160,36 +102,7 @@
       "skills": [
         "business-product-management"
       ],
-      "inputs": [
-        "problem statement and target users",
-        "customer evidence and product analytics",
-        "discovery constraints"
-      ],
-      "outputs": [
-        "product-discovery-deliverable",
-        "discovery brief",
-        "assumption map"
-      ],
       "quality_gate": "01-004",
-      "validation_method": "Product owner review of evidence and explicit decision record.",
-      "purpose": "reduce product uncertainty before committing delivery capacity",
-      "execution_instructions": [
-        "Frame the user problem without prescribing a solution; identify affected segments and frequency/severity.",
-        "Gather interview, support, analytics and workflow evidence; document sample limitations and contradictory signals.",
-        "Generate solution hypotheses and design low-cost experiments that can falsify them.",
-        "Rank opportunities by user value, confidence, effort and strategic fit; recommend proceed, pivot or stop."
-      ],
-      "deliverable_artifacts": [
-        "discovery brief",
-        "assumption map",
-        "experiment cards",
-        "prioritized opportunity decision"
-      ],
-      "quality_criteria": [
-        "Each proposed solution links to a validated user problem.",
-        "Experiments have a falsifiable hypothesis, metric, sample and decision threshold.",
-        "A stop or pivot decision is accepted as a valid discovery outcome."
-      ],
       "raci": {
         "accountable": "product-manager",
         "responsible": [
@@ -263,36 +176,7 @@
       "skills": [
         "business-product-management"
       ],
-      "inputs": [
-        "approved product objectives",
-        "prioritized opportunities and dependencies",
-        "capacity and release constraints"
-      ],
-      "outputs": [
-        "product-planning-deliverable",
-        "outcome roadmap",
-        "prioritization rationale"
-      ],
       "quality_gate": "01-006",
-      "validation_method": "Product and delivery leadership review.",
-      "purpose": "convert product outcomes into a sequenced and measurable roadmap",
-      "execution_instructions": [
-        "Define roadmap themes around outcomes rather than feature lists.",
-        "Sequence initiatives by value, confidence, dependency, risk and capacity.",
-        "Set measurable success metrics and explicit assumptions for each horizon.",
-        "Identify decision checkpoints and conditions that change priority."
-      ],
-      "deliverable_artifacts": [
-        "outcome roadmap",
-        "prioritization rationale",
-        "dependency map",
-        "metric ownership"
-      ],
-      "quality_criteria": [
-        "Every roadmap item has an outcome, owner and success measure.",
-        "Dependencies and confidence are visible.",
-        "Dates are not represented as commitments without capacity and approval."
-      ],
       "raci": {
         "accountable": "product-manager",
         "responsible": [
@@ -315,36 +199,7 @@
       "skills": [
         "business-product-management"
       ],
-      "inputs": [
-        "solution hypothesis and requirements",
-        "technical, operational and legal constraints",
-        "cost and capacity assumptions"
-      ],
-      "outputs": [
-        "feasibility-analysis-deliverable",
-        "feasibility matrix",
-        "risk and assumption register"
-      ],
       "quality_gate": "01-007",
-      "validation_method": "Independent architecture, security and finance challenge.",
-      "purpose": "test whether a proposed initiative is viable within real constraints",
-      "execution_instructions": [
-        "Assess technical fit, skills, integration, data availability and operational supportability.",
-        "Estimate delivery, migration, licensing, hosting and ongoing support costs with ranges.",
-        "Identify legal, privacy, security, accessibility and supplier constraints.",
-        "Run a bounded proof or research spike for high-risk unknowns; record proceed/conditional/stop recommendation."
-      ],
-      "deliverable_artifacts": [
-        "feasibility matrix",
-        "risk and assumption register",
-        "cost range",
-        "proof-of-concept evidence"
-      ],
-      "quality_criteria": [
-        "Critical assumptions have evidence or a time-boxed validation plan.",
-        "Total lifecycle cost is considered, not just build cost.",
-        "Recommendation names constraints and decision owner."
-      ],
       "raci": {
         "accountable": "solution-architect",
         "responsible": [
@@ -6244,36 +6099,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "baseline workload and latency profile",
-        "consistency/freshness requirements",
-        "resource and cost limits"
-      ],
-      "outputs": [
-        "performance-optimization-deliverable",
-        "profile report",
-        "optimization change"
-      ],
       "quality_gate": "14-174",
-      "validation_method": "Performance and correctness regression review.",
-      "purpose": "improve measured performance without violating correctness",
-      "execution_instructions": [
-        "Profile before changing code; identify dominant cost and reproducible baseline.",
-        "Choose cache key, TTL, invalidation and consistency behavior based on data semantics.",
-        "Bound memory, stampede, stale data and eviction behavior.",
-        "Compare before/after p50/p95/p99, throughput, error rate and cost under equivalent load."
-      ],
-      "deliverable_artifacts": [
-        "profile report",
-        "optimization change",
-        "cache policy",
-        "before/after benchmark"
-      ],
-      "quality_criteria": [
-        "Improvement is measured against baseline.",
-        "Correctness and freshness invariants hold.",
-        "No unbounded memory or stale-data risk is introduced."
-      ],
       "raci": {
         "accountable": "performance-engineer",
         "responsible": [
@@ -6296,36 +6122,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "technical-debt-reduction-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-175",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "raci": {
         "accountable": "backend-engineer",
         "responsible": [
@@ -6348,36 +6145,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "feature-enhancement-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-176",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "raci": {
         "accountable": "product-owner",
         "responsible": [
@@ -6468,36 +6236,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "product-lifecycle-management-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-180",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "approval_required": true,
       "approval_rationale": "Retiring a product or deleting customer data is irreversible and has contractual and legal effects; the sponsor must approve.",
       "raci": {
@@ -6721,35 +6460,7 @@
       "skills": [
         "enterprise-governance"
       ],
-      "inputs": [
-        "document inventory and classification",
-        "owners and review cadence",
-        "retention and publication policy"
-      ],
-      "outputs": [
-        "documentation-governance-deliverable",
-        "document register",
-        "accuracy/review report"
-      ],
       "quality_gate": "15-186",
-      "validation_method": "Documentation governance sample review.",
-      "purpose": "control documentation accuracy, ownership and lifecycle",
-      "execution_instructions": [
-        "Inventory authoritative documents, audience, version and source of truth.",
-        "Check accuracy against current implementation, policy and approved decisions.",
-        "Review access, retention, link integrity and stale/duplicate content.",
-        "Assign owner and review date; archive superseded material according to policy."
-      ],
-      "deliverable_artifacts": [
-        "document register",
-        "accuracy/review report",
-        "retention and archive log"
-      ],
-      "quality_criteria": [
-        "Each authoritative document has owner and review date.",
-        "Published guidance matches current behavior.",
-        "Superseded documents are clearly marked or archived."
-      ],
       "raci": {
         "accountable": "documentation-engineer",
         "responsible": [
@@ -6822,35 +6533,7 @@
       "skills": [
         "enterprise-governance"
       ],
-      "inputs": [
-        "supplier contract and service inventory",
-        "performance/security evidence",
-        "renewal and exit dates"
-      ],
-      "outputs": [
-        "vendor-management-deliverable",
-        "supplier scorecard",
-        "obligation and risk register"
-      ],
       "quality_gate": "15-188",
-      "validation_method": "Procurement, legal, security and service-owner review.",
-      "purpose": "govern supplier performance, obligations and exit readiness",
-      "execution_instructions": [
-        "Map supplier service, data access, subprocessors, criticality and business dependency.",
-        "Review SLA performance, incidents, security attestations, financial/operational health and open obligations.",
-        "Track corrective actions, renewal decisions, concentration risk and exit/portability plan.",
-        "Escalate material breaches and record authorized risk acceptance."
-      ],
-      "deliverable_artifacts": [
-        "supplier scorecard",
-        "obligation and risk register",
-        "renewal/exit recommendation"
-      ],
-      "quality_criteria": [
-        "Critical supplier risks have owners and contingency.",
-        "Contract obligations are evidenced.",
-        "Exit strategy is practical and tested where critical."
-      ],
       "raci": {
         "accountable": "vendor-management-specialist",
         "responsible": [
@@ -6923,36 +6606,7 @@
       "skills": [
         "enterprise-governance"
       ],
-      "inputs": [
-        "process baseline and outcome metric",
-        "stakeholder pain points",
-        "change constraints"
-      ],
-      "outputs": [
-        "process-improvement-deliverable",
-        "process map",
-        "baseline and experiment plan"
-      ],
       "quality_gate": "15-190",
-      "validation_method": "Process owner and affected team review.",
-      "purpose": "improve a measured process through controlled experimentation",
-      "execution_instructions": [
-        "Map current flow, queues, handoffs, rework and failure demand using observed data.",
-        "Identify root causes and distinguish symptoms from constraints.",
-        "Design a small experiment with hypothesis, guardrail metric and rollback.",
-        "Compare results with baseline, retain or revert the change and assign ongoing ownership."
-      ],
-      "deliverable_artifacts": [
-        "process map",
-        "baseline and experiment plan",
-        "result report",
-        "standardized improvement"
-      ],
-      "quality_criteria": [
-        "Change is evidence-backed.",
-        "Guardrails prevent local optimization harm.",
-        "Adopted process has an owner and review date."
-      ],
       "raci": {
         "accountable": "process-improvement-specialist",
         "responsible": [
