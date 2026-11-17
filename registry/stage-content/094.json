@@ -1,0 +1,65 @@
+{
+  "stage_id": 94,
+  "purpose": "find problems that appear only when a system runs for a long time, such as leaks, drift and slow degradation",
+  "entry_criteria": [
+    "A stable build and a long-running environment exist",
+    "Monitoring of memory, handles and storage is in place",
+    "A realistic load profile exists"
+  ],
+  "inputs": [
+    "realistic load profile",
+    "monitoring dashboards",
+    "baseline resource use",
+    "scheduled jobs and rotations"
+  ],
+  "procedure": [
+    "Define the duration and a steady realistic load that includes scheduled jobs, backups and log rotation.",
+    "Record baselines at the start: memory, open connections, file handles, disk, thread counts and latency.",
+    "Sample the same measures through the run, and watch for upward trends rather than for single peaks.",
+    "Investigate any steady growth with heap, handle or connection dumps, and find the source.",
+    "Check the effect of events during the run, such as certificate or token expiry, cache growth and clock changes.",
+    "Compare the end with the start, report the trends and fix leaks, then repeat the run."
+  ],
+  "deliverables": [
+    "soak plan with duration and load",
+    "baseline and time series",
+    "leak investigation",
+    "comparison of start and end"
+  ],
+  "acceptance_criteria": [
+    "The duration covers scheduled jobs and rotations",
+    "Trends are examined, not only peaks",
+    "Leaks have a source identified",
+    "Start and end measures are compared"
+  ],
+  "validation_method": "Performance testing specialist report.",
+  "validation": [
+    {
+      "check": "plot memory and open connections over the run and fit a trend line",
+      "expect": "slope near zero, or a leak recorded"
+    },
+    {
+      "check": "compare p95 latency in the first and last hour",
+      "expect": "within the agreed margin"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Run too short",
+      "detection": "Leak not visible",
+      "response": "Extend to cover several cycles"
+    },
+    {
+      "mode": "Memory rises steadily",
+      "detection": "Out-of-memory after hours",
+      "response": "Find and fix the leak"
+    },
+    {
+      "mode": "Disk fills with logs",
+      "detection": "Space alarm during run",
+      "response": "Fix rotation and retention"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A 24-hour run at average load shows memory rising 40 MB per hour. A heap dump finds an unbounded cache; after adding a size limit a repeat run stays flat and latency in the last hour matches the first.",
+  "status": "complete"
+}

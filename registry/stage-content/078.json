@@ -1,0 +1,65 @@
+{
+  "stage_id": 78,
+  "purpose": "plan what will be tested, how, by whom and when, so test effort matches risk and the release decision has evidence",
+  "entry_criteria": [
+    "Requirements and a release scope exist",
+    "The risk list is available",
+    "Test environments and data are known or being planned"
+  ],
+  "inputs": [
+    "requirements and release scope",
+    "risk list",
+    "architecture and integrations",
+    "environment and data availability"
+  ],
+  "procedure": [
+    "Define the test objectives from the release goals and the risks, and the exit criteria that will support the release decision.",
+    "Choose test levels and types per risk: unit, integration, system, performance, security and accessibility, and say what will be automated.",
+    "Trace requirements and risks to planned tests so gaps are visible.",
+    "Plan environments, data and tools, with their lead times and owners.",
+    "Estimate effort and schedule with the dependencies, and name who does what.",
+    "Agree how defects will be handled and reported, and review the plan with the product owner and developers."
+  ],
+  "deliverables": [
+    "test plan with objectives and exit criteria",
+    "requirement and risk to test traceability",
+    "environment and data plan",
+    "schedule and responsibilities"
+  ],
+  "acceptance_criteria": [
+    "Exit criteria are measurable",
+    "Every high risk has planned tests",
+    "Environment and data lead times are planned",
+    "The plan was reviewed by product and engineering"
+  ],
+  "validation_method": "QA lead plan; product owner agreement on exit criteria.",
+  "validation": [
+    {
+      "check": "check each high-risk item in the risk list maps to at least one planned test",
+      "expect": "none unmapped"
+    },
+    {
+      "check": "check each exit criterion has a number or a yes-no condition",
+      "expect": "none vague"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Plan lists activities but no criteria",
+      "detection": "Release decided by feeling",
+      "response": "Add measurable exit criteria"
+    },
+    {
+      "mode": "Environment not ready",
+      "detection": "Tests blocked",
+      "response": "Plan lead times"
+    },
+    {
+      "mode": "Risk not covered",
+      "detection": "Unmapped high risk",
+      "response": "Add tests or accept it formally"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A payments release plan lists exit criteria of zero open critical defects, all high-risk flows automated and passing, and a load test at 1.5 times peak; each is traced to a risk in the register.",
+  "status": "complete"
+}

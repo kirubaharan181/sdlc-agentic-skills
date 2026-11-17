@@ -1769,36 +1769,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "problem framing and intended use",
-        "approved dataset and privacy basis",
-        "baseline and evaluation criteria"
-      ],
-      "outputs": [
-        "ai-ml-development-deliverable",
-        "model/data card",
-        "reproducible experiment"
-      ],
       "quality_gate": "06-064",
-      "validation_method": "Independent model risk and product review.",
-      "purpose": "deliver an evaluated and monitored ML capability",
-      "execution_instructions": [
-        "Define task, users, prohibited use, baseline and failure costs before model choice.",
-        "Inspect data provenance, representativeness, leakage, label quality and split strategy.",
-        "Train or integrate the model with reproducible configuration; evaluate task metrics and subgroup failure modes.",
-        "Add safety guardrails, human fallback, latency/cost monitoring and model/data version traceability."
-      ],
-      "deliverable_artifacts": [
-        "model/data card",
-        "reproducible experiment",
-        "evaluation report",
-        "deployment and monitoring plan"
-      ],
-      "quality_criteria": [
-        "Evaluation matches intended use and baseline.",
-        "Data leakage and subgroup failures are assessed.",
-        "Fallback and monitoring are operationally defined."
-      ],
       "raci": {
         "accountable": "ai-ml-engineer",
         "responsible": [
@@ -1844,36 +1815,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "failure taxonomy and API contract",
-        "retry/idempotency constraints",
-        "logging and alert requirements"
-      ],
-      "outputs": [
-        "error-handling-deliverable",
-        "error taxonomy",
-        "response mapping"
-      ],
       "quality_gate": "06-066",
-      "validation_method": "Failure-path test and security review.",
-      "purpose": "make failures predictable, diagnosable and safe to retry",
-      "execution_instructions": [
-        "Classify validation, dependency, timeout, authorization and internal failures.",
-        "Map errors to stable codes and safe user-facing messages.",
-        "Apply retries only to transient idempotent operations; define timeout and cancellation behavior.",
-        "Test fault injection and ensure logs include correlation context but exclude secrets and sensitive payloads."
-      ],
-      "deliverable_artifacts": [
-        "error taxonomy",
-        "response mapping",
-        "fault-injection tests",
-        "runbook updates"
-      ],
-      "quality_criteria": [
-        "No stack trace or secret leaks to users.",
-        "Retry policy cannot multiply side effects.",
-        "Errors are observable and actionable."
-      ],
       "raci": {
         "accountable": "backend-engineer",
         "responsible": [
@@ -2052,36 +1994,7 @@
       "skills": [
         "code-review-quality"
       ],
-      "inputs": [
-        "diff and target branch",
-        "coding/architecture standards",
-        "test, dependency and static-analysis evidence"
-      ],
-      "outputs": [
-        "coding-standards-validation-deliverable",
-        "review report",
-        "static/dependency findings"
-      ],
       "quality_gate": "07-074",
-      "validation_method": "Independent reviewer confirms findings and disposition.",
-      "purpose": "independently inspect code quality and maintainability risks",
-      "execution_instructions": [
-        "Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.",
-        "Inspect static findings and dependency provenance, severity, reachability and license obligations.",
-        "Assess test coverage quality and identify untested critical branches rather than relying only on percentage.",
-        "Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions."
-      ],
-      "deliverable_artifacts": [
-        "review report",
-        "static/dependency findings",
-        "coverage interpretation",
-        "technical debt actions"
-      ],
-      "quality_criteria": [
-        "Findings are reproducible and tied to exact commit.",
-        "False positives and accepted debt have rationale and owner.",
-        "Critical paths have meaningful assertions."
-      ],
       "raci": {
         "accountable": "code-reviewer",
         "responsible": [
@@ -2175,39 +2088,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "test-planning-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-078",
-      "validation_method": "Independent QA review and acceptance decision. Review plan completeness and fixture reproducibility.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Sequence test cases by dependency, environment readiness and risk; define fixtures, entry criteria and execution windows."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "test execution plan and environment matrix"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Test data, environment, owners and exit criteria are ready before execution."
-      ],
       "raci": {
         "accountable": "qa-lead",
         "responsible": [
@@ -2297,39 +2178,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "ui-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-082",
-      "validation_method": "Independent QA review and acceptance decision. Run browser tests and inspect captured screenshots/traces.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Verify component states, keyboard interaction, validation feedback and responsive layout."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "UI interaction report and screenshots"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Critical controls work at supported viewports without console or accessibility blockers."
-      ],
       "raci": {
         "accountable": "automation-qa-engineer",
         "responsible": [
@@ -2351,39 +2200,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "functional-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-083",
-      "validation_method": "Independent QA review and acceptance decision. Review traceability and execute critical business paths.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Trace each business requirement to positive, negative, alternate and exception scenarios."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "functional test matrix and results"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Every in-scope business rule has an observed expected result."
-      ],
       "raci": {
         "accountable": "manual-qa-engineer",
         "responsible": [
@@ -2467,39 +2284,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "sanity-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-087",
-      "validation_method": "Independent QA review and acceptance decision. Execute the bounded checklist on the exact patch.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Verify the narrow changed area and immediate dependencies after a small patch."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "sanity checklist and focused test result"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "The targeted fix works and adjacent behavior remains stable."
-      ],
       "raci": {
         "accountable": "manual-qa-engineer",
         "responsible": [],
@@ -2517,39 +2302,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "cross-browser-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-088",
-      "validation_method": "Independent QA review and acceptance decision. Run matrix tests and attach browser/version evidence.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Run identical critical journeys across the supported browser/OS matrix and compare rendering and interaction."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "browser compatibility matrix and screenshots"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "No supported browser has a critical functional or layout regression."
-      ],
       "raci": {
         "accountable": "e2e-testing-specialist",
         "responsible": [
@@ -2571,39 +2324,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "mobile-compatibility-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-089",
-      "validation_method": "Independent QA review and acceptance decision. Run emulator and representative physical-device tests.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Verify responsive layout, touch targets, orientation, OS permissions and network transitions on supported devices."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "device compatibility matrix and recordings"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Critical flows work on the supported device/OS matrix."
-      ],
       "raci": {
         "accountable": "automation-qa-engineer",
         "responsible": [
@@ -2693,39 +2414,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "stress-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-093",
-      "validation_method": "Independent QA review and acceptance decision. Run approved stress profile in an isolated environment.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Increase load beyond expected capacity to identify saturation point and failure mode."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "stress curve and degradation report"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Overload is bounded, shedding is graceful and recovery occurs after load drops."
-      ],
       "raci": {
         "accountable": "performance-testing-specialist",
         "responsible": [
@@ -2747,39 +2436,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "soak-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-094",
-      "validation_method": "Independent QA review and acceptance decision. Review time-series trends and post-run resource recovery.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Sustain representative load long enough to expose leaks, queue growth and resource drift."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "soak run and resource trend report"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Memory, handles, queues and latency remain stable through the agreed duration."
-      ],
       "raci": {
         "accountable": "performance-testing-specialist",
         "responsible": [
@@ -2827,36 +2484,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "defect report and affected build",
-        "severity/priority policy",
-        "reproduction environment"
-      ],
-      "outputs": [
-        "defect-management-deliverable",
-        "defect ticket",
-        "severity rationale"
-      ],
       "quality_gate": "08-096",
-      "validation_method": "QA owner verifies closure.",
-      "purpose": "control defects from reproduction through verified closure",
-      "execution_instructions": [
-        "Reproduce on a named build and capture minimal steps, expected/actual behavior and logs.",
-        "Assess impact, exploitability, affected users and workaround; assign severity separately from priority.",
-        "Link root cause and fix commit to regression coverage.",
-        "Verify fix on the target build and close only with reproducible evidence."
-      ],
-      "deliverable_artifacts": [
-        "defect ticket",
-        "severity rationale",
-        "root cause and fix link",
-        "retest report"
-      ],
-      "quality_criteria": [
-        "Reproduction is reliable.",
-        "Severity rationale reflects impact.",
-        "Closure includes fix-version retest and regression protection."
-      ],
       "raci": {
         "accountable": "qa-lead",
         "responsible": [

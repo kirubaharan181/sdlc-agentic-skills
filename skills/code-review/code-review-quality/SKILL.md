@@ -30,7 +30,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 71 | Static Code Analysis | complete | DevSecOps Engineer |
 | 72 | Dependency Review | complete | DevSecOps Engineer |
 | 73 | Code Coverage Review | complete | Code Reviewer |
-| 74 | Coding Standards Validation | stub | Code Reviewer |
+| 74 | Coding Standards Validation | complete | Code Reviewer |
 | 75 | Merge Approval | complete | Merge Steward |
 | 76 | Technical Debt Review | complete | Software Architect |
 

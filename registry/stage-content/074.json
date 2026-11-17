@@ -1,0 +1,65 @@
+{
+  "stage_id": 74,
+  "purpose": "check that code follows the agreed standards by automated tools and a short human pass, and keep standards honest by tracking exceptions",
+  "entry_criteria": [
+    "Coding standards exist (stage 48)",
+    "Linters and formatters are configured",
+    "CI runs on every change"
+  ],
+  "inputs": [
+    "coding standard",
+    "tool configurations",
+    "change under review",
+    "exception list"
+  ],
+  "procedure": [
+    "Run the formatter check, linter, type checker and secret scan on the change, and collect the results in one report.",
+    "Treat any new suppression comment as a finding that needs a stated reason and an owner.",
+    "Look at what tools cannot judge: naming that misleads, missing error handling and unclear structure.",
+    "Check that the tool configuration itself was not weakened in the same change.",
+    "Report findings with file, rule and the standard section, and separate blockers from suggestions.",
+    "Feed recurring human findings back as a new automated rule or a standard update."
+  ],
+  "deliverables": [
+    "tool results report",
+    "suppression findings",
+    "human findings",
+    "proposals for new rules"
+  ],
+  "acceptance_criteria": [
+    "All tools ran on the change",
+    "New suppressions have a reason",
+    "Configuration changes were reviewed separately",
+    "Blockers and suggestions are separated"
+  ],
+  "validation_method": "Code reviewer sign-off.",
+  "validation": [
+    {
+      "command": "ruff check . && ruff format --check . && mypy src   # example; use the language's tools",
+      "expect": "no errors"
+    },
+    {
+      "command": "git diff origin/main -U0 | grep -nE 'noqa|type: ignore|eslint-disable|nosec' | head",
+      "expect": "each added suppression has a reason in the review"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Rules turned off to pass",
+      "detection": "Config changed in the same change",
+      "response": "Review the config change on its own"
+    },
+    {
+      "mode": "Suppressions grow",
+      "detection": "Count increases each month",
+      "response": "Require reasons and review them"
+    },
+    {
+      "mode": "Same human comment repeats",
+      "detection": "Review finds the same issue",
+      "response": "Add an automated rule"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A change adds two suppression comments. One has a reason and a ticket; the other hides a real unused variable and is removed. The reviewer proposes a lint rule for the pattern seen in three recent reviews.",
+  "status": "complete"
+}

@@ -1,0 +1,65 @@
+{
+  "stage_id": 89,
+  "purpose": "check that the product works on the phones and tablets users own, across sizes, operating systems, hardware and conditions",
+  "entry_criteria": [
+    "A mobile app or responsive web build exists",
+    "Device usage data exists",
+    "Real devices or a device farm are accessible"
+  ],
+  "inputs": [
+    "device and operating system usage data",
+    "app or responsive build",
+    "core journeys",
+    "hardware features used"
+  ],
+  "procedure": [
+    "Select the device set from usage data: popular models, oldest supported OS, smallest and largest screens, low-memory devices.",
+    "Run the core journeys on each device, including rotation, text size changes, and dark mode.",
+    "Test hardware dependent features such as camera, location, biometrics, notifications and sensors with permission granted and denied.",
+    "Test interruptions and conditions: incoming calls, low battery, low storage, background and resume, and poor or lost connectivity.",
+    "Record issues with device, OS version, steps and a recording, and group them by cause.",
+    "Update the device set each quarter from fresh usage data."
+  ],
+  "deliverables": [
+    "device matrix from usage data",
+    "journey results per device",
+    "hardware and interruption test results",
+    "issue list grouped by cause"
+  ],
+  "acceptance_criteria": [
+    "Devices were chosen from data",
+    "Permission denied and interruption cases were tested",
+    "Issues carry device and OS details",
+    "The device set has a review date"
+  ],
+  "validation_method": "QA lead review.",
+  "validation": [
+    {
+      "check": "run checkout on the oldest supported OS and the smallest screen",
+      "expect": "task completes and nothing is cut off"
+    },
+    {
+      "check": "deny camera permission and open the scan feature",
+      "expect": "clear message and an alternative"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Only newest devices tested",
+      "detection": "Crashes on older phones",
+      "response": "Add oldest supported OS and low memory"
+    },
+    {
+      "mode": "Text clipped at large font size",
+      "detection": "Buttons unreadable",
+      "response": "Fix layouts for scaled text"
+    },
+    {
+      "mode": "Permission denial breaks the app",
+      "detection": "Blank screen",
+      "response": "Handle denial with a message"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Usage data selects eight devices. A low-memory phone restarts the app during photo upload, and a denied location permission produces a blank map; both are logged with device and OS version.",
+  "status": "complete"
+}

@@ -367,21 +367,35 @@ ILLUSTRATIVE: A daily orders pipeline replaces its date partition on every run, 
 Gate: 06-063. Approval: none required
 
 ## 64
-**AI/ML Development** (stub). Purpose: deliver an evaluated and monitored ML capability.
+**AI/ML Development** (complete). Purpose: build a model-based feature whose quality is measured, whose limits are known and whose failures are handled.
 
-Inputs: problem framing and intended use; approved dataset and privacy basis; baseline and evaluation criteria
+Entry criteria: The problem is defined with a success measure; Data with a known source and permitted use exists; Evaluation data is held apart from training data
+
+Inputs: problem definition and success measure; datasets and their permitted use; baseline solution; compute and cost limits
 
 Procedure:
-1. Define task, users, prohibited use, baseline and failure costs before model choice.
-2. Inspect data provenance, representativeness, leakage, label quality and split strategy.
-3. Train or integrate the model with reproducible configuration; evaluate task metrics and subgroup failure modes.
-4. Add safety guardrails, human fallback, latency/cost monitoring and model/data version traceability.
+1. Start with a simple baseline, such as rules or a basic model, and record its score on the success measure.
+2. Split the data before any tuning, keeping a test set that nobody uses for decisions until the end.
+3. Train and compare candidates, recording data version, code version, parameters and scores for each run.
+4. Evaluate on slices that matter, such as user groups and rare cases, not only the overall average, and examine the worst errors.
+5. Define behavior when the model is unsure or wrong: confidence thresholds, human review and a non-model fallback.
+6. Package the model with its version, data lineage and a monitoring plan for drift and quality after release.
 
-Deliverables: model/data card; reproducible experiment; evaluation report; deployment and monitoring plan
+Deliverables: baseline and candidate comparison; evaluation report with slices; fallback design; versioned model package with monitoring plan
 
-Acceptance: Evaluation matches intended use and baseline. Data leakage and subgroup failures are assessed. Fallback and monitoring are operationally defined.
+Acceptance: The model beats the baseline on the success measure The test set was used once at the end Slice results and worst errors are reported A fallback exists for low confidence and failure
 
-Validation: Independent model risk and product review.
+Validation: AI/ML lead review.
+
+- `python -m ml.evaluate --model models/current --data data/test --by-slice   # example` expect: metrics per slice are printed and meet the thresholds
+- manual: check the run record contains data version, code version and parameters expect: all present
+
+Failure modes:
+- Leakage between train and test | detect: Scores too good to be true | respond: Re-split by entity or time and rerun
+- Average hides weak groups | detect: A slice scores far lower | respond: Fix or limit use for that slice
+- No fallback | detect: Failure blocks the user | respond: Add a non-model path
+
+ILLUSTRATIVE: A ticket-routing model beats the keyword baseline overall, but scores lower on short messages; those below the confidence threshold go to a human queue, and weekly monitoring compares accuracy on a labelled sample.
 
 Gate: 06-064. Approval: none required
 
@@ -419,21 +433,35 @@ ILLUSTRATIVE: Profiling shows 70 percent of a product page's time is one repeate
 Gate: 06-065. Approval: none required
 
 ## 66
-**Error Handling** (stub). Purpose: make failures predictable, diagnosable and safe to retry.
+**Error Handling** (complete). Purpose: make failures visible, contained and recoverable, so a fault in one place does not become an outage or a silent wrong answer.
 
-Inputs: failure taxonomy and API contract; retry/idempotency constraints; logging and alert requirements
+Entry criteria: The system's main operations and dependencies are known; A logging and error reporting approach exists; An error format for clients is agreed
+
+Inputs: operations and dependencies; error format and codes; logging standard; recovery requirements
 
 Procedure:
-1. Classify validation, dependency, timeout, authorization and internal failures.
-2. Map errors to stable codes and safe user-facing messages.
-3. Apply retries only to transient idempotent operations; define timeout and cancellation behavior.
-4. Test fault injection and ensure logs include correlation context but exclude secrets and sensitive payloads.
+1. List how each operation can fail and decide for each whether to retry, fail fast, degrade or stop.
+2. Never swallow errors: handle them where there is something useful to do, otherwise pass them up with context.
+3. Return errors in the agreed format, with a stable code and a safe message that exposes no internals.
+4. Log the full detail with the correlation id on the server, and keep sensitive data out.
+5. Keep operations safe to repeat, and leave data consistent when a step fails halfway.
+6. Test the failure paths by injecting faults, and check the alerts they cause.
 
-Deliverables: error taxonomy; response mapping; fault-injection tests; runbook updates
+Deliverables: failure decision table; error handling code and format; fault injection tests; alert checks
 
-Acceptance: No stack trace or secret leaks to users. Retry policy cannot multiply side effects. Errors are observable and actionable.
+Acceptance: No error is silently swallowed Client errors expose no internals A failed step leaves data consistent Fault injection tests pass
 
-Validation: Failure-path test and security review.
+Validation: Code review.
+
+- `grep -rnE 'except:\s*pass|catch\s*\([^)]*\)\s*\{\s*\}' src | head` expect: no empty handlers found
+- `pytest -q tests/failure_paths` expect: injected timeout and error tests pass
+
+Failure modes:
+- Stack trace shown to the client | detect: Response includes internals | respond: Return a safe message and log the detail
+- Half-completed update | detect: Inconsistent records after failure | respond: Use a transaction or compensating step
+- Retries without limit | detect: Repeated load on a failing service | respond: Bound retries and back off
+
+ILLUSTRATIVE: A failed payment call returns a stable code and a short message to the user, logs the provider response with the correlation id, leaves the order marked pending, and a retry job picks it up at most three times.
 
 Gate: 06-066. Approval: none required
 

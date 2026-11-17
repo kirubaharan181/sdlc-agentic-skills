@@ -1,0 +1,65 @@
+{
+  "stage_id": 87,
+  "purpose": "decide quickly after a build or fix whether it is stable enough to deserve the full test effort",
+  "entry_criteria": [
+    "A new build or a fix is deployed",
+    "A short list of must-work checks exists",
+    "The tester has access to the environment"
+  ],
+  "inputs": [
+    "new build and release notes",
+    "list of core checks",
+    "environment access",
+    "recent changes"
+  ],
+  "procedure": [
+    "Confirm the right build is deployed by checking its version identifier, before anything else.",
+    "Run the short list of core checks: start up, sign in, the main journey and the changed area, in minutes, not hours.",
+    "Check the changes named in the release notes, and one neighbouring area likely to be affected.",
+    "Stop at the first blocking failure and return the build with the failing step and evidence.",
+    "If all pass, record the result and release the build to the full test effort.",
+    "Keep the list short and review it when core functionality changes."
+  ],
+  "deliverables": [
+    "build version confirmation",
+    "sanity check result",
+    "return note when blocked",
+    "updated core check list"
+  ],
+  "acceptance_criteria": [
+    "The build identifier was confirmed",
+    "Checks finish within the agreed time",
+    "A failure stops further testing with evidence",
+    "The list is kept short and current"
+  ],
+  "validation_method": "QA lead decision to accept the build.",
+  "validation": [
+    {
+      "command": "curl -s https://test.example.com/version   # example",
+      "expect": "returns the expected build id"
+    },
+    {
+      "check": "run the core checks and time them",
+      "expect": "complete within the agreed time"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Wrong build tested",
+      "detection": "Version differs from the release note",
+      "response": "Redeploy and restart"
+    },
+    {
+      "mode": "List grows into a full test",
+      "detection": "Takes hours",
+      "response": "Cut back to blockers"
+    },
+    {
+      "mode": "Blocked build still tested in full",
+      "detection": "Wasted effort",
+      "response": "Stop and return the build"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: After a hotfix, the tester confirms the build id, signs in, completes a purchase and checks the fixed discount rule in eight minutes, then releases the build for the regression run.",
+  "status": "complete"
+}

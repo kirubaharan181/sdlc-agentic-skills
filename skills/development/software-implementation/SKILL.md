@@ -35,9 +35,9 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 61 | Third-party Integration | complete | Integration Engineer |
 | 62 | Real-time Development | complete | Backend Engineer |
 | 63 | Data Engineering | complete | Data Engineer |
-| 64 | AI/ML Development | stub | AI/ML Engineer |
+| 64 | AI/ML Development | complete | AI/ML Engineer |
 | 65 | Caching & Optimization | complete | Performance Engineer |
-| 66 | Error Handling | stub | Backend Engineer |
+| 66 | Error Handling | complete | Backend Engineer |
 | 67 | Developer Testing | complete | Full Stack Engineer |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).

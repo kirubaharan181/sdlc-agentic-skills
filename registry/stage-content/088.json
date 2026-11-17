@@ -1,0 +1,65 @@
+{
+  "stage_id": 88,
+  "purpose": "make sure the product works for users on the browsers and versions that matter, based on who actually uses it",
+  "entry_criteria": [
+    "Analytics or customer data on browser use exist",
+    "Core journeys are defined",
+    "Access to the browsers or a cloud grid exists"
+  ],
+  "inputs": [
+    "browser usage data",
+    "supported browser policy",
+    "core journeys",
+    "known rendering differences"
+  ],
+  "procedure": [
+    "Build the support matrix from real usage data and the support policy: browser, version range and operating system.",
+    "Rank the matrix by usage and risk, and decide which combinations get full tests and which get a smoke check.",
+    "Run the core journeys on each tier, using automation where it exists and manual checks for layout and input behavior.",
+    "Compare layout, fonts, forms, media and scripts, and note where features degrade without breaking the task.",
+    "Record each difference with browser, version, steps and a screenshot, and decide to fix, work around or document.",
+    "Review the matrix whenever usage shifts or a new browser release changes the picture."
+  ],
+  "deliverables": [
+    "support matrix with tiers",
+    "results per browser and version",
+    "differences log",
+    "decisions on fixes or documented limits"
+  ],
+  "acceptance_criteria": [
+    "The matrix is based on usage data",
+    "Core journeys passed on each top tier",
+    "Differences have evidence and a decision",
+    "The matrix has a review date"
+  ],
+  "validation_method": "QA lead review.",
+  "validation": [
+    {
+      "command": "npx playwright test --project=chromium --project=firefox --project=webkit   # example",
+      "expect": "core journeys pass on all projects"
+    },
+    {
+      "check": "open the checkout on the oldest supported version of each browser",
+      "expect": "task can be completed"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Matrix based on guesses",
+      "detection": "Users on untested browsers",
+      "response": "Use analytics data"
+    },
+    {
+      "mode": "Cosmetic issue treated as blocker",
+      "detection": "Time wasted",
+      "response": "Judge by task impact"
+    },
+    {
+      "mode": "Matrix never updated",
+      "detection": "New version breaks the page",
+      "response": "Schedule a review"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Usage data places four browsers above 5 percent each; those get full journey runs, the others a smoke check. A date picker is found to behave differently in one version and gets a workaround.",
+  "status": "complete"
+}

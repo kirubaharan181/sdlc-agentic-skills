@@ -25,25 +25,25 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
 | 77 | Test Strategy | complete | QA Lead |
-| 78 | Test Planning | stub | QA Lead |
+| 78 | Test Planning | complete | QA Lead |
 | 79 | Unit Testing | complete | Unit Testing Specialist |
 | 80 | Integration Testing | complete | Integration Testing Specialist |
 | 81 | API Testing | complete | API Testing Specialist |
-| 82 | UI Testing | stub | Automation QA Engineer |
-| 83 | Functional Testing | stub | Manual QA Engineer |
+| 82 | UI Testing | complete | Automation QA Engineer |
+| 83 | Functional Testing | complete | Manual QA Engineer |
 | 84 | End-to-End Testing | complete | E2E Testing Specialist |
 | 85 | Regression Testing | complete | Automation QA Engineer |
 | 86 | Smoke Testing | complete | Automation QA Engineer |
-| 87 | Sanity Testing | stub | Manual QA Engineer |
-| 88 | Cross-browser Testing | stub | E2E Testing Specialist |
-| 89 | Mobile Compatibility Testing | stub | Automation QA Engineer |
+| 87 | Sanity Testing | complete | Manual QA Engineer |
+| 88 | Cross-browser Testing | complete | E2E Testing Specialist |
+| 89 | Mobile Compatibility Testing | complete | Automation QA Engineer |
 | 90 | Accessibility Testing | complete | Accessibility Testing Specialist |
 | 91 | Performance Testing | complete | Performance Testing Specialist |
 | 92 | Load Testing | complete | Performance Testing Specialist |
-| 93 | Stress Testing | stub | Performance Testing Specialist |
-| 94 | Soak Testing | stub | Performance Testing Specialist |
+| 93 | Stress Testing | complete | Performance Testing Specialist |
+| 94 | Soak Testing | complete | Performance Testing Specialist |
 | 95 | UAT | complete | QA Lead |
-| 96 | Defect Management | stub | QA Lead |
+| 96 | Defect Management | complete | QA Lead |
 | 97 | Test Sign-off | stub | QA Lead |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).

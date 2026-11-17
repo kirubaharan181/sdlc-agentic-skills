@@ -210,21 +210,35 @@ ILLUSTRATIVE: Branch coverage shows the refund failure path in the payment modul
 Gate: 07-073. Approval: none required
 
 ## 74
-**Coding Standards Validation** (stub). Purpose: independently inspect code quality and maintainability risks.
+**Coding Standards Validation** (complete). Purpose: check that code follows the agreed standards by automated tools and a short human pass, and keep standards honest by tracking exceptions.
 
-Inputs: diff and target branch; coding/architecture standards; test, dependency and static-analysis evidence
+Entry criteria: Coding standards exist (stage 48); Linters and formatters are configured; CI runs on every change
+
+Inputs: coding standard; tool configurations; change under review; exception list
 
 Procedure:
-1. Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
-2. Inspect static findings and dependency provenance, severity, reachability and license obligations.
-3. Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
-4. Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
+1. Run the formatter check, linter, type checker and secret scan on the change, and collect the results in one report.
+2. Treat any new suppression comment as a finding that needs a stated reason and an owner.
+3. Look at what tools cannot judge: naming that misleads, missing error handling and unclear structure.
+4. Check that the tool configuration itself was not weakened in the same change.
+5. Report findings with file, rule and the standard section, and separate blockers from suggestions.
+6. Feed recurring human findings back as a new automated rule or a standard update.
 
-Deliverables: review report; static/dependency findings; coverage interpretation; technical debt actions
+Deliverables: tool results report; suppression findings; human findings; proposals for new rules
 
-Acceptance: Findings are reproducible and tied to exact commit. False positives and accepted debt have rationale and owner. Critical paths have meaningful assertions.
+Acceptance: All tools ran on the change New suppressions have a reason Configuration changes were reviewed separately Blockers and suggestions are separated
 
-Validation: Independent reviewer confirms findings and disposition.
+Validation: Code reviewer sign-off.
+
+- `ruff check . && ruff format --check . && mypy src   # example; use the language's tools` expect: no errors
+- `git diff origin/main -U0 | grep -nE 'noqa|type: ignore|eslint-disable|nosec' | head` expect: each added suppression has a reason in the review
+
+Failure modes:
+- Rules turned off to pass | detect: Config changed in the same change | respond: Review the config change on its own
+- Suppressions grow | detect: Count increases each month | respond: Require reasons and review them
+- Same human comment repeats | detect: Review finds the same issue | respond: Add an automated rule
+
+ILLUSTRATIVE: A change adds two suppression comments. One has a reason and a ticket; the other hides a real unused variable and is removed. The reviewer proposes a lint rule for the pattern seen in three recent reviews.
 
 Gate: 07-074. Approval: none required
 
