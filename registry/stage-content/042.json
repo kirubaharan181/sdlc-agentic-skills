@@ -1,0 +1,65 @@
+{
+  "stage_id": 42,
+  "purpose": "find, rank and handle the things that could harm the delivery or the business, before they happen",
+  "entry_criteria": [
+    "Project or program scope is defined",
+    "A risk owner role exists",
+    "A review rhythm is agreed"
+  ],
+  "inputs": [
+    "plan and dependencies",
+    "past incidents and lessons",
+    "stakeholder concerns",
+    "assumption list"
+  ],
+  "procedure": [
+    "Identify risks with the team and stakeholders, writing each as cause, event and effect.",
+    "Rate likelihood and impact on a common scale, and rank by exposure.",
+    "Choose a response for each: avoid, reduce, transfer or accept, and say who decides on acceptance.",
+    "Assign an owner and a trigger for each risk, and plan the action to take if the trigger occurs.",
+    "Review the register on schedule, close the retired risks and add new ones.",
+    "Report the top risks and changes to the sponsor, with the decisions needed."
+  ],
+  "deliverables": [
+    "risk register",
+    "response plans with triggers",
+    "review records",
+    "top risk report"
+  ],
+  "acceptance_criteria": [
+    "Each risk has cause, event, effect, owner and response",
+    "Ranking uses a shared scale",
+    "Triggers are defined for the top risks",
+    "The register is reviewed on schedule"
+  ],
+  "validation_method": "Program manager review; sponsor decision on accepted risks.",
+  "validation": [
+    {
+      "check": "check each top-ten risk has an owner, a response and a trigger",
+      "expect": "none missing"
+    },
+    {
+      "check": "check the register was reviewed within the agreed interval",
+      "expect": "review date within the interval"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Risk written as a worry",
+      "detection": "No clear event",
+      "response": "Rewrite as cause, event, effect"
+    },
+    {
+      "mode": "No owner",
+      "detection": "Risk never reviewed",
+      "response": "Assign"
+    },
+    {
+      "mode": "Register never updated",
+      "detection": "Old dates",
+      "response": "Review on schedule"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A risk reads 'Because the vendor is the only supplier of the SDK, if they end support, the migration slips by three months'. The owner sets a trigger on the vendor's end-of-life notice and plans an alternative evaluation.",
+  "status": "complete"
+}

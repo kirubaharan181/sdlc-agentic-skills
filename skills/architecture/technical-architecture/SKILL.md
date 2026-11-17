@@ -24,16 +24,16 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 23 | Solution Architecture | stub | Solution Architect |
-| 24 | System Architecture | stub | Software Architect |
+| 23 | Solution Architecture | complete | Solution Architect |
+| 24 | System Architecture | complete | Software Architect |
 | 25 | Application Architecture | stub | Software Architect |
 | 26 | Database Architecture | complete | Database Architect |
 | 27 | API Architecture | complete | API Architect |
 | 28 | Cloud Architecture | stub | Cloud Architect |
-| 29 | Security Architecture | stub | Security Architect |
-| 30 | Data Architecture | stub | Data Architect |
+| 29 | Security Architecture | complete | Security Architect |
+| 30 | Data Architecture | complete | Data Architect |
 | 31 | Integration Architecture | stub | Integration Architect |
-| 32 | Technology Selection | stub | Enterprise Architect |
+| 32 | Technology Selection | complete | Enterprise Architect |
 | 33 | Architecture Documentation | stub | Technical Writer |
 | 34 | Architecture Review | complete | Architecture Reviewer |
 

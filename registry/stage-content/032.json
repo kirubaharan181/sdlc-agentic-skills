@@ -1,0 +1,65 @@
+{
+  "stage_id": 32,
+  "purpose": "choose technology on evidence and fit, so the team gets tools it can run and change for the life of the product",
+  "entry_criteria": [
+    "Requirements and constraints are known",
+    "Candidate technologies are identified",
+    "Team skills and operating model are known"
+  ],
+  "inputs": [
+    "requirements and quality targets",
+    "constraints",
+    "candidate options",
+    "team skills and licensing terms"
+  ],
+  "procedure": [
+    "Write the criteria first: fit to requirements, team skill, maturity, security record, cost, licence, vendor risk and exit cost.",
+    "Weight the criteria with the stakeholders before scoring any option.",
+    "Test the top candidates with a short proof of concept on the riskiest requirement.",
+    "Score each option with evidence, and check licences and the support and release history.",
+    "Choose, and record the decision with rejected options and the conditions that would reopen it.",
+    "Add the choice to the approved technology list with an owner and review date."
+  ],
+  "deliverables": [
+    "criteria and weights",
+    "proof of concept results",
+    "scored comparison",
+    "decision record and technology list entry"
+  ],
+  "acceptance_criteria": [
+    "Criteria and weights were set before scoring",
+    "A proof of concept tested the riskiest requirement",
+    "Licence and exit cost were checked",
+    "Reopen conditions are recorded"
+  ],
+  "validation_method": "Enterprise architect decision.",
+  "validation": [
+    {
+      "check": "check the criteria file is dated before the scoring file",
+      "expect": "dates in the right order"
+    },
+    {
+      "check": "read the licence of the chosen technology against the intended use",
+      "expect": "compatible, or exception recorded"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Resume-driven choice",
+      "detection": "Fit evidence missing",
+      "response": "Score against criteria"
+    },
+    {
+      "mode": "Licence conflict",
+      "detection": "Use not permitted",
+      "response": "Choose another or negotiate"
+    },
+    {
+      "mode": "Proof of concept skipped",
+      "detection": "Surprises at build time",
+      "response": "Test the riskiest part first"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Two message brokers are compared. A one-day proof of concept at the expected peak rate shows one cannot keep ordering; the other is chosen, with a note to reopen the decision if volume exceeds ten times the test.",
+  "status": "complete"
+}

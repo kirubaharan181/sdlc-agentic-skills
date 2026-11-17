@@ -3,25 +3,25 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "technical-architecture",
-  "stage_id": 26,
-  "stage_name": "Database Architecture",
+  "stage_id": 23,
+  "stage_name": "Solution Architecture",
   "commit_sha": "<commit under review>",
-  "executor": "<Database Architect or named person>",
+  "executor": "<Solution Architect or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Architecture review.",
+    "method": "Architecture board review.",
     "command": "<command or review technique actually used>",
     "expected": "<expected result>",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "data architecture document",
-      "path": "<path or immutable URL of data architecture document>"
+      "name": "solution context diagram",
+      "path": "<path or immutable URL of solution context diagram>"
     },
     {
-      "name": "schema design",
-      "path": "<path or immutable URL of schema design>"
+      "name": "building block and interface list",
+      "path": "<path or immutable URL of building block and interface list>"
     },
     {
       "name": "decision records",

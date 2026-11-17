@@ -1,0 +1,65 @@
+{
+  "stage_id": 39,
+  "purpose": "choose a realistic set of work for the next iteration, agreed by the team and tied to a clear goal",
+  "entry_criteria": [
+    "A refined, ordered backlog exists",
+    "Team capacity for the iteration is known",
+    "The product owner is available"
+  ],
+  "inputs": [
+    "ordered backlog",
+    "team capacity",
+    "recent throughput",
+    "dependencies and risks"
+  ],
+  "procedure": [
+    "Set one sprint goal with the product owner that says what value the team will deliver.",
+    "Check capacity for the sprint: working days, leave, planned support and carry-over.",
+    "Pull items from the top of the backlog that serve the goal, confirming each has clear acceptance criteria.",
+    "Break the items into tasks the team can finish in about a day, and surface dependencies and risks.",
+    "Check the plan against recent throughput; remove items rather than overload.",
+    "Agree the plan with the whole team and publish the goal and the board."
+  ],
+  "deliverables": [
+    "sprint goal",
+    "selected items with acceptance criteria",
+    "task breakdown",
+    "risks and dependencies"
+  ],
+  "acceptance_criteria": [
+    "There is one clear sprint goal",
+    "Planned work fits capacity and recent throughput",
+    "Each item has acceptance criteria",
+    "The team agreed the plan"
+  ],
+  "validation_method": "Scrum master facilitation; team commitment.",
+  "validation": [
+    {
+      "check": "compare planned points or items with the average of the last three sprints",
+      "expect": "within an agreed margin"
+    },
+    {
+      "check": "check every selected item has acceptance criteria",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Overcommitment",
+      "detection": "Half the items carry over",
+      "response": "Plan to throughput"
+    },
+    {
+      "mode": "No goal",
+      "detection": "Sprint is a list of items",
+      "response": "Write a goal first"
+    },
+    {
+      "mode": "Unready items",
+      "detection": "Questions during the sprint",
+      "response": "Return to refinement"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: With 9 working days and one person on leave, the team plans 22 points against a recent average of 24 and sets the goal 'customers can reset their password without support'.",
+  "status": "complete"
+}

@@ -1,0 +1,65 @@
+{
+  "stage_id": 38,
+  "purpose": "estimate the effort for planned work in a way the team can calibrate and improve against actual results",
+  "entry_criteria": [
+    "Work items are described",
+    "Past delivery data exists or can be collected",
+    "The team doing the work is available to estimate"
+  ],
+  "inputs": [
+    "work items with acceptance criteria",
+    "historical velocity or cycle time",
+    "team capacity",
+    "known risks"
+  ],
+  "procedure": [
+    "Have the people who will do the work estimate it, with the item and acceptance criteria in front of them.",
+    "Use a relative or range method and compare with similar completed items rather than guessing from nothing.",
+    "Split items that are too large to estimate with confidence, and note what remains unknown.",
+    "Convert to a delivery forecast using past throughput, giving a range and a confidence level.",
+    "Record the estimate and assumptions, then compare with actuals when each item completes.",
+    "Use the differences to adjust the method and the forecast."
+  ],
+  "deliverables": [
+    "estimates with assumptions",
+    "forecast range",
+    "estimate versus actual record",
+    "method adjustments"
+  ],
+  "acceptance_criteria": [
+    "Estimates come from the doers",
+    "Large items were split",
+    "The forecast is a range based on past throughput",
+    "Actuals are compared and used"
+  ],
+  "validation_method": "Project manager review.",
+  "validation": [
+    {
+      "check": "compare estimates and actuals for the last ten completed items",
+      "expect": "variance recorded"
+    },
+    {
+      "check": "check every item over the size limit has been split",
+      "expect": "none remain"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Estimates given by someone else",
+      "detection": "Large gaps against actuals",
+      "response": "Estimate with the team"
+    },
+    {
+      "mode": "Estimate treated as a promise",
+      "detection": "Pressure to hit one date",
+      "response": "Report as a range"
+    },
+    {
+      "mode": "No feedback loop",
+      "detection": "Same error repeats",
+      "response": "Review variance each iteration"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A team's last ten items averaged 1.4 times their estimates, so the forecast for the next release is stated as eight to twelve weeks with a note that the range reflects that history.",
+  "status": "complete"
+}

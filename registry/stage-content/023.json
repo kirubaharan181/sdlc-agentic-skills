@@ -1,0 +1,65 @@
+{
+  "stage_id": 23,
+  "purpose": "define how a business solution fits together across systems, teams and vendors, so the parts can be built and the whole works",
+  "entry_criteria": [
+    "Business goals and requirements are agreed",
+    "The existing landscape is documented at least roughly",
+    "Constraints on cost, time and compliance are known"
+  ],
+  "inputs": [
+    "requirements and goals",
+    "current systems landscape",
+    "constraints",
+    "feasibility results"
+  ],
+  "procedure": [
+    "Describe the business capabilities the solution must provide and the systems and people involved.",
+    "Draw the context view: what is inside the solution, what is outside, and every external connection.",
+    "Choose the main building blocks and say which are reused, bought or built, with reasons.",
+    "Define the interfaces and data ownership between the blocks and with existing systems.",
+    "Check the design against the key requirements and constraints, and list risks and open decisions.",
+    "Record the main decisions with options considered, and review the design with stakeholders."
+  ],
+  "deliverables": [
+    "solution context diagram",
+    "building block and interface list",
+    "decision records",
+    "risk and open-issue list"
+  ],
+  "acceptance_criteria": [
+    "Every external connection is shown",
+    "Build, buy or reuse is decided with reasons",
+    "Data ownership is stated per block",
+    "Key requirements are traced to blocks"
+  ],
+  "validation_method": "Architecture board review.",
+  "validation": [
+    {
+      "check": "trace five key requirements to the building blocks that satisfy them",
+      "expect": "all traced"
+    },
+    {
+      "check": "check each interface names an owner and a data owner",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Boundary unclear",
+      "detection": "Teams assume others own a function",
+      "response": "Redraw context and assign"
+    },
+    {
+      "mode": "Reuse assumed without checking",
+      "detection": "Existing system lacks the capability",
+      "response": "Verify before committing"
+    },
+    {
+      "mode": "Decisions unrecorded",
+      "detection": "Reasons lost",
+      "response": "Write decision records"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A customer portal is split into identity (bought), account data (existing core system) and a new notification service (built). The context diagram shows the payment provider as an external connection with a named owner.",
+  "status": "complete"
+}

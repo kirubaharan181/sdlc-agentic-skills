@@ -9,7 +9,7 @@
   "executor": "<Project Manager or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Sponsor approval.",
+    "method": "Sponsor acknowledgement.",
     "command": "<command or review technique actually used>",
     "expected": "<expected result>",
     "exit_status": "<observed>"
@@ -20,12 +20,12 @@
       "path": "<path or immutable URL of project charter>"
     },
     {
-      "name": "RACI",
-      "path": "<path or immutable URL of RACI>"
+      "name": "role and decision list",
+      "path": "<path or immutable URL of role and decision list>"
     },
     {
-      "name": "initial RAID log",
-      "path": "<path or immutable URL of initial RAID log>"
+      "name": "stakeholder communication plan",
+      "path": "<path or immutable URL of stakeholder communication plan>"
     }
   ],
   "limitations": [

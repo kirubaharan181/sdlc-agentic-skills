@@ -24,14 +24,14 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 35 | Project Initiation | stub | Project Manager |
-| 36 | Resource Planning | stub | Project Manager |
+| 35 | Project Initiation | complete | Project Manager |
+| 36 | Resource Planning | complete | Project Manager |
 | 37 | Work Breakdown | stub | Project Manager |
-| 38 | Effort Estimation | stub | Project Manager |
-| 39 | Sprint Planning | stub | Scrum Master |
-| 40 | Agile Management | stub | Agile Delivery Manager |
-| 41 | Progress Tracking | stub | Agile Delivery Manager |
-| 42 | Risk Management | stub | Program Manager |
+| 38 | Effort Estimation | complete | Project Manager |
+| 39 | Sprint Planning | complete | Scrum Master |
+| 40 | Agile Management | complete | Agile Delivery Manager |
+| 41 | Progress Tracking | complete | Agile Delivery Manager |
+| 42 | Risk Management | complete | Program Manager |
 | 43 | Stakeholder Management | stub | Program Manager |
 | 44 | Change Management | stub | Engineering Governance Specialist |
 

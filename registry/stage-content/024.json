@@ -1,0 +1,65 @@
+{
+  "stage_id": 24,
+  "purpose": "design the internal structure of one system so that it meets its quality targets and can be changed safely",
+  "entry_criteria": [
+    "The solution architecture and quality targets exist (stages 14, 23)",
+    "Technology choices are known or being made",
+    "The team who will build it is known"
+  ],
+  "inputs": [
+    "solution architecture",
+    "quality requirements",
+    "technology choices",
+    "team skills"
+  ],
+  "procedure": [
+    "Select an architectural style that fits the quality targets and team, such as modular monolith or services, and state why.",
+    "Divide the system into components with one clear responsibility each and rules for who may depend on whom.",
+    "Design data flow, state, and failure handling: timeouts, retries, idempotency and degradation.",
+    "Describe how the design meets each quality target, for example scaling, recovery and observability.",
+    "Define the deployment shape and the environments, and how configuration is handled.",
+    "Write decision records, and turn the dependency rules into automated checks."
+  ],
+  "deliverables": [
+    "component and dependency design",
+    "failure handling design",
+    "quality attribute mapping",
+    "decision records and dependency rules"
+  ],
+  "acceptance_criteria": [
+    "Each quality target maps to a design element",
+    "Dependency rules are written and checkable",
+    "Failure behavior is designed, not left to defaults",
+    "The style choice has a stated reason"
+  ],
+  "validation_method": "Architect peer review.",
+  "validation": [
+    {
+      "check": "list each quality target and the design element that meets it",
+      "expect": "no target left without an element"
+    },
+    {
+      "check": "check the dependency rules can be expressed in a tool and run in CI",
+      "expect": "rules listed with the tool"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Style chosen by fashion",
+      "detection": "No link to targets",
+      "response": "Justify against targets"
+    },
+    {
+      "mode": "Shared database between components",
+      "detection": "Changes break neighbours",
+      "response": "Assign data to one owner"
+    },
+    {
+      "mode": "Failure paths missing",
+      "detection": "Outage cascades",
+      "response": "Design timeouts and degradation"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A modular monolith is chosen for a team of six; modules own their tables and may call each other only through interfaces, and a dependency rule in CI rejects direct table access across modules.",
+  "status": "complete"
+}

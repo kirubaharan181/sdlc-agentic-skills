@@ -1,0 +1,65 @@
+{
+  "stage_id": 29,
+  "purpose": "design the controls that protect the system and its data, based on the threats it faces and the obligations it carries",
+  "entry_criteria": [
+    "Architecture and data flows are described",
+    "Data classification exists",
+    "Compliance obligations are listed (stage 10)"
+  ],
+  "inputs": [
+    "architecture and data flows",
+    "data classification",
+    "threat model",
+    "compliance obligations"
+  ],
+  "procedure": [
+    "List the assets to protect and the trust boundaries in the design.",
+    "Identify threats at each boundary with a structured method, and rank them by impact and likelihood.",
+    "Design controls for the highest-ranked threats: identity and access, encryption, network separation, input handling and secrets management.",
+    "Apply least privilege and separation of duties, and design how access is granted, reviewed and removed.",
+    "Design logging and detection for security events, and the response path.",
+    "Map controls to obligations and record accepted residual risk with an owner."
+  ],
+  "deliverables": [
+    "threat model",
+    "control design",
+    "access model",
+    "residual risk register with owners"
+  ],
+  "acceptance_criteria": [
+    "Each high-ranked threat has a control or an accepted risk",
+    "Trust boundaries are drawn",
+    "Access has a grant, review and removal path",
+    "Residual risk has a named owner"
+  ],
+  "validation_method": "Security architect and risk owner approval.",
+  "validation": [
+    {
+      "check": "trace the five highest threats to a control or an accepted-risk entry",
+      "expect": "all traced"
+    },
+    {
+      "check": "check that logging covers authentication, access changes and data export",
+      "expect": "covered"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Controls without threats",
+      "detection": "Effort on low risk",
+      "response": "Rank and refocus"
+    },
+    {
+      "mode": "Shared admin accounts",
+      "detection": "No individual accountability",
+      "response": "Use named accounts"
+    },
+    {
+      "mode": "Risk accepted by no one",
+      "detection": "Residual row has no owner",
+      "response": "Assign or reduce"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A threat model of an upload feature ranks malicious files highest. Controls: type and size limits, scanning, storage outside the web root, and an alert on repeated rejected uploads; residual risk is accepted by the service owner.",
+  "status": "complete"
+}

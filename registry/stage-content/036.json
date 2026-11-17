@@ -1,0 +1,65 @@
+{
+  "stage_id": 36,
+  "purpose": "match people, skills, tools and time to the work, and show where there are gaps before they delay delivery",
+  "entry_criteria": [
+    "The work plan exists",
+    "Team availability is known",
+    "Skill needs are identified"
+  ],
+  "inputs": [
+    "work plan and estimates",
+    "team members and availability",
+    "skills inventory",
+    "tool and environment needs"
+  ],
+  "procedure": [
+    "List the skills and roles needed for each phase and the amount of effort in each.",
+    "Compare with available people, counting leave, support duties and other commitments.",
+    "Find the gaps and decide how to close each: hire, borrow, train, contract or change the plan.",
+    "Plan lead times for access, equipment, licences and environments, which often take longer than expected.",
+    "Avoid single points of knowledge by pairing or planned handover on critical skills.",
+    "Review the plan at checkpoints and when people join or leave."
+  ],
+  "deliverables": [
+    "resource plan by phase",
+    "gap list with actions",
+    "lead-time list",
+    "single point of knowledge list"
+  ],
+  "acceptance_criteria": [
+    "Availability counts leave and other duties",
+    "Each gap has an action and an owner",
+    "Lead times for access and tools are planned",
+    "Critical skills are covered by more than one person"
+  ],
+  "validation_method": "Project manager review with team leads.",
+  "validation": [
+    {
+      "check": "compare allocated percentages per person with their available hours",
+      "expect": "no one above 100 percent"
+    },
+    {
+      "check": "check each gap has an action, owner and date",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Person allocated over 100 percent",
+      "detection": "Sums exceed availability",
+      "response": "Rebalance or add people"
+    },
+    {
+      "mode": "Access delay",
+      "detection": "New joiner idle for weeks",
+      "response": "Request access in advance"
+    },
+    {
+      "mode": "One person holds a critical skill",
+      "detection": "Delivery depends on them",
+      "response": "Pair or document"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A plan needs two backend engineers for six months. One is available at 50 percent, so the gap is closed by a contractor with access requested three weeks ahead and a handover plan for the integration knowledge.",
+  "status": "complete"
+}

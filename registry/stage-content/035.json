@@ -1,0 +1,65 @@
+{
+  "stage_id": 35,
+  "purpose": "start a project with an agreed purpose, scope, roles and first steps, so everyone begins with the same understanding",
+  "entry_criteria": [
+    "The project is approved (stage 9)",
+    "A project manager and sponsor are named",
+    "Initial budget and time frame exist"
+  ],
+  "inputs": [
+    "approval decision and conditions",
+    "business case",
+    "stakeholder list",
+    "constraints"
+  ],
+  "procedure": [
+    "Write a short charter: purpose, objectives, scope, exclusions, success measures and constraints.",
+    "Name the sponsor, project manager and team leads, and state who decides what.",
+    "List the stakeholders and how each will be kept informed.",
+    "Set up the working basics: repository, backlog, communication channels and meeting rhythm.",
+    "List the first risks, assumptions and dependencies, with owners.",
+    "Hold a kickoff, share the charter and get written acknowledgement from the sponsor."
+  ],
+  "deliverables": [
+    "project charter",
+    "role and decision list",
+    "stakeholder communication plan",
+    "initial risks, assumptions and dependencies"
+  ],
+  "acceptance_criteria": [
+    "Scope and exclusions are written",
+    "Roles and decision rights are named",
+    "Conditions of approval are carried into the plan",
+    "The sponsor acknowledged the charter"
+  ],
+  "validation_method": "Sponsor acknowledgement.",
+  "validation": [
+    {
+      "check": "check every approval condition from stage 9 appears in the plan with an owner",
+      "expect": "all present"
+    },
+    {
+      "check": "check the charter has a dated sponsor acknowledgement",
+      "expect": "present"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Scope vague",
+      "detection": "Different views at kickoff",
+      "response": "Add exclusions and agree"
+    },
+    {
+      "mode": "Conditions dropped",
+      "detection": "Approval items missing",
+      "response": "Add them to the plan"
+    },
+    {
+      "mode": "Roles unclear",
+      "detection": "Decisions stall",
+      "response": "Name decision makers"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A charter for a data migration lists three objectives, excludes decommissioning the old system, names the sponsor as the budget decision maker, and carries over the approval condition about a security review.",
+  "status": "complete"
+}
