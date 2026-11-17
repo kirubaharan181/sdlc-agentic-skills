@@ -1,0 +1,65 @@
+{
+  "stage_id": 30,
+  "purpose": "design how data is stored, owned, moved and protected, so it stays correct, available and compliant",
+  "entry_criteria": [
+    "Requirements and data needs are known",
+    "Data classification is available",
+    "Integration points are listed"
+  ],
+  "inputs": [
+    "data requirements",
+    "data classification",
+    "integration needs",
+    "retention and privacy obligations"
+  ],
+  "procedure": [
+    "Identify the main data entities, who owns each, and where the system of record is.",
+    "Choose storage types per need (transactional, analytical, search, cache) and justify each.",
+    "Design how data moves between systems, how often, and how consistency is kept.",
+    "Define retention, archiving, deletion and backup rules for each class of data.",
+    "Design access control and protection by classification, including masking in non-production.",
+    "Document lineage for key data and the quality checks that guard it."
+  ],
+  "deliverables": [
+    "entity ownership map",
+    "storage and flow design",
+    "retention and deletion rules",
+    "lineage and quality checks"
+  ],
+  "acceptance_criteria": [
+    "Each entity has one system of record and an owner",
+    "Retention and deletion rules exist per class",
+    "Non-production data is masked or synthetic",
+    "Key data has lineage"
+  ],
+  "validation_method": "Data architect and data owner approval.",
+  "validation": [
+    {
+      "check": "check every entity in the model lists a system of record and an owner",
+      "expect": "none missing"
+    },
+    {
+      "check": "check each personal-data field has a retention rule",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Two systems of record",
+      "detection": "Values disagree",
+      "response": "Choose one and sync from it"
+    },
+    {
+      "mode": "No deletion rule",
+      "detection": "Data kept indefinitely",
+      "response": "Add retention and deletion"
+    },
+    {
+      "mode": "Production data in test",
+      "detection": "Copies found in non-production",
+      "response": "Mask or replace"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Customer data is owned by the account service; the warehouse receives a nightly copy with email masked, and personal fields are deleted 24 months after account closure.",
+  "status": "complete"
+}

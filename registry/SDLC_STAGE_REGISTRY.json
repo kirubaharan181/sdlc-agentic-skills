@@ -591,35 +591,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "business capabilities and system context",
-        "runtime/deployment constraints",
-        "quality attribute scenarios"
-      ],
-      "outputs": [
-        "solution-architecture-deliverable",
-        "system context and container diagrams",
-        "component/interface catalogue"
-      ],
       "quality_gate": "03-023",
-      "validation_method": "Architecture review against documented quality attribute scenarios.",
-      "purpose": "define the system structure and component boundaries for the target quality attributes",
-      "execution_instructions": [
-        "Define system context, actors, external systems and trust boundaries.",
-        "Decompose capabilities into components and assign ownership, interfaces and dependency direction.",
-        "Evaluate synchronous/asynchronous boundaries, data ownership, failure isolation and deployment topology.",
-        "Compare architecture options against latency, availability, scalability, security, operability and cost scenarios."
-      ],
-      "deliverable_artifacts": [
-        "system context and container diagrams",
-        "component/interface catalogue",
-        "architecture decision records"
-      ],
-      "quality_criteria": [
-        "Every component has responsibility and owner.",
-        "Dependencies and failure domains are explicit.",
-        "Trade-offs are tied to measurable quality scenarios."
-      ],
       "raci": {
         "accountable": "solution-architect",
         "responsible": [
@@ -642,35 +614,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "business capabilities and system context",
-        "runtime/deployment constraints",
-        "quality attribute scenarios"
-      ],
-      "outputs": [
-        "system-architecture-deliverable",
-        "system context and container diagrams",
-        "component/interface catalogue"
-      ],
       "quality_gate": "03-024",
-      "validation_method": "Architecture review against documented quality attribute scenarios.",
-      "purpose": "define the system structure and component boundaries for the target quality attributes",
-      "execution_instructions": [
-        "Define system context, actors, external systems and trust boundaries.",
-        "Decompose capabilities into components and assign ownership, interfaces and dependency direction.",
-        "Evaluate synchronous/asynchronous boundaries, data ownership, failure isolation and deployment topology.",
-        "Compare architecture options against latency, availability, scalability, security, operability and cost scenarios."
-      ],
-      "deliverable_artifacts": [
-        "system context and container diagrams",
-        "component/interface catalogue",
-        "architecture decision records"
-      ],
-      "quality_criteria": [
-        "Every component has responsibility and owner.",
-        "Dependencies and failure domains are explicit.",
-        "Trade-offs are tied to measurable quality scenarios."
-      ],
       "raci": {
         "accountable": "software-architect",
         "responsible": [
@@ -837,36 +781,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "data flows and assets",
-        "threat actors and trust boundaries",
-        "regulatory and risk appetite"
-      ],
-      "outputs": [
-        "security-architecture-deliverable",
-        "data-flow diagram",
-        "threat model"
-      ],
       "quality_gate": "03-029",
-      "validation_method": "Independent security architecture review.",
-      "purpose": "define trust boundaries and security controls before implementation",
-      "execution_instructions": [
-        "Identify assets, entry points, identities, trust boundaries and privileged operations.",
-        "Model abuse cases and threats using a documented method such as STRIDE where suitable.",
-        "Map preventive, detective and recovery controls to threats and owners.",
-        "Record residual risk, security assumptions and verification requirements."
-      ],
-      "deliverable_artifacts": [
-        "data-flow diagram",
-        "threat model",
-        "control matrix",
-        "residual risk record"
-      ],
-      "quality_criteria": [
-        "High-impact threats have treatment and owner.",
-        "Trust boundaries and data flows are complete.",
-        "Controls have testable verification evidence."
-      ],
       "raci": {
         "accountable": "security-architect",
         "responsible": [],
@@ -887,36 +802,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "business data domains and owners",
-        "source/consumer inventory",
-        "classification and retention obligations"
-      ],
-      "outputs": [
-        "data-architecture-deliverable",
-        "domain model",
-        "data catalogue"
-      ],
       "quality_gate": "03-030",
-      "validation_method": "Data governance council review.",
-      "purpose": "govern data domains, semantics, lineage and lifecycle",
-      "execution_instructions": [
-        "Define domain entities, canonical terms, identifiers and system-of-record ownership.",
-        "Map ingestion, transformation, sharing, lineage and quality responsibility.",
-        "Set classification, access, retention, deletion and residency rules.",
-        "Review interoperability and schema evolution with producers and consumers."
-      ],
-      "deliverable_artifacts": [
-        "domain model",
-        "data catalogue",
-        "lineage map",
-        "classification/retention policy"
-      ],
-      "quality_criteria": [
-        "Critical elements have owners and definitions.",
-        "Lineage covers source-to-consumer flow.",
-        "Privacy and retention controls are enforceable."
-      ],
       "raci": {
         "accountable": "data-architect",
         "responsible": [
@@ -991,35 +877,7 @@
       "skills": [
         "technical-architecture"
       ],
-      "inputs": [
-        "capability requirements and constraints",
-        "candidate options and lifecycle costs",
-        "security, skills and support requirements"
-      ],
-      "outputs": [
-        "technology-selection-deliverable",
-        "technology scorecard",
-        "proof evidence"
-      ],
       "quality_gate": "03-032",
-      "validation_method": "Architecture governance review.",
-      "purpose": "choose technology through evidence-based trade-off analysis",
-      "execution_instructions": [
-        "Define decision criteria and weights before scoring candidates.",
-        "Evaluate functional fit, integration, maturity, security, licensing, operability and exit cost.",
-        "Prototype only uncertain high-impact capabilities and record measured results.",
-        "Publish decision, rejected alternatives, assumptions and review trigger."
-      ],
-      "deliverable_artifacts": [
-        "technology scorecard",
-        "proof evidence",
-        "architecture decision record"
-      ],
-      "quality_criteria": [
-        "Scoring criteria are transparent.",
-        "Total cost and exit strategy are included.",
-        "Decision is reproducible from evidence."
-      ],
       "raci": {
         "accountable": "enterprise-architect",
         "responsible": [
@@ -1115,36 +973,7 @@
       "skills": [
         "project-agile-management"
       ],
-      "inputs": [
-        "business case and sponsor",
-        "scope boundaries and constraints",
-        "delivery and governance stakeholders"
-      ],
-      "outputs": [
-        "project-initiation-deliverable",
-        "project charter",
-        "RACI"
-      ],
       "quality_gate": "04-035",
-      "validation_method": "Sponsor approval.",
-      "purpose": "establish project authority, outcomes and operating cadence",
-      "execution_instructions": [
-        "Confirm sponsor, project manager, decision rights and escalation path.",
-        "Define objectives, measurable outcomes, scope, exclusions and success criteria.",
-        "Set governance cadence, reporting, change control and initial RAID ownership.",
-        "Baseline charter and mobilization actions."
-      ],
-      "deliverable_artifacts": [
-        "project charter",
-        "RACI",
-        "initial RAID log",
-        "governance calendar"
-      ],
-      "quality_criteria": [
-        "Accountability and authority are explicit.",
-        "Outcomes and scope are measurable.",
-        "Open assumptions have owners and due dates."
-      ],
       "raci": {
         "accountable": "project-manager",
         "responsible": [
@@ -1167,35 +996,7 @@
       "skills": [
         "project-agile-management"
       ],
-      "inputs": [
-        "work estimates and skill requirements",
-        "availability and leave calendar",
-        "budget and supplier constraints"
-      ],
-      "outputs": [
-        "resource-planning-deliverable",
-        "capacity plan",
-        "skills matrix"
-      ],
       "quality_gate": "04-036",
-      "validation_method": "Delivery manager and functional owner review.",
-      "purpose": "match capacity and specialist skills to the delivery demand",
-      "execution_instructions": [
-        "Build role-based capacity by iteration and critical skill.",
-        "Identify bottlenecks, single points of failure and onboarding lead time.",
-        "Compare demand with available capacity and propose sequencing or sourcing options.",
-        "Track actual allocation and reforecast when assumptions change."
-      ],
-      "deliverable_artifacts": [
-        "capacity plan",
-        "skills matrix",
-        "resource risk log"
-      ],
-      "quality_criteria": [
-        "Plan uses available capacity, not nominal headcount.",
-        "Critical skill gaps have mitigations.",
-        "Allocation changes are approved."
-      ],
       "raci": {
         "accountable": "project-manager",
         "responsible": [
@@ -1268,36 +1069,7 @@
       "skills": [
         "project-agile-management"
       ],
-      "inputs": [
-        "scope breakdown and assumptions",
-        "rates, capacity and supplier estimates",
-        "contingency policy"
-      ],
-      "outputs": [
-        "effort-estimation-deliverable",
-        "estimate workbook",
-        "assumption and exclusion log"
-      ],
       "quality_gate": "04-038",
-      "validation_method": "Finance review and independent arithmetic check.",
-      "purpose": "produce a transparent estimate and funding baseline",
-      "execution_instructions": [
-        "Break work into measurable cost drivers and separate one-time from recurring spend.",
-        "Estimate effort, infrastructure, licensing, vendor, migration and support costs using ranges.",
-        "Document confidence, exclusions, currency, tax treatment and contingency basis.",
-        "Reconcile the estimate against available funding and define variance thresholds."
-      ],
-      "deliverable_artifacts": [
-        "estimate workbook",
-        "assumption and exclusion log",
-        "funding request",
-        "cost baseline"
-      ],
-      "quality_criteria": [
-        "Totals recalculate from traceable line items.",
-        "Uncertainty and contingency are visible.",
-        "Estimate owner and approval authority are named."
-      ],
       "raci": {
         "accountable": "project-manager",
         "responsible": [
@@ -1321,35 +1093,7 @@
       "skills": [
         "project-agile-management"
       ],
-      "inputs": [
-        "ordered ready backlog",
-        "team capacity and availability",
-        "definition of ready and dependencies"
-      ],
-      "outputs": [
-        "sprint-planning-deliverable",
-        "sprint goal",
-        "committed backlog"
-      ],
       "quality_gate": "04-039",
-      "validation_method": "Team planning agreement.",
-      "purpose": "select a feasible sprint goal and commitment",
-      "execution_instructions": [
-        "Confirm sprint objective and business value before selecting stories.",
-        "Check readiness, acceptance criteria, dependencies, test data and external blockers.",
-        "Forecast capacity using recent throughput and actual availability.",
-        "Split work to deliver testable increments and agree a contingency buffer."
-      ],
-      "deliverable_artifacts": [
-        "sprint goal",
-        "committed backlog",
-        "capacity and dependency view"
-      ],
-      "quality_criteria": [
-        "Commitment fits actual capacity.",
-        "Stories meet readiness criteria.",
-        "Sprint goal is outcome-focused and measurable."
-      ],
       "raci": {
         "accountable": "scrum-master",
         "responsible": [
@@ -1371,35 +1115,7 @@
       "skills": [
         "project-agile-management"
       ],
-      "inputs": [
-        "team working agreement and iteration goal",
-        "work item state and cycle-time data",
-        "dependency and blocker list"
-      ],
-      "outputs": [
-        "agile-management-deliverable",
-        "flow metrics",
-        "impediment register"
-      ],
       "quality_gate": "04-040",
-      "validation_method": "Team retrospective and delivery review.",
-      "purpose": "make delivery flow visible and remove impediments",
-      "execution_instructions": [
-        "Inspect flow, work in progress, aging items and blocked time rather than relying on status adjectives.",
-        "Facilitate planning/review/retro with decisions and owners.",
-        "Escalate cross-team impediments and resolve dependency sequencing.",
-        "Use trend data to adapt scope and forecast without pressuring unsafe shortcuts."
-      ],
-      "deliverable_artifacts": [
-        "flow metrics",
-        "impediment register",
-        "iteration decision log"
-      ],
-      "quality_criteria": [
-        "Work state reflects evidence.",
-        "Impediments have owners and next actions.",
-        "Metrics are used for improvement, not individual surveillance."
-      ],
       "raci": {
         "accountable": "agile-delivery-manager",
         "responsible": [
@@ -1419,35 +1135,7 @@
       "skills": [
         "project-agile-management"
       ],
-      "inputs": [
-        "team working agreement and iteration goal",
-        "work item state and cycle-time data",
-        "dependency and blocker list"
-      ],
-      "outputs": [
-        "progress-tracking-deliverable",
-        "flow metrics",
-        "impediment register"
-      ],
       "quality_gate": "04-041",
-      "validation_method": "Team retrospective and delivery review.",
-      "purpose": "make delivery flow visible and remove impediments",
-      "execution_instructions": [
-        "Inspect flow, work in progress, aging items and blocked time rather than relying on status adjectives.",
-        "Facilitate planning/review/retro with decisions and owners.",
-        "Escalate cross-team impediments and resolve dependency sequencing.",
-        "Use trend data to adapt scope and forecast without pressuring unsafe shortcuts."
-      ],
-      "deliverable_artifacts": [
-        "flow metrics",
-        "impediment register",
-        "iteration decision log"
-      ],
-      "quality_criteria": [
-        "Work state reflects evidence.",
-        "Impediments have owners and next actions.",
-        "Metrics are used for improvement, not individual surveillance."
-      ],
       "raci": {
         "accountable": "agile-delivery-manager",
         "responsible": [
@@ -1468,35 +1156,7 @@
       "skills": [
         "project-agile-management"
       ],
-      "inputs": [
-        "scope, architecture and dependency context",
-        "risk appetite and thresholds",
-        "risk owners"
-      ],
-      "outputs": [
-        "risk-management-deliverable",
-        "RAID/risk register",
-        "treatment plan"
-      ],
       "quality_gate": "04-042",
-      "validation_method": "Risk owner and governance review.",
-      "purpose": "identify, quantify and actively treat delivery and operational risks",
-      "execution_instructions": [
-        "Describe each risk as cause-event-impact and distinguish it from an issue.",
-        "Score likelihood and impact using the agreed scale; identify exposure and trigger.",
-        "Select avoid, mitigate, transfer or accept treatment with owner and due date.",
-        "Reassess residual risk and escalate threshold breaches."
-      ],
-      "deliverable_artifacts": [
-        "RAID/risk register",
-        "treatment plan",
-        "residual risk acceptance"
-      ],
-      "quality_criteria": [
-        "High risks have active treatments and triggers.",
-        "Risk acceptance is authorized and time-bound.",
-        "Issues are not hidden as risks."
-      ],
       "raci": {
         "accountable": "program-manager",
         "responsible": [

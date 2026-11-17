@@ -1,0 +1,65 @@
+{
+  "stage_id": 41,
+  "purpose": "show the real state of delivery against the plan, so decisions are based on facts and slippage is found early",
+  "entry_criteria": [
+    "A plan with milestones exists",
+    "Work items are tracked in a shared tool",
+    "A reporting rhythm is agreed"
+  ],
+  "inputs": [
+    "plan and milestones",
+    "work item status",
+    "defects and risks",
+    "budget actuals"
+  ],
+  "procedure": [
+    "Define what done means for an item and a milestone, so status is judged the same way everywhere.",
+    "Take status from the tracking tool, not from memory or manual updates.",
+    "Compare progress with the plan using completed work, not effort spent, and show the trend.",
+    "Report risks, blockers and decisions needed next to the progress, with owners and dates.",
+    "Forecast the completion as a range and say what would change it.",
+    "Publish the report on the agreed schedule and record decisions taken from it."
+  ],
+  "deliverables": [
+    "progress report",
+    "trend against plan",
+    "forecast range",
+    "decision log"
+  ],
+  "acceptance_criteria": [
+    "Status comes from the tracking tool",
+    "Progress counts completed work",
+    "Forecast is a range with its drivers",
+    "Decisions needed are listed with owners"
+  ],
+  "validation_method": "Delivery manager review.",
+  "validation": [
+    {
+      "check": "recompute the completion percentage from the tracking tool export",
+      "expect": "matches the report"
+    },
+    {
+      "check": "check every red item has an owner and a next step",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Watermelon reporting",
+      "detection": "Green status with problems underneath",
+      "response": "Use measured criteria"
+    },
+    {
+      "mode": "Effort mistaken for progress",
+      "detection": "Hours spent but items not done",
+      "response": "Count completed items"
+    },
+    {
+      "mode": "No decisions listed",
+      "detection": "Blockers wait for weeks",
+      "response": "Add decisions with owners"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A report shows 60 percent of items complete against 70 percent planned, forecasts delivery one to three weeks late, and lists a pending decision on the payment provider with the product owner.",
+  "status": "complete"
+}

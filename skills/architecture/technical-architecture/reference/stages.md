@@ -15,40 +15,68 @@
 - [34 Architecture Review](#34)
 
 ## 23
-**Solution Architecture** (stub). Purpose: define the system structure and component boundaries for the target quality attributes.
+**Solution Architecture** (complete). Purpose: define how a business solution fits together across systems, teams and vendors, so the parts can be built and the whole works.
 
-Inputs: business capabilities and system context; runtime/deployment constraints; quality attribute scenarios
+Entry criteria: Business goals and requirements are agreed; The existing landscape is documented at least roughly; Constraints on cost, time and compliance are known
+
+Inputs: requirements and goals; current systems landscape; constraints; feasibility results
 
 Procedure:
-1. Define system context, actors, external systems and trust boundaries.
-2. Decompose capabilities into components and assign ownership, interfaces and dependency direction.
-3. Evaluate synchronous/asynchronous boundaries, data ownership, failure isolation and deployment topology.
-4. Compare architecture options against latency, availability, scalability, security, operability and cost scenarios.
+1. Describe the business capabilities the solution must provide and the systems and people involved.
+2. Draw the context view: what is inside the solution, what is outside, and every external connection.
+3. Choose the main building blocks and say which are reused, bought or built, with reasons.
+4. Define the interfaces and data ownership between the blocks and with existing systems.
+5. Check the design against the key requirements and constraints, and list risks and open decisions.
+6. Record the main decisions with options considered, and review the design with stakeholders.
 
-Deliverables: system context and container diagrams; component/interface catalogue; architecture decision records
+Deliverables: solution context diagram; building block and interface list; decision records; risk and open-issue list
 
-Acceptance: Every component has responsibility and owner. Dependencies and failure domains are explicit. Trade-offs are tied to measurable quality scenarios.
+Acceptance: Every external connection is shown Build, buy or reuse is decided with reasons Data ownership is stated per block Key requirements are traced to blocks
 
-Validation: Architecture review against documented quality attribute scenarios.
+Validation: Architecture board review.
+
+- manual: trace five key requirements to the building blocks that satisfy them expect: all traced
+- manual: check each interface names an owner and a data owner expect: none missing
+
+Failure modes:
+- Boundary unclear | detect: Teams assume others own a function | respond: Redraw context and assign
+- Reuse assumed without checking | detect: Existing system lacks the capability | respond: Verify before committing
+- Decisions unrecorded | detect: Reasons lost | respond: Write decision records
+
+ILLUSTRATIVE: A customer portal is split into identity (bought), account data (existing core system) and a new notification service (built). The context diagram shows the payment provider as an external connection with a named owner.
 
 Gate: 03-023. Approval: none required
 
 ## 24
-**System Architecture** (stub). Purpose: define the system structure and component boundaries for the target quality attributes.
+**System Architecture** (complete). Purpose: design the internal structure of one system so that it meets its quality targets and can be changed safely.
 
-Inputs: business capabilities and system context; runtime/deployment constraints; quality attribute scenarios
+Entry criteria: The solution architecture and quality targets exist (stages 14, 23); Technology choices are known or being made; The team who will build it is known
+
+Inputs: solution architecture; quality requirements; technology choices; team skills
 
 Procedure:
-1. Define system context, actors, external systems and trust boundaries.
-2. Decompose capabilities into components and assign ownership, interfaces and dependency direction.
-3. Evaluate synchronous/asynchronous boundaries, data ownership, failure isolation and deployment topology.
-4. Compare architecture options against latency, availability, scalability, security, operability and cost scenarios.
+1. Select an architectural style that fits the quality targets and team, such as modular monolith or services, and state why.
+2. Divide the system into components with one clear responsibility each and rules for who may depend on whom.
+3. Design data flow, state, and failure handling: timeouts, retries, idempotency and degradation.
+4. Describe how the design meets each quality target, for example scaling, recovery and observability.
+5. Define the deployment shape and the environments, and how configuration is handled.
+6. Write decision records, and turn the dependency rules into automated checks.
 
-Deliverables: system context and container diagrams; component/interface catalogue; architecture decision records
+Deliverables: component and dependency design; failure handling design; quality attribute mapping; decision records and dependency rules
 
-Acceptance: Every component has responsibility and owner. Dependencies and failure domains are explicit. Trade-offs are tied to measurable quality scenarios.
+Acceptance: Each quality target maps to a design element Dependency rules are written and checkable Failure behavior is designed, not left to defaults The style choice has a stated reason
 
-Validation: Architecture review against documented quality attribute scenarios.
+Validation: Architect peer review.
+
+- manual: list each quality target and the design element that meets it expect: no target left without an element
+- manual: check the dependency rules can be expressed in a tool and run in CI expect: rules listed with the tool
+
+Failure modes:
+- Style chosen by fashion | detect: No link to targets | respond: Justify against targets
+- Shared database between components | detect: Changes break neighbours | respond: Assign data to one owner
+- Failure paths missing | detect: Outage cascades | respond: Design timeouts and degradation
+
+ILLUSTRATIVE: A modular monolith is chosen for a team of six; modules own their tables and may call each other only through interfaces, and a dependency rule in CI rejects direct table access across modules.
 
 Gate: 03-024. Approval: none required
 
@@ -157,40 +185,68 @@ Validation: Cloud security and operations design review.
 Gate: 03-028. Approval: none required
 
 ## 29
-**Security Architecture** (stub). Purpose: define trust boundaries and security controls before implementation.
+**Security Architecture** (complete). Purpose: design the controls that protect the system and its data, based on the threats it faces and the obligations it carries.
 
-Inputs: data flows and assets; threat actors and trust boundaries; regulatory and risk appetite
+Entry criteria: Architecture and data flows are described; Data classification exists; Compliance obligations are listed (stage 10)
+
+Inputs: architecture and data flows; data classification; threat model; compliance obligations
 
 Procedure:
-1. Identify assets, entry points, identities, trust boundaries and privileged operations.
-2. Model abuse cases and threats using a documented method such as STRIDE where suitable.
-3. Map preventive, detective and recovery controls to threats and owners.
-4. Record residual risk, security assumptions and verification requirements.
+1. List the assets to protect and the trust boundaries in the design.
+2. Identify threats at each boundary with a structured method, and rank them by impact and likelihood.
+3. Design controls for the highest-ranked threats: identity and access, encryption, network separation, input handling and secrets management.
+4. Apply least privilege and separation of duties, and design how access is granted, reviewed and removed.
+5. Design logging and detection for security events, and the response path.
+6. Map controls to obligations and record accepted residual risk with an owner.
 
-Deliverables: data-flow diagram; threat model; control matrix; residual risk record
+Deliverables: threat model; control design; access model; residual risk register with owners
 
-Acceptance: High-impact threats have treatment and owner. Trust boundaries and data flows are complete. Controls have testable verification evidence.
+Acceptance: Each high-ranked threat has a control or an accepted risk Trust boundaries are drawn Access has a grant, review and removal path Residual risk has a named owner
 
-Validation: Independent security architecture review.
+Validation: Security architect and risk owner approval.
+
+- manual: trace the five highest threats to a control or an accepted-risk entry expect: all traced
+- manual: check that logging covers authentication, access changes and data export expect: covered
+
+Failure modes:
+- Controls without threats | detect: Effort on low risk | respond: Rank and refocus
+- Shared admin accounts | detect: No individual accountability | respond: Use named accounts
+- Risk accepted by no one | detect: Residual row has no owner | respond: Assign or reduce
+
+ILLUSTRATIVE: A threat model of an upload feature ranks malicious files highest. Controls: type and size limits, scanning, storage outside the web root, and an alert on repeated rejected uploads; residual risk is accepted by the service owner.
 
 Gate: 03-029. Approval: none required
 
 ## 30
-**Data Architecture** (stub). Purpose: govern data domains, semantics, lineage and lifecycle.
+**Data Architecture** (complete). Purpose: design how data is stored, owned, moved and protected, so it stays correct, available and compliant.
 
-Inputs: business data domains and owners; source/consumer inventory; classification and retention obligations
+Entry criteria: Requirements and data needs are known; Data classification is available; Integration points are listed
+
+Inputs: data requirements; data classification; integration needs; retention and privacy obligations
 
 Procedure:
-1. Define domain entities, canonical terms, identifiers and system-of-record ownership.
-2. Map ingestion, transformation, sharing, lineage and quality responsibility.
-3. Set classification, access, retention, deletion and residency rules.
-4. Review interoperability and schema evolution with producers and consumers.
+1. Identify the main data entities, who owns each, and where the system of record is.
+2. Choose storage types per need (transactional, analytical, search, cache) and justify each.
+3. Design how data moves between systems, how often, and how consistency is kept.
+4. Define retention, archiving, deletion and backup rules for each class of data.
+5. Design access control and protection by classification, including masking in non-production.
+6. Document lineage for key data and the quality checks that guard it.
 
-Deliverables: domain model; data catalogue; lineage map; classification/retention policy
+Deliverables: entity ownership map; storage and flow design; retention and deletion rules; lineage and quality checks
 
-Acceptance: Critical elements have owners and definitions. Lineage covers source-to-consumer flow. Privacy and retention controls are enforceable.
+Acceptance: Each entity has one system of record and an owner Retention and deletion rules exist per class Non-production data is masked or synthetic Key data has lineage
 
-Validation: Data governance council review.
+Validation: Data architect and data owner approval.
+
+- manual: check every entity in the model lists a system of record and an owner expect: none missing
+- manual: check each personal-data field has a retention rule expect: none missing
+
+Failure modes:
+- Two systems of record | detect: Values disagree | respond: Choose one and sync from it
+- No deletion rule | detect: Data kept indefinitely | respond: Add retention and deletion
+- Production data in test | detect: Copies found in non-production | respond: Mask or replace
+
+ILLUSTRATIVE: Customer data is owned by the account service; the warehouse receives a nightly copy with email masked, and personal fields are deleted 24 months after account closure.
 
 Gate: 03-030. Approval: none required
 
@@ -214,21 +270,35 @@ Validation: Producer, consumer and operations review.
 Gate: 03-031. Approval: none required
 
 ## 32
-**Technology Selection** (stub). Purpose: choose technology through evidence-based trade-off analysis.
+**Technology Selection** (complete). Purpose: choose technology on evidence and fit, so the team gets tools it can run and change for the life of the product.
 
-Inputs: capability requirements and constraints; candidate options and lifecycle costs; security, skills and support requirements
+Entry criteria: Requirements and constraints are known; Candidate technologies are identified; Team skills and operating model are known
+
+Inputs: requirements and quality targets; constraints; candidate options; team skills and licensing terms
 
 Procedure:
-1. Define decision criteria and weights before scoring candidates.
-2. Evaluate functional fit, integration, maturity, security, licensing, operability and exit cost.
-3. Prototype only uncertain high-impact capabilities and record measured results.
-4. Publish decision, rejected alternatives, assumptions and review trigger.
+1. Write the criteria first: fit to requirements, team skill, maturity, security record, cost, licence, vendor risk and exit cost.
+2. Weight the criteria with the stakeholders before scoring any option.
+3. Test the top candidates with a short proof of concept on the riskiest requirement.
+4. Score each option with evidence, and check licences and the support and release history.
+5. Choose, and record the decision with rejected options and the conditions that would reopen it.
+6. Add the choice to the approved technology list with an owner and review date.
 
-Deliverables: technology scorecard; proof evidence; architecture decision record
+Deliverables: criteria and weights; proof of concept results; scored comparison; decision record and technology list entry
 
-Acceptance: Scoring criteria are transparent. Total cost and exit strategy are included. Decision is reproducible from evidence.
+Acceptance: Criteria and weights were set before scoring A proof of concept tested the riskiest requirement Licence and exit cost were checked Reopen conditions are recorded
 
-Validation: Architecture governance review.
+Validation: Enterprise architect decision.
+
+- manual: check the criteria file is dated before the scoring file expect: dates in the right order
+- manual: read the licence of the chosen technology against the intended use expect: compatible, or exception recorded
+
+Failure modes:
+- Resume-driven choice | detect: Fit evidence missing | respond: Score against criteria
+- Licence conflict | detect: Use not permitted | respond: Choose another or negotiate
+- Proof of concept skipped | detect: Surprises at build time | respond: Test the riskiest part first
+
+ILLUSTRATIVE: Two message brokers are compared. A one-day proof of concept at the expected peak rate shows one cannot keep ordering; the other is chosen, with a note to reopen the decision if volume exceeds ten times the test.
 
 Gate: 03-032. Approval: none required
 

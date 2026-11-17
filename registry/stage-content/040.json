@@ -1,0 +1,65 @@
+{
+  "stage_id": 40,
+  "purpose": "keep the way a team plans, delivers and improves healthy and consistent, so delivery is predictable and problems surface early",
+  "entry_criteria": [
+    "Teams work in iterations or flow",
+    "Delivery measures can be collected",
+    "Teams hold regular reviews"
+  ],
+  "inputs": [
+    "team practices",
+    "delivery measures",
+    "retrospective outcomes",
+    "impediment list"
+  ],
+  "procedure": [
+    "Agree the few practices all teams share, such as definition of done, backlog refinement and review, and leave the rest to teams.",
+    "Track a small set of flow measures: cycle time, throughput, work in progress and escaped defects.",
+    "Read the measures with the teams as signals for conversation, not as targets for individuals.",
+    "Collect impediments from every team, and have an owner remove or escalate each in a stated time.",
+    "Check that retrospective actions are done, and that the same problem is not raised repeatedly without action.",
+    "Review the practices each quarter and drop ones that no longer help."
+  ],
+  "deliverables": [
+    "shared practice list",
+    "flow measure report",
+    "impediment log with owners",
+    "retrospective action tracking"
+  ],
+  "acceptance_criteria": [
+    "Shared practices are few and written",
+    "Flow measures are tracked per team",
+    "Each impediment has an owner and date",
+    "Retrospective actions are tracked to done"
+  ],
+  "validation_method": "Delivery manager review.",
+  "validation": [
+    {
+      "check": "count open impediments older than the agreed time",
+      "expect": "each has an escalation record"
+    },
+    {
+      "check": "check the last three retrospectives' actions for completion",
+      "expect": "completion rate recorded"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Measures used to rank people",
+      "detection": "Gaming starts",
+      "response": "Use them for team learning"
+    },
+    {
+      "mode": "Impediments stay open",
+      "detection": "Same blockers every sprint",
+      "response": "Assign owners and escalate"
+    },
+    {
+      "mode": "Practices imposed in full",
+      "detection": "Teams ignore them",
+      "response": "Keep the shared set small"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Cycle time rises from 4 to 9 days on one team. The log shows reviews waiting on one person; a review rota is agreed, and the cycle time is checked again in two sprints.",
+  "status": "complete"
+}

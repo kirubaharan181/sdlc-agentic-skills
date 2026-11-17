@@ -13,40 +13,68 @@
 - [44 Change Management](#44)
 
 ## 35
-**Project Initiation** (stub). Purpose: establish project authority, outcomes and operating cadence.
+**Project Initiation** (complete). Purpose: start a project with an agreed purpose, scope, roles and first steps, so everyone begins with the same understanding.
 
-Inputs: business case and sponsor; scope boundaries and constraints; delivery and governance stakeholders
+Entry criteria: The project is approved (stage 9); A project manager and sponsor are named; Initial budget and time frame exist
+
+Inputs: approval decision and conditions; business case; stakeholder list; constraints
 
 Procedure:
-1. Confirm sponsor, project manager, decision rights and escalation path.
-2. Define objectives, measurable outcomes, scope, exclusions and success criteria.
-3. Set governance cadence, reporting, change control and initial RAID ownership.
-4. Baseline charter and mobilization actions.
+1. Write a short charter: purpose, objectives, scope, exclusions, success measures and constraints.
+2. Name the sponsor, project manager and team leads, and state who decides what.
+3. List the stakeholders and how each will be kept informed.
+4. Set up the working basics: repository, backlog, communication channels and meeting rhythm.
+5. List the first risks, assumptions and dependencies, with owners.
+6. Hold a kickoff, share the charter and get written acknowledgement from the sponsor.
 
-Deliverables: project charter; RACI; initial RAID log; governance calendar
+Deliverables: project charter; role and decision list; stakeholder communication plan; initial risks, assumptions and dependencies
 
-Acceptance: Accountability and authority are explicit. Outcomes and scope are measurable. Open assumptions have owners and due dates.
+Acceptance: Scope and exclusions are written Roles and decision rights are named Conditions of approval are carried into the plan The sponsor acknowledged the charter
 
-Validation: Sponsor approval.
+Validation: Sponsor acknowledgement.
+
+- manual: check every approval condition from stage 9 appears in the plan with an owner expect: all present
+- manual: check the charter has a dated sponsor acknowledgement expect: present
+
+Failure modes:
+- Scope vague | detect: Different views at kickoff | respond: Add exclusions and agree
+- Conditions dropped | detect: Approval items missing | respond: Add them to the plan
+- Roles unclear | detect: Decisions stall | respond: Name decision makers
+
+ILLUSTRATIVE: A charter for a data migration lists three objectives, excludes decommissioning the old system, names the sponsor as the budget decision maker, and carries over the approval condition about a security review.
 
 Gate: 04-035. Approval: none required
 
 ## 36
-**Resource Planning** (stub). Purpose: match capacity and specialist skills to the delivery demand.
+**Resource Planning** (complete). Purpose: match people, skills, tools and time to the work, and show where there are gaps before they delay delivery.
 
-Inputs: work estimates and skill requirements; availability and leave calendar; budget and supplier constraints
+Entry criteria: The work plan exists; Team availability is known; Skill needs are identified
+
+Inputs: work plan and estimates; team members and availability; skills inventory; tool and environment needs
 
 Procedure:
-1. Build role-based capacity by iteration and critical skill.
-2. Identify bottlenecks, single points of failure and onboarding lead time.
-3. Compare demand with available capacity and propose sequencing or sourcing options.
-4. Track actual allocation and reforecast when assumptions change.
+1. List the skills and roles needed for each phase and the amount of effort in each.
+2. Compare with available people, counting leave, support duties and other commitments.
+3. Find the gaps and decide how to close each: hire, borrow, train, contract or change the plan.
+4. Plan lead times for access, equipment, licences and environments, which often take longer than expected.
+5. Avoid single points of knowledge by pairing or planned handover on critical skills.
+6. Review the plan at checkpoints and when people join or leave.
 
-Deliverables: capacity plan; skills matrix; resource risk log
+Deliverables: resource plan by phase; gap list with actions; lead-time list; single point of knowledge list
 
-Acceptance: Plan uses available capacity, not nominal headcount. Critical skill gaps have mitigations. Allocation changes are approved.
+Acceptance: Availability counts leave and other duties Each gap has an action and an owner Lead times for access and tools are planned Critical skills are covered by more than one person
 
-Validation: Delivery manager and functional owner review.
+Validation: Project manager review with team leads.
+
+- manual: compare allocated percentages per person with their available hours expect: no one above 100 percent
+- manual: check each gap has an action, owner and date expect: none missing
+
+Failure modes:
+- Person allocated over 100 percent | detect: Sums exceed availability | respond: Rebalance or add people
+- Access delay | detect: New joiner idle for weeks | respond: Request access in advance
+- One person holds a critical skill | detect: Delivery depends on them | respond: Pair or document
+
+ILLUSTRATIVE: A plan needs two backend engineers for six months. One is available at 50 percent, so the gap is closed by a contractor with access requested three weeks ahead and a handover plan for the integration knowledge.
 
 Gate: 04-036. Approval: none required
 
@@ -70,97 +98,167 @@ Validation: Cross-functional planning review.
 Gate: 04-037. Approval: none required
 
 ## 38
-**Effort Estimation** (stub). Purpose: produce a transparent estimate and funding baseline.
+**Effort Estimation** (complete). Purpose: estimate the effort for planned work in a way the team can calibrate and improve against actual results.
 
-Inputs: scope breakdown and assumptions; rates, capacity and supplier estimates; contingency policy
+Entry criteria: Work items are described; Past delivery data exists or can be collected; The team doing the work is available to estimate
+
+Inputs: work items with acceptance criteria; historical velocity or cycle time; team capacity; known risks
 
 Procedure:
-1. Break work into measurable cost drivers and separate one-time from recurring spend.
-2. Estimate effort, infrastructure, licensing, vendor, migration and support costs using ranges.
-3. Document confidence, exclusions, currency, tax treatment and contingency basis.
-4. Reconcile the estimate against available funding and define variance thresholds.
+1. Have the people who will do the work estimate it, with the item and acceptance criteria in front of them.
+2. Use a relative or range method and compare with similar completed items rather than guessing from nothing.
+3. Split items that are too large to estimate with confidence, and note what remains unknown.
+4. Convert to a delivery forecast using past throughput, giving a range and a confidence level.
+5. Record the estimate and assumptions, then compare with actuals when each item completes.
+6. Use the differences to adjust the method and the forecast.
 
-Deliverables: estimate workbook; assumption and exclusion log; funding request; cost baseline
+Deliverables: estimates with assumptions; forecast range; estimate versus actual record; method adjustments
 
-Acceptance: Totals recalculate from traceable line items. Uncertainty and contingency are visible. Estimate owner and approval authority are named.
+Acceptance: Estimates come from the doers Large items were split The forecast is a range based on past throughput Actuals are compared and used
 
-Validation: Finance review and independent arithmetic check.
+Validation: Project manager review.
+
+- manual: compare estimates and actuals for the last ten completed items expect: variance recorded
+- manual: check every item over the size limit has been split expect: none remain
+
+Failure modes:
+- Estimates given by someone else | detect: Large gaps against actuals | respond: Estimate with the team
+- Estimate treated as a promise | detect: Pressure to hit one date | respond: Report as a range
+- No feedback loop | detect: Same error repeats | respond: Review variance each iteration
+
+ILLUSTRATIVE: A team's last ten items averaged 1.4 times their estimates, so the forecast for the next release is stated as eight to twelve weeks with a note that the range reflects that history.
 
 Gate: 04-038. Approval: none required
 
 ## 39
-**Sprint Planning** (stub). Purpose: select a feasible sprint goal and commitment.
+**Sprint Planning** (complete). Purpose: choose a realistic set of work for the next iteration, agreed by the team and tied to a clear goal.
 
-Inputs: ordered ready backlog; team capacity and availability; definition of ready and dependencies
+Entry criteria: A refined, ordered backlog exists; Team capacity for the iteration is known; The product owner is available
+
+Inputs: ordered backlog; team capacity; recent throughput; dependencies and risks
 
 Procedure:
-1. Confirm sprint objective and business value before selecting stories.
-2. Check readiness, acceptance criteria, dependencies, test data and external blockers.
-3. Forecast capacity using recent throughput and actual availability.
-4. Split work to deliver testable increments and agree a contingency buffer.
+1. Set one sprint goal with the product owner that says what value the team will deliver.
+2. Check capacity for the sprint: working days, leave, planned support and carry-over.
+3. Pull items from the top of the backlog that serve the goal, confirming each has clear acceptance criteria.
+4. Break the items into tasks the team can finish in about a day, and surface dependencies and risks.
+5. Check the plan against recent throughput; remove items rather than overload.
+6. Agree the plan with the whole team and publish the goal and the board.
 
-Deliverables: sprint goal; committed backlog; capacity and dependency view
+Deliverables: sprint goal; selected items with acceptance criteria; task breakdown; risks and dependencies
 
-Acceptance: Commitment fits actual capacity. Stories meet readiness criteria. Sprint goal is outcome-focused and measurable.
+Acceptance: There is one clear sprint goal Planned work fits capacity and recent throughput Each item has acceptance criteria The team agreed the plan
 
-Validation: Team planning agreement.
+Validation: Scrum master facilitation; team commitment.
+
+- manual: compare planned points or items with the average of the last three sprints expect: within an agreed margin
+- manual: check every selected item has acceptance criteria expect: none missing
+
+Failure modes:
+- Overcommitment | detect: Half the items carry over | respond: Plan to throughput
+- No goal | detect: Sprint is a list of items | respond: Write a goal first
+- Unready items | detect: Questions during the sprint | respond: Return to refinement
+
+ILLUSTRATIVE: With 9 working days and one person on leave, the team plans 22 points against a recent average of 24 and sets the goal 'customers can reset their password without support'.
 
 Gate: 04-039. Approval: none required
 
 ## 40
-**Agile Management** (stub). Purpose: make delivery flow visible and remove impediments.
+**Agile Management** (complete). Purpose: keep the way a team plans, delivers and improves healthy and consistent, so delivery is predictable and problems surface early.
 
-Inputs: team working agreement and iteration goal; work item state and cycle-time data; dependency and blocker list
+Entry criteria: Teams work in iterations or flow; Delivery measures can be collected; Teams hold regular reviews
+
+Inputs: team practices; delivery measures; retrospective outcomes; impediment list
 
 Procedure:
-1. Inspect flow, work in progress, aging items and blocked time rather than relying on status adjectives.
-2. Facilitate planning/review/retro with decisions and owners.
-3. Escalate cross-team impediments and resolve dependency sequencing.
-4. Use trend data to adapt scope and forecast without pressuring unsafe shortcuts.
+1. Agree the few practices all teams share, such as definition of done, backlog refinement and review, and leave the rest to teams.
+2. Track a small set of flow measures: cycle time, throughput, work in progress and escaped defects.
+3. Read the measures with the teams as signals for conversation, not as targets for individuals.
+4. Collect impediments from every team, and have an owner remove or escalate each in a stated time.
+5. Check that retrospective actions are done, and that the same problem is not raised repeatedly without action.
+6. Review the practices each quarter and drop ones that no longer help.
 
-Deliverables: flow metrics; impediment register; iteration decision log
+Deliverables: shared practice list; flow measure report; impediment log with owners; retrospective action tracking
 
-Acceptance: Work state reflects evidence. Impediments have owners and next actions. Metrics are used for improvement, not individual surveillance.
+Acceptance: Shared practices are few and written Flow measures are tracked per team Each impediment has an owner and date Retrospective actions are tracked to done
 
-Validation: Team retrospective and delivery review.
+Validation: Delivery manager review.
+
+- manual: count open impediments older than the agreed time expect: each has an escalation record
+- manual: check the last three retrospectives' actions for completion expect: completion rate recorded
+
+Failure modes:
+- Measures used to rank people | detect: Gaming starts | respond: Use them for team learning
+- Impediments stay open | detect: Same blockers every sprint | respond: Assign owners and escalate
+- Practices imposed in full | detect: Teams ignore them | respond: Keep the shared set small
+
+ILLUSTRATIVE: Cycle time rises from 4 to 9 days on one team. The log shows reviews waiting on one person; a review rota is agreed, and the cycle time is checked again in two sprints.
 
 Gate: 04-040. Approval: none required
 
 ## 41
-**Progress Tracking** (stub). Purpose: make delivery flow visible and remove impediments.
+**Progress Tracking** (complete). Purpose: show the real state of delivery against the plan, so decisions are based on facts and slippage is found early.
 
-Inputs: team working agreement and iteration goal; work item state and cycle-time data; dependency and blocker list
+Entry criteria: A plan with milestones exists; Work items are tracked in a shared tool; A reporting rhythm is agreed
+
+Inputs: plan and milestones; work item status; defects and risks; budget actuals
 
 Procedure:
-1. Inspect flow, work in progress, aging items and blocked time rather than relying on status adjectives.
-2. Facilitate planning/review/retro with decisions and owners.
-3. Escalate cross-team impediments and resolve dependency sequencing.
-4. Use trend data to adapt scope and forecast without pressuring unsafe shortcuts.
+1. Define what done means for an item and a milestone, so status is judged the same way everywhere.
+2. Take status from the tracking tool, not from memory or manual updates.
+3. Compare progress with the plan using completed work, not effort spent, and show the trend.
+4. Report risks, blockers and decisions needed next to the progress, with owners and dates.
+5. Forecast the completion as a range and say what would change it.
+6. Publish the report on the agreed schedule and record decisions taken from it.
 
-Deliverables: flow metrics; impediment register; iteration decision log
+Deliverables: progress report; trend against plan; forecast range; decision log
 
-Acceptance: Work state reflects evidence. Impediments have owners and next actions. Metrics are used for improvement, not individual surveillance.
+Acceptance: Status comes from the tracking tool Progress counts completed work Forecast is a range with its drivers Decisions needed are listed with owners
 
-Validation: Team retrospective and delivery review.
+Validation: Delivery manager review.
+
+- manual: recompute the completion percentage from the tracking tool export expect: matches the report
+- manual: check every red item has an owner and a next step expect: none missing
+
+Failure modes:
+- Watermelon reporting | detect: Green status with problems underneath | respond: Use measured criteria
+- Effort mistaken for progress | detect: Hours spent but items not done | respond: Count completed items
+- No decisions listed | detect: Blockers wait for weeks | respond: Add decisions with owners
+
+ILLUSTRATIVE: A report shows 60 percent of items complete against 70 percent planned, forecasts delivery one to three weeks late, and lists a pending decision on the payment provider with the product owner.
 
 Gate: 04-041. Approval: none required
 
 ## 42
-**Risk Management** (stub). Purpose: identify, quantify and actively treat delivery and operational risks.
+**Risk Management** (complete). Purpose: find, rank and handle the things that could harm the delivery or the business, before they happen.
 
-Inputs: scope, architecture and dependency context; risk appetite and thresholds; risk owners
+Entry criteria: Project or program scope is defined; A risk owner role exists; A review rhythm is agreed
+
+Inputs: plan and dependencies; past incidents and lessons; stakeholder concerns; assumption list
 
 Procedure:
-1. Describe each risk as cause-event-impact and distinguish it from an issue.
-2. Score likelihood and impact using the agreed scale; identify exposure and trigger.
-3. Select avoid, mitigate, transfer or accept treatment with owner and due date.
-4. Reassess residual risk and escalate threshold breaches.
+1. Identify risks with the team and stakeholders, writing each as cause, event and effect.
+2. Rate likelihood and impact on a common scale, and rank by exposure.
+3. Choose a response for each: avoid, reduce, transfer or accept, and say who decides on acceptance.
+4. Assign an owner and a trigger for each risk, and plan the action to take if the trigger occurs.
+5. Review the register on schedule, close the retired risks and add new ones.
+6. Report the top risks and changes to the sponsor, with the decisions needed.
 
-Deliverables: RAID/risk register; treatment plan; residual risk acceptance
+Deliverables: risk register; response plans with triggers; review records; top risk report
 
-Acceptance: High risks have active treatments and triggers. Risk acceptance is authorized and time-bound. Issues are not hidden as risks.
+Acceptance: Each risk has cause, event, effect, owner and response Ranking uses a shared scale Triggers are defined for the top risks The register is reviewed on schedule
 
-Validation: Risk owner and governance review.
+Validation: Program manager review; sponsor decision on accepted risks.
+
+- manual: check each top-ten risk has an owner, a response and a trigger expect: none missing
+- manual: check the register was reviewed within the agreed interval expect: review date within the interval
+
+Failure modes:
+- Risk written as a worry | detect: No clear event | respond: Rewrite as cause, event, effect
+- No owner | detect: Risk never reviewed | respond: Assign
+- Register never updated | detect: Old dates | respond: Review on schedule
+
+ILLUSTRATIVE: A risk reads 'Because the vendor is the only supplier of the SDK, if they end support, the migration slips by three months'. The owner sets a trigger on the vendor's end-of-life notice and plans an alternative evaluation.
 
 Gate: 04-042. Approval: none required
 
