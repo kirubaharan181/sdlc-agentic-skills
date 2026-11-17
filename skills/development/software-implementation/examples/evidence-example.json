@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "software-implementation",
-  "stage_id": 57,
-  "stage_name": "API Development",
+  "stage_id": 54,
+  "stage_name": "Backend Development",
   "commit_sha": "<commit under review>",
-  "executor": "<API Engineer or named person>",
+  "executor": "<Backend Engineer or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Code review (stage 69) and API test results (stage 81).",
-    "command": "pytest -q tests/contract",
-    "expected": "all contract tests pass",
+    "method": "Code review (stage 69) and CI results.",
+    "command": "pytest -q --cov=app --cov-fail-under=80   # example threshold; use the project's",
+    "expected": "passes and meets the agreed coverage",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "API implementation",
-      "path": "<path or immutable URL of API implementation>"
+      "name": "working backend code",
+      "path": "<path or immutable URL of working backend code>"
     },
     {
-      "name": "contract tests",
-      "path": "<path or immutable URL of contract tests>"
+      "name": "unit and integration tests",
+      "path": "<path or immutable URL of unit and integration tests>"
     },
     {
-      "name": "authorization enforcement",
-      "path": "<path or immutable URL of authorization enforcement>"
+      "name": "logging and metrics hooks",
+      "path": "<path or immutable URL of logging and metrics hooks>"
     }
   ],
   "limitations": [

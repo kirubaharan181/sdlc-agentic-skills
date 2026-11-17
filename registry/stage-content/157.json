@@ -1,0 +1,65 @@
+{
+  "stage_id": 157,
+  "purpose": "follow a single request through many services to find where time is spent and where it fails",
+  "entry_criteria": [
+    "Services are instrumented or can be",
+    "A tracing backend exists",
+    "Context propagation standard is chosen"
+  ],
+  "inputs": [
+    "service call graph",
+    "tracing backend",
+    "propagation standard",
+    "sampling policy"
+  ],
+  "procedure": [
+    "Adopt one propagation standard so the trace context passes through every call, including queues and background jobs.",
+    "Instrument inbound and outbound calls, database queries and key internal operations with meaningful span names.",
+    "Add useful attributes (route, status, tenant class) and keep sensitive data out of spans.",
+    "Set a sampling policy: always keep errors and slow requests, sample the rest, and state the cost.",
+    "Link traces with logs and metrics through the trace id.",
+    "Verify by tracing a real request across services and checking that no hop is missing."
+  ],
+  "deliverables": [
+    "instrumented services",
+    "propagation and sampling policy",
+    "trace-to-log linkage",
+    "verification trace"
+  ],
+  "acceptance_criteria": [
+    "A request shows all hops, including asynchronous ones",
+    "Errors and slow requests are always retained",
+    "Spans contain no sensitive data",
+    "Trace ids appear in logs"
+  ],
+  "validation_method": "Observability owner review.",
+  "validation": [
+    {
+      "check": "send one request and open its trace",
+      "expect": "spans for gateway, services and database appear in order"
+    },
+    {
+      "check": "search a log line by the trace id from that request",
+      "expect": "matching log lines found"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Broken trace at a queue",
+      "detection": "Spans end at the producer",
+      "response": "Propagate context in message headers"
+    },
+    {
+      "mode": "Sampling drops the failures",
+      "detection": "Errors missing from traces",
+      "response": "Always sample errors"
+    },
+    {
+      "mode": "Sensitive values in spans",
+      "detection": "Attributes contain tokens",
+      "response": "Remove and review the instrumentation"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A checkout request traces through the gateway, order service, payment adapter and database. The trace shows 800 of 950 ms spent waiting on the payment provider, and the trace id links to the log lines of each service.",
+  "status": "complete"
+}

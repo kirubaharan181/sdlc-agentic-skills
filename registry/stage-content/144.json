@@ -1,0 +1,65 @@
+{
+  "stage_id": 144,
+  "purpose": "keep name resolution reliable and secure through controlled day-to-day changes and monitoring",
+  "entry_criteria": [
+    "DNS zones and records are inventoried (stage 134)",
+    "Change process and access controls exist",
+    "Monitoring of resolution is available"
+  ],
+  "inputs": [
+    "DNS zone files and inventory",
+    "change requests",
+    "resolution monitoring",
+    "provider and registrar access controls"
+  ],
+  "procedure": [
+    "Handle each record change as a reviewed change in code with the requester, reason and ticket recorded.",
+    "Check the impact before the change: who depends on the name, TTL and propagation, and rollback.",
+    "Apply the change and verify from several networks and resolvers, not only from the office.",
+    "Monitor resolution time and failures, and alert when the authoritative servers or records misbehave.",
+    "Audit records regularly for stale, duplicate and dangling entries and remove them.",
+    "Test the recovery path: restoring zones from version control or backup."
+  ],
+  "deliverables": [
+    "change records",
+    "verification results",
+    "monitoring and alerts",
+    "audit findings and cleanup"
+  ],
+  "acceptance_criteria": [
+    "Every change is traceable to a request and reviewed",
+    "Verification was done from multiple resolvers",
+    "Stale and dangling records are removed",
+    "Zone restore was tested"
+  ],
+  "validation_method": "Network owner review of changes.",
+  "validation": [
+    {
+      "command": "for r in 1.1.1.1 8.8.8.8 9.9.9.9; do dig @$r +short app.example.com; done   # example",
+      "expect": "all resolvers return the intended answer"
+    },
+    {
+      "check": "restore the zone from version control into a test zone and compare",
+      "expect": "records identical"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Change breaks resolution",
+      "detection": "Failure in monitoring after change",
+      "response": "Roll back from version control"
+    },
+    {
+      "mode": "Stale record points to released infrastructure",
+      "detection": "Audit finds dangling entry",
+      "response": "Remove it"
+    },
+    {
+      "mode": "One resolver tested only",
+      "detection": "Different answers elsewhere",
+      "response": "Verify from several resolvers"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A request to move a service to a new address is applied through a reviewed change, the TTL is lowered a day before, and three public resolvers return the new address within the TTL; the old record is removed after a week.",
+  "status": "complete"
+}

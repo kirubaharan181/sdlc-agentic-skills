@@ -1,0 +1,65 @@
+{
+  "stage_id": 55,
+  "purpose": "deliver a feature across interface, service and data in one coherent change, without leaving the seams untested",
+  "entry_criteria": [
+    "The feature is described end to end with acceptance criteria",
+    "Front-end and back-end contracts are defined",
+    "The whole stack runs locally or in an ephemeral environment"
+  ],
+  "inputs": [
+    "feature description and acceptance criteria",
+    "API and UI designs",
+    "existing front-end and back-end code",
+    "test environment"
+  ],
+  "procedure": [
+    "Agree the contract between interface and service first; use it to build both sides in parallel against stubs.",
+    "Implement the thinnest working path from interface to data, then add cases and error handling.",
+    "Keep state and validation consistent on both sides; the server stays the authority.",
+    "Test across the seam with at least one end-to-end test of the main path plus unit tests on each side.",
+    "Check the user experience for loading, empty, error and slow states, and accessibility basics.",
+    "Release behind a feature flag when the change is risky, with a documented way to turn it off."
+  ],
+  "deliverables": [
+    "working feature across layers",
+    "contract and tests on both sides",
+    "one end-to-end test",
+    "feature flag and removal note"
+  ],
+  "acceptance_criteria": [
+    "The main path works end to end",
+    "Error, empty and loading states are handled",
+    "The server validates everything the client validates",
+    "A switch-off path exists for risky features"
+  ],
+  "validation_method": "Code review and product owner demonstration.",
+  "validation": [
+    {
+      "command": "pytest -q tests/api && npx playwright test tests/e2e/feature.spec.ts   # example",
+      "expect": "both pass"
+    },
+    {
+      "check": "switch the feature flag off and confirm the old behavior returns",
+      "expect": "no errors"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Client and server rules diverge",
+      "detection": "Server rejects what the client allowed",
+      "response": "Make the server the authority and share the schema"
+    },
+    {
+      "mode": "Only the happy path built",
+      "detection": "No error-state test",
+      "response": "Add the states"
+    },
+    {
+      "mode": "No way to turn off",
+      "detection": "Flag missing for a risky change",
+      "response": "Add the flag before release"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A saved-search feature adds a save button, an API endpoint and a table. The contract is agreed first; one end-to-end test saves and reloads a search, and a flag allows hiding the button without a deployment.",
+  "status": "complete"
+}

@@ -1,0 +1,65 @@
+{
+  "stage_id": 167,
+  "purpose": "resolve common user problems on first contact and pass on what cannot be resolved, with everything the next team needs",
+  "entry_criteria": [
+    "Support channels and a ticket system exist",
+    "Runbooks and a knowledge base exist (stage 178)",
+    "Escalation criteria are defined"
+  ],
+  "inputs": [
+    "user report",
+    "knowledge base and runbooks",
+    "account and status information",
+    "escalation criteria"
+  ],
+  "procedure": [
+    "Record the user's problem in their words, the affected account, and the time and steps that led to it.",
+    "Check the status page and known issues first, then search the knowledge base for a matching article.",
+    "Apply the documented fix, confirm with the user that it worked, and record what was done.",
+    "If there is no fix or the criteria are met, escalate with the full record, identifiers and impact; do not ask the user to repeat themselves.",
+    "Keep the user informed at the agreed intervals in plain language.",
+    "Tag the ticket by cause so recurring problems show up and become knowledge base articles."
+  ],
+  "deliverables": [
+    "ticket with a complete record",
+    "resolution or escalation package",
+    "user updates",
+    "cause tag"
+  ],
+  "acceptance_criteria": [
+    "Ticket has identifiers, steps and time",
+    "Fixes follow runbooks and are confirmed with the user",
+    "Escalations include the full record",
+    "Cause tags are set"
+  ],
+  "validation_method": "Support lead sampling review.",
+  "validation": [
+    {
+      "check": "review five random closed tickets for identifiers, steps and confirmation",
+      "expect": "all complete"
+    },
+    {
+      "check": "check the time to first response against the target",
+      "expect": "within target"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "User asked to repeat details",
+      "detection": "Escalation lacks information",
+      "response": "Use the escalation template"
+    },
+    {
+      "mode": "Fix not confirmed",
+      "detection": "Ticket closed without user reply",
+      "response": "Confirm before closing"
+    },
+    {
+      "mode": "Known issue handled as new",
+      "detection": "Duplicate tickets",
+      "response": "Link to the known issue and update the user"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A user cannot download an invoice. The agent finds a matching article, the fix works, the user confirms, and the ticket is tagged 'invoice download'; a second similar ticket the same week is escalated with the account id and error time.",
+  "status": "complete"
+}

@@ -1,0 +1,65 @@
+{
+  "stage_id": 73,
+  "purpose": "learn from coverage data where tests do not look, and decide what to test next rather than chasing a number",
+  "entry_criteria": [
+    "Tests run with coverage collection in CI",
+    "Critical code paths are identified",
+    "Coverage baseline exists"
+  ],
+  "inputs": [
+    "coverage report with line and branch data",
+    "list of critical paths",
+    "recent defects and their locations",
+    "coverage baseline"
+  ],
+  "procedure": [
+    "Collect line and branch coverage from the CI run for the commit under review.",
+    "Look at uncovered code in the critical paths and in recent defect areas first.",
+    "Check the tests that cover important code actually assert behavior; coverage without assertions proves little.",
+    "Record gaps and either add tests, accept the gap with a reason, or mark the code for removal.",
+    "Set a floor for new and changed code and a ratchet that stops overall coverage falling.",
+    "Report coverage with its limits: what it does not show."
+  ],
+  "deliverables": [
+    "coverage report",
+    "gap list with decisions",
+    "added tests",
+    "coverage floor and ratchet configuration"
+  ],
+  "acceptance_criteria": [
+    "Critical paths have covered branches or recorded decisions",
+    "Changed code meets the agreed floor",
+    "The overall number cannot silently fall",
+    "The report states what coverage does not prove"
+  ],
+  "validation_method": "Reviewer confirmation that gaps are decided.",
+  "validation": [
+    {
+      "command": "pytest -q --cov=app --cov-branch --cov-report=term-missing",
+      "expect": "report lists uncovered lines and branches"
+    },
+    {
+      "command": "diff-cover coverage.xml --compare-branch=origin/main --fail-under=85   # example",
+      "expect": "changed lines meet the floor"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Coverage target met with empty tests",
+      "detection": "Assertions missing",
+      "response": "Review assertions in critical paths"
+    },
+    {
+      "mode": "Floor lowered to get green",
+      "detection": "Threshold edited in the same change",
+      "response": "Treat as a separate reviewed decision"
+    },
+    {
+      "mode": "Critical path uncovered",
+      "detection": "Payment or auth code with gaps",
+      "response": "Add tests before release"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Branch coverage shows the refund failure path in the payment module is uncovered. The team adds two tests for declined and timed-out refunds and sets the changed-code floor to 85 percent.",
+  "status": "complete"
+}

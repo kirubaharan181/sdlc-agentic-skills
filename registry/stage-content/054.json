@@ -1,0 +1,65 @@
+{
+  "stage_id": 54,
+  "purpose": "implement server-side behavior that is correct, secure, observable and easy to change",
+  "entry_criteria": [
+    "Requirements and API contract are agreed",
+    "Data model exists or is being built (stage 58)",
+    "Development environment runs locally"
+  ],
+  "inputs": [
+    "requirements and acceptance criteria",
+    "API contract",
+    "data access layer",
+    "architecture and coding standards"
+  ],
+  "procedure": [
+    "Break the work into small vertical slices, each with a test, so the system always builds and passes.",
+    "Keep business rules in one layer that does not depend on the web framework or database, so they can be tested alone.",
+    "Validate every input at the boundary, check authorization on every operation and return errors in the agreed format.",
+    "Handle failure explicitly: timeouts and retries with limits, idempotent writes, and clear errors instead of silent failure.",
+    "Add structured logs with correlation ids, and metrics for the main operations, without logging sensitive data.",
+    "Open small pull requests with tests and note any behavior or configuration the reviewer must check."
+  ],
+  "deliverables": [
+    "working backend code",
+    "unit and integration tests",
+    "logging and metrics hooks",
+    "pull requests with notes"
+  ],
+  "acceptance_criteria": [
+    "Each acceptance criterion has a passing test",
+    "Inputs are validated and authorization is checked per operation",
+    "External calls have timeouts and bounded retries",
+    "Logs carry correlation ids and no secrets"
+  ],
+  "validation_method": "Code review (stage 69) and CI results.",
+  "validation": [
+    {
+      "command": "pytest -q --cov=app --cov-fail-under=80   # example threshold; use the project's",
+      "expect": "passes and meets the agreed coverage"
+    },
+    {
+      "command": "grep -rniE 'password|secret|token' app/ --include=*.py | grep -i 'log'",
+      "expect": "no secret values reach log calls"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Business rules inside controllers",
+      "detection": "Tests need a running server",
+      "response": "Move rules into a plain layer"
+    },
+    {
+      "mode": "Unbounded retries",
+      "detection": "Retry storm during an outage",
+      "response": "Add limits, backoff and jitter"
+    },
+    {
+      "mode": "Sensitive data in logs",
+      "detection": "Review finds values",
+      "response": "Remove and rotate if secrets"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A refund endpoint validates the amount against the original payment, checks the caller owns the order, uses an idempotency key to ignore duplicate requests, and logs the correlation id and outcome without card data.",
+  "status": "complete"
+}

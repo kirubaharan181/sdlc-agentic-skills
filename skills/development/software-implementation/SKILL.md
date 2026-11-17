@@ -25,8 +25,8 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
 | 53 | Frontend Development | stub | Frontend Engineer |
-| 54 | Backend Development | stub | Backend Engineer |
-| 55 | Full Stack Development | stub | Full Stack Engineer |
+| 54 | Backend Development | complete | Backend Engineer |
+| 55 | Full Stack Development | complete | Full Stack Engineer |
 | 56 | Mobile Development | stub | Mobile Engineer |
 | 57 | API Development | complete | API Engineer |
 | 58 | Database Development | complete | Database Engineer |
@@ -36,7 +36,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 62 | Real-time Development | stub | Backend Engineer |
 | 63 | Data Engineering | stub | Data Engineer |
 | 64 | AI/ML Development | stub | AI/ML Engineer |
-| 65 | Caching & Optimization | stub | Performance Engineer |
+| 65 | Caching & Optimization | complete | Performance Engineer |
 | 66 | Error Handling | stub | Backend Engineer |
 | 67 | Developer Testing | complete | Full Stack Engineer |
 

@@ -78,21 +78,35 @@ ILLUSTRATIVE: A change adds a discount code. Review finds the discount can be ap
 Gate: 07-069. Approval: none required
 
 ## 70
-**Architecture Review** (stub). Purpose: independently evaluate architecture against quality attributes and constraints.
+**Architecture Review** (complete). Purpose: judge whether the implemented system still follows the intended architecture and quality attributes, and catch drift early.
 
-Inputs: architecture baseline and ADRs; quality attribute scenarios; risk and change context
+Entry criteria: Approved architecture and decision records exist; Implemented code or a build is available; Reviewer did not write the code under review
+
+Inputs: architecture description and decision records; implemented code and dependency structure; quality-attribute targets; recent significant changes
 
 Procedure:
-1. Check component boundaries, coupling, data ownership, failure domains and dependency direction.
-2. Evaluate security, resilience, scalability, operability, accessibility and cost against scenarios.
-3. Record evidence, deviations, trade-offs and remediation priority.
-4. Issue accept, conditional accept or reject recommendation without implementing the reviewed change.
+1. Compare the implemented structure (modules, dependencies, data flows) with the documented architecture and note each divergence.
+2. Check the boundaries rules automatically where possible, such as forbidden dependencies between layers.
+3. Check the quality attributes with evidence: latency measurements, failure behavior, security design, operational readiness.
+4. Classify each divergence as accepted evolution (update the record), defect (fix) or risk (owner and date).
+5. Report findings with severity and the architectural principle affected.
+6. Update the architecture records for accepted changes and track the rest.
 
-Deliverables: architecture review report; decision and exception log; remediation actions
+Deliverables: conformance review report; automated dependency rule results; updated decision records; tracked findings
 
-Acceptance: Findings cite model element and impact. Reviewer independence is preserved. Exceptions have owner and expiry.
+Acceptance: Each divergence has a classification and an owner Quality attributes are checked with evidence Accepted changes are reflected in the records Reviewer is independent of the implementers
 
-Validation: Independent architecture board decision.
+Validation: Architecture board decision on blockers.
+
+- `npx depcruise --config .dependency-cruiser.js src   # example; use the language's equivalent` expect: no forbidden dependency violations
+- manual: compare the module diagram with the code's actual import graph expect: differences listed in the report
+
+Failure modes:
+- Documentation never updated | detect: Records contradict the code | respond: Update or revert the code
+- Layer shortcuts accumulate | detect: Dependency rule violations grow | respond: Enforce in CI
+- Review is opinion only | detect: No evidence for attributes | respond: Measure or test
+
+ILLUSTRATIVE: A review finds a reporting module reading the orders database directly, against the rule that only the orders service does. It is classified as a risk with an owner and a date, and a dependency rule is added to CI.
 
 Gate: 07-070. Approval: none required
 
@@ -163,21 +177,35 @@ ILLUSTRATIVE: A pull request adds a small date library. Review finds the same fu
 Gate: 07-072. Approval: none required
 
 ## 73
-**Code Coverage Review** (stub). Purpose: independently inspect code quality and maintainability risks.
+**Code Coverage Review** (complete). Purpose: learn from coverage data where tests do not look, and decide what to test next rather than chasing a number.
 
-Inputs: diff and target branch; coding/architecture standards; test, dependency and static-analysis evidence
+Entry criteria: Tests run with coverage collection in CI; Critical code paths are identified; Coverage baseline exists
+
+Inputs: coverage report with line and branch data; list of critical paths; recent defects and their locations; coverage baseline
 
 Procedure:
-1. Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
-2. Inspect static findings and dependency provenance, severity, reachability and license obligations.
-3. Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
-4. Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
+1. Collect line and branch coverage from the CI run for the commit under review.
+2. Look at uncovered code in the critical paths and in recent defect areas first.
+3. Check the tests that cover important code actually assert behavior; coverage without assertions proves little.
+4. Record gaps and either add tests, accept the gap with a reason, or mark the code for removal.
+5. Set a floor for new and changed code and a ratchet that stops overall coverage falling.
+6. Report coverage with its limits: what it does not show.
 
-Deliverables: review report; static/dependency findings; coverage interpretation; technical debt actions
+Deliverables: coverage report; gap list with decisions; added tests; coverage floor and ratchet configuration
 
-Acceptance: Findings are reproducible and tied to exact commit. False positives and accepted debt have rationale and owner. Critical paths have meaningful assertions.
+Acceptance: Critical paths have covered branches or recorded decisions Changed code meets the agreed floor The overall number cannot silently fall The report states what coverage does not prove
 
-Validation: Independent reviewer confirms findings and disposition.
+Validation: Reviewer confirmation that gaps are decided.
+
+- `pytest -q --cov=app --cov-branch --cov-report=term-missing` expect: report lists uncovered lines and branches
+- `diff-cover coverage.xml --compare-branch=origin/main --fail-under=85   # example` expect: changed lines meet the floor
+
+Failure modes:
+- Coverage target met with empty tests | detect: Assertions missing | respond: Review assertions in critical paths
+- Floor lowered to get green | detect: Threshold edited in the same change | respond: Treat as a separate reviewed decision
+- Critical path uncovered | detect: Payment or auth code with gaps | respond: Add tests before release
+
+ILLUSTRATIVE: Branch coverage shows the refund failure path in the payment module is uncovered. The team adds two tests for declined and timed-out refunds and sets the changed-code floor to 85 percent.
 
 Gate: 07-073. Approval: none required
 
@@ -234,20 +262,34 @@ ILLUSTRATIVE: The steward sees approval from the code owner on commit a1b2c3, al
 Gate: 07-075. Approval: code-owner (always)
 
 ## 76
-**Technical Debt Review** (stub). Purpose: independently inspect code quality and maintainability risks.
+**Technical Debt Review** (complete). Purpose: decide deliberately which technical debt to repay, defer or accept, using cost and risk rather than irritation.
 
-Inputs: diff and target branch; coding/architecture standards; test, dependency and static-analysis evidence
+Entry criteria: Known debt items are collected from engineers, incidents and reviews; Delivery and incident data are available; A planning forum with the owner exists
+
+Inputs: list of debt items with locations; incident and defect history; change frequency of affected code; roadmap
 
 Procedure:
-1. Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.
-2. Inspect static findings and dependency provenance, severity, reachability and license obligations.
-3. Assess test coverage quality and identify untested critical branches rather than relying only on percentage.
-4. Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions.
+1. List debt items with the problem, where it lives and what it costs (slows delivery, causes defects, blocks changes, creates risk).
+2. Estimate the cost of carrying each item and the effort to repay it; use data such as change frequency and incident links.
+3. Rank by value of repayment, not by how disliked an item is; debt in code nobody changes can wait.
+4. Decide per item: repay now, schedule, defer with a trigger, or accept; record the reason.
+5. Put repayment items in the backlog with an owner and a definition of done.
+6. Review the register each quarter and retire items that are no longer relevant.
 
-Deliverables: review report; static/dependency findings; coverage interpretation; technical debt actions
+Deliverables: technical debt register; ranking with evidence; decisions with reasons; backlog items
 
-Acceptance: Findings are reproducible and tied to exact commit. False positives and accepted debt have rationale and owner. Critical paths have meaningful assertions.
+Acceptance: Each item has a cost, an effort and a decision Ranking uses data, not only opinion Repay items have owners Deferred items have a trigger or a review date
 
-Validation: Independent reviewer confirms findings and disposition.
+Validation: Product owner and architect agreement on priorities.
+
+- `git log --since='6 months ago' --name-only --pretty=format: -- src/billing | sort | uniq -c | sort -rn | head   # example` expect: change hotspots recorded in the register
+- manual: check each repay item has a backlog link and an owner expect: none missing
+
+Failure modes:
+- Everything labelled debt | detect: Register has hundreds of vague items | respond: Require cost and location
+- Debt never scheduled | detect: Items older than a year with no decision | respond: Decide or close
+- Rewrite proposed without evidence | detect: No incident or delivery data | respond: Gather evidence first
+
+ILLUSTRATIVE: The billing module appears in 40 percent of the last quarter's incidents and is changed weekly, so its fragile date handling is ranked first and scheduled; an ugly but stable report generator is accepted.
 
 Gate: 07-076. Approval: none required

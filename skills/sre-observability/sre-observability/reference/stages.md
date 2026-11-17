@@ -55,59 +55,101 @@ Validation: SRE review and alert simulation.
 Gate: 13-154. Approval: none required
 
 ## 155
-**Centralized Logging** (stub). Purpose: provide actionable observability and service-level control.
+**Centralized Logging** (complete). Purpose: bring logs from every component into one place where they can be searched, correlated and kept for the right time.
 
-Inputs: service map and critical user journeys; SLO and alert thresholds; telemetry and privacy requirements
+Entry criteria: Services emit logs; A log platform and retention policy exist; Data protection requirements for logs are known
+
+Inputs: services and their log formats; log platform; retention and access policy; data protection requirements
 
 Procedure:
-1. Instrument golden signals and key business transactions with stable service/environment labels.
-2. Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
-3. Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
-4. Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
+1. Use a structured format such as JSON with timestamp, level, service, version, environment and a correlation id on every line.
+2. Ship logs from every service and infrastructure component to the central platform with the same fields.
+3. Keep sensitive data out: no secrets, tokens or unnecessary personal data; mask what must appear.
+4. Set retention and access by sensitivity, and keep security and audit logs longer and tamper-resistant.
+5. Build saved searches for common questions and alerts for important error patterns.
+6. Test that a real request can be followed across services by its correlation id.
 
-Deliverables: telemetry specification; dashboards and alerts; SLO/error-budget report; runbook links
+Deliverables: log format standard; shipping configuration; retention and access rules; saved searches and a cross-service trace example
 
-Acceptance: Signals support diagnosis and customer impact assessment. Alerts have owner and action. SLOs are measurable and privacy-safe.
+Acceptance: A request is traceable across services by one id Logs contain no secrets Retention and access follow the policy Every service ships logs with the standard fields
 
-Validation: SRE review and alert simulation.
+Validation: Observability owner and security review.
+
+- manual: send one request and search the platform by its correlation id expect: log lines from every service on the path appear
+- manual: search the platform for 'password=' and 'Authorization:' expect: no matches
+
+Failure modes:
+- Unstructured logs | detect: Searches need regular expressions | respond: Adopt a structured format
+- Personal data logged | detect: Search finds email addresses | respond: Mask and shorten retention
+- Logs lost under load | detect: Gaps in the timeline | respond: Add buffering and a delivery check
+
+ILLUSTRATIVE: Each service logs JSON with a request id. Searching one request id in the platform shows the gateway, order service and payment adapter lines in order, with no card data in any line.
 
 Gate: 13-155. Approval: none required
 
 ## 156
-**Metrics Monitoring** (stub). Purpose: provide actionable observability and service-level control.
+**Metrics Monitoring** (complete). Purpose: turn system behavior into numbers over time so trends, saturation and failure are visible before users complain.
 
-Inputs: service map and critical user journeys; SLO and alert thresholds; telemetry and privacy requirements
+Entry criteria: Services can expose metrics; A metrics platform exists; Service level objectives are known or being defined
+
+Inputs: services and their key operations; metrics platform; SLOs and capacity concerns; dashboards in use
 
 Procedure:
-1. Instrument golden signals and key business transactions with stable service/environment labels.
-2. Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
-3. Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
-4. Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
+1. Instrument each service for the four golden signals: latency, traffic, errors and saturation.
+2. Use consistent names and labels, and avoid labels with unbounded values such as user ids.
+3. Collect infrastructure metrics (CPU, memory, disk, network) and dependency metrics (database, queues).
+4. Build one overview dashboard per service answering 'is it healthy?' and drill-down dashboards for diagnosis.
+5. Record business metrics for key flows so failures that technical metrics miss are visible.
+6. Review dashboards after incidents and add the signals that would have helped.
 
-Deliverables: telemetry specification; dashboards and alerts; SLO/error-budget report; runbook links
+Deliverables: instrumentation; dashboards per service; metric naming standard; post-incident improvements
 
-Acceptance: Signals support diagnosis and customer impact assessment. Alerts have owner and action. SLOs are measurable and privacy-safe.
+Acceptance: Each service exposes the four golden signals Labels have bounded values An overview dashboard shows health at a glance Business-flow metrics exist for critical journeys
 
-Validation: SRE review and alert simulation.
+Validation: Observability owner review.
+
+- `curl -s localhost:9100/metrics | grep -E 'http_requests_total|http_request_duration_seconds'   # example` expect: expected series are present
+- manual: induce a small error rate in staging and watch the dashboard expect: the error panel shows it within the scrape interval
+
+Failure modes:
+- High-cardinality labels | detect: Metrics store grows rapidly | respond: Remove unbounded labels
+- Dashboards nobody understands | detect: On-call cannot say if healthy | respond: Build a simple overview
+- Only averages shown | detect: Tail latency invisible | respond: Use histograms and percentiles
+
+ILLUSTRATIVE: The order service exposes request rate, error rate, latency histograms and queue depth. An induced error in staging appears on the overview dashboard within 30 seconds.
 
 Gate: 13-156. Approval: none required
 
 ## 157
-**Distributed Tracing** (stub). Purpose: provide actionable observability and service-level control.
+**Distributed Tracing** (complete). Purpose: follow a single request through many services to find where time is spent and where it fails.
 
-Inputs: service map and critical user journeys; SLO and alert thresholds; telemetry and privacy requirements
+Entry criteria: Services are instrumented or can be; A tracing backend exists; Context propagation standard is chosen
+
+Inputs: service call graph; tracing backend; propagation standard; sampling policy
 
 Procedure:
-1. Instrument golden signals and key business transactions with stable service/environment labels.
-2. Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
-3. Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
-4. Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
+1. Adopt one propagation standard so the trace context passes through every call, including queues and background jobs.
+2. Instrument inbound and outbound calls, database queries and key internal operations with meaningful span names.
+3. Add useful attributes (route, status, tenant class) and keep sensitive data out of spans.
+4. Set a sampling policy: always keep errors and slow requests, sample the rest, and state the cost.
+5. Link traces with logs and metrics through the trace id.
+6. Verify by tracing a real request across services and checking that no hop is missing.
 
-Deliverables: telemetry specification; dashboards and alerts; SLO/error-budget report; runbook links
+Deliverables: instrumented services; propagation and sampling policy; trace-to-log linkage; verification trace
 
-Acceptance: Signals support diagnosis and customer impact assessment. Alerts have owner and action. SLOs are measurable and privacy-safe.
+Acceptance: A request shows all hops, including asynchronous ones Errors and slow requests are always retained Spans contain no sensitive data Trace ids appear in logs
 
-Validation: SRE review and alert simulation.
+Validation: Observability owner review.
+
+- manual: send one request and open its trace expect: spans for gateway, services and database appear in order
+- manual: search a log line by the trace id from that request expect: matching log lines found
+
+Failure modes:
+- Broken trace at a queue | detect: Spans end at the producer | respond: Propagate context in message headers
+- Sampling drops the failures | detect: Errors missing from traces | respond: Always sample errors
+- Sensitive values in spans | detect: Attributes contain tokens | respond: Remove and review the instrumentation
+
+ILLUSTRATIVE: A checkout request traces through the gateway, order service, payment adapter and database. The trace shows 800 of 950 ms spent waiting on the payment provider, and the trace id links to the log lines of each service.
 
 Gate: 13-157. Approval: none required
 
@@ -197,21 +239,35 @@ ILLUSTRATIVE: A checkout journey gets an SLO of 99.9 percent success over 30 day
 Gate: 13-160. Approval: none required
 
 ## 161
-**Capacity Planning** (stub). Purpose: provide actionable observability and service-level control.
+**Capacity Planning** (complete). Purpose: make sure the system has the capacity it will need before demand arrives, at a cost the business accepts.
 
-Inputs: service map and critical user journeys; SLO and alert thresholds; telemetry and privacy requirements
+Entry criteria: Demand forecasts or growth data exist; Current utilization and performance data exist; Capacity limits of the system are known (stage 92)
+
+Inputs: demand history and forecast; utilization and performance data; known capacity limits; lead times and budgets
 
 Procedure:
-1. Instrument golden signals and key business transactions with stable service/environment labels.
-2. Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
-3. Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
-4. Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
+1. Collect demand and utilization trends and the business events that will change them (launches, campaigns, seasons).
+2. Convert forecast demand into resource needs using measured capacity per unit, with a stated safety margin.
+3. Find the first resource to run out for each scenario and the lead time to add more.
+4. Decide actions with owners and dates: scale, optimize, order, or accept risk; compare cost options.
+5. Alert when utilization approaches the planning threshold, with enough warning for the lead time.
+6. Review forecast against actuals each period and correct the model.
 
-Deliverables: telemetry specification; dashboards and alerts; SLO/error-budget report; runbook links
+Deliverables: capacity plan with scenarios; first-limit analysis; actions with owners and dates; forecast accuracy review
 
-Acceptance: Signals support diagnosis and customer impact assessment. Alerts have owner and action. SLOs are measurable and privacy-safe.
+Acceptance: Each scenario names the first resource to run out Safety margin and lead times are stated Actions have owners and dates Forecast accuracy is reviewed
 
-Validation: SRE review and alert simulation.
+Validation: Service owner and finance review of the plan.
+
+- manual: compare last quarter's forecast with actual peak load expect: difference recorded with its cause
+- manual: check each alert threshold leaves time for the lead time to add capacity expect: yes for every resource
+
+Failure modes:
+- Forecast ignores planned events | detect: Campaign doubles traffic unexpectedly | respond: Add events to the model
+- Lead time overlooked | detect: Capacity arrives after the peak | respond: Alert earlier or reserve in advance
+- Over-provisioning | detect: Utilization far below plan | respond: Right-size and set review
+
+ILLUSTRATIVE: Peak traffic is forecast to rise 40 percent for the holiday season. Load tests show the database saturates first; the plan adds a read replica two weeks before and sets an alert at 70 percent database CPU.
 
 Gate: 13-161. Approval: none required
 
