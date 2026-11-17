@@ -143,21 +143,35 @@ ILLUSTRATIVE: A team adopts the standard formatter, enables lint rules for unuse
 Gate: 05-048. Approval: none required
 
 ## 49
-**Environment Configuration** (stub). Purpose: establish a secure and reproducible engineering workspace.
+**Environment Configuration** (complete). Purpose: define, store and apply configuration for each environment in a controlled, auditable way, with secrets kept apart and drift detected.
 
-Inputs: repository ownership and team model; language/runtime and build manifests; security and contribution policy
+Entry criteria: Environments are defined; A secrets store exists; Deployments run from a pipeline
+
+Inputs: application configuration needs; environment list; secrets inventory; deployment pipeline
 
 Procedure:
-1. Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
-2. Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
-3. Keep credentials out of source; use approved secret storage and least-privilege access.
-4. Add onboarding and contribution guidance, then validate from a clean checkout.
+1. Separate configuration from code, following the twelve-factor approach: the same build artifact runs in every environment with different configuration.
+2. Store non-secret configuration in version control as code with per-environment overrides, and review changes like code.
+3. Keep secrets in a secrets manager, inject them at runtime, never commit them, and rotate them on a schedule and on exposure.
+4. Validate configuration at startup against a schema, and fail fast with a clear message for missing or invalid values.
+5. Detect drift between the declared and running configuration, and alert on manual changes.
+6. Document each setting with its purpose, default and owner, and keep production and non-production parity except for the documented differences.
 
-Deliverables: repository policy; setup instructions; branch protection/check evidence; secret handling guide
+Deliverables: configuration repository with overrides; secrets management setup; configuration schema and startup validation; drift reports
 
-Acceptance: A clean contributor can reproduce setup. Protected branches require review and checks. No secret value is committed.
+Acceptance: The same artifact is used across environments No secrets in the repository Invalid configuration fails at startup Drift is detected
 
-Validation: Repository owner and security review.
+Validation: DevOps engineer review.
+
+- `git log -p --all -S'AKIA' -- . | head   # example; also run the secret scanner configured for the repository` expect: no secrets found in history
+- manual: start the application with a required setting removed expect: fails immediately with a clear message
+
+Failure modes:
+- Secret in the repository | detect: Scanner alert | respond: Revoke, rotate and remove
+- Different artifact per environment | detect: Works in test, fails in production | respond: Build once and configure at deploy
+- Manual change on a server | detect: Drift report | respond: Revert and fix through code
+
+ILLUSTRATIVE: One container image is deployed to staging and production with different configuration files from the repository; secrets come from the secrets manager, and a missing database URL stops startup with a clear error.
 
 Gate: 05-049. Approval: none required
 
@@ -195,21 +209,35 @@ ILLUSTRATIVE: History scan finds a cloud access key committed two years ago. The
 Gate: 05-050. Approval: secrets-owner (when rotating or revoking production secrets)
 
 ## 51
-**Developer Documentation** (stub). Purpose: create a navigable, versioned and traceable specification.
+**Developer Documentation** (complete). Purpose: provide the documentation developers need to understand, build, run, change and operate the system, and keep it correct as the code changes.
 
-Inputs: validated needs and decisions; document template and audience; source-of-truth repository
+Entry criteria: The system and its repositories exist; Common developer questions are known; A docs location under version control exists
+
+Inputs: codebase and architecture; onboarding feedback; frequently asked questions; runbooks
 
 Procedure:
-1. Organize scope, actors, terminology, requirements, constraints, dependencies and exclusions.
-2. Assign stable IDs and link each requirement to source, owner and downstream tests.
-3. Document diagrams, examples, exceptions and unresolved decisions in the repository convention.
-4. Review clarity, consistency, links, version and change history.
+1. Start from the tasks developers perform: set up, run tests, make a change, debug, release and handle an incident, and write a page for each.
+2. Make every command copy-pasteable and test them on a clean environment, recording the versions assumed.
+3. Generate reference documentation from the code (API specs, configuration tables) so it cannot drift, and write by hand only the explanations.
+4. Keep docs in the repository and change them in the same pull request as the code, with a review checklist item.
+5. Check the docs in CI with link checks, command checks and spelling, and give each page an owner and a review date.
+6. Measure usefulness through onboarding time and questions asked in chat, and fix the pages behind repeated questions.
 
-Deliverables: versioned specification; traceability matrix; glossary and decision links
+Deliverables: task-based developer guide; generated reference documentation; CI documentation checks; page owners and review dates
 
-Acceptance: No ambiguous pronouns or unbounded terms remain in normative requirements. IDs are stable and traceable. Links, diagrams and examples render.
+Acceptance: Commands were run on a clean environment Reference docs are generated from code Docs change in the same pull request as behavior Each page has an owner and review date
 
-Validation: Peer review by product, engineering and QA.
+Validation: Documentation engineer review.
+
+- `python3 scripts/check_links.py` expect: no broken links
+- manual: a new developer follows the setup guide on a clean machine and notes the first failure expect: setup completes, or the failure is fixed in the guide
+
+Failure modes:
+- Setup steps fail | detect: New developer is blocked | respond: Fix and test on a clean machine
+- Reference docs written by hand | detect: Out of date with code | respond: Generate from source
+- Docs without owners | detect: Pages go stale | respond: Assign owners and review dates
+
+ILLUSTRATIVE: The setup guide is followed on a clean laptop and fails at a missing environment variable. The guide is corrected, the API reference is generated from the OpenAPI file, and a CI check blocks broken links.
 
 Gate: 05-051. Approval: none required
 

@@ -1,0 +1,65 @@
+{
+  "stage_id": 37,
+  "purpose": "break scope into well-defined pieces of work that can be estimated, assigned, tracked and accepted",
+  "entry_criteria": [
+    "Scope and requirements are baselined",
+    "The team or teams are known",
+    "A tracking tool is available"
+  ],
+  "inputs": [
+    "scope statement and requirements",
+    "architecture and constraints",
+    "team capacity",
+    "dependency information"
+  ],
+  "procedure": [
+    "Break the deliverables down to work packages by outcome, not by activity, until each can be estimated, assigned to one owner and finished within a few days to a few weeks.",
+    "Keep the breakdown complete: the lower levels must add up to the whole scope, including testing, documentation, deployment and handover.",
+    "Give each package a definition of done and acceptance criteria, and an identifier that tools and reports use.",
+    "Identify dependencies between packages and with other teams, and sequence the work with the riskiest parts first.",
+    "Estimate each package (stage 38), and check the totals against the plan and budget.",
+    "Place the packages in the tracker under their parent, and keep the breakdown current through change control."
+  ],
+  "deliverables": [
+    "work breakdown structure",
+    "work package definitions with acceptance criteria",
+    "dependency and sequence map",
+    "tracker structure"
+  ],
+  "acceptance_criteria": [
+    "The lower levels add up to the whole scope",
+    "Each package has one owner and a definition of done",
+    "Testing and deployment work is included",
+    "Dependencies are recorded"
+  ],
+  "validation_method": "Project manager review with team leads.",
+  "validation": [
+    {
+      "check": "sum package estimates and compare with the plan total",
+      "expect": "equal within the stated tolerance"
+    },
+    {
+      "check": "check each package has an owner, acceptance criteria and a parent",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Activities instead of outcomes",
+      "detection": "Packages like 'work on API'",
+      "response": "Rewrite as deliverables"
+    },
+    {
+      "mode": "Missing testing and release work",
+      "detection": "Late surprises",
+      "response": "Add the packages"
+    },
+    {
+      "mode": "Packages too big",
+      "detection": "Estimates wide, status vague",
+      "response": "Split further"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A reporting feature is broken into packages such as 'export API with tests', 'scheduler with failure alerts', and 'deployment and runbook'; each has an owner and acceptance criteria, and the totals match the plan.",
+  "status": "complete"
+}

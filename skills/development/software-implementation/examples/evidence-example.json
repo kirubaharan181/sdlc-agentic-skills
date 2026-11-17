@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "software-implementation",
-  "stage_id": 54,
-  "stage_name": "Backend Development",
+  "stage_id": 53,
+  "stage_name": "Frontend Development",
   "commit_sha": "<commit under review>",
-  "executor": "<Backend Engineer or named person>",
+  "executor": "<Frontend Engineer or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Code review (stage 69) and CI results.",
-    "command": "pytest -q --cov=app --cov-fail-under=80   # example threshold; use the project's",
-    "expected": "passes and meets the agreed coverage",
+    "method": "Frontend lead review.",
+    "command": "npx vitest run && npx playwright test --grep @a11y   # example; use the project's tools",
+    "expected": "tests pass, including accessibility checks",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "working backend code",
-      "path": "<path or immutable URL of working backend code>"
+      "name": "components and pages built from the design system",
+      "path": "<path or immutable URL of components and pages built from the design system>"
     },
     {
-      "name": "unit and integration tests",
-      "path": "<path or immutable URL of unit and integration tests>"
+      "name": "state and data fetching layer",
+      "path": "<path or immutable URL of state and data fetching layer>"
     },
     {
-      "name": "logging and metrics hooks",
-      "path": "<path or immutable URL of logging and metrics hooks>"
+      "name": "performance measurements",
+      "path": "<path or immutable URL of performance measurements>"
     }
   ],
   "limitations": [

@@ -1,0 +1,65 @@
+{
+  "stage_id": 31,
+  "purpose": "design how systems exchange data and trigger each other, with contracts, failure handling and ownership that keep the connections reliable and changeable",
+  "entry_criteria": [
+    "The systems to connect and the data to exchange are listed",
+    "Ownership of each system and its data is known",
+    "Latency and volume needs are estimated"
+  ],
+  "inputs": [
+    "system inventory",
+    "data and event inventory",
+    "latency, volume and consistency needs",
+    "security requirements"
+  ],
+  "procedure": [
+    "Choose the interaction style per need: synchronous request-response, asynchronous messaging or events, or batch transfer, and justify each.",
+    "Define contracts with versioned schemas for every interface, with rules for compatible change and a compatibility check in CI.",
+    "Design for failure: timeouts, retries with backoff, idempotency keys, dead-letter handling and replay, and what happens on partial failure.",
+    "Decide the consistency model and ordering needs, and avoid distributed transactions unless unavoidable, using sagas or reconciliation instead.",
+    "Define security and access for each interface: authentication between systems, authorization, encryption and data minimization.",
+    "Document each integration with owner, contract, volume, failure behavior and monitoring, and keep the catalogue current."
+  ],
+  "deliverables": [
+    "integration catalogue with owners",
+    "versioned contracts and compatibility checks",
+    "failure and replay design",
+    "security design per interface"
+  ],
+  "acceptance_criteria": [
+    "Every interface has an owner and a versioned contract",
+    "Compatibility is checked automatically",
+    "Failure, replay and idempotency are designed",
+    "Each interface has monitoring"
+  ],
+  "validation_method": "Integration architect review.",
+  "validation": [
+    {
+      "command": "npx @stoplight/spectral-cli lint openapi.yaml && oasdiff breaking base.yaml openapi.yaml   # example",
+      "expect": "no lint errors and no breaking changes"
+    },
+    {
+      "check": "send the same message twice to a consumer in staging",
+      "expect": "effect occurs once"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Breaking change released",
+      "detection": "Consumer fails after deploy",
+      "response": "Add contract compatibility check"
+    },
+    {
+      "mode": "Duplicate messages double-apply",
+      "detection": "Repeated effect",
+      "response": "Use idempotency keys"
+    },
+    {
+      "mode": "Poison message blocks a queue",
+      "detection": "Consumer stuck",
+      "response": "Add dead-letter queue and alert"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: An order event is published with a versioned schema; consumers use the event id for idempotency, failed messages move to a dead-letter queue after five attempts with an alert, and CI rejects a schema change that removes a field.",
+  "status": "complete"
+}

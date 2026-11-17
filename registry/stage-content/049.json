@@ -1,0 +1,65 @@
+{
+  "stage_id": 49,
+  "purpose": "define, store and apply configuration for each environment in a controlled, auditable way, with secrets kept apart and drift detected",
+  "entry_criteria": [
+    "Environments are defined",
+    "A secrets store exists",
+    "Deployments run from a pipeline"
+  ],
+  "inputs": [
+    "application configuration needs",
+    "environment list",
+    "secrets inventory",
+    "deployment pipeline"
+  ],
+  "procedure": [
+    "Separate configuration from code, following the twelve-factor approach: the same build artifact runs in every environment with different configuration.",
+    "Store non-secret configuration in version control as code with per-environment overrides, and review changes like code.",
+    "Keep secrets in a secrets manager, inject them at runtime, never commit them, and rotate them on a schedule and on exposure.",
+    "Validate configuration at startup against a schema, and fail fast with a clear message for missing or invalid values.",
+    "Detect drift between the declared and running configuration, and alert on manual changes.",
+    "Document each setting with its purpose, default and owner, and keep production and non-production parity except for the documented differences."
+  ],
+  "deliverables": [
+    "configuration repository with overrides",
+    "secrets management setup",
+    "configuration schema and startup validation",
+    "drift reports"
+  ],
+  "acceptance_criteria": [
+    "The same artifact is used across environments",
+    "No secrets in the repository",
+    "Invalid configuration fails at startup",
+    "Drift is detected"
+  ],
+  "validation_method": "DevOps engineer review.",
+  "validation": [
+    {
+      "command": "git log -p --all -S'AKIA' -- . | head   # example; also run the secret scanner configured for the repository",
+      "expect": "no secrets found in history"
+    },
+    {
+      "check": "start the application with a required setting removed",
+      "expect": "fails immediately with a clear message"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Secret in the repository",
+      "detection": "Scanner alert",
+      "response": "Revoke, rotate and remove"
+    },
+    {
+      "mode": "Different artifact per environment",
+      "detection": "Works in test, fails in production",
+      "response": "Build once and configure at deploy"
+    },
+    {
+      "mode": "Manual change on a server",
+      "detection": "Drift report",
+      "response": "Revert and fix through code"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: One container image is deployed to staging and production with different configuration files from the repository; secrets come from the secrets manager, and a missing database URL stops startup with a clear error.",
+  "status": "complete"
+}

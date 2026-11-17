@@ -1,0 +1,65 @@
+{
+  "stage_id": 51,
+  "purpose": "provide the documentation developers need to understand, build, run, change and operate the system, and keep it correct as the code changes",
+  "entry_criteria": [
+    "The system and its repositories exist",
+    "Common developer questions are known",
+    "A docs location under version control exists"
+  ],
+  "inputs": [
+    "codebase and architecture",
+    "onboarding feedback",
+    "frequently asked questions",
+    "runbooks"
+  ],
+  "procedure": [
+    "Start from the tasks developers perform: set up, run tests, make a change, debug, release and handle an incident, and write a page for each.",
+    "Make every command copy-pasteable and test them on a clean environment, recording the versions assumed.",
+    "Generate reference documentation from the code (API specs, configuration tables) so it cannot drift, and write by hand only the explanations.",
+    "Keep docs in the repository and change them in the same pull request as the code, with a review checklist item.",
+    "Check the docs in CI with link checks, command checks and spelling, and give each page an owner and a review date.",
+    "Measure usefulness through onboarding time and questions asked in chat, and fix the pages behind repeated questions."
+  ],
+  "deliverables": [
+    "task-based developer guide",
+    "generated reference documentation",
+    "CI documentation checks",
+    "page owners and review dates"
+  ],
+  "acceptance_criteria": [
+    "Commands were run on a clean environment",
+    "Reference docs are generated from code",
+    "Docs change in the same pull request as behavior",
+    "Each page has an owner and review date"
+  ],
+  "validation_method": "Documentation engineer review.",
+  "validation": [
+    {
+      "command": "python3 scripts/check_links.py",
+      "expect": "no broken links"
+    },
+    {
+      "check": "a new developer follows the setup guide on a clean machine and notes the first failure",
+      "expect": "setup completes, or the failure is fixed in the guide"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Setup steps fail",
+      "detection": "New developer is blocked",
+      "response": "Fix and test on a clean machine"
+    },
+    {
+      "mode": "Reference docs written by hand",
+      "detection": "Out of date with code",
+      "response": "Generate from source"
+    },
+    {
+      "mode": "Docs without owners",
+      "detection": "Pages go stale",
+      "response": "Assign owners and review dates"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The setup guide is followed on a clean laptop and fails at a missing environment variable. The guide is corrected, the API reference is generated from the OpenAPI file, and a CI check blocks broken links.",
+  "status": "complete"
+}

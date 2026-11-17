@@ -18,4 +18,7 @@ def test_readme_states_the_measured_completeness(data):
     m = generate_reports.metrics(data)
     readme = (GOLDEN.parents[2] / "README.md").read_text(encoding="utf-8")
     assert f"**{m['stages_complete']} of {m['stages_total']} (" in readme, "README completeness line is stale; update it"
-    assert f"The other {m['stages_stub']} are marked" in readme
+    if m["stages_stub"]:
+        assert f"The other {m['stages_stub']} are marked" in readme
+    else:
+        assert "none are marked `stub`" in readme

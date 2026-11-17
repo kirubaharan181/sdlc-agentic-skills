@@ -28,9 +28,9 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 46 | Branching Strategy | complete | Engineering Governance Specialist |
 | 47 | Development Environment | complete | Platform Engineer |
 | 48 | Coding Standards | complete | Engineering Governance Specialist |
-| 49 | Environment Configuration | stub | DevOps Engineer |
+| 49 | Environment Configuration | complete | DevOps Engineer |
 | 50 | Secrets Management | complete | DevSecOps Engineer |
-| 51 | Developer Documentation | stub | Documentation Engineer |
+| 51 | Developer Documentation | complete | Documentation Engineer |
 | 52 | Engineering Governance | complete | Engineering Governance Specialist |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).

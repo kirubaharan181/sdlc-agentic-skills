@@ -24,7 +24,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 53 | Frontend Development | stub | Frontend Engineer |
+| 53 | Frontend Development | complete | Frontend Engineer |
 | 54 | Backend Development | complete | Backend Engineer |
 | 55 | Full Stack Development | complete | Full Stack Engineer |
 | 56 | Mobile Development | complete | Mobile Engineer |

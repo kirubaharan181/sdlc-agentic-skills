@@ -1,0 +1,65 @@
+{
+  "stage_id": 43,
+  "purpose": "identify the people who affect or are affected by the work, understand what they need, and keep them engaged and informed in a way that fits each",
+  "entry_criteria": [
+    "The project or program scope is known",
+    "A sponsor is named",
+    "A way to record communication exists"
+  ],
+  "inputs": [
+    "scope and goals",
+    "organization chart and influence",
+    "past interactions",
+    "risk register"
+  ],
+  "procedure": [
+    "Identify stakeholders broadly, including users, operators, support, security, legal and affected teams, not only those who fund the work.",
+    "Analyze each one's interest, influence, expectations and concerns, from conversations rather than assumptions.",
+    "Decide the engagement for each: inform, consult or involve in decisions, and set frequency and channel.",
+    "Make a communication plan with owner, content and schedule, and keep an issue and decision log visible to stakeholders.",
+    "Check understanding and support periodically through short conversations or pulse questions, and adjust the engagement.",
+    "Escalate unresolved concerns to the sponsor with a clear ask, and record the outcome."
+  ],
+  "deliverables": [
+    "stakeholder register with analysis",
+    "engagement and communication plan",
+    "decision and issue log",
+    "periodic support check"
+  ],
+  "acceptance_criteria": [
+    "Operators, support and security are in the register",
+    "Each stakeholder has an engagement level and an owner",
+    "Decisions and issues are logged visibly",
+    "Unresolved concerns reach the sponsor"
+  ],
+  "validation_method": "Program manager review; sponsor for escalations.",
+  "validation": [
+    {
+      "check": "compare the register with the organization chart and the list of affected systems",
+      "expect": "no affected group missing"
+    },
+    {
+      "check": "sample three stakeholders and check the last contact against the plan",
+      "expect": "contact on schedule"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Operations not consulted",
+      "detection": "Surprises at handover",
+      "response": "Add and involve early"
+    },
+    {
+      "mode": "Concern raised and lost",
+      "detection": "Not in the log",
+      "response": "Record and review weekly"
+    },
+    {
+      "mode": "Everyone gets the same updates",
+      "detection": "Some ignore, some want more",
+      "response": "Tailor by interest"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The register adds the support team, which is affected by a new ticket form. A fortnightly review with them surfaces a training need, recorded in the issue log and resolved before launch.",
+  "status": "complete"
+}

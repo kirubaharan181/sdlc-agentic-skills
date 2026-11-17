@@ -28,7 +28,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 2 | Market Research | complete | Market Research Analyst |
 | 3 | Client Engagement | complete | Client Engagement Specialist |
 | 4 | Product Discovery | complete | Product Manager |
-| 5 | Business Analysis | stub | Business Analyst |
+| 5 | Business Analysis | complete | Business Analyst |
 | 6 | Product Planning | complete | Product Manager |
 | 7 | Feasibility Analysis | complete | Solution Architect |
 | 8 | Budget & Estimation | complete | FinOps Specialist |

@@ -26,15 +26,15 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 |---|---|---|---|
 | 23 | Solution Architecture | complete | Solution Architect |
 | 24 | System Architecture | complete | Software Architect |
-| 25 | Application Architecture | stub | Software Architect |
+| 25 | Application Architecture | complete | Software Architect |
 | 26 | Database Architecture | complete | Database Architect |
 | 27 | API Architecture | complete | API Architect |
-| 28 | Cloud Architecture | stub | Cloud Architect |
+| 28 | Cloud Architecture | complete | Cloud Architect |
 | 29 | Security Architecture | complete | Security Architect |
 | 30 | Data Architecture | complete | Data Architect |
-| 31 | Integration Architecture | stub | Integration Architect |
+| 31 | Integration Architecture | complete | Integration Architect |
 | 32 | Technology Selection | complete | Enterprise Architect |
-| 33 | Architecture Documentation | stub | Technical Writer |
+| 33 | Architecture Documentation | complete | Technical Writer |
 | 34 | Architecture Review | complete | Architecture Reviewer |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).

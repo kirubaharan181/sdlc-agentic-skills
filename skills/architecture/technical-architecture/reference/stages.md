@@ -81,21 +81,35 @@ ILLUSTRATIVE: A modular monolith is chosen for a team of six; modules own their 
 Gate: 03-024. Approval: none required
 
 ## 25
-**Application Architecture** (stub). Purpose: define the system structure and component boundaries for the target quality attributes.
+**Application Architecture** (complete). Purpose: design how one application is organized internally, so features can be added and fixed without the whole thing being affected.
 
-Inputs: business capabilities and system context; runtime/deployment constraints; quality attribute scenarios
+Entry criteria: Quality targets and the solution context exist (stages 14, 23); Technology stack is chosen (stage 32); The team size and skills are known
+
+Inputs: quality targets; solution context; technology choices; domain model
 
 Procedure:
-1. Define system context, actors, external systems and trust boundaries.
-2. Decompose capabilities into components and assign ownership, interfaces and dependency direction.
-3. Evaluate synchronous/asynchronous boundaries, data ownership, failure isolation and deployment topology.
-4. Compare architecture options against latency, availability, scalability, security, operability and cost scenarios.
+1. Identify the business domains and their boundaries from the domain model, and align modules to them rather than to technical layers alone.
+2. Define each module's public interface and rules for dependencies, keeping the business logic independent of frameworks and storage.
+3. Choose how modules communicate: direct calls inside a process, events for loose coupling, and state the consistency each needs.
+4. Define cross-cutting design: configuration, error handling, logging, authentication context and transaction boundaries.
+5. Check the design against the quality targets with a scenario for each, such as a change to one module or a dependency failure.
+6. Record decisions, create a skeleton that already enforces the dependency rules, and review it with the developers.
 
-Deliverables: system context and container diagrams; component/interface catalogue; architecture decision records
+Deliverables: module and dependency design; communication and consistency rules; cross-cutting design; skeleton with enforced rules
 
-Acceptance: Every component has responsibility and owner. Dependencies and failure domains are explicit. Trade-offs are tied to measurable quality scenarios.
+Acceptance: Modules align to domains with stated interfaces Dependency rules are enforced by a tool Each quality target has a checked scenario Decisions are recorded
 
-Validation: Architecture review against documented quality attribute scenarios.
+Validation: Software architect and team lead review.
+
+- `npx depcruise --validate .dependency-cruiser.js src   # example; use the language's equivalent` expect: no rule violations in the skeleton
+- manual: walk through a change to one module and list the other modules touched expect: none beyond the declared interface
+
+Failure modes:
+- Modules by technical layer only | detect: A feature touches every layer's code in many places | respond: Reorganize around domains
+- Shared mutable state | detect: Changes in one module break another | respond: Make ownership explicit
+- Rules only on paper | detect: Violations appear | respond: Enforce in CI
+
+ILLUSTRATIVE: An ordering application is split into catalogue, basket, orders and payments modules. Payments may be called only through its interface, and the CI rule fails a change that imports its internals.
 
 Gate: 03-025. Approval: none required
 
@@ -166,21 +180,35 @@ ILLUSTRATIVE: An orders API defines create, get and cancel operations with an id
 Gate: 03-027. Approval: none required
 
 ## 28
-**Cloud Architecture** (stub). Purpose: design a secure, resilient and supportable cloud landing pattern.
+**Cloud Architecture** (complete). Purpose: design how the system uses cloud services so it is secure, resilient across failures, cost-aware and operable from code.
 
-Inputs: availability and recovery objectives; workload sizing and data classification; provider constraints and cost ceiling
+Entry criteria: Requirements, quality targets and data classification exist; A cloud provider and account strategy is chosen; Recovery objectives are defined
+
+Inputs: quality and recovery targets; data classification; provider capabilities and quotas; compliance obligations
 
 Procedure:
-1. Choose regions, network zones, identity boundaries and managed services against requirements.
-2. Model failure domains, autoscaling, backup, observability and deployment topology.
-3. Define policy-as-code, encryption, key ownership and secret integration.
-4. Estimate lifecycle cost and document portability/vendor lock-in trade-offs.
+1. Design the account or subscription structure: separate environments and workloads, central logging and guardrails with organization-level policies.
+2. Design networking: private subnets for workloads, controlled ingress and egress, private connectivity to managed services and segmentation by trust.
+3. Design resilience to the failure level required: multi-zone by default, and multi-region only where the recovery objectives justify the cost and complexity.
+4. Choose managed services where they reduce operational load, noting lock-in, limits and failure modes of each.
+5. Design identity: roles with least privilege, no long-lived keys, and separate admin paths with strong authentication.
+6. Define everything as code with environments created from the same definitions, and estimate the run cost with the assumptions.
 
-Deliverables: cloud architecture diagram; landing-zone decisions; resilience model; cost estimate
+Deliverables: account and network design; resilience design with recovery mapping; identity and access design; infrastructure as code layout and cost estimate
 
-Acceptance: Failure domains align with RTO/RPO. IAM and network boundaries are least privilege. Cost assumptions and service quotas are explicit.
+Acceptance: Resilience level matches the recovery objectives Workloads sit in private networks with controlled egress No long-lived keys Cost estimate states its assumptions
 
-Validation: Cloud security and operations design review.
+Validation: Cloud architect and security review.
+
+- `terraform validate && terraform plan -out=plan.out   # example; use the project's IaC tool` expect: plan shows only expected resources
+- manual: map each recovery objective to the design element that meets it expect: none unmapped
+
+Failure modes:
+- Multi-region without need | detect: Complexity and cost without benefit | respond: Match the design to objectives
+- Public access by default | detect: Workloads exposed | respond: Use private subnets and explicit ingress
+- Manual console changes | detect: Drift from code | respond: Detect drift and enforce IaC
+
+ILLUSTRATIVE: A service runs across three zones in one region because the recovery objective is a 30-minute RTO for zone loss; workloads are in private subnets, access uses roles, and the whole stack is created from code.
 
 Gate: 03-028. Approval: none required
 
@@ -251,21 +279,35 @@ ILLUSTRATIVE: Customer data is owned by the account service; the warehouse recei
 Gate: 03-030. Approval: none required
 
 ## 31
-**Integration Architecture** (stub). Purpose: design reliable boundaries between independently operated systems.
+**Integration Architecture** (complete). Purpose: design how systems exchange data and trigger each other, with contracts, failure handling and ownership that keep the connections reliable and changeable.
 
-Inputs: producer/consumer contracts; protocol, volume and latency constraints; failure and ownership model
+Entry criteria: The systems to connect and the data to exchange are listed; Ownership of each system and its data is known; Latency and volume needs are estimated
+
+Inputs: system inventory; data and event inventory; latency, volume and consistency needs; security requirements
 
 Procedure:
-1. Select synchronous or asynchronous interaction based on coupling and latency needs.
-2. Define schema, correlation IDs, idempotency, retries, ordering and dead-letter behavior.
-3. Specify authentication, secrets, rate limits, observability and contract evolution.
-4. Test timeout, duplicate, partial failure and partner outage scenarios.
+1. Choose the interaction style per need: synchronous request-response, asynchronous messaging or events, or batch transfer, and justify each.
+2. Define contracts with versioned schemas for every interface, with rules for compatible change and a compatibility check in CI.
+3. Design for failure: timeouts, retries with backoff, idempotency keys, dead-letter handling and replay, and what happens on partial failure.
+4. Decide the consistency model and ordering needs, and avoid distributed transactions unless unavoidable, using sagas or reconciliation instead.
+5. Define security and access for each interface: authentication between systems, authorization, encryption and data minimization.
+6. Document each integration with owner, contract, volume, failure behavior and monitoring, and keep the catalogue current.
 
-Deliverables: context/container diagram; interface contract; failure-mode table; operational ownership
+Deliverables: integration catalogue with owners; versioned contracts and compatibility checks; failure and replay design; security design per interface
 
-Acceptance: Every interface has owner and version policy. Retries cannot create unsafe duplicate side effects. Failure handling and telemetry are specified.
+Acceptance: Every interface has an owner and a versioned contract Compatibility is checked automatically Failure, replay and idempotency are designed Each interface has monitoring
 
-Validation: Producer, consumer and operations review.
+Validation: Integration architect review.
+
+- `npx @stoplight/spectral-cli lint openapi.yaml && oasdiff breaking base.yaml openapi.yaml   # example` expect: no lint errors and no breaking changes
+- manual: send the same message twice to a consumer in staging expect: effect occurs once
+
+Failure modes:
+- Breaking change released | detect: Consumer fails after deploy | respond: Add contract compatibility check
+- Duplicate messages double-apply | detect: Repeated effect | respond: Use idempotency keys
+- Poison message blocks a queue | detect: Consumer stuck | respond: Add dead-letter queue and alert
+
+ILLUSTRATIVE: An order event is published with a versioned schema; consumers use the event id for idempotency, failed messages move to a dead-letter queue after five attempts with an alert, and CI rejects a schema change that removes a field.
 
 Gate: 03-031. Approval: none required
 
@@ -303,21 +345,35 @@ ILLUSTRATIVE: Two message brokers are compared. A one-day proof of concept at th
 Gate: 03-032. Approval: none required
 
 ## 33
-**Architecture Documentation** (stub). Purpose: publish architecture decisions and models for future operators.
+**Architecture Documentation** (complete). Purpose: write the architecture down so that others can understand it, check it and change it, and keep it in step with the system.
 
-Inputs: approved architecture decisions; audience and repository conventions; system context and change history
+Entry criteria: Architecture decisions exist; Audiences are identified; A place for documentation under version control exists
+
+Inputs: architecture designs and decision records; audiences and their questions; existing diagrams; the codebase
 
 Procedure:
-1. Document context, scope, constraints, component boundaries and data/control flows.
-2. Link ADRs, interfaces, deployment topology, quality attributes and known limitations.
-3. Keep diagrams source-controlled and validate rendering and links.
-4. Assign owners and review triggers for decisions that can become stale.
+1. List the audiences (developers, operators, security, management) and the questions each asks, and organize the documentation around those questions.
+2. Use a few consistent views, for example a context diagram, a container or component view and key runtime scenarios, with a legend and a stated scope for each.
+3. Record significant decisions as short records with context, options, decision and consequences, and link them from the views.
+4. Keep documentation as text and diagrams in code in the repository, reviewed with the code it describes.
+5. Add a check that detects drift, for example a link check and a script that compares documented components with the code layout.
+6. Review the documentation with a new team member by asking them to answer onboarding questions from it, and fix what they cannot answer.
 
-Deliverables: architecture overview; ADRs; versioned diagrams; review schedule
+Deliverables: architecture documentation set with views; decision records; automated documentation checks; review result by a newcomer
 
-Acceptance: Documentation matches deployed reality. Every key decision has rationale and alternatives. Owners and freshness triggers are defined.
+Acceptance: Each view states its scope and legend Decisions are recorded with options Documentation lives with the code A newcomer could answer onboarding questions
 
-Validation: Architecture peer review.
+Validation: Architect review.
+
+- `python3 scripts/check_links.py` expect: no broken links
+- manual: ask a new team member to find where the payment module is called from using only the documentation expect: found without help
+
+Failure modes:
+- Diagram no longer matches reality | detect: Component named in diagram is gone | respond: Update with the change and add a drift check
+- One huge diagram | detect: Nobody can read it | respond: Split into views with scope
+- Decisions lost | detect: No one knows why | respond: Write decision records
+
+ILLUSTRATIVE: Documentation keeps a context diagram, a component view and a decision record for choosing a message broker. A new engineer follows it to find the order flow in under ten minutes, and a CI check fails on broken links.
 
 Gate: 03-033. Approval: none required
 
