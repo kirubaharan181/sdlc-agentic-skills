@@ -1,0 +1,65 @@
+{
+  "stage_id": 96,
+  "purpose": "track every defect from discovery to verified closure, so nothing is lost and the team can see quality trends",
+  "entry_criteria": [
+    "A defect tracking tool is available",
+    "Severity and priority definitions are agreed",
+    "Roles for triage are named"
+  ],
+  "inputs": [
+    "defect reports",
+    "severity and priority definitions",
+    "release schedule",
+    "test results"
+  ],
+  "procedure": [
+    "Require each report to carry steps, expected and actual result, environment, build and evidence.",
+    "Triage on a schedule: confirm, remove duplicates, set severity by impact and priority by urgency, and assign an owner.",
+    "Track status through a defined flow, and see that no defect stays unowned or untouched beyond the agreed time.",
+    "Have the reporter or a tester verify the fix on a build before closing.",
+    "Analyze trends: where defects are found, where they were introduced and how long they stay open.",
+    "Use the analysis to change the process, for example adding a test where defects cluster."
+  ],
+  "deliverables": [
+    "defect records with required fields",
+    "triage decisions",
+    "verification records",
+    "trend report"
+  ],
+  "acceptance_criteria": [
+    "Each defect has steps, evidence and an owner",
+    "Severity follows the written definitions",
+    "Fixes are verified before closure",
+    "Trends feed process changes"
+  ],
+  "validation_method": "QA lead review.",
+  "validation": [
+    {
+      "check": "list open defects older than the agreed age or without an owner",
+      "expect": "each has a decision"
+    },
+    {
+      "check": "sample five closed defects and check for a verification note",
+      "expect": "all have one"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Duplicates multiply",
+      "detection": "Same issue many times",
+      "response": "Merge during triage"
+    },
+    {
+      "mode": "Severity inflation",
+      "detection": "Everything marked critical",
+      "response": "Apply written definitions"
+    },
+    {
+      "mode": "Closed without verification",
+      "detection": "Reopened later",
+      "response": "Require verification"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A weekly triage closes six duplicates, downgrades two inflated severities and assigns five unowned defects. The trend report shows most escaped defects came from the import module, which gets extra tests.",
+  "status": "complete"
+}

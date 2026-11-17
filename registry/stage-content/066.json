@@ -1,0 +1,65 @@
+{
+  "stage_id": 66,
+  "purpose": "make failures visible, contained and recoverable, so a fault in one place does not become an outage or a silent wrong answer",
+  "entry_criteria": [
+    "The system's main operations and dependencies are known",
+    "A logging and error reporting approach exists",
+    "An error format for clients is agreed"
+  ],
+  "inputs": [
+    "operations and dependencies",
+    "error format and codes",
+    "logging standard",
+    "recovery requirements"
+  ],
+  "procedure": [
+    "List how each operation can fail and decide for each whether to retry, fail fast, degrade or stop.",
+    "Never swallow errors: handle them where there is something useful to do, otherwise pass them up with context.",
+    "Return errors in the agreed format, with a stable code and a safe message that exposes no internals.",
+    "Log the full detail with the correlation id on the server, and keep sensitive data out.",
+    "Keep operations safe to repeat, and leave data consistent when a step fails halfway.",
+    "Test the failure paths by injecting faults, and check the alerts they cause."
+  ],
+  "deliverables": [
+    "failure decision table",
+    "error handling code and format",
+    "fault injection tests",
+    "alert checks"
+  ],
+  "acceptance_criteria": [
+    "No error is silently swallowed",
+    "Client errors expose no internals",
+    "A failed step leaves data consistent",
+    "Fault injection tests pass"
+  ],
+  "validation_method": "Code review.",
+  "validation": [
+    {
+      "command": "grep -rnE 'except:\\s*pass|catch\\s*\\([^)]*\\)\\s*\\{\\s*\\}' src | head",
+      "expect": "no empty handlers found"
+    },
+    {
+      "command": "pytest -q tests/failure_paths",
+      "expect": "injected timeout and error tests pass"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Stack trace shown to the client",
+      "detection": "Response includes internals",
+      "response": "Return a safe message and log the detail"
+    },
+    {
+      "mode": "Half-completed update",
+      "detection": "Inconsistent records after failure",
+      "response": "Use a transaction or compensating step"
+    },
+    {
+      "mode": "Retries without limit",
+      "detection": "Repeated load on a failing service",
+      "response": "Bound retries and back off"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A failed payment call returns a stable code and a short message to the user, logs the provider response with the correlation id, leaves the order marked pending, and a retry job picks it up at most three times.",
+  "status": "complete"
+}

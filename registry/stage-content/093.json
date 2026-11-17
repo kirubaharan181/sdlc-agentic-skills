@@ -1,0 +1,65 @@
+{
+  "stage_id": 93,
+  "purpose": "find where and how the system breaks when pushed beyond its design load, and check that it fails safely and recovers",
+  "entry_criteria": [
+    "Capacity limits and expected peaks are known",
+    "A production-like test environment exists",
+    "Monitoring is in place"
+  ],
+  "inputs": [
+    "expected peak load",
+    "capacity limits",
+    "test environment with monitoring",
+    "dependency list"
+  ],
+  "procedure": [
+    "Define the stress goals: how far above peak to push, and which behaviors to observe.",
+    "Increase load in steps beyond the peak, recording latency, error rate and resource use at each step.",
+    "Record the point where service degrades and the first resource that saturates.",
+    "Check the failure behavior: whether errors are clear, protection such as rate limits and queues works, and nothing is corrupted.",
+    "Remove the load and measure how long recovery takes and whether manual action is needed.",
+    "Report the breaking point, the failure behavior and the fixes, and rerun after fixes."
+  ],
+  "deliverables": [
+    "stress test plan and load profile",
+    "breaking point with the first saturated resource",
+    "failure and recovery observations",
+    "fixes and retest results"
+  ],
+  "acceptance_criteria": [
+    "The load exceeded the expected peak",
+    "The first saturating resource is named",
+    "Recovery time is measured",
+    "Data integrity was checked after the test"
+  ],
+  "validation_method": "Performance testing specialist report; service owner review.",
+  "validation": [
+    {
+      "command": "k6 run --stage 5m:2x,5m:3x,5m:4x scripts/stress.js   # example; stages multiply expected peak",
+      "expect": "results show where errors begin"
+    },
+    {
+      "check": "after the test, compare record counts and run the data integrity query",
+      "expect": "no corruption or loss"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "System does not recover",
+      "detection": "Errors continue after load stops",
+      "response": "Fix queues and connection handling"
+    },
+    {
+      "mode": "Data corrupted under overload",
+      "detection": "Integrity check fails",
+      "response": "Treat as a defect and fix"
+    },
+    {
+      "mode": "Test environment smaller than production",
+      "detection": "Results not comparable",
+      "response": "State the scale factor"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Load is raised to four times peak. Errors begin at 2.5 times when the database connection pool is exhausted; after the load stops, the service takes 40 minutes to recover until the pool timeout is fixed.",
+  "status": "complete"
+}

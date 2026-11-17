@@ -1,0 +1,65 @@
+{
+  "stage_id": 82,
+  "purpose": "automate checks of the user interface so that regressions in the main journeys are caught on every change, with tests that are stable",
+  "entry_criteria": [
+    "Stable user journeys are identified",
+    "A test environment with test data exists",
+    "A UI automation tool is chosen"
+  ],
+  "inputs": [
+    "priority user journeys",
+    "design and acceptance criteria",
+    "test environment",
+    "test data"
+  ],
+  "procedure": [
+    "Choose the few journeys that matter most to the business and automate those first, rather than every screen.",
+    "Find elements with stable test identifiers or accessible roles, not with brittle positions or generated class names.",
+    "Make each test independent: it creates its own data and does not rely on another test's result.",
+    "Wait for conditions, never for fixed delays, and keep assertions on what the user sees and can do.",
+    "Run in CI on every change for the fast set, and nightly for the wider set, capturing screenshots and traces on failure.",
+    "Track flaky tests, and fix or remove them within an agreed time."
+  ],
+  "deliverables": [
+    "automated journey tests",
+    "test data setup",
+    "CI configuration with failure artifacts",
+    "flaky test list"
+  ],
+  "acceptance_criteria": [
+    "Core journeys are covered",
+    "Tests are independent and use stable selectors",
+    "Failures give a screenshot or trace",
+    "Flaky tests are tracked with a deadline"
+  ],
+  "validation_method": "QA lead review.",
+  "validation": [
+    {
+      "command": "npx playwright test --reporter=line   # example; use the project's tool",
+      "expect": "all pass"
+    },
+    {
+      "command": "npx playwright test --repeat-each=5 tests/checkout.spec.ts   # example",
+      "expect": "no intermittent failure in five runs"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Flaky test ignored",
+      "detection": "Intermittent failures in CI",
+      "response": "Fix the wait or isolate the data"
+    },
+    {
+      "mode": "Selectors tied to layout",
+      "detection": "Tests break on cosmetic changes",
+      "response": "Use test ids or roles"
+    },
+    {
+      "mode": "Tests depend on order",
+      "detection": "Fail when run alone",
+      "response": "Make them independent"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Five journeys are automated: sign up, sign in, search, add to basket and pay. Each creates its own user, waits on visible conditions, and attaches a trace on failure; the checkout test ran five times without a flake.",
+  "status": "complete"
+}

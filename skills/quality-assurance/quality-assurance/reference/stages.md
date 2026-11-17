@@ -57,22 +57,35 @@ ILLUSTRATIVE: A payments feature ranks refund calculation as highest risk. The s
 Gate: 08-077. Approval: none required
 
 ## 78
-**Test Planning** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Test Planning** (complete). Purpose: plan what will be tested, how, by whom and when, so test effort matches risk and the release decision has evidence.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: Requirements and a release scope exist; The risk list is available; Test environments and data are known or being planned
+
+Inputs: requirements and release scope; risk list; architecture and integrations; environment and data availability
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Sequence test cases by dependency, environment readiness and risk; define fixtures, entry criteria and execution windows.
+1. Define the test objectives from the release goals and the risks, and the exit criteria that will support the release decision.
+2. Choose test levels and types per risk: unit, integration, system, performance, security and accessibility, and say what will be automated.
+3. Trace requirements and risks to planned tests so gaps are visible.
+4. Plan environments, data and tools, with their lead times and owners.
+5. Estimate effort and schedule with the dependencies, and name who does what.
+6. Agree how defects will be handled and reported, and review the plan with the product owner and developers.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; test execution plan and environment matrix
+Deliverables: test plan with objectives and exit criteria; requirement and risk to test traceability; environment and data plan; schedule and responsibilities
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. Test data, environment, owners and exit criteria are ready before execution.
+Acceptance: Exit criteria are measurable Every high risk has planned tests Environment and data lead times are planned The plan was reviewed by product and engineering
 
-Validation: Independent QA review and acceptance decision. Review plan completeness and fixture reproducibility.
+Validation: QA lead plan; product owner agreement on exit criteria.
+
+- manual: check each high-risk item in the risk list maps to at least one planned test expect: none unmapped
+- manual: check each exit criterion has a number or a yes-no condition expect: none vague
+
+Failure modes:
+- Plan lists activities but no criteria | detect: Release decided by feeling | respond: Add measurable exit criteria
+- Environment not ready | detect: Tests blocked | respond: Plan lead times
+- Risk not covered | detect: Unmapped high risk | respond: Add tests or accept it formally
+
+ILLUSTRATIVE: A payments release plan lists exit criteria of zero open critical defects, all high-risk flows automated and passing, and a load test at 1.5 times peak; each is traced to a risk in the register.
 
 Gate: 08-078. Approval: none required
 
@@ -176,42 +189,68 @@ ILLUSTRATIVE: Tests call each operation with each role. A user reading another u
 Gate: 08-081. Approval: none required
 
 ## 82
-**UI Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**UI Testing** (complete). Purpose: automate checks of the user interface so that regressions in the main journeys are caught on every change, with tests that are stable.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: Stable user journeys are identified; A test environment with test data exists; A UI automation tool is chosen
+
+Inputs: priority user journeys; design and acceptance criteria; test environment; test data
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Verify component states, keyboard interaction, validation feedback and responsive layout.
+1. Choose the few journeys that matter most to the business and automate those first, rather than every screen.
+2. Find elements with stable test identifiers or accessible roles, not with brittle positions or generated class names.
+3. Make each test independent: it creates its own data and does not rely on another test's result.
+4. Wait for conditions, never for fixed delays, and keep assertions on what the user sees and can do.
+5. Run in CI on every change for the fast set, and nightly for the wider set, capturing screenshots and traces on failure.
+6. Track flaky tests, and fix or remove them within an agreed time.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; UI interaction report and screenshots
+Deliverables: automated journey tests; test data setup; CI configuration with failure artifacts; flaky test list
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. Critical controls work at supported viewports without console or accessibility blockers.
+Acceptance: Core journeys are covered Tests are independent and use stable selectors Failures give a screenshot or trace Flaky tests are tracked with a deadline
 
-Validation: Independent QA review and acceptance decision. Run browser tests and inspect captured screenshots/traces.
+Validation: QA lead review.
+
+- `npx playwright test --reporter=line   # example; use the project's tool` expect: all pass
+- `npx playwright test --repeat-each=5 tests/checkout.spec.ts   # example` expect: no intermittent failure in five runs
+
+Failure modes:
+- Flaky test ignored | detect: Intermittent failures in CI | respond: Fix the wait or isolate the data
+- Selectors tied to layout | detect: Tests break on cosmetic changes | respond: Use test ids or roles
+- Tests depend on order | detect: Fail when run alone | respond: Make them independent
+
+ILLUSTRATIVE: Five journeys are automated: sign up, sign in, search, add to basket and pay. Each creates its own user, waits on visible conditions, and attaches a trace on failure; the checkout test ran five times without a flake.
 
 Gate: 08-082. Approval: none required
 
 ## 83
-**Functional Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Functional Testing** (complete). Purpose: confirm by hands-on exploration that each feature does what the requirements say, including the cases nobody scripted.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: Build is deployed in a test environment; Requirements and acceptance criteria are available; Test data and accounts exist
+
+Inputs: requirements and acceptance criteria; build under test; test data; known issues list
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Trace each business requirement to positive, negative, alternate and exception scenarios.
+1. Write test cases from each acceptance criterion with the steps, data and expected result.
+2. Add cases from boundaries and rules: smallest and largest values, empty input, invalid combinations and permission differences.
+3. Execute the cases, recording actual results with evidence for each failure: steps, data, screenshots and the build.
+4. Spend a time-boxed session exploring beyond the scripts, following what looks odd, and record what was covered.
+5. Report defects with clear steps and severity, and retest fixes against the original steps.
+6. Summarize coverage of the criteria and the open defects.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; functional test matrix and results
+Deliverables: test cases with results; defect reports with evidence; exploration notes; coverage summary against acceptance criteria
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. Every in-scope business rule has an observed expected result.
+Acceptance: Every acceptance criterion has a case and a result Failures have reproducible steps and evidence An exploration session was recorded Fixes were retested
 
-Validation: Independent QA review and acceptance decision. Review traceability and execute critical business paths.
+Validation: QA lead review.
+
+- manual: count acceptance criteria and test cases that reference them expect: every criterion has at least one case
+- manual: take three defect reports and reproduce them from the steps alone expect: all reproduce
+
+Failure modes:
+- Only happy paths tested | detect: Defects found by users | respond: Add boundary and negative cases
+- Defect not reproducible | detect: Developer cannot repeat it | respond: Add steps, data and build
+- Fix not retested | detect: Defect returns | respond: Retest with the original steps
+
+ILLUSTRATIVE: Testing a discount feature from its criteria finds a correct result for a single code, then exploration with two codes applied in different order shows a different total; the defect is reported with the exact order and amounts.
 
 Gate: 08-083. Approval: none required
 
@@ -315,62 +354,101 @@ ILLUSTRATIVE: After deployment to staging, the smoke suite confirms the version,
 Gate: 08-086. Approval: none required
 
 ## 87
-**Sanity Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Sanity Testing** (complete). Purpose: decide quickly after a build or fix whether it is stable enough to deserve the full test effort.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: A new build or a fix is deployed; A short list of must-work checks exists; The tester has access to the environment
+
+Inputs: new build and release notes; list of core checks; environment access; recent changes
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Verify the narrow changed area and immediate dependencies after a small patch.
+1. Confirm the right build is deployed by checking its version identifier, before anything else.
+2. Run the short list of core checks: start up, sign in, the main journey and the changed area, in minutes, not hours.
+3. Check the changes named in the release notes, and one neighbouring area likely to be affected.
+4. Stop at the first blocking failure and return the build with the failing step and evidence.
+5. If all pass, record the result and release the build to the full test effort.
+6. Keep the list short and review it when core functionality changes.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; sanity checklist and focused test result
+Deliverables: build version confirmation; sanity check result; return note when blocked; updated core check list
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. The targeted fix works and adjacent behavior remains stable.
+Acceptance: The build identifier was confirmed Checks finish within the agreed time A failure stops further testing with evidence The list is kept short and current
 
-Validation: Independent QA review and acceptance decision. Execute the bounded checklist on the exact patch.
+Validation: QA lead decision to accept the build.
+
+- `curl -s https://test.example.com/version   # example` expect: returns the expected build id
+- manual: run the core checks and time them expect: complete within the agreed time
+
+Failure modes:
+- Wrong build tested | detect: Version differs from the release note | respond: Redeploy and restart
+- List grows into a full test | detect: Takes hours | respond: Cut back to blockers
+- Blocked build still tested in full | detect: Wasted effort | respond: Stop and return the build
+
+ILLUSTRATIVE: After a hotfix, the tester confirms the build id, signs in, completes a purchase and checks the fixed discount rule in eight minutes, then releases the build for the regression run.
 
 Gate: 08-087. Approval: none required
 
 ## 88
-**Cross-browser Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Cross-browser Testing** (complete). Purpose: make sure the product works for users on the browsers and versions that matter, based on who actually uses it.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: Analytics or customer data on browser use exist; Core journeys are defined; Access to the browsers or a cloud grid exists
+
+Inputs: browser usage data; supported browser policy; core journeys; known rendering differences
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Run identical critical journeys across the supported browser/OS matrix and compare rendering and interaction.
+1. Build the support matrix from real usage data and the support policy: browser, version range and operating system.
+2. Rank the matrix by usage and risk, and decide which combinations get full tests and which get a smoke check.
+3. Run the core journeys on each tier, using automation where it exists and manual checks for layout and input behavior.
+4. Compare layout, fonts, forms, media and scripts, and note where features degrade without breaking the task.
+5. Record each difference with browser, version, steps and a screenshot, and decide to fix, work around or document.
+6. Review the matrix whenever usage shifts or a new browser release changes the picture.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; browser compatibility matrix and screenshots
+Deliverables: support matrix with tiers; results per browser and version; differences log; decisions on fixes or documented limits
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. No supported browser has a critical functional or layout regression.
+Acceptance: The matrix is based on usage data Core journeys passed on each top tier Differences have evidence and a decision The matrix has a review date
 
-Validation: Independent QA review and acceptance decision. Run matrix tests and attach browser/version evidence.
+Validation: QA lead review.
+
+- `npx playwright test --project=chromium --project=firefox --project=webkit   # example` expect: core journeys pass on all projects
+- manual: open the checkout on the oldest supported version of each browser expect: task can be completed
+
+Failure modes:
+- Matrix based on guesses | detect: Users on untested browsers | respond: Use analytics data
+- Cosmetic issue treated as blocker | detect: Time wasted | respond: Judge by task impact
+- Matrix never updated | detect: New version breaks the page | respond: Schedule a review
+
+ILLUSTRATIVE: Usage data places four browsers above 5 percent each; those get full journey runs, the others a smoke check. A date picker is found to behave differently in one version and gets a workaround.
 
 Gate: 08-088. Approval: none required
 
 ## 89
-**Mobile Compatibility Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Mobile Compatibility Testing** (complete). Purpose: check that the product works on the phones and tablets users own, across sizes, operating systems, hardware and conditions.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: A mobile app or responsive web build exists; Device usage data exists; Real devices or a device farm are accessible
+
+Inputs: device and operating system usage data; app or responsive build; core journeys; hardware features used
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Verify responsive layout, touch targets, orientation, OS permissions and network transitions on supported devices.
+1. Select the device set from usage data: popular models, oldest supported OS, smallest and largest screens, low-memory devices.
+2. Run the core journeys on each device, including rotation, text size changes, and dark mode.
+3. Test hardware dependent features such as camera, location, biometrics, notifications and sensors with permission granted and denied.
+4. Test interruptions and conditions: incoming calls, low battery, low storage, background and resume, and poor or lost connectivity.
+5. Record issues with device, OS version, steps and a recording, and group them by cause.
+6. Update the device set each quarter from fresh usage data.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; device compatibility matrix and recordings
+Deliverables: device matrix from usage data; journey results per device; hardware and interruption test results; issue list grouped by cause
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. Critical flows work on the supported device/OS matrix.
+Acceptance: Devices were chosen from data Permission denied and interruption cases were tested Issues carry device and OS details The device set has a review date
 
-Validation: Independent QA review and acceptance decision. Run emulator and representative physical-device tests.
+Validation: QA lead review.
+
+- manual: run checkout on the oldest supported OS and the smallest screen expect: task completes and nothing is cut off
+- manual: deny camera permission and open the scan feature expect: clear message and an alternative
+
+Failure modes:
+- Only newest devices tested | detect: Crashes on older phones | respond: Add oldest supported OS and low memory
+- Text clipped at large font size | detect: Buttons unreadable | respond: Fix layouts for scaled text
+- Permission denial breaks the app | detect: Blank screen | respond: Handle denial with a message
+
+ILLUSTRATIVE: Usage data selects eight devices. A low-memory phone restarts the app during photo upload, and a denied location permission produces a blank map; both are logged with device and OS version.
 
 Gate: 08-089. Approval: none required
 
@@ -474,42 +552,68 @@ ILLUSTRATIVE: Stepped load shows stable operation to 350 requests per second and
 Gate: 08-092. Approval: none required
 
 ## 93
-**Stress Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Stress Testing** (complete). Purpose: find where and how the system breaks when pushed beyond its design load, and check that it fails safely and recovers.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: Capacity limits and expected peaks are known; A production-like test environment exists; Monitoring is in place
+
+Inputs: expected peak load; capacity limits; test environment with monitoring; dependency list
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Increase load beyond expected capacity to identify saturation point and failure mode.
+1. Define the stress goals: how far above peak to push, and which behaviors to observe.
+2. Increase load in steps beyond the peak, recording latency, error rate and resource use at each step.
+3. Record the point where service degrades and the first resource that saturates.
+4. Check the failure behavior: whether errors are clear, protection such as rate limits and queues works, and nothing is corrupted.
+5. Remove the load and measure how long recovery takes and whether manual action is needed.
+6. Report the breaking point, the failure behavior and the fixes, and rerun after fixes.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; stress curve and degradation report
+Deliverables: stress test plan and load profile; breaking point with the first saturated resource; failure and recovery observations; fixes and retest results
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. Overload is bounded, shedding is graceful and recovery occurs after load drops.
+Acceptance: The load exceeded the expected peak The first saturating resource is named Recovery time is measured Data integrity was checked after the test
 
-Validation: Independent QA review and acceptance decision. Run approved stress profile in an isolated environment.
+Validation: Performance testing specialist report; service owner review.
+
+- `k6 run --stage 5m:2x,5m:3x,5m:4x scripts/stress.js   # example; stages multiply expected peak` expect: results show where errors begin
+- manual: after the test, compare record counts and run the data integrity query expect: no corruption or loss
+
+Failure modes:
+- System does not recover | detect: Errors continue after load stops | respond: Fix queues and connection handling
+- Data corrupted under overload | detect: Integrity check fails | respond: Treat as a defect and fix
+- Test environment smaller than production | detect: Results not comparable | respond: State the scale factor
+
+ILLUSTRATIVE: Load is raised to four times peak. Errors begin at 2.5 times when the database connection pool is exhausted; after the load stops, the service takes 40 minutes to recover until the pool timeout is fixed.
 
 Gate: 08-093. Approval: none required
 
 ## 94
-**Soak Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Soak Testing** (complete). Purpose: find problems that appear only when a system runs for a long time, such as leaks, drift and slow degradation.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: A stable build and a long-running environment exist; Monitoring of memory, handles and storage is in place; A realistic load profile exists
+
+Inputs: realistic load profile; monitoring dashboards; baseline resource use; scheduled jobs and rotations
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Sustain representative load long enough to expose leaks, queue growth and resource drift.
+1. Define the duration and a steady realistic load that includes scheduled jobs, backups and log rotation.
+2. Record baselines at the start: memory, open connections, file handles, disk, thread counts and latency.
+3. Sample the same measures through the run, and watch for upward trends rather than for single peaks.
+4. Investigate any steady growth with heap, handle or connection dumps, and find the source.
+5. Check the effect of events during the run, such as certificate or token expiry, cache growth and clock changes.
+6. Compare the end with the start, report the trends and fix leaks, then repeat the run.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; soak run and resource trend report
+Deliverables: soak plan with duration and load; baseline and time series; leak investigation; comparison of start and end
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. Memory, handles, queues and latency remain stable through the agreed duration.
+Acceptance: The duration covers scheduled jobs and rotations Trends are examined, not only peaks Leaks have a source identified Start and end measures are compared
 
-Validation: Independent QA review and acceptance decision. Review time-series trends and post-run resource recovery.
+Validation: Performance testing specialist report.
+
+- manual: plot memory and open connections over the run and fit a trend line expect: slope near zero, or a leak recorded
+- manual: compare p95 latency in the first and last hour expect: within the agreed margin
+
+Failure modes:
+- Run too short | detect: Leak not visible | respond: Extend to cover several cycles
+- Memory rises steadily | detect: Out-of-memory after hours | respond: Find and fix the leak
+- Disk fills with logs | detect: Space alarm during run | respond: Fix rotation and retention
+
+ILLUSTRATIVE: A 24-hour run at average load shows memory rising 40 MB per hour. A heap dump finds an unbounded cache; after adding a size limit a repeat run stays flat and latency in the last hour matches the first.
 
 Gate: 08-094. Approval: none required
 
@@ -547,21 +651,35 @@ ILLUSTRATIVE: Three finance staff run twelve scenarios on the acceptance environ
 Gate: 08-095. Approval: uat-acceptor (always)
 
 ## 96
-**Defect Management** (stub). Purpose: control defects from reproduction through verified closure.
+**Defect Management** (complete). Purpose: track every defect from discovery to verified closure, so nothing is lost and the team can see quality trends.
 
-Inputs: defect report and affected build; severity/priority policy; reproduction environment
+Entry criteria: A defect tracking tool is available; Severity and priority definitions are agreed; Roles for triage are named
+
+Inputs: defect reports; severity and priority definitions; release schedule; test results
 
 Procedure:
-1. Reproduce on a named build and capture minimal steps, expected/actual behavior and logs.
-2. Assess impact, exploitability, affected users and workaround; assign severity separately from priority.
-3. Link root cause and fix commit to regression coverage.
-4. Verify fix on the target build and close only with reproducible evidence.
+1. Require each report to carry steps, expected and actual result, environment, build and evidence.
+2. Triage on a schedule: confirm, remove duplicates, set severity by impact and priority by urgency, and assign an owner.
+3. Track status through a defined flow, and see that no defect stays unowned or untouched beyond the agreed time.
+4. Have the reporter or a tester verify the fix on a build before closing.
+5. Analyze trends: where defects are found, where they were introduced and how long they stay open.
+6. Use the analysis to change the process, for example adding a test where defects cluster.
 
-Deliverables: defect ticket; severity rationale; root cause and fix link; retest report
+Deliverables: defect records with required fields; triage decisions; verification records; trend report
 
-Acceptance: Reproduction is reliable. Severity rationale reflects impact. Closure includes fix-version retest and regression protection.
+Acceptance: Each defect has steps, evidence and an owner Severity follows the written definitions Fixes are verified before closure Trends feed process changes
 
-Validation: QA owner verifies closure.
+Validation: QA lead review.
+
+- manual: list open defects older than the agreed age or without an owner expect: each has a decision
+- manual: sample five closed defects and check for a verification note expect: all have one
+
+Failure modes:
+- Duplicates multiply | detect: Same issue many times | respond: Merge during triage
+- Severity inflation | detect: Everything marked critical | respond: Apply written definitions
+- Closed without verification | detect: Reopened later | respond: Require verification
+
+ILLUSTRATIVE: A weekly triage closes six duplicates, downgrades two inflated severities and assigns five unowned defects. The trend report shows most escaped defects came from the import module, which gets extra tests.
 
 Gate: 08-096. Approval: none required
 

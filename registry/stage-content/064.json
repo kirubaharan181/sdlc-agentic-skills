@@ -1,0 +1,65 @@
+{
+  "stage_id": 64,
+  "purpose": "build a model-based feature whose quality is measured, whose limits are known and whose failures are handled",
+  "entry_criteria": [
+    "The problem is defined with a success measure",
+    "Data with a known source and permitted use exists",
+    "Evaluation data is held apart from training data"
+  ],
+  "inputs": [
+    "problem definition and success measure",
+    "datasets and their permitted use",
+    "baseline solution",
+    "compute and cost limits"
+  ],
+  "procedure": [
+    "Start with a simple baseline, such as rules or a basic model, and record its score on the success measure.",
+    "Split the data before any tuning, keeping a test set that nobody uses for decisions until the end.",
+    "Train and compare candidates, recording data version, code version, parameters and scores for each run.",
+    "Evaluate on slices that matter, such as user groups and rare cases, not only the overall average, and examine the worst errors.",
+    "Define behavior when the model is unsure or wrong: confidence thresholds, human review and a non-model fallback.",
+    "Package the model with its version, data lineage and a monitoring plan for drift and quality after release."
+  ],
+  "deliverables": [
+    "baseline and candidate comparison",
+    "evaluation report with slices",
+    "fallback design",
+    "versioned model package with monitoring plan"
+  ],
+  "acceptance_criteria": [
+    "The model beats the baseline on the success measure",
+    "The test set was used once at the end",
+    "Slice results and worst errors are reported",
+    "A fallback exists for low confidence and failure"
+  ],
+  "validation_method": "AI/ML lead review.",
+  "validation": [
+    {
+      "command": "python -m ml.evaluate --model models/current --data data/test --by-slice   # example",
+      "expect": "metrics per slice are printed and meet the thresholds"
+    },
+    {
+      "check": "check the run record contains data version, code version and parameters",
+      "expect": "all present"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Leakage between train and test",
+      "detection": "Scores too good to be true",
+      "response": "Re-split by entity or time and rerun"
+    },
+    {
+      "mode": "Average hides weak groups",
+      "detection": "A slice scores far lower",
+      "response": "Fix or limit use for that slice"
+    },
+    {
+      "mode": "No fallback",
+      "detection": "Failure blocks the user",
+      "response": "Add a non-model path"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A ticket-routing model beats the keyword baseline overall, but scores lower on short messages; those below the confidence threshold go to a human queue, and weekly monitoring compares accuracy on a labelled sample.",
+  "status": "complete"
+}

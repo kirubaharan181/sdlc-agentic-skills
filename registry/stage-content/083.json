@@ -1,0 +1,65 @@
+{
+  "stage_id": 83,
+  "purpose": "confirm by hands-on exploration that each feature does what the requirements say, including the cases nobody scripted",
+  "entry_criteria": [
+    "Build is deployed in a test environment",
+    "Requirements and acceptance criteria are available",
+    "Test data and accounts exist"
+  ],
+  "inputs": [
+    "requirements and acceptance criteria",
+    "build under test",
+    "test data",
+    "known issues list"
+  ],
+  "procedure": [
+    "Write test cases from each acceptance criterion with the steps, data and expected result.",
+    "Add cases from boundaries and rules: smallest and largest values, empty input, invalid combinations and permission differences.",
+    "Execute the cases, recording actual results with evidence for each failure: steps, data, screenshots and the build.",
+    "Spend a time-boxed session exploring beyond the scripts, following what looks odd, and record what was covered.",
+    "Report defects with clear steps and severity, and retest fixes against the original steps.",
+    "Summarize coverage of the criteria and the open defects."
+  ],
+  "deliverables": [
+    "test cases with results",
+    "defect reports with evidence",
+    "exploration notes",
+    "coverage summary against acceptance criteria"
+  ],
+  "acceptance_criteria": [
+    "Every acceptance criterion has a case and a result",
+    "Failures have reproducible steps and evidence",
+    "An exploration session was recorded",
+    "Fixes were retested"
+  ],
+  "validation_method": "QA lead review.",
+  "validation": [
+    {
+      "check": "count acceptance criteria and test cases that reference them",
+      "expect": "every criterion has at least one case"
+    },
+    {
+      "check": "take three defect reports and reproduce them from the steps alone",
+      "expect": "all reproduce"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Only happy paths tested",
+      "detection": "Defects found by users",
+      "response": "Add boundary and negative cases"
+    },
+    {
+      "mode": "Defect not reproducible",
+      "detection": "Developer cannot repeat it",
+      "response": "Add steps, data and build"
+    },
+    {
+      "mode": "Fix not retested",
+      "detection": "Defect returns",
+      "response": "Retest with the original steps"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Testing a discount feature from its criteria finds a correct result for a single code, then exploration with two codes applied in different order shows a different total; the defect is reported with the exact order and amounts.",
+  "status": "complete"
+}
