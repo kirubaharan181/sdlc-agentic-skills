@@ -1,0 +1,65 @@
+{
+  "stage_id": 60,
+  "purpose": "make the system allow each action only to those entitled to take it, checked on the server every time",
+  "entry_criteria": [
+    "Roles, permissions and data ownership rules are defined",
+    "Authentication works (stage 59)",
+    "Test users with different roles exist"
+  ],
+  "inputs": [
+    "permission model",
+    "data ownership rules",
+    "list of operations and resources",
+    "authentication context"
+  ],
+  "procedure": [
+    "Define roles and permissions from the business rules, using least privilege and separate duties for risky actions.",
+    "Check authorization on the server for every operation and every object, not only in the user interface.",
+    "Check that the user owns or may access the specific record, not only that they have the role.",
+    "Deny by default: new routes and operations have no access until a rule is added.",
+    "Log access decisions for sensitive actions, and provide a way to review who can do what.",
+    "Test with a matrix of roles against operations, including attempts to reach another user's records."
+  ],
+  "deliverables": [
+    "permission model implemented",
+    "server-side checks",
+    "role-by-operation tests",
+    "access review report"
+  ],
+  "acceptance_criteria": [
+    "Every operation is checked on the server",
+    "Object-level access is tested",
+    "Default is deny",
+    "Sensitive access is logged"
+  ],
+  "validation_method": "Security review.",
+  "validation": [
+    {
+      "command": "pytest -q tests/authz   # example matrix of role against operation",
+      "expect": "all expected allows and denies pass"
+    },
+    {
+      "check": "as user A request user B's record by changing the id in the URL",
+      "expect": "denied, with no data returned"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Only the interface hides buttons",
+      "detection": "Direct request succeeds",
+      "response": "Add server checks"
+    },
+    {
+      "mode": "Role check without object check",
+      "detection": "User reads another's record",
+      "response": "Check ownership"
+    },
+    {
+      "mode": "New route unprotected",
+      "detection": "Access allowed by default",
+      "response": "Switch to deny by default"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A test matrix tries each role against each operation. It finds that a support role can export all invoices, which should be limited to the customer in the open ticket; the check is added and the test recorded.",
+  "status": "complete"
+}

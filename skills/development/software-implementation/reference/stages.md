@@ -103,21 +103,35 @@ ILLUSTRATIVE: A saved-search feature adds a save button, an API endpoint and a t
 Gate: 06-055. Approval: none required
 
 ## 56
-**Mobile Development** (stub). Purpose: implement mobile behavior across device lifecycle and store constraints.
+**Mobile Development** (complete). Purpose: build a mobile app that works on real devices, handles poor networks and respects each platform's rules.
 
-Inputs: platform targets and OS versions; design and API contracts; permissions, offline and store requirements
+Entry criteria: Requirements and designs are approved; Target platforms and versions are chosen; Test devices or a device farm are available
+
+Inputs: designs and requirements; API contract; target platform versions; store policies
 
 Procedure:
-1. Inspect app lifecycle, navigation, state, networking and platform-specific conventions.
-2. Implement permission prompts, secure local storage, offline/retry behavior and background lifecycle handling.
-3. Test device sizes, OS versions, connectivity transitions and accessibility.
-4. Validate signing/build configuration and store policy constraints without exposing signing secrets.
+1. Pick the approach (native, cross-platform) based on the needs and the team's skills, and record the reason.
+2. Build features in small slices and test each on real devices as well as simulators.
+3. Design for poor connectivity: cache sensible data, queue writes, retry with limits and show clear status.
+4. Handle the app lifecycle: backgrounding, interruptions, permission refusal and low memory.
+5. Store sensitive data in the platform's secure storage, request only needed permissions and explain them to the user.
+6. Check the store policies, app size, startup time and battery use before release, and plan staged rollout.
 
-Deliverables: mobile feature; permission/data handling notes; device test matrix; build evidence
+Deliverables: working app builds; device test results; offline and lifecycle tests; store submission checklist
 
-Acceptance: App resumes and recovers from network/lifecycle changes. Permissions are least-privilege and explained. Supported OS/device matrix passes.
+Acceptance: Features work on the supported OS versions and real devices Behavior without a network is defined and tested Permissions are minimal and explained Sensitive data uses secure storage
 
-Validation: Device testing and mobile release review.
+Validation: Mobile lead review.
+
+- manual: run the main flows on one low-end and one current device with airplane mode toggled expect: flows complete or fail with a clear message
+- manual: review the requested permissions against the features that use them expect: each permission is needed
+
+Failure modes:
+- Works only on the simulator | detect: Crashes on real devices | respond: Test on real devices
+- Data lost when offline | detect: Write fails silently | respond: Queue and retry
+- Excess permissions | detect: Store review questions | respond: Remove unneeded ones
+
+ILLUSTRATIVE: A delivery app queues status updates while offline and retries when the network returns; location permission is requested only when the user opens the map, with a message explaining why.
 
 Gate: 06-056. Approval: none required
 
@@ -188,97 +202,167 @@ ILLUSTRATIVE: A migration adds a nullable column and an index concurrently. It r
 Gate: 06-058. Approval: none required
 
 ## 59
-**Authentication Development** (stub). Purpose: implement identity proof and credential lifecycle securely.
+**Authentication Development** (complete). Purpose: implement login and session handling that proves who the user is without weakening the system.
 
-Inputs: identity provider and protocol requirements; session/token lifecycle; threat model and user experience
+Entry criteria: Authentication requirements and the identity provider are decided; A threat model covers sign-in (stage 29); Test accounts exist
+
+Inputs: security requirements; identity provider documentation; threat model; session policy
 
 Procedure:
-1. Choose supported OIDC/OAuth/SAML flow based on client type and trust boundaries.
-2. Validate issuer, audience, signature, expiry, nonce/state and redirect URI as applicable.
-3. Protect refresh tokens, cookies, secrets and recovery flows; implement rotation and revocation.
-4. Test replay, CSRF, redirect abuse, expiry and account recovery scenarios.
+1. Use the chosen identity provider and a maintained library; do not write cryptography or token handling yourself.
+2. Store passwords only as salted slow hashes if you manage them, and prefer federated or passwordless sign-in where allowed.
+3. Add multi-factor authentication for privileged and sensitive actions, and secure account recovery.
+4. Issue sessions or tokens with a short life, secure cookie flags, rotation on privilege change and logout that invalidates them.
+5. Limit repeated attempts, and respond the same way for unknown users and wrong passwords.
+6. Log sign-in events and failures without logging passwords or tokens, and test the flows including the failures.
 
-Deliverables: authentication flow design; secure configuration; auth test evidence
+Deliverables: authentication code using the provider; session configuration; recovery flow; tests for failure paths
 
-Acceptance: No credential is stored or logged insecurely. Token/session validation is complete. Recovery and revocation paths are tested.
+Acceptance: No home-made cryptography Sessions expire and are invalidated on logout Repeated failures are limited Logs contain no credentials
 
-Validation: Independent security review.
+Validation: Security review.
+
+- `pytest -q tests/auth` expect: sign-in, lockout, expiry and logout tests pass
+- `grep -rniE 'md5|sha1\(|password.*log' src | head` expect: no weak hashing or password logging found
+
+Failure modes:
+- Tokens never expire | detect: Old token still works | respond: Set lifetime and revoke on logout
+- Different messages for unknown user and wrong password | detect: Account enumeration possible | respond: Use one message
+- Recovery link reusable | detect: Link works twice | respond: Make it single use and short lived
+
+ILLUSTRATIVE: Sign-in uses the company's identity provider with a maintained library; sessions last 30 minutes of inactivity, are invalidated on logout, and five failed attempts trigger a delay and an alert.
 
 Gate: 06-059. Approval: none required
 
 ## 60
-**Authorization Development** (stub). Purpose: enforce resource and action permissions at trusted boundaries.
+**Authorization Development** (complete). Purpose: make the system allow each action only to those entitled to take it, checked on the server every time.
 
-Inputs: roles/attributes and resource ownership model; sensitive actions and data classification; policy and audit requirements
+Entry criteria: Roles, permissions and data ownership rules are defined; Authentication works (stage 59); Test users with different roles exist
+
+Inputs: permission model; data ownership rules; list of operations and resources; authentication context
 
 Procedure:
-1. Define policy semantics for subject, action, resource and context.
-2. Enforce authorization server-side at every relevant endpoint and background job.
-3. Test horizontal/vertical privilege escalation, tenant isolation and default-deny behavior.
-4. Emit auditable decision metadata without leaking sensitive data.
+1. Define roles and permissions from the business rules, using least privilege and separate duties for risky actions.
+2. Check authorization on the server for every operation and every object, not only in the user interface.
+3. Check that the user owns or may access the specific record, not only that they have the role.
+4. Deny by default: new routes and operations have no access until a rule is added.
+5. Log access decisions for sensitive actions, and provide a way to review who can do what.
+6. Test with a matrix of roles against operations, including attempts to reach another user's records.
 
-Deliverables: authorization policy; permission matrix; negative security tests; audit event spec
+Deliverables: permission model implemented; server-side checks; role-by-operation tests; access review report
 
-Acceptance: Unauthenticated and unauthorized paths deny by default. Tenant/object ownership checks are enforced. Negative tests cover privilege boundaries.
+Acceptance: Every operation is checked on the server Object-level access is tested Default is deny Sensitive access is logged
 
-Validation: Security review and access-control test.
+Validation: Security review.
+
+- `pytest -q tests/authz   # example matrix of role against operation` expect: all expected allows and denies pass
+- manual: as user A request user B's record by changing the id in the URL expect: denied, with no data returned
+
+Failure modes:
+- Only the interface hides buttons | detect: Direct request succeeds | respond: Add server checks
+- Role check without object check | detect: User reads another's record | respond: Check ownership
+- New route unprotected | detect: Access allowed by default | respond: Switch to deny by default
+
+ILLUSTRATIVE: A test matrix tries each role against each operation. It finds that a support role can export all invoices, which should be limited to the customer in the open ticket; the check is added and the test recorded.
 
 Gate: 06-060. Approval: none required
 
 ## 61
-**Third-party Integration** (stub). Purpose: integrate an external system with explicit contract and failure isolation.
+**Third-party Integration** (complete). Purpose: connect to an outside service in a way that keeps working when the service is slow, changes or fails.
 
-Inputs: partner API/contract and credentials via approved secret store; rate limits and service objectives; data mapping and privacy constraints
+Entry criteria: The integration need and the provider are chosen; The provider's documentation and terms are available; Credentials for a test environment exist
+
+Inputs: provider API documentation; terms and rate limits; data to be exchanged; test environment
 
 Procedure:
-1. Validate partner contract, authentication, version and sandbox availability.
-2. Map external schemas to internal domain types with validation and provenance.
-3. Implement timeouts, bounded retries, idempotency, circuit breaking and dead-letter/reconciliation where appropriate.
-4. Test partner errors, throttling, duplicate delivery, schema drift and outage recovery.
+1. Read the provider's terms, limits and data handling rules, and confirm the data you send is allowed.
+2. Wrap the provider behind an interface of your own, so the rest of the system does not depend on its details.
+3. Set timeouts, bounded retries with backoff, and a circuit breaker so failures do not spread.
+4. Verify incoming webhooks by signature, and handle repeated or out-of-order messages.
+5. Keep credentials in secrets storage, rotate them, and give them the least access offered.
+6. Test against the provider's sandbox, simulate failures, and monitor errors and quota use.
 
-Deliverables: integration adapter; mapping specification; contract tests; operational runbook
+Deliverables: integration module behind an interface; failure handling and tests; credential handling; monitoring of errors and quota
 
-Acceptance: External failures are isolated and observable. Retries cannot create unsafe duplicate effects. Credentials and personal data are protected.
+Acceptance: The provider is behind an interface Timeouts and retries are bounded Webhooks are verified and idempotent Quota and errors are monitored
 
-Validation: Contract test and integration owner review.
+Validation: Integration architect review.
+
+- `pytest -q tests/integration/test_provider_failures.py   # example` expect: timeout, error and repeated message cases pass
+- manual: send a webhook with a wrong signature to staging expect: rejected
+
+Failure modes:
+- Provider outage stops the whole system | detect: Requests pile up | respond: Add timeout and breaker
+- Duplicate webhook processed twice | detect: Double effect | respond: Make handling idempotent
+- Quota exceeded | detect: Provider blocks calls | respond: Throttle and alert before the limit
+
+ILLUSTRATIVE: A shipping-rate provider sits behind a small interface; calls time out at two seconds, retry twice with backoff, and fall back to a flat rate with a warning if the provider is down.
 
 Gate: 06-061. Approval: none required
 
 ## 62
-**Real-time Development** (stub). Purpose: deliver ordered, recoverable real-time updates.
+**Real-time Development** (complete). Purpose: deliver updates to users as they happen, while keeping connections, ordering and load under control.
 
-Inputs: event/message contract; ordering and delivery guarantees; connection and scale profile
+Entry criteria: The need for live updates is justified; Expected concurrent connections are estimated; A transport is chosen (WebSocket, server-sent events or similar)
+
+Inputs: use cases needing live updates; expected connection counts; message volume; authentication model
 
 Procedure:
-1. Define event schema, partition/key strategy, ordering scope and delivery semantics.
-2. Implement reconnect, replay, backpressure, deduplication and client state reconciliation.
-3. Secure channels and authorize subscriptions at resource level.
-4. Test burst load, dropped connections, duplicate/out-of-order events and consumer lag.
+1. Confirm that live updates are needed; polling is simpler when delay of a few seconds is acceptable.
+2. Authenticate each connection and authorize each channel or subscription on the server.
+3. Design messages with identifiers and sequence numbers, so clients can detect gaps and request a resync.
+4. Handle reconnection: backoff with jitter on the client, and resume from the last sequence number.
+5. Limit per-connection message size and rate, and apply back pressure for slow clients.
+6. Load test at the expected connection count, and monitor connections, latency and dropped messages.
 
-Deliverables: event contract; stream implementation; recovery behavior; load/reconnect tests
+Deliverables: real-time service; message format with sequence numbers; reconnect and resync logic; load test results
 
-Acceptance: Ordering guarantee is explicit. Clients recover without missing or duplicating state. Backpressure and resource limits are enforced.
+Acceptance: Every subscription is authorized on the server Clients can detect and repair gaps Reconnection uses backoff with jitter Load test reached the expected connection count
 
-Validation: Load and failure-injection review.
+Validation: Backend lead review.
+
+- manual: connect a client, kill the network for 30 seconds, restore it expect: client resumes without missing or duplicated messages
+- manual: subscribe to another user's channel with a valid token expect: refused
+
+Failure modes:
+- Reconnect storm after an outage | detect: Spike of connections | respond: Add jitter and limits
+- Missed messages | detect: Client state differs | respond: Add sequence numbers and resync
+- Slow client holds memory | detect: Server memory grows | respond: Add limits and drop slow consumers
+
+ILLUSTRATIVE: A live order-status feed numbers each message; after a dropped connection the client asks for everything after its last number, and a load test holds 20,000 connections with p95 delivery under 300 ms.
 
 Gate: 06-062. Approval: none required
 
 ## 63
-**Data Engineering** (stub). Purpose: build reproducible and governed data pipelines.
+**Data Engineering** (complete). Purpose: build reliable pipelines that move and prepare data, so analysis and products can trust it.
 
-Inputs: source contracts and data classification; target model and freshness objective; volume, quality and lineage expectations
+Entry criteria: Sources, targets and ownership are identified; Data quality expectations exist; Data classification is known (stage 30)
+
+Inputs: source systems and schemas; target data model; quality and freshness requirements; privacy rules
 
 Procedure:
-1. Define ingestion mode, watermark, schema evolution and replay boundary.
-2. Implement idempotent transforms, validation rules, quarantine and dead-letter handling.
-3. Capture lineage, quality metrics, access controls and retention behavior.
-4. Test late, duplicate, malformed and backfilled data at representative scale.
+1. Define each dataset's owner, schema, freshness target and quality rules before building.
+2. Build pipelines to be rerunnable and idempotent, so a repeat run gives the same result.
+3. Validate data at entry and at each stage: types, ranges, uniqueness and referential checks, with bad records set aside.
+4. Apply privacy rules in the pipeline: masking, minimization and retention.
+5. Record lineage and run metadata, and alert on failures, late data and volume anomalies.
+6. Test with sample and edge-case data, including late and duplicate records, and document recovery steps.
 
-Deliverables: pipeline DAG; schema contract; quality report; lineage and replay runbook
+Deliverables: pipeline code; data quality checks; lineage and run metadata; recovery runbook
 
-Acceptance: Reprocessing is deterministic or explicitly reconciled. Quality failures are visible and bounded. Lineage and ownership are complete.
+Acceptance: Rerunning does not duplicate data Bad records are set aside and counted Privacy rules are applied in the pipeline Late, failed and anomalous runs raise alerts
 
-Validation: Data owner acceptance and pipeline replay test.
+Validation: Data owner and data engineering lead review.
+
+- `python -m pipelines.run --date 2026-01-01 && python -m pipelines.run --date 2026-01-01 && python -m pipelines.check_counts   # example` expect: row counts equal after the second run
+- manual: inject a record with an invalid value and a duplicate expect: the invalid one lands in the quarantine, the duplicate is dropped
+
+Failure modes:
+- Rerun duplicates rows | detect: Count doubles | respond: Use keys or replace the partition
+- Silent bad data | detect: Nulls reach reports | respond: Add checks and quarantine
+- Late data missed | detect: Daily numbers change afterwards | respond: Reprocess a window
+
+ILLUSTRATIVE: A daily orders pipeline replaces its date partition on every run, quarantines rows with negative quantities, masks email addresses before the warehouse load, and alerts when the volume falls 30 percent below the weekly norm.
 
 Gate: 06-063. Approval: none required
 

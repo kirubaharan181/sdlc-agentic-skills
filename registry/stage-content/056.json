@@ -1,0 +1,65 @@
+{
+  "stage_id": 56,
+  "purpose": "build a mobile app that works on real devices, handles poor networks and respects each platform's rules",
+  "entry_criteria": [
+    "Requirements and designs are approved",
+    "Target platforms and versions are chosen",
+    "Test devices or a device farm are available"
+  ],
+  "inputs": [
+    "designs and requirements",
+    "API contract",
+    "target platform versions",
+    "store policies"
+  ],
+  "procedure": [
+    "Pick the approach (native, cross-platform) based on the needs and the team's skills, and record the reason.",
+    "Build features in small slices and test each on real devices as well as simulators.",
+    "Design for poor connectivity: cache sensible data, queue writes, retry with limits and show clear status.",
+    "Handle the app lifecycle: backgrounding, interruptions, permission refusal and low memory.",
+    "Store sensitive data in the platform's secure storage, request only needed permissions and explain them to the user.",
+    "Check the store policies, app size, startup time and battery use before release, and plan staged rollout."
+  ],
+  "deliverables": [
+    "working app builds",
+    "device test results",
+    "offline and lifecycle tests",
+    "store submission checklist"
+  ],
+  "acceptance_criteria": [
+    "Features work on the supported OS versions and real devices",
+    "Behavior without a network is defined and tested",
+    "Permissions are minimal and explained",
+    "Sensitive data uses secure storage"
+  ],
+  "validation_method": "Mobile lead review.",
+  "validation": [
+    {
+      "check": "run the main flows on one low-end and one current device with airplane mode toggled",
+      "expect": "flows complete or fail with a clear message"
+    },
+    {
+      "check": "review the requested permissions against the features that use them",
+      "expect": "each permission is needed"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Works only on the simulator",
+      "detection": "Crashes on real devices",
+      "response": "Test on real devices"
+    },
+    {
+      "mode": "Data lost when offline",
+      "detection": "Write fails silently",
+      "response": "Queue and retry"
+    },
+    {
+      "mode": "Excess permissions",
+      "detection": "Store review questions",
+      "response": "Remove unneeded ones"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A delivery app queues status updates while offline and retries when the network returns; location permission is requested only when the user opens the map, with a message explaining why.",
+  "status": "complete"
+}

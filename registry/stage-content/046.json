@@ -1,0 +1,65 @@
+{
+  "stage_id": 46,
+  "purpose": "agree how work moves through version control, so merging is predictable and releases can be built from a known state",
+  "entry_criteria": [
+    "The team size and release pattern are known",
+    "Repository protection exists (stage 45)",
+    "CI is available"
+  ],
+  "inputs": [
+    "release cadence",
+    "team size and structure",
+    "CI capabilities",
+    "hotfix needs"
+  ],
+  "procedure": [
+    "Choose a model that fits the release pattern, such as trunk-based with short-lived branches, or release branches when several versions are supported.",
+    "Define branch names, how long they may live, and how often they must be synchronized with the main branch.",
+    "Define how changes are merged: squash or merge commit, review and checks required.",
+    "Define how hotfixes are made and carried back into the main branch.",
+    "Define tagging and version numbering for releases.",
+    "Write the rules in the contributing guide and enforce what you can with branch rules and checks."
+  ],
+  "deliverables": [
+    "branching model",
+    "naming and merge rules",
+    "hotfix and tagging process",
+    "enforced settings"
+  ],
+  "acceptance_criteria": [
+    "The model matches the release pattern",
+    "Branch life limits are stated",
+    "Hotfix path returns changes to main",
+    "Rules are enforced by settings where possible"
+  ],
+  "validation_method": "Engineering lead approval.",
+  "validation": [
+    {
+      "command": "git for-each-ref --sort=committerdate refs/remotes --format='%(committerdate:short) %(refname:short)' | head -20",
+      "expect": "no branch older than the stated life limit without a reason"
+    },
+    {
+      "check": "follow the documented hotfix steps on a test repository",
+      "expect": "fix reaches main and the release branch"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Long-lived branches",
+      "detection": "Large painful merges",
+      "response": "Merge small and often"
+    },
+    {
+      "mode": "Hotfix not merged back",
+      "detection": "Bug reappears in next release",
+      "response": "Add the back-merge step to the checklist"
+    },
+    {
+      "mode": "Rules only in a document",
+      "detection": "People forget them",
+      "response": "Enforce in settings"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A team of eight chooses short-lived branches off main, squash merges after one review and green checks, and tags releases. Branches older than five days are flagged weekly.",
+  "status": "complete"
+}

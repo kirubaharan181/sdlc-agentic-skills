@@ -11,78 +11,134 @@
 - [52 Engineering Governance](#52)
 
 ## 45
-**Repository Setup** (stub). Purpose: establish a secure and reproducible engineering workspace.
+**Repository Setup** (complete). Purpose: create a repository that is ready for a team to work in safely from the first commit.
 
-Inputs: repository ownership and team model; language/runtime and build manifests; security and contribution policy
+Entry criteria: A project is approved and named; A version control platform is available; Team members and owners are known
+
+Inputs: project name and owners; organization policies; language and tooling choices; licence decision
 
 Procedure:
-1. Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
-2. Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
-3. Keep credentials out of source; use approved secret storage and least-privilege access.
-4. Add onboarding and contribution guidance, then validate from a clean checkout.
+1. Create the repository with a clear name and description under the right organization.
+2. Add the basic files: README with build and run steps, licence, contributing guide, code owners and an ignore file.
+3. Protect the main branch: require review and passing checks, and block force pushes.
+4. Set up CI to run build and tests on every pull request from the first commit.
+5. Turn on secret scanning and dependency alerts, and do not commit credentials or generated files.
+6. Grant access by team with least privilege and record who owns the repository.
 
-Deliverables: repository policy; setup instructions; branch protection/check evidence; secret handling guide
+Deliverables: repository with starter files; branch protection settings; CI workflow; access list
 
-Acceptance: A clean contributor can reproduce setup. Protected branches require review and checks. No secret value is committed.
+Acceptance: The README lets a newcomer build and run the project Main branch is protected CI runs on pull requests Secret scanning is enabled
 
-Validation: Repository owner and security review.
+Validation: Platform engineer and repository owner.
+
+- `git clone <repo-url> /tmp/fresh && cd /tmp/fresh && ls README.md LICENSE CODEOWNERS   # example` expect: files exist
+- `gh api repos/<org>/<repo>/branches/main/protection --jq .required_pull_request_reviews   # example` expect: review requirement is returned
+
+Failure modes:
+- Direct pushes to main | detect: Commits with no review | respond: Enable branch protection
+- Secret committed | detect: Scanner alert | respond: Revoke, rotate and clean history per policy
+- README out of date | detect: New joiner cannot build | respond: Fix and test the steps on a clean machine
+
+ILLUSTRATIVE: A new service repository is created with README, licence and code owners; the main branch requires one review and a passing CI run, and a fresh clone builds with the documented commands.
 
 Gate: 05-045. Approval: none required
 
 ## 46
-**Branching Strategy** (stub). Purpose: establish a secure and reproducible engineering workspace.
+**Branching Strategy** (complete). Purpose: agree how work moves through version control, so merging is predictable and releases can be built from a known state.
 
-Inputs: repository ownership and team model; language/runtime and build manifests; security and contribution policy
+Entry criteria: The team size and release pattern are known; Repository protection exists (stage 45); CI is available
+
+Inputs: release cadence; team size and structure; CI capabilities; hotfix needs
 
 Procedure:
-1. Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
-2. Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
-3. Keep credentials out of source; use approved secret storage and least-privilege access.
-4. Add onboarding and contribution guidance, then validate from a clean checkout.
+1. Choose a model that fits the release pattern, such as trunk-based with short-lived branches, or release branches when several versions are supported.
+2. Define branch names, how long they may live, and how often they must be synchronized with the main branch.
+3. Define how changes are merged: squash or merge commit, review and checks required.
+4. Define how hotfixes are made and carried back into the main branch.
+5. Define tagging and version numbering for releases.
+6. Write the rules in the contributing guide and enforce what you can with branch rules and checks.
 
-Deliverables: repository policy; setup instructions; branch protection/check evidence; secret handling guide
+Deliverables: branching model; naming and merge rules; hotfix and tagging process; enforced settings
 
-Acceptance: A clean contributor can reproduce setup. Protected branches require review and checks. No secret value is committed.
+Acceptance: The model matches the release pattern Branch life limits are stated Hotfix path returns changes to main Rules are enforced by settings where possible
 
-Validation: Repository owner and security review.
+Validation: Engineering lead approval.
+
+- `git for-each-ref --sort=committerdate refs/remotes --format='%(committerdate:short) %(refname:short)' | head -20` expect: no branch older than the stated life limit without a reason
+- manual: follow the documented hotfix steps on a test repository expect: fix reaches main and the release branch
+
+Failure modes:
+- Long-lived branches | detect: Large painful merges | respond: Merge small and often
+- Hotfix not merged back | detect: Bug reappears in next release | respond: Add the back-merge step to the checklist
+- Rules only in a document | detect: People forget them | respond: Enforce in settings
+
+ILLUSTRATIVE: A team of eight chooses short-lived branches off main, squash merges after one review and green checks, and tags releases. Branches older than five days are flagged weekly.
 
 Gate: 05-046. Approval: none required
 
 ## 47
-**Development Environment** (stub). Purpose: establish a secure and reproducible engineering workspace.
+**Development Environment** (complete). Purpose: give every developer a quick, repeatable way to build, run and test the system locally, matching production closely enough to trust the results.
 
-Inputs: repository ownership and team model; language/runtime and build manifests; security and contribution policy
+Entry criteria: The repository and its dependencies are known; A container or provisioning tool is chosen; Sample or synthetic data exists
+
+Inputs: repository; dependency list; production configuration differences; sample data
 
 Procedure:
-1. Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
-2. Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
-3. Keep credentials out of source; use approved secret storage and least-privilege access.
-4. Add onboarding and contribution guidance, then validate from a clean checkout.
+1. Define the toolchain versions in a file that tools read, so everyone uses the same versions.
+2. Provide a single command or short script to set up dependencies and start the system with its services.
+3. Use synthetic or masked data, never raw production data or real credentials.
+4. Keep configuration in environment files with an example file in the repository and secrets outside it.
+5. Document the differences from production that matter and how to test them elsewhere.
+6. Test the setup on a clean machine or container and record the time it takes.
 
-Deliverables: repository policy; setup instructions; branch protection/check evidence; secret handling guide
+Deliverables: toolchain version file; setup and start script; example configuration; documented differences from production
 
-Acceptance: A clean contributor can reproduce setup. Protected branches require review and checks. No secret value is committed.
+Acceptance: A newcomer is running within the stated time No real secrets or production data are used Versions are pinned Differences from production are listed
 
-Validation: Repository owner and security review.
+Validation: Platform engineer review.
+
+- `docker compose up -d && docker compose ps   # example; use the project's start command` expect: all services healthy
+- `grep -rniE 'AKIA|BEGIN PRIVATE KEY|password=' . --exclude-dir=.git | head` expect: no real secrets found
+
+Failure modes:
+- Works on one machine only | detect: Setup fails elsewhere | respond: Pin versions and test on a clean machine
+- Production data in local copy | detect: Real records found | respond: Replace with synthetic data
+- Setup steps drift | detect: Docs and script disagree | respond: Make the script the source and test it in CI
+
+ILLUSTRATIVE: A single make target starts the app, database and queue in containers with pinned versions and synthetic data, and a clean laptop is ready in twelve minutes.
 
 Gate: 05-047. Approval: none required
 
 ## 48
-**Coding Standards** (stub). Purpose: establish a secure and reproducible engineering workspace.
+**Coding Standards** (complete). Purpose: agree the small set of code rules the team follows, and make tools enforce them so reviews can focus on design.
 
-Inputs: repository ownership and team model; language/runtime and build manifests; security and contribution policy
+Entry criteria: Languages in use are known; A formatter and linter exist for them; CI is available
+
+Inputs: languages and frameworks; existing code style; common review comments; security guidance
 
 Procedure:
-1. Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
-2. Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
-3. Keep credentials out of source; use approved secret storage and least-privilege access.
-4. Add onboarding and contribution guidance, then validate from a clean checkout.
+1. Start from the common standard for each language and write down only the departures and the rules that tools cannot check.
+2. Choose an automatic formatter, so style is never discussed in review.
+3. Choose lint rules that catch real defects, and set each as error or warning on purpose.
+4. Cover naming, error handling, logging, secret handling and dependency use in short rules with examples.
+5. Run the tools locally before commit and in CI, and block merges on errors.
+6. Review the rules each quarter, using the review comments that keep recurring.
 
-Deliverables: repository policy; setup instructions; branch protection/check evidence; secret handling guide
+Deliverables: coding standard document; formatter and linter configuration; CI check; rule review notes
 
-Acceptance: A clean contributor can reproduce setup. Protected branches require review and checks. No secret value is committed.
+Acceptance: Style is enforced by the formatter Each lint rule has a stated severity Security-related rules are included CI blocks on errors
 
-Validation: Repository owner and security review.
+Validation: Engineering governance owner approval.
+
+- `ruff check . && ruff format --check .   # example; use the language's tools` expect: no errors, formatting is clean
+- manual: sample ten recent review comments and check they are not about style the formatter handles expect: none
+
+Failure modes:
+- Rules nobody follows | detect: Many suppressions | respond: Remove or fix noisy rules
+- Style debated in review | detect: Comments about formatting | respond: Enable the formatter
+- Suppressions added to pass CI | detect: Ignore comments grow | respond: Require a reason and review them
+
+ILLUSTRATIVE: A team adopts the standard formatter, enables lint rules for unused variables and unsafe calls as errors, and adds a short rule that errors must never be swallowed silently.
 
 Gate: 05-048. Approval: none required
 
@@ -158,20 +214,34 @@ Validation: Peer review by product, engineering and QA.
 Gate: 05-051. Approval: none required
 
 ## 52
-**Engineering Governance** (stub). Purpose: establish a secure and reproducible engineering workspace.
+**Engineering Governance** (complete). Purpose: set the lightweight rules, roles and records that let many teams build quickly while staying within policy.
 
-Inputs: repository ownership and team model; language/runtime and build manifests; security and contribution policy
+Entry criteria: Engineering policies exist or are being written; Teams and their owners are known; A forum for decisions exists
+
+Inputs: policies and standards; team structure; audit and compliance needs; incident and review findings
 
 Procedure:
-1. Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.
-2. Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.
-3. Keep credentials out of source; use approved secret storage and least-privilege access.
-4. Add onboarding and contribution guidance, then validate from a clean checkout.
+1. List the few things that must be the same everywhere, such as access control, approvals, security checks and records, and leave the rest to teams.
+2. Turn each rule into a check in the tools where possible, so compliance does not rely on memory.
+3. Name an owner and a decision forum for each policy, and a way to request exceptions.
+4. Record exceptions with reason, owner and expiry date.
+5. Report compliance as measured results, such as the share of repositories meeting the checks.
+6. Review rules regularly and retire those that no longer prevent a real problem.
 
-Deliverables: repository policy; setup instructions; branch protection/check evidence; secret handling guide
+Deliverables: policy list with owners; automated checks; exception register with expiry; compliance report
 
-Acceptance: A clean contributor can reproduce setup. Protected branches require review and checks. No secret value is committed.
+Acceptance: Each policy has an owner and a forum Rules are enforced by checks where possible Exceptions have an expiry date Compliance is reported from data
 
-Validation: Repository owner and security review.
+Validation: Engineering leadership approval.
+
+- manual: list exceptions past their expiry date expect: none, or each has a renewal decision
+- manual: compare reported compliance with a direct sample of five repositories expect: numbers match
+
+Failure modes:
+- Policies nobody checks | detect: No evidence of compliance | respond: Automate the check
+- Exceptions never expire | detect: Register grows | respond: Add expiry and review
+- Too many rules | detect: Teams route around them | respond: Remove rules that prevent no real problem
+
+ILLUSTRATIVE: Four rules are enforced by automation across all repositories: protected main, required review, secret scanning and dependency alerts. Two repositories have exceptions that expire in 60 days.
 
 Gate: 05-052. Approval: none required

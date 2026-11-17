@@ -3,36 +3,33 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "engineering-governance",
-  "stage_id": 50,
-  "stage_name": "Secrets Management",
+  "stage_id": 45,
+  "stage_name": "Repository Setup",
   "commit_sha": "<commit under review>",
-  "executor": "<DevSecOps Engineer or named person>",
+  "executor": "<Platform Engineer or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Secrets-owner approval, plus a rerun of the scanner on a clean clone.",
-    "command": "gitleaks detect --source . --redact --report-path reports/secrets.json   # example",
-    "expected": "exit 0; zero findings or all findings marked rotated",
+    "method": "Platform engineer and repository owner.",
+    "command": "git clone <repo-url> /tmp/fresh && cd /tmp/fresh && ls README.md LICENSE CODEOWNERS   # example",
+    "expected": "files exist",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "secret inventory (names, owners, rotation dates; no values)",
-      "path": "<path or immutable URL of secret inventory (names, owners, rotation dates; no values)>"
+      "name": "repository with starter files",
+      "path": "<path or immutable URL of repository with starter files>"
     },
     {
-      "name": "scan reports",
-      "path": "<path or immutable URL of scan reports>"
+      "name": "branch protection settings",
+      "path": "<path or immutable URL of branch protection settings>"
     },
     {
-      "name": "rotation log",
-      "path": "<path or immutable URL of rotation log>"
+      "name": "CI workflow",
+      "path": "<path or immutable URL of CI workflow>"
     }
   ],
   "limitations": [
     "<what was not covered>"
   ],
-  "approval": {
-    "approver": "secrets-owner",
-    "decision": "<pending>"
-  }
+  "approval": null
 }

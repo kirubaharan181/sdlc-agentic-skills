@@ -33,7 +33,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 41 | Progress Tracking | complete | Agile Delivery Manager |
 | 42 | Risk Management | complete | Program Manager |
 | 43 | Stakeholder Management | stub | Program Manager |
-| 44 | Change Management | stub | Engineering Governance Specialist |
+| 44 | Change Management | complete | Engineering Governance Specialist |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

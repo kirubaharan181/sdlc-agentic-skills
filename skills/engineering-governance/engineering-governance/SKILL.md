@@ -24,14 +24,14 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 45 | Repository Setup | stub | Platform Engineer |
-| 46 | Branching Strategy | stub | Engineering Governance Specialist |
-| 47 | Development Environment | stub | Platform Engineer |
-| 48 | Coding Standards | stub | Engineering Governance Specialist |
+| 45 | Repository Setup | complete | Platform Engineer |
+| 46 | Branching Strategy | complete | Engineering Governance Specialist |
+| 47 | Development Environment | complete | Platform Engineer |
+| 48 | Coding Standards | complete | Engineering Governance Specialist |
 | 49 | Environment Configuration | stub | DevOps Engineer |
 | 50 | Secrets Management | complete | DevSecOps Engineer |
 | 51 | Developer Documentation | stub | Documentation Engineer |
-| 52 | Engineering Governance | stub | Engineering Governance Specialist |
+| 52 | Engineering Governance | complete | Engineering Governance Specialist |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

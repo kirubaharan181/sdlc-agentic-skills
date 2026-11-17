@@ -1,0 +1,65 @@
+{
+  "stage_id": 59,
+  "purpose": "implement login and session handling that proves who the user is without weakening the system",
+  "entry_criteria": [
+    "Authentication requirements and the identity provider are decided",
+    "A threat model covers sign-in (stage 29)",
+    "Test accounts exist"
+  ],
+  "inputs": [
+    "security requirements",
+    "identity provider documentation",
+    "threat model",
+    "session policy"
+  ],
+  "procedure": [
+    "Use the chosen identity provider and a maintained library; do not write cryptography or token handling yourself.",
+    "Store passwords only as salted slow hashes if you manage them, and prefer federated or passwordless sign-in where allowed.",
+    "Add multi-factor authentication for privileged and sensitive actions, and secure account recovery.",
+    "Issue sessions or tokens with a short life, secure cookie flags, rotation on privilege change and logout that invalidates them.",
+    "Limit repeated attempts, and respond the same way for unknown users and wrong passwords.",
+    "Log sign-in events and failures without logging passwords or tokens, and test the flows including the failures."
+  ],
+  "deliverables": [
+    "authentication code using the provider",
+    "session configuration",
+    "recovery flow",
+    "tests for failure paths"
+  ],
+  "acceptance_criteria": [
+    "No home-made cryptography",
+    "Sessions expire and are invalidated on logout",
+    "Repeated failures are limited",
+    "Logs contain no credentials"
+  ],
+  "validation_method": "Security review.",
+  "validation": [
+    {
+      "command": "pytest -q tests/auth",
+      "expect": "sign-in, lockout, expiry and logout tests pass"
+    },
+    {
+      "command": "grep -rniE 'md5|sha1\\(|password.*log' src | head",
+      "expect": "no weak hashing or password logging found"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Tokens never expire",
+      "detection": "Old token still works",
+      "response": "Set lifetime and revoke on logout"
+    },
+    {
+      "mode": "Different messages for unknown user and wrong password",
+      "detection": "Account enumeration possible",
+      "response": "Use one message"
+    },
+    {
+      "mode": "Recovery link reusable",
+      "detection": "Link works twice",
+      "response": "Make it single use and short lived"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Sign-in uses the company's identity provider with a maintained library; sessions last 30 minutes of inactivity, are invalidated on logout, and five failed attempts trigger a delay and an alert.",
+  "status": "complete"
+}

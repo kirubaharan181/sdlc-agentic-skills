@@ -1,0 +1,65 @@
+{
+  "stage_id": 47,
+  "purpose": "give every developer a quick, repeatable way to build, run and test the system locally, matching production closely enough to trust the results",
+  "entry_criteria": [
+    "The repository and its dependencies are known",
+    "A container or provisioning tool is chosen",
+    "Sample or synthetic data exists"
+  ],
+  "inputs": [
+    "repository",
+    "dependency list",
+    "production configuration differences",
+    "sample data"
+  ],
+  "procedure": [
+    "Define the toolchain versions in a file that tools read, so everyone uses the same versions.",
+    "Provide a single command or short script to set up dependencies and start the system with its services.",
+    "Use synthetic or masked data, never raw production data or real credentials.",
+    "Keep configuration in environment files with an example file in the repository and secrets outside it.",
+    "Document the differences from production that matter and how to test them elsewhere.",
+    "Test the setup on a clean machine or container and record the time it takes."
+  ],
+  "deliverables": [
+    "toolchain version file",
+    "setup and start script",
+    "example configuration",
+    "documented differences from production"
+  ],
+  "acceptance_criteria": [
+    "A newcomer is running within the stated time",
+    "No real secrets or production data are used",
+    "Versions are pinned",
+    "Differences from production are listed"
+  ],
+  "validation_method": "Platform engineer review.",
+  "validation": [
+    {
+      "command": "docker compose up -d && docker compose ps   # example; use the project's start command",
+      "expect": "all services healthy"
+    },
+    {
+      "command": "grep -rniE 'AKIA|BEGIN PRIVATE KEY|password=' . --exclude-dir=.git | head",
+      "expect": "no real secrets found"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Works on one machine only",
+      "detection": "Setup fails elsewhere",
+      "response": "Pin versions and test on a clean machine"
+    },
+    {
+      "mode": "Production data in local copy",
+      "detection": "Real records found",
+      "response": "Replace with synthetic data"
+    },
+    {
+      "mode": "Setup steps drift",
+      "detection": "Docs and script disagree",
+      "response": "Make the script the source and test it in CI"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A single make target starts the app, database and queue in containers with pinned versions and synthetic data, and a clean laptop is ready in twelve minutes.",
+  "status": "complete"
+}

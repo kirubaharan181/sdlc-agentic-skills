@@ -1,0 +1,65 @@
+{
+  "stage_id": 48,
+  "purpose": "agree the small set of code rules the team follows, and make tools enforce them so reviews can focus on design",
+  "entry_criteria": [
+    "Languages in use are known",
+    "A formatter and linter exist for them",
+    "CI is available"
+  ],
+  "inputs": [
+    "languages and frameworks",
+    "existing code style",
+    "common review comments",
+    "security guidance"
+  ],
+  "procedure": [
+    "Start from the common standard for each language and write down only the departures and the rules that tools cannot check.",
+    "Choose an automatic formatter, so style is never discussed in review.",
+    "Choose lint rules that catch real defects, and set each as error or warning on purpose.",
+    "Cover naming, error handling, logging, secret handling and dependency use in short rules with examples.",
+    "Run the tools locally before commit and in CI, and block merges on errors.",
+    "Review the rules each quarter, using the review comments that keep recurring."
+  ],
+  "deliverables": [
+    "coding standard document",
+    "formatter and linter configuration",
+    "CI check",
+    "rule review notes"
+  ],
+  "acceptance_criteria": [
+    "Style is enforced by the formatter",
+    "Each lint rule has a stated severity",
+    "Security-related rules are included",
+    "CI blocks on errors"
+  ],
+  "validation_method": "Engineering governance owner approval.",
+  "validation": [
+    {
+      "command": "ruff check . && ruff format --check .   # example; use the language's tools",
+      "expect": "no errors, formatting is clean"
+    },
+    {
+      "check": "sample ten recent review comments and check they are not about style the formatter handles",
+      "expect": "none"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Rules nobody follows",
+      "detection": "Many suppressions",
+      "response": "Remove or fix noisy rules"
+    },
+    {
+      "mode": "Style debated in review",
+      "detection": "Comments about formatting",
+      "response": "Enable the formatter"
+    },
+    {
+      "mode": "Suppressions added to pass CI",
+      "detection": "Ignore comments grow",
+      "response": "Require a reason and review them"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A team adopts the standard formatter, enables lint rules for unused variables and unsafe calls as errors, and adds a short rule that errors must never be swallowed silently.",
+  "status": "complete"
+}

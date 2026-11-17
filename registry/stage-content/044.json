@@ -1,0 +1,65 @@
+{
+  "stage_id": 44,
+  "purpose": "control changes to systems and processes so each one is assessed, approved by the right person, scheduled and reversible",
+  "entry_criteria": [
+    "A change process and approval roles are defined",
+    "A record of the systems and owners exists",
+    "A change calendar is available"
+  ],
+  "inputs": [
+    "change request",
+    "affected systems and owners",
+    "test and rollback evidence",
+    "change calendar"
+  ],
+  "procedure": [
+    "Record each change with what, why, who, systems affected and the planned time.",
+    "Classify by risk using the written criteria: standard (pre-approved), normal or emergency.",
+    "Assess the impact, including dependencies, users affected, test results and the rollback plan.",
+    "Route the request to the named human approver for its class; an agent prepares the pack but does not approve.",
+    "Check the calendar for clashes, apply the change in the approved window and record the outcome.",
+    "Review failed and emergency changes afterwards and feed the lessons back into the criteria."
+  ],
+  "deliverables": [
+    "change record with risk class",
+    "impact assessment and rollback plan",
+    "approval record with a human name",
+    "outcome and review notes"
+  ],
+  "acceptance_criteria": [
+    "Each change has a risk class and a rollback plan",
+    "A named human approved normal and emergency changes",
+    "No clash on the calendar",
+    "Failed changes were reviewed"
+  ],
+  "validation_method": "Named change approver; emergency changes reviewed afterwards.",
+  "validation": [
+    {
+      "check": "sample ten recent changes and check each has a risk class, rollback plan and approver name",
+      "expect": "all complete"
+    },
+    {
+      "check": "compare production changes seen in deploy logs with change records",
+      "expect": "every deployment has a record"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Changes made without a record",
+      "detection": "Deploy log entry has no change",
+      "response": "Raise it as an incident and record retrospectively"
+    },
+    {
+      "mode": "Approver is not a person",
+      "detection": "Approval field names an agent",
+      "response": "Reject and obtain human approval"
+    },
+    {
+      "mode": "Rollback never tested",
+      "detection": "Rollback plan has no evidence",
+      "response": "Test it before approval"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A database index change is classed as normal; the approver asks for the rollback script to be tested in staging, schedules it in the quiet window, and the outcome is recorded with the measured query time.",
+  "status": "complete"
+}

@@ -1,0 +1,65 @@
+{
+  "stage_id": 45,
+  "purpose": "create a repository that is ready for a team to work in safely from the first commit",
+  "entry_criteria": [
+    "A project is approved and named",
+    "A version control platform is available",
+    "Team members and owners are known"
+  ],
+  "inputs": [
+    "project name and owners",
+    "organization policies",
+    "language and tooling choices",
+    "licence decision"
+  ],
+  "procedure": [
+    "Create the repository with a clear name and description under the right organization.",
+    "Add the basic files: README with build and run steps, licence, contributing guide, code owners and an ignore file.",
+    "Protect the main branch: require review and passing checks, and block force pushes.",
+    "Set up CI to run build and tests on every pull request from the first commit.",
+    "Turn on secret scanning and dependency alerts, and do not commit credentials or generated files.",
+    "Grant access by team with least privilege and record who owns the repository."
+  ],
+  "deliverables": [
+    "repository with starter files",
+    "branch protection settings",
+    "CI workflow",
+    "access list"
+  ],
+  "acceptance_criteria": [
+    "The README lets a newcomer build and run the project",
+    "Main branch is protected",
+    "CI runs on pull requests",
+    "Secret scanning is enabled"
+  ],
+  "validation_method": "Platform engineer and repository owner.",
+  "validation": [
+    {
+      "command": "git clone <repo-url> /tmp/fresh && cd /tmp/fresh && ls README.md LICENSE CODEOWNERS   # example",
+      "expect": "files exist"
+    },
+    {
+      "command": "gh api repos/<org>/<repo>/branches/main/protection --jq .required_pull_request_reviews   # example",
+      "expect": "review requirement is returned"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Direct pushes to main",
+      "detection": "Commits with no review",
+      "response": "Enable branch protection"
+    },
+    {
+      "mode": "Secret committed",
+      "detection": "Scanner alert",
+      "response": "Revoke, rotate and clean history per policy"
+    },
+    {
+      "mode": "README out of date",
+      "detection": "New joiner cannot build",
+      "response": "Fix and test the steps on a clean machine"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A new service repository is created with README, licence and code owners; the main branch requires one review and a passing CI run, and a fresh clone builds with the documented commands.",
+  "status": "complete"
+}
