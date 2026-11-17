@@ -13,7 +13,7 @@ Step group 3
   [129] Change Approval  owner: Release Manager  status: complete  APPROVAL: change-board
 Step group 4  (these can run in parallel)
   [132] Database Migration  owner: Database Administrator  status: complete  APPROVAL: dba-owner
-  [134] Domain & DNS  owner: Cloud Engineer  status: stub
+  [134] Domain & DNS  owner: Cloud Engineer  status: complete
 Step group 5
   [133] Production Deployment  owner: Deployment Engineer  status: complete  APPROVAL: production-approver
 Step group 6  (these can run in parallel)
@@ -33,4 +33,4 @@ Exit criteria:
   - Smoke test and health checks pass
   - Release record lists version, time and approver
 
-9 steps, 3 human approvals, 8 steps with complete stage content, 1 still stub.
+9 steps, 3 human approvals, 9 steps with complete stage content, 0 still stub.

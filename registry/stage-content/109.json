@@ -1,0 +1,65 @@
+{
+  "stage_id": 109,
+  "purpose": "fix confirmed vulnerabilities within agreed deadlines and prove they are closed",
+  "entry_criteria": [
+    "Vulnerability findings are triaged and confirmed (stages 99-101)",
+    "Remediation deadlines by severity exist",
+    "An owner for each finding can be named"
+  ],
+  "inputs": [
+    "triaged findings with severity",
+    "remediation deadline policy",
+    "affected code, dependency or configuration",
+    "exception process"
+  ],
+  "procedure": [
+    "Order findings by severity, exposure and exploit activity, and assign an owner and a due date to each.",
+    "Choose the remedy: patch or upgrade, code fix, configuration change, or compensating control when no fix exists.",
+    "Apply the fix on a branch with a test that fails on the vulnerable behavior where practical.",
+    "Run the same scan or test that found the issue and confirm it no longer reports it.",
+    "Release through the normal path; use the emergency path only for actively exploited issues.",
+    "Close the finding with evidence, or record an exception with owner, reason and expiry."
+  ],
+  "deliverables": [
+    "remediation plan with owners and due dates",
+    "fix and regression test",
+    "rescan evidence",
+    "exception register entries"
+  ],
+  "acceptance_criteria": [
+    "Every critical and high finding is fixed within policy or has an approved exception",
+    "Closure is shown by rerunning the original check",
+    "Exceptions have owner and expiry",
+    "Fixes shipped through reviewed changes"
+  ],
+  "validation_method": "Independent rescan by security, not by the fixing engineer.",
+  "validation": [
+    {
+      "command": "semgrep scan --config auto --error reports-src/   # example; rerun the scanner that found it",
+      "expect": "the finding no longer appears"
+    },
+    {
+      "check": "compare open findings with their due dates",
+      "expect": "none overdue without an exception"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Fix closes the finding in the tracker but not in the scan",
+      "detection": "Rescan still reports it",
+      "response": "Reopen the finding"
+    },
+    {
+      "mode": "Deadline missed silently",
+      "detection": "Overdue finding with no exception",
+      "response": "Escalate to the security lead"
+    },
+    {
+      "mode": "Fix introduces a regression",
+      "detection": "Tests fail after patching",
+      "response": "Revert and redesign the fix"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A high-severity injection finding is assigned with a seven-day due date. The fix uses a parameterized query with a regression test; the SAST rescan no longer reports the finding and security closes it.",
+  "status": "complete"
+}

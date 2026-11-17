@@ -17,21 +17,35 @@
 - [139 Deployment Sign-off](#139)
 
 ## 126
-**Release Planning** (stub). Purpose: prepare and execute a controlled release or migration.
+**Release Planning** (complete). Purpose: decide what goes into a release and when, so that scope, risk and dependencies are agreed before the work is frozen.
 
-Inputs: release candidate digest and scope; change approvals and readiness evidence; rollback/recovery and communication plan
+Entry criteria: Candidate changes and their status are known; Release calendar and freeze rules exist; Dependencies between teams and systems are listed
+
+Inputs: candidate changes and readiness; release calendar and freezes; dependencies and risks; capacity of operations and support
 
 Procedure:
-1. Confirm immutable candidate, included changes, compatibility and outstanding risk.
-2. Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.
-3. Obtain change authority and communicate schedule, impact, owners and stop conditions.
-4. Deploy progressively, verify health and business signals, then confirm or execute recovery.
+1. List the candidate changes with owners, readiness and risk.
+2. Check dependencies between changes, teams, services and migrations; order or bundle accordingly.
+3. Choose the scope the team can finish and test; defer the rest with a reason.
+4. Pick the date and window against freezes, peak periods and on-call capacity.
+5. Agree the rollout approach (progressive or all at once) and the communication plan.
+6. Publish the plan and the scope-freeze point; changes after the freeze need explicit approval.
 
-Deliverables: release manifest; readiness checklist; deployment and migration evidence; post-deploy verification
+Deliverables: release plan; scope list with deferrals; dependency and risk list; communication plan
 
-Acceptance: Deployed digest matches approved candidate. Migration and recovery are rehearsed. Stop/rollback thresholds and authority are explicit.
+Acceptance: Each change has an owner and readiness status Dependencies are ordered or called out The window avoids freezes and peaks Freeze date and exception process are published
 
-Validation: Change authority approval and post-deploy verification.
+Validation: Release manager and product owner agreement.
+
+- manual: check each change in scope has a merged or ready pull request and tests expect: none missing
+- manual: compare the window with the freeze calendar expect: no overlap
+
+Failure modes:
+- Scope grows after the freeze | detect: Changes added without approval | respond: Require explicit approval or defer
+- Dependency missed | detect: A change needs another not in scope | respond: Add the dependency or defer both
+- Window clashes with a peak | detect: Business calendar overlap | respond: Move the window
+
+ILLUSTRATIVE: The plan includes six changes. One requires a database migration owned by another team, so both ship together on a Tuesday window outside the month-end freeze; a seventh change is deferred as not tested in time.
 
 Gate: 11-126. Approval: none required
 
@@ -267,21 +281,35 @@ ILLUSTRATIVE: A canary receives 5 percent of traffic for ten minutes with stable
 Gate: 11-133. Approval: production-approver (always)
 
 ## 134
-**Domain & DNS** (stub). Purpose: configure secure and resilient network edge routing.
+**Domain & DNS** (complete). Purpose: make the system reachable by the right names, securely, with changes that are controlled and reversible.
 
-Inputs: domain ownership and target topology; certificate and trust requirements; traffic and health-check profile
+Entry criteria: Domain ownership and registrar access are known; Target endpoints and their addresses are defined; DNS provider and its access controls exist
+
+Inputs: domain inventory and owners; target endpoints; certificate requirements; DNS provider configuration
 
 Procedure:
-1. Verify domain/account ownership and change window.
-2. Configure records, certificates, ciphers, health checks, routing and origin restrictions.
-3. Validate propagation, certificate chain/expiry, redirects and failover behavior.
-4. Document TTL, renewal, rollback and monitoring.
+1. Keep an inventory of domains, records and owners; remove records with no owner.
+2. Define DNS records as code and review changes like any other change.
+3. Restrict who can change DNS and require multi-factor authentication on the registrar and DNS accounts.
+4. Set TTLs deliberately: lower them ahead of a planned change, restore afterward.
+5. Enable protections: registrar lock, DNSSEC where supported, and checks for dangling records that point to released resources.
+6. Verify with queries from outside after each change and monitor expiry of domains and certificates.
 
-Deliverables: DNS/TLS/routing configuration; validation output; renewal and rollback runbook
+Deliverables: domain and record inventory; DNS records as code; access and lock configuration; verification and expiry monitoring
 
-Acceptance: No unexpected public exposure. Certificate chain and hostname validation pass. Failover and rollback are tested.
+Acceptance: Every record has an owner Registrar lock and multi-factor authentication are enabled No dangling records point at released resources Expiry alerts exist for domains and certificates
 
-Validation: Network/security review.
+Validation: Cloud owner review of DNS changes.
+
+- `dig +short A app.example.com && dig +short CNAME www.example.com   # example` expect: answers match the intended targets
+- manual: list CNAME records whose targets no longer resolve expect: none
+
+Failure modes:
+- Dangling record can be taken over | detect: CNAME points to a deleted service | respond: Remove the record
+- Domain expires | detect: Expiry alert missing | respond: Enable auto-renew and alerts
+- Change without review | detect: Record changed in the console | respond: Return to code and review
+
+ILLUSTRATIVE: Before moving the app to a new load balancer, the team lowers the TTL to 60 seconds, changes the record through reviewed code, checks resolution from three networks, and raises the TTL again the next day.
 
 Gate: 11-134. Approval: none required
 

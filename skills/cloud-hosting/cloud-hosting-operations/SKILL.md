@@ -24,7 +24,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 140 | Cloud Hosting | stub | Cloud Engineer |
+| 140 | Cloud Hosting | complete | Cloud Engineer |
 | 141 | Compute Management | stub | Cloud Engineer |
 | 142 | Database Hosting | complete | Database Administrator |
 | 143 | Storage Management | stub | Cloud Engineer |

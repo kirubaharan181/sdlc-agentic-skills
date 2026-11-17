@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "cloud-hosting-operations",
-  "stage_id": 142,
-  "stage_name": "Database Hosting",
+  "stage_id": 140,
+  "stage_name": "Cloud Hosting",
   "commit_sha": "<commit under review>",
-  "executor": "<Database Administrator or named person>",
+  "executor": "<Cloud Engineer or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Database administrator and security review.",
-    "command": "terraform plan -detailed-exitcode   # example; exit 0 after apply",
-    "expected": "no drift",
+    "method": "Cloud owner and security review.",
+    "command": "aws iam list-users --query 'Users[].UserName'   # example; expect no routine human IAM users",
+    "expected": "empty or only break-glass accounts",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "hosting design and rationale",
-      "path": "<path or immutable URL of hosting design and rationale>"
+      "name": "account structure",
+      "path": "<path or immutable URL of account structure>"
     },
     {
-      "name": "provisioning code",
-      "path": "<path or immutable URL of provisioning code>"
+      "name": "guardrail policies",
+      "path": "<path or immutable URL of guardrail policies>"
     },
     {
-      "name": "failover test results",
-      "path": "<path or immutable URL of failover test results>"
+      "name": "provisioning code with tags",
+      "path": "<path or immutable URL of provisioning code with tags>"
     }
   ],
   "limitations": [

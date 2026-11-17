@@ -181,21 +181,35 @@ ILLUSTRATIVE: The scan of a service image reports a critical OpenSSL issue in th
 Gate: 09-102. Approval: none required
 
 ## 103
-**Infrastructure Security** (stub). Purpose: assess and remediate a defined security attack surface.
+**Infrastructure Security** (complete). Purpose: reduce the attack surface of the networks, hosts and cloud configuration the system runs on.
 
-Inputs: authorized scope and asset inventory; scanner/tool configuration and version; severity policy and remediation SLA
+Entry criteria: Infrastructure inventory and architecture exist; Security baseline or benchmark is chosen; Access to configuration data is available
+
+Inputs: infrastructure inventory; network and cloud configuration; security baseline; previous findings
 
 Procedure:
-1. Confirm asset ownership, scope, exclusions and written authorization before active testing.
-2. Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
-3. Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
-4. Assign remediation, retest the exact fix and record residual risk or approved exception.
+1. Check network exposure: which ports and services are reachable from the internet and between zones.
+2. Assess cloud and host configuration against the chosen baseline (for example CIS) and record gaps.
+3. Review identity and access: roles, wildcard permissions, unused credentials, and administrative paths.
+4. Check encryption in transit and at rest, logging and patch status.
+5. Rate findings, fix through infrastructure as code, and rescan.
+6. Record accepted risks with owner and expiry.
 
-Deliverables: scan/test report; validated finding register; remediation and retest evidence
+Deliverables: exposure report; baseline assessment; fixes in code; rescan results
 
-Acceptance: Active testing stays within authorization. Findings have reproducible evidence and severity rationale. Closure is independently retested.
+Acceptance: No unintended service is exposed to the internet No wildcard administrative permission without an exception Encryption and logging are enabled where required Rescan shows the findings closed
 
-Validation: Security owner and system owner disposition.
+Validation: Security review of the rescan.
+
+- `nmap -Pn -p- --open <public-ip>   # example; scan only systems you are authorized to test` expect: only intended ports are open
+- `trivy config terraform/   # example baseline check` expect: no high findings outside the exception register
+
+Failure modes:
+- Scan of systems without authorization | detect: Target not in scope | respond: Stop; use only approved targets
+- Fixed by console edit | detect: IaC differs from reality | respond: Fix in code
+- Public storage bucket | detect: Anonymous access enabled | respond: Remove public access and review data exposure
+
+ILLUSTRATIVE: A review finds a database port reachable from the internet and an administrative role with a wildcard permission. Both are fixed in infrastructure code and the rescan shows them closed.
 
 Gate: 09-103. Approval: none required
 
@@ -309,21 +323,35 @@ ILLUSTRATIVE: The inventory shows one dependency with an unknown license. Compli
 Gate: 09-108. Approval: compliance-owner (when a license exception is requested)
 
 ## 109
-**Vulnerability Remediation** (stub). Purpose: remove a validated vulnerability and prove the exposure is closed.
+**Vulnerability Remediation** (complete). Purpose: fix confirmed vulnerabilities within agreed deadlines and prove they are closed.
 
-Inputs: validated finding and affected component/version; exploitability, exposure and remediation SLA; fix owner and release constraints
+Entry criteria: Vulnerability findings are triaged and confirmed (stages 99-101); Remediation deadlines by severity exist; An owner for each finding can be named
+
+Inputs: triaged findings with severity; remediation deadline policy; affected code, dependency or configuration; exception process
 
 Procedure:
-1. Confirm affected runtime component/version and reachability before selecting a fix.
-2. Prioritize using exploit maturity, exposure, privileges and data impact.
-3. Apply a supported upgrade/configuration/code correction and add regression protection.
-4. Rescan and independently retest the exact released artifact; record residual risk.
+1. Order findings by severity, exposure and exploit activity, and assign an owner and a due date to each.
+2. Choose the remedy: patch or upgrade, code fix, configuration change, or compensating control when no fix exists.
+3. Apply the fix on a branch with a test that fails on the vulnerable behavior where practical.
+4. Run the same scan or test that found the issue and confirm it no longer reports it.
+5. Release through the normal path; use the emergency path only for actively exploited issues.
+6. Close the finding with evidence, or record an exception with owner, reason and expiry.
 
-Deliverables: vulnerability remediation ticket; fixed version/commit evidence; rescan and retest report
+Deliverables: remediation plan with owners and due dates; fix and regression test; rescan evidence; exception register entries
 
-Acceptance: Affected exposure is removed from the released artifact. Fix does not introduce an unapproved breaking change. Retest is independent and revision-pinned.
+Acceptance: Every critical and high finding is fixed within policy or has an approved exception Closure is shown by rerunning the original check Exceptions have owner and expiry Fixes shipped through reviewed changes
 
-Validation: Verify the patched component in the packaged runtime artifact, not only the source manifest.
+Validation: Independent rescan by security, not by the fixing engineer.
+
+- `semgrep scan --config auto --error reports-src/   # example; rerun the scanner that found it` expect: the finding no longer appears
+- manual: compare open findings with their due dates expect: none overdue without an exception
+
+Failure modes:
+- Fix closes the finding in the tracker but not in the scan | detect: Rescan still reports it | respond: Reopen the finding
+- Deadline missed silently | detect: Overdue finding with no exception | respond: Escalate to the security lead
+- Fix introduces a regression | detect: Tests fail after patching | respond: Revert and redesign the fix
+
+ILLUSTRATIVE: A high-severity injection finding is assigned with a seven-day due date. The fix uses a parameterized query with a regression test; the SAST rescan no longer reports the finding and security closes it.
 
 Gate: 09-109. Approval: none required
 

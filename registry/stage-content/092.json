@@ -1,0 +1,65 @@
+{
+  "stage_id": 92,
+  "purpose": "establish the maximum load the system sustains and how it behaves beyond it, so capacity limits are known before users find them",
+  "entry_criteria": [
+    "Performance baseline exists (stage 91)",
+    "Safe test environment and a way to stop the test exist",
+    "Monitoring is in place"
+  ],
+  "inputs": [
+    "performance baseline",
+    "capacity targets",
+    "test environment",
+    "stop conditions"
+  ],
+  "procedure": [
+    "Define the load profile: step ramp, sustained plateau and, separately, a spike.",
+    "Increase load in steps and hold each step long enough to see steady state and slow leaks.",
+    "Record the load at which latency or errors cross the objective and the load at which the system fails.",
+    "Observe the failure mode: does it degrade gracefully, shed load, or crash and corrupt data.",
+    "Verify recovery: remove the load and measure time back to normal.",
+    "Report the sustained maximum with a safety margin, and the bottleneck."
+  ],
+  "deliverables": [
+    "load profiles",
+    "capacity limit with safety margin",
+    "failure-mode observations",
+    "recovery measurements"
+  ],
+  "acceptance_criteria": [
+    "The sustained maximum and the breaking point are both found",
+    "Failure behavior is described",
+    "Recovery time is measured",
+    "Safety margin is stated"
+  ],
+  "validation_method": "Performance engineer and service owner review.",
+  "validation": [
+    {
+      "command": "k6 run --stage 2m:100,5m:100,2m:200,5m:200,2m:400 loadtest/steps.js   # example stepped ramp",
+      "expect": "the report shows the step where thresholds are crossed"
+    },
+    {
+      "check": "after the test, time how long latency takes to return to baseline",
+      "expect": "recovery time recorded"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Test ends at the first failure",
+      "detection": "Failure mode unobserved",
+      "response": "Continue under control to see the failure"
+    },
+    {
+      "mode": "System does not recover",
+      "detection": "Latency stays high after load removal",
+      "response": "Investigate leaks and queues"
+    },
+    {
+      "mode": "Impact on shared systems",
+      "detection": "Dependencies degraded by the test",
+      "response": "Isolate or stub them"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Stepped load shows stable operation to 350 requests per second and errors above 420. Beyond that, queues grow; after load stops, the system returns to baseline in three minutes. The stated limit is 300 with a safety margin.",
+  "status": "complete"
+}

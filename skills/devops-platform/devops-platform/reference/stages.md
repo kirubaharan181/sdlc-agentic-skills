@@ -249,21 +249,35 @@ ILLUSTRATIVE: Adding a database replica changes one module. The plan shows one r
 Gate: 10-117. Approval: infra-owner (before applying a plan to production; always when the plan destroys resources or changes IAM)
 
 ## 118
-**Configuration Management** (stub). Purpose: build a secure and reproducible delivery platform.
+**Configuration Management** (complete). Purpose: keep configuration controlled, versioned and consistent across environments so behavior is predictable.
 
-Inputs: repository and build graph; deployment targets and environment protections; artifact trust and supply-chain policy
+Entry criteria: Configuration items and environments are listed; A source of truth for configuration is chosen; Secrets handling exists (stage 50)
+
+Inputs: configuration inventory; environment definitions; change process; secrets store
 
 Procedure:
-1. Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
-2. Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
-3. Protect credentials, runners, deployment environments and immutable artifact promotion.
-4. Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
+1. Keep configuration in version control, separate from code where it varies by environment, and separate from secrets.
+2. Define defaults once and override per environment with a small, visible difference.
+3. Validate configuration against a schema at build or startup and fail fast on invalid values.
+4. Roll configuration changes out through the same review and pipeline as code, with a rollback.
+5. Detect drift between the declared and the running configuration and reconcile from the source.
+6. Record who changed what and when.
 
-Deliverables: pipeline/IaC configuration; artifact provenance; test/security results; runbook and ownership
+Deliverables: configuration repository or files; schema validation; environment difference report; change history
 
-Acceptance: Build is reproducible and artifacts are immutable/promoted. Secrets and environment permissions are scoped. Failure and rollback behavior is exercised.
+Acceptance: Configuration changes are reviewed and versioned Invalid configuration fails before taking traffic Secrets are not stored with configuration Drift is detected
 
-Validation: Platform/security review and clean pipeline run.
+Validation: Platform owner review.
+
+- `python3 -c "import json,jsonschema;jsonschema.validate(json.load(open('config/prod.json')),json.load(open('config/schema.json')))"   # example` expect: no exception
+- `diff <(sort config/staging.env) <(sort config/prod.env)` expect: differences are only the expected environment values
+
+Failure modes:
+- Hotfix edit on the server | detect: Running config differs from the repository | respond: Reconcile from version control
+- Secret in configuration file | detect: Scanner finds a value | respond: Move to the secret store and rotate
+- Unvalidated value takes the service down | detect: Startup crash on bad config | respond: Add schema validation
+
+ILLUSTRATIVE: A pull request changes the connection pool size for production only. Schema validation passes, the diff against staging shows that single line, and the change deploys through the pipeline.
 
 Gate: 10-118. Approval: none required
 
@@ -334,21 +348,35 @@ ILLUSTRATIVE: A short-lived review environment is created for a pull request fro
 Gate: 10-120. Approval: none required
 
 ## 121
-**Network Engineering** (stub). Purpose: build a secure and reproducible delivery platform.
+**Network Engineering** (complete). Purpose: design and operate the network so services can reach each other as intended and nothing else, with changes controlled.
 
-Inputs: repository and build graph; deployment targets and environment protections; artifact trust and supply-chain policy
+Entry criteria: Connectivity requirements between systems and users exist; Address plan and zones are defined; Network owner is named
+
+Inputs: connectivity requirements; address plan and zones; security zones and policies; monitoring requirements
 
 Procedure:
-1. Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
-2. Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
-3. Protect credentials, runners, deployment environments and immutable artifact promotion.
-4. Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
+1. Define zones and the allowed flows between them; default is deny.
+2. Plan address ranges so they do not overlap with partners or other environments.
+3. Implement routing, firewalls and segmentation from code, with each rule tied to a requirement.
+4. Test allowed flows and test that forbidden flows fail.
+5. Monitor latency, loss and denied traffic, and review rules regularly for stale entries.
+6. Control changes with review, a window and a rollback for production.
 
-Deliverables: pipeline/IaC configuration; artifact provenance; test/security results; runbook and ownership
+Deliverables: network design and address plan; rules as code with requirement references; flow test results; monitoring and review records
 
-Acceptance: Build is reproducible and artifacts are immutable/promoted. Secrets and environment permissions are scoped. Failure and rollback behavior is exercised.
+Acceptance: Default is deny and each rule references a requirement Allowed and forbidden flows were both tested Address ranges do not overlap Production changes had approval and rollback
 
-Validation: Platform/security review and clean pipeline run.
+Validation: Infrastructure owner approval.
+
+- `nc -zv db.internal 5432   # example from the app zone` expect: connection succeeds
+- `nc -zv db.internal 5432   # example from an unrelated zone` expect: connection refused or times out
+
+Failure modes:
+- Overly broad rule | detect: 0.0.0.0/0 on an internal port | respond: Narrow to the required source
+- Overlapping address ranges | detect: Routing conflicts after peering | respond: Re-plan addresses
+- Rules never reviewed | detect: Rules without requirement links | respond: Review and remove
+
+ILLUSTRATIVE: The database zone accepts connections only from the application zone on one port. A test from the application zone connects; the same test from the build zone is refused.
 
 Gate: 10-121. Approval: infra-owner (for production firewall, security-group or routing changes)
 
@@ -372,21 +400,35 @@ Validation: Platform/security review and clean pipeline run.
 Gate: 10-122. Approval: none required
 
 ## 123
-**CDN & Edge Configuration** (stub). Purpose: build a secure and reproducible delivery platform.
+**CDN & Edge Configuration** (complete). Purpose: serve content quickly and safely from locations close to users, with caching rules that are correct and reversible.
 
-Inputs: repository and build graph; deployment targets and environment protections; artifact trust and supply-chain policy
+Entry criteria: Traffic patterns and cacheable content are identified; Origin and domain setup exist; Purge and rollback process is known
+
+Inputs: content types and traffic; origin configuration; cache and security requirements; domain and certificate setup
 
 Procedure:
-1. Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
-2. Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
-3. Protect credentials, runners, deployment environments and immutable artifact promotion.
-4. Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
+1. Classify content by cacheability: static assets, public pages, personalized or private responses.
+2. Set cache keys, time-to-live values and headers per class; never cache private or personalized responses publicly.
+3. Configure origin protection so users cannot bypass the edge and the origin accepts only edge traffic.
+4. Enable TLS, security headers and rate limiting or web-application rules at the edge.
+5. Test cache behavior with repeated requests and with varying headers; test purge and a rollback of the configuration.
+6. Monitor hit rate, origin load and edge errors.
 
-Deliverables: pipeline/IaC configuration; artifact provenance; test/security results; runbook and ownership
+Deliverables: edge configuration as code; cache rules per content class; test results for caching and purge; monitoring dashboards
 
-Acceptance: Build is reproducible and artifacts are immutable/promoted. Secrets and environment permissions are scoped. Failure and rollback behavior is exercised.
+Acceptance: Private responses are never publicly cached The origin accepts only edge traffic Purge works within the target time Hit rate and origin load are monitored
 
-Validation: Platform/security review and clean pipeline run.
+Validation: Platform owner review.
+
+- `curl -sI https://www.example.com/static/app.js | grep -iE 'cache-control|age|x-cache'   # example` expect: long cache lifetime and a cache hit on repeat
+- `curl -sI -H 'Cookie: session=test' https://www.example.com/account | grep -i cache-control` expect: private or no-store
+
+Failure modes:
+- Personalized page cached publicly | detect: One user sees another's data | respond: Mark as private and purge now; treat as an incident
+- Origin reachable directly | detect: Direct request bypasses the edge | respond: Restrict the origin to edge addresses
+- Stale content after release | detect: Old assets served | respond: Use versioned asset names and purge
+
+ILLUSTRATIVE: Static assets get a one-year lifetime with versioned names, the account page is no-store, and a test shows a cache hit on the second request for an asset and none for the account page.
 
 Gate: 10-123. Approval: none required
 

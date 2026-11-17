@@ -1,0 +1,65 @@
+{
+  "stage_id": 84,
+  "purpose": "check that complete user journeys work across the real system, with a small stable set of high-value tests",
+  "entry_criteria": [
+    "The system is deployed to a test environment with realistic integrations",
+    "Critical user journeys are listed",
+    "Test accounts and data are available"
+  ],
+  "inputs": [
+    "critical user journeys",
+    "deployed test environment",
+    "test accounts and data",
+    "end-to-end test framework"
+  ],
+  "procedure": [
+    "Choose a small set of journeys that cover the highest business value; leave detail to lower-level tests.",
+    "Write each test from the user's point of view with stable selectors and explicit waits on conditions, not fixed sleeps.",
+    "Create the data each test needs and clean it up, so tests run independently and in any order.",
+    "Run in CI against a fresh deployment and capture screenshots, traces and logs for failures.",
+    "Treat a flaky test as a defect: fix, quarantine with owner and expiry, or delete.",
+    "Report which journeys passed and which are not covered."
+  ],
+  "deliverables": [
+    "end-to-end tests",
+    "run report with traces",
+    "flaky-test register",
+    "journey coverage list"
+  ],
+  "acceptance_criteria": [
+    "Each critical journey has a test",
+    "Tests are independent and use waits on conditions",
+    "Failures include screenshots or traces",
+    "Flaky tests are tracked with owners"
+  ],
+  "validation_method": "Independent CI rerun.",
+  "validation": [
+    {
+      "command": "npx playwright test --reporter=line   # example",
+      "expect": "all journeys pass"
+    },
+    {
+      "command": "npx playwright test --repeat-each=3",
+      "expect": "no intermittent failures"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Fixed sleeps cause flakiness",
+      "detection": "Failures vary by timing",
+      "response": "Wait on conditions"
+    },
+    {
+      "mode": "Tests depend on each other",
+      "detection": "Random order fails",
+      "response": "Make data independent"
+    },
+    {
+      "mode": "Too many end-to-end tests",
+      "detection": "Suite takes hours",
+      "response": "Move detail to lower levels"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Five journeys (sign up, search, add to basket, pay with the sandbox gateway, view order history) run in a fresh environment in eleven minutes, each creating and removing its own data.",
+  "status": "complete"
+}

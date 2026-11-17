@@ -1,0 +1,65 @@
+{
+  "stage_id": 118,
+  "purpose": "keep configuration controlled, versioned and consistent across environments so behavior is predictable",
+  "entry_criteria": [
+    "Configuration items and environments are listed",
+    "A source of truth for configuration is chosen",
+    "Secrets handling exists (stage 50)"
+  ],
+  "inputs": [
+    "configuration inventory",
+    "environment definitions",
+    "change process",
+    "secrets store"
+  ],
+  "procedure": [
+    "Keep configuration in version control, separate from code where it varies by environment, and separate from secrets.",
+    "Define defaults once and override per environment with a small, visible difference.",
+    "Validate configuration against a schema at build or startup and fail fast on invalid values.",
+    "Roll configuration changes out through the same review and pipeline as code, with a rollback.",
+    "Detect drift between the declared and the running configuration and reconcile from the source.",
+    "Record who changed what and when."
+  ],
+  "deliverables": [
+    "configuration repository or files",
+    "schema validation",
+    "environment difference report",
+    "change history"
+  ],
+  "acceptance_criteria": [
+    "Configuration changes are reviewed and versioned",
+    "Invalid configuration fails before taking traffic",
+    "Secrets are not stored with configuration",
+    "Drift is detected"
+  ],
+  "validation_method": "Platform owner review.",
+  "validation": [
+    {
+      "command": "python3 -c \"import json,jsonschema;jsonschema.validate(json.load(open('config/prod.json')),json.load(open('config/schema.json')))\"   # example",
+      "expect": "no exception"
+    },
+    {
+      "command": "diff <(sort config/staging.env) <(sort config/prod.env)",
+      "expect": "differences are only the expected environment values"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Hotfix edit on the server",
+      "detection": "Running config differs from the repository",
+      "response": "Reconcile from version control"
+    },
+    {
+      "mode": "Secret in configuration file",
+      "detection": "Scanner finds a value",
+      "response": "Move to the secret store and rotate"
+    },
+    {
+      "mode": "Unvalidated value takes the service down",
+      "detection": "Startup crash on bad config",
+      "response": "Add schema validation"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A pull request changes the connection pool size for production only. Schema validation passes, the diff against staging shows that single line, and the change deploys through the pipeline.",
+  "status": "complete"
+}

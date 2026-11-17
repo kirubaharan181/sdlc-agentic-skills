@@ -1,0 +1,65 @@
+{
+  "stage_id": 134,
+  "purpose": "make the system reachable by the right names, securely, with changes that are controlled and reversible",
+  "entry_criteria": [
+    "Domain ownership and registrar access are known",
+    "Target endpoints and their addresses are defined",
+    "DNS provider and its access controls exist"
+  ],
+  "inputs": [
+    "domain inventory and owners",
+    "target endpoints",
+    "certificate requirements",
+    "DNS provider configuration"
+  ],
+  "procedure": [
+    "Keep an inventory of domains, records and owners; remove records with no owner.",
+    "Define DNS records as code and review changes like any other change.",
+    "Restrict who can change DNS and require multi-factor authentication on the registrar and DNS accounts.",
+    "Set TTLs deliberately: lower them ahead of a planned change, restore afterward.",
+    "Enable protections: registrar lock, DNSSEC where supported, and checks for dangling records that point to released resources.",
+    "Verify with queries from outside after each change and monitor expiry of domains and certificates."
+  ],
+  "deliverables": [
+    "domain and record inventory",
+    "DNS records as code",
+    "access and lock configuration",
+    "verification and expiry monitoring"
+  ],
+  "acceptance_criteria": [
+    "Every record has an owner",
+    "Registrar lock and multi-factor authentication are enabled",
+    "No dangling records point at released resources",
+    "Expiry alerts exist for domains and certificates"
+  ],
+  "validation_method": "Cloud owner review of DNS changes.",
+  "validation": [
+    {
+      "command": "dig +short A app.example.com && dig +short CNAME www.example.com   # example",
+      "expect": "answers match the intended targets"
+    },
+    {
+      "check": "list CNAME records whose targets no longer resolve",
+      "expect": "none"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Dangling record can be taken over",
+      "detection": "CNAME points to a deleted service",
+      "response": "Remove the record"
+    },
+    {
+      "mode": "Domain expires",
+      "detection": "Expiry alert missing",
+      "response": "Enable auto-renew and alerts"
+    },
+    {
+      "mode": "Change without review",
+      "detection": "Record changed in the console",
+      "response": "Return to code and review"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Before moving the app to a new load balancer, the team lowers the TTL to 60 seconds, changes the record through reviewed code, checks resolution from three networks, and raises the TTL again the next day.",
+  "status": "complete"
+}

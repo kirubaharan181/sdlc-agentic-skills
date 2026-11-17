@@ -1,0 +1,65 @@
+{
+  "stage_id": 103,
+  "purpose": "reduce the attack surface of the networks, hosts and cloud configuration the system runs on",
+  "entry_criteria": [
+    "Infrastructure inventory and architecture exist",
+    "Security baseline or benchmark is chosen",
+    "Access to configuration data is available"
+  ],
+  "inputs": [
+    "infrastructure inventory",
+    "network and cloud configuration",
+    "security baseline",
+    "previous findings"
+  ],
+  "procedure": [
+    "Check network exposure: which ports and services are reachable from the internet and between zones.",
+    "Assess cloud and host configuration against the chosen baseline (for example CIS) and record gaps.",
+    "Review identity and access: roles, wildcard permissions, unused credentials, and administrative paths.",
+    "Check encryption in transit and at rest, logging and patch status.",
+    "Rate findings, fix through infrastructure as code, and rescan.",
+    "Record accepted risks with owner and expiry."
+  ],
+  "deliverables": [
+    "exposure report",
+    "baseline assessment",
+    "fixes in code",
+    "rescan results"
+  ],
+  "acceptance_criteria": [
+    "No unintended service is exposed to the internet",
+    "No wildcard administrative permission without an exception",
+    "Encryption and logging are enabled where required",
+    "Rescan shows the findings closed"
+  ],
+  "validation_method": "Security review of the rescan.",
+  "validation": [
+    {
+      "command": "nmap -Pn -p- --open <public-ip>   # example; scan only systems you are authorized to test",
+      "expect": "only intended ports are open"
+    },
+    {
+      "command": "trivy config terraform/   # example baseline check",
+      "expect": "no high findings outside the exception register"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Scan of systems without authorization",
+      "detection": "Target not in scope",
+      "response": "Stop; use only approved targets"
+    },
+    {
+      "mode": "Fixed by console edit",
+      "detection": "IaC differs from reality",
+      "response": "Fix in code"
+    },
+    {
+      "mode": "Public storage bucket",
+      "detection": "Anonymous access enabled",
+      "response": "Remove public access and review data exposure"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A review finds a database port reachable from the internet and an administrative role with a wildcard permission. Both are fixed in infrastructure code and the rescan shows them closed.",
+  "status": "complete"
+}
