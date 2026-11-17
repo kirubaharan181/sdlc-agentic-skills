@@ -3749,39 +3749,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "end-to-end-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-084",
-      "validation_method": "Independent QA review and acceptance decision. Run critical journeys and reconcile resulting state across services.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Exercise complete user journeys across UI, APIs, persistence and external side effects with synthetic data."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "E2E journey report and trace bundle"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Journey state is correct across boundaries and recovery works."
-      ],
       "raci": {
         "accountable": "e2e-testing-specialist",
         "responsible": [
@@ -4024,39 +3992,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "performance-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-091",
-      "validation_method": "Independent QA review and acceptance decision. Compare equivalent before/after runs with workload pinned.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Measure representative workload latency, throughput, saturation and error rate against service objectives."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "performance baseline and profile report"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "p50/p95/p99 and resource use meet agreed thresholds under representative load."
-      ],
       "raci": {
         "accountable": "performance-testing-specialist",
         "responsible": [
@@ -4079,39 +4015,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "load-testing-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-092",
-      "validation_method": "Independent QA review and acceptance decision. Run controlled load ramp and retain telemetry.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Ramp concurrency and request mix to expected peak and observe throughput, queue depth and latency percentiles."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "load profile and capacity result"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "System sustains forecast peak plus agreed headroom without SLO breach."
-      ],
       "raci": {
         "accountable": "performance-testing-specialist",
         "responsible": [
@@ -4241,39 +4145,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "testable acceptance criteria and risk profile",
-        "test environment and data",
-        "supported platform/workload matrix"
-      ],
-      "outputs": [
-        "uat-deliverable",
-        "test strategy or plan",
-        "version-pinned test report"
-      ],
       "quality_gate": "08-095",
-      "validation_method": "Independent QA review and acceptance decision. Capture user execution evidence and explicit acceptance decision.",
-      "purpose": "verify software behavior using risk-based and reproducible tests",
-      "execution_instructions": [
-        "Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.",
-        "Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.",
-        "Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.",
-        "Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.",
-        "Validate real business workflows with authorized users against agreed acceptance examples."
-      ],
-      "deliverable_artifacts": [
-        "test strategy or plan",
-        "version-pinned test report",
-        "defect records",
-        "coverage and limitation summary",
-        "UAT scripts and business acceptance record"
-      ],
-      "quality_criteria": [
-        "Critical risks have test coverage.",
-        "Evidence identifies build, environment, data and result.",
-        "Flaky or blocked tests are not reported as PASS.",
-        "Business owner accepts outcomes or records named defects and conditions."
-      ],
       "approval_required": true,
       "raci": {
         "accountable": "qa-lead",
@@ -4512,35 +4384,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "authorized scope and asset inventory",
-        "scanner/tool configuration and version",
-        "severity policy and remediation SLA"
-      ],
-      "outputs": [
-        "infrastructure-security-deliverable",
-        "scan/test report",
-        "validated finding register"
-      ],
       "quality_gate": "09-103",
-      "validation_method": "Security owner and system owner disposition.",
-      "purpose": "assess and remediate a defined security attack surface",
-      "execution_instructions": [
-        "Confirm asset ownership, scope, exclusions and written authorization before active testing.",
-        "Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.",
-        "Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.",
-        "Assign remediation, retest the exact fix and record residual risk or approved exception."
-      ],
-      "deliverable_artifacts": [
-        "scan/test report",
-        "validated finding register",
-        "remediation and retest evidence"
-      ],
-      "quality_criteria": [
-        "Active testing stays within authorization.",
-        "Findings have reproducible evidence and severity rationale.",
-        "Closure is independently retested."
-      ],
       "raci": {
         "accountable": "devsecops-engineer",
         "responsible": [
@@ -4790,35 +4634,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "validated finding and affected component/version",
-        "exploitability, exposure and remediation SLA",
-        "fix owner and release constraints"
-      ],
-      "outputs": [
-        "vulnerability-remediation-deliverable",
-        "vulnerability remediation ticket",
-        "fixed version/commit evidence"
-      ],
       "quality_gate": "09-109",
-      "validation_method": "Verify the patched component in the packaged runtime artifact, not only the source manifest.",
-      "purpose": "remove a validated vulnerability and prove the exposure is closed",
-      "execution_instructions": [
-        "Confirm affected runtime component/version and reachability before selecting a fix.",
-        "Prioritize using exploit maturity, exposure, privileges and data impact.",
-        "Apply a supported upgrade/configuration/code correction and add regression protection.",
-        "Rescan and independently retest the exact released artifact; record residual risk."
-      ],
-      "deliverable_artifacts": [
-        "vulnerability remediation ticket",
-        "fixed version/commit evidence",
-        "rescan and retest report"
-      ],
-      "quality_criteria": [
-        "Affected exposure is removed from the released artifact.",
-        "Fix does not introduce an unapproved breaking change.",
-        "Retest is independent and revision-pinned."
-      ],
       "raci": {
         "accountable": "application-security-engineer",
         "responsible": [
@@ -5024,36 +4840,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "configuration-management-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-118",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "raci": {
         "accountable": "platform-engineer",
         "responsible": [
@@ -5120,36 +4907,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "network-engineering-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-121",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "approval_required": true,
       "approval_rationale": "Firewall, security-group and routing changes can expose services or cut connectivity; an infrastructure owner must approve production changes.",
       "raci": {
@@ -5226,36 +4984,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "cdn-edge-configuration-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-123",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "raci": {
         "accountable": "platform-engineer",
         "responsible": [
@@ -5321,36 +5050,7 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "release candidate digest and scope",
-        "change approvals and readiness evidence",
-        "rollback/recovery and communication plan"
-      ],
-      "outputs": [
-        "release-planning-deliverable",
-        "release manifest",
-        "readiness checklist"
-      ],
       "quality_gate": "11-126",
-      "validation_method": "Change authority approval and post-deploy verification.",
-      "purpose": "prepare and execute a controlled release or migration",
-      "execution_instructions": [
-        "Confirm immutable candidate, included changes, compatibility and outstanding risk.",
-        "Validate staging environment, migrations, monitoring, backup and rollback/forward-fix rehearsal.",
-        "Obtain change authority and communicate schedule, impact, owners and stop conditions.",
-        "Deploy progressively, verify health and business signals, then confirm or execute recovery."
-      ],
-      "deliverable_artifacts": [
-        "release manifest",
-        "readiness checklist",
-        "deployment and migration evidence",
-        "post-deploy verification"
-      ],
-      "quality_criteria": [
-        "Deployed digest matches approved candidate.",
-        "Migration and recovery are rehearsed.",
-        "Stop/rollback thresholds and authority are explicit."
-      ],
       "raci": {
         "accountable": "release-manager",
         "responsible": [
@@ -5536,35 +5236,7 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "domain ownership and target topology",
-        "certificate and trust requirements",
-        "traffic and health-check profile"
-      ],
-      "outputs": [
-        "domain-dns-deliverable",
-        "DNS/TLS/routing configuration",
-        "validation output"
-      ],
       "quality_gate": "11-134",
-      "validation_method": "Network/security review.",
-      "purpose": "configure secure and resilient network edge routing",
-      "execution_instructions": [
-        "Verify domain/account ownership and change window.",
-        "Configure records, certificates, ciphers, health checks, routing and origin restrictions.",
-        "Validate propagation, certificate chain/expiry, redirects and failover behavior.",
-        "Document TTL, renewal, rollback and monitoring."
-      ],
-      "deliverable_artifacts": [
-        "DNS/TLS/routing configuration",
-        "validation output",
-        "renewal and rollback runbook"
-      ],
-      "quality_criteria": [
-        "No unexpected public exposure.",
-        "Certificate chain and hostname validation pass.",
-        "Failover and rollback are tested."
-      ],
       "raci": {
         "accountable": "cloud-engineer",
         "responsible": [
@@ -5753,36 +5425,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "service inventory and ownership",
-        "SLO/RTO/RPO and capacity profile",
-        "access, backup and cost policies"
-      ],
-      "outputs": [
-        "cloud-hosting-deliverable",
-        "infrastructure inventory",
-        "change record"
-      ],
       "quality_gate": "12-140",
-      "validation_method": "Cloud operations and security review.",
-      "purpose": "operate cloud infrastructure within reliability and cost objectives",
-      "execution_instructions": [
-        "Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.",
-        "Verify identity boundaries, encryption, network exposure, patch state and backup coverage.",
-        "Measure health, capacity, utilization, recovery readiness and cost allocation.",
-        "Apply a reviewed, reversible change and verify telemetry, drift and customer impact."
-      ],
-      "deliverable_artifacts": [
-        "infrastructure inventory",
-        "change record",
-        "health/capacity/cost evidence",
-        "operator runbook"
-      ],
-      "quality_criteria": [
-        "Changes are scoped and reversible.",
-        "Backup/recovery meets stated objectives.",
-        "Cost and reliability effects are measured."
-      ],
       "raci": {
         "accountable": "cloud-engineer",
         "responsible": [

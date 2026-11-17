@@ -1,0 +1,65 @@
+{
+  "stage_id": 140,
+  "purpose": "run workloads on cloud accounts and services that are organized, secured and cost-aware from the start",
+  "entry_criteria": [
+    "Cloud provider and account structure decisions exist",
+    "Workload requirements and environments are known",
+    "Identity provider and billing ownership are defined"
+  ],
+  "inputs": [
+    "workload requirements",
+    "environment list",
+    "organization and identity design",
+    "budget"
+  ],
+  "procedure": [
+    "Separate accounts or projects by environment and by risk; production is isolated from the others.",
+    "Federate identity, use roles with least privilege, and disable long-lived user keys.",
+    "Set guardrails: allowed regions and services, mandatory encryption, logging to a separate account, and budget alerts.",
+    "Provision the hosting resources from code, tagged with owner, environment and cost center.",
+    "Enable audit logging and threat-detection services and route alerts to the on-call team.",
+    "Review cost and access monthly and remove unused resources."
+  ],
+  "deliverables": [
+    "account structure",
+    "guardrail policies",
+    "provisioning code with tags",
+    "cost and access review"
+  ],
+  "acceptance_criteria": [
+    "Production is isolated from other environments",
+    "No long-lived access keys for people",
+    "Audit logging is on and centralized",
+    "Budget alerts exist and resources carry owner tags"
+  ],
+  "validation_method": "Cloud owner and security review.",
+  "validation": [
+    {
+      "command": "aws iam list-users --query 'Users[].UserName'   # example; expect no routine human IAM users",
+      "expect": "empty or only break-glass accounts"
+    },
+    {
+      "check": "list resources without an owner tag",
+      "expect": "none"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Shared account for all environments",
+      "detection": "Test and production resources together",
+      "response": "Split accounts"
+    },
+    {
+      "mode": "Unused resources keep billing",
+      "detection": "Cost report shows idle resources",
+      "response": "Remove or schedule shutdown"
+    },
+    {
+      "mode": "Logging disabled",
+      "detection": "No audit trail for a change",
+      "response": "Enable and centralize"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Production runs in its own account reached only by federated roles, audit logs flow to a security account, and a monthly review removes two idle databases.",
+  "status": "complete"
+}

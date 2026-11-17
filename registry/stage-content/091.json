@@ -1,0 +1,65 @@
+{
+  "stage_id": 91,
+  "purpose": "find out how the system performs under expected and peak use against stated objectives, and where it degrades first",
+  "entry_criteria": [
+    "Performance objectives are defined (latency, throughput, error rate)",
+    "A production-like test environment and data volume exist",
+    "Workload model is available"
+  ],
+  "inputs": [
+    "performance objectives",
+    "workload model from production data",
+    "production-like environment",
+    "monitoring"
+  ],
+  "procedure": [
+    "Model the workload from real traffic: operation mix, think times and data distribution.",
+    "Prepare data volumes close to production and warm the system as in production.",
+    "Run baseline, expected-peak and stress scenarios; capture latency percentiles, throughput, errors and resource use.",
+    "Find the first bottleneck by correlating results with metrics, profiles and database behavior.",
+    "Fix or record the bottleneck, rerun, and compare to the baseline with the same workload.",
+    "Report against the objectives, including limits of the test environment."
+  ],
+  "deliverables": [
+    "workload model",
+    "test results with percentiles",
+    "bottleneck analysis",
+    "comparison with baseline"
+  ],
+  "acceptance_criteria": [
+    "Results are stated per objective",
+    "The workload comes from production data",
+    "Bottlenecks are identified with evidence",
+    "Environment differences from production are listed"
+  ],
+  "validation_method": "Performance engineer review.",
+  "validation": [
+    {
+      "command": "k6 run --out json=reports/perf.json loadtest/peak.js   # example",
+      "expect": "p95 latency and error rate meet thresholds"
+    },
+    {
+      "check": "compare the test environment's size and data volume with production",
+      "expect": "differences listed in the report"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Test on tiny data",
+      "detection": "Database is a fraction of production size",
+      "response": "Load production-like volumes"
+    },
+    {
+      "mode": "Averages hide tail latency",
+      "detection": "Only mean reported",
+      "response": "Report p95 and p99"
+    },
+    {
+      "mode": "Load generator is the bottleneck",
+      "detection": "Generator CPU saturated",
+      "response": "Add generators"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A peak scenario at 300 requests per second keeps p95 latency at 420 ms against a 500 ms objective until the database connection pool saturates at 380; the report names the pool as the first bottleneck.",
+  "status": "complete"
+}

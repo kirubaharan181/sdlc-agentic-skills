@@ -1,0 +1,65 @@
+{
+  "stage_id": 123,
+  "purpose": "serve content quickly and safely from locations close to users, with caching rules that are correct and reversible",
+  "entry_criteria": [
+    "Traffic patterns and cacheable content are identified",
+    "Origin and domain setup exist",
+    "Purge and rollback process is known"
+  ],
+  "inputs": [
+    "content types and traffic",
+    "origin configuration",
+    "cache and security requirements",
+    "domain and certificate setup"
+  ],
+  "procedure": [
+    "Classify content by cacheability: static assets, public pages, personalized or private responses.",
+    "Set cache keys, time-to-live values and headers per class; never cache private or personalized responses publicly.",
+    "Configure origin protection so users cannot bypass the edge and the origin accepts only edge traffic.",
+    "Enable TLS, security headers and rate limiting or web-application rules at the edge.",
+    "Test cache behavior with repeated requests and with varying headers; test purge and a rollback of the configuration.",
+    "Monitor hit rate, origin load and edge errors."
+  ],
+  "deliverables": [
+    "edge configuration as code",
+    "cache rules per content class",
+    "test results for caching and purge",
+    "monitoring dashboards"
+  ],
+  "acceptance_criteria": [
+    "Private responses are never publicly cached",
+    "The origin accepts only edge traffic",
+    "Purge works within the target time",
+    "Hit rate and origin load are monitored"
+  ],
+  "validation_method": "Platform owner review.",
+  "validation": [
+    {
+      "command": "curl -sI https://www.example.com/static/app.js | grep -iE 'cache-control|age|x-cache'   # example",
+      "expect": "long cache lifetime and a cache hit on repeat"
+    },
+    {
+      "command": "curl -sI -H 'Cookie: session=test' https://www.example.com/account | grep -i cache-control",
+      "expect": "private or no-store"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Personalized page cached publicly",
+      "detection": "One user sees another's data",
+      "response": "Mark as private and purge now; treat as an incident"
+    },
+    {
+      "mode": "Origin reachable directly",
+      "detection": "Direct request bypasses the edge",
+      "response": "Restrict the origin to edge addresses"
+    },
+    {
+      "mode": "Stale content after release",
+      "detection": "Old assets served",
+      "response": "Use versioned asset names and purge"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Static assets get a one-year lifetime with versioned names, the account page is no-store, and a test shows a cache hit on the second request for an asset and none for the account page.",
+  "status": "complete"
+}

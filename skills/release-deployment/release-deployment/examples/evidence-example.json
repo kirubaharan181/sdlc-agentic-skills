@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "release-deployment",
-  "stage_id": 127,
-  "stage_name": "Release Notes",
+  "stage_id": 126,
+  "stage_name": "Release Planning",
   "commit_sha": "<commit under review>",
   "executor": "<Release Manager or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Release manager approval of the published notes.",
-    "command": "git log --oneline v1.0.0..HEAD | wc -l",
-    "expected": "count of changes reconciles with entries in the notes",
+    "method": "Release manager and product owner agreement.",
+    "command": "<command or review technique actually used>",
+    "expected": "<expected result>",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "release notes",
-      "path": "<path or immutable URL of release notes>"
+      "name": "release plan",
+      "path": "<path or immutable URL of release plan>"
     },
     {
-      "name": "known-issues list",
-      "path": "<path or immutable URL of known-issues list>"
+      "name": "scope list with deferrals",
+      "path": "<path or immutable URL of scope list with deferrals>"
     },
     {
-      "name": "upgrade steps",
-      "path": "<path or immutable URL of upgrade steps>"
+      "name": "dependency and risk list",
+      "path": "<path or immutable URL of dependency and risk list>"
     }
   ],
   "limitations": [

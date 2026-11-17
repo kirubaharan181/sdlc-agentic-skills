@@ -1,0 +1,65 @@
+{
+  "stage_id": 121,
+  "purpose": "design and operate the network so services can reach each other as intended and nothing else, with changes controlled",
+  "entry_criteria": [
+    "Connectivity requirements between systems and users exist",
+    "Address plan and zones are defined",
+    "Network owner is named"
+  ],
+  "inputs": [
+    "connectivity requirements",
+    "address plan and zones",
+    "security zones and policies",
+    "monitoring requirements"
+  ],
+  "procedure": [
+    "Define zones and the allowed flows between them; default is deny.",
+    "Plan address ranges so they do not overlap with partners or other environments.",
+    "Implement routing, firewalls and segmentation from code, with each rule tied to a requirement.",
+    "Test allowed flows and test that forbidden flows fail.",
+    "Monitor latency, loss and denied traffic, and review rules regularly for stale entries.",
+    "Control changes with review, a window and a rollback for production."
+  ],
+  "deliverables": [
+    "network design and address plan",
+    "rules as code with requirement references",
+    "flow test results",
+    "monitoring and review records"
+  ],
+  "acceptance_criteria": [
+    "Default is deny and each rule references a requirement",
+    "Allowed and forbidden flows were both tested",
+    "Address ranges do not overlap",
+    "Production changes had approval and rollback"
+  ],
+  "validation_method": "Infrastructure owner approval.",
+  "validation": [
+    {
+      "command": "nc -zv db.internal 5432   # example from the app zone",
+      "expect": "connection succeeds"
+    },
+    {
+      "command": "nc -zv db.internal 5432   # example from an unrelated zone",
+      "expect": "connection refused or times out"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Overly broad rule",
+      "detection": "0.0.0.0/0 on an internal port",
+      "response": "Narrow to the required source"
+    },
+    {
+      "mode": "Overlapping address ranges",
+      "detection": "Routing conflicts after peering",
+      "response": "Re-plan addresses"
+    },
+    {
+      "mode": "Rules never reviewed",
+      "detection": "Rules without requirement links",
+      "response": "Review and remove"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The database zone accepts connections only from the application zone on one port. A test from the application zone connects; the same test from the build zone is refused.",
+  "status": "complete"
+}

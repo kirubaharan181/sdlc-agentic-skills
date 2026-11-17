@@ -216,22 +216,35 @@ Validation: Independent QA review and acceptance decision. Review traceability a
 Gate: 08-083. Approval: none required
 
 ## 84
-**End-to-End Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**End-to-End Testing** (complete). Purpose: check that complete user journeys work across the real system, with a small stable set of high-value tests.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: The system is deployed to a test environment with realistic integrations; Critical user journeys are listed; Test accounts and data are available
+
+Inputs: critical user journeys; deployed test environment; test accounts and data; end-to-end test framework
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Exercise complete user journeys across UI, APIs, persistence and external side effects with synthetic data.
+1. Choose a small set of journeys that cover the highest business value; leave detail to lower-level tests.
+2. Write each test from the user's point of view with stable selectors and explicit waits on conditions, not fixed sleeps.
+3. Create the data each test needs and clean it up, so tests run independently and in any order.
+4. Run in CI against a fresh deployment and capture screenshots, traces and logs for failures.
+5. Treat a flaky test as a defect: fix, quarantine with owner and expiry, or delete.
+6. Report which journeys passed and which are not covered.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; E2E journey report and trace bundle
+Deliverables: end-to-end tests; run report with traces; flaky-test register; journey coverage list
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. Journey state is correct across boundaries and recovery works.
+Acceptance: Each critical journey has a test Tests are independent and use waits on conditions Failures include screenshots or traces Flaky tests are tracked with owners
 
-Validation: Independent QA review and acceptance decision. Run critical journeys and reconcile resulting state across services.
+Validation: Independent CI rerun.
+
+- `npx playwright test --reporter=line   # example` expect: all journeys pass
+- `npx playwright test --repeat-each=3` expect: no intermittent failures
+
+Failure modes:
+- Fixed sleeps cause flakiness | detect: Failures vary by timing | respond: Wait on conditions
+- Tests depend on each other | detect: Random order fails | respond: Make data independent
+- Too many end-to-end tests | detect: Suite takes hours | respond: Move detail to lower levels
+
+ILLUSTRATIVE: Five journeys (sign up, search, add to basket, pay with the sandbox gateway, view order history) run in a fresh environment in eleven minutes, each creating and removing its own data.
 
 Gate: 08-084. Approval: none required
 
@@ -395,42 +408,68 @@ ILLUSTRATIVE: Keyboard testing of a checkout form finds that the date picker tra
 Gate: 08-090. Approval: none required
 
 ## 91
-**Performance Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Performance Testing** (complete). Purpose: find out how the system performs under expected and peak use against stated objectives, and where it degrades first.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: Performance objectives are defined (latency, throughput, error rate); A production-like test environment and data volume exist; Workload model is available
+
+Inputs: performance objectives; workload model from production data; production-like environment; monitoring
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Measure representative workload latency, throughput, saturation and error rate against service objectives.
+1. Model the workload from real traffic: operation mix, think times and data distribution.
+2. Prepare data volumes close to production and warm the system as in production.
+3. Run baseline, expected-peak and stress scenarios; capture latency percentiles, throughput, errors and resource use.
+4. Find the first bottleneck by correlating results with metrics, profiles and database behavior.
+5. Fix or record the bottleneck, rerun, and compare to the baseline with the same workload.
+6. Report against the objectives, including limits of the test environment.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; performance baseline and profile report
+Deliverables: workload model; test results with percentiles; bottleneck analysis; comparison with baseline
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. p50/p95/p99 and resource use meet agreed thresholds under representative load.
+Acceptance: Results are stated per objective The workload comes from production data Bottlenecks are identified with evidence Environment differences from production are listed
 
-Validation: Independent QA review and acceptance decision. Compare equivalent before/after runs with workload pinned.
+Validation: Performance engineer review.
+
+- `k6 run --out json=reports/perf.json loadtest/peak.js   # example` expect: p95 latency and error rate meet thresholds
+- manual: compare the test environment's size and data volume with production expect: differences listed in the report
+
+Failure modes:
+- Test on tiny data | detect: Database is a fraction of production size | respond: Load production-like volumes
+- Averages hide tail latency | detect: Only mean reported | respond: Report p95 and p99
+- Load generator is the bottleneck | detect: Generator CPU saturated | respond: Add generators
+
+ILLUSTRATIVE: A peak scenario at 300 requests per second keeps p95 latency at 420 ms against a 500 ms objective until the database connection pool saturates at 380; the report names the pool as the first bottleneck.
 
 Gate: 08-091. Approval: none required
 
 ## 92
-**Load Testing** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**Load Testing** (complete). Purpose: establish the maximum load the system sustains and how it behaves beyond it, so capacity limits are known before users find them.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: Performance baseline exists (stage 91); Safe test environment and a way to stop the test exist; Monitoring is in place
+
+Inputs: performance baseline; capacity targets; test environment; stop conditions
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Ramp concurrency and request mix to expected peak and observe throughput, queue depth and latency percentiles.
+1. Define the load profile: step ramp, sustained plateau and, separately, a spike.
+2. Increase load in steps and hold each step long enough to see steady state and slow leaks.
+3. Record the load at which latency or errors cross the objective and the load at which the system fails.
+4. Observe the failure mode: does it degrade gracefully, shed load, or crash and corrupt data.
+5. Verify recovery: remove the load and measure time back to normal.
+6. Report the sustained maximum with a safety margin, and the bottleneck.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; load profile and capacity result
+Deliverables: load profiles; capacity limit with safety margin; failure-mode observations; recovery measurements
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. System sustains forecast peak plus agreed headroom without SLO breach.
+Acceptance: The sustained maximum and the breaking point are both found Failure behavior is described Recovery time is measured Safety margin is stated
 
-Validation: Independent QA review and acceptance decision. Run controlled load ramp and retain telemetry.
+Validation: Performance engineer and service owner review.
+
+- `k6 run --stage 2m:100,5m:100,2m:200,5m:200,2m:400 loadtest/steps.js   # example stepped ramp` expect: the report shows the step where thresholds are crossed
+- manual: after the test, time how long latency takes to return to baseline expect: recovery time recorded
+
+Failure modes:
+- Test ends at the first failure | detect: Failure mode unobserved | respond: Continue under control to see the failure
+- System does not recover | detect: Latency stays high after load removal | respond: Investigate leaks and queues
+- Impact on shared systems | detect: Dependencies degraded by the test | respond: Isolate or stub them
+
+ILLUSTRATIVE: Stepped load shows stable operation to 350 requests per second and errors above 420. Beyond that, queues grow; after load stops, the system returns to baseline in three minutes. The stated limit is 300 with a safety margin.
 
 Gate: 08-092. Approval: none required
 
@@ -475,22 +514,35 @@ Validation: Independent QA review and acceptance decision. Review time-series tr
 Gate: 08-094. Approval: none required
 
 ## 95
-**UAT** (stub). Purpose: verify software behavior using risk-based and reproducible tests.
+**UAT** (complete). Purpose: let the business confirm the delivered solution fits the real need before release.
 
-Inputs: testable acceptance criteria and risk profile; test environment and data; supported platform/workload matrix
+Entry criteria: The release candidate is deployed to an acceptance environment; Acceptance criteria and UAT scenarios are agreed; Business testers and an acceptance owner are named
+
+Inputs: acceptance criteria; UAT scenarios; acceptance environment and data; named testers
 
 Procedure:
-1. Derive scenarios from requirements, risks, boundaries and prior defects; identify test level and oracle.
-2. Prepare deterministic fixtures, environment, cleanup and sensitive-data controls.
-3. Execute positive, negative, boundary and failure scenarios; preserve raw reports and exact build identity.
-4. Triage failures as product defect, test defect, environment issue or inconclusive evidence; rerun only with recorded reason.
-5. Validate real business workflows with authorized users against agreed acceptance examples.
+1. Agree the scenarios with the business testers from real work, not only from the specification.
+2. Brief the testers, give them realistic data and a way to report issues.
+3. Run the scenarios and record result, evidence and tester for each.
+4. Triage findings with the product owner into defect, change request or accepted difference.
+5. Retest fixes; track open issues to a decision.
+6. Obtain the acceptance owner's decision: accept, accept with conditions or reject, recorded with the date.
 
-Deliverables: test strategy or plan; version-pinned test report; defect records; coverage and limitation summary; UAT scripts and business acceptance record
+Deliverables: UAT scenarios and results; issue triage; retest records; acceptance decision
 
-Acceptance: Critical risks have test coverage. Evidence identifies build, environment, data and result. Flaky or blocked tests are not reported as PASS. Business owner accepts outcomes or records named defects and conditions.
+Acceptance: Every scenario has a result and a tester Issues have a decision The acceptance owner's decision is recorded with conditions Testers are business users, not only the delivery team
 
-Validation: Independent QA review and acceptance decision. Capture user execution evidence and explicit acceptance decision.
+Validation: Named acceptance owner's decision.
+
+- manual: confirm every UAT scenario row has a result, tester and date expect: none blank
+- manual: confirm the build tested equals the release candidate expect: same version
+
+Failure modes:
+- Delivery team acts as business testers | detect: No business names in results | respond: Involve real users
+- Acceptance given verbally | detect: No record | respond: Record the decision
+- Late change requests treated as defects | detect: Scope dispute | respond: Triage with the product owner
+
+ILLUSTRATIVE: Three finance staff run twelve scenarios on the acceptance environment. Two issues are found; one is a defect, the other a change request deferred. The acceptance owner accepts with the deferral recorded.
 
 Gate: 08-095. Approval: uat-acceptor (always)
 

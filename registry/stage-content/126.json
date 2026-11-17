@@ -1,0 +1,65 @@
+{
+  "stage_id": 126,
+  "purpose": "decide what goes into a release and when, so that scope, risk and dependencies are agreed before the work is frozen",
+  "entry_criteria": [
+    "Candidate changes and their status are known",
+    "Release calendar and freeze rules exist",
+    "Dependencies between teams and systems are listed"
+  ],
+  "inputs": [
+    "candidate changes and readiness",
+    "release calendar and freezes",
+    "dependencies and risks",
+    "capacity of operations and support"
+  ],
+  "procedure": [
+    "List the candidate changes with owners, readiness and risk.",
+    "Check dependencies between changes, teams, services and migrations; order or bundle accordingly.",
+    "Choose the scope the team can finish and test; defer the rest with a reason.",
+    "Pick the date and window against freezes, peak periods and on-call capacity.",
+    "Agree the rollout approach (progressive or all at once) and the communication plan.",
+    "Publish the plan and the scope-freeze point; changes after the freeze need explicit approval."
+  ],
+  "deliverables": [
+    "release plan",
+    "scope list with deferrals",
+    "dependency and risk list",
+    "communication plan"
+  ],
+  "acceptance_criteria": [
+    "Each change has an owner and readiness status",
+    "Dependencies are ordered or called out",
+    "The window avoids freezes and peaks",
+    "Freeze date and exception process are published"
+  ],
+  "validation_method": "Release manager and product owner agreement.",
+  "validation": [
+    {
+      "check": "check each change in scope has a merged or ready pull request and tests",
+      "expect": "none missing"
+    },
+    {
+      "check": "compare the window with the freeze calendar",
+      "expect": "no overlap"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Scope grows after the freeze",
+      "detection": "Changes added without approval",
+      "response": "Require explicit approval or defer"
+    },
+    {
+      "mode": "Dependency missed",
+      "detection": "A change needs another not in scope",
+      "response": "Add the dependency or defer both"
+    },
+    {
+      "mode": "Window clashes with a peak",
+      "detection": "Business calendar overlap",
+      "response": "Move the window"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The plan includes six changes. One requires a database migration owned by another team, so both ship together on a Tuesday window outside the month-end freeze; a seventh change is deferred as not tested in time.",
+  "status": "complete"
+}

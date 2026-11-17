@@ -1,0 +1,65 @@
+{
+  "stage_id": 95,
+  "purpose": "let the business confirm the delivered solution fits the real need before release",
+  "entry_criteria": [
+    "The release candidate is deployed to an acceptance environment",
+    "Acceptance criteria and UAT scenarios are agreed",
+    "Business testers and an acceptance owner are named"
+  ],
+  "inputs": [
+    "acceptance criteria",
+    "UAT scenarios",
+    "acceptance environment and data",
+    "named testers"
+  ],
+  "procedure": [
+    "Agree the scenarios with the business testers from real work, not only from the specification.",
+    "Brief the testers, give them realistic data and a way to report issues.",
+    "Run the scenarios and record result, evidence and tester for each.",
+    "Triage findings with the product owner into defect, change request or accepted difference.",
+    "Retest fixes; track open issues to a decision.",
+    "Obtain the acceptance owner's decision: accept, accept with conditions or reject, recorded with the date."
+  ],
+  "deliverables": [
+    "UAT scenarios and results",
+    "issue triage",
+    "retest records",
+    "acceptance decision"
+  ],
+  "acceptance_criteria": [
+    "Every scenario has a result and a tester",
+    "Issues have a decision",
+    "The acceptance owner's decision is recorded with conditions",
+    "Testers are business users, not only the delivery team"
+  ],
+  "validation_method": "Named acceptance owner's decision.",
+  "validation": [
+    {
+      "check": "confirm every UAT scenario row has a result, tester and date",
+      "expect": "none blank"
+    },
+    {
+      "check": "confirm the build tested equals the release candidate",
+      "expect": "same version"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Delivery team acts as business testers",
+      "detection": "No business names in results",
+      "response": "Involve real users"
+    },
+    {
+      "mode": "Acceptance given verbally",
+      "detection": "No record",
+      "response": "Record the decision"
+    },
+    {
+      "mode": "Late change requests treated as defects",
+      "detection": "Scope dispute",
+      "response": "Triage with the product owner"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Three finance staff run twelve scenarios on the acceptance environment. Two issues are found; one is a defect, the other a change request deferred. The acceptance owner accepts with the deferral recorded.",
+  "status": "complete"
+}

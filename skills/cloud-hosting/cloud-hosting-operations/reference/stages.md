@@ -16,21 +16,35 @@
 - [152 Infrastructure Maintenance](#152)
 
 ## 140
-**Cloud Hosting** (stub). Purpose: operate cloud infrastructure within reliability and cost objectives.
+**Cloud Hosting** (complete). Purpose: run workloads on cloud accounts and services that are organized, secured and cost-aware from the start.
 
-Inputs: service inventory and ownership; SLO/RTO/RPO and capacity profile; access, backup and cost policies
+Entry criteria: Cloud provider and account structure decisions exist; Workload requirements and environments are known; Identity provider and billing ownership are defined
+
+Inputs: workload requirements; environment list; organization and identity design; budget
 
 Procedure:
-1. Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
-2. Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
-3. Measure health, capacity, utilization, recovery readiness and cost allocation.
-4. Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
+1. Separate accounts or projects by environment and by risk; production is isolated from the others.
+2. Federate identity, use roles with least privilege, and disable long-lived user keys.
+3. Set guardrails: allowed regions and services, mandatory encryption, logging to a separate account, and budget alerts.
+4. Provision the hosting resources from code, tagged with owner, environment and cost center.
+5. Enable audit logging and threat-detection services and route alerts to the on-call team.
+6. Review cost and access monthly and remove unused resources.
 
-Deliverables: infrastructure inventory; change record; health/capacity/cost evidence; operator runbook
+Deliverables: account structure; guardrail policies; provisioning code with tags; cost and access review
 
-Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
+Acceptance: Production is isolated from other environments No long-lived access keys for people Audit logging is on and centralized Budget alerts exist and resources carry owner tags
 
-Validation: Cloud operations and security review.
+Validation: Cloud owner and security review.
+
+- `aws iam list-users --query 'Users[].UserName'   # example; expect no routine human IAM users` expect: empty or only break-glass accounts
+- manual: list resources without an owner tag expect: none
+
+Failure modes:
+- Shared account for all environments | detect: Test and production resources together | respond: Split accounts
+- Unused resources keep billing | detect: Cost report shows idle resources | respond: Remove or schedule shutdown
+- Logging disabled | detect: No audit trail for a change | respond: Enable and centralize
+
+ILLUSTRATIVE: Production runs in its own account reached only by federated roles, audit logs flow to a security account, and a monthly review removes two idle databases.
 
 Gate: 12-140. Approval: none required
 

@@ -31,12 +31,12 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 115 | Containerization | complete | DevOps Engineer |
 | 116 | Container Orchestration | complete | Kubernetes Engineer |
 | 117 | Infrastructure as Code | complete | Infrastructure Engineer |
-| 118 | Configuration Management | stub | Platform Engineer |
+| 118 | Configuration Management | complete | Platform Engineer |
 | 119 | CD Pipeline | complete | DevOps Engineer |
 | 120 | Environment Provisioning | complete | Infrastructure Engineer |
-| 121 | Network Engineering | stub | Network Engineer |
+| 121 | Network Engineering | complete | Network Engineer |
 | 122 | Database Operations | stub | Database Administrator |
-| 123 | CDN & Edge Configuration | stub | Platform Engineer |
+| 123 | CDN & Edge Configuration | complete | Platform Engineer |
 | 124 | Deployment Automation | complete | Deployment Engineer |
 | 125 | Pipeline Security | complete | DevSecOps Engineer |
 
