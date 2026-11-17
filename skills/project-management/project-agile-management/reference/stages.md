@@ -282,20 +282,34 @@ Validation: Sponsor and stakeholder review.
 Gate: 04-043. Approval: none required
 
 ## 44
-**Change Management** (stub). Purpose: control scope, configuration or organizational change safely.
+**Change Management** (complete). Purpose: control changes to systems and processes so each one is assessed, approved by the right person, scheduled and reversible.
 
-Inputs: change request and baseline; impact analysis; approval and rollback constraints
+Entry criteria: A change process and approval roles are defined; A record of the systems and owners exists; A change calendar is available
+
+Inputs: change request; affected systems and owners; test and rollback evidence; change calendar
 
 Procedure:
-1. Classify change type, urgency, blast radius and reversibility.
-2. Assess schedule, cost, architecture, security, data, user and operational impacts.
-3. Update affected baselines, plans and traceability only after approval.
-4. Communicate decision and verify adoption or post-change outcome.
+1. Record each change with what, why, who, systems affected and the planned time.
+2. Classify by risk using the written criteria: standard (pre-approved), normal or emergency.
+3. Assess the impact, including dependencies, users affected, test results and the rollback plan.
+4. Route the request to the named human approver for its class; an agent prepares the pack but does not approve.
+5. Check the calendar for clashes, apply the change in the approved window and record the outcome.
+6. Review failed and emergency changes afterwards and feed the lessons back into the criteria.
 
-Deliverables: change request; impact assessment; approval record; updated baseline
+Deliverables: change record with risk class; impact assessment and rollback plan; approval record with a human name; outcome and review notes
 
-Acceptance: No unapproved baseline change is treated as accepted. Rollback and communication needs are considered. Impact owners have reviewed the change.
+Acceptance: Each change has a risk class and a rollback plan A named human approved normal and emergency changes No clash on the calendar Failed changes were reviewed
 
-Validation: Change authority approval.
+Validation: Named change approver; emergency changes reviewed afterwards.
+
+- manual: sample ten recent changes and check each has a risk class, rollback plan and approver name expect: all complete
+- manual: compare production changes seen in deploy logs with change records expect: every deployment has a record
+
+Failure modes:
+- Changes made without a record | detect: Deploy log entry has no change | respond: Raise it as an incident and record retrospectively
+- Approver is not a person | detect: Approval field names an agent | respond: Reject and obtain human approval
+- Rollback never tested | detect: Rollback plan has no evidence | respond: Test it before approval
+
+ILLUSTRATIVE: A database index change is classed as normal; the approver asks for the rollback script to be tested in staging, schedules it in the quiet window, and the outcome is recorded with the measured query time.
 
 Gate: 04-044. Approval: change-board (always)

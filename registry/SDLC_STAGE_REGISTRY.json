@@ -1227,36 +1227,7 @@
       "skills": [
         "project-agile-management"
       ],
-      "inputs": [
-        "change request and baseline",
-        "impact analysis",
-        "approval and rollback constraints"
-      ],
-      "outputs": [
-        "change-management-deliverable",
-        "change request",
-        "impact assessment"
-      ],
       "quality_gate": "04-044",
-      "validation_method": "Change authority approval.",
-      "purpose": "control scope, configuration or organizational change safely",
-      "execution_instructions": [
-        "Classify change type, urgency, blast radius and reversibility.",
-        "Assess schedule, cost, architecture, security, data, user and operational impacts.",
-        "Update affected baselines, plans and traceability only after approval.",
-        "Communicate decision and verify adoption or post-change outcome."
-      ],
-      "deliverable_artifacts": [
-        "change request",
-        "impact assessment",
-        "approval record",
-        "updated baseline"
-      ],
-      "quality_criteria": [
-        "No unapproved baseline change is treated as accepted.",
-        "Rollback and communication needs are considered.",
-        "Impact owners have reviewed the change."
-      ],
       "approval_required": true,
       "raci": {
         "accountable": "engineering-governance-specialist",
@@ -1281,36 +1252,7 @@
       "skills": [
         "engineering-governance"
       ],
-      "inputs": [
-        "repository ownership and team model",
-        "language/runtime and build manifests",
-        "security and contribution policy"
-      ],
-      "outputs": [
-        "repository-setup-deliverable",
-        "repository policy",
-        "setup instructions"
-      ],
       "quality_gate": "05-045",
-      "validation_method": "Repository owner and security review.",
-      "purpose": "establish a secure and reproducible engineering workspace",
-      "execution_instructions": [
-        "Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.",
-        "Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.",
-        "Keep credentials out of source; use approved secret storage and least-privilege access.",
-        "Add onboarding and contribution guidance, then validate from a clean checkout."
-      ],
-      "deliverable_artifacts": [
-        "repository policy",
-        "setup instructions",
-        "branch protection/check evidence",
-        "secret handling guide"
-      ],
-      "quality_criteria": [
-        "A clean contributor can reproduce setup.",
-        "Protected branches require review and checks.",
-        "No secret value is committed."
-      ],
       "raci": {
         "accountable": "platform-engineer",
         "responsible": [
@@ -1332,36 +1274,7 @@
       "skills": [
         "engineering-governance"
       ],
-      "inputs": [
-        "repository ownership and team model",
-        "language/runtime and build manifests",
-        "security and contribution policy"
-      ],
-      "outputs": [
-        "branching-strategy-deliverable",
-        "repository policy",
-        "setup instructions"
-      ],
       "quality_gate": "05-046",
-      "validation_method": "Repository owner and security review.",
-      "purpose": "establish a secure and reproducible engineering workspace",
-      "execution_instructions": [
-        "Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.",
-        "Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.",
-        "Keep credentials out of source; use approved secret storage and least-privilege access.",
-        "Add onboarding and contribution guidance, then validate from a clean checkout."
-      ],
-      "deliverable_artifacts": [
-        "repository policy",
-        "setup instructions",
-        "branch protection/check evidence",
-        "secret handling guide"
-      ],
-      "quality_criteria": [
-        "A clean contributor can reproduce setup.",
-        "Protected branches require review and checks.",
-        "No secret value is committed."
-      ],
       "raci": {
         "accountable": "engineering-governance-specialist",
         "responsible": [
@@ -1384,36 +1297,7 @@
       "skills": [
         "engineering-governance"
       ],
-      "inputs": [
-        "repository ownership and team model",
-        "language/runtime and build manifests",
-        "security and contribution policy"
-      ],
-      "outputs": [
-        "development-environment-deliverable",
-        "repository policy",
-        "setup instructions"
-      ],
       "quality_gate": "05-047",
-      "validation_method": "Repository owner and security review.",
-      "purpose": "establish a secure and reproducible engineering workspace",
-      "execution_instructions": [
-        "Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.",
-        "Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.",
-        "Keep credentials out of source; use approved secret storage and least-privilege access.",
-        "Add onboarding and contribution guidance, then validate from a clean checkout."
-      ],
-      "deliverable_artifacts": [
-        "repository policy",
-        "setup instructions",
-        "branch protection/check evidence",
-        "secret handling guide"
-      ],
-      "quality_criteria": [
-        "A clean contributor can reproduce setup.",
-        "Protected branches require review and checks.",
-        "No secret value is committed."
-      ],
       "raci": {
         "accountable": "platform-engineer",
         "responsible": [
@@ -1436,36 +1320,7 @@
       "skills": [
         "engineering-governance"
       ],
-      "inputs": [
-        "repository ownership and team model",
-        "language/runtime and build manifests",
-        "security and contribution policy"
-      ],
-      "outputs": [
-        "coding-standards-deliverable",
-        "repository policy",
-        "setup instructions"
-      ],
       "quality_gate": "05-048",
-      "validation_method": "Repository owner and security review.",
-      "purpose": "establish a secure and reproducible engineering workspace",
-      "execution_instructions": [
-        "Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.",
-        "Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.",
-        "Keep credentials out of source; use approved secret storage and least-privilege access.",
-        "Add onboarding and contribution guidance, then validate from a clean checkout."
-      ],
-      "deliverable_artifacts": [
-        "repository policy",
-        "setup instructions",
-        "branch protection/check evidence",
-        "secret handling guide"
-      ],
-      "quality_criteria": [
-        "A clean contributor can reproduce setup.",
-        "Protected branches require review and checks.",
-        "No secret value is committed."
-      ],
       "raci": {
         "accountable": "engineering-governance-specialist",
         "responsible": [
@@ -1615,36 +1470,7 @@
       "skills": [
         "engineering-governance"
       ],
-      "inputs": [
-        "repository ownership and team model",
-        "language/runtime and build manifests",
-        "security and contribution policy"
-      ],
-      "outputs": [
-        "engineering-governance-deliverable",
-        "repository policy",
-        "setup instructions"
-      ],
       "quality_gate": "05-052",
-      "validation_method": "Repository owner and security review.",
-      "purpose": "establish a secure and reproducible engineering workspace",
-      "execution_instructions": [
-        "Inspect repository state, ownership, package manifests, existing CI and local instructions before changes.",
-        "Define branch protection, review ownership, required checks, reproducible setup and supported toolchain.",
-        "Keep credentials out of source; use approved secret storage and least-privilege access.",
-        "Add onboarding and contribution guidance, then validate from a clean checkout."
-      ],
-      "deliverable_artifacts": [
-        "repository policy",
-        "setup instructions",
-        "branch protection/check evidence",
-        "secret handling guide"
-      ],
-      "quality_criteria": [
-        "A clean contributor can reproduce setup.",
-        "Protected branches require review and checks.",
-        "No secret value is committed."
-      ],
       "raci": {
         "accountable": "engineering-governance-specialist",
         "responsible": [
@@ -1763,36 +1589,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "platform targets and OS versions",
-        "design and API contracts",
-        "permissions, offline and store requirements"
-      ],
-      "outputs": [
-        "mobile-development-deliverable",
-        "mobile feature",
-        "permission/data handling notes"
-      ],
       "quality_gate": "06-056",
-      "validation_method": "Device testing and mobile release review.",
-      "purpose": "implement mobile behavior across device lifecycle and store constraints",
-      "execution_instructions": [
-        "Inspect app lifecycle, navigation, state, networking and platform-specific conventions.",
-        "Implement permission prompts, secure local storage, offline/retry behavior and background lifecycle handling.",
-        "Test device sizes, OS versions, connectivity transitions and accessibility.",
-        "Validate signing/build configuration and store policy constraints without exposing signing secrets."
-      ],
-      "deliverable_artifacts": [
-        "mobile feature",
-        "permission/data handling notes",
-        "device test matrix",
-        "build evidence"
-      ],
-      "quality_criteria": [
-        "App resumes and recovers from network/lifecycle changes.",
-        "Permissions are least-privilege and explained.",
-        "Supported OS/device matrix passes."
-      ],
       "raci": {
         "accountable": "mobile-engineer",
         "responsible": [],
@@ -1859,35 +1656,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "identity provider and protocol requirements",
-        "session/token lifecycle",
-        "threat model and user experience"
-      ],
-      "outputs": [
-        "authentication-development-deliverable",
-        "authentication flow design",
-        "secure configuration"
-      ],
       "quality_gate": "06-059",
-      "validation_method": "Independent security review.",
-      "purpose": "implement identity proof and credential lifecycle securely",
-      "execution_instructions": [
-        "Choose supported OIDC/OAuth/SAML flow based on client type and trust boundaries.",
-        "Validate issuer, audience, signature, expiry, nonce/state and redirect URI as applicable.",
-        "Protect refresh tokens, cookies, secrets and recovery flows; implement rotation and revocation.",
-        "Test replay, CSRF, redirect abuse, expiry and account recovery scenarios."
-      ],
-      "deliverable_artifacts": [
-        "authentication flow design",
-        "secure configuration",
-        "auth test evidence"
-      ],
-      "quality_criteria": [
-        "No credential is stored or logged insecurely.",
-        "Token/session validation is complete.",
-        "Recovery and revocation paths are tested."
-      ],
       "raci": {
         "accountable": "authentication-and-authorization-engineer",
         "responsible": [
@@ -1910,36 +1679,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "roles/attributes and resource ownership model",
-        "sensitive actions and data classification",
-        "policy and audit requirements"
-      ],
-      "outputs": [
-        "authorization-development-deliverable",
-        "authorization policy",
-        "permission matrix"
-      ],
       "quality_gate": "06-060",
-      "validation_method": "Security review and access-control test.",
-      "purpose": "enforce resource and action permissions at trusted boundaries",
-      "execution_instructions": [
-        "Define policy semantics for subject, action, resource and context.",
-        "Enforce authorization server-side at every relevant endpoint and background job.",
-        "Test horizontal/vertical privilege escalation, tenant isolation and default-deny behavior.",
-        "Emit auditable decision metadata without leaking sensitive data."
-      ],
-      "deliverable_artifacts": [
-        "authorization policy",
-        "permission matrix",
-        "negative security tests",
-        "audit event spec"
-      ],
-      "quality_criteria": [
-        "Unauthenticated and unauthorized paths deny by default.",
-        "Tenant/object ownership checks are enforced.",
-        "Negative tests cover privilege boundaries."
-      ],
       "raci": {
         "accountable": "authentication-and-authorization-engineer",
         "responsible": [
@@ -1962,36 +1702,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "partner API/contract and credentials via approved secret store",
-        "rate limits and service objectives",
-        "data mapping and privacy constraints"
-      ],
-      "outputs": [
-        "third-party-integration-deliverable",
-        "integration adapter",
-        "mapping specification"
-      ],
       "quality_gate": "06-061",
-      "validation_method": "Contract test and integration owner review.",
-      "purpose": "integrate an external system with explicit contract and failure isolation",
-      "execution_instructions": [
-        "Validate partner contract, authentication, version and sandbox availability.",
-        "Map external schemas to internal domain types with validation and provenance.",
-        "Implement timeouts, bounded retries, idempotency, circuit breaking and dead-letter/reconciliation where appropriate.",
-        "Test partner errors, throttling, duplicate delivery, schema drift and outage recovery."
-      ],
-      "deliverable_artifacts": [
-        "integration adapter",
-        "mapping specification",
-        "contract tests",
-        "operational runbook"
-      ],
-      "quality_criteria": [
-        "External failures are isolated and observable.",
-        "Retries cannot create unsafe duplicate effects.",
-        "Credentials and personal data are protected."
-      ],
       "raci": {
         "accountable": "integration-engineer",
         "responsible": [
@@ -2014,36 +1725,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "event/message contract",
-        "ordering and delivery guarantees",
-        "connection and scale profile"
-      ],
-      "outputs": [
-        "real-time-development-deliverable",
-        "event contract",
-        "stream implementation"
-      ],
       "quality_gate": "06-062",
-      "validation_method": "Load and failure-injection review.",
-      "purpose": "deliver ordered, recoverable real-time updates",
-      "execution_instructions": [
-        "Define event schema, partition/key strategy, ordering scope and delivery semantics.",
-        "Implement reconnect, replay, backpressure, deduplication and client state reconciliation.",
-        "Secure channels and authorize subscriptions at resource level.",
-        "Test burst load, dropped connections, duplicate/out-of-order events and consumer lag."
-      ],
-      "deliverable_artifacts": [
-        "event contract",
-        "stream implementation",
-        "recovery behavior",
-        "load/reconnect tests"
-      ],
-      "quality_criteria": [
-        "Ordering guarantee is explicit.",
-        "Clients recover without missing or duplicating state.",
-        "Backpressure and resource limits are enforced."
-      ],
       "raci": {
         "accountable": "backend-engineer",
         "responsible": [
@@ -2066,36 +1748,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "source contracts and data classification",
-        "target model and freshness objective",
-        "volume, quality and lineage expectations"
-      ],
-      "outputs": [
-        "data-engineering-deliverable",
-        "pipeline DAG",
-        "schema contract"
-      ],
       "quality_gate": "06-063",
-      "validation_method": "Data owner acceptance and pipeline replay test.",
-      "purpose": "build reproducible and governed data pipelines",
-      "execution_instructions": [
-        "Define ingestion mode, watermark, schema evolution and replay boundary.",
-        "Implement idempotent transforms, validation rules, quarantine and dead-letter handling.",
-        "Capture lineage, quality metrics, access controls and retention behavior.",
-        "Test late, duplicate, malformed and backfilled data at representative scale."
-      ],
-      "deliverable_artifacts": [
-        "pipeline DAG",
-        "schema contract",
-        "quality report",
-        "lineage and replay runbook"
-      ],
-      "quality_criteria": [
-        "Reprocessing is deterministic or explicitly reconciled.",
-        "Quality failures are visible and bounded.",
-        "Lineage and ownership are complete."
-      ],
       "raci": {
         "accountable": "data-engineer",
         "responsible": [],

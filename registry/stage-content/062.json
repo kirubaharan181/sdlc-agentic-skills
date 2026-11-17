@@ -1,0 +1,65 @@
+{
+  "stage_id": 62,
+  "purpose": "deliver updates to users as they happen, while keeping connections, ordering and load under control",
+  "entry_criteria": [
+    "The need for live updates is justified",
+    "Expected concurrent connections are estimated",
+    "A transport is chosen (WebSocket, server-sent events or similar)"
+  ],
+  "inputs": [
+    "use cases needing live updates",
+    "expected connection counts",
+    "message volume",
+    "authentication model"
+  ],
+  "procedure": [
+    "Confirm that live updates are needed; polling is simpler when delay of a few seconds is acceptable.",
+    "Authenticate each connection and authorize each channel or subscription on the server.",
+    "Design messages with identifiers and sequence numbers, so clients can detect gaps and request a resync.",
+    "Handle reconnection: backoff with jitter on the client, and resume from the last sequence number.",
+    "Limit per-connection message size and rate, and apply back pressure for slow clients.",
+    "Load test at the expected connection count, and monitor connections, latency and dropped messages."
+  ],
+  "deliverables": [
+    "real-time service",
+    "message format with sequence numbers",
+    "reconnect and resync logic",
+    "load test results"
+  ],
+  "acceptance_criteria": [
+    "Every subscription is authorized on the server",
+    "Clients can detect and repair gaps",
+    "Reconnection uses backoff with jitter",
+    "Load test reached the expected connection count"
+  ],
+  "validation_method": "Backend lead review.",
+  "validation": [
+    {
+      "check": "connect a client, kill the network for 30 seconds, restore it",
+      "expect": "client resumes without missing or duplicated messages"
+    },
+    {
+      "check": "subscribe to another user's channel with a valid token",
+      "expect": "refused"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Reconnect storm after an outage",
+      "detection": "Spike of connections",
+      "response": "Add jitter and limits"
+    },
+    {
+      "mode": "Missed messages",
+      "detection": "Client state differs",
+      "response": "Add sequence numbers and resync"
+    },
+    {
+      "mode": "Slow client holds memory",
+      "detection": "Server memory grows",
+      "response": "Add limits and drop slow consumers"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A live order-status feed numbers each message; after a dropped connection the client asks for everything after its last number, and a load test holds 20,000 connections with p95 delivery under 300 ms.",
+  "status": "complete"
+}

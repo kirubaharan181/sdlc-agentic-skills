@@ -1,0 +1,65 @@
+{
+  "stage_id": 61,
+  "purpose": "connect to an outside service in a way that keeps working when the service is slow, changes or fails",
+  "entry_criteria": [
+    "The integration need and the provider are chosen",
+    "The provider's documentation and terms are available",
+    "Credentials for a test environment exist"
+  ],
+  "inputs": [
+    "provider API documentation",
+    "terms and rate limits",
+    "data to be exchanged",
+    "test environment"
+  ],
+  "procedure": [
+    "Read the provider's terms, limits and data handling rules, and confirm the data you send is allowed.",
+    "Wrap the provider behind an interface of your own, so the rest of the system does not depend on its details.",
+    "Set timeouts, bounded retries with backoff, and a circuit breaker so failures do not spread.",
+    "Verify incoming webhooks by signature, and handle repeated or out-of-order messages.",
+    "Keep credentials in secrets storage, rotate them, and give them the least access offered.",
+    "Test against the provider's sandbox, simulate failures, and monitor errors and quota use."
+  ],
+  "deliverables": [
+    "integration module behind an interface",
+    "failure handling and tests",
+    "credential handling",
+    "monitoring of errors and quota"
+  ],
+  "acceptance_criteria": [
+    "The provider is behind an interface",
+    "Timeouts and retries are bounded",
+    "Webhooks are verified and idempotent",
+    "Quota and errors are monitored"
+  ],
+  "validation_method": "Integration architect review.",
+  "validation": [
+    {
+      "command": "pytest -q tests/integration/test_provider_failures.py   # example",
+      "expect": "timeout, error and repeated message cases pass"
+    },
+    {
+      "check": "send a webhook with a wrong signature to staging",
+      "expect": "rejected"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Provider outage stops the whole system",
+      "detection": "Requests pile up",
+      "response": "Add timeout and breaker"
+    },
+    {
+      "mode": "Duplicate webhook processed twice",
+      "detection": "Double effect",
+      "response": "Make handling idempotent"
+    },
+    {
+      "mode": "Quota exceeded",
+      "detection": "Provider blocks calls",
+      "response": "Throttle and alert before the limit"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A shipping-rate provider sits behind a small interface; calls time out at two seconds, retry twice with backoff, and fall back to a flat rate with a warning if the provider is down.",
+  "status": "complete"
+}

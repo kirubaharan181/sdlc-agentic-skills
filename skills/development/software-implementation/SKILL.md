@@ -27,14 +27,14 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 53 | Frontend Development | stub | Frontend Engineer |
 | 54 | Backend Development | complete | Backend Engineer |
 | 55 | Full Stack Development | complete | Full Stack Engineer |
-| 56 | Mobile Development | stub | Mobile Engineer |
+| 56 | Mobile Development | complete | Mobile Engineer |
 | 57 | API Development | complete | API Engineer |
 | 58 | Database Development | complete | Database Engineer |
-| 59 | Authentication Development | stub | Authentication and Authorization Engineer |
-| 60 | Authorization Development | stub | Authentication and Authorization Engineer |
-| 61 | Third-party Integration | stub | Integration Engineer |
-| 62 | Real-time Development | stub | Backend Engineer |
-| 63 | Data Engineering | stub | Data Engineer |
+| 59 | Authentication Development | complete | Authentication and Authorization Engineer |
+| 60 | Authorization Development | complete | Authentication and Authorization Engineer |
+| 61 | Third-party Integration | complete | Integration Engineer |
+| 62 | Real-time Development | complete | Backend Engineer |
+| 63 | Data Engineering | complete | Data Engineer |
 | 64 | AI/ML Development | stub | AI/ML Engineer |
 | 65 | Caching & Optimization | complete | Performance Engineer |
 | 66 | Error Handling | stub | Backend Engineer |

@@ -1,0 +1,65 @@
+{
+  "stage_id": 52,
+  "purpose": "set the lightweight rules, roles and records that let many teams build quickly while staying within policy",
+  "entry_criteria": [
+    "Engineering policies exist or are being written",
+    "Teams and their owners are known",
+    "A forum for decisions exists"
+  ],
+  "inputs": [
+    "policies and standards",
+    "team structure",
+    "audit and compliance needs",
+    "incident and review findings"
+  ],
+  "procedure": [
+    "List the few things that must be the same everywhere, such as access control, approvals, security checks and records, and leave the rest to teams.",
+    "Turn each rule into a check in the tools where possible, so compliance does not rely on memory.",
+    "Name an owner and a decision forum for each policy, and a way to request exceptions.",
+    "Record exceptions with reason, owner and expiry date.",
+    "Report compliance as measured results, such as the share of repositories meeting the checks.",
+    "Review rules regularly and retire those that no longer prevent a real problem."
+  ],
+  "deliverables": [
+    "policy list with owners",
+    "automated checks",
+    "exception register with expiry",
+    "compliance report"
+  ],
+  "acceptance_criteria": [
+    "Each policy has an owner and a forum",
+    "Rules are enforced by checks where possible",
+    "Exceptions have an expiry date",
+    "Compliance is reported from data"
+  ],
+  "validation_method": "Engineering leadership approval.",
+  "validation": [
+    {
+      "check": "list exceptions past their expiry date",
+      "expect": "none, or each has a renewal decision"
+    },
+    {
+      "check": "compare reported compliance with a direct sample of five repositories",
+      "expect": "numbers match"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Policies nobody checks",
+      "detection": "No evidence of compliance",
+      "response": "Automate the check"
+    },
+    {
+      "mode": "Exceptions never expire",
+      "detection": "Register grows",
+      "response": "Add expiry and review"
+    },
+    {
+      "mode": "Too many rules",
+      "detection": "Teams route around them",
+      "response": "Remove rules that prevent no real problem"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Four rules are enforced by automation across all repositories: protected main, required review, secret scanning and dependency alerts. Two repositories have exceptions that expire in 60 days.",
+  "status": "complete"
+}

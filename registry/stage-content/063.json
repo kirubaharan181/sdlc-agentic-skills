@@ -1,0 +1,65 @@
+{
+  "stage_id": 63,
+  "purpose": "build reliable pipelines that move and prepare data, so analysis and products can trust it",
+  "entry_criteria": [
+    "Sources, targets and ownership are identified",
+    "Data quality expectations exist",
+    "Data classification is known (stage 30)"
+  ],
+  "inputs": [
+    "source systems and schemas",
+    "target data model",
+    "quality and freshness requirements",
+    "privacy rules"
+  ],
+  "procedure": [
+    "Define each dataset's owner, schema, freshness target and quality rules before building.",
+    "Build pipelines to be rerunnable and idempotent, so a repeat run gives the same result.",
+    "Validate data at entry and at each stage: types, ranges, uniqueness and referential checks, with bad records set aside.",
+    "Apply privacy rules in the pipeline: masking, minimization and retention.",
+    "Record lineage and run metadata, and alert on failures, late data and volume anomalies.",
+    "Test with sample and edge-case data, including late and duplicate records, and document recovery steps."
+  ],
+  "deliverables": [
+    "pipeline code",
+    "data quality checks",
+    "lineage and run metadata",
+    "recovery runbook"
+  ],
+  "acceptance_criteria": [
+    "Rerunning does not duplicate data",
+    "Bad records are set aside and counted",
+    "Privacy rules are applied in the pipeline",
+    "Late, failed and anomalous runs raise alerts"
+  ],
+  "validation_method": "Data owner and data engineering lead review.",
+  "validation": [
+    {
+      "command": "python -m pipelines.run --date 2026-01-01 && python -m pipelines.run --date 2026-01-01 && python -m pipelines.check_counts   # example",
+      "expect": "row counts equal after the second run"
+    },
+    {
+      "check": "inject a record with an invalid value and a duplicate",
+      "expect": "the invalid one lands in the quarantine, the duplicate is dropped"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Rerun duplicates rows",
+      "detection": "Count doubles",
+      "response": "Use keys or replace the partition"
+    },
+    {
+      "mode": "Silent bad data",
+      "detection": "Nulls reach reports",
+      "response": "Add checks and quarantine"
+    },
+    {
+      "mode": "Late data missed",
+      "detection": "Daily numbers change afterwards",
+      "response": "Reprocess a window"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A daily orders pipeline replaces its date partition on every run, quarantines rows with negative quantities, masks email addresses before the warehouse load, and alerts when the volume falls 30 percent below the weekly norm.",
+  "status": "complete"
+}
