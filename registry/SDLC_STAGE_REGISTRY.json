@@ -52,36 +52,7 @@
       "skills": [
         "business-product-management"
       ],
-      "inputs": [
-        "client stakeholders and decision authority",
-        "statement of need and current commitments",
-        "communication constraints"
-      ],
-      "outputs": [
-        "client-engagement-deliverable",
-        "stakeholder map",
-        "engagement notes"
-      ],
       "quality_gate": "01-003",
-      "validation_method": "Client confirmation of decisions and review by the accountable engagement owner.",
-      "purpose": "establish an agreed client outcome and a controlled decision trail",
-      "execution_instructions": [
-        "Map sponsor, users, approvers and operational contacts; identify who can accept scope, cost and risk.",
-        "Run a structured discovery conversation and capture needs, constraints, success measures and unresolved questions.",
-        "Record commitments, decision owners, dates and changes in a client decision log; do not treat informal discussion as approval.",
-        "Confirm the agreed next action, accountable owner and acceptance route with the client."
-      ],
-      "deliverable_artifacts": [
-        "stakeholder map",
-        "engagement notes",
-        "decision and commitment log",
-        "confirmed action register"
-      ],
-      "quality_criteria": [
-        "Every commitment has an owner and due date.",
-        "Client acceptance and internal approval are distinguishable.",
-        "Conflicting expectations are recorded and escalated before scope is baselined."
-      ],
       "raci": {
         "accountable": "client-engagement-specialist",
         "responsible": [],
@@ -223,36 +194,7 @@
       "skills": [
         "business-product-management"
       ],
-      "inputs": [
-        "scope breakdown and assumptions",
-        "rates, capacity and supplier estimates",
-        "contingency policy"
-      ],
-      "outputs": [
-        "budget-estimation-deliverable",
-        "estimate workbook",
-        "assumption and exclusion log"
-      ],
       "quality_gate": "01-008",
-      "validation_method": "Finance review and independent arithmetic check.",
-      "purpose": "produce a transparent estimate and funding baseline",
-      "execution_instructions": [
-        "Break work into measurable cost drivers and separate one-time from recurring spend.",
-        "Estimate effort, infrastructure, licensing, vendor, migration and support costs using ranges.",
-        "Document confidence, exclusions, currency, tax treatment and contingency basis.",
-        "Reconcile the estimate against available funding and define variance thresholds."
-      ],
-      "deliverable_artifacts": [
-        "estimate workbook",
-        "assumption and exclusion log",
-        "funding request",
-        "cost baseline"
-      ],
-      "quality_criteria": [
-        "Totals recalculate from traceable line items.",
-        "Uncertainty and contingency are visible.",
-        "Estimate owner and approval authority are named."
-      ],
       "raci": {
         "accountable": "finops-specialist",
         "responsible": [
@@ -275,35 +217,7 @@
       "skills": [
         "business-product-management"
       ],
-      "inputs": [
-        "decision request and accountable sponsor",
-        "impact/risk assessment",
-        "supporting evidence and alternatives"
-      ],
-      "outputs": [
-        "project-approval-deliverable",
-        "decision record",
-        "evidence index"
-      ],
       "quality_gate": "01-009",
-      "validation_method": "Independent approval record and audit trail.",
-      "purpose": "prepare a controlled decision with sufficient evidence and independent authority",
-      "execution_instructions": [
-        "Check the decision request is complete, in scope and owned by an authorized requester.",
-        "Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.",
-        "Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.",
-        "Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver."
-      ],
-      "deliverable_artifacts": [
-        "decision record",
-        "evidence index",
-        "conditions and waiver log"
-      ],
-      "quality_criteria": [
-        "Decision authority is verified.",
-        "Conditions are measurable, owned and time-bound.",
-        "No missing or failed critical evidence is silently waived."
-      ],
       "approval_required": true,
       "raci": {
         "accountable": "product-manager",
@@ -327,35 +241,7 @@
       "skills": [
         "business-product-management"
       ],
-      "inputs": [
-        "contract version and counterparties",
-        "applicable policy/control obligations",
-        "legal/compliance owner"
-      ],
-      "outputs": [
-        "contract-compliance-deliverable",
-        "obligation matrix",
-        "contract exception log"
-      ],
       "quality_gate": "01-010",
-      "validation_method": "Legal and compliance owner sign-off.",
-      "purpose": "review contractual and regulatory obligations before commitment",
-      "execution_instructions": [
-        "Identify service, data, security, availability, audit, retention, subcontracting and exit obligations.",
-        "Map each obligation to an internal control owner and evidence source.",
-        "Flag ambiguous liability, data processing, IP, jurisdiction, renewal and termination terms.",
-        "Record legal review questions and do not provide legal approval outside delegated authority."
-      ],
-      "deliverable_artifacts": [
-        "obligation matrix",
-        "contract exception log",
-        "review decision"
-      ],
-      "quality_criteria": [
-        "Every material obligation has an owner and evidence path.",
-        "Exceptions have an authorized risk owner.",
-        "Unresolved legal interpretation is escalated."
-      ],
       "approval_required": true,
       "raci": {
         "accountable": "compliance-specialist",
@@ -381,35 +267,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "stakeholder map and interview plan",
-        "business goals and known constraints",
-        "elicitation sources"
-      ],
-      "outputs": [
-        "requirement-elicitation-deliverable",
-        "elicitation notes",
-        "stakeholder needs catalogue"
-      ],
       "quality_gate": "02-011",
-      "validation_method": "Stakeholder playback and confirmation.",
-      "purpose": "discover complete and testable stakeholder needs",
-      "execution_instructions": [
-        "Select interviews, workshops, observation or document analysis appropriate to each stakeholder.",
-        "Ask for goals, tasks, exceptions, pain points, constraints and examples of successful outcomes.",
-        "Resolve conflicting statements by recording source, authority and decision owner.",
-        "Convert findings into candidate requirements and confirm them with the source stakeholder."
-      ],
-      "deliverable_artifacts": [
-        "elicitation notes",
-        "stakeholder needs catalogue",
-        "open-question log"
-      ],
-      "quality_criteria": [
-        "Needs are attributed to a source and context.",
-        "Conflicts and assumptions remain visible.",
-        "Coverage includes exceptions and operational users."
-      ],
       "raci": {
         "accountable": "requirements-engineer",
         "responsible": [
@@ -432,35 +290,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "validated needs and decisions",
-        "document template and audience",
-        "source-of-truth repository"
-      ],
-      "outputs": [
-        "requirement-documentation-deliverable",
-        "versioned specification",
-        "traceability matrix"
-      ],
       "quality_gate": "02-012",
-      "validation_method": "Peer review by product, engineering and QA.",
-      "purpose": "create a navigable, versioned and traceable specification",
-      "execution_instructions": [
-        "Organize scope, actors, terminology, requirements, constraints, dependencies and exclusions.",
-        "Assign stable IDs and link each requirement to source, owner and downstream tests.",
-        "Document diagrams, examples, exceptions and unresolved decisions in the repository convention.",
-        "Review clarity, consistency, links, version and change history."
-      ],
-      "deliverable_artifacts": [
-        "versioned specification",
-        "traceability matrix",
-        "glossary and decision links"
-      ],
-      "quality_criteria": [
-        "No ambiguous pronouns or unbounded terms remain in normative requirements.",
-        "IDs are stable and traceable.",
-        "Links, diagrams and examples render."
-      ],
       "raci": {
         "accountable": "requirements-engineer",
         "responsible": [
@@ -505,35 +335,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "workload profile and business criticality",
-        "service objectives and compliance constraints",
-        "measurement and verification environment"
-      ],
-      "outputs": [
-        "non-functional-requirements-deliverable",
-        "quality attribute scenarios",
-        "measurable NFR matrix"
-      ],
       "quality_gate": "02-014",
-      "validation_method": "Review each NFR for measurable thresholds and verify test plans can produce the required evidence.",
-      "purpose": "quantify reliability, performance, security and operability expectations",
-      "execution_instructions": [
-        "Select relevant quality attributes such as latency, throughput, availability, recovery, scalability, privacy and accessibility.",
-        "Set thresholds with percentile, workload, duration, measurement point and acceptable error rate.",
-        "Define telemetry and test conditions needed to verify each target.",
-        "Resolve trade-offs among quality attributes and obtain product/operations owner acceptance."
-      ],
-      "deliverable_artifacts": [
-        "quality attribute scenarios",
-        "measurable NFR matrix",
-        "verification plan"
-      ],
-      "quality_criteria": [
-        "Every NFR has a threshold, workload condition and verification method.",
-        "Targets are measurable and tied to business criticality.",
-        "Trade-offs and owners are explicit."
-      ],
       "raci": {
         "accountable": "requirements-engineer",
         "responsible": [
@@ -557,36 +359,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "research question and participant criteria",
-        "consent/privacy plan",
-        "interview or usability protocol"
-      ],
-      "outputs": [
-        "user-research-deliverable",
-        "research protocol",
-        "consented notes"
-      ],
       "quality_gate": "02-015",
-      "validation_method": "Research peer review and stakeholder playback.",
-      "purpose": "collect ethical and representative evidence about user behavior",
-      "execution_instructions": [
-        "Recruit participants against explicit inclusion criteria and record sampling limitations.",
-        "Obtain consent; avoid collecting unnecessary personal or sensitive data.",
-        "Run neutral interviews or observations with consistent prompts and session notes.",
-        "Code findings into themes, counterexamples and confidence levels; distinguish participant statements from researcher inference."
-      ],
-      "deliverable_artifacts": [
-        "research protocol",
-        "consented notes",
-        "coded themes",
-        "insight report"
-      ],
-      "quality_criteria": [
-        "Research question maps to evidence.",
-        "Sampling bias and limitations are disclosed.",
-        "Recommendations do not overgeneralize beyond the sample."
-      ],
       "raci": {
         "accountable": "ux-researcher",
         "responsible": [],
@@ -678,35 +451,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "approved wireframes and design tokens",
-        "brand and component standards",
-        "accessibility requirements"
-      ],
-      "outputs": [
-        "ui-design-deliverable",
-        "high-fidelity screens",
-        "component specifications"
-      ],
       "quality_gate": "02-018",
-      "validation_method": "Design-system review and accessibility check.",
-      "purpose": "define a consistent and accessible visual interface",
-      "execution_instructions": [
-        "Apply typography, color, spacing, hierarchy and component states using the design system.",
-        "Specify responsive behavior, focus/hover/disabled/error states and asset usage.",
-        "Check color contrast, text scaling and semantic component intent.",
-        "Document deviations and reusable component decisions."
-      ],
-      "deliverable_artifacts": [
-        "high-fidelity screens",
-        "component specifications",
-        "design token usage"
-      ],
-      "quality_criteria": [
-        "Visual states and responsive breakpoints are specified.",
-        "Contrast and text scaling meet agreed standards.",
-        "Components reuse approved tokens or record justified exceptions."
-      ],
       "raci": {
         "accountable": "ui-ux-designer",
         "responsible": [],
@@ -727,35 +472,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "user goals and journey evidence",
-        "wireframes and interaction constraints",
-        "usability criteria"
-      ],
-      "outputs": [
-        "ux-design-deliverable",
-        "interaction specification",
-        "task flow"
-      ],
       "quality_gate": "02-019",
-      "validation_method": "Moderated usability review.",
-      "purpose": "optimize task completion, comprehension and error recovery",
-      "execution_instructions": [
-        "Design navigation, information scent, feedback, affordances and error recovery around user tasks.",
-        "Cover first-use, repeat-use, empty, loading, failure and recovery states.",
-        "Prototype critical paths and observe representative users.",
-        "Revise based on task success, time, error and qualitative feedback."
-      ],
-      "deliverable_artifacts": [
-        "interaction specification",
-        "task flow",
-        "usability findings"
-      ],
-      "quality_criteria": [
-        "Critical tasks have clear entry, progress and recovery.",
-        "Usability issues are prioritized by impact.",
-        "Design changes are linked to research evidence."
-      ],
       "raci": {
         "accountable": "ui-ux-designer",
         "responsible": [
@@ -777,36 +494,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "hypothesis and target user task",
-        "prototype fidelity decision",
-        "success and failure thresholds"
-      ],
-      "outputs": [
-        "prototype-development-deliverable",
-        "prototype artifact",
-        "experiment protocol"
-      ],
       "quality_gate": "02-020",
-      "validation_method": "Product/design decision review.",
-      "purpose": "validate a risky interaction or concept before production implementation",
-      "execution_instructions": [
-        "Choose fidelity that answers the question without implying production readiness.",
-        "Build only the critical path and realistic states needed for the experiment.",
-        "Run task-based sessions and capture observations, failures and time-on-task.",
-        "Decide iterate, validate further or discard; label simulated behavior and data."
-      ],
-      "deliverable_artifacts": [
-        "prototype artifact",
-        "experiment protocol",
-        "test observations",
-        "decision log"
-      ],
-      "quality_criteria": [
-        "Prototype limitations are explicit.",
-        "Success criteria are measured.",
-        "No prototype-only behavior is represented as production capability."
-      ],
       "raci": {
         "accountable": "ui-ux-designer",
         "responsible": [
@@ -829,35 +517,7 @@
       "skills": [
         "requirements-design"
       ],
-      "inputs": [
-        "target standard and conformance level",
-        "supported browsers/devices and assistive tech",
-        "critical user journeys"
-      ],
-      "outputs": [
-        "accessibility-review-deliverable",
-        "accessibility audit",
-        "manual test evidence"
-      ],
       "quality_gate": "02-021",
-      "validation_method": "Independent accessibility specialist review.",
-      "purpose": "verify inclusive access against applicable WCAG criteria",
-      "execution_instructions": [
-        "Inspect semantic structure, accessible names, headings, landmarks, labels and error associations.",
-        "Test keyboard-only operation, focus order/visibility, dialogs and escape behavior.",
-        "Check contrast, zoom/reflow, reduced motion and screen-reader announcements.",
-        "Combine automated scans with manual assistive-technology testing; log criterion-level failures."
-      ],
-      "deliverable_artifacts": [
-        "accessibility audit",
-        "manual test evidence",
-        "defect and remediation list"
-      ],
-      "quality_criteria": [
-        "Automated scans are not treated as full conformance proof.",
-        "Critical journeys work without pointer input.",
-        "Findings cite criterion, impact and reproduction."
-      ],
       "raci": {
         "accountable": "accessibility-testing-specialist",
         "responsible": [

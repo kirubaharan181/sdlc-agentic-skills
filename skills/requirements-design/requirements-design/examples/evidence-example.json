@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "requirements-design",
-  "stage_id": 13,
-  "stage_name": "Functional Requirements",
+  "stage_id": 11,
+  "stage_name": "Requirement Elicitation",
   "commit_sha": "<commit under review>",
   "executor": "<Requirements Engineer or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Stakeholder review and product owner approval of the baseline.",
+    "method": "Product owner review.",
     "command": "<command or review technique actually used>",
     "expected": "<expected result>",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "requirements list with ids and sources",
-      "path": "<path or immutable URL of requirements list with ids and sources>"
+      "name": "stakeholder map",
+      "path": "<path or immutable URL of stakeholder map>"
     },
     {
-      "name": "acceptance criteria",
-      "path": "<path or immutable URL of acceptance criteria>"
+      "name": "interview and workshop notes",
+      "path": "<path or immutable URL of interview and workshop notes>"
     },
     {
-      "name": "traceability to objectives",
-      "path": "<path or immutable URL of traceability to objectives>"
+      "name": "confirmed need statements with sources",
+      "path": "<path or immutable URL of confirmed need statements with sources>"
     }
   ],
   "limitations": [

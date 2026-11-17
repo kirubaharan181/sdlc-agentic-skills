@@ -1,0 +1,65 @@
+{
+  "stage_id": 3,
+  "purpose": "build a working relationship with a client in which expectations, responsibilities and communication are agreed in writing",
+  "entry_criteria": [
+    "A client or client sponsor is identified",
+    "The team's service scope is known",
+    "A named contact exists on each side"
+  ],
+  "inputs": [
+    "client background and goals",
+    "service scope",
+    "contacts and decision makers",
+    "past engagement notes"
+  ],
+  "procedure": [
+    "Meet the client sponsor and record the business goals, success measures and constraints in the client's own words.",
+    "Agree who decides what on each side, how often the teams talk, and which channel is used for what.",
+    "Write down the scope, what is not included, and how changes to scope are raised and priced.",
+    "Agree how issues are escalated and the response times each side expects.",
+    "Share a one-page engagement summary and ask the client to confirm it in writing.",
+    "Hold a short review at an agreed interval and record satisfaction and open concerns."
+  ],
+  "deliverables": [
+    "engagement summary signed off by the client",
+    "contact and decision-maker list",
+    "change and escalation procedure",
+    "review notes"
+  ],
+  "acceptance_criteria": [
+    "Goals and measures are in the client's words",
+    "Decision makers are named on both sides",
+    "Change and escalation paths are written",
+    "The client confirmed the summary"
+  ],
+  "validation_method": "Client sponsor confirmation.",
+  "validation": [
+    {
+      "check": "check the engagement summary has a dated written confirmation from the client",
+      "expect": "confirmation present"
+    },
+    {
+      "check": "check each contact has a named backup",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Verbal agreements only",
+      "detection": "Dispute about scope",
+      "response": "Write and confirm them"
+    },
+    {
+      "mode": "Wrong decision maker",
+      "detection": "Decisions reversed later",
+      "response": "Confirm authority in writing"
+    },
+    {
+      "mode": "No review cadence",
+      "detection": "Concerns found late",
+      "response": "Schedule the reviews"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A new client's sponsor confirms in writing three goals, a weekly status call and a change request route; a review at week six records one concern about report timing.",
+  "status": "complete"
+}

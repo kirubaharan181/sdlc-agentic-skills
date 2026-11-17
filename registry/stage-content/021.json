@@ -1,0 +1,65 @@
+{
+  "stage_id": 21,
+  "purpose": "check that people with disabilities can use the product, by testing against standards and with assistive technology",
+  "entry_criteria": [
+    "Screens or a working build exist",
+    "The target standard and level are chosen",
+    "Assistive technology is available for testing"
+  ],
+  "inputs": [
+    "designs or build",
+    "accessibility standard and target level",
+    "assistive technologies in scope",
+    "known issues"
+  ],
+  "procedure": [
+    "Run automated checks first to catch the easy failures, and fix them.",
+    "Test keyboard use: every function reachable, visible focus, logical order and no traps.",
+    "Test with a screen reader on the main tasks, checking names, roles, labels and announcements.",
+    "Check contrast, text resizing, zoom, motion and use of colour as the only signal.",
+    "Record each issue with the standard criterion, severity, location and the fix.",
+    "Retest fixes and report the remaining issues with owners and dates."
+  ],
+  "deliverables": [
+    "test report by criterion",
+    "issue list with severity",
+    "retest results",
+    "remaining issues with owners"
+  ],
+  "acceptance_criteria": [
+    "Automated and manual checks both ran",
+    "Main tasks work with keyboard and screen reader",
+    "Each issue cites a criterion and severity",
+    "Remaining issues have owners and dates"
+  ],
+  "validation_method": "Accessibility specialist sign-off.",
+  "validation": [
+    {
+      "command": "npx pa11y http://localhost:3000   # example; use the project's checker and URL",
+      "expect": "no errors reported on tested pages"
+    },
+    {
+      "check": "complete the main task using only the keyboard and again with a screen reader",
+      "expect": "task completed without help"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Automated pass treated as compliance",
+      "detection": "Manual problems remain",
+      "response": "Do the manual tests"
+    },
+    {
+      "mode": "Focus not visible",
+      "detection": "Keyboard users lose position",
+      "response": "Add a visible focus style"
+    },
+    {
+      "mode": "Fixes untested",
+      "detection": "Issues reopened",
+      "response": "Retest every fix"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Automated checks find missing form labels; a keyboard test finds a modal that traps focus; a screen reader test finds an unlabeled icon button. All three are logged with criteria and fixed, then retested.",
+  "status": "complete"
+}

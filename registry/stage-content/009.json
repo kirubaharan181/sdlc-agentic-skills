@@ -1,0 +1,65 @@
+{
+  "stage_id": 9,
+  "purpose": "decide, with the right people and on stated evidence, whether a project may proceed and with what funding and conditions",
+  "entry_criteria": [
+    "A business case, plan and estimate exist",
+    "The approving person or board is named",
+    "Risks and dependencies are listed"
+  ],
+  "inputs": [
+    "business case",
+    "plan and estimate",
+    "risk list",
+    "strategy fit assessment"
+  ],
+  "procedure": [
+    "Check the submission is complete: goals, measures, costs, risks, dependencies and the plan.",
+    "Review it against the approval criteria written in the approval policy, scoring each criterion with evidence.",
+    "List conditions and the questions that must be answered before funding, and track them to closure.",
+    "Take the decision from the named approver, and record approve, approve with conditions, defer or reject, with the reason.",
+    "Release funding and the team in stages tied to checkpoints, not all at once.",
+    "Tell all affected teams the decision and conditions, and set the date for the first checkpoint."
+  ],
+  "deliverables": [
+    "completeness check",
+    "criteria scoring with evidence",
+    "decision record with conditions",
+    "staged funding plan"
+  ],
+  "acceptance_criteria": [
+    "Approver is a named human",
+    "Decision and reason are recorded",
+    "Conditions have owners and dates",
+    "Funding is tied to checkpoints"
+  ],
+  "validation_method": "Named business sponsor decision; an agent only prepares the pack.",
+  "validation": [
+    {
+      "check": "confirm the decision record names the human approver and the date",
+      "expect": "present"
+    },
+    {
+      "check": "check each condition has an owner and a due date",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Approval without evidence",
+      "detection": "Criteria not scored",
+      "response": "Return for scoring"
+    },
+    {
+      "mode": "Conditions forgotten",
+      "detection": "Funding released with open items",
+      "response": "Track and gate funding on them"
+    },
+    {
+      "mode": "Agent treated as approver",
+      "detection": "Decision has no human name",
+      "response": "Reject the record and obtain approval"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A proposal for a payments rebuild is approved with two conditions, a security review and a vendor price confirmation; funding is released for the first phase only, with a checkpoint in eight weeks.",
+  "status": "complete"
+}

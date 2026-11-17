@@ -1,0 +1,65 @@
+{
+  "stage_id": 8,
+  "purpose": "estimate cost and effort honestly, with ranges and stated assumptions, so budget decisions are made on realistic numbers",
+  "entry_criteria": [
+    "Scope or requirements exist at some level",
+    "Rate and cost information is available",
+    "Past delivery data exists or is being gathered"
+  ],
+  "inputs": [
+    "scope and requirements",
+    "past project actuals",
+    "rates and infrastructure prices",
+    "risk list"
+  ],
+  "procedure": [
+    "Break the work into parts small enough to estimate, and list what is excluded.",
+    "Estimate each part as a range (best, likely, worst) using past actuals where possible, and note the assumptions.",
+    "Add running costs, not only build costs: hosting, licences, support and the team time to operate.",
+    "Add a contingency tied to the largest risks, not a flat guess, and show it separately.",
+    "Compare the total with the available budget and show what could be cut or deferred to fit.",
+    "Re-estimate at agreed checkpoints and report the variance from the first estimate."
+  ],
+  "deliverables": [
+    "estimate with ranges and assumptions",
+    "running cost forecast",
+    "contingency with reasons",
+    "variance reports"
+  ],
+  "acceptance_criteria": [
+    "Every estimate is a range with stated assumptions",
+    "Running cost is included",
+    "Contingency is linked to named risks",
+    "Variance is reported at checkpoints"
+  ],
+  "validation_method": "FinOps review of the cost model.",
+  "validation": [
+    {
+      "check": "recompute the totals from the line items in a second spreadsheet or script",
+      "expect": "totals match"
+    },
+    {
+      "check": "check each assumption maps to a line in the risk list or is marked accepted",
+      "expect": "none orphaned"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "One-number estimate",
+      "detection": "No range shown",
+      "response": "Add best, likely and worst"
+    },
+    {
+      "mode": "Run cost omitted",
+      "detection": "Budget exceeded in year one",
+      "response": "Add operating cost"
+    },
+    {
+      "mode": "Contingency padded",
+      "detection": "Flat percentage with no reason",
+      "response": "Tie it to risks"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A reporting feature is estimated at 40 to 70 person-days with hosting of 300 per month; the contingency of 10 days is tied to the unknown data quality, and the budget fits only if one export format is deferred.",
+  "status": "complete"
+}

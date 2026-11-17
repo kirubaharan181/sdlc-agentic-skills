@@ -1,0 +1,65 @@
+{
+  "stage_id": 20,
+  "purpose": "build a testable model of an idea quickly and cheaply, to learn before the real build",
+  "entry_criteria": [
+    "A question to answer is defined",
+    "Flows or screens to test exist",
+    "Test participants are available"
+  ],
+  "inputs": [
+    "design flows",
+    "the question the prototype must answer",
+    "test participants",
+    "design system"
+  ],
+  "procedure": [
+    "State the question the prototype is meant to answer and the tasks users will do.",
+    "Choose the lowest fidelity that can answer it: paper, clickable screens or a coded spike.",
+    "Build only the paths needed for the tasks, with realistic content, not placeholders.",
+    "Test with real users, observe where they hesitate or fail, and record it.",
+    "Decide what to change, drop or build, and note what the prototype could not tell you.",
+    "Label the prototype as throwaway unless it has been reviewed for production."
+  ],
+  "deliverables": [
+    "prototype",
+    "test script and tasks",
+    "observations and decisions",
+    "list of what was not tested"
+  ],
+  "acceptance_criteria": [
+    "The prototype answers a stated question",
+    "Realistic content was used",
+    "Findings drive decisions",
+    "Production use needs a separate review"
+  ],
+  "validation_method": "Design lead review.",
+  "validation": [
+    {
+      "check": "check the prototype test report names the question and the decision it supports",
+      "expect": "present"
+    },
+    {
+      "check": "confirm the prototype is labelled throwaway or reviewed for production",
+      "expect": "labelled"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Prototype becomes production by accident",
+      "detection": "No review",
+      "response": "Label and review before reuse"
+    },
+    {
+      "mode": "Too high fidelity",
+      "detection": "Weeks spent polishing",
+      "response": "Use lower fidelity"
+    },
+    {
+      "mode": "No question defined",
+      "detection": "Findings not actionable",
+      "response": "State the question first"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A clickable prototype of a new onboarding flow is tested with six users in two days; four stall at identity verification, so the team redesigns that step before any code is written.",
+  "status": "complete"
+}

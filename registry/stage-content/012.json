@@ -1,0 +1,65 @@
+{
+  "stage_id": 12,
+  "purpose": "write requirements so that each is clear, testable and traceable to a need, and the whole set can be reviewed and changed",
+  "entry_criteria": [
+    "Confirmed needs exist (stage 11)",
+    "A template and identifier scheme exist",
+    "A reviewer is available"
+  ],
+  "inputs": [
+    "confirmed need statements",
+    "business rules",
+    "existing requirements",
+    "glossary"
+  ],
+  "procedure": [
+    "Give every requirement a unique identifier, a single statement, a priority and the need it traces to.",
+    "Write in testable form: avoid vague words, state the condition, the actor and the measurable result.",
+    "Define terms in a glossary and use them the same way throughout.",
+    "Add acceptance criteria to each requirement as examples that a tester can run.",
+    "Review for duplicates, conflicts, gaps and untestable statements, and fix or log each finding.",
+    "Baseline the set and manage changes through a recorded request with impact."
+  ],
+  "deliverables": [
+    "requirements document with identifiers",
+    "glossary",
+    "traceability from need to requirement",
+    "review findings"
+  ],
+  "acceptance_criteria": [
+    "Each requirement is unique, testable and traced",
+    "Terms are defined once",
+    "Conflicts and gaps are logged",
+    "Changes follow a recorded process"
+  ],
+  "validation_method": "Requirements review sign-off.",
+  "validation": [
+    {
+      "check": "check every requirement id has a source need and at least one acceptance example",
+      "expect": "none missing"
+    },
+    {
+      "command": "grep -rniE 'fast|user-friendly|easy|robust' docs/requirements | head",
+      "expect": "no unmeasured vague words remain"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Vague wording",
+      "detection": "Tester cannot judge pass or fail",
+      "response": "Add a measure"
+    },
+    {
+      "mode": "Orphan requirement",
+      "detection": "No source need",
+      "response": "Trace it or remove it"
+    },
+    {
+      "mode": "Conflicting statements",
+      "detection": "Two requirements contradict",
+      "response": "Resolve with the owner"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The statement 'the report should be fast' becomes 'the report for up to 10,000 rows is shown within 3 seconds at the 95th percentile', traced to the support team's need and given a test example.",
+  "status": "complete"
+}

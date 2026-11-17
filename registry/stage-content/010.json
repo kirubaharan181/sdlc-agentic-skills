@@ -1,0 +1,65 @@
+{
+  "stage_id": 10,
+  "purpose": "make sure contracts and legal and regulatory obligations are understood, assigned and checked before work begins and during it",
+  "entry_criteria": [
+    "A contract or obligation applies to the work",
+    "Legal or compliance contact is known",
+    "The work scope is defined"
+  ],
+  "inputs": [
+    "contracts and statements of work",
+    "applicable regulations and policies",
+    "data and security obligations",
+    "scope of work"
+  ],
+  "procedure": [
+    "List each obligation from the contract and regulations in plain terms: what, who, by when and how it is evidenced.",
+    "Map every obligation to an owner and a delivery stage, and flag any obligation the team cannot meet.",
+    "Check the work plan against restrictions such as data location, subcontractors, licences and reporting duties.",
+    "Raise conflicts and gaps with legal before work starts, and record the answers.",
+    "Collect evidence of compliance as the work proceeds, and keep it where audit can find it.",
+    "Review obligations at each major change and at contract milestones."
+  ],
+  "deliverables": [
+    "obligations register",
+    "conflict and gap log",
+    "evidence file",
+    "review records"
+  ],
+  "acceptance_criteria": [
+    "Each obligation has an owner and evidence",
+    "Unmeetable obligations were raised with legal",
+    "Restrictions are checked against the plan",
+    "Evidence is retrievable"
+  ],
+  "validation_method": "Legal or compliance approval.",
+  "validation": [
+    {
+      "check": "sample five obligations and trace each to an owner and evidence item",
+      "expect": "all traced"
+    },
+    {
+      "check": "check the register lists every contract in scope",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Obligation without owner",
+      "detection": "Register row empty",
+      "response": "Assign before work starts"
+    },
+    {
+      "mode": "Data location breached",
+      "detection": "Plan uses a region the contract forbids",
+      "response": "Change the plan or seek approval"
+    },
+    {
+      "mode": "Evidence not kept",
+      "detection": "Audit cannot confirm compliance",
+      "response": "Collect during the work"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A client contract requires data to stay in one country and 24-hour breach notice. The register assigns owners to both, and a plan using an overseas log service is changed before work begins.",
+  "status": "complete"
+}

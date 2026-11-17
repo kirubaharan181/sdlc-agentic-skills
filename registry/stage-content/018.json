@@ -1,0 +1,65 @@
+{
+  "stage_id": 18,
+  "purpose": "design the visible interface so people can recognize, read and operate it correctly, consistently across the product",
+  "entry_criteria": [
+    "Requirements and flows exist",
+    "A design system or style foundation exists or is planned",
+    "Brand constraints are known"
+  ],
+  "inputs": [
+    "user flows and wireframes",
+    "design system or tokens",
+    "brand guidelines",
+    "accessibility requirements"
+  ],
+  "procedure": [
+    "Use the design system components and tokens first, and add new ones only when no existing one fits.",
+    "Set layout, spacing and hierarchy so the main action on each screen is clear.",
+    "Design every state: empty, loading, error, success and disabled, not only the filled state.",
+    "Check text size, contrast and touch target size against the accessibility requirements.",
+    "Check the designs at the supported screen sizes and with long and translated text.",
+    "Hand over specifications and assets with named components, so engineers do not redraw them."
+  ],
+  "deliverables": [
+    "screen designs with all states",
+    "new component specifications",
+    "handover assets",
+    "contrast and size check"
+  ],
+  "acceptance_criteria": [
+    "All states are designed",
+    "Components come from the design system or are specified",
+    "Contrast and size meet requirements",
+    "Designs hold at supported sizes and long text"
+  ],
+  "validation_method": "Design lead review and accessibility check.",
+  "validation": [
+    {
+      "check": "check each screen has empty, loading, error and success states",
+      "expect": "all present"
+    },
+    {
+      "check": "measure text contrast of the main text and controls against the required ratio",
+      "expect": "all meet"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Only the happy state designed",
+      "detection": "Engineers invent error screens",
+      "response": "Add all states"
+    },
+    {
+      "mode": "New component for every screen",
+      "detection": "System bloats",
+      "response": "Reuse or extend"
+    },
+    {
+      "mode": "Low contrast text",
+      "detection": "Check fails",
+      "response": "Adjust tokens"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A settings screen uses the standard form components, adds an inline error state and a disabled save button, and the grey helper text is darkened to meet the contrast ratio.",
+  "status": "complete"
+}

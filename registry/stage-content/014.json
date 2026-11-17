@@ -1,0 +1,65 @@
+{
+  "stage_id": 14,
+  "purpose": "state how well the system must perform, protect and operate, in measurable terms that design and test can use",
+  "entry_criteria": [
+    "Functional scope is known",
+    "Business and operating context is known",
+    "Regulatory constraints are listed"
+  ],
+  "inputs": [
+    "functional requirements",
+    "usage forecasts",
+    "regulatory and security obligations",
+    "operating model"
+  ],
+  "procedure": [
+    "Cover the main quality areas: performance, availability, security, privacy, usability, maintainability, portability and recoverability.",
+    "For each area write a measurable target with the conditions, such as load, data size and time window.",
+    "Base the targets on usage forecasts and obligations, and mark each as required or desirable.",
+    "Check for conflicts between targets and with cost, and agree the trade-offs with the sponsor.",
+    "Say how each will be verified: load test, failover test, audit or review.",
+    "Feed the targets to architecture, test planning and monitoring."
+  ],
+  "deliverables": [
+    "quality requirements with targets",
+    "verification method per target",
+    "trade-off decisions",
+    "links to test and monitoring plans"
+  ],
+  "acceptance_criteria": [
+    "Each target is measurable with its conditions",
+    "Each has a verification method",
+    "Conflicts and trade-offs are decided",
+    "Targets reach the test and monitoring plans"
+  ],
+  "validation_method": "Architect and product owner agreement.",
+  "validation": [
+    {
+      "check": "check each non-functional requirement has a number, a condition and a verification method",
+      "expect": "none missing"
+    },
+    {
+      "check": "check each target appears in the test or monitoring plan",
+      "expect": "all appear"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Targets without numbers",
+      "detection": "Words like robust",
+      "response": "Replace with measures"
+    },
+    {
+      "mode": "Impossible combination",
+      "detection": "Availability target needs more cost than budget",
+      "response": "Agree trade-off"
+    },
+    {
+      "mode": "Targets never tested",
+      "detection": "No verification plan",
+      "response": "Add tests or monitoring"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Availability of 99.9 percent per month for checkout, recovery within 30 minutes and p95 under 400 ms at 200 requests per second are agreed, each tied to a load or failover test.",
+  "status": "complete"
+}

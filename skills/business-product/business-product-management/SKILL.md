@@ -26,14 +26,14 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 |---|---|---|---|
 | 1 | Business Strategy | complete | Business Strategist |
 | 2 | Market Research | complete | Market Research Analyst |
-| 3 | Client Engagement | stub | Client Engagement Specialist |
+| 3 | Client Engagement | complete | Client Engagement Specialist |
 | 4 | Product Discovery | complete | Product Manager |
 | 5 | Business Analysis | stub | Business Analyst |
 | 6 | Product Planning | complete | Product Manager |
 | 7 | Feasibility Analysis | complete | Solution Architect |
-| 8 | Budget & Estimation | stub | FinOps Specialist |
-| 9 | Project Approval | stub | Product Manager |
-| 10 | Contract & Compliance | stub | Compliance Specialist |
+| 8 | Budget & Estimation | complete | FinOps Specialist |
+| 9 | Project Approval | complete | Product Manager |
+| 10 | Contract & Compliance | complete | Compliance Specialist |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 
