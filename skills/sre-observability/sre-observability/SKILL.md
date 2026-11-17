@@ -26,13 +26,13 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 |---|---|---|---|
 | 153 | Application Monitoring | stub | Observability Engineer |
 | 154 | Infrastructure Monitoring | stub | Observability Engineer |
-| 155 | Centralized Logging | stub | Observability Engineer |
-| 156 | Metrics Monitoring | stub | Observability Engineer |
-| 157 | Distributed Tracing | stub | Observability Engineer |
+| 155 | Centralized Logging | complete | Observability Engineer |
+| 156 | Metrics Monitoring | complete | Observability Engineer |
+| 157 | Distributed Tracing | complete | Observability Engineer |
 | 158 | Alert Management | complete | SRE |
 | 159 | Uptime Monitoring | stub | Observability Engineer |
 | 160 | SLA/SLO Management | complete | SRE |
-| 161 | Capacity Planning | stub | SRE |
+| 161 | Capacity Planning | complete | SRE |
 | 162 | Incident Detection | complete | Incident Manager |
 | 163 | Incident Response | complete | Incident Manager |
 | 164 | Root Cause Analysis | complete | SRE |

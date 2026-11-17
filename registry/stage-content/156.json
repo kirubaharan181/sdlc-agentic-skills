@@ -1,0 +1,65 @@
+{
+  "stage_id": 156,
+  "purpose": "turn system behavior into numbers over time so trends, saturation and failure are visible before users complain",
+  "entry_criteria": [
+    "Services can expose metrics",
+    "A metrics platform exists",
+    "Service level objectives are known or being defined"
+  ],
+  "inputs": [
+    "services and their key operations",
+    "metrics platform",
+    "SLOs and capacity concerns",
+    "dashboards in use"
+  ],
+  "procedure": [
+    "Instrument each service for the four golden signals: latency, traffic, errors and saturation.",
+    "Use consistent names and labels, and avoid labels with unbounded values such as user ids.",
+    "Collect infrastructure metrics (CPU, memory, disk, network) and dependency metrics (database, queues).",
+    "Build one overview dashboard per service answering 'is it healthy?' and drill-down dashboards for diagnosis.",
+    "Record business metrics for key flows so failures that technical metrics miss are visible.",
+    "Review dashboards after incidents and add the signals that would have helped."
+  ],
+  "deliverables": [
+    "instrumentation",
+    "dashboards per service",
+    "metric naming standard",
+    "post-incident improvements"
+  ],
+  "acceptance_criteria": [
+    "Each service exposes the four golden signals",
+    "Labels have bounded values",
+    "An overview dashboard shows health at a glance",
+    "Business-flow metrics exist for critical journeys"
+  ],
+  "validation_method": "Observability owner review.",
+  "validation": [
+    {
+      "command": "curl -s localhost:9100/metrics | grep -E 'http_requests_total|http_request_duration_seconds'   # example",
+      "expect": "expected series are present"
+    },
+    {
+      "check": "induce a small error rate in staging and watch the dashboard",
+      "expect": "the error panel shows it within the scrape interval"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "High-cardinality labels",
+      "detection": "Metrics store grows rapidly",
+      "response": "Remove unbounded labels"
+    },
+    {
+      "mode": "Dashboards nobody understands",
+      "detection": "On-call cannot say if healthy",
+      "response": "Build a simple overview"
+    },
+    {
+      "mode": "Only averages shown",
+      "detection": "Tail latency invisible",
+      "response": "Use histograms and percentiles"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The order service exposes request rate, error rate, latency histograms and queue depth. An induced error in staging appears on the overview dashboard within 30 seconds.",
+  "status": "complete"
+}

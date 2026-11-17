@@ -1,0 +1,65 @@
+{
+  "stage_id": 65,
+  "purpose": "make frequently used paths faster by measuring first, caching where it is safe, and proving the gain",
+  "entry_criteria": [
+    "A measured performance problem or objective exists",
+    "Profiling or tracing is available",
+    "Cache invalidation owners are known"
+  ],
+  "inputs": [
+    "performance measurements and profiles",
+    "hot paths and data access patterns",
+    "freshness requirements for data",
+    "cache infrastructure"
+  ],
+  "procedure": [
+    "Measure the hot path and find where time goes before changing anything.",
+    "Fix the cheapest cause first: queries, indexes, repeated work and payload size; add caching only for what remains.",
+    "Decide freshness per item: what can be stale, for how long, and what invalidates it.",
+    "Design the cache key to include everything that changes the answer, including user or tenant, so one user never sees another's data.",
+    "Handle misses and failures: the system must still work correctly when the cache is empty or down.",
+    "Measure again under the same conditions and record the gain and the cost (memory, complexity)."
+  ],
+  "deliverables": [
+    "before and after measurements",
+    "cache design with freshness rules",
+    "invalidation logic and tests",
+    "failure-mode test"
+  ],
+  "acceptance_criteria": [
+    "The gain is measured under the same conditions as the baseline",
+    "Cache keys include tenant or user where data differs",
+    "The system is correct with the cache empty or unavailable",
+    "Staleness limits are documented"
+  ],
+  "validation_method": "Performance engineer review of the measurements.",
+  "validation": [
+    {
+      "check": "run the same load test before and after and compare p95",
+      "expect": "improvement matches the report"
+    },
+    {
+      "check": "stop the cache service and run the functional tests",
+      "expect": "tests pass, possibly slower"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Stale data shown",
+      "detection": "Users see old values past the limit",
+      "response": "Fix invalidation or shorten the lifetime"
+    },
+    {
+      "mode": "Cache key omits the tenant",
+      "detection": "One tenant sees another's data",
+      "response": "Add the tenant to the key and purge; treat as a security incident"
+    },
+    {
+      "mode": "Optimized without measuring",
+      "detection": "No baseline recorded",
+      "response": "Measure first"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Profiling shows 70 percent of a product page's time is one repeated query. An index removes most of it; a 60-second cache keyed by product and locale handles the rest, lowering p95 from 900 ms to 240 ms, and the page still works with the cache down.",
+  "status": "complete"
+}

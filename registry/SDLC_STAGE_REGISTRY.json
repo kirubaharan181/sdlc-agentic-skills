@@ -2542,36 +2542,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "domain rules and API contract",
-        "data model and transaction constraints",
-        "security and performance requirements"
-      ],
-      "outputs": [
-        "backend-development-deliverable",
-        "service change",
-        "API/error contract"
-      ],
       "quality_gate": "06-054",
-      "validation_method": "Code review and service integration tests.",
-      "purpose": "implement service behavior with explicit contracts and operational controls",
-      "execution_instructions": [
-        "Trace request handling through validation, domain logic, persistence and response mapping.",
-        "Enforce authentication/authorization at the service boundary and avoid trusting client fields.",
-        "Implement transaction, idempotency, timeout, retry and error semantics appropriate to side effects.",
-        "Add unit/integration tests, structured logs and metrics without sensitive payloads."
-      ],
-      "deliverable_artifacts": [
-        "service change",
-        "API/error contract",
-        "migration if needed",
-        "backend test evidence"
-      ],
-      "quality_criteria": [
-        "Authorization is server-side.",
-        "Failure paths do not leak secrets or corrupt state.",
-        "Tests cover boundaries and duplicate requests."
-      ],
       "raci": {
         "accountable": "backend-engineer",
         "responsible": [
@@ -2594,35 +2565,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "user story and acceptance examples",
-        "frontend/backend/API contracts",
-        "data and deployment constraints"
-      ],
-      "outputs": [
-        "full-stack-development-deliverable",
-        "vertical-slice change",
-        "contract and schema updates"
-      ],
       "quality_gate": "06-055",
-      "validation_method": "Cross-layer code review and E2E test.",
-      "purpose": "deliver a coherent vertical slice across UI, service and persistence",
-      "execution_instructions": [
-        "Trace the user journey across UI, API, domain service and persistence before editing.",
-        "Define compatible request/response and state transitions across layers.",
-        "Implement one end-to-end slice with validation, authorization, observability and failure handling.",
-        "Test the slice at component, API and integration levels; document deployment and migration impact."
-      ],
-      "deliverable_artifacts": [
-        "vertical-slice change",
-        "contract and schema updates",
-        "cross-layer test evidence"
-      ],
-      "quality_criteria": [
-        "UI and service behavior agree on contracts.",
-        "Data changes are backward-compatible or migrated safely.",
-        "Critical user journey has reproducible end-to-end evidence."
-      ],
       "raci": {
         "accountable": "full-stack-engineer",
         "responsible": [
@@ -3050,36 +2993,7 @@
       "skills": [
         "software-implementation"
       ],
-      "inputs": [
-        "baseline workload and latency profile",
-        "consistency/freshness requirements",
-        "resource and cost limits"
-      ],
-      "outputs": [
-        "caching-optimization-deliverable",
-        "profile report",
-        "optimization change"
-      ],
       "quality_gate": "06-065",
-      "validation_method": "Performance and correctness regression review.",
-      "purpose": "improve measured performance without violating correctness",
-      "execution_instructions": [
-        "Profile before changing code; identify dominant cost and reproducible baseline.",
-        "Choose cache key, TTL, invalidation and consistency behavior based on data semantics.",
-        "Bound memory, stampede, stale data and eviction behavior.",
-        "Compare before/after p50/p95/p99, throughput, error rate and cost under equivalent load."
-      ],
-      "deliverable_artifacts": [
-        "profile report",
-        "optimization change",
-        "cache policy",
-        "before/after benchmark"
-      ],
-      "quality_criteria": [
-        "Improvement is measured against baseline.",
-        "Correctness and freshness invariants hold.",
-        "No unbounded memory or stale-data risk is introduced."
-      ],
       "raci": {
         "accountable": "performance-engineer",
         "responsible": [
@@ -3222,35 +3136,7 @@
       "skills": [
         "code-review-quality"
       ],
-      "inputs": [
-        "architecture baseline and ADRs",
-        "quality attribute scenarios",
-        "risk and change context"
-      ],
-      "outputs": [
-        "architecture-review-deliverable",
-        "architecture review report",
-        "decision and exception log"
-      ],
       "quality_gate": "07-070",
-      "validation_method": "Independent architecture board decision.",
-      "purpose": "independently evaluate architecture against quality attributes and constraints",
-      "execution_instructions": [
-        "Check component boundaries, coupling, data ownership, failure domains and dependency direction.",
-        "Evaluate security, resilience, scalability, operability, accessibility and cost against scenarios.",
-        "Record evidence, deviations, trade-offs and remediation priority.",
-        "Issue accept, conditional accept or reject recommendation without implementing the reviewed change."
-      ],
-      "deliverable_artifacts": [
-        "architecture review report",
-        "decision and exception log",
-        "remediation actions"
-      ],
-      "quality_criteria": [
-        "Findings cite model element and impact.",
-        "Reviewer independence is preserved.",
-        "Exceptions have owner and expiry."
-      ],
       "raci": {
         "accountable": "architecture-reviewer",
         "responsible": [
@@ -3316,36 +3202,7 @@
       "skills": [
         "code-review-quality"
       ],
-      "inputs": [
-        "diff and target branch",
-        "coding/architecture standards",
-        "test, dependency and static-analysis evidence"
-      ],
-      "outputs": [
-        "code-coverage-review-deliverable",
-        "review report",
-        "static/dependency findings"
-      ],
       "quality_gate": "07-073",
-      "validation_method": "Independent reviewer confirms findings and disposition.",
-      "purpose": "independently inspect code quality and maintainability risks",
-      "execution_instructions": [
-        "Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.",
-        "Inspect static findings and dependency provenance, severity, reachability and license obligations.",
-        "Assess test coverage quality and identify untested critical branches rather than relying only on percentage.",
-        "Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions."
-      ],
-      "deliverable_artifacts": [
-        "review report",
-        "static/dependency findings",
-        "coverage interpretation",
-        "technical debt actions"
-      ],
-      "quality_criteria": [
-        "Findings are reproducible and tied to exact commit.",
-        "False positives and accepted debt have rationale and owner.",
-        "Critical paths have meaningful assertions."
-      ],
       "raci": {
         "accountable": "code-reviewer",
         "responsible": [
@@ -3444,36 +3301,7 @@
       "skills": [
         "code-review-quality"
       ],
-      "inputs": [
-        "diff and target branch",
-        "coding/architecture standards",
-        "test, dependency and static-analysis evidence"
-      ],
-      "outputs": [
-        "technical-debt-review-deliverable",
-        "review report",
-        "static/dependency findings"
-      ],
       "quality_gate": "07-076",
-      "validation_method": "Independent reviewer confirms findings and disposition.",
-      "purpose": "independently inspect code quality and maintainability risks",
-      "execution_instructions": [
-        "Review control flow, edge cases, data handling, concurrency and compatibility in the changed code.",
-        "Inspect static findings and dependency provenance, severity, reachability and license obligations.",
-        "Assess test coverage quality and identify untested critical branches rather than relying only on percentage.",
-        "Record actionable findings with location, impact, severity and remediation; separate blockers from suggestions."
-      ],
-      "deliverable_artifacts": [
-        "review report",
-        "static/dependency findings",
-        "coverage interpretation",
-        "technical debt actions"
-      ],
-      "quality_criteria": [
-        "Findings are reproducible and tied to exact commit.",
-        "False positives and accepted debt have rationale and owner.",
-        "Critical paths have meaningful assertions."
-      ],
       "raci": {
         "accountable": "software-architect",
         "responsible": [
@@ -5569,35 +5397,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "domain ownership and target topology",
-        "certificate and trust requirements",
-        "traffic and health-check profile"
-      ],
-      "outputs": [
-        "dns-management-deliverable",
-        "DNS/TLS/routing configuration",
-        "validation output"
-      ],
       "quality_gate": "12-144",
-      "validation_method": "Network/security review.",
-      "purpose": "configure secure and resilient network edge routing",
-      "execution_instructions": [
-        "Verify domain/account ownership and change window.",
-        "Configure records, certificates, ciphers, health checks, routing and origin restrictions.",
-        "Validate propagation, certificate chain/expiry, redirects and failover behavior.",
-        "Document TTL, renewal, rollback and monitoring."
-      ],
-      "deliverable_artifacts": [
-        "DNS/TLS/routing configuration",
-        "validation output",
-        "renewal and rollback runbook"
-      ],
-      "quality_criteria": [
-        "No unexpected public exposure.",
-        "Certificate chain and hostname validation pass.",
-        "Failover and rollback are tested."
-      ],
       "raci": {
         "accountable": "network-engineer",
         "responsible": [
@@ -5992,36 +5792,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "service map and critical user journeys",
-        "SLO and alert thresholds",
-        "telemetry and privacy requirements"
-      ],
-      "outputs": [
-        "centralized-logging-deliverable",
-        "telemetry specification",
-        "dashboards and alerts"
-      ],
       "quality_gate": "13-155",
-      "validation_method": "SRE review and alert simulation.",
-      "purpose": "provide actionable observability and service-level control",
-      "execution_instructions": [
-        "Instrument golden signals and key business transactions with stable service/environment labels.",
-        "Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.",
-        "Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.",
-        "Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts."
-      ],
-      "deliverable_artifacts": [
-        "telemetry specification",
-        "dashboards and alerts",
-        "SLO/error-budget report",
-        "runbook links"
-      ],
-      "quality_criteria": [
-        "Signals support diagnosis and customer impact assessment.",
-        "Alerts have owner and action.",
-        "SLOs are measurable and privacy-safe."
-      ],
       "raci": {
         "accountable": "observability-engineer",
         "responsible": [
@@ -6043,36 +5814,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "service map and critical user journeys",
-        "SLO and alert thresholds",
-        "telemetry and privacy requirements"
-      ],
-      "outputs": [
-        "metrics-monitoring-deliverable",
-        "telemetry specification",
-        "dashboards and alerts"
-      ],
       "quality_gate": "13-156",
-      "validation_method": "SRE review and alert simulation.",
-      "purpose": "provide actionable observability and service-level control",
-      "execution_instructions": [
-        "Instrument golden signals and key business transactions with stable service/environment labels.",
-        "Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.",
-        "Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.",
-        "Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts."
-      ],
-      "deliverable_artifacts": [
-        "telemetry specification",
-        "dashboards and alerts",
-        "SLO/error-budget report",
-        "runbook links"
-      ],
-      "quality_criteria": [
-        "Signals support diagnosis and customer impact assessment.",
-        "Alerts have owner and action.",
-        "SLOs are measurable and privacy-safe."
-      ],
       "raci": {
         "accountable": "observability-engineer",
         "responsible": [
@@ -6094,36 +5836,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "service map and critical user journeys",
-        "SLO and alert thresholds",
-        "telemetry and privacy requirements"
-      ],
-      "outputs": [
-        "distributed-tracing-deliverable",
-        "telemetry specification",
-        "dashboards and alerts"
-      ],
       "quality_gate": "13-157",
-      "validation_method": "SRE review and alert simulation.",
-      "purpose": "provide actionable observability and service-level control",
-      "execution_instructions": [
-        "Instrument golden signals and key business transactions with stable service/environment labels.",
-        "Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.",
-        "Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.",
-        "Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts."
-      ],
-      "deliverable_artifacts": [
-        "telemetry specification",
-        "dashboards and alerts",
-        "SLO/error-budget report",
-        "runbook links"
-      ],
-      "quality_criteria": [
-        "Signals support diagnosis and customer impact assessment.",
-        "Alerts have owner and action.",
-        "SLOs are measurable and privacy-safe."
-      ],
       "raci": {
         "accountable": "observability-engineer",
         "responsible": [
@@ -6241,36 +5954,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "service map and critical user journeys",
-        "SLO and alert thresholds",
-        "telemetry and privacy requirements"
-      ],
-      "outputs": [
-        "capacity-planning-deliverable",
-        "telemetry specification",
-        "dashboards and alerts"
-      ],
       "quality_gate": "13-161",
-      "validation_method": "SRE review and alert simulation.",
-      "purpose": "provide actionable observability and service-level control",
-      "execution_instructions": [
-        "Instrument golden signals and key business transactions with stable service/environment labels.",
-        "Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.",
-        "Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.",
-        "Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts."
-      ],
-      "deliverable_artifacts": [
-        "telemetry specification",
-        "dashboards and alerts",
-        "SLO/error-budget report",
-        "runbook links"
-      ],
-      "quality_criteria": [
-        "Signals support diagnosis and customer impact assessment.",
-        "Alerts have owner and action.",
-        "SLOs are measurable and privacy-safe."
-      ],
       "raci": {
         "accountable": "sre",
         "responsible": [
@@ -6405,36 +6089,7 @@
       "skills": [
         "maintenance-support"
       ],
-      "inputs": [
-        "support case or maintenance request",
-        "affected versions and customer impact",
-        "service ownership and change policy"
-      ],
-      "outputs": [
-        "l1-support-deliverable",
-        "support/maintenance record",
-        "reproduction and diagnosis"
-      ],
       "quality_gate": "14-167",
-      "validation_method": "Service owner acceptance and customer-facing closure check.",
-      "purpose": "maintain a live service safely and preserve customer continuity",
-      "execution_instructions": [
-        "Classify severity, affected customers, workaround and escalation path using support policy.",
-        "Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.",
-        "Implement the smallest safe correction or maintenance action with regression and compatibility coverage.",
-        "Communicate workaround/fix version, verify closure and update runbook or knowledge base."
-      ],
-      "deliverable_artifacts": [
-        "support/maintenance record",
-        "reproduction and diagnosis",
-        "fix or patch evidence",
-        "customer communication and knowledge update"
-      ],
-      "quality_criteria": [
-        "Customer impact and affected versions are explicit.",
-        "Fix is verified on supported versions.",
-        "Operational knowledge is updated and owned."
-      ],
       "raci": {
         "accountable": "technical-support-engineer",
         "responsible": [],

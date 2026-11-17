@@ -37,40 +37,68 @@ Validation: UI peer review and browser test run.
 Gate: 06-053. Approval: none required
 
 ## 54
-**Backend Development** (stub). Purpose: implement service behavior with explicit contracts and operational controls.
+**Backend Development** (complete). Purpose: implement server-side behavior that is correct, secure, observable and easy to change.
 
-Inputs: domain rules and API contract; data model and transaction constraints; security and performance requirements
+Entry criteria: Requirements and API contract are agreed; Data model exists or is being built (stage 58); Development environment runs locally
+
+Inputs: requirements and acceptance criteria; API contract; data access layer; architecture and coding standards
 
 Procedure:
-1. Trace request handling through validation, domain logic, persistence and response mapping.
-2. Enforce authentication/authorization at the service boundary and avoid trusting client fields.
-3. Implement transaction, idempotency, timeout, retry and error semantics appropriate to side effects.
-4. Add unit/integration tests, structured logs and metrics without sensitive payloads.
+1. Break the work into small vertical slices, each with a test, so the system always builds and passes.
+2. Keep business rules in one layer that does not depend on the web framework or database, so they can be tested alone.
+3. Validate every input at the boundary, check authorization on every operation and return errors in the agreed format.
+4. Handle failure explicitly: timeouts and retries with limits, idempotent writes, and clear errors instead of silent failure.
+5. Add structured logs with correlation ids, and metrics for the main operations, without logging sensitive data.
+6. Open small pull requests with tests and note any behavior or configuration the reviewer must check.
 
-Deliverables: service change; API/error contract; migration if needed; backend test evidence
+Deliverables: working backend code; unit and integration tests; logging and metrics hooks; pull requests with notes
 
-Acceptance: Authorization is server-side. Failure paths do not leak secrets or corrupt state. Tests cover boundaries and duplicate requests.
+Acceptance: Each acceptance criterion has a passing test Inputs are validated and authorization is checked per operation External calls have timeouts and bounded retries Logs carry correlation ids and no secrets
 
-Validation: Code review and service integration tests.
+Validation: Code review (stage 69) and CI results.
+
+- `pytest -q --cov=app --cov-fail-under=80   # example threshold; use the project's` expect: passes and meets the agreed coverage
+- `grep -rniE 'password|secret|token' app/ --include=*.py | grep -i 'log'` expect: no secret values reach log calls
+
+Failure modes:
+- Business rules inside controllers | detect: Tests need a running server | respond: Move rules into a plain layer
+- Unbounded retries | detect: Retry storm during an outage | respond: Add limits, backoff and jitter
+- Sensitive data in logs | detect: Review finds values | respond: Remove and rotate if secrets
+
+ILLUSTRATIVE: A refund endpoint validates the amount against the original payment, checks the caller owns the order, uses an idempotency key to ignore duplicate requests, and logs the correlation id and outcome without card data.
 
 Gate: 06-054. Approval: none required
 
 ## 55
-**Full Stack Development** (stub). Purpose: deliver a coherent vertical slice across UI, service and persistence.
+**Full Stack Development** (complete). Purpose: deliver a feature across interface, service and data in one coherent change, without leaving the seams untested.
 
-Inputs: user story and acceptance examples; frontend/backend/API contracts; data and deployment constraints
+Entry criteria: The feature is described end to end with acceptance criteria; Front-end and back-end contracts are defined; The whole stack runs locally or in an ephemeral environment
+
+Inputs: feature description and acceptance criteria; API and UI designs; existing front-end and back-end code; test environment
 
 Procedure:
-1. Trace the user journey across UI, API, domain service and persistence before editing.
-2. Define compatible request/response and state transitions across layers.
-3. Implement one end-to-end slice with validation, authorization, observability and failure handling.
-4. Test the slice at component, API and integration levels; document deployment and migration impact.
+1. Agree the contract between interface and service first; use it to build both sides in parallel against stubs.
+2. Implement the thinnest working path from interface to data, then add cases and error handling.
+3. Keep state and validation consistent on both sides; the server stays the authority.
+4. Test across the seam with at least one end-to-end test of the main path plus unit tests on each side.
+5. Check the user experience for loading, empty, error and slow states, and accessibility basics.
+6. Release behind a feature flag when the change is risky, with a documented way to turn it off.
 
-Deliverables: vertical-slice change; contract and schema updates; cross-layer test evidence
+Deliverables: working feature across layers; contract and tests on both sides; one end-to-end test; feature flag and removal note
 
-Acceptance: UI and service behavior agree on contracts. Data changes are backward-compatible or migrated safely. Critical user journey has reproducible end-to-end evidence.
+Acceptance: The main path works end to end Error, empty and loading states are handled The server validates everything the client validates A switch-off path exists for risky features
 
-Validation: Cross-layer code review and E2E test.
+Validation: Code review and product owner demonstration.
+
+- `pytest -q tests/api && npx playwright test tests/e2e/feature.spec.ts   # example` expect: both pass
+- manual: switch the feature flag off and confirm the old behavior returns expect: no errors
+
+Failure modes:
+- Client and server rules diverge | detect: Server rejects what the client allowed | respond: Make the server the authority and share the schema
+- Only the happy path built | detect: No error-state test | respond: Add the states
+- No way to turn off | detect: Flag missing for a risky change | respond: Add the flag before release
+
+ILLUSTRATIVE: A saved-search feature adds a save button, an API endpoint and a table. The contract is agreed first; one end-to-end test saves and reloads a search, and a flag allows hiding the button without a deployment.
 
 Gate: 06-055. Approval: none required
 
@@ -274,21 +302,35 @@ Validation: Independent model risk and product review.
 Gate: 06-064. Approval: none required
 
 ## 65
-**Caching & Optimization** (stub). Purpose: improve measured performance without violating correctness.
+**Caching & Optimization** (complete). Purpose: make frequently used paths faster by measuring first, caching where it is safe, and proving the gain.
 
-Inputs: baseline workload and latency profile; consistency/freshness requirements; resource and cost limits
+Entry criteria: A measured performance problem or objective exists; Profiling or tracing is available; Cache invalidation owners are known
+
+Inputs: performance measurements and profiles; hot paths and data access patterns; freshness requirements for data; cache infrastructure
 
 Procedure:
-1. Profile before changing code; identify dominant cost and reproducible baseline.
-2. Choose cache key, TTL, invalidation and consistency behavior based on data semantics.
-3. Bound memory, stampede, stale data and eviction behavior.
-4. Compare before/after p50/p95/p99, throughput, error rate and cost under equivalent load.
+1. Measure the hot path and find where time goes before changing anything.
+2. Fix the cheapest cause first: queries, indexes, repeated work and payload size; add caching only for what remains.
+3. Decide freshness per item: what can be stale, for how long, and what invalidates it.
+4. Design the cache key to include everything that changes the answer, including user or tenant, so one user never sees another's data.
+5. Handle misses and failures: the system must still work correctly when the cache is empty or down.
+6. Measure again under the same conditions and record the gain and the cost (memory, complexity).
 
-Deliverables: profile report; optimization change; cache policy; before/after benchmark
+Deliverables: before and after measurements; cache design with freshness rules; invalidation logic and tests; failure-mode test
 
-Acceptance: Improvement is measured against baseline. Correctness and freshness invariants hold. No unbounded memory or stale-data risk is introduced.
+Acceptance: The gain is measured under the same conditions as the baseline Cache keys include tenant or user where data differs The system is correct with the cache empty or unavailable Staleness limits are documented
 
-Validation: Performance and correctness regression review.
+Validation: Performance engineer review of the measurements.
+
+- manual: run the same load test before and after and compare p95 expect: improvement matches the report
+- manual: stop the cache service and run the functional tests expect: tests pass, possibly slower
+
+Failure modes:
+- Stale data shown | detect: Users see old values past the limit | respond: Fix invalidation or shorten the lifetime
+- Cache key omits the tenant | detect: One tenant sees another's data | respond: Add the tenant to the key and purge; treat as a security incident
+- Optimized without measuring | detect: No baseline recorded | respond: Measure first
+
+ILLUSTRATIVE: Profiling shows 70 percent of a product page's time is one repeated query. An index removes most of it; a 60-second cache keyed by product and locale handles the rest, lowering p95 from 900 ms to 240 ms, and the page still works with the cache down.
 
 Gate: 06-065. Approval: none required
 

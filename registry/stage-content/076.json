@@ -1,0 +1,65 @@
+{
+  "stage_id": 76,
+  "purpose": "decide deliberately which technical debt to repay, defer or accept, using cost and risk rather than irritation",
+  "entry_criteria": [
+    "Known debt items are collected from engineers, incidents and reviews",
+    "Delivery and incident data are available",
+    "A planning forum with the owner exists"
+  ],
+  "inputs": [
+    "list of debt items with locations",
+    "incident and defect history",
+    "change frequency of affected code",
+    "roadmap"
+  ],
+  "procedure": [
+    "List debt items with the problem, where it lives and what it costs (slows delivery, causes defects, blocks changes, creates risk).",
+    "Estimate the cost of carrying each item and the effort to repay it; use data such as change frequency and incident links.",
+    "Rank by value of repayment, not by how disliked an item is; debt in code nobody changes can wait.",
+    "Decide per item: repay now, schedule, defer with a trigger, or accept; record the reason.",
+    "Put repayment items in the backlog with an owner and a definition of done.",
+    "Review the register each quarter and retire items that are no longer relevant."
+  ],
+  "deliverables": [
+    "technical debt register",
+    "ranking with evidence",
+    "decisions with reasons",
+    "backlog items"
+  ],
+  "acceptance_criteria": [
+    "Each item has a cost, an effort and a decision",
+    "Ranking uses data, not only opinion",
+    "Repay items have owners",
+    "Deferred items have a trigger or a review date"
+  ],
+  "validation_method": "Product owner and architect agreement on priorities.",
+  "validation": [
+    {
+      "command": "git log --since='6 months ago' --name-only --pretty=format: -- src/billing | sort | uniq -c | sort -rn | head   # example",
+      "expect": "change hotspots recorded in the register"
+    },
+    {
+      "check": "check each repay item has a backlog link and an owner",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Everything labelled debt",
+      "detection": "Register has hundreds of vague items",
+      "response": "Require cost and location"
+    },
+    {
+      "mode": "Debt never scheduled",
+      "detection": "Items older than a year with no decision",
+      "response": "Decide or close"
+    },
+    {
+      "mode": "Rewrite proposed without evidence",
+      "detection": "No incident or delivery data",
+      "response": "Gather evidence first"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The billing module appears in 40 percent of the last quarter's incidents and is changed weekly, so its fragile date handling is ranked first and scheduled; an ugly but stable report generator is accepted.",
+  "status": "complete"
+}

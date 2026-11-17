@@ -1,0 +1,65 @@
+{
+  "stage_id": 161,
+  "purpose": "make sure the system has the capacity it will need before demand arrives, at a cost the business accepts",
+  "entry_criteria": [
+    "Demand forecasts or growth data exist",
+    "Current utilization and performance data exist",
+    "Capacity limits of the system are known (stage 92)"
+  ],
+  "inputs": [
+    "demand history and forecast",
+    "utilization and performance data",
+    "known capacity limits",
+    "lead times and budgets"
+  ],
+  "procedure": [
+    "Collect demand and utilization trends and the business events that will change them (launches, campaigns, seasons).",
+    "Convert forecast demand into resource needs using measured capacity per unit, with a stated safety margin.",
+    "Find the first resource to run out for each scenario and the lead time to add more.",
+    "Decide actions with owners and dates: scale, optimize, order, or accept risk; compare cost options.",
+    "Alert when utilization approaches the planning threshold, with enough warning for the lead time.",
+    "Review forecast against actuals each period and correct the model."
+  ],
+  "deliverables": [
+    "capacity plan with scenarios",
+    "first-limit analysis",
+    "actions with owners and dates",
+    "forecast accuracy review"
+  ],
+  "acceptance_criteria": [
+    "Each scenario names the first resource to run out",
+    "Safety margin and lead times are stated",
+    "Actions have owners and dates",
+    "Forecast accuracy is reviewed"
+  ],
+  "validation_method": "Service owner and finance review of the plan.",
+  "validation": [
+    {
+      "check": "compare last quarter's forecast with actual peak load",
+      "expect": "difference recorded with its cause"
+    },
+    {
+      "check": "check each alert threshold leaves time for the lead time to add capacity",
+      "expect": "yes for every resource"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Forecast ignores planned events",
+      "detection": "Campaign doubles traffic unexpectedly",
+      "response": "Add events to the model"
+    },
+    {
+      "mode": "Lead time overlooked",
+      "detection": "Capacity arrives after the peak",
+      "response": "Alert earlier or reserve in advance"
+    },
+    {
+      "mode": "Over-provisioning",
+      "detection": "Utilization far below plan",
+      "response": "Right-size and set review"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Peak traffic is forecast to rise 40 percent for the holiday season. Load tests show the database saturates first; the plan adds a read replica two weeks before and sets an alert at 70 percent database CPU.",
+  "status": "complete"
+}

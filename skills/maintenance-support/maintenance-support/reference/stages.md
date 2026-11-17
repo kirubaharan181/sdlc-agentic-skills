@@ -17,21 +17,35 @@
 - [180 Product Lifecycle Management](#180)
 
 ## 167
-**L1 Support** (stub). Purpose: maintain a live service safely and preserve customer continuity.
+**L1 Support** (complete). Purpose: resolve common user problems on first contact and pass on what cannot be resolved, with everything the next team needs.
 
-Inputs: support case or maintenance request; affected versions and customer impact; service ownership and change policy
+Entry criteria: Support channels and a ticket system exist; Runbooks and a knowledge base exist (stage 178); Escalation criteria are defined
+
+Inputs: user report; knowledge base and runbooks; account and status information; escalation criteria
 
 Procedure:
-1. Classify severity, affected customers, workaround and escalation path using support policy.
-2. Reproduce against the affected version; correlate logs, metrics and recent changes without exposing customer data.
-3. Implement the smallest safe correction or maintenance action with regression and compatibility coverage.
-4. Communicate workaround/fix version, verify closure and update runbook or knowledge base.
+1. Record the user's problem in their words, the affected account, and the time and steps that led to it.
+2. Check the status page and known issues first, then search the knowledge base for a matching article.
+3. Apply the documented fix, confirm with the user that it worked, and record what was done.
+4. If there is no fix or the criteria are met, escalate with the full record, identifiers and impact; do not ask the user to repeat themselves.
+5. Keep the user informed at the agreed intervals in plain language.
+6. Tag the ticket by cause so recurring problems show up and become knowledge base articles.
 
-Deliverables: support/maintenance record; reproduction and diagnosis; fix or patch evidence; customer communication and knowledge update
+Deliverables: ticket with a complete record; resolution or escalation package; user updates; cause tag
 
-Acceptance: Customer impact and affected versions are explicit. Fix is verified on supported versions. Operational knowledge is updated and owned.
+Acceptance: Ticket has identifiers, steps and time Fixes follow runbooks and are confirmed with the user Escalations include the full record Cause tags are set
 
-Validation: Service owner acceptance and customer-facing closure check.
+Validation: Support lead sampling review.
+
+- manual: review five random closed tickets for identifiers, steps and confirmation expect: all complete
+- manual: check the time to first response against the target expect: within target
+
+Failure modes:
+- User asked to repeat details | detect: Escalation lacks information | respond: Use the escalation template
+- Fix not confirmed | detect: Ticket closed without user reply | respond: Confirm before closing
+- Known issue handled as new | detect: Duplicate tickets | respond: Link to the known issue and update the user
+
+ILLUSTRATIVE: A user cannot download an invoice. The agent finds a matching article, the fix works, the user confirms, and the ticket is tagged 'invoice download'; a second similar ticket the same week is escalated with the account id and error time.
 
 Gate: 14-167. Approval: none required
 

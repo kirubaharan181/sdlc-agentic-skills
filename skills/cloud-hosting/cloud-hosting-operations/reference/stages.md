@@ -120,21 +120,35 @@ Validation: Cloud operations and security review.
 Gate: 12-143. Approval: none required
 
 ## 144
-**DNS Management** (stub). Purpose: configure secure and resilient network edge routing.
+**DNS Management** (complete). Purpose: keep name resolution reliable and secure through controlled day-to-day changes and monitoring.
 
-Inputs: domain ownership and target topology; certificate and trust requirements; traffic and health-check profile
+Entry criteria: DNS zones and records are inventoried (stage 134); Change process and access controls exist; Monitoring of resolution is available
+
+Inputs: DNS zone files and inventory; change requests; resolution monitoring; provider and registrar access controls
 
 Procedure:
-1. Verify domain/account ownership and change window.
-2. Configure records, certificates, ciphers, health checks, routing and origin restrictions.
-3. Validate propagation, certificate chain/expiry, redirects and failover behavior.
-4. Document TTL, renewal, rollback and monitoring.
+1. Handle each record change as a reviewed change in code with the requester, reason and ticket recorded.
+2. Check the impact before the change: who depends on the name, TTL and propagation, and rollback.
+3. Apply the change and verify from several networks and resolvers, not only from the office.
+4. Monitor resolution time and failures, and alert when the authoritative servers or records misbehave.
+5. Audit records regularly for stale, duplicate and dangling entries and remove them.
+6. Test the recovery path: restoring zones from version control or backup.
 
-Deliverables: DNS/TLS/routing configuration; validation output; renewal and rollback runbook
+Deliverables: change records; verification results; monitoring and alerts; audit findings and cleanup
 
-Acceptance: No unexpected public exposure. Certificate chain and hostname validation pass. Failover and rollback are tested.
+Acceptance: Every change is traceable to a request and reviewed Verification was done from multiple resolvers Stale and dangling records are removed Zone restore was tested
 
-Validation: Network/security review.
+Validation: Network owner review of changes.
+
+- `for r in 1.1.1.1 8.8.8.8 9.9.9.9; do dig @$r +short app.example.com; done   # example` expect: all resolvers return the intended answer
+- manual: restore the zone from version control into a test zone and compare expect: records identical
+
+Failure modes:
+- Change breaks resolution | detect: Failure in monitoring after change | respond: Roll back from version control
+- Stale record points to released infrastructure | detect: Audit finds dangling entry | respond: Remove it
+- One resolver tested only | detect: Different answers elsewhere | respond: Verify from several resolvers
+
+ILLUSTRATIVE: A request to move a service to a new address is applied through a reviewed change, the TTL is lowered a day before, and three public resolvers return the new address within the TTL; the old record is removed after a week.
 
 Gate: 12-144. Approval: none required
 

@@ -26,13 +26,13 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 |---|---|---|---|
 | 68 | Pull Request Creation | complete | Full Stack Engineer |
 | 69 | Peer Code Review | complete | Code Reviewer |
-| 70 | Architecture Review | stub | Architecture Reviewer |
+| 70 | Architecture Review | complete | Architecture Reviewer |
 | 71 | Static Code Analysis | complete | DevSecOps Engineer |
 | 72 | Dependency Review | complete | DevSecOps Engineer |
-| 73 | Code Coverage Review | stub | Code Reviewer |
+| 73 | Code Coverage Review | complete | Code Reviewer |
 | 74 | Coding Standards Validation | stub | Code Reviewer |
 | 75 | Merge Approval | complete | Merge Steward |
-| 76 | Technical Debt Review | stub | Software Architect |
+| 76 | Technical Debt Review | complete | Software Architect |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

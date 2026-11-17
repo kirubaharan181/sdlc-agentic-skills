@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "maintenance-support",
-  "stage_id": 168,
-  "stage_name": "L2 Support",
+  "stage_id": 167,
+  "stage_name": "L1 Support",
   "commit_sha": "<commit under review>",
-  "executor": "<Production Support Engineer or named person>",
+  "executor": "<Technical Support Engineer or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Support lead review of the resolution record.",
+    "method": "Support lead sampling review.",
     "command": "<command or review technique actually used>",
     "expected": "<expected result>",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "diagnosis notes",
-      "path": "<path or immutable URL of diagnosis notes>"
+      "name": "ticket with a complete record",
+      "path": "<path or immutable URL of ticket with a complete record>"
     },
     {
-      "name": "customer updates",
-      "path": "<path or immutable URL of customer updates>"
+      "name": "resolution or escalation package",
+      "path": "<path or immutable URL of resolution or escalation package>"
     },
     {
-      "name": "escalation package or resolution record",
-      "path": "<path or immutable URL of escalation package or resolution record>"
+      "name": "user updates",
+      "path": "<path or immutable URL of user updates>"
     }
   ],
   "limitations": [

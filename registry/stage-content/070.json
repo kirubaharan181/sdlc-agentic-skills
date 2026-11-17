@@ -1,0 +1,65 @@
+{
+  "stage_id": 70,
+  "purpose": "judge whether the implemented system still follows the intended architecture and quality attributes, and catch drift early",
+  "entry_criteria": [
+    "Approved architecture and decision records exist",
+    "Implemented code or a build is available",
+    "Reviewer did not write the code under review"
+  ],
+  "inputs": [
+    "architecture description and decision records",
+    "implemented code and dependency structure",
+    "quality-attribute targets",
+    "recent significant changes"
+  ],
+  "procedure": [
+    "Compare the implemented structure (modules, dependencies, data flows) with the documented architecture and note each divergence.",
+    "Check the boundaries rules automatically where possible, such as forbidden dependencies between layers.",
+    "Check the quality attributes with evidence: latency measurements, failure behavior, security design, operational readiness.",
+    "Classify each divergence as accepted evolution (update the record), defect (fix) or risk (owner and date).",
+    "Report findings with severity and the architectural principle affected.",
+    "Update the architecture records for accepted changes and track the rest."
+  ],
+  "deliverables": [
+    "conformance review report",
+    "automated dependency rule results",
+    "updated decision records",
+    "tracked findings"
+  ],
+  "acceptance_criteria": [
+    "Each divergence has a classification and an owner",
+    "Quality attributes are checked with evidence",
+    "Accepted changes are reflected in the records",
+    "Reviewer is independent of the implementers"
+  ],
+  "validation_method": "Architecture board decision on blockers.",
+  "validation": [
+    {
+      "command": "npx depcruise --config .dependency-cruiser.js src   # example; use the language's equivalent",
+      "expect": "no forbidden dependency violations"
+    },
+    {
+      "check": "compare the module diagram with the code's actual import graph",
+      "expect": "differences listed in the report"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Documentation never updated",
+      "detection": "Records contradict the code",
+      "response": "Update or revert the code"
+    },
+    {
+      "mode": "Layer shortcuts accumulate",
+      "detection": "Dependency rule violations grow",
+      "response": "Enforce in CI"
+    },
+    {
+      "mode": "Review is opinion only",
+      "detection": "No evidence for attributes",
+      "response": "Measure or test"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A review finds a reporting module reading the orders database directly, against the rule that only the orders service does. It is classified as a risk with an owner and a date, and a dependency rule is added to CI.",
+  "status": "complete"
+}

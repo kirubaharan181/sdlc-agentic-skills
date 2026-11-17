@@ -1,0 +1,65 @@
+{
+  "stage_id": 155,
+  "purpose": "bring logs from every component into one place where they can be searched, correlated and kept for the right time",
+  "entry_criteria": [
+    "Services emit logs",
+    "A log platform and retention policy exist",
+    "Data protection requirements for logs are known"
+  ],
+  "inputs": [
+    "services and their log formats",
+    "log platform",
+    "retention and access policy",
+    "data protection requirements"
+  ],
+  "procedure": [
+    "Use a structured format such as JSON with timestamp, level, service, version, environment and a correlation id on every line.",
+    "Ship logs from every service and infrastructure component to the central platform with the same fields.",
+    "Keep sensitive data out: no secrets, tokens or unnecessary personal data; mask what must appear.",
+    "Set retention and access by sensitivity, and keep security and audit logs longer and tamper-resistant.",
+    "Build saved searches for common questions and alerts for important error patterns.",
+    "Test that a real request can be followed across services by its correlation id."
+  ],
+  "deliverables": [
+    "log format standard",
+    "shipping configuration",
+    "retention and access rules",
+    "saved searches and a cross-service trace example"
+  ],
+  "acceptance_criteria": [
+    "A request is traceable across services by one id",
+    "Logs contain no secrets",
+    "Retention and access follow the policy",
+    "Every service ships logs with the standard fields"
+  ],
+  "validation_method": "Observability owner and security review.",
+  "validation": [
+    {
+      "check": "send one request and search the platform by its correlation id",
+      "expect": "log lines from every service on the path appear"
+    },
+    {
+      "check": "search the platform for 'password=' and 'Authorization:'",
+      "expect": "no matches"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Unstructured logs",
+      "detection": "Searches need regular expressions",
+      "response": "Adopt a structured format"
+    },
+    {
+      "mode": "Personal data logged",
+      "detection": "Search finds email addresses",
+      "response": "Mask and shorten retention"
+    },
+    {
+      "mode": "Logs lost under load",
+      "detection": "Gaps in the timeline",
+      "response": "Add buffering and a delivery check"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Each service logs JSON with a request id. Searching one request id in the platform shows the gateway, order service and payment adapter lines in order, with no card data in any line.",
+  "status": "complete"
+}

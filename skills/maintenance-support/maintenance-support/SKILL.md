@@ -24,7 +24,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 167 | L1 Support | stub | Technical Support Engineer |
+| 167 | L1 Support | complete | Technical Support Engineer |
 | 168 | L2 Support | complete | Production Support Engineer |
 | 169 | L3 Support | complete | Backend Engineer |
 | 170 | Bug Fixing | complete | Backend Engineer |
