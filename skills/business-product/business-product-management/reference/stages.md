@@ -79,21 +79,35 @@ ILLUSTRATIVE: To decide on entering a new region, the team compiles public data,
 Gate: 01-002. Approval: none required
 
 ## 3
-**Client Engagement** (stub). Purpose: establish an agreed client outcome and a controlled decision trail.
+**Client Engagement** (complete). Purpose: build a working relationship with a client in which expectations, responsibilities and communication are agreed in writing.
 
-Inputs: client stakeholders and decision authority; statement of need and current commitments; communication constraints
+Entry criteria: A client or client sponsor is identified; The team's service scope is known; A named contact exists on each side
+
+Inputs: client background and goals; service scope; contacts and decision makers; past engagement notes
 
 Procedure:
-1. Map sponsor, users, approvers and operational contacts; identify who can accept scope, cost and risk.
-2. Run a structured discovery conversation and capture needs, constraints, success measures and unresolved questions.
-3. Record commitments, decision owners, dates and changes in a client decision log; do not treat informal discussion as approval.
-4. Confirm the agreed next action, accountable owner and acceptance route with the client.
+1. Meet the client sponsor and record the business goals, success measures and constraints in the client's own words.
+2. Agree who decides what on each side, how often the teams talk, and which channel is used for what.
+3. Write down the scope, what is not included, and how changes to scope are raised and priced.
+4. Agree how issues are escalated and the response times each side expects.
+5. Share a one-page engagement summary and ask the client to confirm it in writing.
+6. Hold a short review at an agreed interval and record satisfaction and open concerns.
 
-Deliverables: stakeholder map; engagement notes; decision and commitment log; confirmed action register
+Deliverables: engagement summary signed off by the client; contact and decision-maker list; change and escalation procedure; review notes
 
-Acceptance: Every commitment has an owner and due date. Client acceptance and internal approval are distinguishable. Conflicting expectations are recorded and escalated before scope is baselined.
+Acceptance: Goals and measures are in the client's words Decision makers are named on both sides Change and escalation paths are written The client confirmed the summary
 
-Validation: Client confirmation of decisions and review by the accountable engagement owner.
+Validation: Client sponsor confirmation.
+
+- manual: check the engagement summary has a dated written confirmation from the client expect: confirmation present
+- manual: check each contact has a named backup expect: none missing
+
+Failure modes:
+- Verbal agreements only | detect: Dispute about scope | respond: Write and confirm them
+- Wrong decision maker | detect: Decisions reversed later | respond: Confirm authority in writing
+- No review cadence | detect: Concerns found late | respond: Schedule the reviews
+
+ILLUSTRATIVE: A new client's sponsor confirms in writing three goals, a weekly status call and a change request route; a review at week six records one concern about report timing.
 
 Gate: 01-003. Approval: none required
 
@@ -216,58 +230,100 @@ ILLUSTRATIVE: Two options for ingesting partner data are compared. A one-day spi
 Gate: 01-007. Approval: none required
 
 ## 8
-**Budget & Estimation** (stub). Purpose: produce a transparent estimate and funding baseline.
+**Budget & Estimation** (complete). Purpose: estimate cost and effort honestly, with ranges and stated assumptions, so budget decisions are made on realistic numbers.
 
-Inputs: scope breakdown and assumptions; rates, capacity and supplier estimates; contingency policy
+Entry criteria: Scope or requirements exist at some level; Rate and cost information is available; Past delivery data exists or is being gathered
+
+Inputs: scope and requirements; past project actuals; rates and infrastructure prices; risk list
 
 Procedure:
-1. Break work into measurable cost drivers and separate one-time from recurring spend.
-2. Estimate effort, infrastructure, licensing, vendor, migration and support costs using ranges.
-3. Document confidence, exclusions, currency, tax treatment and contingency basis.
-4. Reconcile the estimate against available funding and define variance thresholds.
+1. Break the work into parts small enough to estimate, and list what is excluded.
+2. Estimate each part as a range (best, likely, worst) using past actuals where possible, and note the assumptions.
+3. Add running costs, not only build costs: hosting, licences, support and the team time to operate.
+4. Add a contingency tied to the largest risks, not a flat guess, and show it separately.
+5. Compare the total with the available budget and show what could be cut or deferred to fit.
+6. Re-estimate at agreed checkpoints and report the variance from the first estimate.
 
-Deliverables: estimate workbook; assumption and exclusion log; funding request; cost baseline
+Deliverables: estimate with ranges and assumptions; running cost forecast; contingency with reasons; variance reports
 
-Acceptance: Totals recalculate from traceable line items. Uncertainty and contingency are visible. Estimate owner and approval authority are named.
+Acceptance: Every estimate is a range with stated assumptions Running cost is included Contingency is linked to named risks Variance is reported at checkpoints
 
-Validation: Finance review and independent arithmetic check.
+Validation: FinOps review of the cost model.
+
+- manual: recompute the totals from the line items in a second spreadsheet or script expect: totals match
+- manual: check each assumption maps to a line in the risk list or is marked accepted expect: none orphaned
+
+Failure modes:
+- One-number estimate | detect: No range shown | respond: Add best, likely and worst
+- Run cost omitted | detect: Budget exceeded in year one | respond: Add operating cost
+- Contingency padded | detect: Flat percentage with no reason | respond: Tie it to risks
+
+ILLUSTRATIVE: A reporting feature is estimated at 40 to 70 person-days with hosting of 300 per month; the contingency of 10 days is tied to the unknown data quality, and the budget fits only if one export format is deferred.
 
 Gate: 01-008. Approval: none required
 
 ## 9
-**Project Approval** (stub). Purpose: prepare a controlled decision with sufficient evidence and independent authority.
+**Project Approval** (complete). Purpose: decide, with the right people and on stated evidence, whether a project may proceed and with what funding and conditions.
 
-Inputs: decision request and accountable sponsor; impact/risk assessment; supporting evidence and alternatives
+Entry criteria: A business case, plan and estimate exist; The approving person or board is named; Risks and dependencies are listed
+
+Inputs: business case; plan and estimate; risk list; strategy fit assessment
 
 Procedure:
-1. Check the decision request is complete, in scope and owned by an authorized requester.
-2. Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
-3. Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
-4. Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
+1. Check the submission is complete: goals, measures, costs, risks, dependencies and the plan.
+2. Review it against the approval criteria written in the approval policy, scoring each criterion with evidence.
+3. List conditions and the questions that must be answered before funding, and track them to closure.
+4. Take the decision from the named approver, and record approve, approve with conditions, defer or reject, with the reason.
+5. Release funding and the team in stages tied to checkpoints, not all at once.
+6. Tell all affected teams the decision and conditions, and set the date for the first checkpoint.
 
-Deliverables: decision record; evidence index; conditions and waiver log
+Deliverables: completeness check; criteria scoring with evidence; decision record with conditions; staged funding plan
 
-Acceptance: Decision authority is verified. Conditions are measurable, owned and time-bound. No missing or failed critical evidence is silently waived.
+Acceptance: Approver is a named human Decision and reason are recorded Conditions have owners and dates Funding is tied to checkpoints
 
-Validation: Independent approval record and audit trail.
+Validation: Named business sponsor decision; an agent only prepares the pack.
+
+- manual: confirm the decision record names the human approver and the date expect: present
+- manual: check each condition has an owner and a due date expect: none missing
+
+Failure modes:
+- Approval without evidence | detect: Criteria not scored | respond: Return for scoring
+- Conditions forgotten | detect: Funding released with open items | respond: Track and gate funding on them
+- Agent treated as approver | detect: Decision has no human name | respond: Reject the record and obtain approval
+
+ILLUSTRATIVE: A proposal for a payments rebuild is approved with two conditions, a security review and a vendor price confirmation; funding is released for the first phase only, with a checkpoint in eight weeks.
 
 Gate: 01-009. Approval: business-sponsor (always)
 
 ## 10
-**Contract & Compliance** (stub). Purpose: review contractual and regulatory obligations before commitment.
+**Contract & Compliance** (complete). Purpose: make sure contracts and legal and regulatory obligations are understood, assigned and checked before work begins and during it.
 
-Inputs: contract version and counterparties; applicable policy/control obligations; legal/compliance owner
+Entry criteria: A contract or obligation applies to the work; Legal or compliance contact is known; The work scope is defined
+
+Inputs: contracts and statements of work; applicable regulations and policies; data and security obligations; scope of work
 
 Procedure:
-1. Identify service, data, security, availability, audit, retention, subcontracting and exit obligations.
-2. Map each obligation to an internal control owner and evidence source.
-3. Flag ambiguous liability, data processing, IP, jurisdiction, renewal and termination terms.
-4. Record legal review questions and do not provide legal approval outside delegated authority.
+1. List each obligation from the contract and regulations in plain terms: what, who, by when and how it is evidenced.
+2. Map every obligation to an owner and a delivery stage, and flag any obligation the team cannot meet.
+3. Check the work plan against restrictions such as data location, subcontractors, licences and reporting duties.
+4. Raise conflicts and gaps with legal before work starts, and record the answers.
+5. Collect evidence of compliance as the work proceeds, and keep it where audit can find it.
+6. Review obligations at each major change and at contract milestones.
 
-Deliverables: obligation matrix; contract exception log; review decision
+Deliverables: obligations register; conflict and gap log; evidence file; review records
 
-Acceptance: Every material obligation has an owner and evidence path. Exceptions have an authorized risk owner. Unresolved legal interpretation is escalated.
+Acceptance: Each obligation has an owner and evidence Unmeetable obligations were raised with legal Restrictions are checked against the plan Evidence is retrievable
 
-Validation: Legal and compliance owner sign-off.
+Validation: Legal or compliance approval.
+
+- manual: sample five obligations and trace each to an owner and evidence item expect: all traced
+- manual: check the register lists every contract in scope expect: none missing
+
+Failure modes:
+- Obligation without owner | detect: Register row empty | respond: Assign before work starts
+- Data location breached | detect: Plan uses a region the contract forbids | respond: Change the plan or seek approval
+- Evidence not kept | detect: Audit cannot confirm compliance | respond: Collect during the work
+
+ILLUSTRATIVE: A client contract requires data to stay in one country and 24-hour breach notice. The register assigns owners to both, and a plan using an overseas log service is changed before work begins.
 
 Gate: 01-010. Approval: legal-owner (always)

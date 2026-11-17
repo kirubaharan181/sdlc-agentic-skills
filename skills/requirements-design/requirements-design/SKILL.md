@@ -24,17 +24,17 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 11 | Requirement Elicitation | stub | Requirements Engineer |
-| 12 | Requirement Documentation | stub | Requirements Engineer |
+| 11 | Requirement Elicitation | complete | Requirements Engineer |
+| 12 | Requirement Documentation | complete | Requirements Engineer |
 | 13 | Functional Requirements | complete | Requirements Engineer |
-| 14 | Non-Functional Requirements | stub | Requirements Engineer |
-| 15 | User Research | stub | UX Researcher |
+| 14 | Non-Functional Requirements | complete | Requirements Engineer |
+| 15 | User Research | complete | UX Researcher |
 | 16 | User Journey Mapping | complete | UX Researcher |
 | 17 | Wireframing | stub | UI/UX Designer |
-| 18 | UI Design | stub | UI/UX Designer |
-| 19 | UX Design | stub | UI/UX Designer |
-| 20 | Prototype Development | stub | UI/UX Designer |
-| 21 | Accessibility Review | stub | Accessibility Testing Specialist |
+| 18 | UI Design | complete | UI/UX Designer |
+| 19 | UX Design | complete | UI/UX Designer |
+| 20 | Prototype Development | complete | UI/UX Designer |
+| 21 | Accessibility Review | complete | Accessibility Testing Specialist |
 | 22 | Requirement Validation | stub | Product Owner |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).

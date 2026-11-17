@@ -15,40 +15,68 @@
 - [22 Requirement Validation](#22)
 
 ## 11
-**Requirement Elicitation** (stub). Purpose: discover complete and testable stakeholder needs.
+**Requirement Elicitation** (complete). Purpose: discover what stakeholders need by asking the right questions and recording their answers in a form others can check.
 
-Inputs: stakeholder map and interview plan; business goals and known constraints; elicitation sources
+Entry criteria: Stakeholders are identified; The goal of the work is stated; Time with stakeholders is scheduled
+
+Inputs: stakeholder list; business goals; existing documents and systems; interview guide
 
 Procedure:
-1. Select interviews, workshops, observation or document analysis appropriate to each stakeholder.
-2. Ask for goals, tasks, exceptions, pain points, constraints and examples of successful outcomes.
-3. Resolve conflicting statements by recording source, authority and decision owner.
-4. Convert findings into candidate requirements and confirm them with the source stakeholder.
+1. Identify stakeholders by role and influence, including users, operators, support and compliance, not only sponsors.
+2. Prepare questions about goals, current process, pain, constraints and what success looks like.
+3. Run interviews or workshops and record the answers in the stakeholders' words with the date.
+4. Observe real work where possible, because what people do often differs from what they describe.
+5. Write each need as a statement with its source, then play it back to the stakeholder to confirm.
+6. List conflicts between stakeholders and unanswered questions, and send them to the decision maker.
 
-Deliverables: elicitation notes; stakeholder needs catalogue; open-question log
+Deliverables: stakeholder map; interview and workshop notes; confirmed need statements with sources; conflict and open question list
 
-Acceptance: Needs are attributed to a source and context. Conflicts and assumptions remain visible. Coverage includes exceptions and operational users.
+Acceptance: Each need names its source Needs were confirmed by the stakeholder Conflicts are recorded, not hidden Operations and support were asked
 
-Validation: Stakeholder playback and confirmation.
+Validation: Product owner review.
+
+- manual: sample five need statements and check each has a named source and confirmation date expect: all present
+- manual: confirm operations and support roles appear in the stakeholder map expect: present
+
+Failure modes:
+- Only sponsors consulted | detect: Operators surprised later | respond: Add the missing roles
+- Solutions recorded as needs | detect: Statements name technology | respond: Rewrite as outcomes
+- Conflicts smoothed over | detect: Contradictory needs both listed as agreed | respond: Escalate to the decision maker
+
+ILLUSTRATIVE: Interviews with sales and support show that agents need account history on one screen; sales wants a different priority. Both are recorded with sources, and the conflict goes to the product owner.
 
 Gate: 02-011. Approval: none required
 
 ## 12
-**Requirement Documentation** (stub). Purpose: create a navigable, versioned and traceable specification.
+**Requirement Documentation** (complete). Purpose: write requirements so that each is clear, testable and traceable to a need, and the whole set can be reviewed and changed.
 
-Inputs: validated needs and decisions; document template and audience; source-of-truth repository
+Entry criteria: Confirmed needs exist (stage 11); A template and identifier scheme exist; A reviewer is available
+
+Inputs: confirmed need statements; business rules; existing requirements; glossary
 
 Procedure:
-1. Organize scope, actors, terminology, requirements, constraints, dependencies and exclusions.
-2. Assign stable IDs and link each requirement to source, owner and downstream tests.
-3. Document diagrams, examples, exceptions and unresolved decisions in the repository convention.
-4. Review clarity, consistency, links, version and change history.
+1. Give every requirement a unique identifier, a single statement, a priority and the need it traces to.
+2. Write in testable form: avoid vague words, state the condition, the actor and the measurable result.
+3. Define terms in a glossary and use them the same way throughout.
+4. Add acceptance criteria to each requirement as examples that a tester can run.
+5. Review for duplicates, conflicts, gaps and untestable statements, and fix or log each finding.
+6. Baseline the set and manage changes through a recorded request with impact.
 
-Deliverables: versioned specification; traceability matrix; glossary and decision links
+Deliverables: requirements document with identifiers; glossary; traceability from need to requirement; review findings
 
-Acceptance: No ambiguous pronouns or unbounded terms remain in normative requirements. IDs are stable and traceable. Links, diagrams and examples render.
+Acceptance: Each requirement is unique, testable and traced Terms are defined once Conflicts and gaps are logged Changes follow a recorded process
 
-Validation: Peer review by product, engineering and QA.
+Validation: Requirements review sign-off.
+
+- manual: check every requirement id has a source need and at least one acceptance example expect: none missing
+- `grep -rniE 'fast|user-friendly|easy|robust' docs/requirements | head` expect: no unmeasured vague words remain
+
+Failure modes:
+- Vague wording | detect: Tester cannot judge pass or fail | respond: Add a measure
+- Orphan requirement | detect: No source need | respond: Trace it or remove it
+- Conflicting statements | detect: Two requirements contradict | respond: Resolve with the owner
+
+ILLUSTRATIVE: The statement 'the report should be fast' becomes 'the report for up to 10,000 rows is shown within 3 seconds at the 95th percentile', traced to the support team's need and given a test example.
 
 Gate: 02-012. Approval: none required
 
@@ -86,40 +114,68 @@ ILLUSTRATIVE: The requirement says a signed-in user can export their orders as C
 Gate: 02-013. Approval: none required
 
 ## 14
-**Non-Functional Requirements** (stub). Purpose: quantify reliability, performance, security and operability expectations.
+**Non-Functional Requirements** (complete). Purpose: state how well the system must perform, protect and operate, in measurable terms that design and test can use.
 
-Inputs: workload profile and business criticality; service objectives and compliance constraints; measurement and verification environment
+Entry criteria: Functional scope is known; Business and operating context is known; Regulatory constraints are listed
+
+Inputs: functional requirements; usage forecasts; regulatory and security obligations; operating model
 
 Procedure:
-1. Select relevant quality attributes such as latency, throughput, availability, recovery, scalability, privacy and accessibility.
-2. Set thresholds with percentile, workload, duration, measurement point and acceptable error rate.
-3. Define telemetry and test conditions needed to verify each target.
-4. Resolve trade-offs among quality attributes and obtain product/operations owner acceptance.
+1. Cover the main quality areas: performance, availability, security, privacy, usability, maintainability, portability and recoverability.
+2. For each area write a measurable target with the conditions, such as load, data size and time window.
+3. Base the targets on usage forecasts and obligations, and mark each as required or desirable.
+4. Check for conflicts between targets and with cost, and agree the trade-offs with the sponsor.
+5. Say how each will be verified: load test, failover test, audit or review.
+6. Feed the targets to architecture, test planning and monitoring.
 
-Deliverables: quality attribute scenarios; measurable NFR matrix; verification plan
+Deliverables: quality requirements with targets; verification method per target; trade-off decisions; links to test and monitoring plans
 
-Acceptance: Every NFR has a threshold, workload condition and verification method. Targets are measurable and tied to business criticality. Trade-offs and owners are explicit.
+Acceptance: Each target is measurable with its conditions Each has a verification method Conflicts and trade-offs are decided Targets reach the test and monitoring plans
 
-Validation: Review each NFR for measurable thresholds and verify test plans can produce the required evidence.
+Validation: Architect and product owner agreement.
+
+- manual: check each non-functional requirement has a number, a condition and a verification method expect: none missing
+- manual: check each target appears in the test or monitoring plan expect: all appear
+
+Failure modes:
+- Targets without numbers | detect: Words like robust | respond: Replace with measures
+- Impossible combination | detect: Availability target needs more cost than budget | respond: Agree trade-off
+- Targets never tested | detect: No verification plan | respond: Add tests or monitoring
+
+ILLUSTRATIVE: Availability of 99.9 percent per month for checkout, recovery within 30 minutes and p95 under 400 ms at 200 requests per second are agreed, each tied to a load or failover test.
 
 Gate: 02-014. Approval: none required
 
 ## 15
-**User Research** (stub). Purpose: collect ethical and representative evidence about user behavior.
+**User Research** (complete). Purpose: understand users' real behavior, goals and difficulties through research, and turn it into findings the design can use.
 
-Inputs: research question and participant criteria; consent/privacy plan; interview or usability protocol
+Entry criteria: A user group and research question are defined; Access to participants is available; Consent and privacy rules are agreed
+
+Inputs: research questions; participants; existing analytics and support data; consent process
 
 Procedure:
-1. Recruit participants against explicit inclusion criteria and record sampling limitations.
-2. Obtain consent; avoid collecting unnecessary personal or sensitive data.
-3. Run neutral interviews or observations with consistent prompts and session notes.
-4. Code findings into themes, counterexamples and confidence levels; distinguish participant statements from researcher inference.
+1. Write the research questions and choose methods that fit them: interviews, observation, diary study, survey or usability test.
+2. Recruit participants who match the real user groups, including less technical and assistive-technology users.
+3. Get consent, explain how data is used and stored, and keep personal data to the minimum needed.
+4. Run the sessions, record what people did and said, and avoid leading questions.
+5. Analyze across participants, and report patterns with the number of people who showed each one.
+6. Share findings as problems and opportunities with evidence, and note the limits of the sample.
 
-Deliverables: research protocol; consented notes; coded themes; insight report
+Deliverables: research plan; consent records; session notes; findings with counts and limits
 
-Acceptance: Research question maps to evidence. Sampling bias and limitations are disclosed. Recommendations do not overgeneralize beyond the sample.
+Acceptance: Participants match real user groups Consent was obtained and recorded Findings state how many people showed each pattern Limits of the sample are stated
 
-Validation: Research peer review and stakeholder playback.
+Validation: UX lead review.
+
+- manual: check each participant has a consent record and each finding shows a count expect: complete
+- manual: check recruitment included at least one participant using assistive technology expect: yes, or reason given
+
+Failure modes:
+- Findings from one person generalized | detect: No counts | respond: Show counts and caution
+- Leading questions | detect: Participants echo the facilitator | respond: Revise the guide
+- Personal data kept too long | detect: Raw recordings retained | respond: Delete per the retention rule
+
+ILLUSTRATIVE: Eight users are observed filing an expense claim. Five miss the receipt upload button; the report gives the count of five of eight, notes that all were in one department, and recommends testing with others.
 
 Gate: 02-015. Approval: none required
 
@@ -176,78 +232,134 @@ Validation: Product/design review and quick usability walkthrough.
 Gate: 02-017. Approval: none required
 
 ## 18
-**UI Design** (stub). Purpose: define a consistent and accessible visual interface.
+**UI Design** (complete). Purpose: design the visible interface so people can recognize, read and operate it correctly, consistently across the product.
 
-Inputs: approved wireframes and design tokens; brand and component standards; accessibility requirements
+Entry criteria: Requirements and flows exist; A design system or style foundation exists or is planned; Brand constraints are known
+
+Inputs: user flows and wireframes; design system or tokens; brand guidelines; accessibility requirements
 
 Procedure:
-1. Apply typography, color, spacing, hierarchy and component states using the design system.
-2. Specify responsive behavior, focus/hover/disabled/error states and asset usage.
-3. Check color contrast, text scaling and semantic component intent.
-4. Document deviations and reusable component decisions.
+1. Use the design system components and tokens first, and add new ones only when no existing one fits.
+2. Set layout, spacing and hierarchy so the main action on each screen is clear.
+3. Design every state: empty, loading, error, success and disabled, not only the filled state.
+4. Check text size, contrast and touch target size against the accessibility requirements.
+5. Check the designs at the supported screen sizes and with long and translated text.
+6. Hand over specifications and assets with named components, so engineers do not redraw them.
 
-Deliverables: high-fidelity screens; component specifications; design token usage
+Deliverables: screen designs with all states; new component specifications; handover assets; contrast and size check
 
-Acceptance: Visual states and responsive breakpoints are specified. Contrast and text scaling meet agreed standards. Components reuse approved tokens or record justified exceptions.
+Acceptance: All states are designed Components come from the design system or are specified Contrast and size meet requirements Designs hold at supported sizes and long text
 
-Validation: Design-system review and accessibility check.
+Validation: Design lead review and accessibility check.
+
+- manual: check each screen has empty, loading, error and success states expect: all present
+- manual: measure text contrast of the main text and controls against the required ratio expect: all meet
+
+Failure modes:
+- Only the happy state designed | detect: Engineers invent error screens | respond: Add all states
+- New component for every screen | detect: System bloats | respond: Reuse or extend
+- Low contrast text | detect: Check fails | respond: Adjust tokens
+
+ILLUSTRATIVE: A settings screen uses the standard form components, adds an inline error state and a disabled save button, and the grey helper text is darkened to meet the contrast ratio.
 
 Gate: 02-018. Approval: none required
 
 ## 19
-**UX Design** (stub). Purpose: optimize task completion, comprehension and error recovery.
+**UX Design** (complete). Purpose: shape the whole experience of a task so that users can finish it with little effort, by structuring flows, content and feedback.
 
-Inputs: user goals and journey evidence; wireframes and interaction constraints; usability criteria
+Entry criteria: Research findings exist (stage 15); Key tasks are identified; Success measures for the tasks are defined
+
+Inputs: research findings; key tasks; information needs; current flow analytics
 
 Procedure:
-1. Design navigation, information scent, feedback, affordances and error recovery around user tasks.
-2. Cover first-use, repeat-use, empty, loading, failure and recovery states.
-3. Prototype critical paths and observe representative users.
-4. Revise based on task success, time, error and qualitative feedback.
+1. Describe the key tasks as flows from start to finish, including where users arrive from and what they do next.
+2. Reduce steps and decisions: remove unneeded fields, set sensible defaults and show only what is relevant.
+3. Organize content and navigation around the words and groupings users use, and test them with a card sort or a tree test.
+4. Design feedback for every action and every failure, with messages that say what happened and what to do.
+5. Test the flows with real users using prototype tasks, and measure completion, time and errors.
+6. Revise and record the changes with the evidence that drove them.
 
-Deliverables: interaction specification; task flow; usability findings
+Deliverables: task flows; information structure tested with users; message and feedback copy; usability test results
 
-Acceptance: Critical tasks have clear entry, progress and recovery. Usability issues are prioritized by impact. Design changes are linked to research evidence.
+Acceptance: Key tasks have measured completion and error rates Navigation was tested with users Errors say what to do next Changes link to evidence
 
-Validation: Moderated usability review.
+Validation: UX lead review.
+
+- manual: check each key task has a completion rate from a test with at least five participants expect: recorded
+- manual: read every error message and check it states cause and next step expect: all do
+
+Failure modes:
+- Flow has too many steps | detect: Users drop at step four | respond: Remove or combine steps
+- Labels use internal words | detect: Users cannot find items | respond: Use users' words
+- Opinion over evidence | detect: Changes not linked to tests | respond: Test and record
+
+ILLUSTRATIVE: A booking flow of seven steps is reduced to four by defaulting known details; a test with six users shows five complete it unaided, and error text now tells the user how to correct a date.
 
 Gate: 02-019. Approval: none required
 
 ## 20
-**Prototype Development** (stub). Purpose: validate a risky interaction or concept before production implementation.
+**Prototype Development** (complete). Purpose: build a testable model of an idea quickly and cheaply, to learn before the real build.
 
-Inputs: hypothesis and target user task; prototype fidelity decision; success and failure thresholds
+Entry criteria: A question to answer is defined; Flows or screens to test exist; Test participants are available
+
+Inputs: design flows; the question the prototype must answer; test participants; design system
 
 Procedure:
-1. Choose fidelity that answers the question without implying production readiness.
-2. Build only the critical path and realistic states needed for the experiment.
-3. Run task-based sessions and capture observations, failures and time-on-task.
-4. Decide iterate, validate further or discard; label simulated behavior and data.
+1. State the question the prototype is meant to answer and the tasks users will do.
+2. Choose the lowest fidelity that can answer it: paper, clickable screens or a coded spike.
+3. Build only the paths needed for the tasks, with realistic content, not placeholders.
+4. Test with real users, observe where they hesitate or fail, and record it.
+5. Decide what to change, drop or build, and note what the prototype could not tell you.
+6. Label the prototype as throwaway unless it has been reviewed for production.
 
-Deliverables: prototype artifact; experiment protocol; test observations; decision log
+Deliverables: prototype; test script and tasks; observations and decisions; list of what was not tested
 
-Acceptance: Prototype limitations are explicit. Success criteria are measured. No prototype-only behavior is represented as production capability.
+Acceptance: The prototype answers a stated question Realistic content was used Findings drive decisions Production use needs a separate review
 
-Validation: Product/design decision review.
+Validation: Design lead review.
+
+- manual: check the prototype test report names the question and the decision it supports expect: present
+- manual: confirm the prototype is labelled throwaway or reviewed for production expect: labelled
+
+Failure modes:
+- Prototype becomes production by accident | detect: No review | respond: Label and review before reuse
+- Too high fidelity | detect: Weeks spent polishing | respond: Use lower fidelity
+- No question defined | detect: Findings not actionable | respond: State the question first
+
+ILLUSTRATIVE: A clickable prototype of a new onboarding flow is tested with six users in two days; four stall at identity verification, so the team redesigns that step before any code is written.
 
 Gate: 02-020. Approval: none required
 
 ## 21
-**Accessibility Review** (stub). Purpose: verify inclusive access against applicable WCAG criteria.
+**Accessibility Review** (complete). Purpose: check that people with disabilities can use the product, by testing against standards and with assistive technology.
 
-Inputs: target standard and conformance level; supported browsers/devices and assistive tech; critical user journeys
+Entry criteria: Screens or a working build exist; The target standard and level are chosen; Assistive technology is available for testing
+
+Inputs: designs or build; accessibility standard and target level; assistive technologies in scope; known issues
 
 Procedure:
-1. Inspect semantic structure, accessible names, headings, landmarks, labels and error associations.
-2. Test keyboard-only operation, focus order/visibility, dialogs and escape behavior.
-3. Check contrast, zoom/reflow, reduced motion and screen-reader announcements.
-4. Combine automated scans with manual assistive-technology testing; log criterion-level failures.
+1. Run automated checks first to catch the easy failures, and fix them.
+2. Test keyboard use: every function reachable, visible focus, logical order and no traps.
+3. Test with a screen reader on the main tasks, checking names, roles, labels and announcements.
+4. Check contrast, text resizing, zoom, motion and use of colour as the only signal.
+5. Record each issue with the standard criterion, severity, location and the fix.
+6. Retest fixes and report the remaining issues with owners and dates.
 
-Deliverables: accessibility audit; manual test evidence; defect and remediation list
+Deliverables: test report by criterion; issue list with severity; retest results; remaining issues with owners
 
-Acceptance: Automated scans are not treated as full conformance proof. Critical journeys work without pointer input. Findings cite criterion, impact and reproduction.
+Acceptance: Automated and manual checks both ran Main tasks work with keyboard and screen reader Each issue cites a criterion and severity Remaining issues have owners and dates
 
-Validation: Independent accessibility specialist review.
+Validation: Accessibility specialist sign-off.
+
+- `npx pa11y http://localhost:3000   # example; use the project's checker and URL` expect: no errors reported on tested pages
+- manual: complete the main task using only the keyboard and again with a screen reader expect: task completed without help
+
+Failure modes:
+- Automated pass treated as compliance | detect: Manual problems remain | respond: Do the manual tests
+- Focus not visible | detect: Keyboard users lose position | respond: Add a visible focus style
+- Fixes untested | detect: Issues reopened | respond: Retest every fix
+
+ILLUSTRATIVE: Automated checks find missing form labels; a keyboard test finds a modal that traps focus; a screen reader test finds an unlabeled icon button. All three are logged with criteria and fixed, then retested.
 
 Gate: 02-021. Approval: none required
 

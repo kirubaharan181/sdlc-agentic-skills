@@ -1,0 +1,65 @@
+{
+  "stage_id": 15,
+  "purpose": "understand users' real behavior, goals and difficulties through research, and turn it into findings the design can use",
+  "entry_criteria": [
+    "A user group and research question are defined",
+    "Access to participants is available",
+    "Consent and privacy rules are agreed"
+  ],
+  "inputs": [
+    "research questions",
+    "participants",
+    "existing analytics and support data",
+    "consent process"
+  ],
+  "procedure": [
+    "Write the research questions and choose methods that fit them: interviews, observation, diary study, survey or usability test.",
+    "Recruit participants who match the real user groups, including less technical and assistive-technology users.",
+    "Get consent, explain how data is used and stored, and keep personal data to the minimum needed.",
+    "Run the sessions, record what people did and said, and avoid leading questions.",
+    "Analyze across participants, and report patterns with the number of people who showed each one.",
+    "Share findings as problems and opportunities with evidence, and note the limits of the sample."
+  ],
+  "deliverables": [
+    "research plan",
+    "consent records",
+    "session notes",
+    "findings with counts and limits"
+  ],
+  "acceptance_criteria": [
+    "Participants match real user groups",
+    "Consent was obtained and recorded",
+    "Findings state how many people showed each pattern",
+    "Limits of the sample are stated"
+  ],
+  "validation_method": "UX lead review.",
+  "validation": [
+    {
+      "check": "check each participant has a consent record and each finding shows a count",
+      "expect": "complete"
+    },
+    {
+      "check": "check recruitment included at least one participant using assistive technology",
+      "expect": "yes, or reason given"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Findings from one person generalized",
+      "detection": "No counts",
+      "response": "Show counts and caution"
+    },
+    {
+      "mode": "Leading questions",
+      "detection": "Participants echo the facilitator",
+      "response": "Revise the guide"
+    },
+    {
+      "mode": "Personal data kept too long",
+      "detection": "Raw recordings retained",
+      "response": "Delete per the retention rule"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Eight users are observed filing an expense claim. Five miss the receipt upload button; the report gives the count of five of eight, notes that all were in one department, and recommends testing with others.",
+  "status": "complete"
+}

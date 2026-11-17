@@ -1,0 +1,65 @@
+{
+  "stage_id": 19,
+  "purpose": "shape the whole experience of a task so that users can finish it with little effort, by structuring flows, content and feedback",
+  "entry_criteria": [
+    "Research findings exist (stage 15)",
+    "Key tasks are identified",
+    "Success measures for the tasks are defined"
+  ],
+  "inputs": [
+    "research findings",
+    "key tasks",
+    "information needs",
+    "current flow analytics"
+  ],
+  "procedure": [
+    "Describe the key tasks as flows from start to finish, including where users arrive from and what they do next.",
+    "Reduce steps and decisions: remove unneeded fields, set sensible defaults and show only what is relevant.",
+    "Organize content and navigation around the words and groupings users use, and test them with a card sort or a tree test.",
+    "Design feedback for every action and every failure, with messages that say what happened and what to do.",
+    "Test the flows with real users using prototype tasks, and measure completion, time and errors.",
+    "Revise and record the changes with the evidence that drove them."
+  ],
+  "deliverables": [
+    "task flows",
+    "information structure tested with users",
+    "message and feedback copy",
+    "usability test results"
+  ],
+  "acceptance_criteria": [
+    "Key tasks have measured completion and error rates",
+    "Navigation was tested with users",
+    "Errors say what to do next",
+    "Changes link to evidence"
+  ],
+  "validation_method": "UX lead review.",
+  "validation": [
+    {
+      "check": "check each key task has a completion rate from a test with at least five participants",
+      "expect": "recorded"
+    },
+    {
+      "check": "read every error message and check it states cause and next step",
+      "expect": "all do"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Flow has too many steps",
+      "detection": "Users drop at step four",
+      "response": "Remove or combine steps"
+    },
+    {
+      "mode": "Labels use internal words",
+      "detection": "Users cannot find items",
+      "response": "Use users' words"
+    },
+    {
+      "mode": "Opinion over evidence",
+      "detection": "Changes not linked to tests",
+      "response": "Test and record"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A booking flow of seven steps is reduced to four by defaulting known details; a test with six users shows five complete it unaided, and error text now tells the user how to correct a date.",
+  "status": "complete"
+}

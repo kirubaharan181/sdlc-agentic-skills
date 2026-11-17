@@ -1,0 +1,65 @@
+{
+  "stage_id": 11,
+  "purpose": "discover what stakeholders need by asking the right questions and recording their answers in a form others can check",
+  "entry_criteria": [
+    "Stakeholders are identified",
+    "The goal of the work is stated",
+    "Time with stakeholders is scheduled"
+  ],
+  "inputs": [
+    "stakeholder list",
+    "business goals",
+    "existing documents and systems",
+    "interview guide"
+  ],
+  "procedure": [
+    "Identify stakeholders by role and influence, including users, operators, support and compliance, not only sponsors.",
+    "Prepare questions about goals, current process, pain, constraints and what success looks like.",
+    "Run interviews or workshops and record the answers in the stakeholders' words with the date.",
+    "Observe real work where possible, because what people do often differs from what they describe.",
+    "Write each need as a statement with its source, then play it back to the stakeholder to confirm.",
+    "List conflicts between stakeholders and unanswered questions, and send them to the decision maker."
+  ],
+  "deliverables": [
+    "stakeholder map",
+    "interview and workshop notes",
+    "confirmed need statements with sources",
+    "conflict and open question list"
+  ],
+  "acceptance_criteria": [
+    "Each need names its source",
+    "Needs were confirmed by the stakeholder",
+    "Conflicts are recorded, not hidden",
+    "Operations and support were asked"
+  ],
+  "validation_method": "Product owner review.",
+  "validation": [
+    {
+      "check": "sample five need statements and check each has a named source and confirmation date",
+      "expect": "all present"
+    },
+    {
+      "check": "confirm operations and support roles appear in the stakeholder map",
+      "expect": "present"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Only sponsors consulted",
+      "detection": "Operators surprised later",
+      "response": "Add the missing roles"
+    },
+    {
+      "mode": "Solutions recorded as needs",
+      "detection": "Statements name technology",
+      "response": "Rewrite as outcomes"
+    },
+    {
+      "mode": "Conflicts smoothed over",
+      "detection": "Contradictory needs both listed as agreed",
+      "response": "Escalate to the decision maker"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Interviews with sales and support show that agents need account history on one screen; sales wants a different priority. Both are recorded with sources, and the conflict goes to the product owner.",
+  "status": "complete"
+}
