@@ -1,0 +1,65 @@
+{
+  "stage_id": 122,
+  "purpose": "run the production databases so they stay available, correct, performant and recoverable, with changes made safely",
+  "entry_criteria": [
+    "Databases and their owners are inventoried",
+    "Backup and monitoring tools exist",
+    "Recovery objectives are defined"
+  ],
+  "inputs": [
+    "database inventory",
+    "recovery objectives (RPO, RTO)",
+    "monitoring and slow query data",
+    "change calendar"
+  ],
+  "procedure": [
+    "Monitor availability, replication lag, connection use, disk growth, lock waits and slow queries, and alert on thresholds with runbook links.",
+    "Verify backups by restoring them into a test instance on a schedule and checking data and application connectivity; an untested backup is not a backup.",
+    "Tune with evidence: review the slowest and most frequent queries, check query plans, and add or remove indexes by measured effect.",
+    "Apply patches and schema changes through the change process, using online and backward-compatible migrations (expand then contract).",
+    "Manage access: named accounts, least privilege, rotated credentials and audited administrative access.",
+    "Rehearse failover and point-in-time recovery, record the actual recovery time and data loss against the objectives."
+  ],
+  "deliverables": [
+    "monitoring and alert configuration",
+    "restore test records",
+    "tuning changes with before and after plans",
+    "failover rehearsal results"
+  ],
+  "acceptance_criteria": [
+    "Restores are tested on a schedule",
+    "Measured recovery meets RPO and RTO or the gap is recorded",
+    "Schema changes are backward compatible",
+    "Administrative access is named and audited"
+  ],
+  "validation_method": "Database administrator and service owner review.",
+  "validation": [
+    {
+      "command": "pg_restore --list backup.dump | head   # example; then restore into a scratch instance and run row-count checks",
+      "expect": "restore completes and counts match the source"
+    },
+    {
+      "command": "psql -c \"select now()-pg_last_xact_replay_timestamp() as lag\"   # example on a replica",
+      "expect": "lag within the alert threshold"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Backup never restored",
+      "detection": "First restore attempt fails during an incident",
+      "response": "Schedule restore tests"
+    },
+    {
+      "mode": "Migration locks a hot table",
+      "detection": "Writes blocked",
+      "response": "Use online, batched migration"
+    },
+    {
+      "mode": "Index added without measuring",
+      "detection": "Writes slow, plan unchanged",
+      "response": "Verify with the plan and drop it"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A monthly restore test brings the latest backup up in a scratch instance in 38 minutes against a 60-minute target, and row counts match; a column rename is done by adding the new column, backfilling in batches, switching reads, then dropping the old.",
+  "status": "complete"
+}

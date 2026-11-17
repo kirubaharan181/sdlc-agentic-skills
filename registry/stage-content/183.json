@@ -1,0 +1,65 @@
+{
+  "stage_id": 183,
+  "purpose": "check, independently of the teams, that security controls are in place and working, and that gaps are tracked to closure",
+  "entry_criteria": [
+    "A security control framework is chosen",
+    "The auditor has read access to evidence",
+    "The scope of review is agreed"
+  ],
+  "inputs": [
+    "security policies and control framework",
+    "system configurations and logs",
+    "vulnerability and incident records",
+    "previous findings"
+  ],
+  "procedure": [
+    "Map the policies to testable controls, such as access reviews, vulnerability patch times, encryption, logging and incident response.",
+    "Collect evidence directly from the systems (configuration exports, access lists, scanner results, logs) rather than from interviews alone.",
+    "Test operation over a period by sampling, for example the time between disclosure and patch for a sample of critical vulnerabilities.",
+    "Rate findings by risk, and require the control owner to respond with a plan, an owner and a date.",
+    "Verify closure by reviewing new evidence, not by accepting a statement that it was done.",
+    "Report trends to security leadership, including repeated findings and areas not yet reviewed."
+  ],
+  "deliverables": [
+    "control test matrix",
+    "evidence references",
+    "findings with owners and dates",
+    "closure verification and trend report"
+  ],
+  "acceptance_criteria": [
+    "Evidence comes from systems",
+    "Findings have owners and dates",
+    "Closure is verified with new evidence",
+    "Repeated findings are reported"
+  ],
+  "validation_method": "Security auditor report; security leadership decision on risk acceptance.",
+  "validation": [
+    {
+      "check": "sample ten critical vulnerabilities and compute days from disclosure to fix",
+      "expect": "median and worst case reported against the policy"
+    },
+    {
+      "check": "take five closed findings and check each has fresh evidence",
+      "expect": "all do"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Findings closed on a statement",
+      "detection": "No evidence attached",
+      "response": "Reopen and require evidence"
+    },
+    {
+      "mode": "Same finding every audit",
+      "detection": "Repeat in the trend report",
+      "response": "Escalate for a structural fix"
+    },
+    {
+      "mode": "Auditor lacks access",
+      "detection": "Scope not covered",
+      "response": "Grant read-only access or reduce the scope formally"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A sample shows critical patches take a median of 9 days against a 7-day policy, with two over 30. Findings go to the platform owner with a plan, and closure is verified from the next scan.",
+  "status": "complete"
+}

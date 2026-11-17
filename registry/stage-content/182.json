@@ -1,0 +1,65 @@
+{
+  "stage_id": 182,
+  "purpose": "set targets for quality, check that teams meet them with evidence, and use the results to improve how work is done",
+  "entry_criteria": [
+    "Quality measures can be collected",
+    "A definition of done exists",
+    "Teams accept shared measures"
+  ],
+  "inputs": [
+    "quality measures",
+    "defect and incident data",
+    "test and review data",
+    "customer feedback"
+  ],
+  "procedure": [
+    "Define a small set of quality indicators with owners, such as escaped defects, change failure rate, test reliability and customer-reported issues.",
+    "Set targets and thresholds per indicator, based on current performance and the business need, and publish the definitions to avoid arguments about numbers.",
+    "Check adherence to the definition of done by sampling completed work for tests, reviews, documentation and acceptance, with findings recorded.",
+    "Investigate indicators outside thresholds with the team, find causes by examples, and agree an improvement with an owner.",
+    "Guard against gaming: review how numbers are produced, and look at several indicators together.",
+    "Review results quarterly, adjust targets and retire indicators that no longer drive decisions."
+  ],
+  "deliverables": [
+    "indicator definitions and targets",
+    "sampling reports",
+    "improvement actions with owners",
+    "quarterly quality review"
+  ],
+  "acceptance_criteria": [
+    "Indicators are defined and owned",
+    "Sampling checks the definition of done on real work",
+    "Out-of-threshold results have causes and actions",
+    "Gaming risks are reviewed"
+  ],
+  "validation_method": "Quality governance lead review.",
+  "validation": [
+    {
+      "check": "sample ten completed items and check each for tests, review and acceptance evidence",
+      "expect": "pass rate recorded"
+    },
+    {
+      "check": "recompute one indicator from raw data",
+      "expect": "matches the reported value"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Indicators gamed",
+      "detection": "Numbers improve, quality does not",
+      "response": "Combine indicators and sample real work"
+    },
+    {
+      "mode": "Targets arbitrary",
+      "detection": "No link to need",
+      "response": "Base on baseline and customer impact"
+    },
+    {
+      "mode": "Actions not done",
+      "detection": "Same issue recurs",
+      "response": "Track actions to done"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Escaped defects rise in one team. A sample of ten stories shows four without a test for the error path; the team adds the check to its definition of done, and the indicator is reviewed next quarter.",
+  "status": "complete"
+}

@@ -1,0 +1,65 @@
+{
+  "stage_id": 145,
+  "purpose": "keep every certificate valid, inventoried and renewed on time, so no outage is caused by an expiry",
+  "entry_criteria": [
+    "TLS is in use on several endpoints (stage 135)",
+    "A certificate inventory source exists or can be built",
+    "Owners for endpoints are known"
+  ],
+  "inputs": [
+    "certificate inventory",
+    "issuance and renewal automation",
+    "monitoring and alerting",
+    "endpoint owners"
+  ],
+  "procedure": [
+    "Discover certificates from the authorities, load balancers, clusters and by scanning your address ranges, and record issuer, names, expiry, owner and where installed.",
+    "Automate renewal wherever possible, and track the exceptions that need manual steps with an owner and a calendar date.",
+    "Monitor expiry from outside, and alert at several stages (for example 30, 14 and 7 days) to different recipients with escalation.",
+    "Check the renewal result by confirming the new certificate is served, not only that issuance succeeded.",
+    "Revoke and replace when a key is exposed or a name is retired, and remove retired certificates from the inventory.",
+    "Practise the emergency replacement of an expired certificate and record the time it takes."
+  ],
+  "deliverables": [
+    "certificate inventory with owners",
+    "renewal automation and exceptions list",
+    "expiry monitoring and alerts",
+    "emergency replacement drill record"
+  ],
+  "acceptance_criteria": [
+    "Every certificate has an owner and an expiry date in the inventory",
+    "Alerts run at several stages with escalation",
+    "Renewal is verified by what is served",
+    "Manual exceptions have calendar dates"
+  ],
+  "validation_method": "Cloud engineer review.",
+  "validation": [
+    {
+      "command": "echo | openssl s_client -connect app.example.com:443 -servername app.example.com 2>/dev/null | openssl x509 -noout -enddate   # example",
+      "expect": "expiry is later than the alert threshold"
+    },
+    {
+      "check": "compare the inventory with a scan of the address ranges",
+      "expect": "no certificate found that is not in the inventory"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Certificate expires unnoticed",
+      "detection": "Clients receive errors",
+      "response": "Replace now and add the alert"
+    },
+    {
+      "mode": "Renewal succeeded but old certificate is served",
+      "detection": "Expiry date unchanged",
+      "response": "Reload the service and add a verification step"
+    },
+    {
+      "mode": "Unknown certificate found",
+      "detection": "Scan finds one not in inventory",
+      "response": "Find owner and register or remove"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A weekly scan finds a certificate on a forgotten admin host with 19 days left; the owner is identified, it is moved to automated issuance, and a monitor now alerts at 30, 14 and 7 days.",
+  "status": "complete"
+}

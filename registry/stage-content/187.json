@@ -1,0 +1,65 @@
+{
+  "stage_id": 187,
+  "purpose": "make sure changes to important systems are controlled consistently across teams, with proportionate approval and complete records",
+  "entry_criteria": [
+    "A change policy exists (stage 44)",
+    "Deployment tooling records changes",
+    "Risk classes are defined"
+  ],
+  "inputs": [
+    "change policy and risk classes",
+    "deployment and change records",
+    "incident records linked to changes",
+    "exception log"
+  ],
+  "procedure": [
+    "Define risk classes with examples and the approval needed for each, favoring pre-approved standard changes for low risk and tested automation.",
+    "Link change records to deployments automatically, so a deployment without a record is detected.",
+    "Measure change failure rate, rollbacks, emergency change share and incidents caused by changes, by team and service.",
+    "Review a sample of changes for correct classification, evidence and approval by a named human where required.",
+    "Review emergency changes within a set time to confirm they were justified and fix the cause.",
+    "Adjust the classes and standard changes using the data, so process effort goes where risk is."
+  ],
+  "deliverables": [
+    "risk class catalogue",
+    "deployment-to-change reconciliation",
+    "change metrics",
+    "sample review findings"
+  ],
+  "acceptance_criteria": [
+    "Every production deployment maps to a change record",
+    "Approval follows the class",
+    "Emergency changes are reviewed",
+    "Classes are tuned with data"
+  ],
+  "validation_method": "Engineering governance owner review.",
+  "validation": [
+    {
+      "check": "reconcile last month's production deployments with change records",
+      "expect": "no deployment without a record, or each listed as an incident"
+    },
+    {
+      "check": "sample ten changes and check class, evidence and named approver",
+      "expect": "all consistent"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Deployments without records",
+      "detection": "Reconciliation shows gaps",
+      "response": "Block deploys without a change id"
+    },
+    {
+      "mode": "Everything treated as high risk",
+      "detection": "Approvals queue",
+      "response": "Introduce standard changes"
+    },
+    {
+      "mode": "Emergency path overused",
+      "detection": "Large share of changes",
+      "response": "Review causes and fix planning"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Reconciliation finds 6 of 410 deployments with no record; the pipeline now requires a change id, and configuration-only updates move to a pre-approved standard change.",
+  "status": "complete"
+}

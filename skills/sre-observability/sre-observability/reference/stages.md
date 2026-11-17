@@ -17,40 +17,68 @@
 - [166 Reliability Improvement](#166)
 
 ## 153
-**Application Monitoring** (stub). Purpose: provide actionable observability and service-level control.
+**Application Monitoring** (complete). Purpose: know whether the application is healthy and where it is hurting users, using signals from inside the application and from the user's side.
 
-Inputs: service map and critical user journeys; SLO and alert thresholds; telemetry and privacy requirements
+Entry criteria: The application is deployed with a version identifier; Logging, metrics and tracing foundations exist (stages 155-157); Key user journeys are known
+
+Inputs: key journeys and business operations; service level objectives; application metrics and traces; release history
 
 Procedure:
-1. Instrument golden signals and key business transactions with stable service/environment labels.
-2. Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
-3. Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
-4. Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
+1. Define service level indicators for the key journeys, such as successful request ratio and latency under a threshold, and set objectives with error budgets.
+2. Instrument application-level signals: request rate, errors by type, latency histograms, dependency calls, queue depth and business events like orders placed.
+3. Alert on symptoms users feel and on fast error budget burn, with a page only when action is needed now and a ticket otherwise.
+4. Tag telemetry with the release version, so a regression is tied to the change that caused it.
+5. Add real user and synthetic journey monitoring to catch what server-side metrics miss.
+6. Link each alert to a runbook and a dashboard, and review noisy alerts monthly to remove or tune them.
 
-Deliverables: telemetry specification; dashboards and alerts; SLO/error-budget report; runbook links
+Deliverables: indicators and objectives per journey; dashboards and alerts; release-tagged telemetry; alert review record
 
-Acceptance: Signals support diagnosis and customer impact assessment. Alerts have owner and action. SLOs are measurable and privacy-safe.
+Acceptance: Objectives exist for the key journeys Pages are tied to user impact or fast budget burn Telemetry carries the release version Each alert has a runbook
 
-Validation: SRE review and alert simulation.
+Validation: Observability owner review.
+
+- manual: deploy a version with an injected error rate in staging and watch whether the burn-rate alert fires expect: alert fires within the configured window
+- manual: sample five paging alerts from the last month and check each linked to a runbook and a real user impact expect: all do
+
+Failure modes:
+- Alert fatigue | detect: Pages that need no action | respond: Tune or demote to tickets
+- Healthy metrics but unhappy users | detect: Complaints with green dashboards | respond: Add synthetic and real user checks
+- Regression not tied to release | detect: Cause unclear | respond: Add version tags
+
+ILLUSTRATIVE: Checkout has an objective of 99.5 percent success over 30 days. A fast-burn alert fires when a release raises errors, the version tag points to the culprit, and the runbook describes the rollback.
 
 Gate: 13-153. Approval: none required
 
 ## 154
-**Infrastructure Monitoring** (stub). Purpose: provide actionable observability and service-level control.
+**Infrastructure Monitoring** (complete). Purpose: watch the servers, containers, clusters and cloud services under the applications, so saturation and failure are found early and tied to their cause.
 
-Inputs: service map and critical user journeys; SLO and alert thresholds; telemetry and privacy requirements
+Entry criteria: Infrastructure components are inventoried; Agents or exporters can be deployed; Capacity thresholds are defined (stage 161)
+
+Inputs: infrastructure inventory; capacity thresholds; agent and exporter options; dependency map
 
 Procedure:
-1. Instrument golden signals and key business transactions with stable service/environment labels.
-2. Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
-3. Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
-4. Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
+1. Collect host and container metrics: CPU including steal and throttling, memory and swap, disk space, inode and I/O latency, network errors and saturation.
+2. Collect orchestrator signals: pod restarts, pending pods, node conditions, resource requests and limits, and autoscaler activity.
+3. Collect cloud service metrics and quota use for managed services, and alert before quotas are reached.
+4. Alert on saturation trends and time-to-full forecasts, such as disks that will fill within a day, rather than only on current values.
+5. Tag metrics with service, environment and owner, so alerts route to the right team and show affected applications.
+6. Test that monitoring itself works: alert on missing data from the agents and on failure of the monitoring pipeline.
 
-Deliverables: telemetry specification; dashboards and alerts; SLO/error-budget report; runbook links
+Deliverables: agent and exporter deployment; infrastructure dashboards; forecast-based alerts; monitoring health checks
 
-Acceptance: Signals support diagnosis and customer impact assessment. Alerts have owner and action. SLOs are measurable and privacy-safe.
+Acceptance: Every host and cluster reports metrics Quota and time-to-full alerts exist Metrics carry owner tags Missing data raises an alert
 
-Validation: SRE review and alert simulation.
+Validation: Observability owner review.
+
+- `promtool query instant http://prometheus:9090 'up == 0'   # example` expect: returns no unexpected targets
+- manual: stop an exporter in staging expect: a missing-data alert fires
+
+Failure modes:
+- Silent agent failure | detect: Host disappears from dashboards | respond: Alert on absent metrics
+- Disk full at night | detect: Alert only at 100 percent | respond: Alert on time-to-full forecast
+- Container throttled | detect: Latency without high CPU | respond: Monitor throttling and limits
+
+ILLUSTRATIVE: A forecast alert warns that a database volume fills in 18 hours at the current growth; the team expands it during working hours, and a test shows the absent-data alert fires when an exporter is stopped.
 
 Gate: 13-154. Approval: none required
 
@@ -187,21 +215,35 @@ ILLUSTRATIVE: A page for 'error budget burn above 10x over one hour' links to a 
 Gate: 13-158. Approval: none required
 
 ## 159
-**Uptime Monitoring** (stub). Purpose: provide actionable observability and service-level control.
+**Uptime Monitoring** (complete). Purpose: detect outages from outside the system as a user would, and notify the right people with a trustworthy status.
 
-Inputs: service map and critical user journeys; SLO and alert thresholds; telemetry and privacy requirements
+Entry criteria: Public and critical endpoints are listed; A monitoring service reaching from outside exists; An on-call and status process exists
+
+Inputs: endpoint list with expected behavior; regions of users; on-call schedule; status page
 
 Procedure:
-1. Instrument golden signals and key business transactions with stable service/environment labels.
-2. Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.
-3. Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.
-4. Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts.
+1. Probe each critical endpoint from several regions outside your network, checking status code, response content and latency, not only that the port is open.
+2. Add checks for the full journey where possible, such as sign-in and a read operation, using a dedicated test account.
+3. Require several consecutive failures from more than one location before alerting, to avoid false alarms from single probe faults.
+4. Page the on-call person with the endpoint, region and first failing time, and update the status page from a verified fault.
+5. Also monitor the monitor: a second independent checker or a heartbeat that fires when probes stop reporting.
+6. Calculate uptime from probe data with a stated method, and review misses and false alarms monthly.
 
-Deliverables: telemetry specification; dashboards and alerts; SLO/error-budget report; runbook links
+Deliverables: probe configuration and journeys; alert rules with confirmation logic; status page process; uptime reports with method
 
-Acceptance: Signals support diagnosis and customer impact assessment. Alerts have owner and action. SLOs are measurable and privacy-safe.
+Acceptance: Probes run from several outside locations Alerts need confirmation across probes Monitoring has its own heartbeat Uptime states how it is calculated
 
-Validation: SRE review and alert simulation.
+Validation: Observability owner review.
+
+- `curl -s -o /dev/null -w '%{http_code} %{time_total}\n' https://app.example.com/health   # example from outside the network` expect: expected code within the latency target
+- manual: block the endpoint in staging for five minutes expect: alert fires after the confirmation count and the status process is followed
+
+Failure modes:
+- False alarms from one probe | detect: Pages with no outage | respond: Require multi-location confirmation
+- Port open but app broken | detect: Probe is green during outage | respond: Check content and journey
+- Monitor fails silently | detect: No alert during outage | respond: Add heartbeat and second checker
+
+ILLUSTRATIVE: Three regions probe the sign-in journey every minute; two consecutive failures from two regions page on-call, and a dead-man heartbeat from the probe service alerts if reports stop for five minutes.
 
 Gate: 13-159. Approval: none required
 

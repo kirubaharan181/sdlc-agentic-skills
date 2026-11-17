@@ -44,7 +44,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 94 | Soak Testing | complete | Performance Testing Specialist |
 | 95 | UAT | complete | QA Lead |
 | 96 | Defect Management | complete | QA Lead |
-| 97 | Test Sign-off | stub | QA Lead |
+| 97 | Test Sign-off | complete | QA Lead |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 

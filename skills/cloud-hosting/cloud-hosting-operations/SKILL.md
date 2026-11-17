@@ -25,17 +25,17 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
 | 140 | Cloud Hosting | complete | Cloud Engineer |
-| 141 | Compute Management | stub | Cloud Engineer |
+| 141 | Compute Management | complete | Cloud Engineer |
 | 142 | Database Hosting | complete | Database Administrator |
-| 143 | Storage Management | stub | Cloud Engineer |
+| 143 | Storage Management | complete | Cloud Engineer |
 | 144 | DNS Management | complete | Network Engineer |
-| 145 | SSL Certificate Management | stub | Cloud Engineer |
-| 146 | Network Operations | stub | Network Engineer |
+| 145 | SSL Certificate Management | complete | Cloud Engineer |
+| 146 | Network Operations | complete | Network Engineer |
 | 147 | Backup Management | complete | Database Administrator |
 | 148 | Disaster Recovery | complete | SRE |
 | 149 | High Availability | complete | Cloud Architect |
 | 150 | Auto Scaling | complete | Infrastructure Engineer |
-| 151 | Cost Optimization | stub | FinOps Specialist |
+| 151 | Cost Optimization | complete | FinOps Specialist |
 | 152 | Infrastructure Maintenance | complete | Infrastructure Engineer |
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).

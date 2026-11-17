@@ -1,0 +1,65 @@
+{
+  "stage_id": 141,
+  "purpose": "manage virtual machines, containers and functions so capacity matches demand, patches are applied, and every resource has an owner and a purpose",
+  "entry_criteria": [
+    "Cloud accounts and an inventory source exist",
+    "Tagging standard exists",
+    "Patch and image policies are defined"
+  ],
+  "inputs": [
+    "resource inventory",
+    "tagging and ownership standard",
+    "utilization metrics",
+    "patch and image policy"
+  ],
+  "procedure": [
+    "Create compute only from code (infrastructure as code) and from approved, patched base images, with required tags for owner, environment and cost centre.",
+    "Right-size using measured CPU, memory and network utilization over at least two weeks, and choose scaling policies with tested limits.",
+    "Patch by replacing instances with new images through the pipeline rather than patching in place, and track images older than the policy.",
+    "Harden: no public administrative ports, instance roles with least privilege, and no long-lived credentials on instances.",
+    "Find and remove idle, orphaned and untagged resources through a scheduled report and an owner confirmation step.",
+    "Test scaling and replacement under load, and record the time to replace a failed instance."
+  ],
+  "deliverables": [
+    "compute defined as code",
+    "image and patch status report",
+    "right-sizing and idle resource report",
+    "scaling and replacement test results"
+  ],
+  "acceptance_criteria": [
+    "Compute comes from code and approved images",
+    "Every resource has an owner tag",
+    "Images are within the patch policy",
+    "Idle resources are reviewed"
+  ],
+  "validation_method": "Cloud engineer review.",
+  "validation": [
+    {
+      "command": "aws ec2 describe-instances --query 'Reservations[].Instances[?!not_null(Tags[?Key==`owner`])].InstanceId' --output text   # example",
+      "expect": "no untagged instances"
+    },
+    {
+      "check": "list instances launched from images older than the policy age",
+      "expect": "none, or each has an exception"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Manual instance changes",
+      "detection": "Drift from code",
+      "response": "Detect drift and reapply code"
+    },
+    {
+      "mode": "Over-provisioned fleet",
+      "detection": "CPU under 10 percent for weeks",
+      "response": "Right-size"
+    },
+    {
+      "mode": "Old images in use",
+      "detection": "Patch policy exceeded",
+      "response": "Rebuild and roll"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: An inventory report finds 14 untagged instances; owners claim nine, and five idle ones are stopped after confirmation. The fleet moves to a new base image through a rolling replacement, and the old image is retired.",
+  "status": "complete"
+}

@@ -1,0 +1,65 @@
+{
+  "stage_id": 143,
+  "purpose": "manage storage so data is durable, access is controlled, cost matches use, and capacity never surprises anyone",
+  "entry_criteria": [
+    "Storage services and data owners are inventoried",
+    "Data classification exists",
+    "Retention rules exist"
+  ],
+  "inputs": [
+    "storage inventory",
+    "classification and retention rules",
+    "usage and growth data",
+    "access policies"
+  ],
+  "procedure": [
+    "Match storage type to need (block, file, object) and class to access pattern, with lifecycle rules that move or expire data.",
+    "Block public access by default, use policies tied to roles, and review access on a schedule.",
+    "Enable encryption at rest with managed keys, and versioning or object lock where recovery or immutability is needed.",
+    "Set backup or replication for important data, and test restoring a sample.",
+    "Monitor capacity growth and set alerts with enough lead time to act, and forecast from the trend.",
+    "Report cost per data owner, and remove abandoned volumes, snapshots and buckets after owner confirmation."
+  ],
+  "deliverables": [
+    "storage inventory with owners and classes",
+    "lifecycle and access policies",
+    "restore test record",
+    "capacity forecast and cost report"
+  ],
+  "acceptance_criteria": [
+    "No storage is publicly accessible unless approved",
+    "Lifecycle rules exist for data with retention limits",
+    "Restores were tested",
+    "Growth alerts give action lead time"
+  ],
+  "validation_method": "Cloud engineer and data owner review.",
+  "validation": [
+    {
+      "command": "aws s3api get-public-access-block --bucket <bucket>   # example",
+      "expect": "all four blocks are true"
+    },
+    {
+      "check": "restore ten objects or one volume snapshot from backup and compare checksums",
+      "expect": "identical"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Public bucket",
+      "detection": "Anonymous access found",
+      "response": "Block and review the cause"
+    },
+    {
+      "mode": "Orphan snapshots accumulate",
+      "detection": "Cost rises without owner",
+      "response": "Report and delete with confirmation"
+    },
+    {
+      "mode": "Disk fills unexpectedly",
+      "detection": "Alert fires late",
+      "response": "Alert on growth rate and forecast"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A lifecycle rule moves log objects to a colder class after 30 days and deletes them at 400 days per policy; a monthly report lists 22 orphaned snapshots, 19 deleted after confirmation, and a restore of a sample volume matches checksums.",
+  "status": "complete"
+}

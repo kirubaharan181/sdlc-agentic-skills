@@ -214,78 +214,134 @@ ILLUSTRATIVE: A review finds a database port reachable from the internet and an 
 Gate: 09-103. Approval: none required
 
 ## 104
-**Penetration Testing** (stub). Purpose: perform authorized adversarial testing with controlled evidence.
+**Penetration Testing** (complete). Purpose: attempt, within agreed scope and rules, to break into the system as an attacker would, and report what was achieved and how to fix it.
 
-Inputs: written authorization and target inventory; rules of engagement, time window and emergency contact; data handling and stop conditions
+Entry criteria: Written authorization from the system owner exists; Scope, rules of engagement and test windows are agreed; A safe environment or a coordinated production window is arranged
+
+Inputs: signed authorization and scope; architecture and threat model; test accounts; emergency contacts
 
 Procedure:
-1. Verify authorization, scope, exclusions and escalation contacts before any active test.
-2. Test agreed attack paths with bounded techniques and avoid destructive actions or persistence.
-3. Capture minimal reproduction, impact and evidence while protecting customer data.
-4. Report remediation and independently retest the agreed fixes.
+1. Confirm the authorization, targets, excluded systems, time window and stop conditions in writing before any test traffic is sent.
+2. Gather information within scope: exposed services, versions, endpoints and trust boundaries, then compare with the threat model.
+3. Test for the highest-risk classes: broken access control, injection, authentication and session flaws, insecure deserialization, SSRF and misconfiguration, chaining findings where it shows real impact.
+4. Use the minimum action needed to prove each issue, avoid damaging data or availability, and stop and report at once on a critical finding or an unexpected impact.
+5. Record every finding with reproducible steps, evidence, affected asset, severity with the scoring method named, and a specific remediation.
+6. Hold a readout with the owners, agree fix dates, retest every fix, and securely delete or hand over test data and access.
 
-Deliverables: rules of engagement; penetration test log; validated finding report; retest evidence
+Deliverables: rules of engagement and authorization; findings report with reproduction steps; remediation plan with owners and dates; retest results
 
-Acceptance: No out-of-scope target is tested. Unintended impact triggers immediate stop and notification. Findings include reproducible steps and safe remediation.
+Acceptance: Testing stayed within written scope Each finding is reproducible with evidence Severity has a stated method Every fix was retested
 
-Validation: Validate one approved attack path and stop immediately if the test reaches out-of-scope data.
+Validation: System owner authorization before testing; named human approves scope and accepts residual risk.
+
+- manual: compare the tester's source addresses and activity log with the authorized window and targets expect: all within scope
+- manual: repeat each reported exploit step on the fixed build expect: no longer succeeds
+
+Failure modes:
+- Test outside scope | detect: Traffic to an excluded system | respond: Stop, notify the owner and record the incident
+- Finding without steps | detect: Developer cannot reproduce | respond: Add steps and evidence
+- Production impact | detect: Errors or slowdowns during testing | respond: Stop at the defined condition and call the contact
+
+ILLUSTRATIVE: Within an authorized window the tester finds that changing an order id returns another customer's invoice; the report gives the request, the response excerpt with data masked, a high rating, and a fix to check ownership on the server, retested after release.
 
 Gate: 09-104. Approval: security-lead (always)
 
 ## 105
-**Authentication Security** (stub). Purpose: assess and remediate a defined security attack surface.
+**Authentication Security** (complete). Purpose: verify that sign-in, session and credential handling resist real attacks, using tests aimed at the weaknesses that attackers use.
 
-Inputs: authorized scope and asset inventory; scanner/tool configuration and version; severity policy and remediation SLA
+Entry criteria: Authentication is implemented (stage 59); Test accounts and an isolated environment exist; The threat model covers sign-in
+
+Inputs: authentication design and code; threat model; test accounts including privileged ones; session and token configuration
 
 Procedure:
-1. Confirm asset ownership, scope, exclusions and written authorization before active testing.
-2. Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
-3. Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
-4. Assign remediation, retest the exact fix and record residual risk or approved exception.
+1. Test credential attacks: brute force and credential stuffing against rate limits and lockout, and check that responses do not reveal whether an account exists.
+2. Inspect session handling: cookie flags (Secure, HttpOnly, SameSite), token lifetime, rotation after sign-in and privilege change, and invalidation at logout and password change.
+3. Examine tokens: signature verification, rejected algorithm substitution, expiry enforcement and audience checks.
+4. Test recovery and multi-factor flows for bypass, reuse of codes or links, and weak fallback channels.
+5. Check password storage and policy: slow salted hashing, breach-list checks and no reversible storage.
+6. Record findings by severity with reproduction steps, and add each as a regression test.
 
-Deliverables: scan/test report; validated finding register; remediation and retest evidence
+Deliverables: authentication test report; reproduction steps for each finding; regression tests; configuration findings
 
-Acceptance: Active testing stays within authorization. Findings have reproducible evidence and severity rationale. Closure is independently retested.
+Acceptance: Rate limits and lockout were tested under attack-like load Tokens and cookies were inspected for each listed property Recovery and multi-factor bypass were attempted Each finding became a regression test
 
-Validation: Security owner and system owner disposition.
+Validation: Application security engineer sign-off.
+
+- `curl -sI https://test.example.com/login | grep -i set-cookie   # example` expect: cookie shows Secure, HttpOnly and SameSite
+- manual: send an expired and a tampered token to a protected endpoint expect: both rejected with the same generic response
+
+Failure modes:
+- Token accepted after logout | detect: Old token still works | respond: Revoke server-side
+- Account enumeration | detect: Different responses for unknown users | respond: Return one response and timing
+- Recovery link reusable | detect: Second use succeeds | respond: Single use with short expiry
+
+ILLUSTRATIVE: Testing finds that a password-reset token remains valid after use and that the 'unknown user' response is faster than 'wrong password'. Both are fixed, each with a regression test.
 
 Gate: 09-105. Approval: none required
 
 ## 106
-**Data Protection** (stub). Purpose: assess and remediate a defined security attack surface.
+**Data Protection** (complete). Purpose: check that data is protected at rest, in transit and in use according to its classification, and that exposure paths are closed.
 
-Inputs: authorized scope and asset inventory; scanner/tool configuration and version; severity policy and remediation SLA
+Entry criteria: Data classification and flows exist (stage 30); Encryption and key management are designed; Test environment holds representative data
+
+Inputs: data inventory and classification; data flow diagrams; encryption and key configuration; privacy and retention rules
 
 Procedure:
-1. Confirm asset ownership, scope, exclusions and written authorization before active testing.
-2. Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.
-3. Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.
-4. Assign remediation, retest the exact fix and record residual risk or approved exception.
+1. Trace each classified data element through its flow, and confirm encryption in transit with a modern protocol version on every hop, including internal ones.
+2. Check encryption at rest for databases, object stores, backups and logs, and see who can use or export the keys.
+3. Look for exposure paths: verbose errors, logs, analytics payloads, URLs, caches, debug endpoints and misconfigured public storage.
+4. Check access to the data against least privilege, and that access to sensitive tables and exports is logged.
+5. Check masking or synthetic data outside production, and that retention and deletion jobs actually remove data, including from backups after their cycle.
+6. Report gaps with the data element, the path and the fix, and retest.
 
-Deliverables: scan/test report; validated finding register; remediation and retest evidence
+Deliverables: data protection test report; exposure path findings; key and access review; retention verification
 
-Acceptance: Active testing stays within authorization. Findings have reproducible evidence and severity rationale. Closure is independently retested.
+Acceptance: Every classified element has a traced flow Encryption in transit and at rest was verified, not assumed Non-production data is masked Deletion was proven by a test
 
-Validation: Security owner and system owner disposition.
+Validation: Application security engineer and data owner review.
+
+- `nmap --script ssl-enum-ciphers -p 443 test.example.com   # example` expect: only supported protocol versions and strong ciphers
+- manual: create a test record, delete it through the product, and query the database and the search index expect: record absent from both
+
+Failure modes:
+- Sensitive field in logs | detect: Search of logs finds personal data | respond: Mask and purge
+- Public storage bucket | detect: Anonymous listing succeeds | respond: Block public access and review
+- Deleted data persists in a cache or index | detect: Record still found | respond: Add invalidation to the deletion job
+
+ILLUSTRATIVE: A trace of customer email finds it in application logs and an analytics event; both are masked, a search for the address in logs afterwards returns nothing, and the deletion test confirms removal from the search index.
 
 Gate: 09-106. Approval: none required
 
 ## 107
-**Compliance Review** (stub). Purpose: review contractual and regulatory obligations before commitment.
+**Compliance Review** (complete). Purpose: check, against named rules, that the system and the way it is built and run meet legal, regulatory and contractual obligations, and keep the evidence.
 
-Inputs: contract version and counterparties; applicable policy/control obligations; legal/compliance owner
+Entry criteria: Applicable obligations are listed (stage 10); Controls exist and are in operation; Evidence is accessible to the reviewer
+
+Inputs: obligations register; control descriptions; system evidence such as configurations, logs and records; previous audit findings
 
 Procedure:
-1. Identify service, data, security, availability, audit, retention, subcontracting and exit obligations.
-2. Map each obligation to an internal control owner and evidence source.
-3. Flag ambiguous liability, data processing, IP, jurisdiction, renewal and termination terms.
-4. Record legal review questions and do not provide legal approval outside delegated authority.
+1. Select the obligations in scope and break each into testable control statements.
+2. Gather evidence for each control from the system itself (configurations, access lists, logs, tickets) rather than from descriptions alone.
+3. Test a sample for operation over the period, not only the design: for example, a sample of changes for approval records.
+4. Classify results: compliant, partly compliant, non-compliant or not applicable, with the evidence reference.
+5. Raise each gap with an owner, a remediation and a date, and record accepted risks with an approver.
+6. Report to the compliance owner, and retest remediations before closing.
 
-Deliverables: obligation matrix; contract exception log; review decision
+Deliverables: control test matrix with evidence references; gap register with owners; accepted risk records; review report
 
-Acceptance: Every material obligation has an owner and evidence path. Exceptions have an authorized risk owner. Unresolved legal interpretation is escalated.
+Acceptance: Each in-scope obligation has a control and a result Evidence comes from the system, not only from descriptions Samples cover the review period Gaps have owners and dates
 
-Validation: Legal and compliance owner sign-off.
+Validation: Compliance owner accepts the report; named executive accepts residual risk.
+
+- manual: sample 10 changes from the period and check each for approval and test records expect: all present, or exceptions listed
+- manual: check each non-compliant row has an owner and a date expect: none missing
+
+Failure modes:
+- Control described but not operating | detect: Sample fails | respond: Record as non-compliant and fix
+- Evidence outdated | detect: Evidence dated outside the period | respond: Collect current evidence
+- Risk accepted by a team member | detect: No executive approval | respond: Escalate for proper acceptance
+
+ILLUSTRATIVE: A review of an access-review obligation samples four quarters and finds one missing; it is raised as a gap with an owner, completed within 30 days, and the new record is added to the evidence.
 
 Gate: 09-107. Approval: none required
 

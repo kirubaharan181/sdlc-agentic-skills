@@ -13,59 +13,101 @@
 - [190 Process Improvement](#190)
 
 ## 181
-**Engineering Governance** (stub). Purpose: govern repository controls, engineering standards and exception lifecycle.
+**Engineering Governance** (complete). Purpose: set and enforce the engineering rules that apply across all teams, with measurable compliance and a route for exceptions.
 
-Inputs: repository inventory and ownership; engineering policy and required checks; team onboarding and exception records
+Entry criteria: Engineering policies are agreed with leadership; Compliance can be measured from tooling; A decision forum exists
+
+Inputs: policy set; tooling data on repositories, pipelines and environments; exception requests; audit findings
 
 Procedure:
-1. Map branch protections, code owners, required checks and contribution policy to each repository.
-2. Sample actual repository settings and verify enforcement rather than relying on documentation.
-3. Review onboarding, toolchain support, secrets and change exceptions.
-4. Track drift and verify corrective actions across repositories.
+1. Express each policy as a testable control, for example 'main branches require review and passing checks', with the data source that proves it.
+2. Measure compliance by querying the tools (repositories, CI, cloud accounts) on a schedule, and publish results by team.
+3. Enforce where possible by guardrails (branch protection, policy as code in the pipeline, organization policies) and not by reminders.
+4. Handle exceptions through a record with reason, compensating control, approver and expiry date, and report open exceptions.
+5. Review each policy at least yearly for effect and cost, and remove or revise policies that do not reduce real risk.
+6. Report trends and the largest gaps to leadership with owners for each gap.
 
-Deliverables: repository control inventory; policy compliance report; exception register; onboarding standard
+Deliverables: control catalogue with data sources; compliance dashboard by team; exception register with expiry; policy review notes
 
-Acceptance: Repository controls are verified in the platform. Exceptions have owner, expiry and compensating control. Clean-checkout onboarding is reproducible.
+Acceptance: Each policy is a testable control with a data source Compliance is measured automatically Exceptions expire Gaps have owners
 
-Validation: Repository policy sample audit.
+Validation: Engineering leadership approval.
+
+- `gh api orgs/<org>/repos --paginate --jq '.[].name' | head   # example input to a compliance script` expect: all repositories are in the compliance data
+- manual: sample five repositories and compare the dashboard value with a direct settings check expect: values agree
+
+Failure modes:
+- Policy cannot be measured | detect: No data source | respond: Rewrite as a testable control or drop it
+- Exceptions never expire | detect: Old exceptions stay | respond: Add expiry and review
+- Dashboard out of date | detect: Data not refreshed | respond: Schedule and alert on staleness
+
+ILLUSTRATIVE: The control 'secret scanning enabled' is checked nightly across 240 repositories; 12 are non-compliant, owners are notified, and two have approved exceptions expiring in 60 days.
 
 Gate: 15-181. Approval: none required
 
 ## 182
-**Quality Governance** (stub). Purpose: govern quality policy, evidence and corrective action across teams.
+**Quality Governance** (complete). Purpose: set targets for quality, check that teams meet them with evidence, and use the results to improve how work is done.
 
-Inputs: quality policy and objectives; process/product quality data; control owners and audit period
+Entry criteria: Quality measures can be collected; A definition of done exists; Teams accept shared measures
+
+Inputs: quality measures; defect and incident data; test and review data; customer feedback
 
 Procedure:
-1. Define measurable quality objectives, required evidence and ownership.
-2. Sample delivery records and verify controls operate as documented.
-3. Analyze defects, escaped issues, test gaps and corrective-action trends.
-4. Assign systemic improvements and verify effectiveness over a review period.
+1. Define a small set of quality indicators with owners, such as escaped defects, change failure rate, test reliability and customer-reported issues.
+2. Set targets and thresholds per indicator, based on current performance and the business need, and publish the definitions to avoid arguments about numbers.
+3. Check adherence to the definition of done by sampling completed work for tests, reviews, documentation and acceptance, with findings recorded.
+4. Investigate indicators outside thresholds with the team, find causes by examples, and agree an improvement with an owner.
+5. Guard against gaming: review how numbers are produced, and look at several indicators together.
+6. Review results quarterly, adjust targets and retire indicators that no longer drive decisions.
 
-Deliverables: quality policy and control map; quality scorecard; audit samples; corrective action register
+Deliverables: indicator definitions and targets; sampling reports; improvement actions with owners; quarterly quality review
 
-Acceptance: Metrics have definitions and owners. Evidence samples are reproducible. Corrective actions are verified for effectiveness.
+Acceptance: Indicators are defined and owned Sampling checks the definition of done on real work Out-of-threshold results have causes and actions Gaming risks are reviewed
 
-Validation: Quality governance review and sample audit.
+Validation: Quality governance lead review.
+
+- manual: sample ten completed items and check each for tests, review and acceptance evidence expect: pass rate recorded
+- manual: recompute one indicator from raw data expect: matches the reported value
+
+Failure modes:
+- Indicators gamed | detect: Numbers improve, quality does not | respond: Combine indicators and sample real work
+- Targets arbitrary | detect: No link to need | respond: Base on baseline and customer impact
+- Actions not done | detect: Same issue recurs | respond: Track actions to done
+
+ILLUSTRATIVE: Escaped defects rise in one team. A sample of ten stories shows four without a test for the error path; the team adds the check to its definition of done, and the indicator is reviewed next quarter.
 
 Gate: 15-182. Approval: none required
 
 ## 183
-**Security Governance** (stub). Purpose: govern security policy, risk acceptance and control effectiveness.
+**Security Governance** (complete). Purpose: check, independently of the teams, that security controls are in place and working, and that gaps are tracked to closure.
 
-Inputs: security policy and risk appetite; asset/control ownership; risk and exception register
+Entry criteria: A security control framework is chosen; The auditor has read access to evidence; The scope of review is agreed
+
+Inputs: security policies and control framework; system configurations and logs; vulnerability and incident records; previous findings
 
 Procedure:
-1. Map security obligations to preventive, detective and recovery controls.
-2. Review control operation, access, vulnerabilities and incident trends.
-3. Approve or route exceptions with compensating controls, owner and expiry.
-4. Report material risk and verify remediation closure.
+1. Map the policies to testable controls, such as access reviews, vulnerability patch times, encryption, logging and incident response.
+2. Collect evidence directly from the systems (configuration exports, access lists, scanner results, logs) rather than from interviews alone.
+3. Test operation over a period by sampling, for example the time between disclosure and patch for a sample of critical vulnerabilities.
+4. Rate findings by risk, and require the control owner to respond with a plan, an owner and a date.
+5. Verify closure by reviewing new evidence, not by accepting a statement that it was done.
+6. Report trends to security leadership, including repeated findings and areas not yet reviewed.
 
-Deliverables: security control matrix; risk/exception register; control effectiveness report
+Deliverables: control test matrix; evidence references; findings with owners and dates; closure verification and trend report
 
-Acceptance: Risk acceptance is authorized and time-bound. Controls have evidence and accountable owners. Material exceptions are escalated.
+Acceptance: Evidence comes from systems Findings have owners and dates Closure is verified with new evidence Repeated findings are reported
 
-Validation: Security governance council review.
+Validation: Security auditor report; security leadership decision on risk acceptance.
+
+- manual: sample ten critical vulnerabilities and compute days from disclosure to fix expect: median and worst case reported against the policy
+- manual: take five closed findings and check each has fresh evidence expect: all do
+
+Failure modes:
+- Findings closed on a statement | detect: No evidence attached | respond: Reopen and require evidence
+- Same finding every audit | detect: Repeat in the trend report | respond: Escalate for a structural fix
+- Auditor lacks access | detect: Scope not covered | respond: Grant read-only access or reduce the scope formally
+
+ILLUSTRATIVE: A sample shows critical patches take a median of 9 days against a 7-day policy, with two over 30. Findings go to the platform owner with a plan, and closure is verified from the next scan.
 
 Gate: 15-183. Approval: none required
 
@@ -169,21 +211,35 @@ ILLUSTRATIVE: An inventory finds 12 pages with no owner. Eight are archived, fou
 Gate: 15-186. Approval: none required
 
 ## 187
-**Change Governance** (stub). Purpose: govern the portfolio of material engineering changes.
+**Change Governance** (complete). Purpose: make sure changes to important systems are controlled consistently across teams, with proportionate approval and complete records.
 
-Inputs: change policy and decision authority; change requests and risk classifications; release and incident history
+Entry criteria: A change policy exists (stage 44); Deployment tooling records changes; Risk classes are defined
+
+Inputs: change policy and risk classes; deployment and change records; incident records linked to changes; exception log
 
 Procedure:
-1. Classify normal, standard and emergency changes under policy.
-2. Review impact, approvals, segregation, schedule and recovery readiness.
-3. Sample completed changes for evidence, unauthorized drift and failed outcomes.
-4. Analyze change failure rate and assign systemic control improvements.
+1. Define risk classes with examples and the approval needed for each, favoring pre-approved standard changes for low risk and tested automation.
+2. Link change records to deployments automatically, so a deployment without a record is detected.
+3. Measure change failure rate, rollbacks, emergency change share and incidents caused by changes, by team and service.
+4. Review a sample of changes for correct classification, evidence and approval by a named human where required.
+5. Review emergency changes within a set time to confirm they were justified and fix the cause.
+6. Adjust the classes and standard changes using the data, so process effort goes where risk is.
 
-Deliverables: change control matrix; change approval records; audit sample report; change performance metrics
+Deliverables: risk class catalogue; deployment-to-change reconciliation; change metrics; sample review findings
 
-Acceptance: Emergency path is controlled and retrospectively reviewed. Approval precedes implementation where required. Change outcomes and incidents are linked.
+Acceptance: Every production deployment maps to a change record Approval follows the class Emergency changes are reviewed Classes are tuned with data
 
-Validation: Change advisory or governance review.
+Validation: Engineering governance owner review.
+
+- manual: reconcile last month's production deployments with change records expect: no deployment without a record, or each listed as an incident
+- manual: sample ten changes and check class, evidence and named approver expect: all consistent
+
+Failure modes:
+- Deployments without records | detect: Reconciliation shows gaps | respond: Block deploys without a change id
+- Everything treated as high risk | detect: Approvals queue | respond: Introduce standard changes
+- Emergency path overused | detect: Large share of changes | respond: Review causes and fix planning
+
+ILLUSTRATIVE: Reconciliation finds 6 of 410 deployments with no record; the pipeline now requires a change id, and configuration-only updates move to a pre-approved standard change.
 
 Gate: 15-187. Approval: none required
 
@@ -221,21 +277,35 @@ ILLUSTRATIVE: Three monitoring vendors are scored on weighted criteria. The chos
 Gate: 15-188. Approval: none required
 
 ## 189
-**FinOps Governance** (stub). Purpose: optimize cloud and platform economics without degrading service outcomes.
+**FinOps Governance** (complete). Purpose: keep cloud and engineering spending governed by shared rules, budgets and accountability, so cost surprises are rare and spending decisions are traceable.
 
-Inputs: tagged spend and usage data; service ownership and unit metrics; budget and SLO constraints
+Entry criteria: Cloud cost data is available with allocation by team; Budgets exist or are being set; A finance partner is named
+
+Inputs: cost and usage data; budgets and forecasts; tagging and account standards; finance calendar
 
 Procedure:
-1. Allocate spend to accountable services and normalize by meaningful workload/unit.
-2. Identify idle, oversized, uncommitted and architecture-driven cost drivers.
-3. Model savings, engineering effort, risk and commitment trade-offs.
-4. Implement controlled optimization and compare realized savings with baseline and SLO impact.
+1. Set budgets per team and product with owners, and alerts at several thresholds of actual and forecast spend.
+2. Enforce tagging and account rules through policy so new resources without owner or cost centre are refused or flagged.
+3. Hold a regular review with team leads and finance: variance to budget, anomalies, upcoming launches and commitments.
+4. Detect anomalies automatically and require an owner to explain each one within a set time.
+5. Require a cost estimate for large changes before approval, and compare to actual after launch.
+6. Report unit economics and trends to leadership, and record decisions on budget changes and commitments.
 
-Deliverables: cost allocation report; optimization backlog; forecast and variance; realized savings evidence
+Deliverables: budgets and alerts; tag and account policies; review minutes and decisions; anomaly explanations and unit cost report
 
-Acceptance: Savings are measured against a comparable baseline. Ownership and allocation coverage are visible. Reliability and security are not traded away silently.
+Acceptance: Every budget has an owner and alerts Untagged resources are blocked or flagged Anomalies are explained within the set time Large changes carry a cost estimate
 
-Validation: Finance and service-owner review.
+Validation: Finance partner and budget owner review.
+
+- manual: list anomalies from the last month and check each has an explanation and an owner expect: none unexplained beyond the set time
+- manual: compare the budget report totals with the invoice expect: agree within tolerance
+
+Failure modes:
+- Budget alert ignored | detect: Overspend with no response | respond: Define the responder and escalation
+- Untagged spend grows | detect: Cost with no owner | respond: Enforce tags by policy
+- Estimate never checked | detect: Launch costs more than planned | respond: Compare after launch and learn
+
+ILLUSTRATIVE: An anomaly alert shows a doubling of data transfer cost; the owner finds a misconfigured job within a day, it is fixed, and the budget review minutes record the explanation and a new alert threshold.
 
 Gate: 15-189. Approval: none required
 

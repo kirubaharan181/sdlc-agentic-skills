@@ -1,0 +1,65 @@
+{
+  "stage_id": 189,
+  "purpose": "keep cloud and engineering spending governed by shared rules, budgets and accountability, so cost surprises are rare and spending decisions are traceable",
+  "entry_criteria": [
+    "Cloud cost data is available with allocation by team",
+    "Budgets exist or are being set",
+    "A finance partner is named"
+  ],
+  "inputs": [
+    "cost and usage data",
+    "budgets and forecasts",
+    "tagging and account standards",
+    "finance calendar"
+  ],
+  "procedure": [
+    "Set budgets per team and product with owners, and alerts at several thresholds of actual and forecast spend.",
+    "Enforce tagging and account rules through policy so new resources without owner or cost centre are refused or flagged.",
+    "Hold a regular review with team leads and finance: variance to budget, anomalies, upcoming launches and commitments.",
+    "Detect anomalies automatically and require an owner to explain each one within a set time.",
+    "Require a cost estimate for large changes before approval, and compare to actual after launch.",
+    "Report unit economics and trends to leadership, and record decisions on budget changes and commitments."
+  ],
+  "deliverables": [
+    "budgets and alerts",
+    "tag and account policies",
+    "review minutes and decisions",
+    "anomaly explanations and unit cost report"
+  ],
+  "acceptance_criteria": [
+    "Every budget has an owner and alerts",
+    "Untagged resources are blocked or flagged",
+    "Anomalies are explained within the set time",
+    "Large changes carry a cost estimate"
+  ],
+  "validation_method": "Finance partner and budget owner review.",
+  "validation": [
+    {
+      "check": "list anomalies from the last month and check each has an explanation and an owner",
+      "expect": "none unexplained beyond the set time"
+    },
+    {
+      "check": "compare the budget report totals with the invoice",
+      "expect": "agree within tolerance"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Budget alert ignored",
+      "detection": "Overspend with no response",
+      "response": "Define the responder and escalation"
+    },
+    {
+      "mode": "Untagged spend grows",
+      "detection": "Cost with no owner",
+      "response": "Enforce tags by policy"
+    },
+    {
+      "mode": "Estimate never checked",
+      "detection": "Launch costs more than planned",
+      "response": "Compare after launch and learn"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: An anomaly alert shows a doubling of data transfer cost; the owner finds a misconfigured job within a day, it is fixed, and the budget review minutes record the explanation and a new alert threshold.",
+  "status": "complete"
+}

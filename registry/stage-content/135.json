@@ -1,0 +1,65 @@
+{
+  "stage_id": 135,
+  "purpose": "set up encrypted connections correctly, so traffic is protected and clients can trust the server, with certificates issued and renewed without manual steps",
+  "entry_criteria": [
+    "Hostnames and traffic paths are listed",
+    "A certificate authority or automated issuer is chosen",
+    "DNS control for the names exists"
+  ],
+  "inputs": [
+    "hostnames and endpoints",
+    "termination points in the traffic path",
+    "security baseline for protocols and ciphers",
+    "DNS access"
+  ],
+  "procedure": [
+    "Decide where TLS terminates and whether traffic is re-encrypted to the backend; encrypt internal hops that carry sensitive data.",
+    "Issue certificates with the correct names (including alternative names) from the chosen authority, using automated issuance such as ACME.",
+    "Configure TLS 1.2 minimum with TLS 1.3 preferred, strong cipher suites, forward secrecy and OCSP stapling, and disable older protocols.",
+    "Add HTTP to HTTPS redirect and HSTS, first with a short max-age, then lengthen it once verified.",
+    "Protect private keys: restricted access, no copies in repositories, and rotation on staff or compromise events.",
+    "Test with an external scanner and from several clients, and record the grade and the expiry dates."
+  ],
+  "deliverables": [
+    "certificates in service",
+    "TLS configuration",
+    "redirect and HSTS settings",
+    "scan results with expiry dates"
+  ],
+  "acceptance_criteria": [
+    "Only supported protocol versions are enabled",
+    "Names match the certificate",
+    "Issuance is automated",
+    "Private keys are not in repositories"
+  ],
+  "validation_method": "Network engineer review.",
+  "validation": [
+    {
+      "command": "openssl s_client -connect app.example.com:443 -servername app.example.com </dev/null 2>/dev/null | openssl x509 -noout -subject -dates -ext subjectAltName   # example",
+      "expect": "names and dates are as expected"
+    },
+    {
+      "command": "curl -sI http://app.example.com | head -3",
+      "expect": "redirect to HTTPS"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Name mismatch",
+      "detection": "Clients report certificate error",
+      "response": "Reissue with the right names"
+    },
+    {
+      "mode": "Old protocol enabled",
+      "detection": "Scanner flags TLS 1.0",
+      "response": "Disable and test clients"
+    },
+    {
+      "mode": "HSTS set long before verification",
+      "detection": "Broken subdomain unreachable",
+      "response": "Start short"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A public site terminates TLS 1.3 at the load balancer with an automatically issued certificate, redirects HTTP, sets HSTS at one day then a year after verification, and an external scan shows no legacy protocols.",
+  "status": "complete"
+}

@@ -314,40 +314,68 @@ ILLUSTRATIVE: Before moving the app to a new load balancer, the team lowers the 
 Gate: 11-134. Approval: none required
 
 ## 135
-**SSL/TLS Setup** (stub). Purpose: configure secure and resilient network edge routing.
+**SSL/TLS Setup** (complete). Purpose: set up encrypted connections correctly, so traffic is protected and clients can trust the server, with certificates issued and renewed without manual steps.
 
-Inputs: domain ownership and target topology; certificate and trust requirements; traffic and health-check profile
+Entry criteria: Hostnames and traffic paths are listed; A certificate authority or automated issuer is chosen; DNS control for the names exists
+
+Inputs: hostnames and endpoints; termination points in the traffic path; security baseline for protocols and ciphers; DNS access
 
 Procedure:
-1. Verify domain/account ownership and change window.
-2. Configure records, certificates, ciphers, health checks, routing and origin restrictions.
-3. Validate propagation, certificate chain/expiry, redirects and failover behavior.
-4. Document TTL, renewal, rollback and monitoring.
+1. Decide where TLS terminates and whether traffic is re-encrypted to the backend; encrypt internal hops that carry sensitive data.
+2. Issue certificates with the correct names (including alternative names) from the chosen authority, using automated issuance such as ACME.
+3. Configure TLS 1.2 minimum with TLS 1.3 preferred, strong cipher suites, forward secrecy and OCSP stapling, and disable older protocols.
+4. Add HTTP to HTTPS redirect and HSTS, first with a short max-age, then lengthen it once verified.
+5. Protect private keys: restricted access, no copies in repositories, and rotation on staff or compromise events.
+6. Test with an external scanner and from several clients, and record the grade and the expiry dates.
 
-Deliverables: DNS/TLS/routing configuration; validation output; renewal and rollback runbook
+Deliverables: certificates in service; TLS configuration; redirect and HSTS settings; scan results with expiry dates
 
-Acceptance: No unexpected public exposure. Certificate chain and hostname validation pass. Failover and rollback are tested.
+Acceptance: Only supported protocol versions are enabled Names match the certificate Issuance is automated Private keys are not in repositories
 
-Validation: Network/security review.
+Validation: Network engineer review.
+
+- `openssl s_client -connect app.example.com:443 -servername app.example.com </dev/null 2>/dev/null | openssl x509 -noout -subject -dates -ext subjectAltName   # example` expect: names and dates are as expected
+- `curl -sI http://app.example.com | head -3` expect: redirect to HTTPS
+
+Failure modes:
+- Name mismatch | detect: Clients report certificate error | respond: Reissue with the right names
+- Old protocol enabled | detect: Scanner flags TLS 1.0 | respond: Disable and test clients
+- HSTS set long before verification | detect: Broken subdomain unreachable | respond: Start short
+
+ILLUSTRATIVE: A public site terminates TLS 1.3 at the load balancer with an automatically issued certificate, redirects HTTP, sets HSTS at one day then a year after verification, and an external scan shows no legacy protocols.
 
 Gate: 11-135. Approval: none required
 
 ## 136
-**Load Balancer Setup** (stub). Purpose: configure secure and resilient network edge routing.
+**Load Balancer Setup** (complete). Purpose: distribute traffic across healthy instances with the right algorithm, health checks and failure behavior, and prove it by testing.
 
-Inputs: domain ownership and target topology; certificate and trust requirements; traffic and health-check profile
+Entry criteria: The service has more than one instance or zone; Health endpoints exist; Traffic patterns are known
+
+Inputs: service instances and zones; health endpoints; traffic pattern and session needs; TLS requirements
 
 Procedure:
-1. Verify domain/account ownership and change window.
-2. Configure records, certificates, ciphers, health checks, routing and origin restrictions.
-3. Validate propagation, certificate chain/expiry, redirects and failover behavior.
-4. Document TTL, renewal, rollback and monitoring.
+1. Choose layer 4 or layer 7 based on needs for routing, TLS handling and headers, and the algorithm based on request cost, such as least connections for uneven requests.
+2. Define health checks that test real readiness (dependencies reachable), with thresholds that neither flap nor hide failures.
+3. Handle state: keep instances stateless, or use session affinity only where required and state the failure effect.
+4. Spread instances across zones, and check that losing one zone leaves enough capacity.
+5. Configure connection draining, timeouts, retry rules that are safe for idempotent requests, and rate limits.
+6. Test by removing an instance and a zone under load, and verify traffic shifts without errors beyond the agreed budget.
 
-Deliverables: DNS/TLS/routing configuration; validation output; renewal and rollback runbook
+Deliverables: load balancer configuration; health check definitions; failure test results; capacity-after-zone-loss calculation
 
-Acceptance: No unexpected public exposure. Certificate chain and hostname validation pass. Failover and rollback are tested.
+Acceptance: Health checks test readiness, not only that the process runs Capacity covers the loss of one zone Connection draining is enabled Failure tests were run under load
 
-Validation: Network/security review.
+Validation: Network engineer and service owner review.
+
+- `for i in $(seq 1 200); do curl -s -o /dev/null -w '%{http_code}\n' https://app.example.com/; done | sort | uniq -c   # run while one instance is stopped` expect: no more than the agreed share of non-200 responses
+- manual: compute total capacity minus one zone against peak load expect: remaining capacity is at least peak
+
+Failure modes:
+- Unhealthy instance stays in rotation | detect: Errors from one backend | respond: Tighten the check and thresholds
+- Retries amplify load | detect: Errors rise during a slowdown | respond: Limit retries and add backoff
+- Zone loss overloads the rest | detect: Saturation in the test | respond: Add capacity or shed load
+
+ILLUSTRATIVE: Three instances across three zones use least-connections balancing with a readiness endpoint that checks the database; stopping one instance under load causes two failed requests out of 2,000 before it leaves rotation, and draining prevents cut-off requests on deploy.
 
 Gate: 11-136. Approval: none required
 

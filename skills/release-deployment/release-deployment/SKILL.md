@@ -33,8 +33,8 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 132 | Database Migration | complete | Database Administrator |
 | 133 | Production Deployment | complete | Deployment Engineer |
 | 134 | Domain & DNS | complete | Cloud Engineer |
-| 135 | SSL/TLS Setup | stub | Network Engineer |
-| 136 | Load Balancer Setup | stub | Network Engineer |
+| 135 | SSL/TLS Setup | complete | Network Engineer |
+| 136 | Load Balancer Setup | complete | Network Engineer |
 | 137 | Rollback Planning | complete | Release Manager |
 | 138 | Production Smoke Test | complete | SRE |
 | 139 | Deployment Sign-off | complete | Release Manager |

@@ -1,0 +1,65 @@
+{
+  "stage_id": 151,
+  "purpose": "keep cloud spend aligned with value by finding waste, committing where it is safe and making each team accountable for what it spends",
+  "entry_criteria": [
+    "Cost and usage data with tags is available",
+    "Resource owners are known",
+    "A budget or target exists"
+  ],
+  "inputs": [
+    "billing and usage data",
+    "resource tags and owners",
+    "utilization metrics",
+    "budgets and forecasts"
+  ],
+  "procedure": [
+    "Allocate cost to teams and products using tags and account structure, and fix untagged spend first because it cannot be managed.",
+    "Find waste: idle and orphaned resources, over-sized instances, unattached storage, excessive data transfer and over-retained logs and snapshots.",
+    "Right-size and schedule non-production resources off outside working hours, based on measured utilization and with owner confirmation.",
+    "Consider commitments (reserved or savings plans) only for steady baseline usage, and size them from observed minimum usage, not peak.",
+    "Estimate savings per action with the assumptions, and rank by saving and effort; changes with risk to availability need the service owner's approval.",
+    "Track realized savings against estimates monthly, and report unit cost (cost per transaction or customer), not only total cost."
+  ],
+  "deliverables": [
+    "cost allocation report",
+    "optimization actions with estimates and owners",
+    "commitment analysis",
+    "realized savings report and unit cost"
+  ],
+  "acceptance_criteria": [
+    "Untagged spend is reported and shrinking",
+    "Commitments are sized from baseline usage",
+    "Each action has an owner and an estimate",
+    "Realized savings are compared with estimates"
+  ],
+  "validation_method": "Named budget owner approves commitments and risky changes.",
+  "validation": [
+    {
+      "check": "compare the sum of allocated cost with the invoice total",
+      "expect": "difference under the agreed tolerance"
+    },
+    {
+      "check": "after each action, compare spend for the affected resources for 30 days before and after",
+      "expect": "saving reported with the dates"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Commitment too large",
+      "detection": "Unused commitment each month",
+      "response": "Size to the baseline and review quarterly"
+    },
+    {
+      "mode": "Right-sizing causes slowdowns",
+      "detection": "Latency alerts after change",
+      "response": "Roll back and size with peak data"
+    },
+    {
+      "mode": "Savings never verified",
+      "detection": "Estimates not compared with bills",
+      "response": "Track realized savings"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Non-production environments are scheduled off at night and weekends, saving an estimated 40 percent of their cost; a savings plan is bought for the minimum steady compute observed over three months, and the bill is compared 30 days later.",
+  "status": "complete"
+}

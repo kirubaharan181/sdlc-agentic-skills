@@ -49,21 +49,35 @@ ILLUSTRATIVE: Production runs in its own account reached only by federated roles
 Gate: 12-140. Approval: none required
 
 ## 141
-**Compute Management** (stub). Purpose: operate cloud infrastructure within reliability and cost objectives.
+**Compute Management** (complete). Purpose: manage virtual machines, containers and functions so capacity matches demand, patches are applied, and every resource has an owner and a purpose.
 
-Inputs: service inventory and ownership; SLO/RTO/RPO and capacity profile; access, backup and cost policies
+Entry criteria: Cloud accounts and an inventory source exist; Tagging standard exists; Patch and image policies are defined
+
+Inputs: resource inventory; tagging and ownership standard; utilization metrics; patch and image policy
 
 Procedure:
-1. Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
-2. Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
-3. Measure health, capacity, utilization, recovery readiness and cost allocation.
-4. Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
+1. Create compute only from code (infrastructure as code) and from approved, patched base images, with required tags for owner, environment and cost centre.
+2. Right-size using measured CPU, memory and network utilization over at least two weeks, and choose scaling policies with tested limits.
+3. Patch by replacing instances with new images through the pipeline rather than patching in place, and track images older than the policy.
+4. Harden: no public administrative ports, instance roles with least privilege, and no long-lived credentials on instances.
+5. Find and remove idle, orphaned and untagged resources through a scheduled report and an owner confirmation step.
+6. Test scaling and replacement under load, and record the time to replace a failed instance.
 
-Deliverables: infrastructure inventory; change record; health/capacity/cost evidence; operator runbook
+Deliverables: compute defined as code; image and patch status report; right-sizing and idle resource report; scaling and replacement test results
 
-Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
+Acceptance: Compute comes from code and approved images Every resource has an owner tag Images are within the patch policy Idle resources are reviewed
 
-Validation: Cloud operations and security review.
+Validation: Cloud engineer review.
+
+- `aws ec2 describe-instances --query 'Reservations[].Instances[?!not_null(Tags[?Key==`owner`])].InstanceId' --output text   # example` expect: no untagged instances
+- manual: list instances launched from images older than the policy age expect: none, or each has an exception
+
+Failure modes:
+- Manual instance changes | detect: Drift from code | respond: Detect drift and reapply code
+- Over-provisioned fleet | detect: CPU under 10 percent for weeks | respond: Right-size
+- Old images in use | detect: Patch policy exceeded | respond: Rebuild and roll
+
+ILLUSTRATIVE: An inventory report finds 14 untagged instances; owners claim nine, and five idle ones are stopped after confirmation. The fleet moves to a new base image through a rolling replacement, and the old image is retired.
 
 Gate: 12-141. Approval: none required
 
@@ -101,21 +115,35 @@ ILLUSTRATIVE: A managed PostgreSQL cluster with one replica in another zone is p
 Gate: 12-142. Approval: none required
 
 ## 143
-**Storage Management** (stub). Purpose: operate cloud infrastructure within reliability and cost objectives.
+**Storage Management** (complete). Purpose: manage storage so data is durable, access is controlled, cost matches use, and capacity never surprises anyone.
 
-Inputs: service inventory and ownership; SLO/RTO/RPO and capacity profile; access, backup and cost policies
+Entry criteria: Storage services and data owners are inventoried; Data classification exists; Retention rules exist
+
+Inputs: storage inventory; classification and retention rules; usage and growth data; access policies
 
 Procedure:
-1. Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
-2. Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
-3. Measure health, capacity, utilization, recovery readiness and cost allocation.
-4. Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
+1. Match storage type to need (block, file, object) and class to access pattern, with lifecycle rules that move or expire data.
+2. Block public access by default, use policies tied to roles, and review access on a schedule.
+3. Enable encryption at rest with managed keys, and versioning or object lock where recovery or immutability is needed.
+4. Set backup or replication for important data, and test restoring a sample.
+5. Monitor capacity growth and set alerts with enough lead time to act, and forecast from the trend.
+6. Report cost per data owner, and remove abandoned volumes, snapshots and buckets after owner confirmation.
 
-Deliverables: infrastructure inventory; change record; health/capacity/cost evidence; operator runbook
+Deliverables: storage inventory with owners and classes; lifecycle and access policies; restore test record; capacity forecast and cost report
 
-Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
+Acceptance: No storage is publicly accessible unless approved Lifecycle rules exist for data with retention limits Restores were tested Growth alerts give action lead time
 
-Validation: Cloud operations and security review.
+Validation: Cloud engineer and data owner review.
+
+- `aws s3api get-public-access-block --bucket <bucket>   # example` expect: all four blocks are true
+- manual: restore ten objects or one volume snapshot from backup and compare checksums expect: identical
+
+Failure modes:
+- Public bucket | detect: Anonymous access found | respond: Block and review the cause
+- Orphan snapshots accumulate | detect: Cost rises without owner | respond: Report and delete with confirmation
+- Disk fills unexpectedly | detect: Alert fires late | respond: Alert on growth rate and forecast
+
+ILLUSTRATIVE: A lifecycle rule moves log objects to a colder class after 30 days and deletes them at 400 days per policy; a monthly report lists 22 orphaned snapshots, 19 deleted after confirmation, and a restore of a sample volume matches checksums.
 
 Gate: 12-143. Approval: none required
 
@@ -153,40 +181,68 @@ ILLUSTRATIVE: A request to move a service to a new address is applied through a 
 Gate: 12-144. Approval: none required
 
 ## 145
-**SSL Certificate Management** (stub). Purpose: configure secure and resilient network edge routing.
+**SSL Certificate Management** (complete). Purpose: keep every certificate valid, inventoried and renewed on time, so no outage is caused by an expiry.
 
-Inputs: domain ownership and target topology; certificate and trust requirements; traffic and health-check profile
+Entry criteria: TLS is in use on several endpoints (stage 135); A certificate inventory source exists or can be built; Owners for endpoints are known
+
+Inputs: certificate inventory; issuance and renewal automation; monitoring and alerting; endpoint owners
 
 Procedure:
-1. Verify domain/account ownership and change window.
-2. Configure records, certificates, ciphers, health checks, routing and origin restrictions.
-3. Validate propagation, certificate chain/expiry, redirects and failover behavior.
-4. Document TTL, renewal, rollback and monitoring.
+1. Discover certificates from the authorities, load balancers, clusters and by scanning your address ranges, and record issuer, names, expiry, owner and where installed.
+2. Automate renewal wherever possible, and track the exceptions that need manual steps with an owner and a calendar date.
+3. Monitor expiry from outside, and alert at several stages (for example 30, 14 and 7 days) to different recipients with escalation.
+4. Check the renewal result by confirming the new certificate is served, not only that issuance succeeded.
+5. Revoke and replace when a key is exposed or a name is retired, and remove retired certificates from the inventory.
+6. Practise the emergency replacement of an expired certificate and record the time it takes.
 
-Deliverables: DNS/TLS/routing configuration; validation output; renewal and rollback runbook
+Deliverables: certificate inventory with owners; renewal automation and exceptions list; expiry monitoring and alerts; emergency replacement drill record
 
-Acceptance: No unexpected public exposure. Certificate chain and hostname validation pass. Failover and rollback are tested.
+Acceptance: Every certificate has an owner and an expiry date in the inventory Alerts run at several stages with escalation Renewal is verified by what is served Manual exceptions have calendar dates
 
-Validation: Network/security review.
+Validation: Cloud engineer review.
+
+- `echo | openssl s_client -connect app.example.com:443 -servername app.example.com 2>/dev/null | openssl x509 -noout -enddate   # example` expect: expiry is later than the alert threshold
+- manual: compare the inventory with a scan of the address ranges expect: no certificate found that is not in the inventory
+
+Failure modes:
+- Certificate expires unnoticed | detect: Clients receive errors | respond: Replace now and add the alert
+- Renewal succeeded but old certificate is served | detect: Expiry date unchanged | respond: Reload the service and add a verification step
+- Unknown certificate found | detect: Scan finds one not in inventory | respond: Find owner and register or remove
+
+ILLUSTRATIVE: A weekly scan finds a certificate on a forgotten admin host with 19 days left; the owner is identified, it is moved to automated issuance, and a monitor now alerts at 30, 14 and 7 days.
 
 Gate: 12-145. Approval: none required
 
 ## 146
-**Network Operations** (stub). Purpose: operate cloud infrastructure within reliability and cost objectives.
+**Network Operations** (complete). Purpose: operate the network day to day so it stays available, capacity is known, changes are safe and faults are found before users report them.
 
-Inputs: service inventory and ownership; SLO/RTO/RPO and capacity profile; access, backup and cost policies
+Entry criteria: Network devices and links are inventoried; Monitoring covers devices and links; A change process exists (stage 44)
+
+Inputs: network inventory and diagrams; device and link telemetry; configuration backups; change calendar
 
 Procedure:
-1. Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.
-2. Verify identity boundaries, encryption, network exposure, patch state and backup coverage.
-3. Measure health, capacity, utilization, recovery readiness and cost allocation.
-4. Apply a reviewed, reversible change and verify telemetry, drift and customer impact.
+1. Collect link utilization, errors, discards, latency, packet loss and device health, and alert on sustained thresholds and on loss of redundancy, not only on total failure.
+2. Back up device configurations automatically after each change, and compare running with the approved configuration to detect drift.
+3. Make changes through reviewed configuration as code or templates, test in a lab or with a dry run, and prepare a rollback.
+4. Verify redundancy by testing failover of links and devices in a window, and measure convergence time.
+5. Review capacity monthly against growth, and plan upgrades before utilization passes the planning threshold.
+6. Run a security hygiene check: management access limited and logged, unused ports disabled, firmware within support, and access lists reviewed.
 
-Deliverables: infrastructure inventory; change record; health/capacity/cost evidence; operator runbook
+Deliverables: monitoring and alert configuration; configuration backups and drift reports; failover test results; capacity and hygiene reports
 
-Acceptance: Changes are scoped and reversible. Backup/recovery meets stated objectives. Cost and reliability effects are measured.
+Acceptance: Configuration drift is detected Failover was tested and timed Capacity is reviewed with a plan Management access is restricted and logged
 
-Validation: Cloud operations and security review.
+Validation: Network owner review.
+
+- manual: diff each device's running configuration with its approved version expect: no unexplained difference
+- manual: disable one uplink in a window and measure time to reconverge expect: within the agreed time with no lasting loss
+
+Failure modes:
+- Redundant link down unnoticed | detect: Single point of failure for weeks | respond: Alert on lost redundancy
+- Config change not backed up | detect: Cannot restore after failure | respond: Automate backup on change
+- Errors rising on an interface | detect: Rising discard counter | respond: Investigate cable, optics or duplex mismatch
+
+ILLUSTRATIVE: Drift detection finds one switch with a manual change to a VLAN; it is reverted from the approved template. A failover test of the primary uplink reconverges in 3 seconds with no lasting loss.
 
 Gate: 12-146. Approval: none required
 
@@ -323,21 +379,35 @@ ILLUSTRATIVE: A service scales on queue depth with a minimum of 3 and a maximum 
 Gate: 12-150. Approval: none required
 
 ## 151
-**Cost Optimization** (stub). Purpose: improve measured performance without violating correctness.
+**Cost Optimization** (complete). Purpose: keep cloud spend aligned with value by finding waste, committing where it is safe and making each team accountable for what it spends.
 
-Inputs: baseline workload and latency profile; consistency/freshness requirements; resource and cost limits
+Entry criteria: Cost and usage data with tags is available; Resource owners are known; A budget or target exists
+
+Inputs: billing and usage data; resource tags and owners; utilization metrics; budgets and forecasts
 
 Procedure:
-1. Profile before changing code; identify dominant cost and reproducible baseline.
-2. Choose cache key, TTL, invalidation and consistency behavior based on data semantics.
-3. Bound memory, stampede, stale data and eviction behavior.
-4. Compare before/after p50/p95/p99, throughput, error rate and cost under equivalent load.
+1. Allocate cost to teams and products using tags and account structure, and fix untagged spend first because it cannot be managed.
+2. Find waste: idle and orphaned resources, over-sized instances, unattached storage, excessive data transfer and over-retained logs and snapshots.
+3. Right-size and schedule non-production resources off outside working hours, based on measured utilization and with owner confirmation.
+4. Consider commitments (reserved or savings plans) only for steady baseline usage, and size them from observed minimum usage, not peak.
+5. Estimate savings per action with the assumptions, and rank by saving and effort; changes with risk to availability need the service owner's approval.
+6. Track realized savings against estimates monthly, and report unit cost (cost per transaction or customer), not only total cost.
 
-Deliverables: profile report; optimization change; cache policy; before/after benchmark
+Deliverables: cost allocation report; optimization actions with estimates and owners; commitment analysis; realized savings report and unit cost
 
-Acceptance: Improvement is measured against baseline. Correctness and freshness invariants hold. No unbounded memory or stale-data risk is introduced.
+Acceptance: Untagged spend is reported and shrinking Commitments are sized from baseline usage Each action has an owner and an estimate Realized savings are compared with estimates
 
-Validation: Performance and correctness regression review.
+Validation: Named budget owner approves commitments and risky changes.
+
+- manual: compare the sum of allocated cost with the invoice total expect: difference under the agreed tolerance
+- manual: after each action, compare spend for the affected resources for 30 days before and after expect: saving reported with the dates
+
+Failure modes:
+- Commitment too large | detect: Unused commitment each month | respond: Size to the baseline and review quarterly
+- Right-sizing causes slowdowns | detect: Latency alerts after change | respond: Roll back and size with peak data
+- Savings never verified | detect: Estimates not compared with bills | respond: Track realized savings
+
+ILLUSTRATIVE: Non-production environments are scheduled off at night and weekends, saving an estimated 40 percent of their cost; a savings plan is bought for the minimum steady compute observed over three months, and the bill is compared 30 days later.
 
 Gate: 12-151. Approval: finops-owner (when resizing, deleting or committing spend on billing-sensitive resources)
 

@@ -35,7 +35,7 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 119 | CD Pipeline | complete | DevOps Engineer |
 | 120 | Environment Provisioning | complete | Infrastructure Engineer |
 | 121 | Network Engineering | complete | Network Engineer |
-| 122 | Database Operations | stub | Database Administrator |
+| 122 | Database Operations | complete | Database Administrator |
 | 123 | CDN & Edge Configuration | complete | Platform Engineer |
 | 124 | Deployment Automation | complete | Deployment Engineer |
 | 125 | Pipeline Security | complete | DevSecOps Engineer |

@@ -1,0 +1,65 @@
+{
+  "stage_id": 107,
+  "purpose": "check, against named rules, that the system and the way it is built and run meet legal, regulatory and contractual obligations, and keep the evidence",
+  "entry_criteria": [
+    "Applicable obligations are listed (stage 10)",
+    "Controls exist and are in operation",
+    "Evidence is accessible to the reviewer"
+  ],
+  "inputs": [
+    "obligations register",
+    "control descriptions",
+    "system evidence such as configurations, logs and records",
+    "previous audit findings"
+  ],
+  "procedure": [
+    "Select the obligations in scope and break each into testable control statements.",
+    "Gather evidence for each control from the system itself (configurations, access lists, logs, tickets) rather than from descriptions alone.",
+    "Test a sample for operation over the period, not only the design: for example, a sample of changes for approval records.",
+    "Classify results: compliant, partly compliant, non-compliant or not applicable, with the evidence reference.",
+    "Raise each gap with an owner, a remediation and a date, and record accepted risks with an approver.",
+    "Report to the compliance owner, and retest remediations before closing."
+  ],
+  "deliverables": [
+    "control test matrix with evidence references",
+    "gap register with owners",
+    "accepted risk records",
+    "review report"
+  ],
+  "acceptance_criteria": [
+    "Each in-scope obligation has a control and a result",
+    "Evidence comes from the system, not only from descriptions",
+    "Samples cover the review period",
+    "Gaps have owners and dates"
+  ],
+  "validation_method": "Compliance owner accepts the report; named executive accepts residual risk.",
+  "validation": [
+    {
+      "check": "sample 10 changes from the period and check each for approval and test records",
+      "expect": "all present, or exceptions listed"
+    },
+    {
+      "check": "check each non-compliant row has an owner and a date",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Control described but not operating",
+      "detection": "Sample fails",
+      "response": "Record as non-compliant and fix"
+    },
+    {
+      "mode": "Evidence outdated",
+      "detection": "Evidence dated outside the period",
+      "response": "Collect current evidence"
+    },
+    {
+      "mode": "Risk accepted by a team member",
+      "detection": "No executive approval",
+      "response": "Escalate for proper acceptance"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A review of an access-review obligation samples four quarters and finds one missing; it is raised as a gap with an owner, completed within 30 days, and the new record is added to the evidence.",
+  "status": "complete"
+}
