@@ -24,13 +24,13 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 ## Stages covered
 | Stage | Name | Status | Accountable role |
 |---|---|---|---|
-| 153 | Application Monitoring | stub | Observability Engineer |
-| 154 | Infrastructure Monitoring | stub | Observability Engineer |
+| 153 | Application Monitoring | complete | Observability Engineer |
+| 154 | Infrastructure Monitoring | complete | Observability Engineer |
 | 155 | Centralized Logging | complete | Observability Engineer |
 | 156 | Metrics Monitoring | complete | Observability Engineer |
 | 157 | Distributed Tracing | complete | Observability Engineer |
 | 158 | Alert Management | complete | SRE |
-| 159 | Uptime Monitoring | stub | Observability Engineer |
+| 159 | Uptime Monitoring | complete | Observability Engineer |
 | 160 | SLA/SLO Management | complete | SRE |
 | 161 | Capacity Planning | complete | SRE |
 | 162 | Incident Detection | complete | Incident Manager |

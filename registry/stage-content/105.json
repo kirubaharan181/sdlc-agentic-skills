@@ -1,0 +1,65 @@
+{
+  "stage_id": 105,
+  "purpose": "verify that sign-in, session and credential handling resist real attacks, using tests aimed at the weaknesses that attackers use",
+  "entry_criteria": [
+    "Authentication is implemented (stage 59)",
+    "Test accounts and an isolated environment exist",
+    "The threat model covers sign-in"
+  ],
+  "inputs": [
+    "authentication design and code",
+    "threat model",
+    "test accounts including privileged ones",
+    "session and token configuration"
+  ],
+  "procedure": [
+    "Test credential attacks: brute force and credential stuffing against rate limits and lockout, and check that responses do not reveal whether an account exists.",
+    "Inspect session handling: cookie flags (Secure, HttpOnly, SameSite), token lifetime, rotation after sign-in and privilege change, and invalidation at logout and password change.",
+    "Examine tokens: signature verification, rejected algorithm substitution, expiry enforcement and audience checks.",
+    "Test recovery and multi-factor flows for bypass, reuse of codes or links, and weak fallback channels.",
+    "Check password storage and policy: slow salted hashing, breach-list checks and no reversible storage.",
+    "Record findings by severity with reproduction steps, and add each as a regression test."
+  ],
+  "deliverables": [
+    "authentication test report",
+    "reproduction steps for each finding",
+    "regression tests",
+    "configuration findings"
+  ],
+  "acceptance_criteria": [
+    "Rate limits and lockout were tested under attack-like load",
+    "Tokens and cookies were inspected for each listed property",
+    "Recovery and multi-factor bypass were attempted",
+    "Each finding became a regression test"
+  ],
+  "validation_method": "Application security engineer sign-off.",
+  "validation": [
+    {
+      "command": "curl -sI https://test.example.com/login | grep -i set-cookie   # example",
+      "expect": "cookie shows Secure, HttpOnly and SameSite"
+    },
+    {
+      "check": "send an expired and a tampered token to a protected endpoint",
+      "expect": "both rejected with the same generic response"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Token accepted after logout",
+      "detection": "Old token still works",
+      "response": "Revoke server-side"
+    },
+    {
+      "mode": "Account enumeration",
+      "detection": "Different responses for unknown users",
+      "response": "Return one response and timing"
+    },
+    {
+      "mode": "Recovery link reusable",
+      "detection": "Second use succeeds",
+      "response": "Single use with short expiry"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Testing finds that a password-reset token remains valid after use and that the 'unknown user' response is faster than 'wrong password'. Both are fixed, each with a regression test.",
+  "status": "complete"
+}

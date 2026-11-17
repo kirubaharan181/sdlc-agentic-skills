@@ -11,7 +11,7 @@ the rest are marked stub. `make demo` prints a release plan from the registries.
 ## Longer post: what is different
 - Each workflow has its own steps, owners, approval points and failure paths; the validator rejects clones.
 - Evidence examples are labelled illustrative; a record may say PASS only for a run that happened.
-- Completeness is reported honestly: 157 of 190 stages complete, 33 stubs.
+- Completeness is reported honestly: 178 of 190 stages complete, 12 stubs.
 - Not done: no model eval has been run, and no agent platform adapter has been tested (see `adapters/COMPATIBILITY.md`).
 
 ## Where it might go (owner's choice)

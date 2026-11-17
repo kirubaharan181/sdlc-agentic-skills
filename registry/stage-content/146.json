@@ -1,0 +1,65 @@
+{
+  "stage_id": 146,
+  "purpose": "operate the network day to day so it stays available, capacity is known, changes are safe and faults are found before users report them",
+  "entry_criteria": [
+    "Network devices and links are inventoried",
+    "Monitoring covers devices and links",
+    "A change process exists (stage 44)"
+  ],
+  "inputs": [
+    "network inventory and diagrams",
+    "device and link telemetry",
+    "configuration backups",
+    "change calendar"
+  ],
+  "procedure": [
+    "Collect link utilization, errors, discards, latency, packet loss and device health, and alert on sustained thresholds and on loss of redundancy, not only on total failure.",
+    "Back up device configurations automatically after each change, and compare running with the approved configuration to detect drift.",
+    "Make changes through reviewed configuration as code or templates, test in a lab or with a dry run, and prepare a rollback.",
+    "Verify redundancy by testing failover of links and devices in a window, and measure convergence time.",
+    "Review capacity monthly against growth, and plan upgrades before utilization passes the planning threshold.",
+    "Run a security hygiene check: management access limited and logged, unused ports disabled, firmware within support, and access lists reviewed."
+  ],
+  "deliverables": [
+    "monitoring and alert configuration",
+    "configuration backups and drift reports",
+    "failover test results",
+    "capacity and hygiene reports"
+  ],
+  "acceptance_criteria": [
+    "Configuration drift is detected",
+    "Failover was tested and timed",
+    "Capacity is reviewed with a plan",
+    "Management access is restricted and logged"
+  ],
+  "validation_method": "Network owner review.",
+  "validation": [
+    {
+      "check": "diff each device's running configuration with its approved version",
+      "expect": "no unexplained difference"
+    },
+    {
+      "check": "disable one uplink in a window and measure time to reconverge",
+      "expect": "within the agreed time with no lasting loss"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Redundant link down unnoticed",
+      "detection": "Single point of failure for weeks",
+      "response": "Alert on lost redundancy"
+    },
+    {
+      "mode": "Config change not backed up",
+      "detection": "Cannot restore after failure",
+      "response": "Automate backup on change"
+    },
+    {
+      "mode": "Errors rising on an interface",
+      "detection": "Rising discard counter",
+      "response": "Investigate cable, optics or duplex mismatch"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Drift detection finds one switch with a manual change to a VLAN; it is reverted from the approved template. A failover test of the primary uplink reconverges in 3 seconds with no lasting loss.",
+  "status": "complete"
+}

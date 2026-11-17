@@ -684,20 +684,34 @@ ILLUSTRATIVE: A weekly triage closes six duplicates, downgrades two inflated sev
 Gate: 08-096. Approval: none required
 
 ## 97
-**Test Sign-off** (stub). Purpose: prepare a controlled decision with sufficient evidence and independent authority.
+**Test Sign-off** (complete). Purpose: give the release decision-maker an honest, evidence-based statement of test status, with remaining risk stated in plain terms.
 
-Inputs: decision request and accountable sponsor; impact/risk assessment; supporting evidence and alternatives
+Entry criteria: Planned test execution is finished or cut off at a stated point; The test plan with exit criteria exists (stage 78); Defect data is current (stage 96)
+
+Inputs: test plan and exit criteria; execution results and coverage; open defect list; risk register
 
 Procedure:
-1. Check the decision request is complete, in scope and owned by an authorized requester.
-2. Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.
-3. Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.
-4. Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver.
+1. Compare results with each exit criterion and mark it met, not met or waived, with the figure behind it.
+2. List every open defect above the agreed severity, with impact, workaround and owner.
+3. State what was not tested, and why, so absence of evidence is not read as evidence of absence.
+4. Check that test results belong to the build proposed for release by comparing build identifiers and commit hashes.
+5. Write the recommendation: release, release with conditions, or hold, with the residual risks.
+6. Present it to the named release approver, record the decision and the waivers with their owners, and archive the evidence.
 
-Deliverables: decision record; evidence index; conditions and waiver log
+Deliverables: exit criteria scorecard; open defect and waiver list; not-tested list; sign-off record with the decision and approver
 
-Acceptance: Decision authority is verified. Conditions are measurable, owned and time-bound. No missing or failed critical evidence is silently waived.
+Acceptance: Each exit criterion has a figure and a status Results match the build proposed for release Untested areas are listed Waivers have a named owner
 
-Validation: Independent approval record and audit trail.
+Validation: Named release approver decides; QA lead recommends.
+
+- manual: compare the build id in the test report with the build id in the release candidate expect: identical
+- manual: check every waived criterion has an owner, reason and expiry expect: none missing
+
+Failure modes:
+- Results from an older build | detect: Build ids differ | respond: Rerun the affected tests on the candidate
+- Waivers without owners | detect: Criterion waived with no name | respond: Obtain a named decision
+- Sign-off hides untested areas | detect: No not-tested list | respond: Add it before the meeting
+
+ILLUSTRATIVE: The scorecard shows 7 of 8 exit criteria met; the load test ran at 1.2 times peak against a target of 1.5. The QA lead recommends release with a condition, the product owner accepts it with a retest date, and the waiver is recorded.
 
 Gate: 08-097. Approval: none required

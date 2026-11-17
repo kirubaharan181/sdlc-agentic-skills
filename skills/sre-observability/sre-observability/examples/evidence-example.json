@@ -3,29 +3,29 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "sre-observability",
-  "stage_id": 155,
-  "stage_name": "Centralized Logging",
+  "stage_id": 153,
+  "stage_name": "Application Monitoring",
   "commit_sha": "<commit under review>",
   "executor": "<Observability Engineer or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Observability owner and security review.",
+    "method": "Observability owner review.",
     "command": "<command or review technique actually used>",
     "expected": "<expected result>",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "log format standard",
-      "path": "<path or immutable URL of log format standard>"
+      "name": "indicators and objectives per journey",
+      "path": "<path or immutable URL of indicators and objectives per journey>"
     },
     {
-      "name": "shipping configuration",
-      "path": "<path or immutable URL of shipping configuration>"
+      "name": "dashboards and alerts",
+      "path": "<path or immutable URL of dashboards and alerts>"
     },
     {
-      "name": "retention and access rules",
-      "path": "<path or immutable URL of retention and access rules>"
+      "name": "release-tagged telemetry",
+      "path": "<path or immutable URL of release-tagged telemetry>"
     }
   ],
   "limitations": [

@@ -1,0 +1,65 @@
+{
+  "stage_id": 97,
+  "purpose": "give the release decision-maker an honest, evidence-based statement of test status, with remaining risk stated in plain terms",
+  "entry_criteria": [
+    "Planned test execution is finished or cut off at a stated point",
+    "The test plan with exit criteria exists (stage 78)",
+    "Defect data is current (stage 96)"
+  ],
+  "inputs": [
+    "test plan and exit criteria",
+    "execution results and coverage",
+    "open defect list",
+    "risk register"
+  ],
+  "procedure": [
+    "Compare results with each exit criterion and mark it met, not met or waived, with the figure behind it.",
+    "List every open defect above the agreed severity, with impact, workaround and owner.",
+    "State what was not tested, and why, so absence of evidence is not read as evidence of absence.",
+    "Check that test results belong to the build proposed for release by comparing build identifiers and commit hashes.",
+    "Write the recommendation: release, release with conditions, or hold, with the residual risks.",
+    "Present it to the named release approver, record the decision and the waivers with their owners, and archive the evidence."
+  ],
+  "deliverables": [
+    "exit criteria scorecard",
+    "open defect and waiver list",
+    "not-tested list",
+    "sign-off record with the decision and approver"
+  ],
+  "acceptance_criteria": [
+    "Each exit criterion has a figure and a status",
+    "Results match the build proposed for release",
+    "Untested areas are listed",
+    "Waivers have a named owner"
+  ],
+  "validation_method": "Named release approver decides; QA lead recommends.",
+  "validation": [
+    {
+      "check": "compare the build id in the test report with the build id in the release candidate",
+      "expect": "identical"
+    },
+    {
+      "check": "check every waived criterion has an owner, reason and expiry",
+      "expect": "none missing"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Results from an older build",
+      "detection": "Build ids differ",
+      "response": "Rerun the affected tests on the candidate"
+    },
+    {
+      "mode": "Waivers without owners",
+      "detection": "Criterion waived with no name",
+      "response": "Obtain a named decision"
+    },
+    {
+      "mode": "Sign-off hides untested areas",
+      "detection": "No not-tested list",
+      "response": "Add it before the meeting"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The scorecard shows 7 of 8 exit criteria met; the load test ran at 1.2 times peak against a target of 1.5. The QA lead recommends release with a condition, the product owner accepts it with a retest date, and the waiver is recorded.",
+  "status": "complete"
+}

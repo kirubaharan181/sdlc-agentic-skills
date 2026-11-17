@@ -30,10 +30,10 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 | 101 | SCA | complete | DevSecOps Engineer |
 | 102 | Container Security | complete | DevSecOps Engineer |
 | 103 | Infrastructure Security | complete | DevSecOps Engineer |
-| 104 | Penetration Testing | stub | Penetration Testing Specialist |
-| 105 | Authentication Security | stub | Application Security Engineer |
-| 106 | Data Protection | stub | Application Security Engineer |
-| 107 | Compliance Review | stub | Compliance Specialist |
+| 104 | Penetration Testing | complete | Penetration Testing Specialist |
+| 105 | Authentication Security | complete | Application Security Engineer |
+| 106 | Data Protection | complete | Application Security Engineer |
+| 107 | Compliance Review | complete | Compliance Specialist |
 | 108 | License Compliance | complete | License Compliance Specialist |
 | 109 | Vulnerability Remediation | complete | Application Security Engineer |
 | 110 | Security Sign-off | complete | Security Auditor |

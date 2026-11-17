@@ -1,0 +1,65 @@
+{
+  "stage_id": 154,
+  "purpose": "watch the servers, containers, clusters and cloud services under the applications, so saturation and failure are found early and tied to their cause",
+  "entry_criteria": [
+    "Infrastructure components are inventoried",
+    "Agents or exporters can be deployed",
+    "Capacity thresholds are defined (stage 161)"
+  ],
+  "inputs": [
+    "infrastructure inventory",
+    "capacity thresholds",
+    "agent and exporter options",
+    "dependency map"
+  ],
+  "procedure": [
+    "Collect host and container metrics: CPU including steal and throttling, memory and swap, disk space, inode and I/O latency, network errors and saturation.",
+    "Collect orchestrator signals: pod restarts, pending pods, node conditions, resource requests and limits, and autoscaler activity.",
+    "Collect cloud service metrics and quota use for managed services, and alert before quotas are reached.",
+    "Alert on saturation trends and time-to-full forecasts, such as disks that will fill within a day, rather than only on current values.",
+    "Tag metrics with service, environment and owner, so alerts route to the right team and show affected applications.",
+    "Test that monitoring itself works: alert on missing data from the agents and on failure of the monitoring pipeline."
+  ],
+  "deliverables": [
+    "agent and exporter deployment",
+    "infrastructure dashboards",
+    "forecast-based alerts",
+    "monitoring health checks"
+  ],
+  "acceptance_criteria": [
+    "Every host and cluster reports metrics",
+    "Quota and time-to-full alerts exist",
+    "Metrics carry owner tags",
+    "Missing data raises an alert"
+  ],
+  "validation_method": "Observability owner review.",
+  "validation": [
+    {
+      "command": "promtool query instant http://prometheus:9090 'up == 0'   # example",
+      "expect": "returns no unexpected targets"
+    },
+    {
+      "check": "stop an exporter in staging",
+      "expect": "a missing-data alert fires"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Silent agent failure",
+      "detection": "Host disappears from dashboards",
+      "response": "Alert on absent metrics"
+    },
+    {
+      "mode": "Disk full at night",
+      "detection": "Alert only at 100 percent",
+      "response": "Alert on time-to-full forecast"
+    },
+    {
+      "mode": "Container throttled",
+      "detection": "Latency without high CPU",
+      "response": "Monitor throttling and limits"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A forecast alert warns that a database volume fills in 18 hours at the current growth; the team expands it during working hours, and a test shows the absent-data alert fires when an exporter is stopped.",
+  "status": "complete"
+}

@@ -1,0 +1,65 @@
+{
+  "stage_id": 106,
+  "purpose": "check that data is protected at rest, in transit and in use according to its classification, and that exposure paths are closed",
+  "entry_criteria": [
+    "Data classification and flows exist (stage 30)",
+    "Encryption and key management are designed",
+    "Test environment holds representative data"
+  ],
+  "inputs": [
+    "data inventory and classification",
+    "data flow diagrams",
+    "encryption and key configuration",
+    "privacy and retention rules"
+  ],
+  "procedure": [
+    "Trace each classified data element through its flow, and confirm encryption in transit with a modern protocol version on every hop, including internal ones.",
+    "Check encryption at rest for databases, object stores, backups and logs, and see who can use or export the keys.",
+    "Look for exposure paths: verbose errors, logs, analytics payloads, URLs, caches, debug endpoints and misconfigured public storage.",
+    "Check access to the data against least privilege, and that access to sensitive tables and exports is logged.",
+    "Check masking or synthetic data outside production, and that retention and deletion jobs actually remove data, including from backups after their cycle.",
+    "Report gaps with the data element, the path and the fix, and retest."
+  ],
+  "deliverables": [
+    "data protection test report",
+    "exposure path findings",
+    "key and access review",
+    "retention verification"
+  ],
+  "acceptance_criteria": [
+    "Every classified element has a traced flow",
+    "Encryption in transit and at rest was verified, not assumed",
+    "Non-production data is masked",
+    "Deletion was proven by a test"
+  ],
+  "validation_method": "Application security engineer and data owner review.",
+  "validation": [
+    {
+      "command": "nmap --script ssl-enum-ciphers -p 443 test.example.com   # example",
+      "expect": "only supported protocol versions and strong ciphers"
+    },
+    {
+      "check": "create a test record, delete it through the product, and query the database and the search index",
+      "expect": "record absent from both"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Sensitive field in logs",
+      "detection": "Search of logs finds personal data",
+      "response": "Mask and purge"
+    },
+    {
+      "mode": "Public storage bucket",
+      "detection": "Anonymous listing succeeds",
+      "response": "Block public access and review"
+    },
+    {
+      "mode": "Deleted data persists in a cache or index",
+      "detection": "Record still found",
+      "response": "Add invalidation to the deletion job"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: A trace of customer email finds it in application logs and an analytics event; both are masked, a search for the address in logs afterwards returns nothing, and the deletion test confirms removal from the search index.",
+  "status": "complete"
+}

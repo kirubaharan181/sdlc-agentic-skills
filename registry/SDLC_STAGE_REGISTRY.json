@@ -2507,35 +2507,7 @@
       "skills": [
         "quality-assurance"
       ],
-      "inputs": [
-        "decision request and accountable sponsor",
-        "impact/risk assessment",
-        "supporting evidence and alternatives"
-      ],
-      "outputs": [
-        "test-sign-off-deliverable",
-        "decision record",
-        "evidence index"
-      ],
       "quality_gate": "08-097",
-      "validation_method": "Independent approval record and audit trail.",
-      "purpose": "prepare a controlled decision with sufficient evidence and independent authority",
-      "execution_instructions": [
-        "Check the decision request is complete, in scope and owned by an authorized requester.",
-        "Evaluate acceptance evidence, residual risks, dependencies, rollback/recovery readiness and affected parties.",
-        "Record independent reviewer input and unresolved objections; do not approve work you personally verified where segregation is required.",
-        "Issue approve, reject, defer or conditional decision with conditions, expiry and accountable approver."
-      ],
-      "deliverable_artifacts": [
-        "decision record",
-        "evidence index",
-        "conditions and waiver log"
-      ],
-      "quality_criteria": [
-        "Decision authority is verified.",
-        "Conditions are measurable, owned and time-bound.",
-        "No missing or failed critical evidence is silently waived."
-      ],
       "raci": {
         "accountable": "qa-lead",
         "responsible": [
@@ -2690,36 +2662,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "written authorization and target inventory",
-        "rules of engagement, time window and emergency contact",
-        "data handling and stop conditions"
-      ],
-      "outputs": [
-        "penetration-testing-deliverable",
-        "rules of engagement",
-        "penetration test log"
-      ],
       "quality_gate": "09-104",
-      "validation_method": "Validate one approved attack path and stop immediately if the test reaches out-of-scope data.",
-      "purpose": "perform authorized adversarial testing with controlled evidence",
-      "execution_instructions": [
-        "Verify authorization, scope, exclusions and escalation contacts before any active test.",
-        "Test agreed attack paths with bounded techniques and avoid destructive actions or persistence.",
-        "Capture minimal reproduction, impact and evidence while protecting customer data.",
-        "Report remediation and independently retest the agreed fixes."
-      ],
-      "deliverable_artifacts": [
-        "rules of engagement",
-        "penetration test log",
-        "validated finding report",
-        "retest evidence"
-      ],
-      "quality_criteria": [
-        "No out-of-scope target is tested.",
-        "Unintended impact triggers immediate stop and notification.",
-        "Findings include reproducible steps and safe remediation."
-      ],
       "approval_required": true,
       "approval_rationale": "Active testing against a target without written authorization may be illegal or disruptive; a human owner must approve scope, target and window first.",
       "raci": {
@@ -2743,35 +2686,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "authorized scope and asset inventory",
-        "scanner/tool configuration and version",
-        "severity policy and remediation SLA"
-      ],
-      "outputs": [
-        "authentication-security-deliverable",
-        "scan/test report",
-        "validated finding register"
-      ],
       "quality_gate": "09-105",
-      "validation_method": "Security owner and system owner disposition.",
-      "purpose": "assess and remediate a defined security attack surface",
-      "execution_instructions": [
-        "Confirm asset ownership, scope, exclusions and written authorization before active testing.",
-        "Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.",
-        "Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.",
-        "Assign remediation, retest the exact fix and record residual risk or approved exception."
-      ],
-      "deliverable_artifacts": [
-        "scan/test report",
-        "validated finding register",
-        "remediation and retest evidence"
-      ],
-      "quality_criteria": [
-        "Active testing stays within authorization.",
-        "Findings have reproducible evidence and severity rationale.",
-        "Closure is independently retested."
-      ],
       "raci": {
         "accountable": "application-security-engineer",
         "responsible": [
@@ -2793,35 +2708,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "authorized scope and asset inventory",
-        "scanner/tool configuration and version",
-        "severity policy and remediation SLA"
-      ],
-      "outputs": [
-        "data-protection-deliverable",
-        "scan/test report",
-        "validated finding register"
-      ],
       "quality_gate": "09-106",
-      "validation_method": "Security owner and system owner disposition.",
-      "purpose": "assess and remediate a defined security attack surface",
-      "execution_instructions": [
-        "Confirm asset ownership, scope, exclusions and written authorization before active testing.",
-        "Run configured static, dynamic, dependency, container or infrastructure analysis appropriate to the asset.",
-        "Validate findings, remove duplicates/false positives with rationale, and prioritize exploitability and impact.",
-        "Assign remediation, retest the exact fix and record residual risk or approved exception."
-      ],
-      "deliverable_artifacts": [
-        "scan/test report",
-        "validated finding register",
-        "remediation and retest evidence"
-      ],
-      "quality_criteria": [
-        "Active testing stays within authorization.",
-        "Findings have reproducible evidence and severity rationale.",
-        "Closure is independently retested."
-      ],
       "raci": {
         "accountable": "application-security-engineer",
         "responsible": [
@@ -2843,35 +2730,7 @@
       "skills": [
         "application-security"
       ],
-      "inputs": [
-        "contract version and counterparties",
-        "applicable policy/control obligations",
-        "legal/compliance owner"
-      ],
-      "outputs": [
-        "compliance-review-deliverable",
-        "obligation matrix",
-        "contract exception log"
-      ],
       "quality_gate": "09-107",
-      "validation_method": "Legal and compliance owner sign-off.",
-      "purpose": "review contractual and regulatory obligations before commitment",
-      "execution_instructions": [
-        "Identify service, data, security, availability, audit, retention, subcontracting and exit obligations.",
-        "Map each obligation to an internal control owner and evidence source.",
-        "Flag ambiguous liability, data processing, IP, jurisdiction, renewal and termination terms.",
-        "Record legal review questions and do not provide legal approval outside delegated authority."
-      ],
-      "deliverable_artifacts": [
-        "obligation matrix",
-        "contract exception log",
-        "review decision"
-      ],
-      "quality_criteria": [
-        "Every material obligation has an owner and evidence path.",
-        "Exceptions have an authorized risk owner.",
-        "Unresolved legal interpretation is escalated."
-      ],
       "raci": {
         "accountable": "compliance-specialist",
         "responsible": [],
@@ -3217,36 +3076,7 @@
       "skills": [
         "devops-platform"
       ],
-      "inputs": [
-        "repository and build graph",
-        "deployment targets and environment protections",
-        "artifact trust and supply-chain policy"
-      ],
-      "outputs": [
-        "database-operations-deliverable",
-        "pipeline/IaC configuration",
-        "artifact provenance"
-      ],
       "quality_gate": "10-122",
-      "validation_method": "Platform/security review and clean pipeline run.",
-      "purpose": "build a secure and reproducible delivery platform",
-      "execution_instructions": [
-        "Map source-to-build-to-artifact-to-environment trust boundaries and required checks.",
-        "Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.",
-        "Protect credentials, runners, deployment environments and immutable artifact promotion.",
-        "Exercise failure, rollback and permission boundaries; publish ownership and operational runbook."
-      ],
-      "deliverable_artifacts": [
-        "pipeline/IaC configuration",
-        "artifact provenance",
-        "test/security results",
-        "runbook and ownership"
-      ],
-      "quality_criteria": [
-        "Build is reproducible and artifacts are immutable/promoted.",
-        "Secrets and environment permissions are scoped.",
-        "Failure and rollback behavior is exercised."
-      ],
       "raci": {
         "accountable": "database-administrator",
         "responsible": [
@@ -3542,35 +3372,7 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "domain ownership and target topology",
-        "certificate and trust requirements",
-        "traffic and health-check profile"
-      ],
-      "outputs": [
-        "ssl-tls-setup-deliverable",
-        "DNS/TLS/routing configuration",
-        "validation output"
-      ],
       "quality_gate": "11-135",
-      "validation_method": "Network/security review.",
-      "purpose": "configure secure and resilient network edge routing",
-      "execution_instructions": [
-        "Verify domain/account ownership and change window.",
-        "Configure records, certificates, ciphers, health checks, routing and origin restrictions.",
-        "Validate propagation, certificate chain/expiry, redirects and failover behavior.",
-        "Document TTL, renewal, rollback and monitoring."
-      ],
-      "deliverable_artifacts": [
-        "DNS/TLS/routing configuration",
-        "validation output",
-        "renewal and rollback runbook"
-      ],
-      "quality_criteria": [
-        "No unexpected public exposure.",
-        "Certificate chain and hostname validation pass.",
-        "Failover and rollback are tested."
-      ],
       "raci": {
         "accountable": "network-engineer",
         "responsible": [
@@ -3592,35 +3394,7 @@
       "skills": [
         "release-deployment"
       ],
-      "inputs": [
-        "domain ownership and target topology",
-        "certificate and trust requirements",
-        "traffic and health-check profile"
-      ],
-      "outputs": [
-        "load-balancer-setup-deliverable",
-        "DNS/TLS/routing configuration",
-        "validation output"
-      ],
       "quality_gate": "11-136",
-      "validation_method": "Network/security review.",
-      "purpose": "configure secure and resilient network edge routing",
-      "execution_instructions": [
-        "Verify domain/account ownership and change window.",
-        "Configure records, certificates, ciphers, health checks, routing and origin restrictions.",
-        "Validate propagation, certificate chain/expiry, redirects and failover behavior.",
-        "Document TTL, renewal, rollback and monitoring."
-      ],
-      "deliverable_artifacts": [
-        "DNS/TLS/routing configuration",
-        "validation output",
-        "renewal and rollback runbook"
-      ],
-      "quality_criteria": [
-        "No unexpected public exposure.",
-        "Certificate chain and hostname validation pass.",
-        "Failover and rollback are tested."
-      ],
       "raci": {
         "accountable": "network-engineer",
         "responsible": [
@@ -3731,36 +3505,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "service inventory and ownership",
-        "SLO/RTO/RPO and capacity profile",
-        "access, backup and cost policies"
-      ],
-      "outputs": [
-        "compute-management-deliverable",
-        "infrastructure inventory",
-        "change record"
-      ],
       "quality_gate": "12-141",
-      "validation_method": "Cloud operations and security review.",
-      "purpose": "operate cloud infrastructure within reliability and cost objectives",
-      "execution_instructions": [
-        "Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.",
-        "Verify identity boundaries, encryption, network exposure, patch state and backup coverage.",
-        "Measure health, capacity, utilization, recovery readiness and cost allocation.",
-        "Apply a reviewed, reversible change and verify telemetry, drift and customer impact."
-      ],
-      "deliverable_artifacts": [
-        "infrastructure inventory",
-        "change record",
-        "health/capacity/cost evidence",
-        "operator runbook"
-      ],
-      "quality_criteria": [
-        "Changes are scoped and reversible.",
-        "Backup/recovery meets stated objectives.",
-        "Cost and reliability effects are measured."
-      ],
       "raci": {
         "accountable": "cloud-engineer",
         "responsible": [
@@ -3802,36 +3547,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "service inventory and ownership",
-        "SLO/RTO/RPO and capacity profile",
-        "access, backup and cost policies"
-      ],
-      "outputs": [
-        "storage-management-deliverable",
-        "infrastructure inventory",
-        "change record"
-      ],
       "quality_gate": "12-143",
-      "validation_method": "Cloud operations and security review.",
-      "purpose": "operate cloud infrastructure within reliability and cost objectives",
-      "execution_instructions": [
-        "Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.",
-        "Verify identity boundaries, encryption, network exposure, patch state and backup coverage.",
-        "Measure health, capacity, utilization, recovery readiness and cost allocation.",
-        "Apply a reviewed, reversible change and verify telemetry, drift and customer impact."
-      ],
-      "deliverable_artifacts": [
-        "infrastructure inventory",
-        "change record",
-        "health/capacity/cost evidence",
-        "operator runbook"
-      ],
-      "quality_criteria": [
-        "Changes are scoped and reversible.",
-        "Backup/recovery meets stated objectives.",
-        "Cost and reliability effects are measured."
-      ],
       "raci": {
         "accountable": "cloud-engineer",
         "responsible": [
@@ -3873,35 +3589,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "domain ownership and target topology",
-        "certificate and trust requirements",
-        "traffic and health-check profile"
-      ],
-      "outputs": [
-        "ssl-certificate-management-deliverable",
-        "DNS/TLS/routing configuration",
-        "validation output"
-      ],
       "quality_gate": "12-145",
-      "validation_method": "Network/security review.",
-      "purpose": "configure secure and resilient network edge routing",
-      "execution_instructions": [
-        "Verify domain/account ownership and change window.",
-        "Configure records, certificates, ciphers, health checks, routing and origin restrictions.",
-        "Validate propagation, certificate chain/expiry, redirects and failover behavior.",
-        "Document TTL, renewal, rollback and monitoring."
-      ],
-      "deliverable_artifacts": [
-        "DNS/TLS/routing configuration",
-        "validation output",
-        "renewal and rollback runbook"
-      ],
-      "quality_criteria": [
-        "No unexpected public exposure.",
-        "Certificate chain and hostname validation pass.",
-        "Failover and rollback are tested."
-      ],
       "raci": {
         "accountable": "cloud-engineer",
         "responsible": [
@@ -3923,36 +3611,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "service inventory and ownership",
-        "SLO/RTO/RPO and capacity profile",
-        "access, backup and cost policies"
-      ],
-      "outputs": [
-        "network-operations-deliverable",
-        "infrastructure inventory",
-        "change record"
-      ],
       "quality_gate": "12-146",
-      "validation_method": "Cloud operations and security review.",
-      "purpose": "operate cloud infrastructure within reliability and cost objectives",
-      "execution_instructions": [
-        "Inspect actual resource configuration, dependencies, quotas and recent changes before modifying.",
-        "Verify identity boundaries, encryption, network exposure, patch state and backup coverage.",
-        "Measure health, capacity, utilization, recovery readiness and cost allocation.",
-        "Apply a reviewed, reversible change and verify telemetry, drift and customer impact."
-      ],
-      "deliverable_artifacts": [
-        "infrastructure inventory",
-        "change record",
-        "health/capacity/cost evidence",
-        "operator runbook"
-      ],
-      "quality_criteria": [
-        "Changes are scoped and reversible.",
-        "Backup/recovery meets stated objectives.",
-        "Cost and reliability effects are measured."
-      ],
       "raci": {
         "accountable": "network-engineer",
         "responsible": [
@@ -4069,36 +3728,7 @@
       "skills": [
         "cloud-hosting-operations"
       ],
-      "inputs": [
-        "baseline workload and latency profile",
-        "consistency/freshness requirements",
-        "resource and cost limits"
-      ],
-      "outputs": [
-        "cost-optimization-deliverable",
-        "profile report",
-        "optimization change"
-      ],
       "quality_gate": "12-151",
-      "validation_method": "Performance and correctness regression review.",
-      "purpose": "improve measured performance without violating correctness",
-      "execution_instructions": [
-        "Profile before changing code; identify dominant cost and reproducible baseline.",
-        "Choose cache key, TTL, invalidation and consistency behavior based on data semantics.",
-        "Bound memory, stampede, stale data and eviction behavior.",
-        "Compare before/after p50/p95/p99, throughput, error rate and cost under equivalent load."
-      ],
-      "deliverable_artifacts": [
-        "profile report",
-        "optimization change",
-        "cache policy",
-        "before/after benchmark"
-      ],
-      "quality_criteria": [
-        "Improvement is measured against baseline.",
-        "Correctness and freshness invariants hold.",
-        "No unbounded memory or stale-data risk is introduced."
-      ],
       "approval_required": true,
       "approval_rationale": "Resizing, deleting or committing spend on billing-sensitive resources has direct financial impact; a FinOps owner must approve changes.",
       "raci": {
@@ -4146,36 +3776,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "service map and critical user journeys",
-        "SLO and alert thresholds",
-        "telemetry and privacy requirements"
-      ],
-      "outputs": [
-        "application-monitoring-deliverable",
-        "telemetry specification",
-        "dashboards and alerts"
-      ],
       "quality_gate": "13-153",
-      "validation_method": "SRE review and alert simulation.",
-      "purpose": "provide actionable observability and service-level control",
-      "execution_instructions": [
-        "Instrument golden signals and key business transactions with stable service/environment labels.",
-        "Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.",
-        "Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.",
-        "Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts."
-      ],
-      "deliverable_artifacts": [
-        "telemetry specification",
-        "dashboards and alerts",
-        "SLO/error-budget report",
-        "runbook links"
-      ],
-      "quality_criteria": [
-        "Signals support diagnosis and customer impact assessment.",
-        "Alerts have owner and action.",
-        "SLOs are measurable and privacy-safe."
-      ],
       "raci": {
         "accountable": "observability-engineer",
         "responsible": [
@@ -4197,36 +3798,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "service map and critical user journeys",
-        "SLO and alert thresholds",
-        "telemetry and privacy requirements"
-      ],
-      "outputs": [
-        "infrastructure-monitoring-deliverable",
-        "telemetry specification",
-        "dashboards and alerts"
-      ],
       "quality_gate": "13-154",
-      "validation_method": "SRE review and alert simulation.",
-      "purpose": "provide actionable observability and service-level control",
-      "execution_instructions": [
-        "Instrument golden signals and key business transactions with stable service/environment labels.",
-        "Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.",
-        "Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.",
-        "Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts."
-      ],
-      "deliverable_artifacts": [
-        "telemetry specification",
-        "dashboards and alerts",
-        "SLO/error-budget report",
-        "runbook links"
-      ],
-      "quality_criteria": [
-        "Signals support diagnosis and customer impact assessment.",
-        "Alerts have owner and action.",
-        "SLOs are measurable and privacy-safe."
-      ],
       "raci": {
         "accountable": "observability-engineer",
         "responsible": [
@@ -4336,36 +3908,7 @@
       "skills": [
         "sre-observability"
       ],
-      "inputs": [
-        "service map and critical user journeys",
-        "SLO and alert thresholds",
-        "telemetry and privacy requirements"
-      ],
-      "outputs": [
-        "uptime-monitoring-deliverable",
-        "telemetry specification",
-        "dashboards and alerts"
-      ],
       "quality_gate": "13-159",
-      "validation_method": "SRE review and alert simulation.",
-      "purpose": "provide actionable observability and service-level control",
-      "execution_instructions": [
-        "Instrument golden signals and key business transactions with stable service/environment labels.",
-        "Correlate logs, metrics and traces using request IDs while excluding secrets and sensitive payloads.",
-        "Define SLI/SLO windows, burn-rate alerts, ownership, runbooks and paging policy.",
-        "Test alert routing and diagnostic usefulness; remove noisy or unactionable alerts."
-      ],
-      "deliverable_artifacts": [
-        "telemetry specification",
-        "dashboards and alerts",
-        "SLO/error-budget report",
-        "runbook links"
-      ],
-      "quality_criteria": [
-        "Signals support diagnosis and customer impact assessment.",
-        "Alerts have owner and action.",
-        "SLOs are measurable and privacy-safe."
-      ],
       "raci": {
         "accountable": "observability-engineer",
         "responsible": [
@@ -4863,36 +4406,7 @@
       "skills": [
         "enterprise-governance"
       ],
-      "inputs": [
-        "repository inventory and ownership",
-        "engineering policy and required checks",
-        "team onboarding and exception records"
-      ],
-      "outputs": [
-        "engineering-governance-deliverable",
-        "repository control inventory",
-        "policy compliance report"
-      ],
       "quality_gate": "15-181",
-      "validation_method": "Repository policy sample audit.",
-      "purpose": "govern repository controls, engineering standards and exception lifecycle",
-      "execution_instructions": [
-        "Map branch protections, code owners, required checks and contribution policy to each repository.",
-        "Sample actual repository settings and verify enforcement rather than relying on documentation.",
-        "Review onboarding, toolchain support, secrets and change exceptions.",
-        "Track drift and verify corrective actions across repositories."
-      ],
-      "deliverable_artifacts": [
-        "repository control inventory",
-        "policy compliance report",
-        "exception register",
-        "onboarding standard"
-      ],
-      "quality_criteria": [
-        "Repository controls are verified in the platform.",
-        "Exceptions have owner, expiry and compensating control.",
-        "Clean-checkout onboarding is reproducible."
-      ],
       "raci": {
         "accountable": "engineering-governance-specialist",
         "responsible": [
@@ -4914,36 +4428,7 @@
       "skills": [
         "enterprise-governance"
       ],
-      "inputs": [
-        "quality policy and objectives",
-        "process/product quality data",
-        "control owners and audit period"
-      ],
-      "outputs": [
-        "quality-governance-deliverable",
-        "quality policy and control map",
-        "quality scorecard"
-      ],
       "quality_gate": "15-182",
-      "validation_method": "Quality governance review and sample audit.",
-      "purpose": "govern quality policy, evidence and corrective action across teams",
-      "execution_instructions": [
-        "Define measurable quality objectives, required evidence and ownership.",
-        "Sample delivery records and verify controls operate as documented.",
-        "Analyze defects, escaped issues, test gaps and corrective-action trends.",
-        "Assign systemic improvements and verify effectiveness over a review period."
-      ],
-      "deliverable_artifacts": [
-        "quality policy and control map",
-        "quality scorecard",
-        "audit samples",
-        "corrective action register"
-      ],
-      "quality_criteria": [
-        "Metrics have definitions and owners.",
-        "Evidence samples are reproducible.",
-        "Corrective actions are verified for effectiveness."
-      ],
       "raci": {
         "accountable": "quality-governance-specialist",
         "responsible": [
@@ -4965,35 +4450,7 @@
       "skills": [
         "enterprise-governance"
       ],
-      "inputs": [
-        "security policy and risk appetite",
-        "asset/control ownership",
-        "risk and exception register"
-      ],
-      "outputs": [
-        "security-governance-deliverable",
-        "security control matrix",
-        "risk/exception register"
-      ],
       "quality_gate": "15-183",
-      "validation_method": "Security governance council review.",
-      "purpose": "govern security policy, risk acceptance and control effectiveness",
-      "execution_instructions": [
-        "Map security obligations to preventive, detective and recovery controls.",
-        "Review control operation, access, vulnerabilities and incident trends.",
-        "Approve or route exceptions with compensating controls, owner and expiry.",
-        "Report material risk and verify remediation closure."
-      ],
-      "deliverable_artifacts": [
-        "security control matrix",
-        "risk/exception register",
-        "control effectiveness report"
-      ],
-      "quality_criteria": [
-        "Risk acceptance is authorized and time-bound.",
-        "Controls have evidence and accountable owners.",
-        "Material exceptions are escalated."
-      ],
       "raci": {
         "accountable": "security-auditor",
         "responsible": [
@@ -5083,36 +4540,7 @@
       "skills": [
         "enterprise-governance"
       ],
-      "inputs": [
-        "change policy and decision authority",
-        "change requests and risk classifications",
-        "release and incident history"
-      ],
-      "outputs": [
-        "change-governance-deliverable",
-        "change control matrix",
-        "change approval records"
-      ],
       "quality_gate": "15-187",
-      "validation_method": "Change advisory or governance review.",
-      "purpose": "govern the portfolio of material engineering changes",
-      "execution_instructions": [
-        "Classify normal, standard and emergency changes under policy.",
-        "Review impact, approvals, segregation, schedule and recovery readiness.",
-        "Sample completed changes for evidence, unauthorized drift and failed outcomes.",
-        "Analyze change failure rate and assign systemic control improvements."
-      ],
-      "deliverable_artifacts": [
-        "change control matrix",
-        "change approval records",
-        "audit sample report",
-        "change performance metrics"
-      ],
-      "quality_criteria": [
-        "Emergency path is controlled and retrospectively reviewed.",
-        "Approval precedes implementation where required.",
-        "Change outcomes and incidents are linked."
-      ],
       "raci": {
         "accountable": "engineering-governance-specialist",
         "responsible": [
@@ -5156,36 +4584,7 @@
       "skills": [
         "enterprise-governance"
       ],
-      "inputs": [
-        "tagged spend and usage data",
-        "service ownership and unit metrics",
-        "budget and SLO constraints"
-      ],
-      "outputs": [
-        "finops-governance-deliverable",
-        "cost allocation report",
-        "optimization backlog"
-      ],
       "quality_gate": "15-189",
-      "validation_method": "Finance and service-owner review.",
-      "purpose": "optimize cloud and platform economics without degrading service outcomes",
-      "execution_instructions": [
-        "Allocate spend to accountable services and normalize by meaningful workload/unit.",
-        "Identify idle, oversized, uncommitted and architecture-driven cost drivers.",
-        "Model savings, engineering effort, risk and commitment trade-offs.",
-        "Implement controlled optimization and compare realized savings with baseline and SLO impact."
-      ],
-      "deliverable_artifacts": [
-        "cost allocation report",
-        "optimization backlog",
-        "forecast and variance",
-        "realized savings evidence"
-      ],
-      "quality_criteria": [
-        "Savings are measured against a comparable baseline.",
-        "Ownership and allocation coverage are visible.",
-        "Reliability and security are not traded away silently."
-      ],
       "raci": {
         "accountable": "finops-specialist",
         "responsible": [

@@ -381,21 +381,35 @@ ILLUSTRATIVE: The database zone accepts connections only from the application zo
 Gate: 10-121. Approval: infra-owner (for production firewall, security-group or routing changes)
 
 ## 122
-**Database Operations** (stub). Purpose: build a secure and reproducible delivery platform.
+**Database Operations** (complete). Purpose: run the production databases so they stay available, correct, performant and recoverable, with changes made safely.
 
-Inputs: repository and build graph; deployment targets and environment protections; artifact trust and supply-chain policy
+Entry criteria: Databases and their owners are inventoried; Backup and monitoring tools exist; Recovery objectives are defined
+
+Inputs: database inventory; recovery objectives (RPO, RTO); monitoring and slow query data; change calendar
 
 Procedure:
-1. Map source-to-build-to-artifact-to-environment trust boundaries and required checks.
-2. Implement reproducible builds, pinned dependencies, tests, scans and provenance/attestation where supported.
-3. Protect credentials, runners, deployment environments and immutable artifact promotion.
-4. Exercise failure, rollback and permission boundaries; publish ownership and operational runbook.
+1. Monitor availability, replication lag, connection use, disk growth, lock waits and slow queries, and alert on thresholds with runbook links.
+2. Verify backups by restoring them into a test instance on a schedule and checking data and application connectivity; an untested backup is not a backup.
+3. Tune with evidence: review the slowest and most frequent queries, check query plans, and add or remove indexes by measured effect.
+4. Apply patches and schema changes through the change process, using online and backward-compatible migrations (expand then contract).
+5. Manage access: named accounts, least privilege, rotated credentials and audited administrative access.
+6. Rehearse failover and point-in-time recovery, record the actual recovery time and data loss against the objectives.
 
-Deliverables: pipeline/IaC configuration; artifact provenance; test/security results; runbook and ownership
+Deliverables: monitoring and alert configuration; restore test records; tuning changes with before and after plans; failover rehearsal results
 
-Acceptance: Build is reproducible and artifacts are immutable/promoted. Secrets and environment permissions are scoped. Failure and rollback behavior is exercised.
+Acceptance: Restores are tested on a schedule Measured recovery meets RPO and RTO or the gap is recorded Schema changes are backward compatible Administrative access is named and audited
 
-Validation: Platform/security review and clean pipeline run.
+Validation: Database administrator and service owner review.
+
+- `pg_restore --list backup.dump | head   # example; then restore into a scratch instance and run row-count checks` expect: restore completes and counts match the source
+- `psql -c "select now()-pg_last_xact_replay_timestamp() as lag"   # example on a replica` expect: lag within the alert threshold
+
+Failure modes:
+- Backup never restored | detect: First restore attempt fails during an incident | respond: Schedule restore tests
+- Migration locks a hot table | detect: Writes blocked | respond: Use online, batched migration
+- Index added without measuring | detect: Writes slow, plan unchanged | respond: Verify with the plan and drop it
+
+ILLUSTRATIVE: A monthly restore test brings the latest backup up in a scratch instance in 38 minutes against a 60-minute target, and row counts match; a column rename is done by adding the new column, backfilling in batches, switching reads, then dropping the old.
 
 Gate: 10-122. Approval: none required
 

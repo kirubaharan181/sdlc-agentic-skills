@@ -1,0 +1,65 @@
+{
+  "stage_id": 153,
+  "purpose": "know whether the application is healthy and where it is hurting users, using signals from inside the application and from the user's side",
+  "entry_criteria": [
+    "The application is deployed with a version identifier",
+    "Logging, metrics and tracing foundations exist (stages 155-157)",
+    "Key user journeys are known"
+  ],
+  "inputs": [
+    "key journeys and business operations",
+    "service level objectives",
+    "application metrics and traces",
+    "release history"
+  ],
+  "procedure": [
+    "Define service level indicators for the key journeys, such as successful request ratio and latency under a threshold, and set objectives with error budgets.",
+    "Instrument application-level signals: request rate, errors by type, latency histograms, dependency calls, queue depth and business events like orders placed.",
+    "Alert on symptoms users feel and on fast error budget burn, with a page only when action is needed now and a ticket otherwise.",
+    "Tag telemetry with the release version, so a regression is tied to the change that caused it.",
+    "Add real user and synthetic journey monitoring to catch what server-side metrics miss.",
+    "Link each alert to a runbook and a dashboard, and review noisy alerts monthly to remove or tune them."
+  ],
+  "deliverables": [
+    "indicators and objectives per journey",
+    "dashboards and alerts",
+    "release-tagged telemetry",
+    "alert review record"
+  ],
+  "acceptance_criteria": [
+    "Objectives exist for the key journeys",
+    "Pages are tied to user impact or fast budget burn",
+    "Telemetry carries the release version",
+    "Each alert has a runbook"
+  ],
+  "validation_method": "Observability owner review.",
+  "validation": [
+    {
+      "check": "deploy a version with an injected error rate in staging and watch whether the burn-rate alert fires",
+      "expect": "alert fires within the configured window"
+    },
+    {
+      "check": "sample five paging alerts from the last month and check each linked to a runbook and a real user impact",
+      "expect": "all do"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Alert fatigue",
+      "detection": "Pages that need no action",
+      "response": "Tune or demote to tickets"
+    },
+    {
+      "mode": "Healthy metrics but unhappy users",
+      "detection": "Complaints with green dashboards",
+      "response": "Add synthetic and real user checks"
+    },
+    {
+      "mode": "Regression not tied to release",
+      "detection": "Cause unclear",
+      "response": "Add version tags"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Checkout has an objective of 99.5 percent success over 30 days. A fast-burn alert fires when a release raises errors, the version tag points to the culprit, and the runbook describes the rollback.",
+  "status": "complete"
+}

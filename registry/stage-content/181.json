@@ -1,0 +1,65 @@
+{
+  "stage_id": 181,
+  "purpose": "set and enforce the engineering rules that apply across all teams, with measurable compliance and a route for exceptions",
+  "entry_criteria": [
+    "Engineering policies are agreed with leadership",
+    "Compliance can be measured from tooling",
+    "A decision forum exists"
+  ],
+  "inputs": [
+    "policy set",
+    "tooling data on repositories, pipelines and environments",
+    "exception requests",
+    "audit findings"
+  ],
+  "procedure": [
+    "Express each policy as a testable control, for example 'main branches require review and passing checks', with the data source that proves it.",
+    "Measure compliance by querying the tools (repositories, CI, cloud accounts) on a schedule, and publish results by team.",
+    "Enforce where possible by guardrails (branch protection, policy as code in the pipeline, organization policies) and not by reminders.",
+    "Handle exceptions through a record with reason, compensating control, approver and expiry date, and report open exceptions.",
+    "Review each policy at least yearly for effect and cost, and remove or revise policies that do not reduce real risk.",
+    "Report trends and the largest gaps to leadership with owners for each gap."
+  ],
+  "deliverables": [
+    "control catalogue with data sources",
+    "compliance dashboard by team",
+    "exception register with expiry",
+    "policy review notes"
+  ],
+  "acceptance_criteria": [
+    "Each policy is a testable control with a data source",
+    "Compliance is measured automatically",
+    "Exceptions expire",
+    "Gaps have owners"
+  ],
+  "validation_method": "Engineering leadership approval.",
+  "validation": [
+    {
+      "command": "gh api orgs/<org>/repos --paginate --jq '.[].name' | head   # example input to a compliance script",
+      "expect": "all repositories are in the compliance data"
+    },
+    {
+      "check": "sample five repositories and compare the dashboard value with a direct settings check",
+      "expect": "values agree"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Policy cannot be measured",
+      "detection": "No data source",
+      "response": "Rewrite as a testable control or drop it"
+    },
+    {
+      "mode": "Exceptions never expire",
+      "detection": "Old exceptions stay",
+      "response": "Add expiry and review"
+    },
+    {
+      "mode": "Dashboard out of date",
+      "detection": "Data not refreshed",
+      "response": "Schedule and alert on staleness"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: The control 'secret scanning enabled' is checked nightly across 240 repositories; 12 are non-compliant, owners are notified, and two have approved exceptions expiring in 60 days.",
+  "status": "complete"
+}

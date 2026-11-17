@@ -1,0 +1,65 @@
+{
+  "stage_id": 159,
+  "purpose": "detect outages from outside the system as a user would, and notify the right people with a trustworthy status",
+  "entry_criteria": [
+    "Public and critical endpoints are listed",
+    "A monitoring service reaching from outside exists",
+    "An on-call and status process exists"
+  ],
+  "inputs": [
+    "endpoint list with expected behavior",
+    "regions of users",
+    "on-call schedule",
+    "status page"
+  ],
+  "procedure": [
+    "Probe each critical endpoint from several regions outside your network, checking status code, response content and latency, not only that the port is open.",
+    "Add checks for the full journey where possible, such as sign-in and a read operation, using a dedicated test account.",
+    "Require several consecutive failures from more than one location before alerting, to avoid false alarms from single probe faults.",
+    "Page the on-call person with the endpoint, region and first failing time, and update the status page from a verified fault.",
+    "Also monitor the monitor: a second independent checker or a heartbeat that fires when probes stop reporting.",
+    "Calculate uptime from probe data with a stated method, and review misses and false alarms monthly."
+  ],
+  "deliverables": [
+    "probe configuration and journeys",
+    "alert rules with confirmation logic",
+    "status page process",
+    "uptime reports with method"
+  ],
+  "acceptance_criteria": [
+    "Probes run from several outside locations",
+    "Alerts need confirmation across probes",
+    "Monitoring has its own heartbeat",
+    "Uptime states how it is calculated"
+  ],
+  "validation_method": "Observability owner review.",
+  "validation": [
+    {
+      "command": "curl -s -o /dev/null -w '%{http_code} %{time_total}\\n' https://app.example.com/health   # example from outside the network",
+      "expect": "expected code within the latency target"
+    },
+    {
+      "check": "block the endpoint in staging for five minutes",
+      "expect": "alert fires after the confirmation count and the status process is followed"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "False alarms from one probe",
+      "detection": "Pages with no outage",
+      "response": "Require multi-location confirmation"
+    },
+    {
+      "mode": "Port open but app broken",
+      "detection": "Probe is green during outage",
+      "response": "Check content and journey"
+    },
+    {
+      "mode": "Monitor fails silently",
+      "detection": "No alert during outage",
+      "response": "Add heartbeat and second checker"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Three regions probe the sign-in journey every minute; two consecutive failures from two regions page on-call, and a dead-man heartbeat from the probe service alerts if reports stop for five minutes.",
+  "status": "complete"
+}

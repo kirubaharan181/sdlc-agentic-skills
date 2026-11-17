@@ -3,36 +3,33 @@
   "status": "ILLUSTRATIVE_ONLY",
   "note": "Documentation of the record shape. Not evidence. Replace every placeholder with real values from a real run; a real record uses PASS, FAIL, BLOCKED or INCONCLUSIVE.",
   "skill": "enterprise-governance",
-  "stage_id": 184,
-  "stage_name": "Access Governance",
+  "stage_id": 181,
+  "stage_name": "Engineering Governance",
   "commit_sha": "<commit under review>",
-  "executor": "<Compliance Specialist or named person>",
+  "executor": "<Engineering Governance Specialist or named person>",
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
-    "method": "Access-owner approval plus re-export comparison.",
-    "command": "diff <(sort before.csv) <(sort after.csv)",
-    "expected": "only the requested revocations appear as removed lines; no additions",
+    "method": "Engineering leadership approval.",
+    "command": "gh api orgs/<org>/repos --paginate --jq '.[].name' | head   # example input to a compliance script",
+    "expected": "all repositories are in the compliance data",
     "exit_status": "<observed>"
   },
   "artifacts": [
     {
-      "name": "access review report",
-      "path": "<path or immutable URL of access review report>"
+      "name": "control catalogue with data sources",
+      "path": "<path or immutable URL of control catalogue with data sources>"
     },
     {
-      "name": "revocation tickets",
-      "path": "<path or immutable URL of revocation tickets>"
+      "name": "compliance dashboard by team",
+      "path": "<path or immutable URL of compliance dashboard by team>"
     },
     {
-      "name": "exception register",
-      "path": "<path or immutable URL of exception register>"
+      "name": "exception register with expiry",
+      "path": "<path or immutable URL of exception register with expiry>"
     }
   ],
   "limitations": [
     "<what was not covered>"
   ],
-  "approval": {
-    "approver": "access-owner",
-    "decision": "<pending>"
-  }
+  "approval": null
 }

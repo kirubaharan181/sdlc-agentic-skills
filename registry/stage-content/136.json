@@ -1,0 +1,65 @@
+{
+  "stage_id": 136,
+  "purpose": "distribute traffic across healthy instances with the right algorithm, health checks and failure behavior, and prove it by testing",
+  "entry_criteria": [
+    "The service has more than one instance or zone",
+    "Health endpoints exist",
+    "Traffic patterns are known"
+  ],
+  "inputs": [
+    "service instances and zones",
+    "health endpoints",
+    "traffic pattern and session needs",
+    "TLS requirements"
+  ],
+  "procedure": [
+    "Choose layer 4 or layer 7 based on needs for routing, TLS handling and headers, and the algorithm based on request cost, such as least connections for uneven requests.",
+    "Define health checks that test real readiness (dependencies reachable), with thresholds that neither flap nor hide failures.",
+    "Handle state: keep instances stateless, or use session affinity only where required and state the failure effect.",
+    "Spread instances across zones, and check that losing one zone leaves enough capacity.",
+    "Configure connection draining, timeouts, retry rules that are safe for idempotent requests, and rate limits.",
+    "Test by removing an instance and a zone under load, and verify traffic shifts without errors beyond the agreed budget."
+  ],
+  "deliverables": [
+    "load balancer configuration",
+    "health check definitions",
+    "failure test results",
+    "capacity-after-zone-loss calculation"
+  ],
+  "acceptance_criteria": [
+    "Health checks test readiness, not only that the process runs",
+    "Capacity covers the loss of one zone",
+    "Connection draining is enabled",
+    "Failure tests were run under load"
+  ],
+  "validation_method": "Network engineer and service owner review.",
+  "validation": [
+    {
+      "command": "for i in $(seq 1 200); do curl -s -o /dev/null -w '%{http_code}\\n' https://app.example.com/; done | sort | uniq -c   # run while one instance is stopped",
+      "expect": "no more than the agreed share of non-200 responses"
+    },
+    {
+      "check": "compute total capacity minus one zone against peak load",
+      "expect": "remaining capacity is at least peak"
+    }
+  ],
+  "failure_modes": [
+    {
+      "mode": "Unhealthy instance stays in rotation",
+      "detection": "Errors from one backend",
+      "response": "Tighten the check and thresholds"
+    },
+    {
+      "mode": "Retries amplify load",
+      "detection": "Errors rise during a slowdown",
+      "response": "Limit retries and add backoff"
+    },
+    {
+      "mode": "Zone loss overloads the rest",
+      "detection": "Saturation in the test",
+      "response": "Add capacity or shed load"
+    }
+  ],
+  "worked_example": "ILLUSTRATIVE: Three instances across three zones use least-connections balancing with a readiness endpoint that checks the database; stopping one instance under load causes two failed requests out of 2,000 before it leaves rotation, and draining prevents cut-off requests on deploy.",
+  "status": "complete"
+}
