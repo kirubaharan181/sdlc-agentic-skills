@@ -1,0 +1,144 @@
+{
+  "skill_id": "technical-architecture",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Defines system boundaries, interfaces and trade-offs. Use when designing or reviewing architecture. Do NOT use for feature coding or release.",
+  "tags": [
+    "architecture",
+    "design",
+    "adr",
+    "trade-offs"
+  ],
+  "keywords": [
+    "architecture",
+    "adr",
+    "design decision",
+    "system design",
+    "technology selection",
+    "api design",
+    "data architecture",
+    "integration design",
+    "trade-off",
+    "component",
+    "boundaries",
+    "cloud design"
+  ],
+  "purpose": "Produces reviewable architecture: boundaries, interfaces, data, security and cloud design, with the trade-offs and decisions recorded. It owns stages 23-34: solution, system, application, database, API, cloud, security, data and integration architecture, technology selection, documentation and architecture review.",
+  "when_to_use": [
+    "A new system or major change needs structure, interfaces and quality targets designed.",
+    "A technology or integration choice needs evidence and a decision record.",
+    "An implemented system must be checked against its intended architecture."
+  ],
+  "when_not_to_use": [
+    "Writing or changing feature code: use software-implementation.",
+    "Running threat tests or scans: use application-security.",
+    "Operating cloud resources: use cloud-hosting-operations."
+  ],
+  "prerequisites": [
+    "Validated requirements with quality targets, or a stated list of assumptions.",
+    "Description of the current landscape and constraints.",
+    "Access to existing architecture records, if any.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "requirements and quality targets",
+      "current landscape",
+      "constraints"
+    ],
+    "optional": [
+      "existing ADRs",
+      "capacity data",
+      "cost limits"
+    ]
+  },
+  "outputs": [
+    "context and component views",
+    "decision records with options and consequences",
+    "interface contracts and data ownership map",
+    "architecture review report with findings"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Quality target has no number",
+      "action": "Ask for it or record an assumption; do not design against a word."
+    },
+    {
+      "situation": "Options are close in score",
+      "action": "Choose the one that is cheaper to reverse and record the reopen condition."
+    },
+    {
+      "situation": "Design adds multi-region",
+      "action": "Require a recovery objective that justifies it."
+    },
+    {
+      "situation": "Implemented system diverges from the design",
+      "action": "Classify as accepted evolution, defect or risk, each with an owner."
+    }
+  ],
+  "quality_gates": [
+    "Each quality target maps to a design element",
+    "Each significant decision has a record with rejected options",
+    "Interfaces have owners and versioned contracts",
+    "Review was by someone who did not design it"
+  ],
+  "examples": [
+    {
+      "title": "Choose between two message brokers",
+      "request": "Pick a broker for order events.",
+      "context": "Peak 2,000 events per second, ordering per customer required, team knows neither.",
+      "behavior": "Write criteria and weights first, run a short proof of concept on ordering at peak, score both with evidence, and record the decision.",
+      "output": "ADR naming the chosen broker, rejected option, test evidence and the condition for reopening.",
+      "acceptance": "Criteria dated before scoring; proof of concept result attached."
+    },
+    {
+      "title": "Review implemented architecture",
+      "request": "Check the billing service against the approved design.",
+      "context": "Approved design says only the orders service reads the orders database.",
+      "behavior": "Compare the import and data-access graph with the rules, list divergences and classify each.",
+      "output": "Conformance report with one risk finding: reporting module reads the orders database directly.",
+      "acceptance": "Each divergence has a class, owner and date."
+    }
+  ],
+  "limitations": [
+    "Cannot measure real performance without test data or a proof of concept.",
+    "Does not approve its own designs: an independent reviewer and the architecture board do.",
+    "Cost estimates depend on provider prices that change."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Requirements contradict a quality target",
+      "cause": "Latency and cost targets cannot both be met",
+      "resolution": "Show the trade-off and ask the sponsor to choose."
+    },
+    {
+      "error": "No existing documentation",
+      "cause": "Landscape is unknown",
+      "resolution": "Inspect code and deployment definitions, record findings as assumptions."
+    },
+    {
+      "error": "Decision keeps being reopened",
+      "cause": "No stated reopen condition",
+      "resolution": "Add the condition to the decision record."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "software-implementation",
+      "artifact": "decision records, interface contracts and dependency rules"
+    },
+    {
+      "skill": "application-security",
+      "artifact": "architecture and data flows for threat modeling"
+    },
+    {
+      "skill": "cloud-hosting-operations",
+      "artifact": "cloud design and recovery objectives"
+    }
+  ],
+  "owns": [
+    "system-and-solution-design",
+    "technology-selection",
+    "architecture-decision-records"
+  ]
+}

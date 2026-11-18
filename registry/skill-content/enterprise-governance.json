@@ -1,0 +1,148 @@
+{
+  "skill_id": "enterprise-governance",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Audits policy, quality, security, access, change, vendor and cost governance. Use when overseeing controls. Do NOT use to do the audited work.",
+  "tags": [
+    "governance",
+    "audit",
+    "compliance",
+    "finops"
+  ],
+  "keywords": [
+    "audit",
+    "compliance",
+    "access review",
+    "vendor",
+    "governance",
+    "policy",
+    "finops governance",
+    "documentation governance",
+    "process improvement",
+    "control",
+    "exception",
+    "oversight"
+  ],
+  "purpose": "Provides independent oversight across the engineering organization: governance of engineering, quality, security, access, compliance, documentation, change, vendors and cost, and process improvement. It owns stages 181-190 and verifies controls from system evidence rather than from descriptions.",
+  "when_to_use": [
+    "Policies need turning into testable controls and measured compliance.",
+    "An audit, access review or vendor review is needed.",
+    "Governance gaps need owners, dates and verified closure."
+  ],
+  "when_not_to_use": [
+    "Doing the audited work itself: use the specialist skill.",
+    "Approving a production change: use secure-change-control.",
+    "Setting up one repository: use engineering-governance."
+  ],
+  "prerequisites": [
+    "Read access to the evidence the review needs.",
+    "A control framework or policy set.",
+    "Agreed scope of review.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "policy or control framework",
+      "evidence sources",
+      "scope"
+    ],
+    "optional": [
+      "previous findings",
+      "exceptions register",
+      "cost and vendor data"
+    ]
+  },
+  "outputs": [
+    "control catalogue with data sources",
+    "compliance or audit report with samples",
+    "findings with owners and dates",
+    "exception register with expiry",
+    "improvement actions verified for effect"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Control cannot be measured",
+      "action": "Rewrite it as testable or drop it."
+    },
+    {
+      "situation": "Finding closed by statement only",
+      "action": "Reopen and require fresh evidence."
+    },
+    {
+      "situation": "Exception has no expiry",
+      "action": "Add expiry and a renewal decision."
+    },
+    {
+      "situation": "Auditor lacks access",
+      "action": "Reduce scope formally or request access."
+    }
+  ],
+  "quality_gates": [
+    "Evidence comes from systems, not descriptions",
+    "Samples cover the review period",
+    "Findings have owners and dates",
+    "Closure is verified"
+  ],
+  "examples": [
+    {
+      "title": "Review access",
+      "request": "Run a quarterly access review for the production database.",
+      "context": "Role list and an access export are available.",
+      "behavior": "Compare actual access with approved roles, flag excess, and require owner confirmation.",
+      "output": "Access review report with removals and owners.",
+      "acceptance": "Every excess access has an owner decision."
+    },
+    {
+      "title": "Audit change records",
+      "request": "Check that production deployments have change records.",
+      "context": "A month of deployments is available.",
+      "behavior": "Reconcile deployments to records and list gaps.",
+      "output": "Reconciliation with 6 of 410 unrecorded deployments and actions.",
+      "acceptance": "Each gap has an owner and a fix date."
+    }
+  ],
+  "limitations": [
+    "Findings reflect only the evidence provided and the period sampled.",
+    "Does not certify compliance with any standard.",
+    "Risk acceptance is decided by a named human."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Evidence outdated",
+      "cause": "Dated outside the period",
+      "resolution": "Collect current evidence."
+    },
+    {
+      "error": "Repeated finding",
+      "cause": "Root cause not fixed",
+      "resolution": "Escalate for a structural fix."
+    },
+    {
+      "error": "Scope too large",
+      "cause": "Too many systems",
+      "resolution": "Sample by risk and state the sampling method."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "engineering-governance",
+      "artifact": "policy requirements and control gaps",
+      "feedback": true
+    },
+    {
+      "skill": "project-agile-management",
+      "artifact": "improvement actions for planning",
+      "feedback": true
+    },
+    {
+      "skill": "evidence-quality-gates",
+      "artifact": "evidence sets for quality evaluation",
+      "feedback": true
+    }
+  ],
+  "owns": [
+    "governance-oversight-and-audit",
+    "access-and-vendor-governance",
+    "process-improvement-governance"
+  ]
+}

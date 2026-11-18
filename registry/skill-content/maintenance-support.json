@@ -1,0 +1,147 @@
+{
+  "skill_id": "maintenance-support",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Handles support tiers, fixes, patches, updates and enhancements. Use when maintaining live software. Do NOT use for new product build.",
+  "tags": [
+    "support",
+    "maintenance",
+    "patching",
+    "bug-fixing"
+  ],
+  "keywords": [
+    "support ticket",
+    "bug report",
+    "patch",
+    "dependency update",
+    "hotfix",
+    "knowledge base",
+    "customer feedback",
+    "maintenance release",
+    "l1",
+    "l2",
+    "performance tuning",
+    "retire product"
+  ],
+  "purpose": "Keeps live software healthy after release: tiered support, bug fixing, patching, dependency updates, database maintenance, performance and debt work, enhancements, feedback, knowledge base, maintenance releases and lifecycle decisions. It owns stages 167-180.",
+  "when_to_use": [
+    "Support requests, bugs or patches need handling.",
+    "Dependencies, performance or technical debt need planned work.",
+    "A lifecycle or retirement decision for a product is needed."
+  ],
+  "when_not_to_use": [
+    "Building a new product: use requirements-design and software-implementation.",
+    "Running an active major incident: use incident-command.",
+    "Approving production changes: use secure-change-control."
+  ],
+  "prerequisites": [
+    "A ticket system and the escalation rules.",
+    "Access to runbooks and the knowledge base.",
+    "Current release and known issues.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "support request or defect",
+      "affected version and environment"
+    ],
+    "optional": [
+      "logs",
+      "usage data",
+      "customer feedback",
+      "dependency reports"
+    ]
+  },
+  "outputs": [
+    "resolved or escalated tickets with full records",
+    "bug fixes and patches with tests",
+    "dependency and patch status",
+    "knowledge base articles",
+    "lifecycle decision records"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Fix known in knowledge base",
+      "action": "Apply it and confirm with the user."
+    },
+    {
+      "situation": "Cannot resolve at tier",
+      "action": "Escalate with the full record so the user does not repeat details."
+    },
+    {
+      "situation": "Patch addresses a vulnerability",
+      "action": "Prioritize by severity and exposure and record the deadline."
+    },
+    {
+      "situation": "Retirement proposed",
+      "action": "Require notice, migration path and sponsor approval."
+    }
+  ],
+  "quality_gates": [
+    "Tickets carry identifiers, steps and time",
+    "Fixes are confirmed with the user",
+    "Patches have tests and rollback",
+    "Retirement has notice and data handling"
+  ],
+  "examples": [
+    {
+      "title": "Escalate a ticket",
+      "request": "User cannot download invoices; L1 has no fix.",
+      "context": "Account id and error time are known.",
+      "behavior": "Escalate with the account id, error time, steps and impact, and tell the user the next update time.",
+      "output": "L2 ticket with complete record and user update.",
+      "acceptance": "The user is not asked to repeat details."
+    },
+    {
+      "title": "Plan a dependency update",
+      "request": "A library has a critical vulnerability.",
+      "context": "Used by two services.",
+      "behavior": "Find affected services, update with tests, plan staged rollout and rollback, and record the deadline.",
+      "output": "Patch plan and test evidence.",
+      "acceptance": "Deadline and approval are recorded."
+    }
+  ],
+  "limitations": [
+    "Cannot see customer systems it has no access to.",
+    "Does not approve production patches: a named human does.",
+    "Root cause may need tiers beyond its access."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Duplicate tickets",
+      "cause": "Known issue not linked",
+      "resolution": "Link to the known issue and update the user."
+    },
+    {
+      "error": "Patch breaks behavior",
+      "cause": "Missing tests",
+      "resolution": "Roll back and add characterization tests."
+    },
+    {
+      "error": "Knowledge base outdated",
+      "cause": "No owner",
+      "resolution": "Assign owners and review dates."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "software-implementation",
+      "artifact": "defects and enhancements with reproduction steps",
+      "feedback": true
+    },
+    {
+      "skill": "sre-observability",
+      "artifact": "recurring issues as reliability work",
+      "feedback": true
+    },
+    {
+      "skill": "enterprise-governance",
+      "artifact": "patch and lifecycle evidence"
+    }
+  ],
+  "owns": [
+    "support-triage-and-fixing",
+    "patch-and-dependency-maintenance",
+    "product-lifecycle-decisions"
+  ]
+}

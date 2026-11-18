@@ -146,14 +146,24 @@ Transfer the artifact path/revision, validation evidence, limitations, residual 
  # skill docs and stage playbooks
  skill_paths={s['skill_id']:s['path'] for s in registry_io.load_skill_doc(ROOT)['skills']}
  write('skills/_shared/CORE_PROCEDURE.md',render_skills.CORE_PROCEDURE)
+ skill_content=registry_io.load_skill_content(ROOT)
+ received={}
+ for src,c in skill_content.items():
+  for h in c['handoffs']: received.setdefault(h['skill'],[]).append((src,h['artifact']))
  for sid in SKILLS:
   matched=[s for s in stages if sid in s['skills']]
   path=Path(skill_paths[sid])
-  skill_md,ref_md=render_skills.render_skill(sid,SKILL_PROFILES[sid],matched,agents_doc['agents'],ROOT/path.parent)
+  skill_md,ref_md=render_skills.render_skill(sid,SKILL_PROFILES[sid],matched,agents_doc['agents'],ROOT/path.parent,skill_content.get(sid),sorted(received.get(sid,[])))
   write(path,skill_md)
   if matched: write(path.parent/'reference'/'stages.md',ref_md)
   ev=render_skills.render_evidence_example(sid,matched)
   if ev: (ROOT/path.parent/'examples').mkdir(exist_ok=True); (ROOT/path.parent/'examples'/'evidence-example.json').write_text(ev,encoding='utf-8')
+ import skill_graph
+ ranges={}
+ for sid in SKILLS:
+  ids=sorted(s['stage_id'] for s in stages if sid in s['skills'])
+  if ids: ranges[sid]=f"{ids[0]}-{ids[-1]}"
+ if skill_content: write('docs/architecture/SKILL_SELECTION.md',skill_graph.render_selection_doc(skill_content,ranges))
  # workflow files are rendered from registry/workflows/*.json
  stages_by_id={s['stage_id']:s for s in registry_io.load_stage_doc(ROOT)['stages']}
  for w in wf:

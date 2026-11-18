@@ -1,0 +1,19 @@
+{
+  "example": true,
+  "handoff_id": "HO-2026-001",
+  "from_skill": "code-review-quality",
+  "to_skill": "quality-assurance",
+  "stage_ids": [75],
+  "artifacts": [
+    {"path": "<pull request URL or path>", "revision": "<exact commit SHA or artifact digest>"}
+  ],
+  "validation": {"method": "<command or review method>", "result": "<actual result>"},
+  "gate_status": "ILLUSTRATIVE_ONLY",
+  "risks": ["<residual risk, or empty list>"],
+  "limitations": ["<what was not checked>"],
+  "sender": "<named sender>",
+  "receiver": "<named receiver>",
+  "next_action": "<what the receiver does next>",
+  "approval": {"required": false, "approver": null, "risk_tier": "R1"},
+  "acceptance": {"accepted_by": null, "accepted_at": null}
+}

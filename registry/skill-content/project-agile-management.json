@@ -1,0 +1,145 @@
+{
+  "skill_id": "project-agile-management",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Plans, tracks and governs delivery work and risk. Use when scoping, estimating or running iterations. Do NOT use for requirements or code.",
+  "tags": [
+    "project",
+    "agile",
+    "planning",
+    "risk"
+  ],
+  "keywords": [
+    "sprint",
+    "backlog",
+    "work breakdown",
+    "estimation",
+    "project plan",
+    "charter",
+    "risk register",
+    "stakeholder",
+    "velocity",
+    "iteration",
+    "timeline",
+    "resource plan"
+  ],
+  "purpose": "Keeps delivery predictable and visible: scope broken into owned work, estimates as ranges, iteration plans, progress from evidence, and risks with owners. It owns stages 35-44: initiation, resources, work breakdown, estimation, sprint planning, agile management, progress, risk, stakeholders and change management.",
+  "when_to_use": [
+    "A project needs a charter, work breakdown, estimate or plan.",
+    "An iteration must be planned or flow and impediments reviewed.",
+    "Risks, stakeholders or changes to scope need managing."
+  ],
+  "when_not_to_use": [
+    "Writing requirements: use requirements-design.",
+    "Approving funding: that is a named human decision under business-product-management.",
+    "Approving production changes: use secure-change-control."
+  ],
+  "prerequisites": [
+    "An approved project or a stated scope.",
+    "Team capacity and availability.",
+    "A tracking tool or a written list to record work.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "scope",
+      "team and capacity",
+      "constraints and dates"
+    ],
+    "optional": [
+      "past throughput",
+      "risk history",
+      "dependency list"
+    ]
+  },
+  "outputs": [
+    "project charter with scope and exclusions",
+    "work breakdown with owners and definitions of done",
+    "estimates as ranges and a forecast",
+    "risk register with owners and triggers",
+    "progress report from tracked data"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Estimate given as one number",
+      "action": "Report a range and the assumptions."
+    },
+    {
+      "situation": "Planned work exceeds recent throughput",
+      "action": "Remove items rather than overload the iteration."
+    },
+    {
+      "situation": "Status reports green with blocked items",
+      "action": "Recompute status from the tracker and report the difference."
+    },
+    {
+      "situation": "Scope change requested",
+      "action": "Record it as a change request with impact before accepting."
+    }
+  ],
+  "quality_gates": [
+    "Lower breakdown levels add up to the whole scope",
+    "Every package has one owner and acceptance criteria",
+    "Forecast is a range from past throughput",
+    "Each top risk has an owner, response and trigger"
+  ],
+  "examples": [
+    {
+      "title": "Plan an iteration",
+      "request": "Plan the next two-week sprint.",
+      "context": "Nine working days remain, one person is on leave, recent average is 24 points.",
+      "behavior": "Set one goal with the product owner, plan about 22 points, confirm acceptance criteria, and list dependencies.",
+      "output": "Sprint goal, selected items with criteria, and a risk list.",
+      "acceptance": "Planned work fits recent throughput and the team agreed."
+    },
+    {
+      "title": "Write a risk entry",
+      "request": "Record the risk of a single-vendor SDK.",
+      "context": "The vendor may end support.",
+      "behavior": "Write cause, event and effect, rate it, assign an owner, and set a trigger and response.",
+      "output": "Risk: because the vendor is the sole SDK supplier, if support ends the migration slips three months; trigger: end-of-life notice; response: evaluate alternatives.",
+      "acceptance": "The entry has owner, trigger and response."
+    }
+  ],
+  "limitations": [
+    "Cannot see work that is not recorded in the tracker or provided.",
+    "Forecasts are ranges based on past data and are not commitments.",
+    "Does not replace people's decisions on priority; the product owner decides."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Tracker data is stale",
+      "cause": "Items not updated",
+      "resolution": "State the age of the data and ask owners to update before reporting."
+    },
+    {
+      "error": "Dependencies unagreed",
+      "cause": "Other team unaware",
+      "resolution": "Mark the date as unconfirmed and request agreement."
+    },
+    {
+      "error": "No past throughput",
+      "cause": "New team or tool",
+      "resolution": "Use a wide range and revisit after two iterations."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "software-implementation",
+      "artifact": "sprint backlog with acceptance criteria"
+    },
+    {
+      "skill": "release-deployment",
+      "artifact": "release scope and dependency list"
+    },
+    {
+      "skill": "enterprise-governance",
+      "artifact": "change and risk records for audit"
+    }
+  ],
+  "owns": [
+    "delivery-planning-and-estimation",
+    "risk-and-stakeholder-management",
+    "iteration-flow-management"
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "skill_id": "evidence-quality-gates",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Classifies, checks and accepts or rejects evidence behind claims. Use when a gate needs proof. Do NOT use to produce the evidence itself.",
+  "tags": [
+    "evidence",
+    "traceability",
+    "quality-gates",
+    "audit"
+  ],
+  "keywords": [
+    "evidence",
+    "proof",
+    "gate",
+    "traceability",
+    "verify claim",
+    "provenance",
+    "confidence",
+    "conflicting results",
+    "gate decision",
+    "sign-off evidence",
+    "audit trail evidence",
+    "reject evidence"
+  ],
+  "purpose": "Decides whether the evidence offered for a claim is good enough to pass a gate. It classifies the evidence, checks provenance and reliability, ties it to the claim and revision, assigns a confidence level, handles conflicting or missing evidence, and returns PASS, FAIL, BLOCKED, INCONCLUSIVE, NEEDS_HUMAN_APPROVAL or WAIVED with reasons.",
+  "when_to_use": [
+    "A gate, sign-off or approval depends on evidence.",
+    "Evidence from different sources disagrees.",
+    "A report claims work was done and the proof must be checked."
+  ],
+  "when_not_to_use": [
+    "Producing the evidence: use the specialist skill.",
+    "Checking task completion overall: use definition-of-done.",
+    "Auditing controls across teams: use enterprise-governance."
+  ],
+  "prerequisites": [
+    "The claim being gated and its gate id.",
+    "The evidence artifacts or immutable links.",
+    "templates/evidence-record.json as the record shape.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "claim and gate",
+      "evidence records or artifacts",
+      "revision or build identifier"
+    ],
+    "optional": [
+      "previous results",
+      "tool versions",
+      "reviewer identity"
+    ]
+  },
+  "outputs": [
+    "evidence classification and provenance check",
+    "confidence level with reasons",
+    "traceability from claim to evidence to revision",
+    "gate decision with status and limitations"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Evidence has no revision or timestamp",
+      "action": "Treat as INCONCLUSIVE."
+    },
+    {
+      "situation": "Evidence is for a different build",
+      "action": "FAIL for this claim; request the correct evidence."
+    },
+    {
+      "situation": "Two sources conflict",
+      "action": "Prefer the one closer to the system and reproducible; record the conflict; do not average."
+    },
+    {
+      "situation": "Evidence is an example or illustration",
+      "action": "Never count it; examples are marked example true."
+    },
+    {
+      "situation": "Only the producer vouches for the work",
+      "action": "Request independent confirmation for high-risk gates."
+    },
+    {
+      "situation": "Critical evidence missing",
+      "action": "BLOCKED; list exactly what is needed."
+    }
+  ],
+  "quality_gates": [
+    "Each claim links to evidence with revision, method, executor and time",
+    "Confidence level is stated with reasons",
+    "Conflicts and gaps are listed",
+    "Rejection reasons are specific and fixable"
+  ],
+  "examples": [
+    {
+      "title": "Accept test evidence",
+      "request": "Gate: all unit tests pass for build 2.8.0.",
+      "context": "A CI log and report are attached.",
+      "behavior": "Check build id, command, executor, time and result in the log, then confirm that raw output matches the summary.",
+      "output": "PASS with confidence high; limitation: unit tests only.",
+      "acceptance": "Record lists artifact link, revision and limitations."
+    },
+    {
+      "title": "Reject a claim",
+      "request": "Security scan passed.",
+      "context": "Only a screenshot without date or revision.",
+      "behavior": "Mark INCONCLUSIVE because provenance is missing and request the scan output.",
+      "output": "INCONCLUSIVE with the exact missing items.",
+      "acceptance": "Reason is specific and fixable."
+    },
+    {
+      "title": "Conflicting evidence",
+      "request": "Load test shows pass; monitoring shows errors at the same time.",
+      "context": "Both from the last release.",
+      "behavior": "Compare timestamps and environment, record the conflict, and prefer production-measured data for production claims.",
+      "output": "Conflict record with decision rationale and escalation if unresolved.",
+      "acceptance": "Conflict is recorded, not averaged away."
+    }
+  ],
+  "limitations": [
+    "Judges the evidence offered; it cannot discover evidence that does not exist.",
+    "Cannot prove authenticity beyond provenance fields it can check.",
+    "Gate decisions that need approval go to a named human."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Evidence link expired",
+      "cause": "Mutable or temporary URL",
+      "resolution": "Request an immutable copy or hash."
+    },
+    {
+      "error": "Evidence is redacted",
+      "cause": "Sensitive data removed",
+      "resolution": "Accept with a stated limitation or request a safer form."
+    },
+    {
+      "error": "Conflicting sources",
+      "cause": "Different scope or time",
+      "resolution": "Normalize scope and time, then compare."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "enterprise-governance",
+      "artifact": "evidence assessments for audits"
+    },
+    {
+      "skill": "release-deployment",
+      "artifact": "gate decisions for release readiness"
+    }
+  ],
+  "owns": [
+    "evidence-evaluation-and-confidence"
+  ]
+}

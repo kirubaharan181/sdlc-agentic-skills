@@ -1,0 +1,144 @@
+{
+  "skill_id": "software-implementation",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Builds and changes application code across layers. Use when implementing features or fixes. Do NOT use for design, review or deployment.",
+  "tags": [
+    "implementation",
+    "backend",
+    "frontend",
+    "api"
+  ],
+  "keywords": [
+    "implement",
+    "build feature",
+    "write code",
+    "backend",
+    "frontend",
+    "endpoint",
+    "bug fix code",
+    "database schema",
+    "authentication code",
+    "integration code",
+    "refactor",
+    "mobile app"
+  ],
+  "purpose": "Implements approved designs as working, tested code: front end, back end, mobile, APIs, data, authentication and authorization, integration, real-time, data engineering, ML and error handling. It owns stages 53-67 and aims for small, reviewable changes with tests.",
+  "when_to_use": [
+    "Approved requirements and designs need to be implemented.",
+    "A defect or enhancement needs a code change with tests.",
+    "An API, schema, integration or model feature must be built."
+  ],
+  "when_not_to_use": [
+    "Deciding architecture: use technical-architecture.",
+    "Reviewing the change: use code-review-quality.",
+    "Deploying it: use release-deployment."
+  ],
+  "prerequisites": [
+    "Acceptance criteria and, where relevant, API contracts and designs.",
+    "A working development environment (see engineering-governance).",
+    "Permission to branch and open pull requests.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "acceptance criteria",
+      "existing code context"
+    ],
+    "optional": [
+      "design files",
+      "API contract",
+      "data samples",
+      "architecture decisions"
+    ]
+  },
+  "outputs": [
+    "small pull requests with tests",
+    "updated contracts and schemas",
+    "logging and error handling",
+    "notes on behavior and configuration for reviewers"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Acceptance criteria are unclear",
+      "action": "Ask before coding; do not guess behavior."
+    },
+    {
+      "situation": "Change touches a contract",
+      "action": "Update the contract and check compatibility."
+    },
+    {
+      "situation": "Change needs a schema migration",
+      "action": "Use backward-compatible steps and flag for review."
+    },
+    {
+      "situation": "A secret would be needed",
+      "action": "Use the secrets store; never write it to code."
+    }
+  ],
+  "quality_gates": [
+    "Each acceptance criterion has a passing test",
+    "Inputs validated and authorization checked server-side",
+    "No secrets or sensitive data in code or logs",
+    "Change is small enough for review"
+  ],
+  "examples": [
+    {
+      "title": "Add an endpoint",
+      "request": "Add POST /refunds for partial refunds.",
+      "context": "Orders and payments modules exist; idempotency is required.",
+      "behavior": "Validate amount against the original payment, check order ownership, use an idempotency key, and add tests for success, repeat and failure.",
+      "output": "Pull request with endpoint, tests and a contract update.",
+      "acceptance": "Repeat request has no second effect; failure leaves the order consistent."
+    },
+    {
+      "title": "Fix a bug safely",
+      "request": "Orders sometimes show the wrong total with two discount codes.",
+      "context": "Reproduced only when codes are applied in a certain order.",
+      "behavior": "Write a failing test with the exact order, fix the calculation, and run the existing suite.",
+      "output": "Failing test first, fix, and a note on root cause.",
+      "acceptance": "New test fails before and passes after; no other test breaks."
+    }
+  ],
+  "limitations": [
+    "Cannot run code that needs credentials or services it does not have.",
+    "Does not decide design questions: it raises them to technical-architecture.",
+    "Test results reflect only the environment and data used."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Tests fail on a clean checkout",
+      "cause": "Missing setup or version mismatch",
+      "resolution": "Run the documented setup, record versions, and fix the guide if needed."
+    },
+    {
+      "error": "Contract and code disagree",
+      "cause": "Contract not updated",
+      "resolution": "Reconcile with the owner and update both."
+    },
+    {
+      "error": "Change is too large to review",
+      "cause": "Mixed concerns",
+      "resolution": "Split into separate pull requests."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "code-review-quality",
+      "artifact": "pull request with tests and notes"
+    },
+    {
+      "skill": "application-security",
+      "artifact": "code and dependency changes for scanning"
+    },
+    {
+      "skill": "quality-assurance",
+      "artifact": "build and acceptance criteria for testing"
+    }
+  ],
+  "owns": [
+    "feature-and-fix-implementation",
+    "api-and-schema-implementation",
+    "implementation-error-handling"
+  ]
+}

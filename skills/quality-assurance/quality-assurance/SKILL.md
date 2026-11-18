@@ -1,11 +1,49 @@
 ---
 name: quality-assurance
-description: Provides a specialist procedure to provide independent evidence about product behavior and residual quality risk. Use when the work involves Test Strategy, Test Planning, Unit Testing, Integration Testing, API Testing, UI Testing, Functional Testing, End-to-End Testing and 13 more stages.
+description: Plans and runs risk-based testing and defect handling. Use when verifying behavior before release. Do NOT use for fixing defects or security scans.
+metadata:
+  author: kirubaharan181
+  version: "1.1.0"
+  tags: ["testing", "qa", "defects", "regression"]
 ---
 
 # Risk-based verification
 
-Provide independent evidence about product behavior and residual quality risk.
+## Purpose
+Gives release decision makers honest, reproducible evidence of quality: test strategy and plans, test execution at every level, performance testing, defect management and sign-off. It owns stages 77-97.
+
+## When to Use
+- A test strategy or plan is needed for a release.
+- Functional, regression, performance or compatibility testing must be run and reported.
+- Defects need triage and a sign-off statement.
+
+## When NOT to Use
+- Fixing defects: use software-implementation.
+- Vulnerability scanning and threat modeling: use application-security.
+- Approving release: use release-deployment.
+
+## Prerequisites and Requirements
+- Testable acceptance criteria and a risk list.
+- A test environment with test data and a known build.
+- Access to the build identifier under test.
+- No external API keys, paid services or network access are required; work uses files and tools already approved in the repository.
+
+## Inputs and Outputs
+Required inputs:
+- acceptance criteria
+- build identifier
+- test environment
+
+Optional inputs:
+- risk register
+- past defect data
+- usage analytics
+
+Outputs and deliverables:
+- test plan with measurable exit criteria
+- version-pinned test reports
+- defect records with evidence
+- sign-off statement with untested areas
 
 ## Procedure
 1. Derive coverage from user journeys, acceptance criteria, failure modes and risk.
@@ -14,6 +52,53 @@ Provide independent evidence about product behavior and residual quality risk.
 4. Triage failures and issue a quality recommendation with explicit limitations.
 
 Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+
+## Decision Rules
+| Situation | Action |
+|---|---|
+| Results are from a different build | Rerun on the release candidate before sign-off. |
+| A test is flaky | Fix or quarantine it; never report it as PASS. |
+| Exit criterion not met | Report not met; a waiver needs a named owner and expiry. |
+| High-risk area untested | List it explicitly in the sign-off. |
+
+## Quality Gates
+- [ ] Exit criteria are measurable and each has a result
+- [ ] Results name build, environment and data
+- [ ] Untested areas are listed
+- [ ] Waivers have an owner
+
+## Examples
+Illustrative only: these show expected behavior and were not executed against a real project.
+
+### Example 1: Write exit criteria
+```text
+Request: Draft exit criteria for the payments release.
+Context: High-risk flows: refunds and card changes.
+Agent behavior: Trace each high risk to planned tests and define measurable criteria.
+Output: Exit criteria: no open critical defects, all high-risk flows automated and passing, load test at 1.5 times peak.
+Acceptance: Every high risk maps to at least one test.
+```
+
+### Example 2: Report test status
+```text
+Request: Summarize test status for sign-off.
+Context: Load test ran at 1.2 times peak against a 1.5 target.
+Agent behavior: Compare results with each criterion, mark the load criterion not met and list the residual risk.
+Output: Scorecard: 7 of 8 criteria met; recommendation: release with a condition and a retest date.
+Acceptance: Not-met criterion and its owner are stated.
+```
+
+## Limitations
+- Test results describe only the tested build, data and environment.
+- Cannot run tests that require unavailable environments; it records them as BLOCKED.
+- Sign-off is a recommendation; a named human decides release.
+
+## Troubleshooting
+| Error | Cause | Resolution |
+|---|---|---|
+| Environment unavailable | Test environment down | Record BLOCKED, do not substitute results from another environment. |
+| Intermittent failure | Race or shared data | Isolate data and rerun with the recorded reason. |
+| Acceptance criteria untestable | Vague wording | Return them to requirements-design. |
 
 ## Tools
 - test runner and CI reports
@@ -48,7 +133,21 @@ Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCED
 
 Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
 
+## Handoffs
+Hands to:
+- `release-deployment`: test sign-off with exit criteria scorecard
+- `software-implementation`: defect reports with evidence
+- `enterprise-governance`: test evidence for quality audits
+
+Receives from:
+- `code-review-quality`: approved change with review findings
+- `requirements-design`: acceptance criteria and risk list for test design
+- `software-implementation`: build and acceptance criteria for testing
+
+Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+
 ## Related
 - Examples: [examples/](examples/) (illustrative only).
 - Workflows: api-version-upgrade, bug-fix, database-migration, dependency-update, emergency-hotfix, environment-configuration, existing-application-enhancement, feature-development, new-product-development, performance-optimization, staging-release, technical-debt-reduction.
 - Roles: accessibility-testing-specialist, api-testing-specialist, automation-qa-engineer, e2e-testing-specialist, integration-testing-specialist, manual-qa-engineer, performance-engineer, performance-testing-specialist, qa-lead, quality-governance-specialist, sre, unit-testing-specialist.
+- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).

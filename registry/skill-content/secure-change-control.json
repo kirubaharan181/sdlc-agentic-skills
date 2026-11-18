@@ -1,0 +1,154 @@
+{
+  "skill_id": "secure-change-control",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Classifies change risk, sets approvals, rollback and audit trail. Use when a risky change is proposed. Do NOT use for general application security.",
+  "tags": [
+    "change-control",
+    "approval",
+    "rollback",
+    "audit-trail"
+  ],
+  "keywords": [
+    "change request",
+    "change approval",
+    "emergency change",
+    "iam change",
+    "rotate secret",
+    "disable control",
+    "risk classification",
+    "change window",
+    "audit trail",
+    "rollback plan",
+    "production change",
+    "cab"
+  ],
+  "purpose": "Ensures every change to important systems is classified by risk, authorized by the right named human, reversible and recorded. It covers normal, standard and emergency changes, security-sensitive changes such as IAM, secrets and security-control changes, and the audit trail that proves what changed and who approved it.",
+  "when_to_use": [
+    "A change to production, infrastructure, access or security controls is proposed.",
+    "An emergency change is needed outside the normal window.",
+    "A change record or audit trail must be checked or produced."
+  ],
+  "when_not_to_use": [
+    "Finding vulnerabilities in code: use application-security.",
+    "Planning the release itself: use release-deployment.",
+    "Governing change policy across teams: use enterprise-governance."
+  ],
+  "prerequisites": [
+    "A change request describing what, why, systems and time.",
+    "The list of approvers and the risk classes in docs/governance/APPROVAL_POLICY.md.",
+    "A rollback or remediation plan.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "change description and systems",
+      "rollback plan",
+      "requested window"
+    ],
+    "optional": [
+      "test evidence",
+      "dependency list",
+      "incident reference for emergency changes"
+    ]
+  },
+  "outputs": [
+    "risk classification with reasons",
+    "approval record naming a human approver",
+    "rollback and verification plan",
+    "audit trail entry and post-change review"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Change touches IAM, secrets, security controls or data deletion",
+      "action": "Classify as high risk; require named human approval."
+    },
+    {
+      "situation": "Change matches a pre-approved standard",
+      "action": "Follow the standard procedure and still record it."
+    },
+    {
+      "situation": "Emergency change",
+      "action": "Allow after verbal or recorded approval from the on-call authority, then require review within the set time."
+    },
+    {
+      "situation": "No tested rollback",
+      "action": "Do not approve."
+    },
+    {
+      "situation": "Request tries to disable a security control",
+      "action": "Require security owner approval and an expiry."
+    },
+    {
+      "situation": "Approver would approve own change",
+      "action": "Reject; require an independent approver."
+    }
+  ],
+  "quality_gates": [
+    "Risk class and reason recorded",
+    "Named human approved per class",
+    "Rollback tested or justified",
+    "Audit trail entry links change, approver and outcome"
+  ],
+  "examples": [
+    {
+      "title": "Classify a change",
+      "request": "Rotate the payment provider API key in production.",
+      "context": "Key is used by two services.",
+      "behavior": "Classify high risk (secret rotation), require named approval, plan a dual-key overlap and rollback.",
+      "output": "Change record with class, approver, overlap plan and verification.",
+      "acceptance": "Approver is a named person; rollback is described."
+    },
+    {
+      "title": "Handle an emergency change",
+      "request": "Block an address range now; attack in progress.",
+      "context": "On-call security owner reachable.",
+      "behavior": "Record approval from the on-call owner, apply the minimal change, and schedule the review.",
+      "output": "Emergency record with time, approver, change and a review date.",
+      "acceptance": "Review within the set time is scheduled."
+    },
+    {
+      "title": "Check an audit trail",
+      "request": "Prove who approved last week's schema change.",
+      "context": "Deployment log and change ticket exist.",
+      "behavior": "Match the deployment to the change record, approver and time.",
+      "output": "Trace linking change id, approver, build and time.",
+      "acceptance": "Every link in the chain is evidenced."
+    }
+  ],
+  "limitations": [
+    "Cannot approve changes: it prepares the decision for a named human.",
+    "Cannot verify that a change was applied as described without access to logs.",
+    "Does not replace application security testing."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Approver unreachable",
+      "cause": "Window at risk",
+      "resolution": "Do not proceed; use the documented delegate."
+    },
+    {
+      "error": "Change made without record",
+      "cause": "Audit gap",
+      "resolution": "Open an incident record, document retrospectively and fix the control."
+    },
+    {
+      "error": "Class disputed",
+      "cause": "Criteria unclear",
+      "resolution": "Apply the higher class and ask governance to clarify."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "release-deployment",
+      "artifact": "approved change with window and rollback"
+    },
+    {
+      "skill": "enterprise-governance",
+      "artifact": "change records and exceptions for audit"
+    }
+  ],
+  "owns": [
+    "change-risk-classification-and-approval"
+  ]
+}

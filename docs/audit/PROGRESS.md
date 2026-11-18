@@ -13,6 +13,7 @@ Branch: `refactor/dedupe-and-differentiate`. Updated after each phase. Resume by
 | 5 Skills | done | name=id, third-person `Use when` descriptions, short `SKILL.md`, `reference/stages.md`, shared `_shared/CORE_PROCEDURE.md`; per-skill generated evidence examples flagged `"example": true` / `ILLUSTRATIVE_ONLY`; validator: skills <0.70 similar, examples never PASS |
 | 6 Validation, tests, CI | done | 32 pytest tests (unit, golden metrics, 6 scenarios, 7 broken-fixture); `check_links.py`; CI now blocks on duplicate audit (0.85), references + orphans, links, pytest; stage `status` complete\|stub validated |
 | 7 Adoption and community | done (except owner-gated items) | `make demo`, quickstart, recorded demo + test, evals harness (no model results), CONTRIBUTING, CODE_OF_CONDUCT, templates, CODEOWNERS, 15 drafted issues, launch drafts, CHANGELOG, RC notes. Done: 15 good-first issues opened (#15-#29). Not done: tag/release (blocked for this session), posting, repo topics. Adapters remain documented, not tested |
+| 8 Roadmap: quality and governance | done on branch `feat/roadmap-quality-governance`; after-scores not measured | `docs/roadmap/REQUIREMENTS_AND_ROADMAP.md`, `reports/skill-quality/`, `docs/governance/`, `registry/skill-content/`, `tests/test_governance.py` |
 
 ## Decisions
 - `agents/*.md`, `workflows/*.md` and `SKILL.md` stay committed (platform adapters install them directly) but are generated; `build.py --check` fails CI on drift. CSV, coverage report and stage playbooks live only in `dist/`.

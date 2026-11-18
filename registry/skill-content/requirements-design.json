@@ -1,0 +1,144 @@
+{
+  "skill_id": "requirements-design",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Elicits, documents and validates requirements and UX. Use when scope is needed before design. Do NOT use for architecture or coding.",
+  "tags": [
+    "requirements",
+    "ux",
+    "design",
+    "accessibility"
+  ],
+  "keywords": [
+    "requirements",
+    "user story",
+    "acceptance criteria",
+    "wireframe",
+    "ux",
+    "user research",
+    "journey",
+    "prototype",
+    "accessibility",
+    "non-functional",
+    "persona",
+    "elicitation"
+  ],
+  "purpose": "Converts agreed business goals into requirements that are testable, traced and validated, plus the user-experience artifacts that show how they will be met. It owns stages 11-22: elicitation, documentation, functional and non-functional requirements, research, journeys, wireframes, UI and UX, prototypes, accessibility review and validation.",
+  "when_to_use": [
+    "Stakeholder needs must be captured as requirements with acceptance criteria.",
+    "User research, journeys, wireframes or prototypes are needed before build.",
+    "Accessibility or non-functional targets must be stated and made measurable."
+  ],
+  "when_not_to_use": [
+    "Deciding system structure or technology: use technical-architecture.",
+    "Building the UI: use software-implementation.",
+    "Testing the built UI: use quality-assurance."
+  ],
+  "prerequisites": [
+    "An approved goal or business case, or an explicit statement that none exists.",
+    "Access to stakeholders or their recorded input.",
+    "A requirement identifier scheme; create one if none exists.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "approved goals and scope",
+      "stakeholder list"
+    ],
+    "optional": [
+      "user research",
+      "analytics",
+      "existing requirements",
+      "design system"
+    ]
+  },
+  "outputs": [
+    "requirements with unique ids, sources and acceptance criteria",
+    "non-functional targets with measures",
+    "journeys, wireframes and prototype findings",
+    "validated requirements baseline approved by the product owner"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Requirement uses vague words (fast, easy, robust)",
+      "action": "Rewrite with a measure and condition before baselining."
+    },
+    {
+      "situation": "Two requirements conflict",
+      "action": "Log the conflict and send it to the product owner; do not pick silently."
+    },
+    {
+      "situation": "A requirement has no source need",
+      "action": "Trace it or remove it."
+    },
+    {
+      "situation": "Accessibility target missing",
+      "action": "Default to the organization's stated standard and level, and record the assumption."
+    }
+  ],
+  "quality_gates": [
+    "Each requirement is unique, testable and traced to a need",
+    "Non-functional targets have numbers and a verification method",
+    "Key states (empty, loading, error) are designed",
+    "Product owner approved the baseline"
+  ],
+  "examples": [
+    {
+      "title": "Make a vague requirement testable",
+      "request": "Rewrite the requirement 'the report should be fast'.",
+      "context": "Reports show up to 10,000 rows; support complains about waiting.",
+      "behavior": "Ask for the target audience and load, then express it with a percentile and condition and add an acceptance example.",
+      "output": "REQ-014: Reports of up to 10,000 rows display within 3 seconds at the 95th percentile. Acceptance: load a 10,000-row report in the test environment and measure.",
+      "acceptance": "The requirement names a measure, condition and a way to test it."
+    },
+    {
+      "title": "Resolve conflicting stakeholder needs",
+      "request": "Sales wants a one-click export; security wants approval for every export.",
+      "context": "Exports contain customer data.",
+      "behavior": "Record both needs with sources, propose options (role-based approval, limited fields), and route the decision to the product owner.",
+      "output": "Conflict log entry with options and a pending decision.",
+      "acceptance": "The conflict is logged and escalated, not silently resolved."
+    }
+  ],
+  "limitations": [
+    "Cannot know what users want without research or recorded input; it will not invent personas or quotes.",
+    "Does not approve the baseline: the product owner does.",
+    "Design artifacts are not tested on real users unless a test is run and recorded."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Stakeholders unavailable",
+      "cause": "No access to the people who know the need",
+      "resolution": "State the gap, mark affected requirements as unvalidated, and schedule the sessions."
+    },
+    {
+      "error": "Requirements keep changing",
+      "cause": "No baseline or change process",
+      "resolution": "Baseline the set and route changes through a recorded request with impact."
+    },
+    {
+      "error": "Accessibility standard unknown",
+      "cause": "No policy stated",
+      "resolution": "Ask for the standard and level; record the assumption if none is given."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "technical-architecture",
+      "artifact": "validated requirements including non-functional targets"
+    },
+    {
+      "skill": "software-implementation",
+      "artifact": "wireframes, UI designs and acceptance criteria"
+    },
+    {
+      "skill": "quality-assurance",
+      "artifact": "acceptance criteria and risk list for test design"
+    }
+  ],
+  "owns": [
+    "requirements-elicitation-and-baseline",
+    "user-research-and-ux-design",
+    "accessibility-requirements"
+  ]
+}

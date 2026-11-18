@@ -1,0 +1,161 @@
+{
+  "skill_id": "incident-command",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Coordinates live incidents: severity, roles, comms, timeline, recovery. Use when an incident is active. Do NOT use for routine support tickets.",
+  "tags": [
+    "incident",
+    "command",
+    "communication",
+    "recovery"
+  ],
+  "keywords": [
+    "incident",
+    "outage",
+    "sev1",
+    "page",
+    "on-call",
+    "war room",
+    "incident commander",
+    "status update",
+    "service down",
+    "degraded",
+    "customer impact",
+    "recovery"
+  ],
+  "purpose": "Provides command and coordination during an active incident: it classifies severity, assigns roles, sets escalation and communication cadence, keeps a timeline and decision log, coordinates recovery and hands over to the post-incident review. It coordinates people and decisions; it does not perform the technical fix and it never claims an incident was handled when no incident was run.",
+  "when_to_use": [
+    "An incident is declared or a service is failing and impact is unclear.",
+    "Several teams must coordinate, communicate and decide quickly.",
+    "A timeline and decision log must be kept for later review."
+  ],
+  "when_not_to_use": [
+    "Routine tickets: use maintenance-support.",
+    "Designing monitoring or writing the postmortem analysis: use sre-observability.",
+    "Fixing the bug: use software-implementation."
+  ],
+  "prerequisites": [
+    "A way to reach the on-call people and stakeholders.",
+    "Severity definitions and escalation paths.",
+    "A shared place for the timeline and decision log.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "symptoms and affected users",
+      "time of detection",
+      "current owner"
+    ],
+    "optional": [
+      "recent changes",
+      "dashboards",
+      "previous similar incidents"
+    ]
+  },
+  "outputs": [
+    "severity classification with reason",
+    "role assignments",
+    "communication updates on a schedule",
+    "timeline and decision log",
+    "recovery confirmation and handover for review"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Customer-visible outage or data risk",
+      "action": "Classify as highest severity and page the incident roles."
+    },
+    {
+      "situation": "Cause unknown after the agreed interval",
+      "action": "Escalate to the next tier and widen the responder group."
+    },
+    {
+      "situation": "Recent change plausibly related",
+      "action": "Consider rollback first if safe and approved."
+    },
+    {
+      "situation": "Fix needs a production change",
+      "action": "Route through emergency change approval and record it."
+    },
+    {
+      "situation": "Roles unfilled",
+      "action": "Assign explicitly; one person is the incident commander."
+    },
+    {
+      "situation": "Status uncertain",
+      "action": "Say what is known, unknown and when the next update comes."
+    }
+  ],
+  "quality_gates": [
+    "One incident commander and named role holders",
+    "Updates sent at the agreed cadence",
+    "Every decision logged with time and owner",
+    "Recovery verified by evidence before closing"
+  ],
+  "examples": [
+    {
+      "title": "Declare and classify",
+      "request": "Checkout errors are rising; payments failing for some users.",
+      "context": "Error rate 8 percent, started 12 minutes ago after a release.",
+      "behavior": "Classify high severity, assign commander, communications and technical lead, and ask whether the release can be rolled back.",
+      "output": "Incident record with severity, roles, first update and next update time.",
+      "acceptance": "Roles are named and the first update is scheduled."
+    },
+    {
+      "title": "Log a decision",
+      "request": "Decide whether to roll back.",
+      "context": "Rollback is tested; data impact is none.",
+      "behavior": "Record options, owner, decision, time and the approval route.",
+      "output": "Decision log entry with rollback approved by the on-call authority.",
+      "acceptance": "Entry has time, owner and rationale."
+    },
+    {
+      "title": "Close and hand over",
+      "request": "Service recovered.",
+      "context": "Error rate normal for 30 minutes.",
+      "behavior": "Confirm recovery with metrics, send the final update, and open the review with timeline.",
+      "output": "Closure record and handover to the postmortem owner.",
+      "acceptance": "Recovery is shown by data, not by statement."
+    }
+  ],
+  "limitations": [
+    "Coordinates; it does not diagnose without telemetry or fix without access.",
+    "Cannot confirm facts it was not told; it marks unknowns.",
+    "Does not replace the humans who hold authority for emergency changes."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Too many responders talking",
+      "cause": "No single command",
+      "resolution": "Name one commander and a communications lead."
+    },
+    {
+      "error": "No clear owner of the affected service",
+      "cause": "Ownership gaps",
+      "resolution": "Escalate to the on-call manager and record the gap."
+    },
+    {
+      "error": "Conflicting information",
+      "cause": "Multiple sources",
+      "resolution": "Record each source and time; verify with data."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "sre-observability",
+      "artifact": "timeline and decision log for root cause analysis",
+      "feedback": true
+    },
+    {
+      "skill": "secure-change-control",
+      "artifact": "emergency change requests",
+      "feedback": true
+    },
+    {
+      "skill": "maintenance-support",
+      "artifact": "customer communications and follow-up tickets"
+    }
+  ],
+  "owns": [
+    "active-incident-coordination"
+  ]
+}

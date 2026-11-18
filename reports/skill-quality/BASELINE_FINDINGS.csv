@@ -1,0 +1,164 @@
+skill,severity,dimension,finding
+application-security,LOW,quality_correctness,No examples provided
+application-security,LOW,quality_discoverability,"Description very long (302 chars, recommend 50-150)"
+application-security,LOW,quality_discoverability,No '## Purpose' section
+application-security,LOW,quality_reliability,No limitations documented
+application-security,LOW,quality_reliability,No prerequisites/requirements documented
+application-security,LOW,quality_reliability,No troubleshooting section documented
+application-security,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+application-security,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+business-product-management,LOW,quality_correctness,No examples provided
+business-product-management,LOW,quality_discoverability,"Description very long (353 chars, recommend 50-150)"
+business-product-management,LOW,quality_discoverability,No '## Purpose' section
+business-product-management,LOW,quality_reliability,No limitations documented
+business-product-management,LOW,quality_reliability,No prerequisites/requirements documented
+business-product-management,LOW,quality_reliability,No troubleshooting section documented
+business-product-management,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+business-product-management,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+cloud-hosting-operations,LOW,quality_correctness,No examples provided
+cloud-hosting-operations,LOW,quality_discoverability,"Description very long (318 chars, recommend 50-150)"
+cloud-hosting-operations,LOW,quality_discoverability,No '## Purpose' section
+cloud-hosting-operations,LOW,quality_reliability,No limitations documented
+cloud-hosting-operations,LOW,quality_reliability,No prerequisites/requirements documented
+cloud-hosting-operations,LOW,quality_reliability,No troubleshooting section documented
+cloud-hosting-operations,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+cloud-hosting-operations,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+code-review-quality,LOW,quality_correctness,No examples provided
+code-review-quality,LOW,quality_discoverability,"Description very long (330 chars, recommend 50-150)"
+code-review-quality,LOW,quality_discoverability,No '## Purpose' section
+code-review-quality,LOW,quality_reliability,No limitations documented
+code-review-quality,LOW,quality_reliability,No prerequisites/requirements documented
+code-review-quality,LOW,quality_reliability,No troubleshooting section documented
+code-review-quality,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+code-review-quality,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+definition-of-done,LOW,quality_correctness,No examples provided
+definition-of-done,LOW,quality_discoverability,No '## Purpose' section
+definition-of-done,LOW,quality_reliability,No limitations documented
+definition-of-done,LOW,quality_reliability,No prerequisites/requirements documented
+definition-of-done,LOW,quality_reliability,No troubleshooting section documented
+definition-of-done,MEDIUM,quality_correctness,Guide-only skill has very little content (19 lines)
+definition-of-done,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+definition-of-done,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+devops-platform,LOW,quality_correctness,No examples provided
+devops-platform,LOW,quality_discoverability,"Description very long (309 chars, recommend 50-150)"
+devops-platform,LOW,quality_discoverability,No '## Purpose' section
+devops-platform,LOW,quality_reliability,No limitations documented
+devops-platform,LOW,quality_reliability,No prerequisites/requirements documented
+devops-platform,LOW,quality_reliability,No troubleshooting section documented
+devops-platform,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+devops-platform,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+engineering-governance,LOW,quality_correctness,No examples provided
+engineering-governance,LOW,quality_discoverability,"Description very long (294 chars, recommend 50-150)"
+engineering-governance,LOW,quality_discoverability,No '## Purpose' section
+engineering-governance,LOW,quality_reliability,No limitations documented
+engineering-governance,LOW,quality_reliability,No prerequisites/requirements documented
+engineering-governance,LOW,quality_reliability,No troubleshooting section documented
+engineering-governance,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+engineering-governance,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+enterprise-governance,LOW,quality_correctness,No examples provided
+enterprise-governance,LOW,quality_discoverability,"Description very long (327 chars, recommend 50-150)"
+enterprise-governance,LOW,quality_discoverability,No '## Purpose' section
+enterprise-governance,LOW,quality_reliability,No limitations documented
+enterprise-governance,LOW,quality_reliability,No prerequisites/requirements documented
+enterprise-governance,LOW,quality_reliability,No troubleshooting section documented
+enterprise-governance,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+enterprise-governance,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+evidence-quality-gates,LOW,quality_correctness,No examples provided
+evidence-quality-gates,LOW,quality_discoverability,No '## Purpose' section
+evidence-quality-gates,LOW,quality_reliability,No limitations documented
+evidence-quality-gates,LOW,quality_reliability,No prerequisites/requirements documented
+evidence-quality-gates,LOW,quality_reliability,No troubleshooting section documented
+evidence-quality-gates,MEDIUM,quality_correctness,Guide-only skill has very little content (19 lines)
+evidence-quality-gates,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+evidence-quality-gates,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+incident-command,LOW,quality_correctness,No examples provided
+incident-command,LOW,quality_discoverability,No '## Purpose' section
+incident-command,LOW,quality_reliability,No limitations documented
+incident-command,LOW,quality_reliability,No prerequisites/requirements documented
+incident-command,LOW,quality_reliability,No troubleshooting section documented
+incident-command,MEDIUM,quality_correctness,Guide-only skill has very little content (19 lines)
+incident-command,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+incident-command,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+maintenance-support,LOW,quality_correctness,No examples provided
+maintenance-support,LOW,quality_discoverability,"Description very long (289 chars, recommend 50-150)"
+maintenance-support,LOW,quality_discoverability,No '## Purpose' section
+maintenance-support,LOW,quality_reliability,No limitations documented
+maintenance-support,LOW,quality_reliability,No prerequisites/requirements documented
+maintenance-support,LOW,quality_reliability,No troubleshooting section documented
+maintenance-support,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+maintenance-support,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+master-orchestration,LOW,quality_correctness,No examples provided
+master-orchestration,LOW,quality_discoverability,No '## Purpose' section
+master-orchestration,LOW,quality_reliability,No limitations documented
+master-orchestration,LOW,quality_reliability,No prerequisites/requirements documented
+master-orchestration,LOW,quality_reliability,No troubleshooting section documented
+master-orchestration,MEDIUM,quality_correctness,Guide-only skill has very little content (19 lines)
+master-orchestration,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+master-orchestration,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+project-agile-management,LOW,quality_correctness,No examples provided
+project-agile-management,LOW,quality_discoverability,Broad description without negative triggers may cause over-triggering
+project-agile-management,LOW,quality_discoverability,"Description very long (310 chars, recommend 50-150)"
+project-agile-management,LOW,quality_discoverability,No '## Purpose' section
+project-agile-management,LOW,quality_reliability,No limitations documented
+project-agile-management,LOW,quality_reliability,No prerequisites/requirements documented
+project-agile-management,LOW,quality_reliability,No troubleshooting section documented
+project-agile-management,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+project-agile-management,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+quality-assurance,LOW,quality_correctness,No examples provided
+quality-assurance,LOW,quality_discoverability,"Description very long (289 chars, recommend 50-150)"
+quality-assurance,LOW,quality_discoverability,No '## Purpose' section
+quality-assurance,LOW,quality_reliability,No limitations documented
+quality-assurance,LOW,quality_reliability,No prerequisites/requirements documented
+quality-assurance,LOW,quality_reliability,No troubleshooting section documented
+quality-assurance,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+quality-assurance,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+release-deployment,LOW,quality_correctness,No examples provided
+release-deployment,LOW,quality_discoverability,"Description very long (300 chars, recommend 50-150)"
+release-deployment,LOW,quality_discoverability,No '## Purpose' section
+release-deployment,LOW,quality_reliability,No limitations documented
+release-deployment,LOW,quality_reliability,No prerequisites/requirements documented
+release-deployment,LOW,quality_reliability,No troubleshooting section documented
+release-deployment,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+release-deployment,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+requirements-design,LOW,quality_correctness,No examples provided
+requirements-design,LOW,quality_discoverability,"Description very long (326 chars, recommend 50-150)"
+requirements-design,LOW,quality_discoverability,No '## Purpose' section
+requirements-design,LOW,quality_reliability,No limitations documented
+requirements-design,LOW,quality_reliability,No prerequisites/requirements documented
+requirements-design,LOW,quality_reliability,No troubleshooting section documented
+requirements-design,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+requirements-design,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+secure-change-control,LOW,quality_correctness,No examples provided
+secure-change-control,LOW,quality_discoverability,No '## Purpose' section
+secure-change-control,LOW,quality_reliability,No limitations documented
+secure-change-control,LOW,quality_reliability,No prerequisites/requirements documented
+secure-change-control,LOW,quality_reliability,No troubleshooting section documented
+secure-change-control,MEDIUM,quality_correctness,Guide-only skill has very little content (19 lines)
+secure-change-control,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+secure-change-control,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+software-implementation,LOW,quality_correctness,No examples provided
+software-implementation,LOW,quality_discoverability,Broad description without negative triggers may cause over-triggering
+software-implementation,LOW,quality_discoverability,"Description very long (349 chars, recommend 50-150)"
+software-implementation,LOW,quality_discoverability,No '## Purpose' section
+software-implementation,LOW,quality_reliability,No limitations documented
+software-implementation,LOW,quality_reliability,No prerequisites/requirements documented
+software-implementation,LOW,quality_reliability,No troubleshooting section documented
+software-implementation,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+software-implementation,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+sre-observability,LOW,quality_correctness,No examples provided
+sre-observability,LOW,quality_discoverability,"Description very long (307 chars, recommend 50-150)"
+sre-observability,LOW,quality_discoverability,No '## Purpose' section
+sre-observability,LOW,quality_reliability,No limitations documented
+sre-observability,LOW,quality_reliability,No prerequisites/requirements documented
+sre-observability,LOW,quality_reliability,No troubleshooting section documented
+sre-observability,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+sre-observability,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'
+technical-architecture,LOW,quality_correctness,No examples provided
+technical-architecture,LOW,quality_discoverability,Broad description without negative triggers may cause over-triggering
+technical-architecture,LOW,quality_discoverability,"Description very long (338 chars, recommend 50-150)"
+technical-architecture,LOW,quality_discoverability,No '## Purpose' section
+technical-architecture,LOW,quality_reliability,No limitations documented
+technical-architecture,LOW,quality_reliability,No prerequisites/requirements documented
+technical-architecture,LOW,quality_reliability,No troubleshooting section documented
+technical-architecture,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.author'
+technical-architecture,MEDIUM,quality_correctness,SKILL_SPEC recommended field missing: 'metadata.tags'

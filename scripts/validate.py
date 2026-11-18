@@ -282,9 +282,13 @@ for _s in st:
         errors.append(f"stage {_s['stage_id']}: marked complete without authored content")
 _procs = {i: " ".join(c["procedure"]) for i, c in _content_files.items()}
 import difflib as _dl
+from semantic_quality import may_be_similar as _maybe, shingles as _shingles
+_psh = {i: _shingles(p_) for i, p_ in _procs.items()}
 for _a in sorted(_procs):
     for _b in sorted(_procs):
-        if _a < _b and _dl.SequenceMatcher(None, _procs[_a], _procs[_b], autojunk=False).ratio() > 0.70:
+        if _a >= _b or not _maybe(_procs[_a], _procs[_b], 0.70, _psh[_a], _psh[_b]):
+            continue
+        if _dl.SequenceMatcher(None, _procs[_a], _procs[_b], autojunk=False).ratio() > 0.70:
             errors.append(f"stages {_a} and {_b}: procedures are more than 70% similar")
 
 # skill distinctness and illustrative-evidence labelling (Phase 5)
@@ -317,6 +321,60 @@ for item in agents:
     rs_ = item["raci_summary"]
     if not (rs_["accountable"] or rs_["responsible"]):
         errors.append(f"{item['agent_id']}: owns no stage (decide assign/merge/remove in ROLE_DECISIONS.md)")
+
+# skill documentation (roadmap phase A and B): authored content, metadata, boundaries, graph and unique ownership
+import skill_graph as _sg
+_sc = registry_io.load_skill_content(R)
+_skill_ids = {x["skill_id"] for x in skills}
+for _sid in sorted(_skill_ids - set(_sc)):
+    errors.append(f"skill {_sid}: registry/skill-content/{_sid}.json is missing")
+for _sid in sorted(set(_sc) - _skill_ids):
+    errors.append(f"registry/skill-content/{_sid}.json: no such skill")
+if jsonschema:
+    _scv = jsonschema.Draft202012Validator(json.loads((R / "registry" / "schemas" / "skill-content.schema.json").read_text(encoding="utf-8")))
+    for _sid, _c in _sc.items():
+        for _err in _scv.iter_errors(_c):
+            errors.append(f"skill-content {_sid}: {'/'.join(str(x) for x in _err.absolute_path) or '(record)'}: {_err.message[:140]}")
+for _sid, _c in _sc.items():
+    _d = _c.get("description", "")
+    if "use when" not in _d.lower() or "do not use" not in _d.lower():
+        errors.append(f"skill-content {_sid}: description must say 'Use when' and 'Do NOT use'")
+    if _c.get("skill_id") != _sid:
+        errors.append(f"skill-content {_sid}: skill_id does not match file")
+    for _h in _c.get("handoffs", []):
+        if _h["skill"] not in _skill_ids:
+            errors.append(f"skill-content {_sid}: handoff to unknown skill {_h['skill']}")
+        if _h["skill"] == _sid:
+            errors.append(f"skill-content {_sid}: handoff to itself")
+    if any(x["skill_id"] == _sid and x.get("cross_cutting") for x in skills) and len(_c.get("examples", [])) < 3:
+        errors.append(f"skill-content {_sid}: cross-cutting skills need at least 3 examples")
+    for _e in _c.get("examples", []):
+        if len(set(_e.values())) != len(_e):
+            errors.append(f"skill-content {_sid}: an example repeats the same text in two fields")
+if all(h["skill"] in _skill_ids for c in _sc.values() for h in c["handoffs"]):
+    _cyc = _sg.forward_cycle(_sc)
+    if _cyc:
+        errors.append("skill handoffs form a forward cycle (mark the closing edge feedback: true if it is a rework loop): " + " -> ".join(_cyc))
+for _o, _who in _sg.duplicate_responsibilities(_sc).items():
+    errors.append(f"responsibility '{_o}' is owned by more than one skill: {', '.join(sorted(_who))}")
+_REQ = ("Purpose", "When to Use", "When NOT to Use", "Prerequisites and Requirements", "Inputs and Outputs", "Procedure", "Decision Rules",
+        "Quality Gates", "Examples", "Limitations", "Troubleshooting", "Handoffs")
+for _sk in skills:
+    _sid = _sk["skill_id"]
+    if _sid not in _sc:
+        continue
+    _txt = (R / _sk["path"]).read_text(encoding="utf-8")
+    for _sec in _REQ:
+        if f"\n## {_sec}\n" not in _txt:
+            errors.append(f"{_sid}: SKILL.md is missing section '{_sec}' (regenerate with make build)")
+    _heads = re.findall(r"(?m)^#{2,3} (.+)$", _txt)
+    for _hd in {h for h in _heads if _heads.count(h) > 1}:
+        errors.append(f"{_sid}: duplicate heading '{_hd}'")
+    _fm = re.match(r"---\n(.*?)\n---\n", _txt, re.S).group(1)
+    if f"  author: {_sc[_sid]['author']}" not in _fm or "  tags: [" not in _fm or "  version:" not in _fm:
+        errors.append(f"{_sid}: frontmatter must carry metadata.author, metadata.version and metadata.tags")
+    if "```" not in _txt:
+        errors.append(f"{_sid}: SKILL.md has no example code block")
 
 # credential heuristic
 for p in R.rglob('*'):

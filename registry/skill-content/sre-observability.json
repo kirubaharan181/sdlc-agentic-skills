@@ -1,0 +1,143 @@
+{
+  "skill_id": "sre-observability",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Designs monitoring, SLOs, alerts and incident analysis. Use when making a service observable or reliable. Do NOT use for command of live incidents.",
+  "tags": [
+    "sre",
+    "observability",
+    "slo",
+    "incident-analysis"
+  ],
+  "keywords": [
+    "monitoring",
+    "logging",
+    "tracing",
+    "metrics",
+    "slo",
+    "alerting",
+    "uptime",
+    "capacity",
+    "root cause",
+    "postmortem",
+    "observability",
+    "error budget"
+  ],
+  "purpose": "Makes service health visible and improves reliability: application and infrastructure monitoring, logs, metrics, traces, alerting, SLOs, capacity, incident detection and response practice, root cause analysis, postmortems and reliability improvement. It owns stages 153-166.",
+  "when_to_use": [
+    "A service needs monitoring, logging, tracing or alerts.",
+    "SLOs and error budgets need defining or reviewing.",
+    "A root cause analysis or postmortem is needed after an incident."
+  ],
+  "when_not_to_use": [
+    "Commanding an active severe incident: use incident-command.",
+    "Provisioning infrastructure: use cloud-hosting-operations.",
+    "Fixing the bug: use maintenance-support or software-implementation."
+  ],
+  "prerequisites": [
+    "Key user journeys and the service owner.",
+    "Access to telemetry sources or a plan to add them.",
+    "An on-call and escalation path.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "service and key journeys",
+      "current telemetry"
+    ],
+    "optional": [
+      "incident history",
+      "SLO targets",
+      "traffic forecasts"
+    ]
+  },
+  "outputs": [
+    "indicators and objectives per journey",
+    "dashboards and alerts linked to runbooks",
+    "capacity plan",
+    "root cause analysis and postmortem with actions"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Alert needs no action",
+      "action": "Remove or demote it to a ticket."
+    },
+    {
+      "situation": "Metrics green but users report failures",
+      "action": "Add synthetic and real-user checks."
+    },
+    {
+      "situation": "Postmortem assigns blame to a person",
+      "action": "Rewrite around causes and system fixes."
+    },
+    {
+      "situation": "Telemetry contains sensitive data",
+      "action": "Mask and fix the instrumentation."
+    }
+  ],
+  "quality_gates": [
+    "Objectives exist for key journeys",
+    "Pages map to user impact or fast budget burn",
+    "Telemetry carries the release version",
+    "Postmortem actions have owners and dates"
+  ],
+  "examples": [
+    {
+      "title": "Define an SLO",
+      "request": "Set an objective for checkout.",
+      "context": "Checkout success ratio is measured; no objective exists.",
+      "behavior": "Propose 99.5 percent success over 30 days, compute the error budget, and define burn-rate alerts.",
+      "output": "SLO document with indicator, objective, budget and alert rules.",
+      "acceptance": "Indicator is measurable from existing telemetry."
+    },
+    {
+      "title": "Write a postmortem",
+      "request": "Write the postmortem for the 40-minute checkout outage.",
+      "context": "A release raised error rate; rollback restored service.",
+      "behavior": "Build the timeline from logs, identify contributing causes, and list owned actions.",
+      "output": "Blameless postmortem with timeline, causes, impact and four dated actions.",
+      "acceptance": "Each action has an owner and a date."
+    }
+  ],
+  "limitations": [
+    "Cannot see telemetry it is not given.",
+    "Objectives need business agreement and are not set unilaterally.",
+    "Root causes found from logs may be incomplete if data is missing."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Alert fatigue",
+      "cause": "Too many low-value pages",
+      "resolution": "Review each alert monthly and remove or tune."
+    },
+    {
+      "error": "Traces break at a queue",
+      "cause": "Context not propagated",
+      "resolution": "Propagate trace context in message headers."
+    },
+    {
+      "error": "Dashboards disagree",
+      "cause": "Different definitions",
+      "resolution": "Standardize indicator definitions."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "incident-command",
+      "artifact": "severity and detection data when an incident is declared"
+    },
+    {
+      "skill": "maintenance-support",
+      "artifact": "reliability and fix backlog"
+    },
+    {
+      "skill": "enterprise-governance",
+      "artifact": "SLO and incident evidence for review"
+    }
+  ],
+  "owns": [
+    "monitoring-and-slo-design",
+    "incident-detection-and-rca",
+    "capacity-planning"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "note": "Risk tiers for changes and approvals. Defaults to adapt: the timings are targets for an organization to set, not guarantees. Every approval-gated stage has exactly one tier in stage_tiers.",
+  "tiers": [
+    {"id": "R0", "name": "Informational", "criteria": ["Documents, analysis or code on a branch", "No shared environment is changed"], "approval": "none", "independent_review": false, "evidence": "self-check recorded", "rollback": "not applicable", "escalate_after_hours": null},
+    {"id": "R1", "name": "Low", "criteria": ["Reversible change in a non-production environment", "No customer data or access change"], "approval": "peer review", "independent_review": true, "evidence": "tests or checks recorded", "rollback": "documented", "escalate_after_hours": 48},
+    {"id": "R2", "name": "Moderate", "criteria": ["Reaches production or accepts delivery risk but is reversible and tested", "No change to access, secrets, data deletion or security controls"], "approval": "named owner of the affected service or decision", "independent_review": true, "evidence": "test evidence for the exact build", "rollback": "tested", "escalate_after_hours": 24},
+    {"id": "R3", "name": "High", "criteria": ["Changes production data, schema, access, secrets, network policy or a security control", "Commits money or legal obligation", "Affects many customers if it fails"], "approval": "named accountable human plus an independent verifier", "independent_review": true, "evidence": "independently verified evidence for the exact artifact", "rollback": "tested and rehearsed", "escalate_after_hours": 8},
+    {"id": "R4", "name": "Critical", "criteria": ["Irreversible or destructive action", "Active attack testing, full failover or product retirement", "Disables a security control or accepts residual risk for the organization"], "approval": "named executive risk owner plus the security or compliance owner", "independent_review": true, "evidence": "independently verified evidence and a written risk acceptance", "rollback": "rehearsed, or a written statement that none is possible and why", "escalate_after_hours": 4}
+  ],
+  "stage_tiers": {
+    "9": "R3", "10": "R3", "44": "R3", "50": "R3", "75": "R2", "95": "R2", "104": "R4", "108": "R3", "110": "R3",
+    "117": "R3", "121": "R3", "129": "R3", "132": "R3", "133": "R3", "148": "R4", "151": "R2", "173": "R3", "180": "R4", "184": "R3"
+  }
+}

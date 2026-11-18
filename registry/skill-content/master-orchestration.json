@@ -1,0 +1,168 @@
+{
+  "skill_id": "master-orchestration",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Routes multi-skill requests to the right workflow and consolidates results. Use when work spans several stages. Do NOT use for single-skill tasks.",
+  "tags": [
+    "orchestration",
+    "routing",
+    "workflow",
+    "handoff"
+  ],
+  "keywords": [
+    "end to end",
+    "several teams",
+    "ship safely",
+    "which skill",
+    "multi-stage",
+    "workflow",
+    "coordinate",
+    "orchestrate",
+    "full lifecycle",
+    "plan across",
+    "route",
+    "consolidate"
+  ],
+  "purpose": "Acts as the entry point for work that spans several skills. It chooses the workflow and the specialists, passes context between them in order, resolves or escalates conflicts, tracks progress and approval boundaries, and consolidates one result that lists what is done and what is still undecided. It routes; it does not do the specialist work or approve anything.",
+  "when_to_use": [
+    "A request spans several stages or skills, such as 'ship this feature safely'.",
+    "It is unclear which skill or workflow applies.",
+    "Outputs from several specialists must be combined into one answer."
+  ],
+  "when_not_to_use": [
+    "The request clearly fits one skill: invoke that skill directly.",
+    "An active severe incident: hand to incident-command immediately.",
+    "Approving a change or release: only named humans approve."
+  ],
+  "prerequisites": [
+    "The user's request in their words.",
+    "Access to the workflow and skill registries in this repository.",
+    "A list of constraints the user stated, to preserve them.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "user request",
+      "stated constraints"
+    ],
+    "optional": [
+      "repository context",
+      "existing evidence",
+      "deadlines",
+      "named approvers"
+    ]
+  },
+  "outputs": [
+    "selected workflow and ordered skill list with reasons",
+    "handoff records between skills",
+    "progress and approval status",
+    "consolidated result with unresolved decisions"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Request names a workflow",
+      "action": "Use it if it fits; otherwise explain the mismatch."
+    },
+    {
+      "situation": "Two skills claim the same task",
+      "action": "Use the owner in the responsibility matrix; log the overlap."
+    },
+    {
+      "situation": "Required context is missing",
+      "action": "Ask the single most blocking question; continue with unaffected work."
+    },
+    {
+      "situation": "A step needs approval",
+      "action": "Stop at the gate, record NEEDS_HUMAN_APPROVAL with the named approver, and continue only independent steps."
+    },
+    {
+      "situation": "Specialist outputs conflict",
+      "action": "Apply the conflict resolution rules and escalate to the accountable human if unresolved."
+    },
+    {
+      "situation": "Request is an active incident",
+      "action": "Hand to incident-command before anything else."
+    }
+  ],
+  "quality_gates": [
+    "Each selected skill has a stated reason",
+    "No unrelated skill is invoked",
+    "Handoffs name artifact, revision and receiver",
+    "Unresolved decisions and approvals are listed in the result"
+  ],
+  "examples": [
+    {
+      "title": "Route a feature request",
+      "request": "Ship the new refund feature safely.",
+      "context": "Requirements exist; code is not written.",
+      "behavior": "Select the feature workflow, order skills requirements-design, technical-architecture, software-implementation, code-review-quality, quality-assurance, application-security, release-deployment, and set approval gates.",
+      "output": "Plan table with skill, input, output, owner and gate for each step, plus open decisions.",
+      "acceptance": "Every step has an owner and the production step shows a named approver."
+    },
+    {
+      "title": "Resolve a conflict",
+      "request": "QA recommends release; security asks to hold.",
+      "context": "Open high-severity finding.",
+      "behavior": "Apply the rule that an open high security finding blocks release unless a named risk owner accepts it, and escalate.",
+      "output": "Decision request to the accountable human with both positions and evidence.",
+      "acceptance": "The conflict is escalated, not silently resolved."
+    },
+    {
+      "title": "Handle missing context",
+      "request": "Fix our deployment.",
+      "context": "No error, system or goal given.",
+      "behavior": "Ask what failed, where and what outcome is expected; do not route yet.",
+      "output": "One clarifying question with options.",
+      "acceptance": "No specialist is invoked before the question is answered."
+    }
+  ],
+  "limitations": [
+    "Routes by the registries and the request; it cannot know about work not described.",
+    "Does not approve, deploy or override specialists.",
+    "Selection is advisory and should be confirmed when the request is ambiguous."
+  ],
+  "troubleshooting": [
+    {
+      "error": "No workflow fits",
+      "cause": "Request is novel",
+      "resolution": "Compose the closest skills in dependency order and say that no workflow matched."
+    },
+    {
+      "error": "Loop between two skills",
+      "cause": "Feedback not bounded",
+      "resolution": "Limit iterations, record the cause and escalate."
+    },
+    {
+      "error": "Specialist output lacks evidence",
+      "cause": "Report without proof",
+      "resolution": "Return it as INCONCLUSIVE and request evidence."
+    },
+    {
+      "error": "Handoff not acknowledged",
+      "cause": "Receiver did not accept",
+      "resolution": "Mark BLOCKED and notify the named receiver."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "incident-command",
+      "artifact": "active incident declaration with severity"
+    },
+    {
+      "skill": "evidence-quality-gates",
+      "artifact": "evidence set for evaluation"
+    },
+    {
+      "skill": "secure-change-control",
+      "artifact": "change requests needing classification"
+    },
+    {
+      "skill": "definition-of-done",
+      "artifact": "task completion check"
+    }
+  ],
+  "owns": [
+    "request-routing-and-workflow-selection",
+    "cross-skill-handoff-tracking"
+  ]
+}

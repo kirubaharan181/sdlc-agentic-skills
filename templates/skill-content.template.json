@@ -1,0 +1,21 @@
+{
+  "skill_id": "<existing skill id>",
+  "version": "1.0.0",
+  "author": "<verified owner or team>",
+  "description": "<50-150 characters. What it does. Use when ... Do NOT use for ...>",
+  "tags": ["<1-5 lowercase-hyphen tags>"],
+  "keywords": ["<at least 8 words or phrases a request would contain>"],
+  "purpose": "<why the skill exists, what problem it solves, what outcomes it owns>",
+  "when_to_use": ["<situation>", "<situation>"],
+  "when_not_to_use": ["<situation: use <other skill> instead>", "<situation>"],
+  "prerequisites": ["<required context or access>", "<state explicitly if no external dependency is needed>"],
+  "inputs": {"required": ["<input>"], "optional": ["<input>"]},
+  "outputs": ["<deliverable>", "<deliverable>"],
+  "decision_rules": [{"situation": "<condition>", "action": "<what the agent does>"}],
+  "quality_gates": ["<checkable gate>", "<checkable gate>", "<checkable gate>"],
+  "examples": [{"title": "<title>", "request": "<user request>", "context": "<relevant context>", "behavior": "<expected agent behavior>", "output": "<expected output>", "acceptance": "<how to tell it worked>"}],
+  "limitations": ["<what it cannot guarantee>", "<what needs human approval>", "<unsupported situation>"],
+  "troubleshooting": [{"error": "<symptom>", "cause": "<likely cause>", "resolution": "<what to do>"}],
+  "handoffs": [{"skill": "<receiving skill id>", "artifact": "<what is handed over>"}],
+  "owns": ["<unique-responsibility-id>"]
+}
