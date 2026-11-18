@@ -7,6 +7,7 @@ skills/_shared/CORE_PROCEDURE.md           rules shared by every skill, stated o
 """
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 CORE_PROCEDURE = """# Core procedure shared by every skill
@@ -52,26 +53,32 @@ def description(focus: str, stages: list[dict]) -> str:
     return text[:1024]
 
 
-def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict], skill_dir: Path) -> tuple[str, str]:
+def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict], skill_dir: Path, content: dict | None = None, received: list[tuple[str, str]] | None = None) -> tuple[str, str]:
     title, focus, steps, tools = profile[0], profile[1], profile[2], profile[3]
     related_agents = sorted(a["agent_id"] for a in agents if sid in a["required_skills"])
     wfs = sorted({w for s in stages for w in s["workflow_ids"]})
-    desc = description(focus, stages)
+    desc = content["description"] if content else description(focus, stages)
     rows = "\n".join(f"| {s['stage_id']} | {s['stage_name']} | {s['status']} | {s['primary_role']} |" for s in stages)
     has_examples = (skill_dir / "examples").is_dir()
-    parts = [
-        f"---\nname: {sid}\ndescription: {desc}\n---",
-        f"# {title}",
-        focus,
+    parts = [_frontmatter(sid, desc, content), f"# {title}"]
+    if content:
+        parts += _authored_sections(content, focus)
+    else:
+        parts.append(focus)
+    parts += [
         "## Procedure\n" + "\n".join(f"{i + 1}. {x}" for i, x in enumerate(steps)),
         "Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).",
-        "## Tools\n" + "\n".join(f"- {x}" for x in tools),
     ]
+    if content:
+        parts += _authored_after_procedure(content)
+    parts.append("## Tools\n" + "\n".join(f"- {x}" for x in tools))
     if stages:
         parts.append("## Stages covered\n| Stage | Name | Status | Accountable role |\n|---|---|---|---|\n" + rows +
                      "\n\nPer-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).")
     else:
         parts.append("## Stages covered\nNone. This is a cross-cutting skill applied alongside stage skills.")
+    if content:
+        parts.append(_handoffs(content, received or []))
     tail = []
     if has_examples:
         tail.append("Examples: [examples/](examples/) (illustrative only).")
@@ -79,6 +86,8 @@ def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict
         tail.append("Workflows: " + ", ".join(wfs) + ".")
     if related_agents:
         tail.append("Roles: " + ", ".join(related_agents) + ".")
+    if content:
+        tail.append("Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).")
     if tail:
         parts.append("## Related\n" + "\n".join(f"- {x}" for x in tail))
     skill_md = "\n\n".join(parts) + "\n"
@@ -101,6 +110,60 @@ def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict
             "", f"Gate: {s['quality_gate']}. Approval: " + (f"{s['approver']} ({s.get('approval_condition', 'always')})" if s["approval_required"] else "none required"), "",
         ]
     return skill_md, "\n".join(ref) + "\n"
+
+
+def _frontmatter(sid: str, desc: str, content: dict | None) -> str:
+    if not content:
+        return f"---\nname: {sid}\ndescription: {desc}\n---"
+    tags = ", ".join(json.dumps(x) for x in content["tags"])
+    return (f"---\nname: {sid}\ndescription: {desc}\nmetadata:\n  author: {content['author']}\n"
+            f"  version: \"{content['version']}\"\n  tags: [{tags}]\n---")
+
+
+def _bullets(items: list[str]) -> str:
+    return "\n".join(f"- {x}" for x in items)
+
+
+def _cell(s: str) -> str:
+    return s.replace("|", "\\|")
+
+
+def _authored_sections(c: dict, focus: str) -> list[str]:
+    inp = c["inputs"]
+    return [
+        "## Purpose\n" + c["purpose"],
+        "## When to Use\n" + _bullets(c["when_to_use"]),
+        "## When NOT to Use\n" + _bullets(c["when_not_to_use"]),
+        "## Prerequisites and Requirements\n" + _bullets(c["prerequisites"]),
+        "## Inputs and Outputs\nRequired inputs:\n" + _bullets(inp["required"]) +
+        ("\n\nOptional inputs:\n" + _bullets(inp["optional"]) if inp.get("optional") else "") +
+        "\n\nOutputs and deliverables:\n" + _bullets(c["outputs"]),
+    ]
+
+
+def _authored_after_procedure(c: dict) -> list[str]:
+    rules = "\n".join(f"| {_cell(r['situation'])} | {_cell(r['action'])} |" for r in c["decision_rules"])
+    ex = []
+    for i, e in enumerate(c["examples"], 1):
+        ex.append(
+            f"### Example {i}: {e['title']}\n```text\nRequest: {e['request']}\nContext: {e['context']}\n"
+            f"Agent behavior: {e['behavior']}\nOutput: {e['output']}\nAcceptance: {e['acceptance']}\n```")
+    trouble = "\n".join(f"| {_cell(r['error'])} | {_cell(r['cause'])} | {_cell(r['resolution'])} |" for r in c["troubleshooting"])
+    return [
+        "## Decision Rules\n| Situation | Action |\n|---|---|\n" + rules,
+        "## Quality Gates\n" + "\n".join(f"- [ ] {x}" for x in c["quality_gates"]),
+        "## Examples\nIllustrative only: these show expected behavior and were not executed against a real project.\n\n" + "\n\n".join(ex),
+        "## Limitations\n" + _bullets(c["limitations"]),
+        "## Troubleshooting\n| Error | Cause | Resolution |\n|---|---|---|\n" + trouble,
+    ]
+
+
+def _handoffs(c: dict, received: list[tuple[str, str]]) -> str:
+    out = "## Handoffs\nHands to:\n" + "\n".join(f"- `{h['skill']}`: {h['artifact']}" for h in c["handoffs"])
+    if received:
+        out += "\n\nReceives from:\n" + "\n".join(f"- `{s}`: {a}" for s, a in received)
+    out += "\n\nContract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md)."
+    return out
 
 
 def render_evidence_example(sid: str, stages: list[dict]) -> str | None:

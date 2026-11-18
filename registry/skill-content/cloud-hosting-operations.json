@@ -1,0 +1,144 @@
+{
+  "skill_id": "cloud-hosting-operations",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Operates cloud compute, storage, network, DR and cost. Use when managing hosted infrastructure. Do NOT use for pipelines or app changes.",
+  "tags": [
+    "cloud",
+    "infrastructure",
+    "disaster-recovery",
+    "finops"
+  ],
+  "keywords": [
+    "cloud",
+    "backup",
+    "disaster recovery",
+    "high availability",
+    "autoscaling",
+    "cost optimization",
+    "storage",
+    "compute",
+    "certificate",
+    "network operations",
+    "failover",
+    "finops"
+  ],
+  "purpose": "Keeps hosted infrastructure available, recoverable and cost-aware: compute, databases, storage, DNS, certificates, networks, backups, disaster recovery, high availability, scaling, cost and maintenance. It owns stages 140-152.",
+  "when_to_use": [
+    "Cloud resources need managing, patching or right-sizing.",
+    "Backups, disaster recovery or high availability must be designed or tested.",
+    "Certificates, DNS or network operations need controlled change."
+  ],
+  "when_not_to_use": [
+    "Building pipelines: use devops-platform.",
+    "Monitoring and alert design: use sre-observability.",
+    "Approving changes: use secure-change-control."
+  ],
+  "prerequisites": [
+    "Cloud account access at the least privilege needed.",
+    "Resource inventory and ownership tags.",
+    "Recovery objectives (RPO and RTO).",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "resource inventory",
+      "recovery objectives"
+    ],
+    "optional": [
+      "usage and cost data",
+      "incident history",
+      "change calendar"
+    ]
+  },
+  "outputs": [
+    "right-sizing and idle-resource reports",
+    "tested backup and restore records",
+    "disaster recovery and failover test results",
+    "certificate and DNS inventories with expiry",
+    "cost reports by owner"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Resource has no owner tag",
+      "action": "Report and assign before any change."
+    },
+    {
+      "situation": "Backup never restored",
+      "action": "Schedule a restore test before relying on it."
+    },
+    {
+      "situation": "Commitment purchase proposed",
+      "action": "Size from baseline usage and require the budget owner's approval."
+    },
+    {
+      "situation": "Destructive change requested",
+      "action": "Require human approval under the approval policy."
+    }
+  ],
+  "quality_gates": [
+    "Restores were tested against recovery objectives",
+    "Every resource has an owner",
+    "Certificates have expiry monitoring",
+    "Cost actions have estimates and owners"
+  ],
+  "examples": [
+    {
+      "title": "Test a restore",
+      "request": "Verify we can restore the orders database.",
+      "context": "RPO 15 minutes, RTO 60 minutes.",
+      "behavior": "Restore the latest backup to a scratch instance, run row-count checks, and time the process.",
+      "output": "Restore record: completed in 38 minutes, counts match source.",
+      "acceptance": "Measured time and loss are compared with the objectives."
+    },
+    {
+      "title": "Find idle spend",
+      "request": "Reduce non-production cost.",
+      "context": "Environments run around the clock.",
+      "behavior": "List idle resources with owners, propose schedules, and estimate savings with assumptions.",
+      "output": "Action list with owner confirmation steps and estimated saving.",
+      "acceptance": "No resource is stopped without owner confirmation."
+    }
+  ],
+  "limitations": [
+    "Cannot act on accounts it cannot reach; it lists the commands to run.",
+    "Cost figures depend on provider prices and usage that change.",
+    "Destructive and production actions need human approval."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Cannot list resources",
+      "cause": "Insufficient permissions",
+      "resolution": "Request read access; do not use broader credentials."
+    },
+    {
+      "error": "Restore fails",
+      "cause": "Backup corrupt or incompatible",
+      "resolution": "Treat as an incident risk, fix the backup process and retest."
+    },
+    {
+      "error": "Certificate expiry missed",
+      "cause": "No monitoring",
+      "resolution": "Replace now and add staged expiry alerts."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "sre-observability",
+      "artifact": "infrastructure telemetry and capacity data"
+    },
+    {
+      "skill": "maintenance-support",
+      "artifact": "infrastructure maintenance windows"
+    },
+    {
+      "skill": "enterprise-governance",
+      "artifact": "cost and resource evidence"
+    }
+  ],
+  "owns": [
+    "cloud-resource-operations",
+    "backup-and-disaster-recovery",
+    "cloud-cost-optimization"
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "skill_id": "quality-assurance",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Plans and runs risk-based testing and defect handling. Use when verifying behavior before release. Do NOT use for fixing defects or security scans.",
+  "tags": [
+    "testing",
+    "qa",
+    "defects",
+    "regression"
+  ],
+  "keywords": [
+    "test plan",
+    "test strategy",
+    "regression",
+    "unit test",
+    "integration test",
+    "e2e",
+    "smoke test",
+    "load test",
+    "performance test",
+    "defect",
+    "test sign-off",
+    "cross-browser"
+  ],
+  "purpose": "Gives release decision makers honest, reproducible evidence of quality: test strategy and plans, test execution at every level, performance testing, defect management and sign-off. It owns stages 77-97.",
+  "when_to_use": [
+    "A test strategy or plan is needed for a release.",
+    "Functional, regression, performance or compatibility testing must be run and reported.",
+    "Defects need triage and a sign-off statement."
+  ],
+  "when_not_to_use": [
+    "Fixing defects: use software-implementation.",
+    "Vulnerability scanning and threat modeling: use application-security.",
+    "Approving release: use release-deployment."
+  ],
+  "prerequisites": [
+    "Testable acceptance criteria and a risk list.",
+    "A test environment with test data and a known build.",
+    "Access to the build identifier under test.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "acceptance criteria",
+      "build identifier",
+      "test environment"
+    ],
+    "optional": [
+      "risk register",
+      "past defect data",
+      "usage analytics"
+    ]
+  },
+  "outputs": [
+    "test plan with measurable exit criteria",
+    "version-pinned test reports",
+    "defect records with evidence",
+    "sign-off statement with untested areas"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Results are from a different build",
+      "action": "Rerun on the release candidate before sign-off."
+    },
+    {
+      "situation": "A test is flaky",
+      "action": "Fix or quarantine it; never report it as PASS."
+    },
+    {
+      "situation": "Exit criterion not met",
+      "action": "Report not met; a waiver needs a named owner and expiry."
+    },
+    {
+      "situation": "High-risk area untested",
+      "action": "List it explicitly in the sign-off."
+    }
+  ],
+  "quality_gates": [
+    "Exit criteria are measurable and each has a result",
+    "Results name build, environment and data",
+    "Untested areas are listed",
+    "Waivers have an owner"
+  ],
+  "examples": [
+    {
+      "title": "Write exit criteria",
+      "request": "Draft exit criteria for the payments release.",
+      "context": "High-risk flows: refunds and card changes.",
+      "behavior": "Trace each high risk to planned tests and define measurable criteria.",
+      "output": "Exit criteria: no open critical defects, all high-risk flows automated and passing, load test at 1.5 times peak.",
+      "acceptance": "Every high risk maps to at least one test."
+    },
+    {
+      "title": "Report test status",
+      "request": "Summarize test status for sign-off.",
+      "context": "Load test ran at 1.2 times peak against a 1.5 target.",
+      "behavior": "Compare results with each criterion, mark the load criterion not met and list the residual risk.",
+      "output": "Scorecard: 7 of 8 criteria met; recommendation: release with a condition and a retest date.",
+      "acceptance": "Not-met criterion and its owner are stated."
+    }
+  ],
+  "limitations": [
+    "Test results describe only the tested build, data and environment.",
+    "Cannot run tests that require unavailable environments; it records them as BLOCKED.",
+    "Sign-off is a recommendation; a named human decides release."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Environment unavailable",
+      "cause": "Test environment down",
+      "resolution": "Record BLOCKED, do not substitute results from another environment."
+    },
+    {
+      "error": "Intermittent failure",
+      "cause": "Race or shared data",
+      "resolution": "Isolate data and rerun with the recorded reason."
+    },
+    {
+      "error": "Acceptance criteria untestable",
+      "cause": "Vague wording",
+      "resolution": "Return them to requirements-design."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "release-deployment",
+      "artifact": "test sign-off with exit criteria scorecard"
+    },
+    {
+      "skill": "software-implementation",
+      "artifact": "defect reports with evidence",
+      "feedback": true
+    },
+    {
+      "skill": "enterprise-governance",
+      "artifact": "test evidence for quality audits"
+    }
+  ],
+  "owns": [
+    "test-strategy-and-execution",
+    "defect-management",
+    "test-signoff"
+  ]
+}

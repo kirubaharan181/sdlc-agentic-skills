@@ -16,6 +16,16 @@ versioning: [Semantic Versioning](https://semver.org/).
 - **Tests and CI:** 35+ pytest tests (unit, golden, scenarios, broken-fixture); CI blocks on duplicates, references, orphans, links.
 - **Adoption:** `make demo`, quickstart, evals harness (no model results yet), community files, issue and PR templates.
 
+### Roadmap: skill quality and governance (skills 1.1.0)
+- **Skills:** all 20 skills restructured from `registry/skill-content/<skill>.json` (Purpose, When to Use / NOT, Prerequisites, Inputs and Outputs, Decision Rules, Quality Gates, 2-3 examples, Limitations, Troubleshooting, Handoffs); `metadata.author`, `version`, `tags`; descriptions 132-147 characters with "Use when" and "Do not use". Baseline SkillEvaluator average was 87.3; **post-change scores not measured**. Every skill is at version 1.1.0.
+- **Skill intelligence:** `scripts/select_skill.py` (lexical selector), `scripts/skill_graph.py`, generated `docs/architecture/SKILL_SELECTION.md`; acyclic forward handoffs; one owner per responsibility.
+- **Governance:** risk tiers R0-R4 (`registry/risk-tiers.json`), approval and escalation matrix, evidence traceability, decision log, conflict resolution, handoff contract standard, audit readiness, skill versioning (`registry/skill-versions.lock.json`).
+- **Quality tracking:** `reports/skill-quality/` (baseline, history, comparison, remaining findings, scope), `scripts/check_quality_regression.py`.
+- **Agents:** `AGENTS.md`, `docs/agent-guide/CODEX_USAGE.md`, templates for task requests, results, decisions, risk, change and incidents. Codex use is documented, not tested.
+- **Policy files:** full MIT `LICENSE`, `SECURITY.md` (private reporting, scope, no certification claim), `CONTRIBUTING.md` (skill workflow), PR template, CODEOWNERS, Dependabot for GitHub Actions.
+- **CI and Makefile:** new checks for skill versions, quality regression and templates (`make governance`).
+- **Performance:** validator near-duplicate comparison uses a shingle prefilter (about 2 minutes to about 8 seconds on this repository).
+
 ### Changed
 - **Breaking (paths):** registry files renamed from `*.yaml` to `*.json` because they always contained JSON:
   `registry/{SDLC_STAGE,AGENT,SKILL,WORKFLOW}_REGISTRY.json` and `adapters/capability-matrix.json`.

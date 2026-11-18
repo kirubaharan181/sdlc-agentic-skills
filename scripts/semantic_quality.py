@@ -13,6 +13,21 @@ def normalized_content(value: str) -> str:
     return value
 
 
+def shingles(text: str, n: int = 4) -> frozenset:
+    words = text.split()
+    return frozenset(" ".join(words[i:i + n]) for i in range(max(len(words) - n + 1, 1)))
+
+
+def may_be_similar(a: str, b: str, threshold: float, sa: frozenset | None = None, sb: frozenset | None = None) -> bool:
+    """Cheap prefilter. Two texts whose character-level ratio reaches `threshold` share most of their words in
+    order, so their 4-word shingles overlap strongly; a Jaccard under 0.3 * threshold means the exact (slow)
+    ratio cannot plausibly reach the threshold and can be skipped."""
+    sa = sa if sa is not None else shingles(a)
+    sb = sb if sb is not None else shingles(b)
+    union = len(sa | sb)
+    return union == 0 or len(sa & sb) / union >= 0.3 * threshold
+
+
 def similarity(left: str, right: str) -> float:
     a, b = normalized_content(left), normalized_content(right)
     if not a or not b:
@@ -25,6 +40,8 @@ def find_near_duplicates(documents: dict[str, str], threshold: float = 0.88):
     matches = []
     for index, left in enumerate(names):
         for right in names[index + 1:]:
+            if not may_be_similar(normalized_content(documents[left]), normalized_content(documents[right]), threshold):
+                continue
             score = similarity(documents[left], documents[right])
             if score >= threshold:
                 matches.append((left, right, score))

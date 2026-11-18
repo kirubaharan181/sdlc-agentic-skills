@@ -1,0 +1,145 @@
+{
+  "skill_id": "release-deployment",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Plans, approves and verifies releases and deployments. Use when promoting a build to staging or production. Do NOT use for building pipelines.",
+  "tags": [
+    "release",
+    "deployment",
+    "rollback",
+    "change-approval"
+  ],
+  "keywords": [
+    "release",
+    "deploy",
+    "rollout",
+    "rollback",
+    "release notes",
+    "migration",
+    "go live",
+    "staging",
+    "production deployment",
+    "cutover",
+    "load balancer",
+    "dns"
+  ],
+  "purpose": "Controls how a tested build reaches users: release planning and notes, readiness, change approval, staging and production deployment, migrations, DNS, TLS, load balancing, rollback planning, smoke tests and sign-off. It owns stages 126-139 and never treats an agent as the approver of production changes.",
+  "when_to_use": [
+    "A release needs planning, readiness review or notes.",
+    "A build must be deployed to staging or production with verification.",
+    "A migration, rollback or cutover plan is needed."
+  ],
+  "when_not_to_use": [
+    "Creating the pipeline itself: use devops-platform.",
+    "Governing risky production changes in general: use secure-change-control.",
+    "Running day-to-day cloud operations: use cloud-hosting-operations."
+  ],
+  "prerequisites": [
+    "Test and security sign-off for the build under release.",
+    "A named human approver for production.",
+    "A tested rollback path and a change window.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "release candidate identifier",
+      "test and security sign-offs",
+      "rollback plan"
+    ],
+    "optional": [
+      "migration scripts",
+      "release notes draft",
+      "traffic and capacity data"
+    ]
+  },
+  "outputs": [
+    "release plan and readiness record",
+    "release notes",
+    "approval record with a named human",
+    "deployment and smoke test evidence",
+    "deployment sign-off or rollback record"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Sign-off is for a different build",
+      "action": "Stop; require evidence for the candidate."
+    },
+    {
+      "situation": "No tested rollback",
+      "action": "Block production until one is tested."
+    },
+    {
+      "situation": "Migration is not backward compatible",
+      "action": "Split into expand then contract releases."
+    },
+    {
+      "situation": "Smoke test fails",
+      "action": "Roll back by the plan and record the failure."
+    }
+  ],
+  "quality_gates": [
+    "Build identifiers match across evidence",
+    "A named human approved production",
+    "Rollback was tested",
+    "Smoke test result is recorded"
+  ],
+  "examples": [
+    {
+      "title": "Readiness review",
+      "request": "Is release 2.8 ready for production?",
+      "context": "Tests passed on build 2.8.0-rc3; security sign-off references rc2.",
+      "behavior": "Compare build identifiers across evidence, find the mismatch, and mark readiness BLOCKED until the security evidence matches.",
+      "output": "Readiness record with BLOCKED status and the missing evidence.",
+      "acceptance": "No production approval is requested until identifiers match."
+    },
+    {
+      "title": "Plan a safe migration",
+      "request": "Plan the column rename migration.",
+      "context": "Hot table, zero downtime required.",
+      "behavior": "Plan expand and contract: add column, backfill in batches, switch reads, then drop later.",
+      "output": "Two-release migration plan with rollback at each step.",
+      "acceptance": "Each step is reversible and has a verification query."
+    }
+  ],
+  "limitations": [
+    "Cannot deploy or approve on its own authority: production needs a named human.",
+    "Cannot verify live production without access; it records the checks to run.",
+    "Rollback assumes data compatibility has been tested."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Approver unavailable",
+      "cause": "Window at risk",
+      "resolution": "Do not proceed; reschedule or use the documented delegate."
+    },
+    {
+      "error": "Smoke test flaky",
+      "cause": "Unstable check",
+      "resolution": "Fix the check; do not ignore a failure."
+    },
+    {
+      "error": "Release notes incomplete",
+      "cause": "Changes not tracked",
+      "resolution": "Generate from merged changes and have the owner review."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "cloud-hosting-operations",
+      "artifact": "deployed release and environment changes"
+    },
+    {
+      "skill": "sre-observability",
+      "artifact": "release markers and rollback criteria for monitoring"
+    },
+    {
+      "skill": "maintenance-support",
+      "artifact": "release notes and known issues"
+    }
+  ],
+  "owns": [
+    "release-planning-and-approval",
+    "deployment-verification-and-rollback",
+    "migration-and-cutover-planning"
+  ]
+}

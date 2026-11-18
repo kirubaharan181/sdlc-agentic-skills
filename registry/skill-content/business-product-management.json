@@ -1,0 +1,144 @@
+{
+  "skill_id": "business-product-management",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Frames strategy, discovery, estimates and approval. Use when assessing a business case. Do NOT use for detailed requirements or sprint planning.",
+  "tags": [
+    "product",
+    "strategy",
+    "discovery",
+    "business-case"
+  ],
+  "keywords": [
+    "business case",
+    "strategy",
+    "market research",
+    "feasibility",
+    "budget",
+    "estimate",
+    "approval",
+    "contract",
+    "client",
+    "product discovery",
+    "roi",
+    "go or no-go"
+  ],
+  "purpose": "Turns a business problem into a validated, costed and approved opportunity so engineering effort starts on something worth building. It owns stages 1-10: strategy, market research, client engagement, discovery, analysis, planning, feasibility, budget, approval and contract compliance.",
+  "when_to_use": [
+    "A new product, feature or client request needs a business case before requirements are written.",
+    "A funding, go or no-go, or contract decision needs evidence.",
+    "Market, feasibility or budget assumptions need to be tested."
+  ],
+  "when_not_to_use": [
+    "Writing testable requirements or designs: use requirements-design.",
+    "Planning sprints or tracking delivery: use project-agile-management.",
+    "Choosing technology or system structure: use technical-architecture."
+  ],
+  "prerequisites": [
+    "A stated problem, opportunity or client request and a named sponsor.",
+    "Access to existing strategy, market, cost and contract documents the team may use.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "problem or opportunity statement",
+      "sponsor and decision maker",
+      "constraints (budget, date, regulation)"
+    ],
+    "optional": [
+      "market data",
+      "client interview notes",
+      "existing contracts",
+      "past estimates"
+    ]
+  },
+  "outputs": [
+    "business case with measurable goals and a do-nothing option",
+    "market and feasibility findings with sources",
+    "estimate ranges with assumptions",
+    "approval record naming the human approver and conditions"
+  ],
+  "decision_rules": [
+    {
+      "situation": "No measurable goal or baseline",
+      "action": "Stop and ask for one; do not approve a case that cannot be measured."
+    },
+    {
+      "situation": "Estimate is a single number",
+      "action": "Convert it to a range with assumptions before it is used for approval."
+    },
+    {
+      "situation": "Contract or regulatory obligation found",
+      "action": "Record it in the obligations register and route to the compliance owner."
+    },
+    {
+      "situation": "Approver is not a named human",
+      "action": "Mark the decision NEEDS_HUMAN_APPROVAL; never record an agent as approver."
+    }
+  ],
+  "quality_gates": [
+    "Goals have measures, baselines and dates",
+    "Do-nothing option is compared",
+    "Every market or cost claim cites a source or is labelled an assumption",
+    "A named human approved funding, with conditions recorded"
+  ],
+  "examples": [
+    {
+      "title": "Assess a new feature request",
+      "request": "A client asks for a self-service invoice portal. Should we build it?",
+      "context": "Support spends 30 percent of its time on invoice requests; no portal exists.",
+      "behavior": "Measure the current support load, list options including do-nothing and a cheaper export feature, estimate each as a range, and recommend one with risks.",
+      "output": "Business case with baseline (support hours per month), three options, estimate ranges and a recommendation awaiting sponsor approval.",
+      "acceptance": "Each option has a cost range and an expected change in the baseline measure."
+    },
+    {
+      "title": "Check contract obligations before approval",
+      "request": "Review the draft statement of work for obligations that affect delivery.",
+      "context": "The contract requires data to stay in one country and 24-hour breach notice.",
+      "behavior": "List each obligation as what, owner and evidence, flag any the team cannot meet, and send gaps to legal.",
+      "output": "Obligations register with owners and a list of unmet obligations.",
+      "acceptance": "No obligation lacks an owner; gaps are raised before approval."
+    }
+  ],
+  "limitations": [
+    "Cannot verify market data it is given; sources must be cited by the user or found with approved tools.",
+    "Does not decide funding: a named human approves.",
+    "Estimates are ranges from stated assumptions, not commitments."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Sponsor cannot be identified",
+      "cause": "No one owns the decision",
+      "resolution": "Ask who funds and accepts the outcome; do not proceed to approval without a name."
+    },
+    {
+      "error": "Market data conflicts between sources",
+      "cause": "Different dates, scopes or methods",
+      "resolution": "Record both with dates and methods, use the more conservative figure, and flag the conflict."
+    },
+    {
+      "error": "Estimate has no baseline",
+      "cause": "Past delivery data missing",
+      "resolution": "Use a labelled assumption and schedule a re-estimate at the first checkpoint."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "requirements-design",
+      "artifact": "approved business case, goals, scope and constraints"
+    },
+    {
+      "skill": "project-agile-management",
+      "artifact": "approved project charter inputs and budget"
+    },
+    {
+      "skill": "enterprise-governance",
+      "artifact": "contract and compliance obligations register"
+    }
+  ],
+  "owns": [
+    "business-case-and-approval",
+    "market-and-feasibility-analysis",
+    "contract-obligation-intake"
+  ]
+}

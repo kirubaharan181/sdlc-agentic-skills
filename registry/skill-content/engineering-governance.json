@@ -1,0 +1,144 @@
+{
+  "skill_id": "engineering-governance",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Sets repository, branching, environment and coding rules. Use when starting or standardizing repos. Do NOT use for enterprise audit or app code.",
+  "tags": [
+    "repository",
+    "standards",
+    "branching",
+    "environments"
+  ],
+  "keywords": [
+    "repository setup",
+    "branching",
+    "coding standards",
+    "branch protection",
+    "dev environment",
+    "code owners",
+    "secrets management",
+    "configuration",
+    "linter",
+    "formatter",
+    "monorepo",
+    "onboarding"
+  ],
+  "purpose": "Gives teams a safe, repeatable engineering baseline: protected repositories, branching rules, reproducible environments, coding standards, configuration and secrets handling. It owns stages 45-52 and the repository-level controls that other skills rely on.",
+  "when_to_use": [
+    "A repository, branching model or development environment must be set up.",
+    "Coding standards, configuration or secrets handling need defining and enforcing.",
+    "Repository controls must be checked for drift."
+  ],
+  "when_not_to_use": [
+    "Organization-wide audit and policy: use enterprise-governance.",
+    "Writing feature code: use software-implementation.",
+    "Building delivery pipelines: use devops-platform."
+  ],
+  "prerequisites": [
+    "Repository platform access at the level needed to read or change settings.",
+    "A decision on language and tooling, or a request to propose one.",
+    "A secrets store, or a stated plan for one.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "repository or project name and owners",
+      "language and tooling choices"
+    ],
+    "optional": [
+      "release cadence",
+      "existing standards",
+      "security baseline"
+    ]
+  },
+  "outputs": [
+    "repository with README, licence, code owners and protection",
+    "branching and merge rules",
+    "reproducible development environment",
+    "coding standard with tool configuration",
+    "configuration and secrets handling design"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Main branch can be pushed to directly",
+      "action": "Enable protection requiring review and passing checks."
+    },
+    {
+      "situation": "A secret is found in the repository",
+      "action": "Revoke and rotate first, then clean history per policy."
+    },
+    {
+      "situation": "Style is argued in review",
+      "action": "Adopt an automatic formatter."
+    },
+    {
+      "situation": "Rules exist only in a document",
+      "action": "Enforce them in settings or CI."
+    }
+  ],
+  "quality_gates": [
+    "A newcomer can build and run from the README",
+    "Main branch is protected",
+    "Secrets are not in the repository",
+    "Formatter and linter run in CI and block on errors"
+  ],
+  "examples": [
+    {
+      "title": "Set up a new repository",
+      "request": "Create the repository for the notifications service.",
+      "context": "Team of six, weekly releases, Python.",
+      "behavior": "Create it with README, licence and code owners, protect main, add CI, enable secret scanning and grant team access.",
+      "output": "Repository checklist with settings evidence and a clean-checkout build result.",
+      "acceptance": "Fresh clone builds with documented commands."
+    },
+    {
+      "title": "Remove a committed secret",
+      "request": "A scanner found a token in the repository.",
+      "context": "Token has production read access.",
+      "behavior": "Mark the action as needing human approval for rotation, advise revoking first, then plan history clean-up.",
+      "output": "Incident note with revoke, rotate and clean-up steps and owner.",
+      "acceptance": "Token revoked before any clean-up; no secret value appears in the note."
+    }
+  ],
+  "limitations": [
+    "Cannot change platform settings without access; it will list the required changes instead.",
+    "Rotation of production secrets needs human approval.",
+    "Cannot verify that a rule is followed in other repositories without access to them."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Cannot read branch protection",
+      "cause": "Missing admin permission",
+      "resolution": "Ask an owner for read access or the exported settings."
+    },
+    {
+      "error": "Setup steps fail on a clean machine",
+      "cause": "Undocumented dependency or version",
+      "resolution": "Pin versions, fix the guide and retest."
+    },
+    {
+      "error": "Formatter conflicts with existing code",
+      "cause": "Large diff on adoption",
+      "resolution": "Apply it in a separate commit with no other changes."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "software-implementation",
+      "artifact": "repository standards, branching rules and environment"
+    },
+    {
+      "skill": "devops-platform",
+      "artifact": "repository and configuration conventions for pipelines"
+    },
+    {
+      "skill": "enterprise-governance",
+      "artifact": "repository control inventory"
+    }
+  ],
+  "owns": [
+    "repository-and-branching-controls",
+    "dev-environment-and-coding-standards",
+    "configuration-and-secrets-design"
+  ]
+}

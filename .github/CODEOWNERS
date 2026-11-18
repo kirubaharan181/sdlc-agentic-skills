@@ -1,1 +1,13 @@
-* @kirubaharan181
+# Review ownership. Every path needs the maintainer; the lines below make the sensitive areas explicit.
+*                                   @kirubaharan181
+/registry/                          @kirubaharan181
+/registry/skill-content/            @kirubaharan181
+/registry/risk-tiers.json           @kirubaharan181
+/registry/skill-versions.lock.json  @kirubaharan181
+/docs/governance/                   @kirubaharan181
+/docs/security/                     @kirubaharan181
+/scripts/                           @kirubaharan181
+/.github/                           @kirubaharan181
+/SECURITY.md                        @kirubaharan181
+/LICENSE                            @kirubaharan181
+/reports/skill-quality/             @kirubaharan181

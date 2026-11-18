@@ -1,0 +1,145 @@
+{
+  "skill_id": "code-review-quality",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Reviews changes for correctness, design, standards and merge readiness. Use when assessing a pull request. Do NOT use for writing code.",
+  "tags": [
+    "code-review",
+    "pull-request",
+    "static-analysis",
+    "quality"
+  ],
+  "keywords": [
+    "code review",
+    "pull request",
+    "peer review",
+    "static analysis",
+    "lint",
+    "coverage",
+    "merge approval",
+    "technical debt",
+    "dependency review",
+    "review comments",
+    "diff",
+    "standards check"
+  ],
+  "purpose": "Provides independent review of changes before merge: pull request quality, peer review, architecture conformance, static analysis, dependency and coverage review, standards validation and technical debt. It owns stages 68-76 and keeps reviewers independent of authors.",
+  "when_to_use": [
+    "A pull request needs review before merge.",
+    "Static analysis, dependency or coverage results need interpreting.",
+    "A change must be checked against agreed architecture or standards."
+  ],
+  "when_not_to_use": [
+    "Implementing the change: use software-implementation.",
+    "Running the test suites: use quality-assurance.",
+    "Scanning for vulnerabilities: use application-security."
+  ],
+  "prerequisites": [
+    "A pull request or diff with tests and a description.",
+    "Coding standards and tool configuration (see engineering-governance).",
+    "Reviewer who is not the author.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "diff and description",
+      "test and tool results"
+    ],
+    "optional": [
+      "architecture decisions",
+      "coverage data",
+      "dependency lock files"
+    ]
+  },
+  "outputs": [
+    "review findings split into blockers and suggestions",
+    "tool result summary",
+    "merge decision recommendation",
+    "follow-up debt items"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Tool configuration weakened in the same change",
+      "action": "Review the configuration change separately."
+    },
+    {
+      "situation": "New suppression comment added",
+      "action": "Require a reason and owner."
+    },
+    {
+      "situation": "Coverage falls on changed code",
+      "action": "Ask for tests or a recorded decision."
+    },
+    {
+      "situation": "Author and reviewer are the same",
+      "action": "Reject the review; request an independent one."
+    }
+  ],
+  "quality_gates": [
+    "All tools ran on the change",
+    "Findings cite file, rule and reason",
+    "Blockers are separated from suggestions",
+    "Reviewer is independent"
+  ],
+  "examples": [
+    {
+      "title": "Review a pull request",
+      "request": "Review PR 482 which adds refund handling.",
+      "context": "Diff touches payments and orders; tests included.",
+      "behavior": "Run tool checks, read the diff for error handling and authorization, check coverage on changed lines, and list blockers separately.",
+      "output": "Review with one blocker (no ownership check) and two suggestions.",
+      "acceptance": "Blocker has a file reference and a fix suggestion."
+    },
+    {
+      "title": "Judge a suppression",
+      "request": "The change adds two lint suppressions.",
+      "context": "One has a ticket; one hides an unused variable.",
+      "behavior": "Accept the documented one, reject the other and ask for removal.",
+      "output": "Findings with the decision for each.",
+      "acceptance": "Each added suppression has a recorded decision."
+    }
+  ],
+  "limitations": [
+    "Cannot find defects in code it was not shown or tests that were not run.",
+    "Does not approve merge by itself: a named human reviewer approves where required.",
+    "Static analysis gives false positives and negatives."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Tool results missing",
+      "cause": "CI did not run",
+      "resolution": "State that review is incomplete and ask for the results."
+    },
+    {
+      "error": "Diff too large",
+      "cause": "Mixed concerns",
+      "resolution": "Ask the author to split it."
+    },
+    {
+      "error": "Reviewer disagreement",
+      "cause": "Standards unclear",
+      "resolution": "Escalate to the engineering lead and record the decision."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "quality-assurance",
+      "artifact": "approved change with review findings"
+    },
+    {
+      "skill": "software-implementation",
+      "artifact": "blocker findings for rework",
+      "feedback": true
+    },
+    {
+      "skill": "engineering-governance",
+      "artifact": "recurring findings as proposed rules",
+      "feedback": true
+    }
+  ],
+  "owns": [
+    "peer-and-pull-request-review",
+    "static-analysis-and-dependency-review",
+    "technical-debt-review"
+  ]
+}

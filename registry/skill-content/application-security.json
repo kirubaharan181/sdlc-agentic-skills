@@ -1,0 +1,145 @@
+{
+  "skill_id": "application-security",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Assesses application security: threats, scans, remediation and sign-off. Use when checking a change for risk. Do NOT use for infra operations.",
+  "tags": [
+    "security",
+    "threat-modeling",
+    "sast",
+    "remediation"
+  ],
+  "keywords": [
+    "threat model",
+    "vulnerability",
+    "sast",
+    "dast",
+    "penetration test",
+    "owasp",
+    "security scan",
+    "remediation",
+    "secrets leak",
+    "container security",
+    "security sign-off",
+    "data protection"
+  ],
+  "purpose": "Finds and drives fixes for security weaknesses in applications and their supply chain: threat modeling, SAST, DAST, dependency and container scanning, penetration testing, data protection, compliance review, remediation and sign-off. It owns stages 98-110.",
+  "when_to_use": [
+    "A feature or architecture needs a threat model.",
+    "Scan or penetration test results need triage and remediation tracking.",
+    "A security sign-off is needed before release."
+  ],
+  "when_not_to_use": [
+    "Operating cloud accounts and networks: use cloud-hosting-operations.",
+    "Governing change approval in production: use secure-change-control.",
+    "Writing feature code: use software-implementation."
+  ],
+  "prerequisites": [
+    "Written authorization for any active testing, with scope and window.",
+    "Architecture and data flow descriptions.",
+    "A safe environment for dynamic testing.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "architecture and data flows",
+      "code or build under review",
+      "authorization and scope"
+    ],
+    "optional": [
+      "previous findings",
+      "compliance obligations",
+      "scan results"
+    ]
+  },
+  "outputs": [
+    "threat model with ranked threats and controls",
+    "triaged findings with severity method named",
+    "remediation tracking with owners",
+    "security sign-off recommendation"
+  ],
+  "decision_rules": [
+    {
+      "situation": "No written authorization for active testing",
+      "action": "Do not test; request authorization."
+    },
+    {
+      "situation": "Finding cannot be reproduced",
+      "action": "Mark INCONCLUSIVE with steps tried."
+    },
+    {
+      "situation": "Critical issue found in production",
+      "action": "Stop testing, notify the owner and hand to incident-command if active."
+    },
+    {
+      "situation": "Risk acceptance requested",
+      "action": "Route to a named human with authority."
+    }
+  ],
+  "quality_gates": [
+    "Each high threat has a control or an accepted risk",
+    "Findings have reproduction steps and evidence",
+    "Severity has a stated method",
+    "Fixes were retested"
+  ],
+  "examples": [
+    {
+      "title": "Threat model an upload feature",
+      "request": "Threat model the document upload.",
+      "context": "Files are stored and later previewed by other users.",
+      "behavior": "List assets and trust boundaries, rank threats, propose controls and mark residual risk with an owner.",
+      "output": "Ranked threats led by malicious files; controls: type and size limits, scanning, storage outside the web root.",
+      "acceptance": "High threats each have a control or accepted-risk entry."
+    },
+    {
+      "title": "Triage scan results",
+      "request": "Triage 120 SAST findings.",
+      "context": "Many duplicates and low-severity items.",
+      "behavior": "Group by rule, confirm exploitable items with reproduction, and assign owners and dates.",
+      "output": "Triage list with 6 confirmed findings and the dismissals with reasons.",
+      "acceptance": "Every dismissal has a stated reason."
+    }
+  ],
+  "limitations": [
+    "Scans and reviews do not prove the absence of vulnerabilities.",
+    "Active testing needs authorization and cannot be done without it.",
+    "This repository makes no security certification claim."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Scanner reports excessive false positives",
+      "cause": "Rules not tuned",
+      "resolution": "Tune with owner approval and record changes."
+    },
+    {
+      "error": "No safe test environment",
+      "cause": "Only production exists",
+      "resolution": "Limit to passive review and request an environment."
+    },
+    {
+      "error": "Authorization unclear",
+      "cause": "Scope not written",
+      "resolution": "Stop and obtain a written scope."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "release-deployment",
+      "artifact": "security sign-off and open accepted risks"
+    },
+    {
+      "skill": "software-implementation",
+      "artifact": "remediation items with severity",
+      "feedback": true
+    },
+    {
+      "skill": "enterprise-governance",
+      "artifact": "security evidence for audit"
+    }
+  ],
+  "owns": [
+    "threat-modeling-and-appsec-testing",
+    "vulnerability-remediation-tracking",
+    "security-signoff"
+  ]
+}

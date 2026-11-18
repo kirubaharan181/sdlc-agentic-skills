@@ -1,0 +1,21 @@
+skill,before_score,before_grade,before_findings,after_score,after_grade,after_findings,status
+application-security,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+business-product-management,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+cloud-hosting-operations,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+code-review-quality,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+definition-of-done,84.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+devops-platform,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+engineering-governance,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+enterprise-governance,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+evidence-quality-gates,84.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+incident-command,84.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+maintenance-support,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+master-orchestration,84.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+project-agile-management,87.2,B,9,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+quality-assurance,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+release-deployment,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+requirements-design,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+secure-change-control,84.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+software-implementation,87.2,B,9,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+sre-observability,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+technical-architecture,87.2,B,9,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add

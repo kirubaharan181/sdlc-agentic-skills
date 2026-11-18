@@ -1,0 +1,150 @@
+{
+  "skill_id": "definition-of-done",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Defines task completion criteria and closes work on evidence. Use when work is about to be called done. Do NOT use to plan or do the work.",
+  "tags": [
+    "completion",
+    "acceptance",
+    "quality-gates",
+    "evidence"
+  ],
+  "keywords": [
+    "definition of done",
+    "is it done",
+    "completion criteria",
+    "acceptance check",
+    "ready to close",
+    "done checklist",
+    "close the task",
+    "wrap up",
+    "finished",
+    "exit criteria for task",
+    "waiver",
+    "open items"
+  ],
+  "purpose": "Makes completion mean accepted behavior with evidence, not finished activity. It selects the completion profile for the task (code, API, database, infrastructure, security fix, release, incident or documentation), checks the criteria, records exceptions with owners, and refuses to close work with unowned open risk.",
+  "when_to_use": [
+    "A task is about to be reported done.",
+    "A new task needs its completion criteria agreed up front.",
+    "Work is partly done and the remaining gap must be stated."
+  ],
+  "when_not_to_use": [
+    "Planning or doing the work: use the stage skill.",
+    "Judging the quality of evidence in depth: use evidence-quality-gates.",
+    "Approving release: use release-deployment."
+  ],
+  "prerequisites": [
+    "The task, its acceptance criteria and its owner.",
+    "Access to the evidence the work produced.",
+    "Templates in templates/definition-of-done/ for the profile.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "task description",
+      "acceptance criteria",
+      "evidence produced"
+    ],
+    "optional": [
+      "risk class",
+      "waivers",
+      "approver names"
+    ]
+  },
+  "outputs": [
+    "completion profile chosen with reason",
+    "checklist result per criterion (PASS, FAIL, WAIVED, BLOCKED)",
+    "list of open items with owners",
+    "closure statement or a not-done statement"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Criterion has no evidence",
+      "action": "Mark it BLOCKED, not PASS."
+    },
+    {
+      "situation": "Criterion waived",
+      "action": "Record reason, owner, expiry and approver."
+    },
+    {
+      "situation": "Open risk without owner",
+      "action": "Do not close; assign an owner or accept it explicitly."
+    },
+    {
+      "situation": "Work is partly complete",
+      "action": "Report what is done, what is not, and the next owner; do not call it done."
+    },
+    {
+      "situation": "Task spans profiles (e.g. API and database)",
+      "action": "Apply both profiles and merge their criteria."
+    }
+  ],
+  "quality_gates": [
+    "Each acceptance criterion has a result and evidence reference",
+    "Tests, security, operations and documentation are checked as the profile requires",
+    "Waivers have owner and expiry",
+    "Required approvals and handoffs are complete"
+  ],
+  "examples": [
+    {
+      "title": "Close a bug fix",
+      "request": "Is the discount bug fix done?",
+      "context": "Fix merged, regression test added, not yet released.",
+      "behavior": "Apply the bug-fix profile: test fails before and passes after, review done, release pending.",
+      "output": "Not done: release and verification in production are open; owner assigned.",
+      "acceptance": "Closure is withheld until verification evidence exists."
+    },
+    {
+      "title": "Select a profile",
+      "request": "Define done for the new reporting API.",
+      "context": "New endpoint and a table.",
+      "behavior": "Combine the API and database-change profiles and list criteria for contract, tests, migration and rollback.",
+      "output": "Merged checklist with evidence required for each line.",
+      "acceptance": "No criterion is missing for either profile."
+    },
+    {
+      "title": "Handle a waiver",
+      "request": "Accessibility check could not be run before launch.",
+      "context": "Launch date fixed.",
+      "behavior": "Record a WAIVED result with owner, reason and expiry, and add a follow-up.",
+      "output": "Waiver record and follow-up task.",
+      "acceptance": "Waiver has a named approver and an expiry date."
+    }
+  ],
+  "limitations": [
+    "Judges completeness against stated criteria; it cannot know criteria nobody wrote.",
+    "Cannot verify evidence authenticity: that is evidence-quality-gates.",
+    "A human closes the work; it only reports readiness."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Acceptance criteria missing",
+      "cause": "Task started without them",
+      "resolution": "Draft criteria with the owner before judging completion."
+    },
+    {
+      "error": "Evidence is a claim only",
+      "cause": "No artifact or command output",
+      "resolution": "Mark BLOCKED and request the record."
+    },
+    {
+      "error": "Profile unclear",
+      "cause": "Task type ambiguous",
+      "resolution": "Ask the owner or apply the stricter profile."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "evidence-quality-gates",
+      "artifact": "evidence sets that need deeper evaluation"
+    },
+    {
+      "skill": "release-deployment",
+      "artifact": "completion statement for release readiness"
+    }
+  ],
+  "owns": [
+    "completion-criteria-and-closure"
+  ]
+}

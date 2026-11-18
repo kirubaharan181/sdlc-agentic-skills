@@ -27,6 +27,12 @@ jobs:
         run: python scripts/build.py --check
       - name: Validate registries, schemas and content
         run: python scripts/validate.py
+      - name: Skill versions match the recorded content hashes
+        run: python scripts/check_skill_versions.py
+      - name: Quality score history has no regression
+        run: python scripts/check_quality_regression.py
+      - name: Evidence, handoff and decision templates are valid
+        run: python scripts/trace_evidence.py --templates
       - name: Duplication audit (exact copies and pairs at or above 0.85 fail)
         run: python scripts/audit_duplication.py --threshold 0.85 --fail-on-findings
       - name: Cross-references and orphans (blocking)

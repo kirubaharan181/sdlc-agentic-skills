@@ -19,6 +19,7 @@ def generated_files(root: Path):
     files += list((root / "agents").glob("*.md"))
     files += list((root / "workflows").glob("*.md"))
     files += list((root / "skills").rglob("SKILL.md"))
+    files.append(root / "docs/architecture/SKILL_SELECTION.md")
     return sorted(p for p in files if p.exists())
 
 

@@ -1,0 +1,143 @@
+{
+  "skill_id": "devops-platform",
+  "version": "1.1.0",
+  "author": "kirubaharan181",
+  "description": "Builds CI/CD, containers, infrastructure as code and environments. Use when automating delivery. Do NOT use for release approval or runtime ops.",
+  "tags": [
+    "devops",
+    "ci-cd",
+    "containers",
+    "iac"
+  ],
+  "keywords": [
+    "ci pipeline",
+    "cd pipeline",
+    "docker",
+    "kubernetes",
+    "terraform",
+    "infrastructure as code",
+    "build",
+    "artifact",
+    "github actions",
+    "provisioning",
+    "deployment automation",
+    "helm"
+  ],
+  "purpose": "Automates secure, repeatable delivery: CI and CD pipelines, builds and artifacts, containers and orchestration, infrastructure as code, configuration, environment provisioning and deployment automation. It owns stages 111-125.",
+  "when_to_use": [
+    "A pipeline, build or deployment automation is needed or fails.",
+    "Containers, orchestration or infrastructure as code must be defined.",
+    "Environments must be provisioned reproducibly."
+  ],
+  "when_not_to_use": [
+    "Approving a release: use release-deployment.",
+    "Running production services: use cloud-hosting-operations.",
+    "Setting repository rules: use engineering-governance."
+  ],
+  "prerequisites": [
+    "Repository access and build instructions.",
+    "Target platform and environment definitions.",
+    "A secrets store for pipeline credentials.",
+    "No external API keys, paid services or network access are required; work uses files and tools already approved in the repository."
+  ],
+  "inputs": {
+    "required": [
+      "repository and build steps",
+      "target environments"
+    ],
+    "optional": [
+      "existing pipelines",
+      "security requirements",
+      "artifact repository"
+    ]
+  },
+  "outputs": [
+    "pipeline definitions as code",
+    "versioned, scanned artifacts",
+    "container and infrastructure definitions",
+    "reproducible environments and pipeline run records"
+  ],
+  "decision_rules": [
+    {
+      "situation": "Pipeline needs a long-lived credential",
+      "action": "Use short-lived federated credentials where possible."
+    },
+    {
+      "situation": "Untrusted pull request triggers a privileged job",
+      "action": "Separate the trust levels; deny secrets to untrusted code."
+    },
+    {
+      "situation": "Environment differs from code",
+      "action": "Detect drift and reapply from code."
+    },
+    {
+      "situation": "Production deploy requested",
+      "action": "Require the approval recorded under release-deployment."
+    }
+  ],
+  "quality_gates": [
+    "Builds are reproducible and pinned",
+    "Pipelines run with least privilege",
+    "Artifacts are scanned and identifiable",
+    "Environments are created from code"
+  ],
+  "examples": [
+    {
+      "title": "Create a CI pipeline",
+      "request": "Add CI for the notifications service.",
+      "context": "Python, tests take 4 minutes, protected main.",
+      "behavior": "Define build, lint, test and scan jobs with pinned versions and read-only token permissions.",
+      "output": "Pipeline file, a run record and the required-check setting.",
+      "acceptance": "Pull requests cannot merge without the checks."
+    },
+    {
+      "title": "Harden a pull-request workflow",
+      "request": "Fork pull requests run with secrets.",
+      "context": "Workflow triggers on pull_request_target.",
+      "behavior": "Split into an untrusted test job without secrets and a trusted release job, then test with a fork.",
+      "output": "Workflow change and a negative test showing the fork cannot read secrets.",
+      "acceptance": "The negative test passes."
+    }
+  ],
+  "limitations": [
+    "Cannot verify pipelines against platforms it cannot reach.",
+    "Production changes require human approval.",
+    "Pipeline results depend on runner images and versions."
+  ],
+  "troubleshooting": [
+    {
+      "error": "Build works locally but fails in CI",
+      "cause": "Different versions or missing files",
+      "resolution": "Pin versions and compare environments."
+    },
+    {
+      "error": "Pipeline slow",
+      "cause": "No caching or parallelism",
+      "resolution": "Measure stages, cache safely and parallelize."
+    },
+    {
+      "error": "Secrets exposed in logs",
+      "cause": "Unmasked output",
+      "resolution": "Rotate, mask and add a log scan."
+    }
+  ],
+  "handoffs": [
+    {
+      "skill": "release-deployment",
+      "artifact": "deployable artifacts and pipeline run records"
+    },
+    {
+      "skill": "cloud-hosting-operations",
+      "artifact": "infrastructure definitions"
+    },
+    {
+      "skill": "application-security",
+      "artifact": "pipeline findings for review"
+    }
+  ],
+  "owns": [
+    "ci-cd-pipeline-engineering",
+    "container-and-iac-definitions",
+    "environment-provisioning"
+  ]
+}

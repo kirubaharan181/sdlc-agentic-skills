@@ -95,6 +95,16 @@ def load_stage_content(root: Path = ROOT) -> dict[int, dict]:
     return out
 
 
+def load_skill_content(root: Path = ROOT) -> dict[str, dict]:
+    """Authored skill documentation: registry/skill-content/<skill_id>.json (the only place it is stated)."""
+    out = {}
+    d = root / "registry" / "skill-content"
+    for p in sorted(d.glob("*.json")) if d.is_dir() else []:
+        c = json.loads(p.read_text(encoding="utf-8"))
+        out[c["skill_id"]] = c
+    return out
+
+
 def _apply_content(rec: dict, c: dict) -> dict:
     out = dict(rec)
     out.update(
