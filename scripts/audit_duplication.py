@@ -35,6 +35,9 @@ def repo_files(root: Path = ROOT):
 def exact_duplicates(root: Path = ROOT):
     by_hash: dict[str, list[str]] = defaultdict(list)
     for p in repo_files(root):
+        rel = p.relative_to(root)
+        if rel.parts[0] == "skills" and "references" in rel.parts and p.name in BUNDLED_SHARED:
+            continue  # intentional bundled copies that keep each skill standalone
         by_hash[hashlib.sha256(p.read_bytes()).hexdigest()].append(str(p.relative_to(root)))
     return [sorted(v) for v in by_hash.values() if len(v) > 1]
 

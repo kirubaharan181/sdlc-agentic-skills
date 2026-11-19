@@ -1,26 +1,27 @@
 # Documentation findings tracker
 
 Findings reported by SkillEvaluator for the 20 skills before the roadmap work (source: the repository owner's run, 2026-11-17;
-raw data in `reports/skill-quality/BASELINE_FINDINGS.csv`). "Addressed" means the repository now contains the content the
-finding asked for. It does not mean the evaluator confirmed it: **the evaluator has not been rerun on the new documentation.**
+raw data in `reports/skill-quality/BASELINE_FINDINGS.csv`). "Resolved" means the quality check was re-run
+(skillevaluator 1.0.1, 2026-11-19, commit `66e223e`, skills 1.1.1) and reported 0 findings for all 20 skills (`reports/skill-quality/SCORE_HISTORY.csv`).
+Tier 1 static findings are tracked separately in `reports/skill-quality/TIER1_RESULTS.csv` and `reports/enhancement/BASELINE_FINDINGS.csv`.
 
 | Finding (evaluator wording) | Skills affected | Severity | Change made | Status |
 |---|---:|---|---|---|
-| No examples provided | 20 | LOW | 2-3 skill-specific examples per skill in a code block | Addressed, not re-measured |
-| SKILL_SPEC recommended field missing: `metadata.author` | 20 | MEDIUM | `metadata.author` in frontmatter | Addressed, not re-measured |
-| SKILL_SPEC recommended field missing: `metadata.tags` | 20 | MEDIUM | `metadata.tags` (4 per skill) in frontmatter | Addressed, not re-measured |
-| No `## Purpose` section | 20 | LOW | `## Purpose` added | Addressed, not re-measured |
-| No prerequisites/requirements documented | 20 | LOW | `## Prerequisites and Requirements` added | Addressed, not re-measured |
-| No limitations documented | 20 | LOW | `## Limitations` added | Addressed, not re-measured |
-| No troubleshooting section documented | 20 | LOW | `## Troubleshooting` with Error, Cause, Resolution added | Addressed, not re-measured |
-| Guide-only skill has very little content (19 lines) | 5 | MEDIUM | Cross-cutting skills expanded with decision rules, quality gates and 3+ examples each | Addressed, not re-measured |
-| Description very long (289-353 chars, recommend 50-150) | 15 | LOW | Descriptions rewritten to 50-150 characters, validated | Addressed, not re-measured |
-| Broad description without negative triggers | 3 | LOW | Every description states "Do NOT use ..." | Addressed, not re-measured |
+| No examples provided | 20 | LOW | 2-3 skill-specific examples per skill in a code block | Resolved (re-measured) |
+| SKILL_SPEC recommended field missing: `metadata.author` | 20 | MEDIUM | `metadata.author` in frontmatter | Resolved (re-measured) |
+| SKILL_SPEC recommended field missing: `metadata.tags` | 20 | MEDIUM | `metadata.tags` (4 per skill) in frontmatter | Resolved (re-measured) |
+| No `## Purpose` section | 20 | LOW | `## Purpose` added | Resolved (re-measured) |
+| No prerequisites/requirements documented | 20 | LOW | `## Prerequisites and Requirements` added | Resolved (re-measured) |
+| No limitations documented | 20 | LOW | `## Limitations` added | Resolved (re-measured) |
+| No troubleshooting section documented | 20 | LOW | `## Troubleshooting` with Error, Cause, Resolution added | Resolved (re-measured) |
+| Guide-only skill has very little content (19 lines) | 5 | MEDIUM | Cross-cutting skills expanded with decision rules, quality gates and 3+ examples each | Resolved (re-measured) |
+| Description very long (289-353 chars, recommend 50-150) | 15 | LOW | Descriptions rewritten to 50-150 characters, validated | Resolved (re-measured) |
+| Broad description without negative triggers | 3 | LOW | Every description states "Do NOT use ..." | Resolved (re-measured) |
 
 ## Open
 
 | Item | Why open | Next step |
 |---|---|---|
-| Re-run SkillEvaluator on all 20 skills | Needs the evaluator installed | Run it, append rows to `SCORE_HISTORY.csv`, update this table |
-| 97+ target | Not measured | Judge after the rerun; address remaining findings by reading the evaluator's criteria |
-| "Publication eligibility: Incomplete" | Reported by the evaluator for Tier 1; the criteria were not part of the supplied output | Read the evaluator's publication criteria and record the gaps |
+| Re-run SkillEvaluator on all 20 skills | Done 2026-11-19 at `66e223e`: 20 x 100.0, 0 findings | Repeat after any skill change |
+| 97+ target | Met by measurement (100.0) for the quality check only; not publication approval | See `reports/enhancement/PUBLICATION_REQUIREMENTS.md` |
+| "Publication eligibility: Incomplete" | Criteria read from the evaluator source: needs complete Tier 1, Tier 2, Tier 3 and LLM evidence; Tier 2, Tier 3 and LLM not run; `application-security` scanner parse-limit warning | `reports/enhancement/PUBLICATION_REQUIREMENTS.md` |

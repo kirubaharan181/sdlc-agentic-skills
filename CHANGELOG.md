@@ -16,6 +16,15 @@ versioning: [Semantic Versioning](https://semver.org/).
 - **Tests and CI:** 35+ pytest tests (unit, golden, scenarios, broken-fixture); CI blocks on duplicates, references, orphans, links.
 - **Adoption:** `make demo`, quickstart, evals harness (no model results yet), community files, issue and PR templates.
 
+### Evaluator findings and reconciliation (skills 1.1.1)
+- **Fixed:** `application-security` and `incident-command` had invalid YAML frontmatter (unquoted `: ` in the description). Descriptions are now double-quoted and the validator enforces it.
+- **Changed:** all 20 descriptions lead with "Use when" (trigger visible in short skill lists); `secure-change-control` no longer uses a vague word. All skills are at 1.1.1.
+- **Changed (layout):** each skill is standalone: `reference/` is now `references/`, `examples/` moved to `references/examples/`, `CORE_PROCEDURE.md` and `HANDOFF_CONTRACT.md` are bundled per skill, and SKILL.md no longer links outside its folder. This lets SkillEvaluator's security scan complete.
+- **Changed (stage text, meaning unchanged):** stages 50, 103 and 125 reworded where scanner patterns misread them.
+- **Measured:** skillevaluator 1.0.1 on commit `66e223e`: quality-check 20 x 100.0, 0 findings; Tier 1 static checks (no LLM) pass for 19 of 20 skills. Publication eligibility is not claimed (Tier 2, Tier 3 and LLM checks not run).
+- **Quality history:** rows now carry skill version, source commit and evaluator version; `--add` requires them.
+- **Docs:** README quality and registry statements corrected; `reports/enhancement/` added (audit, findings, publication requirements, reconciliation, validation, readiness).
+
 ### Roadmap: skill quality and governance (skills 1.1.0)
 - **Skills:** all 20 skills restructured from `registry/skill-content/<skill>.json` (Purpose, When to Use / NOT, Prerequisites, Inputs and Outputs, Decision Rules, Quality Gates, 2-3 examples, Limitations, Troubleshooting, Handoffs); `metadata.author`, `version`, `tags`; descriptions 132-147 characters with "Use when" and "Do not use". Baseline SkillEvaluator average was 87.3; **post-change scores not measured**. Every skill is at version 1.1.0.
 - **Skill intelligence:** `scripts/select_skill.py` (lexical selector), `scripts/skill_graph.py`, generated `docs/architecture/SKILL_SELECTION.md`; acyclic forward handoffs; one owner per responsibility.

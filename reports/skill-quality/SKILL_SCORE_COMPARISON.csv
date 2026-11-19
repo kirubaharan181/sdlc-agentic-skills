@@ -1,21 +1,21 @@
-skill,before_score,before_grade,before_findings,after_score,after_grade,after_findings,status
-application-security,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-business-product-management,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-cloud-hosting-operations,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-code-review-quality,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-definition-of-done,84.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-devops-platform,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-engineering-governance,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-enterprise-governance,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-evidence-quality-gates,84.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-incident-command,84.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-maintenance-support,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-master-orchestration,84.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-project-agile-management,87.2,B,9,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-quality-assurance,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-release-deployment,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-requirements-design,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-secure-change-control,84.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-software-implementation,87.2,B,9,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-sre-observability,88.5,B,8,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
-technical-architecture,87.2,B,9,not measured,not measured,not measured,SkillEvaluator not run after changes; run it and record with check_quality_regression.py --add
+skill,before_score,before_findings,after_score,after_findings,tier1_status_after,tier1_high,tier1_medium,tier1_incomplete_scans,before_commit,after_commit,note
+application-security,88.5,8,100.0,0,failed,1,2,skillspector,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+business-product-management,88.5,8,100.0,0,passed,0,2,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+cloud-hosting-operations,88.5,8,100.0,0,passed,0,3,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+code-review-quality,88.5,8,100.0,0,passed,0,3,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+definition-of-done,84.5,8,100.0,0,passed,0,2,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+devops-platform,88.5,8,100.0,0,passed,0,3,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+engineering-governance,88.5,8,100.0,0,passed,0,2,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+enterprise-governance,88.5,8,100.0,0,passed,0,2,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+evidence-quality-gates,84.5,8,100.0,0,passed,0,2,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+incident-command,84.5,8,100.0,0,passed,0,2,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+maintenance-support,88.5,8,100.0,0,passed,0,3,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+master-orchestration,84.5,8,100.0,0,passed,0,2,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+project-agile-management,87.2,9,100.0,0,passed,0,2,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+quality-assurance,88.5,8,100.0,0,passed,0,9,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+release-deployment,88.5,8,100.0,0,passed,0,3,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+requirements-design,88.5,8,100.0,0,passed,0,4,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+secure-change-control,84.5,8,100.0,0,passed,0,2,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+software-implementation,87.2,9,100.0,0,passed,0,8,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+sre-observability,88.5,8,100.0,0,passed,0,2,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"
+technical-architecture,87.2,9,100.0,0,passed,0,6,,a8be547,66e223e,"before: owner-supplied run (evaluator version not recorded); after: skillevaluator 1.0.1, quality-check plus tier1 --no-llm"

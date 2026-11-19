@@ -15,11 +15,11 @@ This file records what the repository owner asked for, what was done, and what i
 
 | Phase | Deliverable | Status | Where |
 |---|---|---|---|
-| A Documentation quality | All 20 skills restructured with standard metadata, 50-150 character descriptions with negative triggers, examples, troubleshooting, prerequisites, limitations | authored, enforced by `validate.py`; **97+ not measured** | `registry/skill-content/*.json` -> `skills/**/SKILL.md` |
+| A Documentation quality | All 20 skills restructured with standard metadata, 50-150 character descriptions with negative triggers, examples, troubleshooting, prerequisites, limitations | authored and enforced by `validate.py`; **measured 100.0 for all 20** (SkillEvaluator 1.0.1, commit `66e223e`) | `registry/skill-content/*.json` -> `skills/**/SKILL.md` |
 | B Skill intelligence | Selection matrix, dependency graph, handoff contracts, duplicate-responsibility detection | done (generated and validated) | `docs/architecture/SKILL_SELECTION.md`, `scripts/skill_graph.py`, `scripts/select_skill.py` |
 | C Enterprise governance | Approval and escalation matrix, risk framework, evidence traceability, audit readiness | done as documents plus checks; not audited | `docs/governance/`, `registry/risk-tiers.json`, `scripts/trace_evidence.py` |
 | D Agent usability | Codex guidance, input/output templates, context handoff standard, failure and recovery | authored; Codex use **not tested** | `AGENTS.md`, `docs/agent-guide/CODEX_USAGE.md`, `templates/` |
-| E Continuous quality | Score history, change log, regression tracking, ownership | done (tracking mechanism); history holds the baseline only | `reports/skill-quality/SCORE_HISTORY.csv`, `scripts/check_quality_regression.py`, `docs/quality/`, `CHANGELOG.md`, `.github/CODEOWNERS` |
+| E Continuous quality | Score history, change log, regression tracking, ownership | done; history holds the baseline and the 2026-11-19 run, each with commit, skill version and evaluator version | `reports/skill-quality/SCORE_HISTORY.csv`, `scripts/check_quality_regression.py`, `docs/quality/`, `CHANGELOG.md`, `.github/CODEOWNERS` |
 
 ## 3. The ten items
 
@@ -42,18 +42,17 @@ Policy files enhanced as asked: `LICENSE` (full MIT text), `SECURITY.md` (privat
 
 | Open item | Why | Who can close it |
 |---|---|---|
-| Re-run SkillEvaluator and record the 20 new scores | SkillEvaluator is not installed in the build environment, so "after" scores are **not measured**; 97+ is unverified | Owner: run it, then `check_quality_regression.py --add` per skill |
+| Re-run SkillEvaluator after any skill change | Done once (2026-11-19, 20 x 100.0); must be repeated after every skill change | Whoever changes a skill |
+| Publication eligibility | Tier 2, Tier 3 and LLM checks not run; `application-security` has a scanner parse-limit warning (`reports/enhancement/PUBLICATION_REQUIREMENTS.md`) | Owner decision, then run where permitted |
 | Findings marked "addressed" | The 163 baseline findings were addressed by construction (see `docs/quality/FINDINGS_TRACKER.md`) but not re-measured | Same evaluator run |
 | Codex, Claude Code and other adapter tests | Adapters are documented, not tested (`adapters/COMPATIBILITY.md`) | Independent runner with a dated log |
 | Stage procedures on real projects | 190 stages are authored, none run on a real project | Contributors (issues #27-#29) |
-| Release tag `v1.1.0-rc.1` and GitHub release | Creation is blocked for this session | Owner |
-| Private vulnerability reporting | Setting is currently disabled on the GitHub repository | Owner: Settings -> Code security -> enable |
 | Legal name in `LICENSE` | Holder is written as `kirubaharan181 and contributors` | Owner: confirm or replace |
 
 ## 5. Scope statements (also in `reports/skill-quality/VALIDATION_SCOPE.md`)
 
 - **Inspected:** repository structure, registries, skill content and generated skill files.
 - **Checked by repository tooling:** schemas, structure, handoff graph, versions, links, references, duplication, tests.
-- **Quality-scored by SkillEvaluator:** only the baseline run supplied by the owner.
+- **Quality-scored by SkillEvaluator:** the owner's baseline run and the 2026-11-19 run (`skillevaluator 1.0.1`, commit `66e223e`). Tier 1 static checks ran without LLM checks.
 - **Not tested:** application, integration, end-to-end, browser, deployment, and agent-platform behavior.
 - **Not validated:** security posture, compliance, real-world outcomes. No certification is claimed.
