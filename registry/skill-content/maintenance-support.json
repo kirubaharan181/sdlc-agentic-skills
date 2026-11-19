@@ -1,8 +1,8 @@
 {
   "skill_id": "maintenance-support",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "kirubaharan181",
-  "description": "Handles support tiers, fixes, patches, updates and enhancements. Use when maintaining live software. Do NOT use for new product build.",
+  "description": "Use when maintaining live software: support tiers, fixes, patches, updates. Do NOT use for new product builds.",
   "tags": [
     "support",
     "maintenance",

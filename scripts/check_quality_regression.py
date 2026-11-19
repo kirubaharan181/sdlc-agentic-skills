@@ -22,7 +22,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import registry_io  # noqa: E402
 
 HISTORY = "reports/skill-quality/SCORE_HISTORY.csv"
-FIELDS = ["date", "skill", "score", "grade", "correctness", "discoverability", "reliability", "efficiency", "findings", "source", "evaluator_run_by", "library_version"]
+FIELDS = ["date", "skill", "score", "grade", "correctness", "discoverability", "reliability", "efficiency", "findings", "source", "evaluator_run_by", "library_version",
+          "skill_version", "source_commit", "evaluator_version"]
 SCORE_TOLERANCE = 0.5        # an overall drop larger than this fails
 DIMENSION_TOLERANCE = 5      # a single dimension drop larger than this fails
 
@@ -87,12 +88,16 @@ def main() -> int:
     ap.add_argument("--source", default="")
     ap.add_argument("--run-by", default="")
     ap.add_argument("--library-version", default="")
+    ap.add_argument("--skill-version", default="")
+    ap.add_argument("--source-commit", default="")
+    ap.add_argument("--evaluator-version", default="")
     a = ap.parse_args()
     if a.add:
-        if not (a.date and a.source and a.run_by and a.library_version):
-            ap.error("--add needs --date, --source, --run-by and --library-version so every score is traceable to a real run")
+        if not (a.date and a.source and a.run_by and a.library_version and a.skill_version and a.source_commit and a.evaluator_version):
+            ap.error("--add needs --date, --source, --run-by, --library-version, --skill-version, --source-commit and --evaluator-version so every score is traceable to a real run")
         with (ROOT / HISTORY).open("a", encoding="utf-8", newline="") as f:
-            csv.writer(f).writerow([a.date, a.add[0], *a.add[1:], a.source, a.run_by, a.library_version])
+            csv.writer(f).writerow([a.date, a.add[0], *a.add[1:], a.source, a.run_by, a.library_version,
+                                    a.skill_version, a.source_commit, a.evaluator_version])
         print(f"appended {a.add[0]} to {HISTORY}")
         return 0
     if a.summary:

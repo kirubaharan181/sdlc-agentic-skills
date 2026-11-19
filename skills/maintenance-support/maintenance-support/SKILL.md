@@ -1,9 +1,9 @@
 ---
 name: maintenance-support
-description: Handles support tiers, fixes, patches, updates and enhancements. Use when maintaining live software. Do NOT use for new product build.
+description: "Use when maintaining live software: support tiers, fixes, patches, updates. Do NOT use for new product builds."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["support", "maintenance", "patching", "bug-fixing"]
 ---
 
@@ -52,7 +52,7 @@ Outputs and deliverables:
 3. Implement the smallest safe fix/patch with regression and compatibility coverage.
 4. Verify customer recovery, communicate closure and update support knowledge.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -125,7 +125,7 @@ Acceptance: Deadline and approval are recorded.
 | 179 | Maintenance Release | complete | Release Manager |
 | 180 | Product Lifecycle Management | complete | Product Manager |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -139,10 +139,10 @@ Receives from:
 - `release-deployment`: release notes and known issues
 - `sre-observability`: reliability and fix backlog
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: application-maintenance, bug-fix, dependency-update, documentation-update, emergency-hotfix, existing-application-enhancement, incident-response, new-product-development, performance-optimization, product-retirement, technical-debt-reduction.
 - Roles: backend-engineer, client-engagement-specialist, database-administrator, database-engineer, devops-engineer, devsecops-engineer, frontend-engineer, full-stack-engineer, performance-engineer, product-manager, product-owner, production-support-engineer, release-manager, technical-support-engineer, technical-writer, vendor-management-specialist.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

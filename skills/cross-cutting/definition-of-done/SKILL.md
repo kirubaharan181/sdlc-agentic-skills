@@ -1,9 +1,9 @@
 ---
 name: definition-of-done
-description: Defines task completion criteria and closes work on evidence. Use when work is about to be called done. Do NOT use to plan or do the work.
+description: "Use when work is about to be called done: sets completion criteria and closes on evidence. Do NOT use to plan or do the work."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["completion", "acceptance", "quality-gates", "evidence"]
 ---
 
@@ -51,7 +51,7 @@ Outputs and deliverables:
 3. Record evidence and limitations; verify unresolved risks have explicit owners and disposition.
 4. Close only when required approvals and handoffs are complete.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -127,7 +127,7 @@ Hands to:
 Receives from:
 - `master-orchestration`: task completion check
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

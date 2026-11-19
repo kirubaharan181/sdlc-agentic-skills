@@ -1,9 +1,9 @@
 ---
 name: application-security
-description: Assesses application security: threats, scans, remediation and sign-off. Use when checking a change for risk. Do NOT use for infra operations.
+description: "Use when checking a change for security risk: threats, scans, remediation, sign-off. Do NOT use for infrastructure operations."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["security", "threat-modeling", "sast", "remediation"]
 ---
 
@@ -51,7 +51,7 @@ Outputs and deliverables:
 3. Prioritize by exploitability, impact and reachability; assign owner, SLA and compensating controls.
 4. Retest exact fixes independently and record residual risk/exception.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -123,7 +123,7 @@ Acceptance: Every dismissal has a stated reason.
 | 109 | Vulnerability Remediation | complete | Application Security Engineer |
 | 110 | Security Sign-off | complete | Security Auditor |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -136,10 +136,10 @@ Receives from:
 - `software-implementation`: code and dependency changes for scanning
 - `technical-architecture`: architecture and data flows for threat modeling
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: dependency-update, infrastructure-provisioning, new-product-development, security-vulnerability-remediation.
 - Roles: application-security-engineer, authentication-and-authorization-engineer, backend-engineer, compliance-specialist, devsecops-engineer, infrastructure-engineer, kubernetes-engineer, license-compliance-specialist, penetration-testing-specialist, security-architect, security-auditor, vulnerability-analyst.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

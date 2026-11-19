@@ -1,9 +1,9 @@
 ---
 name: technical-architecture
-description: Defines system boundaries, interfaces and trade-offs. Use when designing or reviewing architecture. Do NOT use for feature coding or release.
+description: "Use when designing or reviewing architecture: boundaries, interfaces, trade-offs. Do NOT use for feature coding or release."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["architecture", "design", "adr", "trade-offs"]
 ---
 
@@ -51,7 +51,7 @@ Outputs and deliverables:
 3. Evaluate measurable quality scenarios, alternatives, lifecycle cost, migration and operational burden.
 4. Publish ADRs, diagrams, control implications and review triggers.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -122,7 +122,7 @@ Acceptance: Each divergence has a class, owner and date.
 | 33 | Architecture Documentation | complete | Technical Writer |
 | 34 | Architecture Review | complete | Architecture Reviewer |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -133,10 +133,10 @@ Hands to:
 Receives from:
 - `requirements-design`: validated requirements including non-functional targets
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: api-version-upgrade, database-migration, documentation-update, feature-development, infrastructure-provisioning, new-product-development.
 - Roles: api-architect, architecture-reviewer, cloud-architect, data-architect, database-architect, enterprise-architect, integration-architect, security-architect, software-architect, solution-architect.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

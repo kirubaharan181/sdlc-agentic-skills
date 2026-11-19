@@ -1,8 +1,8 @@
 {
   "skill_id": "master-orchestration",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "kirubaharan181",
-  "description": "Routes multi-skill requests to the right workflow and consolidates results. Use when work spans several stages. Do NOT use for single-skill tasks.",
+  "description": "Use when work spans several stages: routes to workflows and consolidates results. Do NOT use for single-skill tasks.",
   "tags": [
     "orchestration",
     "routing",

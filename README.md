@@ -224,8 +224,17 @@ Choose a skill, hand work between skills, and record decisions with checkable ru
 | Version skills and track documentation quality | [Versioning](docs/governance/SKILL_VERSIONING.md), [quality management](docs/quality/QUALITY_MANAGEMENT.md) | `python3 scripts/check_skill_versions.py` |
 | Use the library from Codex or another coding agent | [AGENTS.md](AGENTS.md), [Codex usage](docs/agent-guide/CODEX_USAGE.md) | documented, not tested |
 
-Documentation quality of the 20 skills was scored once by SkillEvaluator before this work (average 87.3, none at 97+). The restructured
-skills have **not** been re-scored; see [reports/skill-quality/](reports/skill-quality/) and the [roadmap](docs/roadmap/REQUIREMENTS_AND_ROADMAP.md).
+Documentation quality is measured with NVIDIA SkillEvaluator (`skillevaluator quality-check skills/<group>/<skill>`). Recorded runs are in
+[reports/skill-quality/SCORE_HISTORY.csv](reports/skill-quality/SCORE_HISTORY.csv), each tied to a commit, skill version and evaluator version:
+
+| Run | Commit | Result |
+|---|---|---|
+| Baseline (owner-supplied, evaluator version not recorded) | `a8be547` | average 87.3, none at 97+ |
+| Latest (skillevaluator 1.0.1, 2026-11-19) | `66e223e`, skills 1.1.1 | all 20 skills 100.0, 0 quality findings |
+
+A quality score is not publication approval. The Tier 1 static checks (`skillevaluator tier1 <skill> --no-llm`) pass for 19 of 20 skills;
+`application-security` is held back by a scanner parse-limit warning. Tier 2, Tier 3 and LLM checks were not run, so **publication eligibility is not claimed**.
+Details: [publication requirements](reports/enhancement/PUBLICATION_REQUIREMENTS.md) and [reconciliation](reports/enhancement/QUALITY_RECONCILIATION.md).
 
 ## 🚀 Quick start
 
@@ -260,7 +269,7 @@ python scripts/run_tests.py
 | Workflow routes | **23** |
 | Platform capability declarations | **7** |
 
-The stage registry contains 190 stage records across all 15 domains. A known mapping issue is intentionally disclosed: stage records currently reference workflow ID `maintenance`, while the workflow registry uses `application-maintenance`. The dashboard flags this mismatch rather than silently rewriting canonical data. See the [registry integrity note](dashboard/data/library.json).
+The stage registry contains 190 stage records across all 15 domains. Every stage's `workflow_ids` resolves to one of the 23 workflows (checked by `python3 scripts/validate.py`); the earlier `maintenance` versus `application-maintenance` mismatch no longer exists.
 
 Validation scripts and controlled fixtures test repository contracts; they do not claim unexecuted production deployments, penetration tests or live third-party integrations.
 

@@ -1,9 +1,9 @@
 ---
 name: cloud-hosting-operations
-description: Operates cloud compute, storage, network, DR and cost. Use when managing hosted infrastructure. Do NOT use for pipelines or app changes.
+description: "Use when managing hosted infrastructure: compute, storage, network, DR, cost. Do NOT use for pipelines or application changes."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["cloud", "infrastructure", "disaster-recovery", "finops"]
 ---
 
@@ -51,7 +51,7 @@ Outputs and deliverables:
 3. Apply reviewed IaC/configuration changes with drift and blast-radius checks.
 4. Measure availability, capacity, recovery and unit cost; hand off runbooks.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -123,7 +123,7 @@ Acceptance: No resource is stopped without owner confirmation.
 | 151 | Cost Optimization | complete | FinOps Specialist |
 | 152 | Infrastructure Maintenance | complete | Infrastructure Engineer |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -136,10 +136,10 @@ Receives from:
 - `release-deployment`: deployed release and environment changes
 - `technical-architecture`: cloud design and recovery objectives
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: application-maintenance, database-migration, disaster-recovery, infrastructure-provisioning, new-product-development, product-retirement.
 - Roles: cloud-architect, cloud-engineer, database-administrator, finops-specialist, infrastructure-engineer, network-engineer, performance-engineer, sre.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

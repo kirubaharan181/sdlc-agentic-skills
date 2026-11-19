@@ -1,8 +1,8 @@
 {
   "skill_id": "sre-observability",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "kirubaharan181",
-  "description": "Designs monitoring, SLOs, alerts and incident analysis. Use when making a service observable or reliable. Do NOT use for command of live incidents.",
+  "description": "Use when making a service observable or reliable: monitoring, SLOs, alerts. Do NOT use for command of live incidents.",
   "tags": [
     "sre",
     "observability",

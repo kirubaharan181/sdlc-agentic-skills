@@ -1,9 +1,9 @@
 ---
 name: quality-assurance
-description: Plans and runs risk-based testing and defect handling. Use when verifying behavior before release. Do NOT use for fixing defects or security scans.
+description: "Use when verifying behavior before release: risk-based testing and defect handling. Do NOT use for fixing defects or security scans."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["testing", "qa", "defects", "regression"]
 ---
 
@@ -51,7 +51,7 @@ Outputs and deliverables:
 3. Execute positive, negative, boundary and non-functional scenarios with version-pinned evidence.
 4. Triage failures and issue a quality recommendation with explicit limitations.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -131,7 +131,7 @@ Acceptance: Not-met criterion and its owner are stated.
 | 96 | Defect Management | complete | QA Lead |
 | 97 | Test Sign-off | complete | QA Lead |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -144,10 +144,10 @@ Receives from:
 - `requirements-design`: acceptance criteria and risk list for test design
 - `software-implementation`: build and acceptance criteria for testing
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: api-version-upgrade, bug-fix, database-migration, dependency-update, emergency-hotfix, environment-configuration, existing-application-enhancement, feature-development, new-product-development, performance-optimization, staging-release, technical-debt-reduction.
 - Roles: accessibility-testing-specialist, api-testing-specialist, automation-qa-engineer, e2e-testing-specialist, integration-testing-specialist, manual-qa-engineer, performance-engineer, performance-testing-specialist, qa-lead, quality-governance-specialist, sre, unit-testing-specialist.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

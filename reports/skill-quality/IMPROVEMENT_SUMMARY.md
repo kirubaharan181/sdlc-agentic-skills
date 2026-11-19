@@ -1,7 +1,8 @@
 # Improvement summary
 
-Scope: documentation structure and governance for the 20 skills. **After-change scores are not measured**: SkillEvaluator is
-not installed in the build environment. The 97+ target is therefore unverified. See `SKILL_SCORE_COMPARISON.csv`.
+Scope: documentation structure and governance for the 20 skills. **Measured after the changes** (skillevaluator 1.0.1, 2026-11-19, commit `66e223e`,
+skills 1.1.1): all 20 skills 100.0, 0 findings, versus an owner-supplied baseline average of 87.3. See `SKILL_SCORE_COMPARISON.csv`,
+`TIER1_RESULTS.csv` and `reports/enhancement/QUALITY_RECONCILIATION.md`. The quality check does not prove publication eligibility.
 
 ## What changed, by baseline finding
 
@@ -26,5 +27,5 @@ Details: `ARCHITECTURE_ENHANCEMENTS.md` and `docs/roadmap/REQUIREMENTS_AND_ROADM
 
 ## What this does not show
 
-Passing the repository validator shows the documents have the required structure. It does not show that the skills improve
-agent output, and it does not show the evaluator score. Run SkillEvaluator and record the result to close that gap.
+A quality score of 100 shows the documents meet the evaluator's documentation criteria. It does not show that the skills improve agent output,
+and it is not publication approval (see `reports/enhancement/PUBLICATION_REQUIREMENTS.md`).

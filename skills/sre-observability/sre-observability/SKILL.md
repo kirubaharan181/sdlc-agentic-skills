@@ -1,9 +1,9 @@
 ---
 name: sre-observability
-description: Designs monitoring, SLOs, alerts and incident analysis. Use when making a service observable or reliable. Do NOT use for command of live incidents.
+description: "Use when making a service observable or reliable: monitoring, SLOs, alerts. Do NOT use for command of live incidents."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["sre", "observability", "slo", "incident-analysis"]
 ---
 
@@ -50,7 +50,7 @@ Outputs and deliverables:
 3. Review capacity, toil, incident patterns and recovery objectives.
 4. Run learning reviews and verify reliability improvement against baseline.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -123,7 +123,7 @@ Acceptance: Each action has an owner and a date.
 | 165 | Postmortem | complete | Incident Manager |
 | 166 | Reliability Improvement | complete | SRE |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -137,10 +137,10 @@ Receives from:
 - `maintenance-support`: recurring issues as reliability work
 - `release-deployment`: release markers and rollback criteria for monitoring
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: disaster-recovery, emergency-hotfix, incident-response, new-product-development, performance-optimization, rollback, root-cause-analysis.
 - Roles: backend-engineer, incident-manager, infrastructure-engineer, observability-engineer, platform-engineer, process-improvement-specialist, production-support-engineer, sre.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

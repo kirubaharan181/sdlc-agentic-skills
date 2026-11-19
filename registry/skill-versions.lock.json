@@ -1,82 +1,82 @@
 {
   "application-security": {
-    "version": "1.1.0",
-    "content_sha256": "2848a79166219d9f1220c8411dda31ed0df9abb2b7a290321474a722b89f3c6b"
+    "version": "1.1.1",
+    "content_sha256": "7ca4c9ddd68b0807831d4cf8d4f3a8f25104ec17fa5c66fc51f70051adf5d95e"
   },
   "business-product-management": {
-    "version": "1.1.0",
-    "content_sha256": "296b50c086297490524484c7dbac1160755a862ff7255b9e3023d4ca1e649ca2"
+    "version": "1.1.1",
+    "content_sha256": "dad9f34c8cdd1e07520d183a09a25d66490618b408316e09788382c79a2da79a"
   },
   "cloud-hosting-operations": {
-    "version": "1.1.0",
-    "content_sha256": "ab927eb0f204c63d8c272a4515d89f2223e46edf64aeb4fe4a47b08ddbc24cfb"
+    "version": "1.1.1",
+    "content_sha256": "f819006e5a9f56fa638769725ab57ed9a495748d1d384688015d6f2a8382412c"
   },
   "code-review-quality": {
-    "version": "1.1.0",
-    "content_sha256": "5014dedf8806043e67ad4bfd56141165084a0fcce9507098446598545e9f6563"
+    "version": "1.1.1",
+    "content_sha256": "655c9a38df6b398e50965fe59c409f76276072470e31c71297dac9dd56baa416"
   },
   "definition-of-done": {
-    "version": "1.1.0",
-    "content_sha256": "74cccc7be930e0d588d7e30c26dcc7edf0d686d05b3087e0c5eb10e4efd1b216"
+    "version": "1.1.1",
+    "content_sha256": "024a3150ad2a7e2a3fd0f320450315f3e90c92ffd3d7516a33da7f7c2503b6a1"
   },
   "devops-platform": {
-    "version": "1.1.0",
-    "content_sha256": "2f982407a8e50198eb6b7ffad08ea8223b550959c7b814d5c583db4d76e6899d"
+    "version": "1.1.1",
+    "content_sha256": "4669476b59f708b8cfb48056d0d71932afa56097011c565b7d733fe5a15194c7"
   },
   "engineering-governance": {
-    "version": "1.1.0",
-    "content_sha256": "92cd57e38754939c35a0b52ef1c59a88b0862549182f88bbf054fef9542ee02a"
+    "version": "1.1.1",
+    "content_sha256": "9d56043a2f807db1a35e68af0c8459cc5a0a50099a563fddf9bd8a9a6e1a5d7d"
   },
   "enterprise-governance": {
-    "version": "1.1.0",
-    "content_sha256": "9737b7b3f4dfbf7b908dda274d39bdaf70d4b6279ec5494f96dd607af7629ae2"
+    "version": "1.1.1",
+    "content_sha256": "dc925d709fdce4ee2c821ac4f18d5f8d723e7745beff51f22eedab33199300df"
   },
   "evidence-quality-gates": {
-    "version": "1.1.0",
-    "content_sha256": "312cb11b10c7f240791f8fe89405986119caea4e205009484fe9c6605c0a7568"
+    "version": "1.1.1",
+    "content_sha256": "1cf133ad681347fcb9ca323307ee2371b57313cecfb8529ac3931e59aca81e33"
   },
   "incident-command": {
-    "version": "1.1.0",
-    "content_sha256": "ad7aaadc12f64ae02a98941ad1ba4153aa96f6573da41f188f6f778dfb5d35c5"
+    "version": "1.1.1",
+    "content_sha256": "886bb1f0dda0d7e1ed0630d14da2ec74185f526d9d70d0345dad9c9bfa2dd8b2"
   },
   "maintenance-support": {
-    "version": "1.1.0",
-    "content_sha256": "1d63c99c69beecddd5f9cd8cb2669c67f7649fb5f5d0bc77ab8c44819fcdd8c6"
+    "version": "1.1.1",
+    "content_sha256": "25370f2c8fc87ba66c4ba3df44ac45316fd8a76675d85dc346071e18fc75740e"
   },
   "master-orchestration": {
-    "version": "1.1.0",
-    "content_sha256": "e1d6a616c4f96f0ddb471beabfead9e3da232f0ef895647f903cb858e5ff07fb"
+    "version": "1.1.1",
+    "content_sha256": "5d7c987035b88478a22d7d7eab2a8d68e6eef3cb18a95377e3bfcf91fed6f1e1"
   },
   "project-agile-management": {
-    "version": "1.1.0",
-    "content_sha256": "a8c136a6ae2f8b1665895dbd4afc293c27f4dc192f3559f0bf2b873461aecccb"
+    "version": "1.1.1",
+    "content_sha256": "c7e82262e2114090d96616dd2d0014285935c5420a32d063eb9dd1639ef73f08"
   },
   "quality-assurance": {
-    "version": "1.1.0",
-    "content_sha256": "f7b6fc4d6b94435b1df6391fc829459307c393d81b6ad408f9fc1a110fa65df1"
+    "version": "1.1.1",
+    "content_sha256": "e010615515df93bd7ae725e6b563baffe5f6093d0e3e278ac151a897ced5e809"
   },
   "release-deployment": {
-    "version": "1.1.0",
-    "content_sha256": "a16f91c64e05e21be7c13a919d3bedb9a0d6179c02a1f99a60c9bfb9f828e7eb"
+    "version": "1.1.1",
+    "content_sha256": "806ee370c99cf03a7b1c8b1b7ec64de10fb711bfcedd9e21e622d2c0e7fedb73"
   },
   "requirements-design": {
-    "version": "1.1.0",
-    "content_sha256": "9aecaa7418f5596b9b6e1af44f70dd0a2ef0bd02951b3dccf37fc538bcaf6ad9"
+    "version": "1.1.1",
+    "content_sha256": "d254329a7c234e2d9eab3be7e58896cf7ab46b419bc379c9083d0277afe67b0c"
   },
   "secure-change-control": {
-    "version": "1.1.0",
-    "content_sha256": "72c785138b10e572135a2651c79e6e149f2d85d36b344006651ca602d9170ad5"
+    "version": "1.1.1",
+    "content_sha256": "ed6592c36752cf68c1164404197a80c4ba63ec6daf8571ddd207e8e18e83dd4d"
   },
   "software-implementation": {
-    "version": "1.1.0",
-    "content_sha256": "9ac8f6e9b7a18acce35b7583a56d54d0c4d7f26cda1b387c55896600352504d8"
+    "version": "1.1.1",
+    "content_sha256": "71c566fa08cfe2ee2209e39980c31b3bdfade3a6b42352aeb039ea1bf862407b"
   },
   "sre-observability": {
-    "version": "1.1.0",
-    "content_sha256": "be6a8736664e4b49fe784e6aa906fc9845fe1f40f79ee7aec586b36a00addf20"
+    "version": "1.1.1",
+    "content_sha256": "c4bca0e26c68328406e38f5918a724c49bd88a9cc4e94d8b1c32b9be4614a35d"
   },
   "technical-architecture": {
-    "version": "1.1.0",
-    "content_sha256": "336c34c42295dc39f6e4c0bcce666777bac5bba34f0d3b02e4d6123b6021434e"
+    "version": "1.1.1",
+    "content_sha256": "2d60259a6d40209d9b6bd0743f1fefd7bc3b188b86d15100b53328bc03ad8dbc"
   }
 }

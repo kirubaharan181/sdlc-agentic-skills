@@ -1,8 +1,8 @@
 {
   "skill_id": "devops-platform",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "kirubaharan181",
-  "description": "Builds CI/CD, containers, infrastructure as code and environments. Use when automating delivery. Do NOT use for release approval or runtime ops.",
+  "description": "Use when automating delivery: CI/CD, containers, infrastructure as code, environments. Do NOT use for release approval or runtime ops.",
   "tags": [
     "devops",
     "ci-cd",

@@ -22,7 +22,8 @@ correctness, or certify security. Scores come only from a real evaluator run; no
 
 1. Run the SkillEvaluator quality check on each skill path in `registry/SKILL_REGISTRY.json` on a machine where it is installed.
 2. For each skill, append one row:
-   `python3 scripts/check_quality_regression.py --add <skill> <score> <grade> <C> <D> <R> <E> <findings> --date YYYY-MM-DD --source "SkillEvaluator <version>" --run-by "<name>" --library-version "<git sha>"`
+   `python3 scripts/check_quality_regression.py --add <skill> <score> <grade> <C> <D> <R> <E> <findings> --date YYYY-MM-DD --source "SkillEvaluator <version>" --run-by "<name>" --library-version "<release or branch>" --skill-version <x.y.z> --source-commit <sha> --evaluator-version "skillevaluator <version>; skillspector <version>"`
+   All seven traceability options are required, so a score can always be tied to a commit, a skill version and an evaluator version. Do not mix runs from different commits.
 3. Update [FINDINGS_TRACKER.md](FINDINGS_TRACKER.md) from the findings the evaluator printed.
 4. Commit the rows with the change that produced them.
 

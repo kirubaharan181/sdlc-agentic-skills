@@ -1,9 +1,9 @@
 ---
 name: enterprise-governance
-description: Audits policy, quality, security, access, change, vendor and cost governance. Use when overseeing controls. Do NOT use to do the audited work.
+description: "Use when overseeing controls: policy, quality, security, access, change, vendor, cost audits. Do NOT use to do the audited work."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["governance", "audit", "compliance", "finops"]
 ---
 
@@ -52,7 +52,7 @@ Outputs and deliverables:
 3. Manage risk-based exceptions with compensating controls and expiry.
 4. Report control health, supplier/cost/access issues and corrective action closure.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -121,7 +121,7 @@ Acceptance: Each gap has an owner and a fix date.
 | 189 | FinOps Governance | complete | FinOps Specialist |
 | 190 | Process Improvement | complete | Process Improvement Specialist |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -141,10 +141,10 @@ Receives from:
 - `secure-change-control`: change records and exceptions for audit
 - `sre-observability`: SLO and incident evidence for review
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: documentation-update, infrastructure-provisioning, new-product-development, product-retirement, root-cause-analysis.
 - Roles: compliance-specialist, documentation-engineer, engineering-coordinator, engineering-governance-specialist, finops-specialist, process-improvement-specialist, program-manager, qa-lead, quality-governance-specialist, release-manager, security-auditor, technical-writer, vendor-management-specialist.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

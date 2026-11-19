@@ -1,8 +1,8 @@
 {
   "skill_id": "project-agile-management",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "kirubaharan181",
-  "description": "Plans, tracks and governs delivery work and risk. Use when scoping, estimating or running iterations. Do NOT use for requirements or code.",
+  "description": "Use when scoping, estimating or running iterations: plans, tracks, governs delivery and risk. Do NOT use for requirements or code.",
   "tags": [
     "project",
     "agile",

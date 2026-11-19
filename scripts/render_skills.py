@@ -1,8 +1,9 @@
 """Render skills in the progressive-disclosure format recommended by Anthropic's skill authoring guide.
 
 skills/<group>/<skill>/SKILL.md            short overview: frontmatter (name, description), procedure, stage index, links
-skills/<group>/<skill>/reference/stages.md per-stage detail, loaded only when needed (one level deep from SKILL.md)
-skills/<group>/<skill>/examples/           hand-written examples (linked if present)
+skills/<group>/<skill>/references/stages.md per-stage detail, loaded only when needed (one level deep from SKILL.md)
+skills/<group>/<skill>/references/examples/  generated illustrative examples (mentioned if present)
+skills/<group>/<skill>/references/CORE_PROCEDURE.md and HANDOFF_CONTRACT.md  skill-local copies so each skill is standalone
 skills/_shared/CORE_PROCEDURE.md           rules shared by every skill, stated once
 """
 from __future__ import annotations
@@ -59,7 +60,7 @@ def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict
     wfs = sorted({w for s in stages for w in s["workflow_ids"]})
     desc = content["description"] if content else description(focus, stages)
     rows = "\n".join(f"| {s['stage_id']} | {s['stage_name']} | {s['status']} | {s['primary_role']} |" for s in stages)
-    has_examples = (skill_dir / "examples").is_dir()
+    has_examples = (skill_dir / "references" / "examples").is_dir()
     parts = [_frontmatter(sid, desc, content), f"# {title}"]
     if content:
         parts += _authored_sections(content, focus)
@@ -67,27 +68,27 @@ def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict
         parts.append(focus)
     parts += [
         "## Procedure\n" + "\n".join(f"{i + 1}. {x}" for i, x in enumerate(steps)),
-        "Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).",
+        "Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).",
     ]
     if content:
         parts += _authored_after_procedure(content)
     parts.append("## Tools\n" + "\n".join(f"- {x}" for x in tools))
     if stages:
         parts.append("## Stages covered\n| Stage | Name | Status | Accountable role |\n|---|---|---|---|\n" + rows +
-                     "\n\nPer-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).")
+                     "\n\nPer-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).")
     else:
         parts.append("## Stages covered\nNone. This is a cross-cutting skill applied alongside stage skills.")
     if content:
         parts.append(_handoffs(content, received or []))
     tail = []
     if has_examples:
-        tail.append("Examples: [examples/](examples/) (illustrative only).")
+        tail.append("Examples (illustrative only): see the files in references/examples/.")
     if wfs:
         tail.append("Workflows: " + ", ".join(wfs) + ".")
     if related_agents:
         tail.append("Roles: " + ", ".join(related_agents) + ".")
     if content:
-        tail.append("Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).")
+        tail.append("Selection and handoff guidance: the skill selection guide in the repository documentation.")
     if tail:
         parts.append("## Related\n" + "\n".join(f"- {x}" for x in tail))
     skill_md = "\n\n".join(parts) + "\n"
@@ -114,9 +115,9 @@ def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict
 
 def _frontmatter(sid: str, desc: str, content: dict | None) -> str:
     if not content:
-        return f"---\nname: {sid}\ndescription: {desc}\n---"
+        return f"---\nname: {sid}\ndescription: {json.dumps(desc, ensure_ascii=False)}\n---"
     tags = ", ".join(json.dumps(x) for x in content["tags"])
-    return (f"---\nname: {sid}\ndescription: {desc}\nmetadata:\n  author: {content['author']}\n"
+    return (f"---\nname: {sid}\ndescription: {json.dumps(desc, ensure_ascii=False)}\nmetadata:\n  author: {content['author']}\n"
             f"  version: \"{content['version']}\"\n  tags: [{tags}]\n---")
 
 
@@ -162,7 +163,7 @@ def _handoffs(c: dict, received: list[tuple[str, str]]) -> str:
     out = "## Handoffs\nHands to:\n" + "\n".join(f"- `{h['skill']}`: {h['artifact']}" for h in c["handoffs"])
     if received:
         out += "\n\nReceives from:\n" + "\n".join(f"- `{s}`: {a}" for s, a in received)
-    out += "\n\nContract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md)."
+    out += "\n\nContract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md)."
     return out
 
 

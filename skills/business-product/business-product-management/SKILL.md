@@ -1,9 +1,9 @@
 ---
 name: business-product-management
-description: Frames strategy, discovery, estimates and approval. Use when assessing a business case. Do NOT use for detailed requirements or sprint planning.
+description: "Use when assessing a business case: strategy, discovery, estimates, approval. Do NOT use for detailed requirements or sprint planning."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["product", "strategy", "discovery", "business-case"]
 ---
 
@@ -51,7 +51,7 @@ Outputs and deliverables:
 3. Compare options by user value, confidence, effort, risk and strategic fit; design experiments for high-uncertainty assumptions.
 4. Baseline roadmap outcomes, prioritization rationale, owner and review triggers.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -120,7 +120,7 @@ Acceptance: No obligation lacks an owner; gaps are raised before approval.
 | 9 | Project Approval | complete | Product Manager |
 | 10 | Contract & Compliance | complete | Compliance Specialist |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -128,10 +128,10 @@ Hands to:
 - `project-agile-management`: approved project charter inputs and budget
 - `enterprise-governance`: contract and compliance obligations register
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: existing-application-enhancement, new-product-development.
 - Roles: business-analyst, business-strategist, client-engagement-specialist, compliance-specialist, finops-specialist, market-research-analyst, product-manager, product-owner, project-manager, software-architect, solution-architect, ux-researcher, vendor-management-specialist.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

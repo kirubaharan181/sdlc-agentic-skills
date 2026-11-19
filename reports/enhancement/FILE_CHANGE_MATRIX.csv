@@ -1,0 +1,142 @@
+file,change,category
+CHANGELOG.md,modified,documentation
+CONTRIBUTING.md,modified,other
+README.md,modified,documentation
+docs/audit/PROGRESS.md,modified,documentation
+docs/quality/FINDINGS_TRACKER.md,modified,documentation
+docs/quality/QUALITY_MANAGEMENT.md,modified,documentation
+docs/roadmap/REQUIREMENTS_AND_ROADMAP.md,modified,documentation
+docs/skill-authoring/SKILL_AUTHORING.md,modified,documentation
+registry/skill-content/application-security.json,modified,skill source
+registry/skill-content/business-product-management.json,modified,skill source
+registry/skill-content/cloud-hosting-operations.json,modified,skill source
+registry/skill-content/code-review-quality.json,modified,skill source
+registry/skill-content/definition-of-done.json,modified,skill source
+registry/skill-content/devops-platform.json,modified,skill source
+registry/skill-content/engineering-governance.json,modified,skill source
+registry/skill-content/enterprise-governance.json,modified,skill source
+registry/skill-content/evidence-quality-gates.json,modified,skill source
+registry/skill-content/incident-command.json,modified,skill source
+registry/skill-content/maintenance-support.json,modified,skill source
+registry/skill-content/master-orchestration.json,modified,skill source
+registry/skill-content/project-agile-management.json,modified,skill source
+registry/skill-content/quality-assurance.json,modified,skill source
+registry/skill-content/release-deployment.json,modified,skill source
+registry/skill-content/requirements-design.json,modified,skill source
+registry/skill-content/secure-change-control.json,modified,skill source
+registry/skill-content/software-implementation.json,modified,skill source
+registry/skill-content/sre-observability.json,modified,skill source
+registry/skill-content/technical-architecture.json,modified,skill source
+registry/skill-versions.lock.json,modified,registry/lock
+registry/stage-content/050.json,modified,stage content
+registry/stage-content/103.json,modified,stage content
+registry/stage-content/125.json,modified,stage content
+reports/enhancement/BASELINE_AUDIT.md,added,report
+reports/enhancement/BASELINE_FINDINGS.csv,added,report
+reports/enhancement/IMPLEMENTATION_SUMMARY.md,added,report
+reports/enhancement/PUBLICATION_REQUIREMENTS.md,added,report
+reports/enhancement/QUALITY_RECONCILIATION.md,added,report
+reports/enhancement/VALIDATION_RESULTS.md,added,report
+reports/skill-quality/IMPROVEMENT_SUMMARY.md,modified,report
+reports/skill-quality/REMAINING_FINDINGS.md,modified,report
+reports/skill-quality/SCORE_HISTORY.csv,modified,report
+reports/skill-quality/SKILL_SCORE_COMPARISON.csv,modified,report
+reports/skill-quality/TIER1_RESULTS.csv,added,report
+reports/skill-quality/VALIDATION_SCOPE.md,modified,report
+scripts/audit_duplication.py,modified,script
+scripts/bootstrap_library.py,modified,script
+scripts/check_quality_regression.py,modified,script
+scripts/rebuild_library.py,modified,script
+scripts/render_skills.py,modified,script
+scripts/validate.py,modified,script
+skills/architecture/technical-architecture/SKILL.md,modified,generated skill file
+skills/architecture/technical-architecture/references/CORE_PROCEDURE.md,added,generated skill file
+skills/architecture/technical-architecture/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/architecture/technical-architecture/references/examples/evidence-example.json,renamed,generated skill file
+skills/architecture/technical-architecture/references/stages.md,renamed,generated skill file
+skills/business-product/business-product-management/SKILL.md,modified,generated skill file
+skills/business-product/business-product-management/references/CORE_PROCEDURE.md,added,generated skill file
+skills/business-product/business-product-management/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/business-product/business-product-management/references/examples/evidence-example.json,renamed,generated skill file
+skills/business-product/business-product-management/references/stages.md,renamed,generated skill file
+skills/cloud-hosting/cloud-hosting-operations/SKILL.md,modified,generated skill file
+skills/cloud-hosting/cloud-hosting-operations/references/CORE_PROCEDURE.md,added,generated skill file
+skills/cloud-hosting/cloud-hosting-operations/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/cloud-hosting/cloud-hosting-operations/references/examples/evidence-example.json,renamed,generated skill file
+skills/cloud-hosting/cloud-hosting-operations/references/stages.md,renamed,generated skill file
+skills/code-review/code-review-quality/SKILL.md,modified,generated skill file
+skills/code-review/code-review-quality/references/CORE_PROCEDURE.md,added,generated skill file
+skills/code-review/code-review-quality/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/code-review/code-review-quality/references/examples/evidence-example.json,renamed,generated skill file
+skills/code-review/code-review-quality/references/stages.md,renamed,generated skill file
+skills/cross-cutting/definition-of-done/SKILL.md,modified,generated skill file
+skills/cross-cutting/definition-of-done/references/CORE_PROCEDURE.md,added,generated skill file
+skills/cross-cutting/definition-of-done/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/cross-cutting/evidence-quality-gates/SKILL.md,modified,generated skill file
+skills/cross-cutting/evidence-quality-gates/references/CORE_PROCEDURE.md,added,generated skill file
+skills/cross-cutting/evidence-quality-gates/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/cross-cutting/incident-command/SKILL.md,modified,generated skill file
+skills/cross-cutting/incident-command/references/CORE_PROCEDURE.md,added,generated skill file
+skills/cross-cutting/incident-command/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/cross-cutting/master-orchestration/SKILL.md,modified,generated skill file
+skills/cross-cutting/master-orchestration/references/CORE_PROCEDURE.md,added,generated skill file
+skills/cross-cutting/master-orchestration/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/cross-cutting/secure-change-control/SKILL.md,modified,generated skill file
+skills/cross-cutting/secure-change-control/references/CORE_PROCEDURE.md,added,generated skill file
+skills/cross-cutting/secure-change-control/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/development/software-implementation/SKILL.md,modified,generated skill file
+skills/development/software-implementation/references/CORE_PROCEDURE.md,added,generated skill file
+skills/development/software-implementation/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/development/software-implementation/references/examples/evidence-example.json,renamed,generated skill file
+skills/development/software-implementation/references/stages.md,renamed,generated skill file
+skills/devops-platform/devops-platform/SKILL.md,modified,generated skill file
+skills/devops-platform/devops-platform/references/CORE_PROCEDURE.md,added,generated skill file
+skills/devops-platform/devops-platform/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/devops-platform/devops-platform/references/examples/evidence-example.json,renamed,generated skill file
+skills/devops-platform/devops-platform/references/stages.md,renamed,generated skill file
+skills/engineering-governance/engineering-governance/SKILL.md,modified,generated skill file
+skills/engineering-governance/engineering-governance/references/CORE_PROCEDURE.md,added,generated skill file
+skills/engineering-governance/engineering-governance/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/engineering-governance/engineering-governance/references/examples/evidence-example.json,renamed,generated skill file
+skills/engineering-governance/engineering-governance/references/stages.md,renamed,generated skill file
+skills/enterprise-governance/enterprise-governance/SKILL.md,modified,generated skill file
+skills/enterprise-governance/enterprise-governance/references/CORE_PROCEDURE.md,added,generated skill file
+skills/enterprise-governance/enterprise-governance/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/enterprise-governance/enterprise-governance/references/examples/evidence-example.json,renamed,generated skill file
+skills/enterprise-governance/enterprise-governance/references/stages.md,renamed,generated skill file
+skills/maintenance-support/maintenance-support/SKILL.md,modified,generated skill file
+skills/maintenance-support/maintenance-support/references/CORE_PROCEDURE.md,added,generated skill file
+skills/maintenance-support/maintenance-support/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/maintenance-support/maintenance-support/references/examples/evidence-example.json,renamed,generated skill file
+skills/maintenance-support/maintenance-support/references/stages.md,renamed,generated skill file
+skills/project-management/project-agile-management/SKILL.md,modified,generated skill file
+skills/project-management/project-agile-management/references/CORE_PROCEDURE.md,added,generated skill file
+skills/project-management/project-agile-management/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/project-management/project-agile-management/references/examples/evidence-example.json,renamed,generated skill file
+skills/project-management/project-agile-management/references/stages.md,renamed,generated skill file
+skills/quality-assurance/quality-assurance/SKILL.md,modified,generated skill file
+skills/quality-assurance/quality-assurance/references/CORE_PROCEDURE.md,added,generated skill file
+skills/quality-assurance/quality-assurance/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/quality-assurance/quality-assurance/references/examples/evidence-example.json,renamed,generated skill file
+skills/quality-assurance/quality-assurance/references/stages.md,renamed,generated skill file
+skills/release-deployment/release-deployment/SKILL.md,modified,generated skill file
+skills/release-deployment/release-deployment/references/CORE_PROCEDURE.md,added,generated skill file
+skills/release-deployment/release-deployment/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/release-deployment/release-deployment/references/examples/evidence-example.json,renamed,generated skill file
+skills/release-deployment/release-deployment/references/stages.md,renamed,generated skill file
+skills/requirements-design/requirements-design/SKILL.md,modified,generated skill file
+skills/requirements-design/requirements-design/references/CORE_PROCEDURE.md,added,generated skill file
+skills/requirements-design/requirements-design/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/requirements-design/requirements-design/references/examples/evidence-example.json,renamed,generated skill file
+skills/requirements-design/requirements-design/references/stages.md,renamed,generated skill file
+skills/security/application-security/SKILL.md,modified,generated skill file
+skills/security/application-security/references/CORE_PROCEDURE.md,added,generated skill file
+skills/security/application-security/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/security/application-security/references/examples/evidence-example.json,renamed,generated skill file
+skills/security/application-security/references/stages.md,renamed,generated skill file
+skills/sre-observability/sre-observability/SKILL.md,modified,generated skill file
+skills/sre-observability/sre-observability/references/CORE_PROCEDURE.md,added,generated skill file
+skills/sre-observability/sre-observability/references/HANDOFF_CONTRACT.md,added,generated skill file
+skills/sre-observability/sre-observability/references/examples/evidence-example.json,renamed,generated skill file
+skills/sre-observability/sre-observability/references/stages.md,renamed,generated skill file
+tests/test_governance.py,modified,test

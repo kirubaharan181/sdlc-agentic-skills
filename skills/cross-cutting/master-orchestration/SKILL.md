@@ -1,9 +1,9 @@
 ---
 name: master-orchestration
-description: Routes multi-skill requests to the right workflow and consolidates results. Use when work spans several stages. Do NOT use for single-skill tasks.
+description: "Use when work spans several stages: routes to workflows and consolidates results. Do NOT use for single-skill tasks."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["orchestration", "routing", "workflow", "handoff"]
 ---
 
@@ -51,7 +51,7 @@ Outputs and deliverables:
 3. Delegate bounded tasks with inputs, outputs, authority and stop conditions.
 4. Enforce gates, reconcile evidence and report status without claiming unrun work.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -128,7 +128,7 @@ Hands to:
 - `secure-change-control`: change requests needing classification
 - `definition-of-done`: task completion check
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

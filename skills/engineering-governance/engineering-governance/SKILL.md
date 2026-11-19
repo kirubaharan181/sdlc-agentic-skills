@@ -1,9 +1,9 @@
 ---
 name: engineering-governance
-description: Sets repository, branching, environment and coding rules. Use when starting or standardizing repos. Do NOT use for enterprise audit or app code.
+description: "Use when starting or standardizing repos: branching, environment, coding rules. Do NOT use for enterprise audit or application code."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["repository", "standards", "branching", "environments"]
 ---
 
@@ -51,7 +51,7 @@ Outputs and deliverables:
 3. Standardize reproducible setup, supported toolchain, environment configuration and documentation.
 4. Protect secrets and access; validate onboarding from a clean checkout.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -118,7 +118,7 @@ Acceptance: Token revoked before any clean-up; no secret value appears in the no
 | 51 | Developer Documentation | complete | Documentation Engineer |
 | 52 | Engineering Governance | complete | Engineering Governance Specialist |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -130,10 +130,10 @@ Receives from:
 - `code-review-quality`: recurring findings as proposed rules
 - `enterprise-governance`: policy requirements and control gaps
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: ci-cd-pipeline-creation, documentation-update, environment-configuration, new-product-development.
 - Roles: devops-engineer, documentation-engineer, engineering-governance-specialist, platform-engineer, quality-governance-specialist, software-architect, technical-writer.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

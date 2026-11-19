@@ -1,9 +1,9 @@
 ---
 name: evidence-quality-gates
-description: Classifies, checks and accepts or rejects evidence behind claims. Use when a gate needs proof. Do NOT use to produce the evidence itself.
+description: "Use when a gate needs proof: classifies, checks, accepts or rejects evidence. Do NOT use to produce the evidence itself."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["evidence", "traceability", "quality-gates", "audit"]
 ---
 
@@ -51,7 +51,7 @@ Outputs and deliverables:
 3. Distinguish PASS, FAIL, BLOCKED, INCONCLUSIVE and approved waiver.
 4. Reject stale, incomplete or self-approved evidence; retain decision and follow-up.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -130,7 +130,7 @@ Receives from:
 - `enterprise-governance`: evidence sets for quality evaluation
 - `master-orchestration`: evidence set for evaluation
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

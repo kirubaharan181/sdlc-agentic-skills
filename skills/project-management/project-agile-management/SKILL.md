@@ -1,9 +1,9 @@
 ---
 name: project-agile-management
-description: Plans, tracks and governs delivery work and risk. Use when scoping, estimating or running iterations. Do NOT use for requirements or code.
+description: "Use when scoping, estimating or running iterations: plans, tracks, governs delivery and risk. Do NOT use for requirements or code."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["project", "agile", "planning", "risk"]
 ---
 
@@ -52,7 +52,7 @@ Outputs and deliverables:
 3. Plan capacity, iteration goals, risk treatments and stakeholder cadence.
 4. Track flow and forecast variance from evidence; control changes and escalate blockers.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -121,7 +121,7 @@ Acceptance: The entry has owner, trigger and response.
 | 43 | Stakeholder Management | complete | Program Manager |
 | 44 | Change Management | complete | Engineering Governance Specialist |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -133,10 +133,10 @@ Receives from:
 - `business-product-management`: approved project charter inputs and budget
 - `enterprise-governance`: improvement actions for planning
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: existing-application-enhancement, new-product-development, product-retirement.
 - Roles: agile-delivery-manager, engineering-coordinator, engineering-governance-specialist, program-manager, project-manager, scrum-master.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

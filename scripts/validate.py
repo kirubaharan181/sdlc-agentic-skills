@@ -89,7 +89,7 @@ for sk in skills:
         target = (p.parent / link).resolve()
         if not target.exists():
             errors.append(f"{sk['skill_id']}: broken link {link}")
-        elif target.suffix == ".md" and target.parent.name == "reference":
+        elif target.suffix == ".md" and target.parent.name == "references":
             if re.search(r"\]\((?!http|#)[^)]*\.md", target.read_text(encoding="utf-8")):
                 errors.append(f"{sk['skill_id']}: reference file links to another file (references must be one level deep)")
 for a in agents:
@@ -375,6 +375,13 @@ for _sk in skills:
         errors.append(f"{_sid}: frontmatter must carry metadata.author, metadata.version and metadata.tags")
     if "```" not in _txt:
         errors.append(f"{_sid}: SKILL.md has no example code block")
+    _dm = re.search(r"(?m)^description: (.*)$", _fm)
+    try:
+        _dv = json.loads(_dm.group(1)) if _dm else None
+    except ValueError:
+        _dv = None
+    if _dv != _sc[_sid]["description"]:
+        errors.append(f"{_sid}: frontmatter description must be a double-quoted string equal to the content description (unquoted text containing ': ' is invalid YAML)")
 
 # credential heuristic
 for p in R.rglob('*'):
