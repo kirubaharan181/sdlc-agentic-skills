@@ -1,9 +1,9 @@
 ---
 name: project-agile-management
-description: Plans, tracks and governs delivery work and risk. Use when scoping, estimating or running iterations. Do NOT use for requirements or code.
+description: "Use when scoping, estimating or running iterations: plans, tracks, governs delivery and risk. Do NOT use for requirements or code."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["project", "agile", "planning", "risk"]
 ---
 

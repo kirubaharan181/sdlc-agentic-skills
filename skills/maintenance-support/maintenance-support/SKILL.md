@@ -1,9 +1,9 @@
 ---
 name: maintenance-support
-description: Handles support tiers, fixes, patches, updates and enhancements. Use when maintaining live software. Do NOT use for new product build.
+description: "Use when maintaining live software: support tiers, fixes, patches, updates. Do NOT use for new product builds."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["support", "maintenance", "patching", "bug-fixing"]
 ---
 

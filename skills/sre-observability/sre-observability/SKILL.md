@@ -1,9 +1,9 @@
 ---
 name: sre-observability
-description: Designs monitoring, SLOs, alerts and incident analysis. Use when making a service observable or reliable. Do NOT use for command of live incidents.
+description: "Use when making a service observable or reliable: monitoring, SLOs, alerts. Do NOT use for command of live incidents."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["sre", "observability", "slo", "incident-analysis"]
 ---
 

@@ -1,9 +1,9 @@
 ---
 name: quality-assurance
-description: Plans and runs risk-based testing and defect handling. Use when verifying behavior before release. Do NOT use for fixing defects or security scans.
+description: "Use when verifying behavior before release: risk-based testing and defect handling. Do NOT use for fixing defects or security scans."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["testing", "qa", "defects", "regression"]
 ---
 

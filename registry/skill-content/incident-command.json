@@ -1,8 +1,8 @@
 {
   "skill_id": "incident-command",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "kirubaharan181",
-  "description": "Coordinates live incidents: severity, roles, comms, timeline, recovery. Use when an incident is active. Do NOT use for routine support tickets.",
+  "description": "Use when an incident is active: severity, roles, comms, timeline, recovery. Do NOT use for routine support tickets.",
   "tags": [
     "incident",
     "command",

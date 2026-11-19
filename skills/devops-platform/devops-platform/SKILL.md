@@ -1,9 +1,9 @@
 ---
 name: devops-platform
-description: Builds CI/CD, containers, infrastructure as code and environments. Use when automating delivery. Do NOT use for release approval or runtime ops.
+description: "Use when automating delivery: CI/CD, containers, infrastructure as code, environments. Do NOT use for release approval or runtime ops."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["devops", "ci-cd", "containers", "iac"]
 ---
 

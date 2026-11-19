@@ -1,9 +1,9 @@
 ---
 name: business-product-management
-description: Frames strategy, discovery, estimates and approval. Use when assessing a business case. Do NOT use for detailed requirements or sprint planning.
+description: "Use when assessing a business case: strategy, discovery, estimates, approval. Do NOT use for detailed requirements or sprint planning."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["product", "strategy", "discovery", "business-case"]
 ---
 

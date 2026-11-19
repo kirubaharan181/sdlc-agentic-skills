@@ -1,9 +1,9 @@
 ---
 name: master-orchestration
-description: Routes multi-skill requests to the right workflow and consolidates results. Use when work spans several stages. Do NOT use for single-skill tasks.
+description: "Use when work spans several stages: routes to workflows and consolidates results. Do NOT use for single-skill tasks."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["orchestration", "routing", "workflow", "handoff"]
 ---
 

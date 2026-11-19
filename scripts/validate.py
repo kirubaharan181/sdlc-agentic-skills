@@ -375,6 +375,13 @@ for _sk in skills:
         errors.append(f"{_sid}: frontmatter must carry metadata.author, metadata.version and metadata.tags")
     if "```" not in _txt:
         errors.append(f"{_sid}: SKILL.md has no example code block")
+    _dm = re.search(r"(?m)^description: (.*)$", _fm)
+    try:
+        _dv = json.loads(_dm.group(1)) if _dm else None
+    except ValueError:
+        _dv = None
+    if _dv != _sc[_sid]["description"]:
+        errors.append(f"{_sid}: frontmatter description must be a double-quoted string equal to the content description (unquoted text containing ': ' is invalid YAML)")
 
 # credential heuristic
 for p in R.rglob('*'):

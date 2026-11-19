@@ -1,9 +1,9 @@
 ---
 name: definition-of-done
-description: Defines task completion criteria and closes work on evidence. Use when work is about to be called done. Do NOT use to plan or do the work.
+description: "Use when work is about to be called done: sets completion criteria and closes on evidence. Do NOT use to plan or do the work."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["completion", "acceptance", "quality-gates", "evidence"]
 ---
 

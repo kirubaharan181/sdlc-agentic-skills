@@ -114,9 +114,9 @@ def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict
 
 def _frontmatter(sid: str, desc: str, content: dict | None) -> str:
     if not content:
-        return f"---\nname: {sid}\ndescription: {desc}\n---"
+        return f"---\nname: {sid}\ndescription: {json.dumps(desc, ensure_ascii=False)}\n---"
     tags = ", ".join(json.dumps(x) for x in content["tags"])
-    return (f"---\nname: {sid}\ndescription: {desc}\nmetadata:\n  author: {content['author']}\n"
+    return (f"---\nname: {sid}\ndescription: {json.dumps(desc, ensure_ascii=False)}\nmetadata:\n  author: {content['author']}\n"
             f"  version: \"{content['version']}\"\n  tags: [{tags}]\n---")
 
 

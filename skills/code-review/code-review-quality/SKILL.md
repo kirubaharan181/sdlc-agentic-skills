@@ -1,9 +1,9 @@
 ---
 name: code-review-quality
-description: Reviews changes for correctness, design, standards and merge readiness. Use when assessing a pull request. Do NOT use for writing code.
+description: "Use when assessing a pull request for correctness, design, standards, merge readiness. Do NOT use for writing code."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["code-review", "pull-request", "static-analysis", "quality"]
 ---
 

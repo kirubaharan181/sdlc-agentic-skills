@@ -1,9 +1,9 @@
 ---
 name: enterprise-governance
-description: Audits policy, quality, security, access, change, vendor and cost governance. Use when overseeing controls. Do NOT use to do the audited work.
+description: "Use when overseeing controls: policy, quality, security, access, change, vendor, cost audits. Do NOT use to do the audited work."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["governance", "audit", "compliance", "finops"]
 ---
 

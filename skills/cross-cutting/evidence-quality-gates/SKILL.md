@@ -1,9 +1,9 @@
 ---
 name: evidence-quality-gates
-description: Classifies, checks and accepts or rejects evidence behind claims. Use when a gate needs proof. Do NOT use to produce the evidence itself.
+description: "Use when a gate needs proof: classifies, checks, accepts or rejects evidence. Do NOT use to produce the evidence itself."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["evidence", "traceability", "quality-gates", "audit"]
 ---
 

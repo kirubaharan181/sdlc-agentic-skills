@@ -1,9 +1,9 @@
 ---
 name: engineering-governance
-description: Sets repository, branching, environment and coding rules. Use when starting or standardizing repos. Do NOT use for enterprise audit or app code.
+description: "Use when starting or standardizing repos: branching, environment, coding rules. Do NOT use for enterprise audit or application code."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["repository", "standards", "branching", "environments"]
 ---
 

@@ -1,9 +1,9 @@
 ---
 name: technical-architecture
-description: Defines system boundaries, interfaces and trade-offs. Use when designing or reviewing architecture. Do NOT use for feature coding or release.
+description: "Use when designing or reviewing architecture: boundaries, interfaces, trade-offs. Do NOT use for feature coding or release."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["architecture", "design", "adr", "trade-offs"]
 ---
 

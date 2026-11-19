@@ -1,9 +1,9 @@
 ---
 name: software-implementation
-description: Builds and changes application code across layers. Use when implementing features or fixes. Do NOT use for design, review or deployment.
+description: "Use when implementing features or fixes: builds and changes application code. Do NOT use for design, review or deployment."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["implementation", "backend", "frontend", "api"]
 ---
 

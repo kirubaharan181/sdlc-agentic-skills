@@ -1,9 +1,9 @@
 ---
 name: release-deployment
-description: Plans, approves and verifies releases and deployments. Use when promoting a build to staging or production. Do NOT use for building pipelines.
+description: "Use when promoting a build to staging or production: plans, approves, verifies. Do NOT use for building pipelines."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["release", "deployment", "rollback", "change-approval"]
 ---
 

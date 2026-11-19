@@ -1,9 +1,9 @@
 ---
 name: requirements-design
-description: Elicits, documents and validates requirements and UX. Use when scope is needed before design. Do NOT use for architecture or coding.
+description: "Use when scope is needed before design: elicits, documents, validates requirements and UX. Do NOT use for architecture or coding."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["requirements", "ux", "design", "accessibility"]
 ---
 

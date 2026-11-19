@@ -1,9 +1,9 @@
 ---
 name: incident-command
-description: Coordinates live incidents: severity, roles, comms, timeline, recovery. Use when an incident is active. Do NOT use for routine support tickets.
+description: "Use when an incident is active: severity, roles, comms, timeline, recovery. Do NOT use for routine support tickets."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["incident", "command", "communication", "recovery"]
 ---
 

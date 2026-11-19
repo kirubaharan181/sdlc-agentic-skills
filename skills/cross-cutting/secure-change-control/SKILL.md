@@ -1,9 +1,9 @@
 ---
 name: secure-change-control
-description: Classifies change risk, sets approvals, rollback and audit trail. Use when a risky change is proposed. Do NOT use for general application security.
+description: "Use when a risky change is proposed: classifies risk, sets approvals, rollback, audit trail. Do NOT use for security code reviews."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["change-control", "approval", "rollback", "audit-trail"]
 ---
 

@@ -1,9 +1,9 @@
 ---
 name: application-security
-description: Assesses application security: threats, scans, remediation and sign-off. Use when checking a change for risk. Do NOT use for infra operations.
+description: "Use when checking a change for security risk: threats, scans, remediation, sign-off. Do NOT use for infrastructure operations."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["security", "threat-modeling", "sast", "remediation"]
 ---
 

@@ -1,9 +1,9 @@
 ---
 name: cloud-hosting-operations
-description: Operates cloud compute, storage, network, DR and cost. Use when managing hosted infrastructure. Do NOT use for pipelines or app changes.
+description: "Use when managing hosted infrastructure: compute, storage, network, DR, cost. Do NOT use for pipelines or application changes."
 metadata:
   author: kirubaharan181
-  version: "1.1.0"
+  version: "1.1.1"
   tags: ["cloud", "infrastructure", "disaster-recovery", "finops"]
 ---
 
