@@ -166,3 +166,39 @@ def test_contributing_covers_skill_workflow():
     t = (ROOT / "CONTRIBUTING.md").read_text(encoding="utf-8")
     for needle in ("registry/skill-content", "check_skill_versions.py", "check_quality_regression.py", "MIT License"):
         assert needle in t
+
+
+# --- standalone skill layout and valid frontmatter -------------------------------------------------------------------
+
+def test_frontmatter_description_is_a_quoted_string_equal_to_the_source():
+    content = _content()
+    for f in sorted(ROOT.glob("skills/*/*/SKILL.md")):
+        fm = f.read_text(encoding="utf-8").split("---\n")[1]
+        line = next(x for x in fm.splitlines() if x.startswith("description: "))
+        assert json.loads(line[len("description: "):]) == content[f.parent.name]["description"], f
+
+
+def test_every_skill_is_standalone():
+    """SKILL.md may link only to files inside its own folder, and those files must exist."""
+    for f in sorted(ROOT.glob("skills/*/*/SKILL.md")):
+        text = f.read_text(encoding="utf-8")
+        for link in re.findall(r"\]\(([^)#]+)(?:#[^)]*)?\)", text):
+            if link.startswith("http"):
+                continue
+            assert not link.startswith(".."), (f, link)
+            assert (f.parent / link).exists(), (f, link)
+        assert (f.parent / "references/CORE_PROCEDURE.md").exists(), f
+        assert (f.parent / "references/HANDOFF_CONTRACT.md").exists(), f
+        assert not (f.parent / "reference").exists() and not (f.parent / "examples").exists(), f
+
+
+def test_descriptions_lead_with_the_trigger():
+    for sid, c in _content().items():
+        assert c["description"].startswith("Use when"), sid
+        assert c["description"].lower().find("use when") < 60, sid
+
+
+def test_score_history_rows_are_traceable():
+    rows = list(csv.DictReader((ROOT / "reports/skill-quality/SCORE_HISTORY.csv").open(encoding="utf-8")))
+    for r in rows:
+        assert r["skill_version"] and r["source_commit"] and r["evaluator_version"], r

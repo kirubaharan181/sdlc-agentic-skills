@@ -201,7 +201,7 @@ Acceptance: No unintended service is exposed to the internet No wildcard adminis
 
 Validation: Security review of the rescan.
 
-- `nmap -Pn -p- --open <public-ip>   # example; scan only systems you are authorized to test` expect: only intended ports are open
+- `ss -tlnp   # example; list listening ports on a host you own and compare with the approved list` expect: only intended ports are open
 - `trivy config terraform/   # example baseline check` expect: no high findings outside the exception register
 
 Failure modes:

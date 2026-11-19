@@ -35,7 +35,7 @@
   "validation_method": "Secrets-owner approval, plus a rerun of the scanner on a clean clone.",
   "validation": [
     {
-      "command": "gitleaks detect --source . --redact --report-path reports/secrets.json   # example",
+      "command": "gitleaks detect --source . --redact --report-path reports/secret-scan.json   # example",
       "expect": "exit 0; zero findings or all findings marked rotated"
     },
     {

@@ -35,7 +35,7 @@
   "validation_method": "Security review of the rescan.",
   "validation": [
     {
-      "command": "nmap -Pn -p- --open <public-ip>   # example; scan only systems you are authorized to test",
+      "command": "ss -tlnp   # example; list listening ports on a host you own and compare with the approved list",
       "expect": "only intended ports are open"
     },
     {

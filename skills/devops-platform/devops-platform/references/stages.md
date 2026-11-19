@@ -489,7 +489,7 @@ Inputs: pipeline definitions; pipeline secrets and permissions; runner configura
 Procedure:
 1. Give each pipeline job the least privilege it needs; use short-lived credentials from the identity provider instead of stored keys.
 2. Pin third-party actions and tools to a version or digest and review changes to them.
-3. Protect pipeline files: changes need review, and untrusted code from forks cannot access secrets.
+3. Protect pipeline files: changes need review, and fork builds run without any secrets.
 4. Isolate runners; do not run untrusted builds on runners that can reach production.
 5. Log pipeline runs and alert on unusual changes to pipeline definitions or permissions.
 6. Test the controls by trying to bypass them in a safe repository.

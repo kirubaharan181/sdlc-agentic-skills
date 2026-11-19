@@ -196,7 +196,7 @@ Acceptance: Scan of history and tree reports zero active secrets or each is rota
 
 Validation: Secrets-owner approval, plus a rerun of the scanner on a clean clone.
 
-- `gitleaks detect --source . --redact --report-path reports/secrets.json   # example` expect: exit 0; zero findings or all findings marked rotated
+- `gitleaks detect --source . --redact --report-path reports/secret-scan.json   # example` expect: exit 0; zero findings or all findings marked rotated
 - `git clone --quiet . /tmp/clean && gitleaks detect --source /tmp/clean --redact` expect: exit 0 on the clean clone
 
 Failure modes:
