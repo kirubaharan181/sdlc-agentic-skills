@@ -51,7 +51,7 @@ Outputs and deliverables:
 3. Design journeys, wireframes and prototypes around observed tasks; cover empty, error, loading and recovery states.
 4. Validate traceability, usability and accessibility before baselining.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -122,7 +122,7 @@ Acceptance: The conflict is logged and escalated, not silently resolved.
 | 21 | Accessibility Review | complete | Accessibility Testing Specialist |
 | 22 | Requirement Validation | complete | Product Owner |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -133,10 +133,10 @@ Hands to:
 Receives from:
 - `business-product-management`: approved business case, goals, scope and constraints
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: existing-application-enhancement, feature-development, new-product-development.
 - Roles: accessibility-testing-specialist, business-analyst, frontend-engineer, performance-engineer, product-owner, requirements-engineer, security-architect, ui-ux-designer, ux-researcher.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

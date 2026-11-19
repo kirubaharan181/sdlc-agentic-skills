@@ -50,7 +50,7 @@ Outputs and deliverables:
 3. Verify test quality and that evidence refers to the exact reviewed commit.
 4. Classify findings by severity and recommend merge, changes or block with actionable evidence.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -118,7 +118,7 @@ Acceptance: Each added suppression has a recorded decision.
 | 75 | Merge Approval | complete | Merge Steward |
 | 76 | Technical Debt Review | complete | Software Architect |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -129,10 +129,10 @@ Hands to:
 Receives from:
 - `software-implementation`: pull request with tests and notes
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: api-version-upgrade, bug-fix, dependency-update, emergency-hotfix, existing-application-enhancement, feature-development, new-product-development, security-vulnerability-remediation, technical-debt-reduction.
 - Roles: architecture-reviewer, code-reviewer, devsecops-engineer, engineering-governance-specialist, frontend-engineer, full-stack-engineer, license-compliance-specialist, merge-steward, software-architect, unit-testing-specialist.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

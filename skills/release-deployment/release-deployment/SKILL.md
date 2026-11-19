@@ -52,7 +52,7 @@ Outputs and deliverables:
 3. Obtain named change authority and execute protected progressive rollout.
 4. Verify health/business signals and close or recover with evidence.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -125,7 +125,7 @@ Acceptance: Each step is reversible and has a verification query.
 | 138 | Production Smoke Test | complete | SRE |
 | 139 | Deployment Sign-off | complete | Release Manager |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -142,10 +142,10 @@ Receives from:
 - `quality-assurance`: test sign-off with exit criteria scorecard
 - `secure-change-control`: approved change with window and rollback
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: api-version-upgrade, bug-fix, database-migration, disaster-recovery, emergency-hotfix, existing-application-enhancement, feature-development, incident-response, new-product-development, production-release, rollback, staging-release.
 - Roles: application-security-engineer, automation-qa-engineer, cloud-engineer, database-administrator, database-engineer, deployment-engineer, devops-engineer, network-engineer, project-manager, qa-lead, release-manager, sre, technical-writer.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

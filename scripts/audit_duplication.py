@@ -60,6 +60,9 @@ def _shingles(text: str, n: int = 4) -> set[str]:
     return {" ".join(w[i : i + n]) for i in range(max(len(w) - n + 1, 1))}
 
 
+BUNDLED_SHARED = {"CORE_PROCEDURE.md", "HANDOFF_CONTRACT.md"}
+
+
 def near_duplicates(root: Path = ROOT, threshold: float = 0.80, scope: tuple[str, ...] | None = None):
     docs = {}
     for p in repo_files(root):
@@ -68,6 +71,8 @@ def near_duplicates(root: Path = ROOT, threshold: float = 0.80, scope: tuple[str
         rel = p.relative_to(root)
         if scope and rel.parts[0] not in scope:
             continue
+        if rel.parts[0] == "skills" and "references" in rel.parts and p.name in BUNDLED_SHARED:
+            continue  # intentional byte-identical copies that keep each skill standalone
         norm = normalise(p.read_text(encoding="utf-8", errors="ignore"), p)
         if len(norm.split()) >= 40:
             docs[str(rel)] = (norm, _shingles(norm))

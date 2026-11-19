@@ -51,7 +51,7 @@ Outputs and deliverables:
 3. Implement the smallest coherent change following local conventions and secure defaults.
 4. Run unit/integration/contract checks and record migration, deployment and rollback impact.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -125,7 +125,7 @@ Acceptance: New test fails before and passes after; no other test breaks.
 | 66 | Error Handling | complete | Backend Engineer |
 | 67 | Developer Testing | complete | Full Stack Engineer |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -143,10 +143,10 @@ Receives from:
 - `requirements-design`: wireframes, UI designs and acceptance criteria
 - `technical-architecture`: decision records, interface contracts and dependency rules
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: api-version-upgrade, database-migration, existing-application-enhancement, feature-development, new-product-development, performance-optimization.
 - Roles: ai-ml-engineer, api-engineer, authentication-and-authorization-engineer, backend-engineer, data-engineer, database-engineer, frontend-engineer, full-stack-engineer, integration-engineer, mobile-engineer, unit-testing-specialist.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

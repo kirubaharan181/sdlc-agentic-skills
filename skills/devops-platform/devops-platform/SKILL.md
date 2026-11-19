@@ -50,7 +50,7 @@ Outputs and deliverables:
 3. Protect credentials, environments, deployment identities and immutable promotion.
 4. Exercise failure/recovery paths and publish platform ownership/runbooks.
 
-Shared rules (evidence, approvals, failure, handoff): [../../_shared/CORE_PROCEDURE.md](../../_shared/CORE_PROCEDURE.md).
+Shared rules (evidence, approvals, failure, handoff): [references/CORE_PROCEDURE.md](references/CORE_PROCEDURE.md).
 
 ## Decision Rules
 | Situation | Action |
@@ -124,7 +124,7 @@ Acceptance: The negative test passes.
 | 124 | Deployment Automation | complete | Deployment Engineer |
 | 125 | Pipeline Security | complete | DevSecOps Engineer |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [reference/stages.md](reference/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
 
 ## Handoffs
 Hands to:
@@ -135,10 +135,10 @@ Hands to:
 Receives from:
 - `engineering-governance`: repository and configuration conventions for pipelines
 
-Contract: [orchestrator/handoff-contracts/STANDARD_HANDOFF.md](../../../orchestrator/handoff-contracts/STANDARD_HANDOFF.md).
+Contract: [references/HANDOFF_CONTRACT.md](references/HANDOFF_CONTRACT.md).
 
 ## Related
-- Examples: [examples/](examples/) (illustrative only).
+- Examples (illustrative only): see the files in references/examples/.
 - Workflows: ci-cd-pipeline-creation, environment-configuration, infrastructure-provisioning, new-product-development.
 - Roles: automation-qa-engineer, cloud-engineer, database-administrator, database-engineer, deployment-engineer, devops-engineer, devsecops-engineer, infrastructure-engineer, kubernetes-engineer, network-engineer, platform-engineer.
-- Selection and handoff guidance: [docs/architecture/SKILL_SELECTION.md](../../../docs/architecture/SKILL_SELECTION.md).
+- Selection and handoff guidance: the skill selection guide in the repository documentation.

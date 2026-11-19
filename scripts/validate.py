@@ -89,7 +89,7 @@ for sk in skills:
         target = (p.parent / link).resolve()
         if not target.exists():
             errors.append(f"{sk['skill_id']}: broken link {link}")
-        elif target.suffix == ".md" and target.parent.name == "reference":
+        elif target.suffix == ".md" and target.parent.name == "references":
             if re.search(r"\]\((?!http|#)[^)]*\.md", target.read_text(encoding="utf-8")):
                 errors.append(f"{sk['skill_id']}: reference file links to another file (references must be one level deep)")
 for a in agents:

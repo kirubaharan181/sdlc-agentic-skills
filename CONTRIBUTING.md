@@ -11,7 +11,7 @@ Everything must pass before you open a pull request. CI runs the same checks and
 ## How the repository is organised
 - **Edit sources, not generated files.** `registry/*.json`, `registry/workflows/*.json`, `registry/stage-content/*.json`
   and `scripts/execution_profiles.py` are sources. `agents/*.md`, `workflows/*.md`, `skills/**/SKILL.md` and
-  `skills/**/reference/` are generated: change the source, then run `make build`. `make check` fails if you hand-edit them.
+  `skills/**/references/` are generated: change the source, then run `make build`. `make check` fails if you hand-edit them.
 - Never change stage IDs 1-190 or stage names.
 - **Skill documentation is authored in `registry/skill-content/<skill>.json`**, rendered into `SKILL.md` by `make build`. Never edit `SKILL.md` by hand.
 - Governance rules live in `docs/governance/`; risk tiers in `registry/risk-tiers.json`; reusable templates in `templates/`.

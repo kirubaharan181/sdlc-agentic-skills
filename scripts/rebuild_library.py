@@ -155,9 +155,11 @@ Transfer the artifact path/revision, validation evidence, limitations, residual 
   path=Path(skill_paths[sid])
   skill_md,ref_md=render_skills.render_skill(sid,SKILL_PROFILES[sid],matched,agents_doc['agents'],ROOT/path.parent,skill_content.get(sid),sorted(received.get(sid,[])))
   write(path,skill_md)
-  if matched: write(path.parent/'reference'/'stages.md',ref_md)
+  if matched: write(path.parent/'references'/'stages.md',ref_md)
+  write(path.parent/'references'/'CORE_PROCEDURE.md',render_skills.CORE_PROCEDURE)
+  write(path.parent/'references'/'HANDOFF_CONTRACT.md',(ROOT/'orchestrator/handoff-contracts/STANDARD_HANDOFF.md').read_text(encoding='utf-8'))
   ev=render_skills.render_evidence_example(sid,matched)
-  if ev: (ROOT/path.parent/'examples').mkdir(exist_ok=True); (ROOT/path.parent/'examples'/'evidence-example.json').write_text(ev,encoding='utf-8')
+  if ev: (ROOT/path.parent/'references'/'examples').mkdir(parents=True,exist_ok=True); (ROOT/path.parent/'references'/'examples'/'evidence-example.json').write_text(ev,encoding='utf-8')
  import skill_graph
  ranges={}
  for sid in SKILLS:

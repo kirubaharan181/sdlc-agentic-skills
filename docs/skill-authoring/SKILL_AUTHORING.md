@@ -8,8 +8,9 @@ concise, progressively disclosed, one bounded procedure each. `SKILL.md` files a
 ## Layout
 ```
 skills/<group>/<skill>/SKILL.md             overview: frontmatter, procedure, stage index, links
-skills/<group>/<skill>/reference/stages.md  per-stage detail (loaded only when needed)
-skills/<group>/<skill>/examples/            hand-written examples, marked illustrative
+skills/<group>/<skill>/references/stages.md per-stage detail (loaded only when needed)
+skills/<group>/<skill>/references/CORE_PROCEDURE.md, HANDOFF_CONTRACT.md  generated copies so each skill is standalone
+skills/<group>/<skill>/references/examples/  generated examples, marked illustrative
 skills/_shared/CORE_PROCEDURE.md            rules every skill shares (evidence, approvals, failure, handoff)
 ```
 
