@@ -35,7 +35,7 @@
   "validation_method": "Architecture review and consumer review of the specification.",
   "validation": [
     {
-      "command": "npx @stoplight/spectral-cli lint openapi.yaml   # example linter; use the project's",
+      "command": "npx --no-install @stoplight/spectral-cli lint openapi.yaml   # example linter; use the project's",
       "expect": "no errors against the style rules"
     },
     {

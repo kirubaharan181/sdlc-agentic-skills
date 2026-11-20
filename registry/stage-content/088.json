@@ -35,7 +35,7 @@
   "validation_method": "QA lead review.",
   "validation": [
     {
-      "command": "npx playwright test --project=chromium --project=firefox --project=webkit   # example",
+      "command": "npx --no-install playwright test --project=chromium --project=firefox --project=webkit   # example",
       "expect": "core journeys pass on all projects"
     },
     {

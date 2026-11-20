@@ -35,7 +35,7 @@
   "validation_method": "Integration architect review.",
   "validation": [
     {
-      "command": "npx @stoplight/spectral-cli lint openapi.yaml && oasdiff breaking base.yaml openapi.yaml   # example",
+      "command": "npx --no-install @stoplight/spectral-cli lint openapi.yaml && oasdiff breaking base.yaml openapi.yaml   # example",
       "expect": "no lint errors and no breaking changes"
     },
     {

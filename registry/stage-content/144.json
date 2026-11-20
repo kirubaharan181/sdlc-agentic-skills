@@ -35,7 +35,7 @@
   "validation_method": "Network owner review of changes.",
   "validation": [
     {
-      "command": "for r in 1.1.1.1 8.8.8.8 9.9.9.9; do dig @$r +short app.example.com; done   # example",
+      "command": "for r in one.one.one.one dns.google dns9.quad9.net; do dig @$r +short app.example.com; done   # example",
       "expect": "all resolvers return the intended answer"
     },
     {

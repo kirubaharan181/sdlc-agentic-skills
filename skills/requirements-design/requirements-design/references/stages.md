@@ -365,7 +365,7 @@ Acceptance: Automated and manual checks both ran Main tasks work with keyboard a
 
 Validation: Accessibility specialist sign-off.
 
-- `npx pa11y http://localhost:3000   # example; use the project's checker and URL` expect: no errors reported on tested pages
+- `npx --no-install pa11y http://localhost:3000   # example; use the project's checker and URL` expect: no errors reported on tested pages
 - manual: complete the main task using only the keyboard and again with a screen reader expect: task completed without help
 
 Failure modes:

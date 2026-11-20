@@ -35,11 +35,11 @@
   "validation_method": "Frontend lead review.",
   "validation": [
     {
-      "command": "npx vitest run && npx playwright test --grep @a11y   # example; use the project's tools",
+      "command": "npx --no-install vitest run && npx --no-install playwright test --grep @a11y   # example; use the project's tools",
       "expect": "tests pass, including accessibility checks"
     },
     {
-      "command": "npx lighthouse http://localhost:3000 --only-categories=performance,accessibility --quiet --chrome-flags='--headless'   # example",
+      "command": "npx --no-install lighthouse http://localhost:3000 --only-categories=performance,accessibility --quiet --chrome-flags='--headless'   # example",
       "expect": "scores meet the agreed budgets"
     }
   ],

@@ -10,7 +10,7 @@
   "timestamp": "<ISO 8601 time of the run>",
   "validation": {
     "method": "Frontend lead review.",
-    "command": "npx vitest run && npx playwright test --grep @a11y   # example; use the project's tools",
+    "command": "npx --no-install vitest run && npx --no-install playwright test --grep @a11y   # example; use the project's tools",
     "expected": "tests pass, including accessibility checks",
     "exit_status": "<observed>"
   },

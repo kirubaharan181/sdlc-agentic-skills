@@ -98,7 +98,7 @@ Acceptance: Each divergence has a classification and an owner Quality attributes
 
 Validation: Architecture board decision on blockers.
 
-- `npx depcruise --config .dependency-cruiser.js src   # example; use the language's equivalent` expect: no forbidden dependency violations
+- `npx --no-install depcruise --config .dependency-cruiser.js src   # example; use the language's equivalent` expect: no forbidden dependency violations
 - manual: compare the module diagram with the code's actual import graph expect: differences listed in the report
 
 Failure modes:

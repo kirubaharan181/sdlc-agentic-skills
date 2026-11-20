@@ -35,7 +35,7 @@
   "validation_method": "Software architect and team lead review.",
   "validation": [
     {
-      "command": "npx depcruise --validate .dependency-cruiser.js src   # example; use the language's equivalent",
+      "command": "npx --no-install depcruise --validate .dependency-cruiser.js src   # example; use the language's equivalent",
       "expect": "no rule violations in the skeleton"
     },
     {

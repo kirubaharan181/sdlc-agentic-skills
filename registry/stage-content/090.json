@@ -35,7 +35,7 @@
   "validation_method": "Independent accessibility specialist review.",
   "validation": [
     {
-      "command": "npx playwright test tests/a11y --reporter=line   # example: axe-based checks in the project's test runner",
+      "command": "npx --no-install playwright test tests/a11y --reporter=line   # example: axe-based checks in the project's test runner",
       "expect": "no serious or critical violations on the key pages"
     },
     {

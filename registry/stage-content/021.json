@@ -35,7 +35,7 @@
   "validation_method": "Accessibility specialist sign-off.",
   "validation": [
     {
-      "command": "npx pa11y http://localhost:3000   # example; use the project's checker and URL",
+      "command": "npx --no-install pa11y http://localhost:3000   # example; use the project's checker and URL",
       "expect": "no errors reported on tested pages"
     },
     {

@@ -209,8 +209,8 @@ Acceptance: Core journeys are covered Tests are independent and use stable selec
 
 Validation: QA lead review.
 
-- `npx playwright test --reporter=line   # example; use the project's tool` expect: all pass
-- `npx playwright test --repeat-each=5 tests/checkout.spec.ts   # example` expect: no intermittent failure in five runs
+- `npx --no-install playwright test --reporter=line   # example; use the project's tool` expect: all pass
+- `npx --no-install playwright test --repeat-each=5 tests/checkout.spec.ts   # example` expect: no intermittent failure in five runs
 
 Failure modes:
 - Flaky test ignored | detect: Intermittent failures in CI | respond: Fix the wait or isolate the data
@@ -275,8 +275,8 @@ Acceptance: Each critical journey has a test Tests are independent and use waits
 
 Validation: Independent CI rerun.
 
-- `npx playwright test --reporter=line   # example` expect: all journeys pass
-- `npx playwright test --repeat-each=3` expect: no intermittent failures
+- `npx --no-install playwright test --reporter=line   # example` expect: all journeys pass
+- `npx --no-install playwright test --repeat-each=3` expect: no intermittent failures
 
 Failure modes:
 - Fixed sleeps cause flakiness | detect: Failures vary by timing | respond: Wait on conditions
@@ -407,7 +407,7 @@ Acceptance: The matrix is based on usage data Core journeys passed on each top t
 
 Validation: QA lead review.
 
-- `npx playwright test --project=chromium --project=firefox --project=webkit   # example` expect: core journeys pass on all projects
+- `npx --no-install playwright test --project=chromium --project=firefox --project=webkit   # example` expect: core journeys pass on all projects
 - manual: open the checkout on the oldest supported version of each browser expect: task can be completed
 
 Failure modes:
@@ -473,7 +473,7 @@ Acceptance: Each key journey was completed with keyboard only and with a screen 
 
 Validation: Independent accessibility specialist review.
 
-- `npx playwright test tests/a11y --reporter=line   # example: axe-based checks in the project's test runner` expect: no serious or critical violations on the key pages
+- `npx --no-install playwright test tests/a11y --reporter=line   # example: axe-based checks in the project's test runner` expect: no serious or critical violations on the key pages
 - manual: complete each key journey with keyboard only and with a screen reader and record the result expect: every journey completed; defects logged
 
 Failure modes:
