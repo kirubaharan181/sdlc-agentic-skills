@@ -35,11 +35,11 @@
   "validation_method": "QA lead review.",
   "validation": [
     {
-      "command": "npx playwright test --reporter=line   # example; use the project's tool",
+      "command": "npx --no-install playwright test --reporter=line   # example; use the project's tool",
       "expect": "all pass"
     },
     {
-      "command": "npx playwright test --repeat-each=5 tests/checkout.spec.ts   # example",
+      "command": "npx --no-install playwright test --repeat-each=5 tests/checkout.spec.ts   # example",
       "expect": "no intermittent failure in five runs"
     }
   ],

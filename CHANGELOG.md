@@ -16,6 +16,9 @@ versioning: [Semantic Versioning](https://semver.org/).
 - **Tests and CI:** 35+ pytest tests (unit, golden, scenarios, broken-fixture); CI blocks on duplicates, references, orphans, links.
 - **Adoption:** `make demo`, quickstart, evals harness (no model results yet), community files, issue and PR templates.
 
+### Scanner advisories
+- **Changed (stage examples, meaning unchanged):** `npx` examples use `npx --no-install` (project-installed tools only, no remote download); the DNS example uses resolver host names instead of a public IP. Tier 1 (no LLM) still passes for all 20 skills on this branch (re-run before merge; not added to the score history because skill text did not change).
+
 ### Evaluator findings and reconciliation (skills 1.1.1)
 - **Fixed:** `application-security` and `incident-command` had invalid YAML frontmatter (unquoted `: ` in the description). Descriptions are now double-quoted and the validator enforces it.
 - **Changed:** all 20 descriptions lead with "Use when" (trigger visible in short skill lists); `secure-change-control` no longer uses a vague word. All skills are at 1.1.1.

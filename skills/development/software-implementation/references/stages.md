@@ -38,8 +38,8 @@ Acceptance: All states are implemented Semantic HTML and keyboard use are verifi
 
 Validation: Frontend lead review.
 
-- `npx vitest run && npx playwright test --grep @a11y   # example; use the project's tools` expect: tests pass, including accessibility checks
-- `npx lighthouse http://localhost:3000 --only-categories=performance,accessibility --quiet --chrome-flags='--headless'   # example` expect: scores meet the agreed budgets
+- `npx --no-install vitest run && npx --no-install playwright test --grep @a11y   # example; use the project's tools` expect: tests pass, including accessibility checks
+- `npx --no-install lighthouse http://localhost:3000 --only-categories=performance,accessibility --quiet --chrome-flags='--headless'   # example` expect: scores meet the agreed budgets
 
 Failure modes:
 - Only the happy state built | detect: Blank screen on error | respond: Implement every state
@@ -104,7 +104,7 @@ Acceptance: The main path works end to end Error, empty and loading states are h
 
 Validation: Code review and product owner demonstration.
 
-- `pytest -q tests/api && npx playwright test tests/e2e/feature.spec.ts   # example` expect: both pass
+- `pytest -q tests/api && npx --no-install playwright test tests/e2e/feature.spec.ts   # example` expect: both pass
 - manual: switch the feature flag off and confirm the old behavior returns expect: no errors
 
 Failure modes:

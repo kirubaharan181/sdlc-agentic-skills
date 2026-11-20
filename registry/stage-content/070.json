@@ -35,7 +35,7 @@
   "validation_method": "Architecture board decision on blockers.",
   "validation": [
     {
-      "command": "npx depcruise --config .dependency-cruiser.js src   # example; use the language's equivalent",
+      "command": "npx --no-install depcruise --config .dependency-cruiser.js src   # example; use the language's equivalent",
       "expect": "no forbidden dependency violations"
     },
     {

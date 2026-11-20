@@ -35,11 +35,11 @@
   "validation_method": "Independent CI rerun.",
   "validation": [
     {
-      "command": "npx playwright test --reporter=line   # example",
+      "command": "npx --no-install playwright test --reporter=line   # example",
       "expect": "all journeys pass"
     },
     {
-      "command": "npx playwright test --repeat-each=3",
+      "command": "npx --no-install playwright test --repeat-each=3",
       "expect": "no intermittent failures"
     }
   ],

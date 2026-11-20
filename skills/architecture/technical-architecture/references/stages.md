@@ -101,7 +101,7 @@ Acceptance: Modules align to domains with stated interfaces Dependency rules are
 
 Validation: Software architect and team lead review.
 
-- `npx depcruise --validate .dependency-cruiser.js src   # example; use the language's equivalent` expect: no rule violations in the skeleton
+- `npx --no-install depcruise --validate .dependency-cruiser.js src   # example; use the language's equivalent` expect: no rule violations in the skeleton
 - manual: walk through a change to one module and list the other modules touched expect: none beyond the declared interface
 
 Failure modes:
@@ -167,7 +167,7 @@ Acceptance: Each use case maps to an operation in the specification Errors, pagi
 
 Validation: Architecture review and consumer review of the specification.
 
-- `npx @stoplight/spectral-cli lint openapi.yaml   # example linter; use the project's` expect: no errors against the style rules
+- `npx --no-install @stoplight/spectral-cli lint openapi.yaml   # example linter; use the project's` expect: no errors against the style rules
 - manual: ask a consumer team to implement one call from the specification alone expect: they succeed or the gaps are logged
 
 Failure modes:
@@ -299,7 +299,7 @@ Acceptance: Every interface has an owner and a versioned contract Compatibility 
 
 Validation: Integration architect review.
 
-- `npx @stoplight/spectral-cli lint openapi.yaml && oasdiff breaking base.yaml openapi.yaml   # example` expect: no lint errors and no breaking changes
+- `npx --no-install @stoplight/spectral-cli lint openapi.yaml && oasdiff breaking base.yaml openapi.yaml   # example` expect: no lint errors and no breaking changes
 - manual: send the same message twice to a consumer in staging expect: effect occurs once
 
 Failure modes:

@@ -168,7 +168,7 @@ Acceptance: Every change is traceable to a request and reviewed Verification was
 
 Validation: Network owner review of changes.
 
-- `for r in 1.1.1.1 8.8.8.8 9.9.9.9; do dig @$r +short app.example.com; done   # example` expect: all resolvers return the intended answer
+- `for r in one.one.one.one dns.google dns9.quad9.net; do dig @$r +short app.example.com; done   # example` expect: all resolvers return the intended answer
 - manual: restore the zone from version control into a test zone and compare expect: records identical
 
 Failure modes:

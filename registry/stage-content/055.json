@@ -35,7 +35,7 @@
   "validation_method": "Code review and product owner demonstration.",
   "validation": [
     {
-      "command": "pytest -q tests/api && npx playwright test tests/e2e/feature.spec.ts   # example",
+      "command": "pytest -q tests/api && npx --no-install playwright test tests/e2e/feature.spec.ts   # example",
       "expect": "both pass"
     },
     {
