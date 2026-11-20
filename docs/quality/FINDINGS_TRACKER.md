@@ -22,6 +22,6 @@ Tier 1 static findings are tracked separately in `reports/skill-quality/TIER1_RE
 
 | Item | Why open | Next step |
 |---|---|---|
-| Re-run SkillEvaluator on all 20 skills | Done 2026-11-19 at `66e223e`: 20 x 100.0, 0 findings | Repeat after any skill change |
+| Re-run SkillEvaluator on all 20 skills | Done 2026-11-20 at `b1b1739`: 20 x 100.0, 0 findings; Tier 1 (no LLM) passes for all 20 | Repeat after any skill change |
 | 97+ target | Met by measurement (100.0) for the quality check only; not publication approval | See `reports/enhancement/PUBLICATION_REQUIREMENTS.md` |
-| "Publication eligibility: Incomplete" | Criteria read from the evaluator source: needs complete Tier 1, Tier 2, Tier 3 and LLM evidence; Tier 2, Tier 3 and LLM not run; `application-security` scanner parse-limit warning | `reports/enhancement/PUBLICATION_REQUIREMENTS.md` |
+| "Publication eligibility: Incomplete" | Criteria read from the evaluator source: needs complete Tier 1, Tier 2, Tier 3 and LLM evidence; Tier 2 (needs an embedding provider API key), Tier 3 and LLM checks not run | `reports/enhancement/PUBLICATION_REQUIREMENTS.md` |

@@ -1,6 +1,6 @@
 # Improvement summary
 
-Scope: documentation structure and governance for the 20 skills. **Measured after the changes** (skillevaluator 1.0.1, 2026-11-19, commit `66e223e`,
+Scope: documentation structure and governance for the 20 skills. **Measured after the changes** (skillevaluator 1.0.1, 2026-11-20, commit `b1b1739`,
 skills 1.1.1): all 20 skills 100.0, 0 findings, versus an owner-supplied baseline average of 87.3. See `SKILL_SCORE_COMPARISON.csv`,
 `TIER1_RESULTS.csv` and `reports/enhancement/QUALITY_RECONCILIATION.md`. The quality check does not prove publication eligibility.
 

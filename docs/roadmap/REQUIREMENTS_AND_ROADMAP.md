@@ -43,7 +43,7 @@ Policy files enhanced as asked: `LICENSE` (full MIT text), `SECURITY.md` (privat
 | Open item | Why | Who can close it |
 |---|---|---|
 | Re-run SkillEvaluator after any skill change | Done once (2026-11-19, 20 x 100.0); must be repeated after every skill change | Whoever changes a skill |
-| Publication eligibility | Tier 2, Tier 3 and LLM checks not run; `application-security` has a scanner parse-limit warning (`reports/enhancement/PUBLICATION_REQUIREMENTS.md`) | Owner decision, then run where permitted |
+| Publication eligibility | Tier 2 (embedding provider key required), Tier 3 and LLM checks not run (`reports/enhancement/PUBLICATION_REQUIREMENTS.md`) | Owner decision, then run where permitted |
 | Findings marked "addressed" | The 163 baseline findings were addressed by construction (see `docs/quality/FINDINGS_TRACKER.md`) but not re-measured | Same evaluator run |
 | Codex, Claude Code and other adapter tests | Adapters are documented, not tested (`adapters/COMPATIBILITY.md`) | Independent runner with a dated log |
 | Stage procedures on real projects | 190 stages are authored, none run on a real project | Contributors (issues #27-#29) |
@@ -53,6 +53,6 @@ Policy files enhanced as asked: `LICENSE` (full MIT text), `SECURITY.md` (privat
 
 - **Inspected:** repository structure, registries, skill content and generated skill files.
 - **Checked by repository tooling:** schemas, structure, handoff graph, versions, links, references, duplication, tests.
-- **Quality-scored by SkillEvaluator:** the owner's baseline run and the 2026-11-19 run (`skillevaluator 1.0.1`, commit `66e223e`). Tier 1 static checks ran without LLM checks.
+- **Quality-scored by SkillEvaluator:** the owner's baseline run and the 2026-11-19 and 2026-11-20 runs (`skillevaluator 1.0.1`, latest commit `b1b1739`). Tier 1 static checks ran without LLM checks.
 - **Not tested:** application, integration, end-to-end, browser, deployment, and agent-platform behavior.
 - **Not validated:** security posture, compliance, real-world outcomes. No certification is claimed.
