@@ -123,7 +123,7 @@ Acceptance: Every dismissal has a stated reason.
 | 109 | Vulnerability Remediation | complete | Application Security Engineer |
 | 110 | Security Sign-off | complete | Security Auditor |
 
-Per-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).
+Per-stage inputs, outputs, acceptance criteria and validation: [references/stages-part-1.md](references/stages-part-1.md), [references/stages-part-2.md](references/stages-part-2.md), [references/stages-part-3.md](references/stages-part-3.md), [references/stages-part-4.md](references/stages-part-4.md).
 
 ## Handoffs
 Hands to:

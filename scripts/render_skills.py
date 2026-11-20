@@ -75,7 +75,7 @@ def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict
     parts.append("## Tools\n" + "\n".join(f"- {x}" for x in tools))
     if stages:
         parts.append("## Stages covered\n| Stage | Name | Status | Accountable role |\n|---|---|---|---|\n" + rows +
-                     "\n\nPer-stage inputs, outputs, acceptance criteria and validation: [references/stages.md](references/stages.md).")
+                     "\n\nPer-stage inputs, outputs, acceptance criteria and validation: " + _stage_links(sid, stages))
     else:
         parts.append("## Stages covered\nNone. This is a cross-cutting skill applied alongside stage skills.")
     if content:
@@ -93,9 +93,8 @@ def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict
         parts.append("## Related\n" + "\n".join(f"- {x}" for x in tail))
     skill_md = "\n\n".join(parts) + "\n"
 
-    ref = [f"# {title}: stage reference", "", "## Contents", *(f"- [{s['stage_id']} {s['stage_name']}](#{s['stage_id']})" for s in stages), ""]
-    for s in stages:
-        ref += [
+    def block(s):
+        return [
             f"## {s['stage_id']}", f"**{s['stage_name']}** ({s['status']}). Purpose: {s['purpose']}.", "",
             *(["Entry criteria: " + "; ".join(s["entry_criteria"]), ""] if s.get("entry_criteria") else []),
             "Inputs: " + "; ".join(s["inputs"]), "",
@@ -110,7 +109,31 @@ def render_skill(sid: str, profile: tuple, stages: list[dict], agents: list[dict
             *(["", s["worked_example"]] if s.get("worked_example") else []),
             "", f"Gate: {s['quality_gate']}. Approval: " + (f"{s['approver']} ({s.get('approval_condition', 'always')})" if s["approval_required"] else "none required"), "",
         ]
-    return skill_md, "\n".join(ref) + "\n"
+
+    def doc(chunk, suffix=""):
+        r = [f"# {title}: stage reference{suffix}", "", "## Contents", *(f"- [{s['stage_id']} {s['stage_name']}](#{s['stage_id']})" for s in chunk), ""]
+        for s in chunk:
+            r += block(s)
+        return "\n".join(r) + "\n"
+
+    n = SPLIT_STAGE_REFERENCE.get(sid)
+    if stages and n:
+        chunks = [stages[i:i + n] for i in range(0, len(stages), n)]
+        return skill_md, {f"stages-part-{k + 1}.md": doc(c, f" (part {k + 1} of {len(chunks)})") for k, c in enumerate(chunks)}
+    return skill_md, doc(stages)
+
+
+# Scanner workaround: SkillSpector stops analysing a reference file that holds too many shell expressions
+# (static_parse_limit). A skill listed here has its stage reference split into parts of at most N stages.
+SPLIT_STAGE_REFERENCE = {"application-security": 4}
+
+
+def _stage_links(sid: str, stages: list) -> str:
+    n = SPLIT_STAGE_REFERENCE.get(sid)
+    if not n:
+        return "[references/stages.md](references/stages.md)."
+    k = -(-len(stages) // n)
+    return ", ".join(f"[references/stages-part-{i}.md](references/stages-part-{i}.md)" for i in range(1, k + 1)) + "."
 
 
 def _frontmatter(sid: str, desc: str, content: dict | None) -> str:
