@@ -15,8 +15,8 @@ All commands were run on the working tree that became the pull request (base `ma
 | Tests, Python 3.13 | `python3 -m pytest -q` | 59 passed |
 | Tests, Python 3.11 (CI version) | `python3.11 -m pytest -q` | 59 passed |
 | Legacy scenario tests | `python3 scripts/run_tests.py` | PASSED |
-| SkillEvaluator quality check | `skillevaluator quality-check skills/<group>/<skill>` x 20 | 20 x 100.0, 0 findings (commit `66e223e`) |
-| SkillEvaluator Tier 1, no LLM | `skillevaluator tier1 skills/<group>/<skill> --no-llm` x 20 | 19 pass; `application-security` fails (scanner parse limit) |
+| SkillEvaluator quality check | `skillevaluator quality-check skills/<group>/<skill>` x 20 | 20 x 100.0, 0 findings (commit `b1b1739`, 2026-11-20) |
+| SkillEvaluator Tier 1, no LLM | `skillevaluator tier1 skills/<group>/<skill> --no-llm` x 20 | 20 pass (commit `b1b1739`); at `66e223e` 19 passed and `application-security` failed on a scanner parse limit |
 
 One earlier pytest run failed `test_repo_has_no_exact_duplicate_files` because the bundled per-skill copies were not yet exempt; the exemption was added and the full suite was re-run (results above).
 

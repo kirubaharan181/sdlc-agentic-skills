@@ -155,7 +155,9 @@ Transfer the artifact path/revision, validation evidence, limitations, residual 
   path=Path(skill_paths[sid])
   skill_md,ref_md=render_skills.render_skill(sid,SKILL_PROFILES[sid],matched,agents_doc['agents'],ROOT/path.parent,skill_content.get(sid),sorted(received.get(sid,[])))
   write(path,skill_md)
-  if matched: write(path.parent/'references'/'stages.md',ref_md)
+  if matched:
+    for old in (ROOT/path.parent/'references').glob('stages*.md'): old.unlink()
+    for fn,txt in (ref_md.items() if isinstance(ref_md,dict) else [('stages.md',ref_md)]): write(path.parent/'references'/fn,txt)
   write(path.parent/'references'/'CORE_PROCEDURE.md',render_skills.CORE_PROCEDURE)
   write(path.parent/'references'/'HANDOFF_CONTRACT.md',(ROOT/'orchestrator/handoff-contracts/STANDARD_HANDOFF.md').read_text(encoding='utf-8'))
   ev=render_skills.render_evidence_example(sid,matched)

@@ -21,7 +21,8 @@ versioning: [Semantic Versioning](https://semver.org/).
 - **Changed:** all 20 descriptions lead with "Use when" (trigger visible in short skill lists); `secure-change-control` no longer uses a vague word. All skills are at 1.1.1.
 - **Changed (layout):** each skill is standalone: `reference/` is now `references/`, `examples/` moved to `references/examples/`, `CORE_PROCEDURE.md` and `HANDOFF_CONTRACT.md` are bundled per skill, and SKILL.md no longer links outside its folder. This lets SkillEvaluator's security scan complete.
 - **Changed (stage text, meaning unchanged):** stages 50, 103 and 125 reworded where scanner patterns misread them.
-- **Measured:** skillevaluator 1.0.1 on commit `66e223e`: quality-check 20 x 100.0, 0 findings; Tier 1 static checks (no LLM) pass for 19 of 20 skills. Publication eligibility is not claimed (Tier 2, Tier 3 and LLM checks not run).
+- **Measured:** skillevaluator 1.0.1 on commit `66e223e`: quality-check 20 x 100.0, 0 findings; Tier 1 static checks (no LLM) pass for 19 of 20 skills.
+- **Fixed:** `application-security` stage reference is split into four parts (`references/stages-part-N.md`) because SkillSpector stops analysing a file with too many shell expressions; content unchanged. Re-run on `b1b1739`: quality-check 20 x 100.0, Tier 1 (no LLM) passes for all 20 skills. Publication eligibility is not claimed (Tier 2, Tier 3 and LLM checks not run).
 - **Quality history:** rows now carry skill version, source commit and evaluator version; `--add` requires them.
 - **Docs:** README quality and registry statements corrected; `reports/enhancement/` added (audit, findings, publication requirements, reconciliation, validation, readiness).
 

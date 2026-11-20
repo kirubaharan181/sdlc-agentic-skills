@@ -230,10 +230,10 @@ Documentation quality is measured with NVIDIA SkillEvaluator (`skillevaluator qu
 | Run | Commit | Result |
 |---|---|---|
 | Baseline (owner-supplied, evaluator version not recorded) | `a8be547` | average 87.3, none at 97+ |
-| Latest (skillevaluator 1.0.1, 2026-11-19) | `66e223e`, skills 1.1.1 | all 20 skills 100.0, 0 quality findings |
+| Interim (skillevaluator 1.0.1, 2026-11-19) | `66e223e`, skills 1.1.1 | all 20 skills 100.0, 0 quality findings; Tier 1 passed for 19 of 20 |
+| Latest (skillevaluator 1.0.1, 2026-11-20) | `b1b1739`, skills 1.1.1 | all 20 skills 100.0, 0 quality findings; Tier 1 (no LLM) passed for 20 of 20 |
 
-A quality score is not publication approval. The Tier 1 static checks (`skillevaluator tier1 <skill> --no-llm`) pass for 19 of 20 skills;
-`application-security` is held back by a scanner parse-limit warning. Tier 2, Tier 3 and LLM checks were not run, so **publication eligibility is not claimed**.
+A quality score is not publication approval. The Tier 1 static checks (`skillevaluator tier1 <skill> --no-llm`) pass for all 20 skills. Tier 2, Tier 3 and LLM checks were not run, so **publication eligibility is not claimed**.
 Details: [publication requirements](reports/enhancement/PUBLICATION_REQUIREMENTS.md) and [reconciliation](reports/enhancement/QUALITY_RECONCILIATION.md).
 
 ## 🚀 Quick start
