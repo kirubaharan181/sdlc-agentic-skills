@@ -47,7 +47,7 @@ Policy files enhanced as asked: `LICENSE` (full MIT text), `SECURITY.md` (privat
 | Findings marked "addressed" | The 163 baseline findings were addressed by construction (see `docs/quality/FINDINGS_TRACKER.md`) but not re-measured | Same evaluator run |
 | Codex, Claude Code and other adapter tests | Adapters are documented, not tested (`adapters/COMPATIBILITY.md`) | Independent runner with a dated log |
 | Stage procedures on real projects | 190 stages are authored, none run on a real project | Contributors (issues #27-#29) |
-| Legal name in `LICENSE` | Holder is written as `kirubaharan181 and contributors` | Owner: confirm or replace |
+| Legal name in `LICENSE` | Holder is `Kirubaharan and contributors` (confirmed by owner 2026-11-23) | Done |
 
 ## 5. Scope statements (also in `reports/skill-quality/VALIDATION_SCOPE.md`)
 
