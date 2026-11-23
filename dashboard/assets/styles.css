@@ -58,3 +58,5 @@ footer{font-size:9px}
   .hero p{font-size:12px}
   .table td{font-size:12px}
 }
+
+.skip{position:absolute;left:-999px;top:8px;background:var(--violet);color:#fff;padding:8px 12px;border-radius:8px;z-index:100;font-size:12px}.skip:focus{left:8px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,.entity:focus-visible,.domain:focus-visible,.doc:focus-visible,tr:focus-visible{outline:2px solid var(--violet);outline-offset:2px}.gate small{display:block;margin-top:3px}

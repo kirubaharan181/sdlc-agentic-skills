@@ -3,7 +3,9 @@
 from pathlib import Path
 from datetime import datetime, timezone
 import json
+import csv
 import os
+import subprocess
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -20,6 +22,28 @@ SOURCES = {
 
 def load(path):
     return json.loads((ROOT / path).read_text(encoding="utf-8"))
+
+def git_commit():
+    sha = os.environ.get("GITHUB_SHA")
+    if sha:
+        return sha
+    try:
+        return subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return "unknown"
+
+
+def latest_quality():
+    """Latest recorded SkillEvaluator row per skill, from the committed score history (never invented)."""
+    path = ROOT / "reports/skill-quality/SCORE_HISTORY.csv"
+    latest = {}
+    if path.exists():
+        for row in csv.DictReader(path.open(encoding="utf-8", newline="")):
+            latest[row["skill"]] = row  # file is append-only; the last row per skill is the latest
+    return {sid: {"score": float(r["score"]), "grade": r["grade"], "findings": int(r["findings"]), "date": r["date"],
+                  "source_commit": r["source_commit"], "skill_version": r["skill_version"],
+                  "evaluator_version": r["evaluator_version"]} for sid, r in latest.items()}
+
 
 def main():
     resolved = registry_io.load_all(ROOT)
@@ -55,14 +79,37 @@ def main():
         "unresolvedStageSkillReferences": records(missing_skills),
         "unresolvedStageAgentReferences": records(missing_agents),
     }
+    content = registry_io.load_skill_content(ROOT)
+    quality = latest_quality()
+    for item in skills:
+        c = content.get(item["skill_id"])
+        if c:
+            item.update(version=c["version"], description=c["description"], tags=c["tags"], owns=c["owns"],
+                        handoffs=[{"skill": h["skill"], "artifact": h["artifact"], "feedback": bool(h.get("feedback"))} for h in c["handoffs"]],
+                        limitations=c["limitations"])
+        item["quality"] = quality.get(item["skill_id"])
+    tiers = load("registry/risk-tiers.json")
+    for stage in stages:
+        stage["risk_tier"] = tiers["stage_tiers"].get(str(stage["stage_id"]))
+    scores = [q["score"] for q in quality.values()]
+    governance = {
+        "riskTiers": tiers["tiers"],
+        "qualitySummary": {"skillsRecorded": len(scores), "average": round(sum(scores) / len(scores), 1) if scores else None,
+                           "lowest": min(scores) if scores else None,
+                           "commits": sorted({q["source_commit"] for q in quality.values()}),
+                           "evaluators": sorted({q["evaluator_version"] for q in quality.values()}),
+                           "dates": sorted({q["date"] for q in quality.values()}),
+                           "note": "Recorded evaluator runs from reports/skill-quality/SCORE_HISTORY.csv. A quality score is not publication approval."},
+    }
     data = {
         "meta": {
             "name": "Atelier Engineering Command Center",
             "repository": "kirubaharan181/sdlc-agentic-skills",
             "sourceBranch": os.environ.get("GITHUB_REF_NAME", "local"),
-            "sourceCommit": os.environ.get("GITHUB_SHA", "local-working-tree"),
+            "sourceCommit": git_commit(),
             "generatedAt": datetime.now(timezone.utc).isoformat(),
             "dataMode": "repository snapshot",
+            "notice": "Static snapshot generated from the repository registries. Nothing here is live execution; recorded scores are past evaluator runs.",
             "audit": audit,
         },
         "stages": stages,
@@ -70,6 +117,7 @@ def main():
         "skills": skills,
         "workflows": workflows,
         "platforms": source["platforms"]["platforms"],
+        "governance": governance,
     }
     output = ROOT / "dashboard" / "data" / "library.json"
     output.parent.mkdir(parents=True, exist_ok=True)
