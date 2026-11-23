@@ -11,7 +11,7 @@ Based on the master prompt "Enterprise-grade quality, governance and publication
 | E (workflows) | All 23 workflow references resolve; stale `maintenance` mismatch note removed from README | validate script |
 | F and G (governance, evidence) | Already added in the previous PR; templates still validate | `trace_evidence.py --templates` |
 | H (adapters) | Unchanged: documented, not tested | `adapters/COMPATIBILITY.md` |
-| I (dashboard, GitHub) | Dashboard data regenerated; About description and topics could not be set (blocked), values supplied | `FINAL_READINESS_REPORT.md` |
+| I (dashboard, GitHub) | Atelier enhanced as a static snapshot (PR #49: skill details, risk tiers, recorded quality, accessibility, stage-row fix; Pages deploy workflow succeeded, live site not viewed from the session); About description and topics could not be set (blocked), values supplied | `FINAL_READINESS_REPORT.md` |
 | J (publication) | Requirements derived from evaluator source and help; skills made standalone so the security scan can complete | `PUBLICATION_REQUIREMENTS.md` |
 | K and L (quality tracking, reconciliation) | History gains commit, skill version and evaluator version; 20 real rows recorded; README claims tied to the run | `QUALITY_RECONCILIATION.md`, `SCORE_HISTORY.csv` |
 | M (static validation) | Full gate run on Python 3.13 and 3.11 | `VALIDATION_RESULTS.md` |

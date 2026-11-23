@@ -5,6 +5,10 @@ versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Atelier dashboard (static snapshot)
+- Skill/stage detail views, stage risk tiers, governance risk-tier and recorded-quality panels, real source commit in the data snapshot.
+- Accessibility: skip link, focus styles, dialog roles, keyboard-operable cards and rows; stage rows now open their detail drawer.
+
 ### Summary of the dedupe and integrity work
 - **Workflows:** 23 distinct sources in `registry/workflows/*.json` (steps, owners, dependency graph, decisions, failure paths,
   handoffs); the old cloned workflow registry is removed. `new-product-development` covers all 190 stages.

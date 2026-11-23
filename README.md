@@ -163,6 +163,8 @@ Explore the library visually through **Atelier**, its responsive, static web das
 - **Skills, Agents & Workflows:** browse canonical records and their mappings.
 - **Evidence & Gates:** understand gate states, required proof and approval boundaries.
 - **Architecture & Governance:** explore system relationships, platform declarations and standards.
+- **Skill details:** version, mapped stages, owned responsibilities, handoffs, limitations and the last *recorded* quality result (a recorded snapshot, not live and not publication approval).
+- **Accessibility:** skip link, visible focus, and keyboard-operable cards and table rows.
 
 The dashboard is a generated **repository snapshot**, not a live agent execution console. It does not claim that agents are running, gates have passed or external systems are connected.
 
