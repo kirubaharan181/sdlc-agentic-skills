@@ -202,3 +202,31 @@ def test_score_history_rows_are_traceable():
     rows = list(csv.DictReader((ROOT / "reports/skill-quality/SCORE_HISTORY.csv").open(encoding="utf-8")))
     for r in rows:
         assert r["skill_version"] and r["source_commit"] and r["evaluator_version"], r
+
+
+# --- Atelier dashboard (static snapshot) ----------------------------------------------------------------------------------
+
+def _dashboard_data():
+    import subprocess, sys
+    path = ROOT / "dashboard/data/library.json"
+    if not path.exists():
+        subprocess.run([sys.executable, str(ROOT / "scripts/generate_dashboard_data.py")], check=True, cwd=ROOT)
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def test_dashboard_snapshot_data_is_enriched_and_honest():
+    d = _dashboard_data()
+    assert d["skills"] and all(s.get("version") and "handoffs" in s and "quality" in s for s in d["skills"])
+    assert sum(1 for s in d["stages"] if s.get("risk_tier")) == 19
+    q = d["governance"]["qualitySummary"]
+    assert q["skillsRecorded"] == len(d["skills"]) and q["note"]
+    assert d["meta"]["sourceCommit"] and d["meta"]["sourceCommit"] != "local"
+    assert d["meta"].get("notice")
+
+
+def test_dashboard_page_is_accessible_static_snapshot():
+    html = (ROOT / "dashboard/index.html").read_text(encoding="utf-8")
+    assert 'class="skip"' in html and "Static snapshot" in html and 'tabindex="-1"' in html
+    assert html.count('role="dialog"') >= 2 and 'role="status"' in html
+    js = (ROOT / "dashboard/assets/app.js").read_text(encoding="utf-8")
+    assert "Not publication approval" in js and "#sr tr[data-stage]" in js
