@@ -35,3 +35,6 @@ Suggested topics: `sdlc`, `agent-skills`, `ai-agents`, `agentic-ai`, `software-e
 3. Optionally report the SkillSpector per-file analysis budget (`static_parse_limit`) to its maintainers; a documented split works around it.
 4. Run `skillevaluator validate <skill> --tiers 1,2` where you allow it, then decide about Tier 3.
 5. Have an independent runner test one adapter and one stage on a real project and record a dated log.
+
+## Decision record (2026-11-23)
+Under the owner's delegation, F-010 (grouped folder layout), F-011 (`## Procedure` heading) and F-013 (no author email) are accepted by design: flattening or renaming would be breaking churn with no measured defect, and no identity is invented. No skill files changed, so the recorded 100.0 scores remain valid. These can be reopened at any time. Tier 2, Tier 3 and LLM checks remain not run; publication eligibility is not claimed.
