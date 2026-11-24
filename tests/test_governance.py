@@ -255,3 +255,25 @@ def test_agent_guides_cover_codex_and_opencode():
     for name, token in (("CODEX_USAGE.md", ".agents/skills"), ("OPENCODE_USAGE.md", ".opencode/skills")):
         t = (ROOT / "docs/agent-guide" / name).read_text(encoding="utf-8")
         assert token in t and "scripts/install.py" in t and "not tested" in t.lower()
+
+
+def test_dashboard_finder_matches_select_skill():
+    import shutil, subprocess, sys
+    node = shutil.which("node")
+    if not node:
+        import pytest
+        pytest.skip("node not installed")
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import select_skill
+    subprocess.run([sys.executable, str(ROOT / "scripts/generate_dashboard_data.py")], check=True, cwd=ROOT, capture_output=True)
+    js = (ROOT / "dashboard/assets/app.js").read_text(encoding="utf-8")
+    start = js.index("function normQ"); end = js.index("function finder")
+    reqs = ["plan a safe production rollout with rollback", "production is down", "zzzz qqq", "write a threat model and review the code",
+            "define requirements and acceptance criteria", "set up monitoring and alerting with slo"]
+    script = ("const S={d:JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))};" + js[start:end] +
+              f"console.log(JSON.stringify({json.dumps(reqs)}.map(rankRequest)))")
+    out = subprocess.run([node, "-e", script, str(ROOT / "dashboard/data/library.json")], capture_output=True, text=True, check=True)
+    for req, got in zip(reqs, json.loads(out.stdout)):
+        want = select_skill.rank(req)
+        assert got["advice"] == want["advice"] and got["use"] == want["use"], req
+        assert [(x["skill"], x["score"]) for x in got["ranked"]] == [(x["skill"], x["score"]) for x in want["ranked"]], req
