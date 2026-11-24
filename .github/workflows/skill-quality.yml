@@ -1,0 +1,30 @@
+name: Skill quality (SkillEvaluator)
+
+# Static checks only: quality-check at a 100 threshold and Tier 1 without any LLM. Tier 2 (needs an embedding key), Tier 3 and LLM
+# checks are not run, and a pass here is not publication approval. The evaluator version is pinned; bump it deliberately.
+on:
+  pull_request:
+    paths: ['skills/**', 'registry/**', 'scripts/render_skills.py', 'scripts/rebuild_library.py', '.github/workflows/skill-quality.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - run: pip install skillevaluator==1.0.1
+      - name: quality-check (min score 100) and Tier 1 (no LLM) for every skill
+        run: |
+          fail=0
+          for d in skills/*/*/; do
+            echo "== $d"
+            skillevaluator quality-check "$d" --min-score 100 || { echo "::error::quality-check failed: $d"; fail=1; }
+            skillevaluator tier1 "$d" --no-llm || { echo "::error::tier1 failed: $d"; fail=1; }
+          done
+          exit $fail
