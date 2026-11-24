@@ -230,3 +230,28 @@ def test_dashboard_page_is_accessible_static_snapshot():
     assert html.count('role="dialog"') >= 2 and 'role="status"' in html
     js = (ROOT / "dashboard/assets/app.js").read_text(encoding="utf-8")
     assert "Not publication approval" in js and "#sr tr[data-stage]" in js
+
+
+# --- agent installer -------------------------------------------------------------------------------------------------------
+
+def test_installer_copies_checks_and_detects_drift(tmp_path):
+    import subprocess, sys
+    run = lambda *a: subprocess.run([sys.executable, str(ROOT / "scripts/install.py"), *a], capture_output=True, text=True)
+    r = run("--target", "opencode", "--dest", str(tmp_path), "--skill", "incident-command", "--skill", "code-review-quality")
+    assert r.returncode == 0, r.stderr
+    skill = tmp_path / ".opencode/skills/incident-command/SKILL.md"
+    assert skill.exists() and (tmp_path / ".opencode/skills/code-review-quality").is_dir()
+    assert run("--target", "opencode", "--dest", str(tmp_path), "--skill", "incident-command", "--check").returncode == 0
+    assert "skip" in run("--target", "opencode", "--dest", str(tmp_path), "--skill", "incident-command").stdout
+    skill.write_text(skill.read_text(encoding="utf-8") + "\nx", encoding="utf-8")
+    assert run("--target", "opencode", "--dest", str(tmp_path), "--skill", "incident-command", "--check").returncode == 1
+    assert run("--target", "codex", "--dest", str(tmp_path), "--skill", "nope").returncode != 0
+    assert (tmp_path / ".agents").exists() is False  # dry-run and failures write nothing
+    assert run("--target", "codex", "--dest", str(tmp_path), "--dry-run").returncode == 0
+    assert (tmp_path / ".agents").exists() is False
+
+
+def test_agent_guides_cover_codex_and_opencode():
+    for name, token in (("CODEX_USAGE.md", ".agents/skills"), ("OPENCODE_USAGE.md", ".opencode/skills")):
+        t = (ROOT / "docs/agent-guide" / name).read_text(encoding="utf-8")
+        assert token in t and "scripts/install.py" in t and "not tested" in t.lower()

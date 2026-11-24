@@ -5,6 +5,9 @@ versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Agent installers
+- `scripts/install.py`: copy or symlink the standalone skills into the folders Codex (`.agents/skills`), OpenCode (`.opencode/skills`) and Claude Code (`.claude/skills`) read, with `--check` drift verification. New OpenCode usage guide.
+
 ### Atelier dashboard (static snapshot)
 - Skill/stage detail views, stage risk tiers, governance risk-tier and recorded-quality panels, real source commit in the data snapshot.
 - Accessibility: skip link, focus styles, dialog roles, keyboard-operable cards and rows; stage rows now open their detail drawer.

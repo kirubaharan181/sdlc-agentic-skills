@@ -10,6 +10,19 @@ Agents such as Codex read an `AGENTS.md` file in the repository. This repository
 commands and the rules an agent must follow. If you use the skills in another project, copy the skills you need (the `skills/<group>/<skill>/`
 folders, including `reference/`) and add a short `AGENTS.md` there that points to them, and keep `skills/_shared/CORE_PROCEDURE.md`.
 
+### Install the skills for Codex
+
+Codex reads skills from `.agents/skills` in the repository (and parent folders up to the repository root), `~/.agents/skills` for the user,
+and `/etc/codex/skills` for administrators (OpenAI documentation, read 2026-11-23; check the current page). Each skill needs `name` and
+`description` in its `SKILL.md`, which every skill here has. To install:
+
+```bash
+python3 scripts/install.py --target codex --dest /path/to/your/project
+python3 scripts/install.py --target codex --dest /path/to/your/project --check
+```
+
+The same `.agents/skills` folder is also read by OpenCode, so `--target agents` serves both. See the [OpenCode guide](OPENCODE_USAGE.md).
+
 ## 2. Ask in a way the agent can act on
 
 Use [`templates/agent-task-request.md`](../../templates/agent-task-request.md). The fields that matter most are the goal, scope, constraints, acceptance criteria,
