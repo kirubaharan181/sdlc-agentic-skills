@@ -5,6 +5,9 @@ versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### CI
+- `skill-quality.yml`: runs SkillEvaluator 1.0.1 `quality-check` (minimum 100) and Tier 1 without an LLM on every skill when skills or registries change. Static checks only; not publication approval.
+
 ### Agent installers
 - `scripts/install.py`: copy or symlink the standalone skills into the folders Codex (`.agents/skills`), OpenCode (`.opencode/skills`) and Claude Code (`.claude/skills`) read, with `--check` drift verification. New OpenCode usage guide.
 
