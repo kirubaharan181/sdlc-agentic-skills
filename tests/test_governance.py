@@ -277,3 +277,12 @@ def test_dashboard_finder_matches_select_skill():
         want = select_skill.rank(req)
         assert got["advice"] == want["advice"] and got["use"] == want["use"], req
         assert [(x["skill"], x["score"]) for x in got["ranked"]] == [(x["skill"], x["score"]) for x in want["ranked"]], req
+
+
+def test_release_archive_is_reproducible_and_notes_exist(tmp_path):
+    import subprocess, sys
+    run = lambda *a: subprocess.run([sys.executable, str(ROOT / "scripts/make_release.py"), *a], capture_output=True, text=True, check=True).stdout
+    run("--out", str(tmp_path / "a")); run("--out", str(tmp_path / "b"))
+    assert (tmp_path / "a/SHA256SUMS").read_text() == (tmp_path / "b/SHA256SUMS").read_text()
+    assert "not tested" in run("--notes").lower()
+    assert (ROOT / "VERSION").read_text().strip() in (tmp_path / "a/SHA256SUMS").read_text()

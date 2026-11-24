@@ -5,6 +5,15 @@ versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-24
+
+First stable release after the quality, governance and agent-compatibility work. Evaluator results: 20 skills scored 100.0 by
+SkillEvaluator 1.0.1 `quality-check` and passing Tier 1 without an LLM (recorded runs, not publication approval; Tier 2, Tier 3 and
+LLM checks not run). Agent behaviour in Codex, OpenCode and other tools is documented but **not tested**.
+
+### Release
+- `scripts/make_release.py` and `release.yml`: reproducible archive plus `SHA256SUMS` on a version tag.
+
 ### Dashboard
 - New offline "Find a skill" page: ranks a described task with the same terms, weights and incident rule as `scripts/select_skill.py` (parity tested).
 
