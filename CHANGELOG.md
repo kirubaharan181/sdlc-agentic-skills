@@ -5,6 +5,9 @@ versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Contributor tooling
+- `make new-skill` / `scripts/new_skill.py`: scaffold a skill draft in `registry/skill-drafts/`, check it (schema, no placeholders, trigger-first description, handoff targets, keyword overlap) and print the promotion checklist. Drafts are not built or published.
+
 ## [1.1.0] - 2026-11-24
 
 First stable release after the quality, governance and agent-compatibility work. Evaluator results: 20 skills scored 100.0 by

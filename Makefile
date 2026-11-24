@@ -1,4 +1,4 @@
-.PHONY: build check validate test refs audit links demo all governance select
+.PHONY: new-skill build check validate test refs audit links demo all governance select
 PY ?= python3
 
 build:      ## regenerate everything derived (registries' derived fields, agent/workflow/skill md, dist/, dashboard data)
@@ -25,3 +25,8 @@ select:     ## rank skills for a request (REQ="...")
 all: build validate refs links governance test check
 demo:       ## print the execution plan for a workflow (WORKFLOW=bug-fix to change)
 	$(PY) scripts/demo.py $(WORKFLOW)
+
+# make new-skill SKILL=my-new-skill  -> scaffold a draft (see scripts/new_skill.py)
+new-skill:
+	@test -n "$(SKILL)" || (echo "usage: make new-skill SKILL=my-new-skill"; exit 1)
+	python3 scripts/new_skill.py new $(SKILL)
