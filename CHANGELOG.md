@@ -5,6 +5,9 @@ versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Dashboard
+- New offline "Find a skill" page: ranks a described task with the same terms, weights and incident rule as `scripts/select_skill.py` (parity tested).
+
 ### CI
 - `skill-quality.yml`: runs SkillEvaluator 1.0.1 `quality-check` (minimum 100) and Tier 1 without an LLM on every skill when skills or registries change. Static checks only; not publication approval.
 

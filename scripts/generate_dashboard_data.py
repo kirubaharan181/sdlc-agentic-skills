@@ -45,6 +45,13 @@ def latest_quality():
                   "evaluator_version": r["evaluator_version"]} for sid, r in latest.items()}
 
 
+def selector_data() -> dict:
+    """Same terms, weights and thresholds as scripts/select_skill.py so the dashboard ranks requests identically."""
+    import select_skill
+    return {"terms": select_skill._terms(ROOT), "close": select_skill.CLOSE, "incident": list(select_skill.INCIDENT),
+            "note": "Deterministic word matching, not understanding. Treat the result as a suggestion and read the skill's When NOT to Use section."}
+
+
 def main():
     resolved = registry_io.load_all(ROOT)
     source = {"platforms": load(SOURCES["platforms"])}
@@ -118,6 +125,7 @@ def main():
         "workflows": workflows,
         "platforms": source["platforms"]["platforms"],
         "governance": governance,
+        "selector": selector_data(),
     }
     output = ROOT / "dashboard" / "data" / "library.json"
     output.parent.mkdir(parents=True, exist_ok=True)
