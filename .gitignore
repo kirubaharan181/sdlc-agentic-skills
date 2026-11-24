@@ -2,3 +2,6 @@ __pycache__/
 *.py[cod]
 dist/
 dashboard/data/library.json
+
+# SkillEvaluator generated output
+skills/*/*-reports/

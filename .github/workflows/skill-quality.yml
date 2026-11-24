@@ -22,7 +22,8 @@ jobs:
       - name: quality-check (min score 100) and Tier 1 (no LLM) for every skill
         run: |
           fail=0
-          for d in skills/*/*/; do
+          for f in skills/*/*/SKILL.md; do
+            d=$(dirname "$f")
             echo "== $d"
             skillevaluator quality-check "$d" --min-score 100 || { echo "::error::quality-check failed: $d"; fail=1; }
             skillevaluator tier1 "$d" --no-llm || { echo "::error::tier1 failed: $d"; fail=1; }
