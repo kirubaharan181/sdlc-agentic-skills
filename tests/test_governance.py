@@ -286,3 +286,28 @@ def test_release_archive_is_reproducible_and_notes_exist(tmp_path):
     assert (tmp_path / "a/SHA256SUMS").read_text() == (tmp_path / "b/SHA256SUMS").read_text()
     assert "not tested" in run("--notes").lower()
     assert (ROOT / "VERSION").read_text().strip() in (tmp_path / "a/SHA256SUMS").read_text()
+
+
+def test_new_skill_scaffold_fails_until_complete_and_passes_when_filled():
+    import subprocess, sys
+    drafts = ROOT / "registry/skill-drafts"
+    sid = "zz-test-draft-skill"
+    path = drafts / f"{sid}.json"
+    run = lambda *a: subprocess.run([sys.executable, str(ROOT / "scripts/new_skill.py"), *a], capture_output=True, text=True)
+    try:
+        assert run("new", sid).returncode == 0
+        r = run("check", sid)
+        assert r.returncode == 1 and "placeholders remain" in r.stdout
+        assert run("new", sid).returncode != 0                      # no overwrite
+        assert run("new", "incident-command").returncode != 0       # no clash with a library skill
+        filled = json.loads((ROOT / "registry/skill-content/incident-command.json").read_text(encoding="utf-8"))
+        filled["skill_id"] = sid
+        path.write_text(json.dumps(filled), encoding="utf-8")
+        assert run("check", sid).returncode == 0
+        filled["description"] = "Handles incidents in some way and covers many related topics well enough here."
+        path.write_text(json.dumps(filled), encoding="utf-8")
+        assert "Use when" in run("check", sid).stdout and run("check", sid).returncode == 1
+        assert "scripts/build.py" in run("checklist", sid).stdout
+    finally:
+        path.unlink(missing_ok=True)
+    assert not list(drafts.glob("zz-*.json"))

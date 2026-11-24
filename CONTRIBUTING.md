@@ -31,6 +31,13 @@ Everything must pass before you open a pull request. CI runs the same checks and
 4. Keep the description to 150 characters, with "Use when ..." and "Do not use ...". Keep 2 or more examples (3 for cross-cutting skills), troubleshooting rows with Error / Cause / Resolution, and each responsibility owned by exactly one skill.
 5. Add a `CHANGELOG.md` line naming the skill, new version and reason.
 
+## Proposing a new skill
+
+Run `make new-skill SKILL=my-new-skill` to create a draft in `registry/skill-drafts/`, fill every placeholder, then
+`python3 scripts/new_skill.py check my-new-skill`. A passing check means the draft is well-formed, not that the skill is needed or good:
+first show that no existing skill covers the job (the check warns about overlapping keywords). `python3 scripts/new_skill.py checklist my-new-skill`
+prints the manual promotion steps. Drafts are never built or published until promoted in a reviewed pull request.
+
 ## Documentation quality scores
 Scores come only from a real SkillEvaluator run. Record them with
 `python3 scripts/check_quality_regression.py --add ... --date --source --run-by --library-version`
