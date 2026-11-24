@@ -1,0 +1,36 @@
+name: Release
+
+# Runs when a version tag is pushed. Publishes a reproducible archive and SHA256SUMS. Not a signature or security certification.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - run: pip install jsonschema pytest
+      - name: Tag matches VERSION
+        run: test "v$(cat VERSION)" = "${GITHUB_REF_NAME}"
+      - name: Gate (build is current, validation, tests)
+        run: |
+          python scripts/build.py --check
+          python scripts/validate.py
+          python -m pytest -q
+      - name: Build archive and checksums
+        run: |
+          python scripts/make_release.py --out dist-release
+          python scripts/make_release.py --notes > RELEASE_NOTES.md
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          flags=""; case "$(cat VERSION)" in *-*) flags="--prerelease";; esac
+          gh release create "$GITHUB_REF_NAME" dist-release/* --title "$GITHUB_REF_NAME" --notes-file RELEASE_NOTES.md $flags

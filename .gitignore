@@ -5,3 +5,4 @@ dashboard/data/library.json
 
 # SkillEvaluator generated output
 skills/*/*-reports/
+dist-release/
