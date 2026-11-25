@@ -284,6 +284,7 @@ def test_release_archive_is_reproducible_and_notes_exist(tmp_path):
     run = lambda *a: subprocess.run([sys.executable, str(ROOT / "scripts/make_release.py"), *a], capture_output=True, text=True, check=True).stdout
     run("--out", str(tmp_path / "a")); run("--out", str(tmp_path / "b"))
     assert (tmp_path / "a/SHA256SUMS").read_text() == (tmp_path / "b/SHA256SUMS").read_text()
+    assert (tmp_path / "a/UNCOMPRESSED_TAR_SHA256").read_text() == (tmp_path / "b/UNCOMPRESSED_TAR_SHA256").read_text()
     assert "not tested" in run("--notes").lower()
     assert (ROOT / "VERSION").read_text().strip() in (tmp_path / "a/SHA256SUMS").read_text()
 

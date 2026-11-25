@@ -5,6 +5,9 @@ versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Release tooling
+- `make_release.py` also writes `UNCOMPRESSED_TAR_SHA256` (stable across zlib versions) after finding that the v1.1.0 `.tar.gz` bytes differ on rebuild while the contents are identical. See `reports/enhancement/RELEASE_v1.1.0.md`.
+
 ### Contributor tooling
 - `make new-skill` / `scripts/new_skill.py`: scaffold a skill draft in `registry/skill-drafts/`, check it (schema, no placeholders, trigger-first description, handoff targets, keyword overlap) and print the promotion checklist. Drafts are not built or published.
 

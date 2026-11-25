@@ -4,7 +4,9 @@
   python3 scripts/make_release.py --out dist-release          # writes sdlc-agentic-skills-<VERSION>.tar.gz and SHA256SUMS
   python3 scripts/make_release.py --notes                      # prints the CHANGELOG section for VERSION
 
-The archive is deterministic for a given commit (sorted entries, fixed mtime/owner). Checksums prove the file you downloaded matches
+The uncompressed tar is byte-for-byte deterministic for a given commit (sorted entries, fixed mtime/owner); its hash is written to
+UNCOMPRESSED_TAR_SHA256 (the .tar itself is not shipped) so anyone can rebuild and compare. The compressed .tar.gz bytes can differ between
+zlib versions, so verify a download with SHA256SUMS and reproducibility with UNCOMPRESSED_TAR_SHA256. Checksums prove the file you downloaded matches
 what was built; they are not a signature and not a security certification.
 """
 from __future__ import annotations
@@ -50,6 +52,7 @@ def build(out: Path) -> tuple[Path, Path]:
         gz.write(buf.getvalue())
     sums = out / "SHA256SUMS"
     sums.write_text(f"{hashlib.sha256(archive.read_bytes()).hexdigest()}  {archive.name}\n", encoding="utf-8")
+    (out / "UNCOMPRESSED_TAR_SHA256").write_text(f"{hashlib.sha256(buf.getvalue()).hexdigest()}  {name}.tar\n", encoding="utf-8")
     return archive, sums
 
 
