@@ -5,6 +5,9 @@ versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Evaluation
+- OpenCode evaluation reports added under `reports/opencode-evaluation/` with an independent review that corrects overstated evidence; OpenCode status is "discovery observed once; behaviour not tested". CONTRIBUTING now documents branching and merging.
+
 ### Release tooling
 - `make_release.py` also writes `UNCOMPRESSED_TAR_SHA256` (stable across zlib versions) after finding that the v1.1.0 `.tar.gz` bytes differ on rebuild while the contents are identical. See `reports/enhancement/RELEASE_v1.1.0.md`.
 

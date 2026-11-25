@@ -1,3 +1,5 @@
+> **Note (2026-11-25):** this report was written by the evaluating model and overstates its evidence (several steps were narrated, not run; the score is self-assigned). Read [INDEPENDENT_REVIEW.md](INDEPENDENT_REVIEW.md) for the corrected reading.
+
 # Final Production Readiness Report
 
 **Repository:** kirubaharan181/sdlc-agentic-skills

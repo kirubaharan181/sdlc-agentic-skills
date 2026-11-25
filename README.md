@@ -226,7 +226,7 @@ Choose a skill, hand work between skills, and record decisions with checkable ru
 | Trace requirement to evidence to approver | [Evidence traceability](docs/governance/EVIDENCE_TRACEABILITY.md) | `python3 scripts/trace_evidence.py --templates` |
 | Version skills and track documentation quality | [Versioning](docs/governance/SKILL_VERSIONING.md), [quality management](docs/quality/QUALITY_MANAGEMENT.md) | `python3 scripts/check_skill_versions.py` |
 | Use the library from Codex or another coding agent | [AGENTS.md](AGENTS.md), [Codex usage](docs/agent-guide/CODEX_USAGE.md) | documented, not tested |
-| Install skills for Codex, OpenCode or Claude Code | `python3 scripts/install.py --target codex\|opencode\|claude`, [OpenCode usage](docs/agent-guide/OPENCODE_USAGE.md) | installer tested; agent behaviour not tested |
+| Install skills for Codex, OpenCode or Claude Code | `python3 scripts/install.py --target codex\|opencode\|claude`, [OpenCode usage](docs/agent-guide/OPENCODE_USAGE.md) | installer tested; OpenCode discovery observed once; agent behaviour not tested |
 
 Documentation quality is measured with NVIDIA SkillEvaluator (`skillevaluator quality-check skills/<group>/<skill>`). Recorded runs are in
 [reports/skill-quality/SCORE_HISTORY.csv](reports/skill-quality/SCORE_HISTORY.csv), each tied to a commit, skill version and evaluator version:
