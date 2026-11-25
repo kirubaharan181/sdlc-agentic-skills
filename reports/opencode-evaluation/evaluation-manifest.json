@@ -1,0 +1,260 @@
+{
+  "schema_version": "1.0.0",
+  "evaluation": {
+    "repository": "kirubaharan181/sdlc-agentic-skills",
+    "release": "v1.1.0",
+    "target_agent": "OpenCode",
+    "target_version": "v2.3.0",
+    "model": "nemotron-3.5-super-vl-free",
+    "provider": "OpenCode",
+    "evaluation_date": "2026-11-24",
+    "read_only": true,
+    "environment": {
+      "os": "Windows (win32)",
+      "git_version": "2.56.0.windows.4",
+      "python_version": "3.11.9",
+      "repository_root": "C:\\Users\\kirubaharan\\sdlc-agentic-skills",
+      "git_branch": "main",
+      "commit_sha": "8fc6fdc9d6e7aef94960e46034bc09626504834d",
+      "version_file": "1.1.0",
+      "git_tags": ["v1.1.0", "v1.1.0-rc.1"],
+      "working_tree_status": "clean",
+      "install_scope": "project",
+      "install_location": ".opencode/skills",
+      "install_method": "copy"
+    },
+    "installation": {
+      "skills_discovered_source": 20,
+      "skills_expected": 20,
+      "skills_installed": 20,
+      "skills_opencode_detected": 20,
+      "check_result": "PASSED 20/20",
+      "missing": 0,
+      "duplicates": 0,
+      "broken": 0
+    },
+    "scoring": {
+      "model": "100-point weighted",
+      "weights": {
+        "instruction_quality": 15,
+        "practical_usability": 15,
+        "engineering_quality": 15,
+        "safety_security": 15,
+        "opencode_compatibility": 15,
+        "execution_success": 20,
+        "documentation": 5
+      },
+      "rating_bands": {
+        "excellent": "95-100",
+        "very_good": "85-94",
+        "good": "75-84",
+        "needs_improvement": "60-74",
+        "poor": "40-59",
+        "critical": "0-39"
+      },
+      "overall_score": 82,
+      "overall_rating": "Good"
+    },
+    "test_status_counts": {
+      "PASS": 1,
+      "PARTIAL_PASS": 15,
+      "FAIL": 0,
+      "NOT_TESTED": 0,
+      "BLOCKED": 4,
+      "skills_discovered": 20,
+      "skills_executed": 16
+    },
+    "skills": [
+      {
+        "name": "evidence-quality-gates",
+        "group": "cross-cutting",
+        "version": "1.1.1",
+        "score": 97,
+        "rating": "Excellent",
+        "status": "PASS",
+        "transcript": "evidence-quality-gates_TEST-002.md"
+      },
+      {
+        "name": "application-security",
+        "group": "security",
+        "version": "1.1.1",
+        "score": 88,
+        "rating": "Very Good",
+        "status": "PARTIAL PASS",
+        "transcript": "application-security_TEST-007.md"
+      },
+      {
+        "name": "definition-of-done",
+        "group": "cross-cutting",
+        "version": "1.1.1",
+        "score": 88,
+        "rating": "Very Good",
+        "status": "PARTIAL PASS",
+        "transcript": "definition-of-done_TEST-001.md"
+      },
+      {
+        "name": "release-deployment",
+        "group": "release-deployment",
+        "version": "1.1.1",
+        "score": 86,
+        "rating": "Very Good",
+        "status": "PARTIAL PASS",
+        "transcript": "release-deployment_TEST-012.md"
+      },
+      {
+        "name": "secure-change-control",
+        "group": "cross-cutting",
+        "version": "1.1.1",
+        "score": 86,
+        "rating": "Very Good",
+        "status": "PARTIAL PASS",
+        "transcript": "secure-change-control_TEST-008.md"
+      },
+      {
+        "name": "code-review-quality",
+        "group": "code-review",
+        "version": "1.1.1",
+        "score": 86,
+        "rating": "Very Good",
+        "status": "PARTIAL PASS",
+        "transcript": "code-review-quality_TEST-003.md"
+      },
+      {
+        "name": "incident-command",
+        "group": "cross-cutting",
+        "version": "1.1.1",
+        "score": 86,
+        "rating": "Very Good",
+        "status": "PARTIAL PASS",
+        "transcript": "incident-command_TEST-004.md"
+      },
+      {
+        "name": "master-orchestration",
+        "group": "cross-cutting",
+        "version": "1.1.1",
+        "score": 86,
+        "rating": "Very Good",
+        "status": "PARTIAL PASS",
+        "transcript": "master-orchestration_TEST-005.md"
+      },
+      {
+        "name": "technical-architecture",
+        "group": "architecture",
+        "version": "1.1.1",
+        "score": 84,
+        "rating": "Good",
+        "status": "PARTIAL PASS",
+        "transcript": "technical-architecture_TEST-011.md"
+      },
+      {
+        "name": "software-implementation",
+        "group": "development",
+        "version": "1.1.1",
+        "score": 83,
+        "rating": "Good",
+        "status": "PARTIAL PASS",
+        "transcript": "software-implementation_TEST-006.md"
+      },
+      {
+        "name": "business-product-management",
+        "group": "business-product",
+        "version": "1.1.1",
+        "score": 83,
+        "rating": "Good",
+        "status": "PARTIAL PASS",
+        "transcript": "business-product-management_TEST-010.md"
+      },
+      {
+        "name": "requirements-design",
+        "group": "requirements-design",
+        "version": "1.1.1",
+        "score": 83,
+        "rating": "Good",
+        "status": "PARTIAL PASS",
+        "transcript": "requirements-design_TEST-009.md"
+      },
+      {
+        "name": "project-agile-management",
+        "group": "project-management",
+        "version": "1.1.1",
+        "score": 83,
+        "rating": "Good",
+        "status": "PARTIAL PASS",
+        "transcript": "project-agile-management_TEST-014.md"
+      },
+      {
+        "name": "quality-assurance",
+        "group": "quality-assurance",
+        "version": "1.1.1",
+        "score": 83,
+        "rating": "Good",
+        "status": "PARTIAL PASS",
+        "transcript": "quality-assurance_TEST-015.md"
+      },
+      {
+        "name": "maintenance-support",
+        "group": "maintenance-support",
+        "version": "1.1.1",
+        "score": 83,
+        "rating": "Good",
+        "status": "PARTIAL PASS",
+        "transcript": "maintenance-support_TEST-016.md"
+      },
+      {
+        "name": "engineering-governance",
+        "group": "engineering-governance",
+        "version": "1.1.1",
+        "score": 79,
+        "rating": "Good",
+        "status": "PARTIAL PASS",
+        "transcript": "engineering-governance_TEST-013.md"
+      },
+      {
+        "name": "cloud-hosting-operations",
+        "group": "cloud-hosting",
+        "version": "1.1.1",
+        "score": 66,
+        "rating": "Needs Improvement",
+        "status": "BLOCKED",
+        "block_reason": "requires cloud account access and reachable cloud environment",
+        "transcript": null
+      },
+      {
+        "name": "devops-platform",
+        "group": "devops-platform",
+        "version": "1.1.1",
+        "score": 68,
+        "rating": "Needs Improvement",
+        "status": "BLOCKED",
+        "block_reason": "requires CI/CD platform, secrets store, artifact registry, runner access",
+        "transcript": null
+      },
+      {
+        "name": "enterprise-governance",
+        "group": "enterprise-governance",
+        "version": "1.1.1",
+        "score": 69,
+        "rating": "Needs Improvement",
+        "status": "BLOCKED",
+        "block_reason": "requires control framework, org evidence access, agreed audit scope",
+        "transcript": null
+      },
+      {
+        "name": "sre-observability",
+        "group": "sre-observability",
+        "version": "1.1.1",
+        "score": 68,
+        "rating": "Needs Improvement",
+        "status": "BLOCKED",
+        "block_reason": "requires telemetry sources and observability platform",
+        "transcript": null
+      }
+    ],
+    "readiness": {
+      "classification": "CONDITIONALLY READY",
+      "reason": "4 of 20 skills lack execution evidence (BLOCKED on external infrastructure: cloud, CI/CD, org control framework, telemetry). All other readiness dimensions satisfied."
+    },
+    "reports_directory": "reports/opencode-evaluation/",
+    "transcripts_directory": "reports/opencode-evaluation/transcripts/"
+  }
+}
