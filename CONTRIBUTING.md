@@ -31,6 +31,12 @@ Everything must pass before you open a pull request. CI runs the same checks and
 4. Keep the description to 150 characters, with "Use when ..." and "Do not use ...". Keep 2 or more examples (3 for cross-cutting skills), troubleshooting rows with Error / Cause / Resolution, and each responsibility owned by exactly one skill.
 5. Add a `CHANGELOG.md` line naming the skill, new version and reason.
 
+## Branching and merging
+
+`main` is always releasable and protected by CI. Work on a short-lived branch named by type (`feat/...`, `fix/...`, `docs/...`, `ci/...`,
+`chore/...`), open a pull request, wait for the `Validate library` check (and `Skill quality` when skills change), and squash-merge. Do not
+force-push shared branches or commit directly to `main`. Releases are version tags (`vX.Y.Z`) that match `VERSION`.
+
 ## Proposing a new skill
 
 Run `make new-skill SKILL=my-new-skill` to create a draft in `registry/skill-drafts/`, fill every placeholder, then

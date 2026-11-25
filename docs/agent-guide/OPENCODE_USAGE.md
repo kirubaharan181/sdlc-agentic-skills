@@ -1,7 +1,9 @@
 # Using this library with OpenCode
 
-Status: documented, not tested. Nobody has run this library in OpenCode on a clean install with a dated log (see
-[adapters/COMPATIBILITY.md](../../adapters/COMPATIBILITY.md)). The folders below come from OpenCode's public skills documentation
+Status: discovery observed once; behaviour not tested. On 2026-11-24 an OpenCode v2.3.0 session on Windows listed all 20 installed skills, and
+a free-tier model then worked through 16 scenarios. That run's own reports overstate their evidence (narrated steps, self-scored), so treat it as
+indicative only; see [the independent review](../../reports/opencode-evaluation/INDEPENDENT_REVIEW.md) and
+[adapters/COMPATIBILITY.md](../../adapters/COMPATIBILITY.md). The folders below come from OpenCode's public skills documentation
 (<https://opencode.ai/docs/skills>, read 2026-11-23); check the current documentation before relying on them.
 
 ## 1. Install the skills
@@ -46,5 +48,5 @@ risk tier and approvers. If you are unsure which skill fits, run `python3 script
 
 ## 5. What is not verified
 
-Installation and discovery steps are documented from the vendor's pages only. Whether OpenCode loads each skill, follows its procedure and
-respects its gates has not been observed. Record real runs as a dated log (see [adapters/COMPATIBILITY.md](../../adapters/COMPATIBILITY.md)) before claiming OpenCode support.
+Whether OpenCode loads each skill on demand, follows its procedure and respects its gates has not been established: the 2026-11-24 run shows
+discovery, not loading, and used one free-tier model with simulated steps. See the independent review for what a real test needs.
